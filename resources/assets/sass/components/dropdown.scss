@@ -1,0 +1,17 @@
+//.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus
+
+.dropdown-menu {
+  li {
+    a {
+      &.active {
+        color: $blue;
+      }
+
+      &:hover, &:focus {
+        color: #fff;
+        background: $blue!important;
+        text-decoration: none!important;
+      }
+    }
+  }
+}

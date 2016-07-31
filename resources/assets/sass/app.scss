@@ -1,2 +1,6 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-
+@import "variables/all";
+@import "../../../resources/assets/bower/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "components/all";
+@import "fixes/all";
+@import "setup/all";
+@import "pages/all";

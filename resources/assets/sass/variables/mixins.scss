@@ -1,0 +1,105 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow($bs) {
+  -webkit-box-shadow: $bs;
+  -moz-box-shadow: $bs;
+  box-shadow: $bs;
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin filter($filter) {
+  -webkit-filter: $filter;
+  -moz-filter: $filter;
+  -o-filter: $filter;
+  -ms-filter: $filter;
+  filter: $filter;
+}
+
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  -moz-animation: $animation;
+  -ms-animation: $animation;
+  -o-animation: $animation;
+  animation: $animation;
+}
+
+@mixin flex-wrap-fix($flex-basis, $max-viewport-width: 2000px, $margin-left: 0, $margin-right: 0) {
+  flex-grow: 1;
+  flex-basis: $flex-basis;
+  max-width: 100%;
+  margin-left: $margin-left;
+  margin-right: $margin-right;
+
+  $multiplier: 1;
+  $current-width: 0px;
+
+  @while $current-width < $max-viewport-width {
+    $current-width: $current-width + $flex-basis;
+    $multiplier: $multiplier + 1;
+    $width-percent: percentage(1/$multiplier);
+    $minus-pixels: $margin-left + $margin-right;
+
+    @media(min-width: $flex-basis * $multiplier) {
+      max-width: calc(#{$width-percent} - #{$minus-pixels});
+    }
+  }
+}
+
+@mixin badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  font-size: 0.8em;
+  border-radius: 2px;
+  margin: 0 0 0 15px;
+  padding: 0.1em 1em 0.3em 1em;
+}
+
+@mixin badge-style($type) {
+  @if ($type == success) {
+    color: $extra-dark-green;
+    background: $light-green;
+    border: 1px solid $green;
+  }
+
+  @if ($type == info)  {
+    color: $text-muted;
+    background: $body-background;
+    border: 1px solid $border-dark;
+  }
+
+  @if ($type == warning)  {
+    color: $orange;
+    background: $light-yellow;
+    border: 1px solid $orange;
+  }
+
+
+  @if ($type == error)  {
+    color: $dark-red;
+    background: $extra-light-red;
+    border: 1px solid $dark-red;
+  }
+}
+
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

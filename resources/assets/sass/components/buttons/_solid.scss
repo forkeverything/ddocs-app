@@ -1,0 +1,63 @@
+.btn-solid {
+  color: #FFFFFF;
+  @include transition(all 0.15s ease-out);
+  display: inline-block;
+
+  &:hover, &:focus, &:active, &.active {
+    outline: 0;
+    color: #FFFFFF;
+  }
+
+  &:disabled {
+    background: $grey !important;
+    color: $dark-grey;
+    border-color: $dark-grey;
+    @include box-shadow(none !important);
+    &:hover {
+      color: $dark-grey;
+      background: $grey;
+      border-color: $dark-grey;
+    }
+  }
+}
+
+@mixin btn-solid-colors($color, $dark-color) {
+  border-color: $color;
+  background-color: $color;
+
+  &:focus, &:active, &.active {
+    border-color: $color;
+    background-color: $color;
+  }
+
+  &:hover, &:focus:active {
+    background-color: $dark-color;
+    border-color: $dark-color;
+    color: #fff;
+  }
+}
+
+.btn-solid-green {
+  @extend .btn-solid;
+  @include btn-solid-colors($green, $dark-green);
+}
+
+.btn-solid-yellow {
+  @extend .btn-solid;
+  @include btn-solid-colors($yellow, $dark-yellow);
+}
+
+.btn-solid-blue {
+  @extend .btn-solid;
+  @include btn-solid-colors($blue, $dark-blue);
+}
+
+.btn-solid-red {
+  @extend .btn-solid;
+  @include btn-solid-colors($red, $dark-red);
+}
+
+.btn-solid-grey {
+  @extend .btn-solid;
+  @include btn-solid-colors($grey, $extra-dark-grey);
+}

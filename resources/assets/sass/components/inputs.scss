@@ -1,0 +1,6 @@
+.form-control {
+  &:focus, &.focus {
+    border: 1px solid $blue;
+    @include box-shadow(none);
+  }
+}

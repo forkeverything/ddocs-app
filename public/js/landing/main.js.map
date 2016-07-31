@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"main.js","sourcesContent":["new Vue({\n    el: '#landing',\n    data: {\n\n    },\n    props: [],\n    methods: {\n    },\n    ready: function () {\n\n    }\n});\n\n"],"sourceRoot":"/source/"}
