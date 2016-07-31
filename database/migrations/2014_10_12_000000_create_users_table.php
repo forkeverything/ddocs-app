@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->integer('credits')->default('5')->unsigned();
         });
     }
 
@@ -28,7 +30,7 @@ class CreateUsersTable extends Migration
      * @return void
      */
     public function down()
-    {
+    {\
         Schema::drop('users');
     }
 }

@@ -71,7 +71,7 @@ elixir(function(mix) {
     mix.copy('resources/assets/bower/font-awesome/fonts', 'public/fonts');
 
     // BrowserSync - Gulp watch
-    mix.browserSync({proxy: 'files-collector.app'});
+    mix.browserSync({proxy: 'filescollector.app'});
 
     // mix.phpUnit(null, {group: 'driven'});
 
