@@ -158,6 +158,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Custom Service Providers...
+         */
+        Vinkla\Hashids\HashidsServiceProvider::class
+
     ],
 
     /*
@@ -204,6 +209,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Custom Aliases...
+         */
+        'Hashids' => Vinkla\Hashids\Facades\Hashids::class
     ],
 
 ];

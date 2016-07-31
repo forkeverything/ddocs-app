@@ -18,7 +18,8 @@ elixir(function(mix) {
             // Packages
             mix.styles([
                 // Packages
-                'font-awesome/css/font-awesome.min.css'
+                'font-awesome/css/font-awesome.min.css',
+                'jquery-ui/themes/base/datepicker.css',
             ], 'resources/assets/css/landing/vendor.css', 'resources/assets/bower');
             // Main
             mix.sass('landing.scss', 'resources/assets/css/landing/main.css');
@@ -31,7 +32,9 @@ elixir(function(mix) {
                 'bootstrap-sass/assets/javascripts/bootstrap.min.js',
                 'vue/dist/vue.js',
                 'lodash/lodash.js',
-                'moment/min/moment-with-locales.min.js'
+                'moment/min/moment-with-locales.min.js',
+                'jquery-ui/ui/widgets/datepicker.js',
+                'autosize/dist/autosize.min.js'
                 // 'js-cookie/src/js.cookie.js',
                 // 'toastr/toastr.js',
                 // 'accounting.js/accounting.min.js'
@@ -47,7 +50,17 @@ elixir(function(mix) {
     // App
         // Styles
             // Main
-            mix.sass('app.scss');
+                mix.sass('app.scss');
+            // Packages
+            mix.styles([
+                // App
+                '../../../public/css/app.css',
+                // Packages
+                'font-awesome/css/font-awesome.min.css',
+                'jquery-ui/themes/base/datepicker.css',
+                // Resource folder
+                '../../../resources/assets/css/*.css'
+            ], 'public/css/all.css', 'resources/assets/bower');
         // Scripts
             // Packages
             mix.scripts([
@@ -56,6 +69,8 @@ elixir(function(mix) {
                 'vue/dist/vue.js',
                 'lodash/lodash.js',
                 'moment/min/moment-with-locales.min.js',
+                'jquery-ui/ui/widgets/datepicker.js',
+                'autosize/dist/autosize.min.js',
                 // 'js-cookie/src/js.cookie.js',
                 // 'toastr/toastr.js',
                 // 'accounting.js/accounting.min.js'

@@ -1,0 +1,116 @@
+#checklist-make {
+
+  #form-checklist-make {
+    border: 1px solid $border-light;
+    padding: 30px;
+  }
+
+  #new-checklist-recipient {
+    display: flex;
+    align-items: center;
+
+    label {
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+
+    #input-recipient-email {
+      flex: 1;
+    }
+  }
+
+  #title-checklist-name {
+    color: $text-muted;
+
+    &.filled {
+      color: #000;
+    }
+  }
+
+  #input-checklist-name {
+    font-size: 30px;
+    height: 33px;
+    border: 0;
+    @include box-shadow(none);
+    @include border-radius(0);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  #textarea-new-checklist-description {
+      border-color: transparent;
+      @include box-shadow(none);
+      width: calc(100% + 24px);
+      margin-left: -12px;
+
+      &:hover {
+        border-color: $border-light;
+      }
+
+      &:focus {
+        border-color: $blue;
+      }
+  }
+
+  .single-file {
+    display: flex;
+
+    &:before {
+      content: "\f016";
+      font-family: FontAwesome;
+      color: $grey;
+      line-height: 2.3;
+      position: absolute;
+    }
+
+    .input-file-name {
+      flex: 1;
+      border: 0;
+      border-top: 1px solid $border-light;
+      @include box-shadow(none);
+      @include border-radius(0);
+      padding-left: 20px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .input-due {
+      width: 75px;
+      border: 0;
+      text-align: center;
+      outline: 0!important;
+      color: #fff;
+      cursor: pointer;
+      border-top: 1px solid $border-light;
+      border-bottom: 1px solid transparent;
+
+
+      &.filled {
+        color: #000;
+      }
+    }
+
+    &:first-child {
+     .input-file-name, .input-due, .btn-add-description  {
+       border-top: 0;
+     }
+    }
+
+    &.is-focused {
+      .input-file-name, .input-due, .btn-add-description {
+        border-top: 1px solid $light-blue;
+        border-bottom: 1px solid $light-blue;
+      }
+
+      & + li {
+        .input-file-name, .input-due, .btn-add-description {
+          border-top: 0;
+          border-bottom: 0;
+        }
+      }
+    }
+
+  }
+}

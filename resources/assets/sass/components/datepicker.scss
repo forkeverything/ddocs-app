@@ -1,0 +1,95 @@
+.ui-datepicker-trigger {
+  width: 20px;
+  cursor: pointer;
+}
+
+#ui-datepicker-div {
+  margin-top: 10px;
+  padding: 0.5em;
+  background: #fff;
+  border: 1px solid $blue;
+  @include box-shadow(1px 3px 5px rgba(0, 0, 0, 0.3));
+  @include border-radius($border-radius-small);
+
+  .ui-datepicker-header {
+    margin: -0.5em -.5em 0 -.5em;
+
+    background: $blue;
+    color: #fff;
+
+    .ui-datepicker-prev, .ui-datepicker-next {
+      top: -2px;
+      cursor: pointer;
+
+      &:hover {
+        top: -2px;
+      }
+
+      .ui-icon {
+        text-indent: initial;
+        color: transparent;
+
+        &:before {
+          font-family: FontAwesome;
+          color: #fff;
+          position: absolute;
+          left: calc(50% - 10px);
+          top: 3px;
+        }
+      }
+    }
+
+    .ui-datepicker-prev {
+
+      &.ui-datepicker-prev-hover {
+        left: 2px;
+      }
+
+      span {
+        &:before {
+          content: "\f053";
+        }
+      }
+    }
+
+    .ui-datepicker-next {
+      right: 6px;
+
+      span {
+        &:before {
+          content: "\f054";
+        }
+      }
+    }
+
+    .ui-corner-all {
+      -moz-user-select: -moz-none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+
+      /*
+        Introduced in IE 10.
+        See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+      */
+      -ms-user-select: none;
+      user-select: none;
+      &:focus, &:active, &:hover {
+        outline: 0;
+      }
+    }
+  }
+
+  .ui-datepicker-calendar {
+    .ui-datepicker-unselectable, .ui-state-disabled {
+      color: $text-muted;
+    }
+
+    a {
+      color: #000;
+      &:hover {
+        color: $blue;
+        font-weight: bold;
+      }
+    }
+  }
+}

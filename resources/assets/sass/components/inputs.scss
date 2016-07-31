@@ -1,6 +1,11 @@
 .form-control {
+  @include transition(none);
   &:focus, &.focus {
     border: 1px solid $blue;
     @include box-shadow(none);
   }
+}
+
+textarea {
+  resize: none;
 }

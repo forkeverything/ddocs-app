@@ -2291,7 +2291,7 @@ output {
   padding-top: 7px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #555555; }
+  color: #000; }
 
 .form-control {
   display: block;
@@ -2300,7 +2300,7 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #555555;
+  color: #000;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
@@ -3440,7 +3440,7 @@ tbody.collapse.in {
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
-  color: #555555;
+  color: #000;
   text-align: center;
   background-color: #eeeeee;
   border: 1px solid #ccc;
@@ -5800,11 +5800,19 @@ button.close {
       border-color: #3498DB !important; }
       .btn.btn-default:hover .caret {
         color: #3498DB; }
-  .btn:hover:active, .btn:active:focus, .btn.focus:active, .btn.active:hover, .btn.active:focus, .btn.active.focus, .btn.dropdown-toggle:hover, .btn.dropdown-toggle:focus, .btn.dropdown-toggle.focus {
-    color: #3498DB !important;
-    border-color: #3498DB !important; }
-    .btn:hover:active .caret, .btn:active:focus .caret, .btn.focus:active .caret, .btn.active:hover .caret, .btn.active:focus .caret, .btn.active.focus .caret, .btn.dropdown-toggle:hover .caret, .btn.dropdown-toggle:focus .caret, .btn.dropdown-toggle.focus .caret {
-      color: #3498DB; }
+    .btn.btn-default:hover:active, .btn.btn-default:active:focus, .btn.btn-default.focus:active, .btn.btn-default.active:hover, .btn.btn-default.active:focus, .btn.btn-default.active.focus, .btn.btn-default.dropdown-toggle:hover, .btn.btn-default.dropdown-toggle:focus, .btn.btn-default.dropdown-toggle.focus {
+      color: #3498DB !important;
+      border-color: #3498DB !important; }
+      .btn.btn-default:hover:active .caret, .btn.btn-default:active:focus .caret, .btn.btn-default.focus:active .caret, .btn.btn-default.active:hover .caret, .btn.btn-default.active:focus .caret, .btn.btn-default.active.focus .caret, .btn.btn-default.dropdown-toggle:hover .caret, .btn.btn-default.dropdown-toggle:focus .caret, .btn.btn-default.dropdown-toggle.focus .caret {
+        color: #3498DB; }
+  .btn.btn-unstyled {
+    color: #D2D2D2;
+    border: 0;
+    border-radius: 0; }
+    .btn.btn-unstyled:focus, .btn.btn-unstyled:active {
+      color: #D2D2D2; }
+    .btn.btn-unstyled:hover {
+      color: #757575; }
 
 .btn-outline, .btn-outline-green, .btn-outline-yellow, .btn-outline-red, .btn-outline-blue, .btn-outline-grey {
   background: transparent;
@@ -5969,9 +5977,14 @@ button.close {
 .caret {
   color: #757575; }
 
-.form-control:focus, .form-control.focus {
-  border: 1px solid #3498DB;
-  box-shadow: none; }
+.form-control {
+  transition: none; }
+  .form-control:focus, .form-control.focus {
+    border: 1px solid #3498DB;
+    box-shadow: none; }
+
+textarea {
+  resize: none; }
 
 .dropdown-menu li a.active {
   color: #3498DB; }
@@ -5980,6 +5993,63 @@ button.close {
   color: #fff;
   background: #3498DB !important;
   text-decoration: none !important; }
+
+.ui-datepicker-trigger {
+  width: 20px;
+  cursor: pointer; }
+
+#ui-datepicker-div {
+  margin-top: 10px;
+  padding: 0.5em;
+  background: #fff;
+  border: 1px solid #3498DB;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 3px; }
+  #ui-datepicker-div .ui-datepicker-header {
+    margin: -0.5em -.5em 0 -.5em;
+    background: #3498DB;
+    color: #fff; }
+    #ui-datepicker-div .ui-datepicker-header .ui-datepicker-prev, #ui-datepicker-div .ui-datepicker-header .ui-datepicker-next {
+      top: -2px;
+      cursor: pointer; }
+      #ui-datepicker-div .ui-datepicker-header .ui-datepicker-prev:hover, #ui-datepicker-div .ui-datepicker-header .ui-datepicker-next:hover {
+        top: -2px; }
+      #ui-datepicker-div .ui-datepicker-header .ui-datepicker-prev .ui-icon, #ui-datepicker-div .ui-datepicker-header .ui-datepicker-next .ui-icon {
+        text-indent: initial;
+        color: transparent; }
+        #ui-datepicker-div .ui-datepicker-header .ui-datepicker-prev .ui-icon:before, #ui-datepicker-div .ui-datepicker-header .ui-datepicker-next .ui-icon:before {
+          font-family: FontAwesome;
+          color: #fff;
+          position: absolute;
+          left: calc(50% - 10px);
+          top: 3px; }
+    #ui-datepicker-div .ui-datepicker-header .ui-datepicker-prev.ui-datepicker-prev-hover {
+      left: 2px; }
+    #ui-datepicker-div .ui-datepicker-header .ui-datepicker-prev span:before {
+      content: "\f053"; }
+    #ui-datepicker-div .ui-datepicker-header .ui-datepicker-next {
+      right: 6px; }
+      #ui-datepicker-div .ui-datepicker-header .ui-datepicker-next span:before {
+        content: "\f054"; }
+    #ui-datepicker-div .ui-datepicker-header .ui-corner-all {
+      -moz-user-select: -moz-none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      /*
+        Introduced in IE 10.
+        See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+      */
+      -ms-user-select: none;
+      user-select: none; }
+      #ui-datepicker-div .ui-datepicker-header .ui-corner-all:focus, #ui-datepicker-div .ui-datepicker-header .ui-corner-all:active, #ui-datepicker-div .ui-datepicker-header .ui-corner-all:hover {
+        outline: 0; }
+  #ui-datepicker-div .ui-datepicker-calendar .ui-datepicker-unselectable, #ui-datepicker-div .ui-datepicker-calendar .ui-state-disabled {
+    color: #9CA1A8; }
+  #ui-datepicker-div .ui-datepicker-calendar a {
+    color: #000; }
+    #ui-datepicker-div .ui-datepicker-calendar a:hover {
+      color: #3498DB;
+      font-weight: bold; }
 
 [v-cloak] {
   display: none; }
