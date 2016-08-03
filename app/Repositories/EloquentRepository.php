@@ -144,4 +144,16 @@ abstract class EloquentRepository
             $object['query_parameters'] = $this->queryParameters;
         }
     }
+
+    /**
+     * Finally: Fetch Results and paginate it
+     * by set number of items per Page
+     * (untested)
+     * @param $itemsPerPage
+     * @return $this
+     */
+    public function paginate($itemsPerPage = 20)
+    {
+        return $this->query->paginate($itemsPerPage);
+    }
 }

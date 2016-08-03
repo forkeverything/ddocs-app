@@ -22,7 +22,8 @@ class CreateFilesTable extends Migration
             $table->dateTime('due')->nullable();
 
             $table->boolean('required')->default(1);
-            $table->boolean('rejected')->default(0);
+
+            $table->string('status')->default('waiting');
 
             $table->integer('version')->default(1);
 

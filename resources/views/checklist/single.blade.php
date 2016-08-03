@@ -72,13 +72,7 @@
                             @endif
                         </td>
                         <td>
-                            @if($file->rejected)
-                                rejected
-                            @elseif($file->path)
-                                received
-                            @else
-                                not received
-                            @endif
+                            {{ $file->status }}
                         </td>
                         <td>
                             <button type="button" class="btn btn-solid-green"><i class="fa fa-upload"></i></button>
@@ -87,6 +81,20 @@
                 @endforeach
                 </tbody>
             </table>
+            <div class="results-controls">
+                <div class="per-page">
+                    <form>
+                        <select name="per_page" onchange="this.form.submit()" class="form-control">
+                            <option value="20" @if($perPage === '20')selected @endif >20</option>
+                            <option value="60" @if($perPage === '60')selected @endif >60</option>
+                            <option value="100" @if($perPage === '100')selected @endif >100</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="paginator">
+                    {{ $files->links() }}
+                </div>
+            </div>
         </div>
     </div>
 @endsection

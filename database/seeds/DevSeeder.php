@@ -60,6 +60,6 @@ class DevSeeder extends Seeder
     protected function seedChecklistAndFiles()
     {
         $checklist = factory(\App\Checklist::class)->create();
-        factory(\App\File::class, 10)->create(['checklist_id' => $checklist->id]);
+        factory(\App\File::class, 100)->create(['checklist_id' => $checklist->id]);
     }
 }

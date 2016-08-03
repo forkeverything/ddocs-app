@@ -62,10 +62,11 @@ class ChecklistsController extends Controller
         $sort = $request->sort;
         $order = $request->order;
         $search = $request->search;
+        $perPage = $request->per_page ?: 20;
         $files = FilesRepository::forChecklist($checklist)
                                 ->searchFor($search)
                                 ->sortOn($sort, $order)
-                                ->get();
-        return view('checklist.single', compact('checklist', 'files', 'sort', 'order', 'search'));
+            ->paginate($perPage);
+        return view('checklist.single', compact('checklist', 'files', 'sort', 'order', 'search', 'perPage'));
     }
 }
