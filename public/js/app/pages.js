@@ -5,6 +5,7 @@ Vue.component('checklist-make', {
     },
     data: function() {
         return {
+            ajaxReady: true,
             checklistRecipient: '',
             checklistName: '',
             checklistDescription: '',
@@ -13,7 +14,8 @@ Vue.component('checklist-make', {
                 {
                     name: '',
                     description: '',
-                    due: ''
+                    due: '',
+                    required: 1
                 }
             ]
         };
@@ -21,8 +23,22 @@ Vue.component('checklist-make', {
     props: [],
     computed: {
         checklistNameText: function() {
+            // Used to display a default when a name isn't given
             if(this.checklistName) return this.checklistName;
             return 'List Name';
+        },
+        validFiles: function() {
+            // Only return files with names
+            return _.filter(this.files, function (file) {
+                return file.name;
+            });
+        },
+        fileCount: function() {
+           return this.validFiles.length;
+        },
+        canSendChecklist: function() {
+            // Required fields...
+            return this.checklistRecipient && this.checklistName && this.fileCount > 0;
         }
     },
     methods: {
@@ -39,7 +55,8 @@ Vue.component('checklist-make', {
             var newFile = {
                 name: '',
                 description: '',
-                due: ''
+                due: '',
+                required: 1
             };
             this.files.splice(fileIndex + 1, 0, newFile);
             this.$nextTick(function () {
@@ -63,8 +80,30 @@ Vue.component('checklist-make', {
                 $($('.single-file')[fileIndex + 1]).find('.input-file-name').focus();
             }
         },
-        addFocus: function() {
-
+        toggleRequired: function(file) {
+            file.required = file.required ? 0 : 1;
+        },
+        sendChecklist: function() {
+            var self = this;
+            if(!self.ajaxReady) return;
+            self.ajaxReady = false;
+            $.ajax({
+                url: '/checklist/make',
+                method: 'POST',
+                data: {
+                    recipient: self.checklistRecipient,
+                    name: self.checklistName,
+                    description: self.checklistDescription,
+                    requested_files: self.validFiles
+                },
+                success: function(data) {
+                   location.href = "/checklist/" + data;
+                },
+                error: function(response) {
+                    console.log(response);
+                    self.ajaxReady = true;
+                }
+            });
         }
     },
     events: {

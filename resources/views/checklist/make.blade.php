@@ -16,18 +16,28 @@
                             <h2 id="title-checklist-name"
                                 v-show="! editingName"
                                 @click="toggleEditingName"
+                                @focus="toggleEditingName"
                                 :class="{
                                     'filled': checklistName
                                 }"
+                         tabindex="0"
                             >@{{ checklistNameText }}</h1>
                             <input id="input-checklist-name" type="text" class="form-control" v-show="editingName" @blur="toggleEditingName" v-model="checklistName">
                             <textarea id="textarea-new-checklist-description" rows="2" class="autosize form-control borderless" placeholder="description" v-model="checklistDescription"></textarea>
                         <hr>
-                        <h4>Files List</h4>
+                        <h4>Files List (@{{ fileCount }})</h4>
                         <ul class="list-files list-unstyled">
                             <li v-for="file in files" class="single-file">
+                                <button type="button"
+                                        class="btn btn-unstyled button-required line-el"
+                                        :class="{
+                                            'required': file.required
+                                        }"
+                                        @click="toggleRequired(file)"
+                                >
+                                    <i class="fa fa-file"></i></button>
                                 <input type="text"
-                                       class="form-control input-file-name"
+                                       class="form-control input-file-name line-el"
                                        v-model="file.name"
                                        placeholder="File name"
                                        @keyup.enter="addAnotherFileAfter(file)"
@@ -36,7 +46,7 @@
                                        @keyup.down="goTo('next', file)"
                                 >
                                 <input type="text"
-                                       class="input-due"
+                                       class="input-due line-el"
                                        v-model="file.due"
                                        v-datepicker
                                        placeholder="Due date"
@@ -45,12 +55,10 @@
                                 >
                             </li>
                         </ul>
-
-
-                        <div class="text-right">
-                            <button type="button" class="btn btn-solid-green">Send</button>
-                        </div>
                     </form>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-solid-green" @click="sendChecklist" :disabled="! canSendChecklist">Send</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -23,4 +23,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * A User can create many Checklist(s) of required File(s).
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function checklists()
+    {
+        return $this->hasMany(Checklist::class);
+    }
 }

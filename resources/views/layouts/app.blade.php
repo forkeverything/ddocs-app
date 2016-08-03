@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Sourcebro</title>
+    <title>Files Collector</title>
 
     <!-- Favicon -->
 {{--<link rel="shortcut icon" href="{{ asset('/images/icons/favicon.png') }}">--}}

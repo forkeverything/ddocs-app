@@ -6051,91 +6051,253 @@ textarea {
       color: #3498DB;
       font-weight: bold; }
 
+table {
+  font-size: 1em; }
+  table a {
+    font-size: 1em; }
+  table thead th.heading-center {
+    text-align: center; }
+  table thead th.heading-right {
+    text-align: right; }
+  table tbody tr td.content-right {
+    text-align: right;
+    padding: 10px 26px 10px 10px; }
+  table tbody tr td.content-center {
+    text-align: center;
+    padding: 10px 26px 10px 10px; }
+  table tbody tr td.fit-to-content {
+    width: 1%; }
+  table tbody tr td.success, table tbody tr td.warning, table tbody tr td.danger {
+    background-color: inherit !important; }
+  table tbody tr td.success {
+    color: #2ECC71; }
+  table tbody tr td.warning {
+    color: #FFA339; }
+  table tbody tr td.danger {
+    color: #C0392B; }
+
+.table-controls {
+  margin: 0 0 15px 0; }
+  .table-controls.with-right {
+    margin: -10px 0 15px 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; }
+    .table-controls.with-right .controls-left {
+      margin: 10px 0 0 0;
+      -ms-flex: 1000 0 300px;
+      flex: 1000 0 300px; }
+    .table-controls.with-right .controls-right {
+      margin: 10px 0 0 30px;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex: 1 0 120px;
+      flex: 1 0 120px;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+      -ms-flex-align: center;
+      align-items: center; }
+
+@media screen and (min-width: 768px) {
+  .table-standard {
+    margin: 0 0 15px; } }
+
+.table-standard .padding-even {
+  padding: 10px; }
+
+.table-standard thead tr th {
+  border: 0;
+  padding: 11px 26px 8px 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  vertical-align: middle;
+  position: relative;
+  border-bottom: 2px solid #3498DB; }
+  .table-standard thead tr th.required:after {
+    position: absolute;
+    top: 7px;
+    content: "*";
+    text-transform: lowercase;
+    font-size: 1.5em;
+    margin: 0 0 0 3px; }
+  .table-standard thead tr th.current_asc:after, .table-standard thead tr th.current_desc:after {
+    margin: 0 0 0 3px;
+    font-family: FontAwesome;
+    font-size: 1.3em;
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 12px); }
+  .table-standard thead tr th.current_asc:after {
+    content: '\f0d8'; }
+  .table-standard thead tr th.current_desc:after {
+    content: '\f0d7'; }
+  .table-standard thead tr th.heading-select {
+    position: relative; }
+    .table-standard thead tr th.heading-select .checkbox {
+      padding: 5px;
+      position: relative; }
+      .table-standard thead tr th.heading-select .checkbox label {
+        position: absolute;
+        top: -3px;
+        left: 3px;
+        z-index: 3; }
+    .table-standard thead tr th.heading-select .bulk-actions {
+      background: #fff;
+      z-index: 2;
+      position: absolute;
+      right: 0;
+      white-space: nowrap;
+      top: 1px;
+      height: 35px;
+      left: -1px;
+      text-align: left; }
+      .table-standard thead tr th.heading-select .bulk-actions .btn-bulk {
+        height: 100%;
+        padding: 3px 12px 3px 30px;
+        margin-left: 10px;
+        border-radius: 0;
+        line-height: 1.8; }
+        .table-standard thead tr th.heading-select .bulk-actions .btn-bulk .fa-caret-down {
+          margin-left: 5px; }
+      .table-standard thead tr th.heading-select .bulk-actions .popover-content {
+        top: calc(100%);
+        left: 50px;
+        padding: 0; }
+        .table-standard thead tr th.heading-select .bulk-actions .popover-content .bulk-dropdown-list {
+          margin: 0;
+          border: 0; }
+          .table-standard thead tr th.heading-select .bulk-actions .popover-content .bulk-dropdown-list .bulk-single-action {
+            height: 30px;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0 10px; }
+            .table-standard thead tr th.heading-select .bulk-actions .popover-content .bulk-dropdown-list .bulk-single-action:hover {
+              cursor: pointer;
+              color: #3498DB; }
+  .table-standard thead tr th a {
+    color: #000; }
+    .table-standard thead tr th a:hover {
+      color: #000;
+      text-decoration: none; }
+    .table-standard thead tr th a:focus {
+      text-decoration: none; }
+
+.table-standard tbody tr:first-child td {
+  border-top: 0; }
+
+.table-standard tbody tr:last-child td {
+  border-bottom: 1px solid #ccc; }
+
+.table-standard tbody tr.is-selected {
+  background: #FFFBE9; }
+
+.table-standard tbody tr td {
+  border-top: 1px solid #ccc;
+  padding: 10px;
+  vertical-align: middle; }
+
+.table-standard.table-hover tbody tr:hover {
+  background: #eff9fd; }
+
+.text-success {
+  color: #2ECC71; }
+
+.text-muted {
+  color: #9CA1A8; }
+
+.text-warning {
+  color: #FFA339; }
+
+.text-danger, .text-error {
+  color: #E74C3C; }
+
 [v-cloak] {
   display: none; }
 
-body {
-  height: 100vh; }
-
-#checklist-make #form-checklist-make {
-  border: 1px solid #ccc;
-  padding: 30px; }
-
-#checklist-make #new-checklist-recipient {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center; }
-  #checklist-make #new-checklist-recipient label {
-    margin-top: 10px;
-    margin-right: 10px; }
-  #checklist-make #new-checklist-recipient #input-recipient-email {
-    -ms-flex: 1;
-    flex: 1; }
-
-#checklist-make #title-checklist-name {
-  color: #9CA1A8; }
-  #checklist-make #title-checklist-name.filled {
-    color: #000; }
-
-#checklist-make #input-checklist-name {
-  font-size: 30px;
-  height: 33px;
-  border: 0;
-  box-shadow: none;
-  border-radius: 0;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  padding: 0;
-  font-weight: 500;
-  line-height: 1.1; }
-
-#checklist-make #textarea-new-checklist-description {
-  border-color: transparent;
-  box-shadow: none;
-  width: calc(100% + 24px);
-  margin-left: -12px; }
-  #checklist-make #textarea-new-checklist-description:hover {
-    border-color: #ccc; }
-  #checklist-make #textarea-new-checklist-description:focus {
-    border-color: #3498DB; }
-
-#checklist-make .single-file {
-  display: -ms-flexbox;
-  display: flex; }
-  #checklist-make .single-file:before {
-    content: "\f016";
-    font-family: FontAwesome;
-    color: #D2D2D2;
-    line-height: 2.3;
-    position: absolute; }
-  #checklist-make .single-file .input-file-name {
-    -ms-flex: 1;
-    flex: 1;
+#checklist-make {
+  padding-bottom: 30px; }
+  #checklist-make #form-checklist-make {
+    margin: 0 0 15px;
+    border: 1px solid #ccc;
+    padding: 30px; }
+  #checklist-make #new-checklist-recipient {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center; }
+    #checklist-make #new-checklist-recipient label {
+      margin-top: 10px;
+      margin-right: 10px; }
+    #checklist-make #new-checklist-recipient #input-recipient-email {
+      -ms-flex: 1;
+      flex: 1; }
+  #checklist-make #title-checklist-name {
+    color: #9CA1A8; }
+    #checklist-make #title-checklist-name.filled {
+      color: #000; }
+  #checklist-make #input-checklist-name {
+    font-size: 30px;
+    height: 33px;
     border: 0;
-    border-top: 1px solid #ccc;
     box-shadow: none;
     border-radius: 0;
-    padding-left: 20px;
-    border-bottom: 1px solid transparent; }
-  #checklist-make .single-file .input-due {
-    width: 75px;
-    border: 0;
-    text-align: center;
-    outline: 0 !important;
-    color: #fff;
-    cursor: pointer;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid transparent; }
-    #checklist-make .single-file .input-due.filled {
-      color: #000; }
-  #checklist-make .single-file:first-child .input-file-name, #checklist-make .single-file:first-child .input-due, #checklist-make .single-file:first-child .btn-add-description {
-    border-top: 0; }
-  #checklist-make .single-file.is-focused .input-file-name, #checklist-make .single-file.is-focused .input-due, #checklist-make .single-file.is-focused .btn-add-description {
-    border-top: 1px solid #67BAFF;
-    border-bottom: 1px solid #67BAFF; }
-  #checklist-make .single-file.is-focused + li .input-file-name, #checklist-make .single-file.is-focused + li .input-due, #checklist-make .single-file.is-focused + li .btn-add-description {
-    border-top: 0;
-    border-bottom: 0; }
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0;
+    font-weight: 500;
+    line-height: 1.1; }
+  #checklist-make #textarea-new-checklist-description {
+    border-color: transparent;
+    box-shadow: none;
+    width: calc(100% + 24px);
+    margin-left: -12px; }
+    #checklist-make #textarea-new-checklist-description:hover {
+      border-color: #ccc; }
+    #checklist-make #textarea-new-checklist-description:focus {
+      border-color: #3498DB; }
+  #checklist-make .single-file {
+    display: -ms-flexbox;
+    display: flex; }
+    #checklist-make .single-file .line-el {
+      border-top: 1px solid #ccc !important;
+      border-bottom: 1px solid transparent !important; }
+    #checklist-make .single-file:first-child .line-el {
+      border-top: 0 !important; }
+    #checklist-make .single-file.is-focused .line-el {
+      border-top: 1px solid #67BAFF !important;
+      border-bottom: 1px solid #67BAFF !important; }
+    #checklist-make .single-file.is-focused + li .line-el {
+      border-top: 0 !important;
+      border-bottom: 0 !important; }
+    #checklist-make .single-file .button-required {
+      padding-left: 0; }
+      #checklist-make .single-file .button-required.required {
+        color: #3498DB; }
+    #checklist-make .single-file .input-file-name {
+      -ms-flex: 1;
+      flex: 1;
+      border: 0;
+      box-shadow: none;
+      border-radius: 0;
+      padding-left: 0; }
+    #checklist-make .single-file .input-due {
+      width: 75px;
+      border: 0;
+      text-align: center;
+      outline: 0 !important;
+      color: #fff;
+      cursor: pointer; }
+      #checklist-make .single-file .input-due.filled {
+        color: #000; }
 
 /*# sourceMappingURL=app.css.map */

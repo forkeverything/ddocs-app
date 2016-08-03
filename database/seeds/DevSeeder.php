@@ -11,7 +11,9 @@ class DevSeeder extends Seeder
      * @var array
      */
     protected $tables = [
-        'users'
+        'users',
+        'checklists',
+        'files'
     ];
 
     /**
@@ -22,7 +24,8 @@ class DevSeeder extends Seeder
     public function run()
     {
         $this->truncateTables()
-            ->seedMikeAccount();
+            ->seedMikeAccount()
+        ->seedChecklistAndFiles();
     }
 
     /**
@@ -52,5 +55,11 @@ class DevSeeder extends Seeder
         ]);
 
         return $this;
+    }
+
+    protected function seedChecklistAndFiles()
+    {
+        $checklist = factory(\App\Checklist::class)->create();
+        factory(\App\File::class, 10)->create(['checklist_id' => $checklist->id]);
     }
 }

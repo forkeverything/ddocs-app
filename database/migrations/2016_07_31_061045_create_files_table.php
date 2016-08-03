@@ -17,12 +17,14 @@ class CreateFilesTable extends Migration
             $table->timestamps();
 
             $table->string('name');
-            $table->string('path');
+            $table->string('path')->nullable();
             $table->text('description')->nullable();
             $table->dateTime('due')->nullable();
 
             $table->boolean('required')->default(1);
             $table->boolean('rejected')->default(0);
+
+            $table->integer('version')->default(1);
 
             $table->integer('checklist_id')->unsigned();
             $table->foreign('checklist_id')->references('id')->on('checklists')->onDelete('cascade');

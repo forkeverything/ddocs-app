@@ -1,0 +1,250 @@
+table {
+  font-size: 1em;
+  a {
+    font-size: 1em;
+  }
+
+  thead {
+    th {
+      &.heading-center {
+        text-align: center;
+      }
+
+      &.heading-right {
+        text-align: right;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        &.content-right {
+          text-align: right;
+          padding: 10px 26px 10px 10px;
+        }
+
+        &.content-center {
+          text-align: center;
+          padding: 10px 26px 10px 10px;
+        }
+
+        &.fit-to-content {
+          width: 1%;
+        }
+
+        &.success, &.warning, &.danger {
+          background-color: inherit!important;
+        }
+
+        &.success {
+          color: $green;
+        }
+
+        &.warning {
+          color: $orange;
+        }
+
+        &.danger {
+          color: $dark-red;
+        }
+      }
+    }
+  }
+}
+
+
+.table-controls {
+  margin: 0 0 15px 0;
+
+  &.with-right {
+    margin: -10px 0 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .controls-left {
+      margin: 10px 0 0 0;
+      flex: 1000 0 300px;
+    }
+
+    .controls-right {
+      margin: 10px 0 0 30px;
+      display: flex;
+      flex: 1 0 120px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+}
+
+.table-standard {
+
+  @media screen and (min-width: $screen-sm-min) {
+    margin: 0 0 15px;
+  }
+
+  .padding-even {
+    padding: 10px;
+  }
+
+  thead {
+    tr {
+
+      th {
+        border: 0;
+        padding: 11px 26px 8px 8px;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 0.9em;
+        vertical-align: middle;
+        position: relative;
+        border-bottom: 2px solid $blue;
+
+        &.required:after {
+          position: absolute;
+          top: 7px;
+          content: "*";
+          text-transform: lowercase;
+          font-size: 1.5em;
+          margin: 0 0 0 3px;
+
+        }
+
+
+        &.current_asc, &.current_desc {
+
+          &:after {
+            margin: 0 0 0 3px;
+            font-family: FontAwesome;
+            font-size: 1.3em;
+            position: absolute;
+            right: 10px;
+            top: calc(50% - 12px);
+          }
+        }
+
+        &.current_asc:after {
+          content: '\f0d8';
+        }
+
+        &.current_desc:after {
+          content: '\f0d7';
+        }
+
+        &.heading-select {
+
+          position: relative;
+
+          .checkbox {
+            padding: 5px;
+            position: relative;
+
+            label {
+              position: absolute;
+              top: -3px;
+              left: 3px;
+              z-index: 3;
+            }
+          }
+
+          .bulk-actions {
+            background: #fff;
+            z-index: 2;
+            position: absolute;
+            right: 0;
+            white-space: nowrap;
+            top: 1px;
+            height: 35px;
+            left: -1px;
+            text-align: left;
+
+            .btn-bulk {
+              height: 100%;
+              padding:  3px 12px 3px 30px;
+              margin-left: 10px;
+              border-radius: 0;
+              line-height: 1.8;
+
+              .fa-caret-down {
+                margin-left: 5px;
+              }
+            }
+
+            .popover-content {
+              top: calc(100%);
+              left: 50px;
+              padding: 0;
+              .bulk-dropdown-list {
+                margin: 0;
+                border: 0;
+
+                .bulk-single-action {
+                  height: 30px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  padding: 0 10px;
+
+                  &:hover {
+                    cursor: pointer;
+                    color: $blue;
+                  }
+                }
+              }
+            }
+
+          }
+        }
+        a {
+          color: #000;
+          &:hover {
+            color: #000;
+            text-decoration: none;
+          }
+          &:focus {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+
+      &:first-child {
+        td {
+          border-top: 0;
+        }
+      }
+
+      &:last-child {
+        td {
+          border-bottom: 1px solid $border-light;
+        }
+      }
+
+      &.is-selected {
+        background: $extra-light-yellow;
+      }
+
+      td {
+        border-top: 1px solid $border-light;
+        padding: 10px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &.table-hover {
+    tbody {
+      tr {
+        &:hover {
+          background: $extra-light-blue;
+        }
+      }
+    }
+  }
+}

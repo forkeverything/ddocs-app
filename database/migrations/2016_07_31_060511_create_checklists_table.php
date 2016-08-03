@@ -18,7 +18,10 @@ class CreateChecklistsTable extends Migration
 
             $table->string('recipient');
             $table->string('name');
-//            $table->text('description')->nullable();
+            $table->text('description')->nullable();
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

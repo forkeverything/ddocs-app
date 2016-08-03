@@ -1,6 +1,8 @@
 #checklist-make {
+  padding-bottom: 30px;
 
   #form-checklist-make {
+    margin: 0 0 15px;
     border: 1px solid $border-light;
     padding: 30px;
   }
@@ -58,22 +60,53 @@
   .single-file {
     display: flex;
 
-    &:before {
-      content: "\f016";
-      font-family: FontAwesome;
-      color: $grey;
-      line-height: 2.3;
-      position: absolute;
+    //&:before {
+    //  content: "\f016";
+    //  font-family: FontAwesome;
+    //  color: $grey;
+    //  line-height: 2.3;
+    //  position: absolute;
+    //}
+
+    .line-el {
+      border-top: 1px solid $border-light !important;
+      border-bottom: 1px solid transparent !important;
+    }
+
+    &:first-child {
+      .line-el  {
+        border-top: 0 !important;
+      }
+    }
+
+    &.is-focused {
+      .line-el {
+        border-top: 1px solid $light-blue !important;
+        border-bottom: 1px solid $light-blue !important;
+      }
+
+      & + li {
+        .line-el {
+          border-top: 0 !important;
+          border-bottom: 0 !important;
+        }
+      }
+    }
+
+    .button-required {
+      padding-left: 0;
+
+      &.required {
+        color: $blue;
+      }
     }
 
     .input-file-name {
       flex: 1;
       border: 0;
-      border-top: 1px solid $border-light;
       @include box-shadow(none);
       @include border-radius(0);
-      padding-left: 20px;
-      border-bottom: 1px solid transparent;
+      padding-left: 0;
     }
 
     .input-due {
@@ -83,34 +116,10 @@
       outline: 0!important;
       color: #fff;
       cursor: pointer;
-      border-top: 1px solid $border-light;
-      border-bottom: 1px solid transparent;
-
 
       &.filled {
         color: #000;
       }
     }
-
-    &:first-child {
-     .input-file-name, .input-due, .btn-add-description  {
-       border-top: 0;
-     }
-    }
-
-    &.is-focused {
-      .input-file-name, .input-due, .btn-add-description {
-        border-top: 1px solid $light-blue;
-        border-bottom: 1px solid $light-blue;
-      }
-
-      & + li {
-        .input-file-name, .input-due, .btn-add-description {
-          border-top: 0;
-          border-bottom: 0;
-        }
-      }
-    }
-
   }
 }

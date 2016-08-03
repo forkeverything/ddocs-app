@@ -11,11 +11,33 @@
 |
 */
 
+use App\Checklist;
+use App\User;
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->safeEmail,
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(Checklist::class, function (Faker\Generator $faker) {
+    return [
+        'recipient' => $faker->email,
+        'name' => $faker->name,
+        'description' => $faker->paragraphs(1, true),
+        'user_id' => factory(User::class)->create()->id
+    ];
+});
+
+$factory->define(\App\File::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->sentences(3, true),
+        'due' => $faker->dateTimeBetween('now', '+1 year')->format('d/m/Y'),
+        'required' => $faker->boolean(80),
+        'checklist_id' => factory(Checklist::class)->create()->id
     ];
 });
