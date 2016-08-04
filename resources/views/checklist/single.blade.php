@@ -21,31 +21,31 @@
         </form>
         <div class="table-responsive">
             <!-- Files Table -->
-            <table class="table table-standard">
+            <table id="table-files" class="table table-standard">
                 <thead>
                 <tr>
                     <th @if($sort === 'required')class="current_{{  $order }}"@endif>
-                        <a href="/checklist/{{ Hashids::encode($checklist->id) }}?sort=required&order={{ $order === 'asc' ? 'desc' : 'asc' }}">
+                        <a href="/checklist/{{ hashId($checklist) }}?sort=required&order={{ $order === 'asc' ? 'desc' : 'asc' }}">
                             Required
                         </a>
                     </th>
                     <th @if($sort === 'name')class="current_{{  $order }}"@endif>
-                        <a href="/checklist/{{ Hashids::encode($checklist->id) }}?sort=name&order={{ $order === 'asc' ? 'desc' : 'asc' }}">
+                        <a href="/checklist/{{ hashId($checklist) }}?sort=name&order={{ $order === 'asc' ? 'desc' : 'asc' }}">
                             Name
                         </a>
                     </th>
                     <th @if($sort === 'version')class="current_{{  $order }}"@endif>
-                        <a href="/checklist/{{ Hashids::encode($checklist->id) }}?sort=version&order={{ $order === 'asc' ? 'desc' : 'asc' }}">
+                        <a href="/checklist/{{ hashId($checklist) }}?sort=version&order={{ $order === 'asc' ? 'desc' : 'asc' }}">
                             Version
                         </a>
                     </th>
                     <th @if($sort === 'due')class="current_{{  $order }}"@endif>
-                        <a href="/checklist/{{ Hashids::encode($checklist->id) }}?sort=due&order={{ $order === 'asc' ? 'desc' : 'asc' }}">
+                        <a href="/checklist/{{ hashId($checklist) }}?sort=due&order={{ $order === 'asc' ? 'desc' : 'asc' }}">
                             Due
                         </a>
                     </th>
                     <th @if($sort === 'status')class="current_{{  $order }}"@endif>
-                        <a href="/checklist/{{ Hashids::encode($checklist->id) }}?sort=status&order={{ $order === 'asc' ? 'desc' : 'asc' }}">
+                        <a href="/checklist/{{ hashId($checklist) }}?sort=status&order={{ $order === 'asc' ? 'desc' : 'asc' }}">
                             Status
                         </a>
                     </th>
@@ -72,10 +72,19 @@
                             @endif
                         </td>
                         <td>
-                            {{ $file->status }}
+                            <span class="file-status {{ $file->status }}">{{ $file->status }}</span>
                         </td>
-                        <td>
-                            <button type="button" class="btn btn-solid-green"><i class="fa fa-upload"></i></button>
+                        <td class="col-upload">
+                            <button type="button" class="btn btn-solid-green button-upload-file" data-file="{{ $file->id }}"><i class="fa fa-upload"></i></button>
+                            <input id="input-file-{{  $file->id }}" type="file" name="file" data-url="/checklist/{{ hashId($checklist) }}/file/{{ $file->id }}" class="input-file-upload hide">
+                            {{--<div class="file-upload-progress">--}}
+                            {{--<div class="bar" style="width: 0%;"></div>--}}
+                            {{--</div>--}}
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                    <span class="sr-only">0%</span>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

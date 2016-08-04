@@ -1,5 +1,4 @@
 #checklist-single {
-
   .results-controls {
     display: flex;
     justify-content: space-between;
@@ -12,6 +11,26 @@
     .paginator {
       .pagination {
         margin: 0;
+      }
+    }
+  }
+
+
+  #table-files {
+
+    tbody {
+
+      .col-upload {
+        width: 100px;
+
+        .button-upload-file {
+          width: 100%;
+        }
+
+        .progress {
+          height: 10px;
+          margin: 10px 0 0 0;
+        }
       }
     }
   }

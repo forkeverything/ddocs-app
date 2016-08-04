@@ -18,7 +18,7 @@ class File extends Model
         'description',
         'due',
         'required',
-        'rejected',
+        'status',
         'checklist_id',
         'version'
     ];
@@ -50,5 +50,19 @@ class File extends Model
     public function setDueAttribute($value)
     {
         if($value) $this->attributes['due'] = Carbon::createFromFormat('d/m/Y', $value);
+    }
+
+    /**
+     * Helper func to see if File's status attribute matches given
+     * param.
+     *
+     * @param $status
+     * @return bool
+     */
+    public function hasStatus($status)
+    {
+        $allowedStatuses = ['waiting', 'received', 'rejected'];
+        if(! in_array($status, $allowedStatuses)) abort(500, "Can't whether a File has an invalid status: " . $status);
+        return $this->status === $status;
     }
 }

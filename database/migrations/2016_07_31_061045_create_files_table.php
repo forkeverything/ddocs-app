@@ -23,7 +23,7 @@ class CreateFilesTable extends Migration
 
             $table->boolean('required')->default(1);
 
-            $table->string('status')->default('waiting');
+            $table->string('status')->default('waiting');       // 'waiting', 'received', 'rejected'
 
             $table->integer('version')->default(1);
 

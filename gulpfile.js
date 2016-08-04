@@ -58,6 +58,7 @@ elixir(function(mix) {
                 // Packages
                 'font-awesome/css/font-awesome.min.css',
                 'jquery-ui/themes/base/datepicker.css',
+                'blueimp-file-upload/css/jquery.fileupload.css',
                 // Resource folder
                 '../../../resources/assets/css/*.css'
             ], 'public/css/all.css', 'resources/assets/bower');
@@ -71,6 +72,9 @@ elixir(function(mix) {
                 'moment/min/moment-with-locales.min.js',
                 'jquery-ui/ui/widgets/datepicker.js',
                 'autosize/dist/autosize.min.js',
+                'blueimp-file-upload/js/vendor/jquery.ui.widget.js',
+                'blueimp-file-upload/js/jquery.iframe-transport.js',
+                'blueimp-file-upload/js/jquery.fileupload.js',
                 // 'js-cookie/src/js.cookie.js',
                 // 'toastr/toastr.js',
                 // 'accounting.js/accounting.min.js'

@@ -22,3 +22,4 @@ Route::get('/home', 'HomeController@index');
 Route::get('/checklist/make', 'ChecklistsController@getMakeForm');
 Route::post('/checklist/make', 'ChecklistsController@postNewChecklist');
 Route::get('/checklist/{checklist_hash}', 'ChecklistsController@getSingleChecklist');
+Route::post('/checklist/{checklist_hash}/file/{file}', 'ChecklistsController@postUploadFile');

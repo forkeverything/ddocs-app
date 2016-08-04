@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Checklist;
+use App\File;
+use App\Policies\ChecklistPolicy;
+use App\Policies\FileUploadPolicy;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -14,6 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        Checklist::class => ChecklistPolicy::class,
+        File::class => FileUploadPolicy::class
     ];
 
     /**

@@ -4407,22 +4407,22 @@ a.thumbnail.active {
   animation: progress-bar-stripes 2s linear infinite; }
 
 .progress-bar-success {
-  background-color: #5cb85c; }
+  background-color: #2ECC71; }
   .progress-striped .progress-bar-success {
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
 
 .progress-bar-info {
-  background-color: #5bc0de; }
+  background-color: #3498DB; }
   .progress-striped .progress-bar-info {
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
 
 .progress-bar-warning {
-  background-color: #f0ad4e; }
+  background-color: #FFA339; }
   .progress-striped .progress-bar-warning {
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
 
 .progress-bar-danger {
-  background-color: #d9534f; }
+  background-color: #E74C3C; }
   .progress-striped .progress-bar-danger {
     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent); }
 
@@ -6210,16 +6210,25 @@ table {
   background: #eff9fd; }
 
 .text-success {
-  color: #2ECC71; }
+  color: #27AE60; }
 
 .text-muted {
   color: #9CA1A8; }
 
 .text-warning {
-  color: #FFA339; }
+  color: #D35400; }
 
 .text-danger, .text-error {
-  color: #E74C3C; }
+  color: #C0392B; }
+
+.file-status.waiting {
+  color: #9CA1A8; }
+
+.file-status.received {
+  color: #27AE60; }
+
+.file-status.rejected {
+  color: #C0392B; }
 
 [v-cloak] {
   display: none; }
@@ -6311,5 +6320,13 @@ table {
     flex: 0 0 100px; }
   #checklist-single .results-controls .paginator .pagination {
     margin: 0; }
+
+#checklist-single #table-files tbody .col-upload {
+  width: 100px; }
+  #checklist-single #table-files tbody .col-upload .button-upload-file {
+    width: 100%; }
+  #checklist-single #table-files tbody .col-upload .progress {
+    height: 10px;
+    margin: 10px 0 0 0; }
 
 /*# sourceMappingURL=app.css.map */

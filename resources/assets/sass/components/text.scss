@@ -1,5 +1,5 @@
 .text-success {
-  color: $green;
+  color: $dark-green;
 }
 
 .text-muted {
@@ -7,9 +7,21 @@
 }
 
 .text-warning {
-  color: $orange;
+  color: $dark-orange;
 }
 
 .text-danger, .text-error {
-  color: $red;
+  color: $dark-red;
+}
+
+.file-status {
+  &.waiting {
+    color: $text-muted;
+  }
+  &.received {
+    color: $dark-green;
+  }
+  &.rejected {
+    color: $dark-red;
+  }
 }

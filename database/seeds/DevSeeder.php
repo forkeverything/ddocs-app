@@ -59,7 +59,7 @@ class DevSeeder extends Seeder
 
     protected function seedChecklistAndFiles()
     {
-        $checklist = factory(\App\Checklist::class)->create();
+        $checklist = factory(\App\Checklist::class)->create(['recipient' => 'mail@wuMIKE.com']);
         factory(\App\File::class, 100)->create(['checklist_id' => $checklist->id]);
     }
 }
