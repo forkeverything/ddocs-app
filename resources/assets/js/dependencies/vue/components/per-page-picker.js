@@ -36,8 +36,8 @@ Vue.component('per-page-picker', {
         }
     },
     ready: function () {
-        this.$watch('currentItemsPerPage', function (numItemsP) {
-            this.newItemsPerPage = numItemsP;
+        this.$watch('currentItemsPerPage', function (numItems) {
+            this.newItemsPerPage = numItems;
         });
     }
 });

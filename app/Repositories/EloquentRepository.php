@@ -4,12 +4,15 @@
 namespace App\Repositories;
 
 
+use App\Utilities\Traits\EloquentIntegerAndDateFilters;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
 abstract class EloquentRepository
 {
+
+    use EloquentIntegerAndDateFilters;
 
     /**
      * Query Builder Class.

@@ -1,20 +1,8 @@
 #checklist-single {
-  .results-controls {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
 
-    .per-page {
-      flex: 0 0 100px;
-    }
-
-    .paginator {
-      .pagination {
-        margin: 0;
-      }
-    }
+  #form-checklist-search {
+    margin: 0 0 15px;
   }
-
 
   #table-files {
 

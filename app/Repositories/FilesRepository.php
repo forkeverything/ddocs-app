@@ -41,9 +41,48 @@ class FilesRepository extends EloquentRepository
         $this->query = File::where('checklist_id', $checklist->id);
     }
 
+    /**
+     * Static wrapper to build our Repo.
+     *
+     * @param Checklist $checklist
+     * @return static
+     */
     public static function forChecklist(Checklist $checklist)
     {
         return new static($checklist);
+    }
+
+    /**
+     * Required / Optional filter.
+     *
+     * @param $required
+     * @return $this
+     */
+    public function whereRequired($required)
+    {
+        $possibleRequirements = [
+            "1", "0"
+        ];
+        if(in_array($required, $possibleRequirements, true)) $this->{'required'} = (int)$required;
+        if (isset($this->required)) $this->query->where('required', $this->required);
+        return $this;
+    }
+
+    /**
+     * Status filter.
+     *
+     * @param $status
+     * @return $this
+     */
+    public function withStatus($status)
+    {
+        $possibleStatuses = [
+            'waiting', 'received', 'rejected'
+        ];
+
+        if(in_array($status, $possibleStatuses, true)) $this->{'status'} = $status;
+        if(isset($this->status)) $this->query->where('status', $this->status);
+        return $this;
     }
 
 

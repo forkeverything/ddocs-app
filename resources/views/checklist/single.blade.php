@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <checklist-single inline-template :checklist-hash="'{{ $checklistHash }}'">
+    <checklist-single inline-template :checklist-hash="'{{ $checklistHash }}'" v-cloak>
         <div id="checklist-single" class="container">
             <h1 class="text-center text-capitalize">
                 {{ $checklist->name }}
@@ -11,8 +11,12 @@
             @endif
             <br>
 
-            <form class="form-search" @submit.prevent="searchTerm">
-                <div class="form-group">
+            <form id="form-checklist-search" @submit.prevent="searchTerm">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span></button>
+                        @include('checklist.single.filters.menu')
+                    </div>
                     <input class="form-control input-search"
                            type="text"
                            placeholder="Search..."
@@ -24,6 +28,8 @@
                     >
                 </div>
             </form>
+
+            @include('checklist.single.filters.active')
 
 
             <div class="table-responsive">
@@ -90,7 +96,7 @@
                             <td>@{{ file.name }}</td>
                             <td>@{{ file.version }}</td>
                             <td>
-                                <span v-if="file.due">@{{ file.due }}</span>
+                                <span v-if="file.due">@{{ file.due | easyDate }}</span>
                                 <span v-else></span>
                             </td>
                             <td>
@@ -102,9 +108,6 @@
                                 <input id="input-file-@{{  file.id }}" type="file" name="file"
                                        data-url="/checklist/{{ hashId($checklist) }}/file/@{{ file.id }}"
                                        class="input-file-upload hide">
-                                {{--<div class="file-upload-progress">--}}
-                                {{--<div class="bar" style="width: 0%;"></div>--}}
-                                {{--</div>--}}
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0"
                                          aria-valuemin="0" aria-valuemax="100" style="width: 0%">

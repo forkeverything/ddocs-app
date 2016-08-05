@@ -126,7 +126,25 @@ Vue.component('checklist-single', fetchesFromEloquentRepository.extend({
     },
     data: function () {
         return {
-            hasFilters: false
+            hasFilters: true,
+            filterOptions: [
+                {
+                    value: 'required',
+                    label: 'Requirement'
+                },
+                {
+                    value: 'version',
+                    label: 'Version'
+                },
+                {
+                    value: 'due',
+                    label: 'Due Date'
+                },
+                {
+                    value: 'status',
+                    label: 'Status'
+                }
+            ]
         };
     },
     props: ['checklist-hash'],

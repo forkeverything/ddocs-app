@@ -253,38 +253,20 @@ $(document).ready(function () {
         $('#input-file-' + $(this).data('file')).click();
     });
 });
-Vue.directive('datepicker', {
-    params: ['button-only'],
-    bind: function() {
-        if(this.params.buttonOnly) {
-            $(this.el).datepicker({
-                dateFormat: "dd/mm/yy",
-                minDate: 0,
-                buttonImage: '/images/icons/calendar.png',
-                buttonImageOnly: true,
-                showOn: 'both'
-            });
-        } else {
-            $(this.el).datepicker({
-                dateFormat: "dd/mm/yy",
-                minDate: 0
-            });
-        }
-    }
-});
-Vue.directive('modal', {
-    twoWay: true,
-    update: function () {
-        var self = this;
-        
-        $(this.el).click(function () {
-            self.set(false);
-        });
-
-        $(this.el).children().click(function (e) {
-            e.stopPropagation();
-        });
-    }
+Vue.component('date-range-field', {
+    name: 'dateRangeField',
+    template: '<div class="date-range-field" @click.stop="">' +
+    '<div class="starting">' +
+    '<label>starting</label>'+
+    '<input type="text" class="filter-datepicker" v-model="min | properDateModel" placeholder="date" v-datepicker>'+
+    '</div>' +
+    '<span class="dash">-</span>' +
+    '<div class="ending">' +
+    '<label>Ending</label>' +
+    '<input type="text" class="filter-datepicker" v-model="max | properDateModel" placeholder="date" v-datepicker>' +
+    '</div>'+
+    '</div>',
+    props: ['min', 'max']
 });
 var fetchesFromEloquentRepository = Vue.extend({
     name: 'FetchesDataFromEloquentRepository',
@@ -408,6 +390,15 @@ var fetchesFromEloquentRepository = Vue.extend({
         this.fetchResults();
         onPopCallFunction(this.fetchResults);
     }
+});
+Vue.component('integer-range-field', {
+    name: 'integerRangeField',
+    template: '<div class="integer-range-field">'+
+    '<input type="number" class="form-control" v-model="min" min="0">'+
+    '<span class="dash">-</span>'+
+    '<input type="number" class="form-control" v-model="max" min="0">'+
+    '</div>',
+    props: ['min', 'max']
 });
 Vue.component('paginator', {
     name: 'paginator',
@@ -555,8 +546,41 @@ Vue.component('per-page-picker', {
         }
     },
     ready: function () {
-        this.$watch('currentItemsPerPage', function (numItemsP) {
-            this.newItemsPerPage = numItemsP;
+        this.$watch('currentItemsPerPage', function (numItems) {
+            this.newItemsPerPage = numItems;
+        });
+    }
+});
+Vue.directive('datepicker', {
+    params: ['button-only'],
+    bind: function() {
+        if(this.params.buttonOnly) {
+            $(this.el).datepicker({
+                dateFormat: "dd/mm/yy",
+                minDate: 0,
+                buttonImage: '/images/icons/calendar.png',
+                buttonImageOnly: true,
+                showOn: 'both'
+            });
+        } else {
+            $(this.el).datepicker({
+                dateFormat: "dd/mm/yy",
+                minDate: 0
+            });
+        }
+    }
+});
+Vue.directive('modal', {
+    twoWay: true,
+    update: function () {
+        var self = this;
+        
+        $(this.el).click(function () {
+            self.set(false);
+        });
+
+        $(this.el).children().click(function (e) {
+            e.stopPropagation();
         });
     }
 });

@@ -76,9 +76,13 @@ class ChecklistsController extends Controller
         $search = $request->search;
         $perPage = $request->per_page ?: 20;
         return FilesRepository::forChecklist($checklist)
-                                ->searchFor($search)
-                                ->sortOn($sort, $order)
-                                ->paginate($perPage);
+                              ->whereRequired($request->required)
+                              ->filterIntegerField('version', $request->version)
+                              ->filterDateField('due', $request->due)
+                              ->withStatus($request->status)
+                              ->searchFor($search)
+                              ->sortOn($sort, $order)
+                              ->paginate($perPage);
     }
 
     public function postUploadFile($checklistHash, File $file, UploadFileRequest $request)
@@ -87,7 +91,7 @@ class ChecklistsController extends Controller
 //        if(Auth::check()) $this->authorize('upload', $file);
 
         // Only accept the File if we're waiting on one
-        if(! $file->hasStatus('waiting')) abort(409, "File already received");
+        if (!$file->hasStatus('waiting')) abort(409, "File already received");
 
         return FileFactory::store($file, $request->file('file'));
 
