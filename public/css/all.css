@@ -6069,6 +6069,12 @@ table {
     text-align: center; }
   table thead th.heading-right {
     text-align: right; }
+  table thead th.sortable:hover {
+    color: #2980B9;
+    background: #eff9fd;
+    cursor: pointer; }
+  table tbody tr:hover {
+    background: #FFFBE9; }
   table tbody tr td.content-right {
     text-align: right;
     padding: 10px 26px 10px 10px; }
@@ -6415,6 +6421,8 @@ table {
   #checklist-single #table-files tbody .col-upload .progress {
     height: 10px;
     margin: 10px 0 0 0; }
+    #checklist-single #table-files tbody .col-upload .progress.disabled {
+      background: #757575; }
 
 /*# sourceMappingURL=app.css.map */
 
@@ -6607,44 +6615,6 @@ table {
 	background-repeat: no-repeat;
 	left: .5em;
 	top: .3em;
-}
-
-@charset "UTF-8";
-/*
- * jQuery File Upload Plugin CSS
- * https://github.com/blueimp/jQuery-File-Upload
- *
- * Copyright 2013, Sebastian Tschan
- * https://blueimp.net
- *
- * Licensed under the MIT license:
- * http://www.opensource.org/licenses/MIT
- */
-
-.fileinput-button {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}
-.fileinput-button input {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  opacity: 0;
-  -ms-filter: 'alpha(opacity=0)';
-  font-size: 200px !important;
-  direction: ltr;
-  cursor: pointer;
-}
-
-/* Fixes for IE < 8 */
-@media screen\9 {
-  .fileinput-button input {
-    filter: alpha(opacity=0);
-    font-size: 100%;
-    height: 100%;
-  }
 }
 
 /*# sourceMappingURL=all.css.map */

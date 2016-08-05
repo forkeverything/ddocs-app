@@ -13,11 +13,24 @@ table {
       &.heading-right {
         text-align: right;
       }
+
+      &.sortable {
+        &:hover {
+          color: $dark-blue;
+          background: $extra-light-blue;
+          cursor: pointer;
+        }
+      }
     }
   }
 
   tbody {
     tr {
+
+      &:hover {
+        background: $extra-light-yellow;
+      }
+
       td {
         &.content-right {
           text-align: right;

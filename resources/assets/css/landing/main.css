@@ -6069,6 +6069,12 @@ table {
     text-align: center; }
   table thead th.heading-right {
     text-align: right; }
+  table thead th.sortable:hover {
+    color: #2980B9;
+    background: #eff9fd;
+    cursor: pointer; }
+  table tbody tr:hover {
+    background: #FFFBE9; }
   table tbody tr td.content-right {
     text-align: right;
     padding: 10px 26px 10px 10px; }

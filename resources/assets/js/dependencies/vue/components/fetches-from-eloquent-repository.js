@@ -63,7 +63,10 @@ var fetchesFromEloquentRepository = Vue.extend({
         changeSort: function (sort) {
             if (this.params.sort === sort) {
                 var order = (this.params.order === 'asc') ? 'desc' : 'asc';
-                this.fetchResults(updateQueryString('order', order));
+                this.fetchResults(updateQueryString({
+                    order: order,
+                    page: 1
+                }));
             } else {
                 this.fetchResults(updateQueryString({
                     sort: sort,
