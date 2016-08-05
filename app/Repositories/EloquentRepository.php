@@ -11,7 +11,37 @@ use Illuminate\Support\Facades\DB;
 abstract class EloquentRepository
 {
 
+    /**
+     * Query Builder Class.
+     *
+     * @var
+     */
     protected $query;
+
+    /**
+     * Model fields that are sortable. The
+     * first given field will be the
+     * default sort
+     *
+     * @var
+     */
+    protected $sortableFields = [];
+
+    /**
+     * Model fields that we can perform searches on, Accepts
+     *  a string to search relationship table fields:
+     * 'parent_table_name.child_table_name.child_table_column'
+     * @var array
+     */
+    protected $searchableFields = [];
+
+    /**
+     * Holds the parameters used to fetch the results.
+     *
+     * @var
+     */
+    protected $queryParameters;
+
     /**
      * Wrapper for method on Query Builder that lets
      * us eager load our database relationships.
@@ -41,7 +71,20 @@ abstract class EloquentRepository
     }
 
     /**
-     * Wrapper (untested) just in case we don't
+     * Wrapper - Used to only select certain
+     * fields
+     *
+     * @param $fields
+     * @return $this
+     */
+    public function select($fields)
+    {
+        $this->query->select($fields);
+        return $this;
+    }
+
+    /**
+     * Wrapper - just in case we don't
      * want to paginate and just retrieve it
      * in one go
      *
@@ -52,6 +95,21 @@ abstract class EloquentRepository
         $data = $this->query->get();
         $this->addPropertiesToResults($data);
         return $data;
+    }
+
+    /**
+     * Wrapper - for having() on Query Builder. having() can be used
+     * on aggregates (SUM, COUNT, etc...) -- WHERE cannot be used.
+     *
+     * @param $column
+     * @param $operator
+     * @param $value
+     * @return $this
+     */
+    public function having($column, $operator, $value)
+    {
+        $this->query->having($column, $operator, $value);
+        return $this;
     }
 
     /**
@@ -154,6 +212,47 @@ abstract class EloquentRepository
      */
     public function paginate($itemsPerPage = 20)
     {
-        return $this->query->paginate($itemsPerPage);
+        // Set paginated property to hold our paginated results
+        $paginatedObject = $this->{'paginated'} = $this->query->paginate($itemsPerPage);
+        // add our custom properties
+        $this->addPropertiesToResults($paginatedObject);
+        return $this->paginated;
+    }
+
+    /**
+     * Wrapper - Method on Query Builder that removes
+     * duplicates from retrieved results set.
+     *
+     * @return $this
+     */
+    public function distinct()
+    {
+        $this->query->distinct();
+        return $this;
+    }
+
+    /**
+     * Wrapper - limit number of results for the
+     * query
+     *
+     * @param $limit
+     * @return $this
+     */
+    public function take($limit)
+    {
+        $this->query->take($limit);
+        return $this;
+    }
+
+    /**
+     * Just a get() wrapper for the Query Builder. This is
+     * used for testing because we don't need to know the
+     * Query Properties used (for client).
+     *
+     * @return mixed
+     */
+    public function getWithoutQueryProperties()
+    {
+        return $this->query->get();
     }
 }

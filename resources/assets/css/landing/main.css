@@ -6230,6 +6230,26 @@ table {
 .file-status.rejected {
   color: #C0392B; }
 
+.page-controls {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-align: center;
+  align-items: center; }
+  .page-controls .per-page-picker {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center; }
+    .page-controls .per-page-picker select {
+      -ms-flex: 0 0 80px;
+      flex: 0 0 80px;
+      margin: 0 15px 0 0; }
+    .page-controls .per-page-picker span {
+      -ms-flex: 1 0 100px;
+      flex: 1 0 100px; }
+
 [v-cloak] {
   display: none; }
 

@@ -63,26 +63,28 @@ class ChecklistsController extends Controller
 
     public function getSingleChecklist(Request $request, $checklistHash)
     {
-        $id = array_first($this->hashids->decode($checklistHash));
-        $checklist = Checklist::findOrFail($id);
+        $checklist = Checklist::findOrFail(unhashId($checklistHash));
+//        if(Auth::check()) $this->authorize('view', $checklist);
+        return view('checklist.single', compact('checklist', 'checklistHash'));
+    }
 
-        if(Auth::check()) $this->authorize('view', $checklist);
-
+    public function getFilesForChecklist(Request $request, $checklistHash)
+    {
+        $checklist = Checklist::findOrFail(unhashId($checklistHash));
         $sort = $request->sort;
         $order = $request->order;
         $search = $request->search;
         $perPage = $request->per_page ?: 20;
-        $files = FilesRepository::forChecklist($checklist)
+        return FilesRepository::forChecklist($checklist)
                                 ->searchFor($search)
                                 ->sortOn($sort, $order)
-            ->paginate($perPage);
-        return view('checklist.single', compact('checklist', 'files', 'sort', 'order', 'search', 'perPage'));
+                                ->paginate($perPage);
     }
 
     public function postUploadFile($checklistHash, File $file, UploadFileRequest $request)
     {
         // If user is logged in - make sure they are the recipient
-        if(Auth::check()) $this->authorize('upload', $file);
+//        if(Auth::check()) $this->authorize('upload', $file);
 
         // Only accept the File if we're waiting on one
         if(! $file->hasStatus('waiting')) abort(409, "File already received");
