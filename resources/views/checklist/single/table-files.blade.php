@@ -73,27 +73,35 @@
                 <td>
                     <span class="file-status @{{ file.status }}">@{{ file.status }}</span>
                 </td>
-                <td class="col-upload">
-                    <button type="button"
-                            class="btn btn-solid-green button-upload-file"
-                            data-file="@{{ file.id }}"
-                            :disabled="file.status === 'received'"
-                    >
-                        <i class="fa fa-upload"></i>
-                    </button>
-                    <input id="input-file-@{{  file.id }}"
-                           type="file"
-                           name="file"
-                           class="input-file-upload hide"
-                           @change="uploadFile(file, $event)"
-                    >
-                    <div class="progress" :class="{ 'disabled': file.status === 'received' }">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0"
-                             aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                            <span class="sr-only">0%</span>
+                @if( Auth::guest() || $checklist->user_id !== Auth::user()->id )
+                    <td class="col-upload">
+                        <button type="button"
+                                class="btn btn-solid-green button-upload-file"
+                                data-file="@{{ file.id }}"
+                                :disabled="file.status === 'received'"
+                        >
+                            <i class="fa fa-upload"></i>
+                        </button>
+                        <input id="input-file-@{{  file.id }}"
+                               type="file"
+                               name="file"
+                               class="input-file-upload hide"
+                        @change="uploadFile(file, $event)"
+                        >
+                        <div class="progress" :class="{ 'disabled': file.status === 'received' }">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0"
+                                 aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                                <span class="sr-only">0%</span>
+                            </div>
                         </div>
-                    </div>
-                </td>
+                    </td>
+                    @else
+                    <td class="col-owner fit-to-content no-wrap">
+                        <a :href="'/' + file.path" :alt="file.name + 'download link'" download v-if="file.path"><button type="button" class="btn btn-solid-blue btn-space"><i class="fa fa-download"></i></button></a>
+                        <button type="button" class="btn btn-solid-blue btn-space" v-else disabled><i class="fa fa-download"></i></button>
+                        <button type="button" class="btn btn-solid-red"><i class="fa fa-close"></i></button>
+                    </td>
+                @endif
             </tr>
         </template>
 

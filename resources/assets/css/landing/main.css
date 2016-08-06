@@ -6335,4 +6335,7 @@ table {
 [v-cloak] {
   display: none; }
 
+.no-wrap {
+  white-space: nowrap; }
+
 /*# sourceMappingURL=main.css.map */

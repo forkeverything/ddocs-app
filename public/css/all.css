@@ -6335,6 +6335,9 @@ table {
 [v-cloak] {
   display: none; }
 
+.no-wrap {
+  white-space: nowrap; }
+
 #checklist-make {
   padding-bottom: 30px; }
   #checklist-make #form-checklist-make {
