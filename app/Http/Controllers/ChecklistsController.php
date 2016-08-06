@@ -6,10 +6,11 @@ use App\Checklist;
 use App\Factories\ChecklistFactory;
 use App\Factories\FileFactory;
 use App\File;
+use App\FileRequest;
 use App\Http\Requests\NewChecklistRequest;
 use App\Http\Requests\UploadFileRequest;
-use App\Repositories\ChecklistsRepository;
-use App\Repositories\FilesRepository;
+use App\Repositories\FilesRequestsRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -61,6 +62,14 @@ class ChecklistsController extends Controller
         return $this->hashids->encode($checklist->id);
     }
 
+
+    /**
+     * Get the view for a single Checklist.
+     *
+     * @param Request $request
+     * @param $checklistHash
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getSingleChecklist(Request $request, $checklistHash)
     {
         $checklist = Checklist::findOrFail(unhashId($checklistHash));
@@ -68,6 +77,14 @@ class ChecklistsController extends Controller
         return view('checklist.single', compact('checklist', 'checklistHash'));
     }
 
+
+    /**
+     * Retrieve the files for checklist.
+     *
+     * @param Request $request
+     * @param $checklistHash
+     * @return FilesRequestsRepository
+     */
     public function getFilesForChecklist(Request $request, $checklistHash)
     {
         $checklist = Checklist::findOrFail(unhashId($checklistHash));
@@ -75,7 +92,7 @@ class ChecklistsController extends Controller
         $order = $request->order;
         $search = $request->search;
         $perPage = $request->per_page ?: 20;
-        return FilesRepository::forChecklist($checklist)
+        return FilesRequestsRepository::forChecklist($checklist)
                               ->whereRequired($request->required)
                               ->filterIntegerField('version', $request->version)
                               ->filterDateField('due', $request->due)
@@ -85,15 +102,23 @@ class ChecklistsController extends Controller
                               ->paginate($perPage);
     }
 
-    public function postUploadFile($checklistHash, File $file, UploadFileRequest $request)
+    /**
+     * Handle POST request to upload a file for a File Request within a Checklist.
+     *
+     * @param $checklistHash
+     * @param FileRequest $fileRequest
+     * @param UploadFileRequest $request
+     * @return mixed
+     */
+    public function postUploadFile($checklistHash, FileRequest $fileRequest, UploadFileRequest $request)
     {
         // If user is logged in - make sure they are the recipient
 //        if(Auth::check()) $this->authorize('upload', $file);
 
         // Only accept the File if we're waiting on one
-        if (!$file->hasStatus('waiting')) abort(409, "File already received");
+        if (! $fileRequest->hasStatus('waiting')) abort(409, "File already received");
 
-        return FileFactory::store($file, $request->file('file'));
+        return FileFactory::store($fileRequest, $request->file('file'));
 
     }
 }

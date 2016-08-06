@@ -16,19 +16,11 @@ class CreateFilesTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->string('name');
-            $table->string('path')->nullable();
-            $table->text('description')->nullable();
-            $table->dateTime('due')->nullable();
+            $table->string('path');
+            $table->boolean('rejected');
 
-            $table->boolean('required')->default(1);
-
-            $table->string('status')->default('waiting');       // 'waiting', 'received', 'rejected'
-
-            $table->integer('version')->default(1);
-
-            $table->integer('checklist_id')->unsigned();
-            $table->foreign('checklist_id')->references('id')->on('checklists')->onDelete('cascade');
+            $table->integer('file_request_id')->unsigned();
+            $table->foreign('file_request_id')->references('id')->on('file_requests')->onDelete('cascade');
         });
     }
 

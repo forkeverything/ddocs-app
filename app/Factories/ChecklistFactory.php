@@ -81,7 +81,7 @@ class ChecklistFactory
     protected function createFiles()
     {
         foreach ($this->request->requested_files as $file) {
-            $this->checklist->files()->create([
+            $this->checklist->requestedFiles()->create([
                 'name' => $file['name'],
                 'description' => $file['description'],
                 'due' => $file['due'],

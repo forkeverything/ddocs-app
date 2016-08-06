@@ -6,8 +6,9 @@ namespace App\Repositories;
 
 use App\Checklist;
 use App\File;
+use App\FileRequest;
 
-class FilesRepository extends EloquentRepository
+class FilesRequestsRepository extends EloquentRepository
 {
     /**
      * Sortable fields for File(s)
@@ -32,13 +33,13 @@ class FilesRepository extends EloquentRepository
     ];
 
     /**
-     * FilesRepository constructor. Set up our query builder here.
+     * FilesRequestsRepository constructor. Set up our query builder here.
      *
      * @param Checklist $checklist
      */
     public function __construct(Checklist $checklist)
     {
-        $this->query = File::where('checklist_id', $checklist->id);
+        $this->query = FileRequest::where('checklist_id', $checklist->id);
     }
 
     /**

@@ -32,7 +32,7 @@ $factory->define(Checklist::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(\App\File::class, function (Faker\Generator $faker) {
+$factory->define(\App\FileRequest::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'description' => $faker->sentences(3, true),

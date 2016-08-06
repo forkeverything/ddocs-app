@@ -23,10 +23,12 @@ class Checklist extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function files()
+    public function requestedFiles()
     {
-        return $this->hasMany(File::class);
+        return $this->hasMany(FileRequest::class);
     }
+
+
 
     /**
      * Every Checklist was made by a single User

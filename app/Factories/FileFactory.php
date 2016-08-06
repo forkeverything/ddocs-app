@@ -5,6 +5,7 @@ namespace App\Factories;
 
 
 use App\File;
+use App\FileRequest;
 use Illuminate\Http\UploadedFile;
 
 class FileFactory
@@ -32,11 +33,11 @@ class FileFactory
     protected $uploadedFile;
 
     /**
-     * File Model
+     * FileRequest Model
      *
      * @var File
      */
-    protected $file;
+    protected $fileRequest;
 
     /**
      * Generated new File name
@@ -48,13 +49,13 @@ class FileFactory
     /**
      * FileFactory constructor.
      *
-     * @param File $file
+     * @param FileRequest $fileRequest
      * @param UploadedFile $uploadedFile
      */
-    public function __construct(File $file, UploadedFile $uploadedFile)
+    public function __construct(FileRequest $fileRequest, UploadedFile $uploadedFile)
     {
         $this->uploadedFile = $uploadedFile;
-        $this->file = $file;
+        $this->fileRequest = $fileRequest;
     }
 
     /**
@@ -64,14 +65,14 @@ class FileFactory
      */
     protected function makeFileName()
     {
-        
+
 //        // If we need DO need to hash name (ie. for security or to avoid over-writes)        
 //        $name = sha1(
 //            time() . $this->uploadedFile->getClientOriginalName()
 //        );
 
         // Convert uploaded file to lower case and join with '_'
-        $name = str_replace(" ", "_", strtolower($this->file->name));
+        $name = str_replace(" ", "_", strtolower($this->fileRequest->name));
 
         /**
          * TODO ::: (?) Encrypt file names so if physical files are compromised it'll be harder to find a specific file.
@@ -85,18 +86,19 @@ class FileFactory
     /**
      * Static wrapper - store a File after upload...
      *
-     * @param File $file
+     * @param FileRequest $fileRequest
      * @param UploadedFile $uploadedFile
      * @return mixed
      */
-    public static function store(File $file, UploadedFile $uploadedFile)
+    public static function store(FileRequest $fileRequest, UploadedFile $uploadedFile)
     {
-        $factory = new static($file, $uploadedFile);
+        $factory = new static($fileRequest, $uploadedFile);
         $factory->setDirectory()
                 ->setName()
                 ->moveFile()
+                ->createFileModel()
                 ->updateDB();
-        return $factory->file;
+        return $factory->fileRequest;
     }
 
     /**
@@ -106,7 +108,7 @@ class FileFactory
      */
     protected function setDirectory()
     {
-        $this->directory = $this->baseDir . '/user/' . $this->file->checklist->user->id . '/checklists/' . hashId($this->file->checklist);
+        $this->directory = $this->baseDir . '/user/' . $this->fileRequest->checklist->user_id . '/checklists/' . hashId($this->fileRequest->checklist);
         return $this;
     }
 
@@ -133,14 +135,28 @@ class FileFactory
     }
 
     /**
+     * The File model that references the physical file.
+     *
+     * @return $this
+     */
+    protected function createFileModel()
+    {
+        File::create([
+            'path' => $this->directory . '/' . $this->name,
+            'file_request_id' => $this->fileRequest->id
+        ]);
+
+        return $this;
+    }
+
+    /**
      * Update our database records...
-     * 
+     *
      * @return $this
      */
     protected function updateDB()
     {
-        $this->file->update([
-            'path' => $this->directory . '/' . $this->name,
+        $this->fileRequest->update([
             'status' => 'received'
         ]);
 
