@@ -17,6 +17,7 @@
                         <li>
                             <a href="/checklist/{{ hashId($checklist) }}">{{ $checklist->name }}</a>
                         </li>
+                            @endforeach
                     </ul>
                         @endif
 
