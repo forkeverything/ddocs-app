@@ -9,6 +9,17 @@
 
                 <div class="panel-body">
                     Your Application's Landing Page.
+
+                    <h4><a href="/checklist/make">Make a checklist</a></h4>
+                    @if(Auth::user()->checklists)
+                    <ul>
+                        @foreach(Auth::user()->checklists as $checklist)
+                        <li>
+                            <a href="/checklist/{{ hashId($checklist) }}">{{ $checklist->name }}</a>
+                        </li>
+                    </ul>
+                        @endif
+
                 </div>
             </div>
         </div>
