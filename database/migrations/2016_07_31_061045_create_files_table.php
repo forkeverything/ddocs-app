@@ -18,6 +18,7 @@ class CreateFilesTable extends Migration
 
             $table->string('path');
             $table->boolean('rejected');
+            $table->text('rejected_reason');
 
             $table->integer('file_request_id')->unsigned();
             $table->foreign('file_request_id')->references('id')->on('file_requests')->onDelete('cascade');

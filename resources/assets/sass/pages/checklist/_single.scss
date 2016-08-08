@@ -24,6 +24,37 @@
           }
         }
       }
+
+      .col-owner {
+        .button-reject {
+          color: $red;
+          &:hover {
+            color: $dark-red;
+          }
+        }
+
+        .button-download:not([disabled]) {
+          color: $blue;
+          &:hover {
+            color: $dark-blue;
+          }
+        }
+
+        .button-history {
+          color: $orange;
+          &:hover {
+            color: $dark-orange;
+          }
+        }
+      }
+
+      .row-details {
+        background: $extra-light-grey;
+
+        .col-details {
+          padding: 10px 15px 15px 10px;
+        }
+      }
     }
   }
 }

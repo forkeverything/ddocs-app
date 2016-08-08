@@ -5811,8 +5811,10 @@ button.close {
     border-radius: 0; }
     .btn.btn-unstyled:focus, .btn.btn-unstyled:active {
       color: #D2D2D2; }
-    .btn.btn-unstyled:hover {
+    .btn.btn-unstyled:not([disabled]):hover {
       color: #757575; }
+    .btn.btn-unstyled:disabled {
+      color: #D2D2D2 !important; }
 
 .btn-outline, .btn-outline-green, .btn-outline-yellow, .btn-outline-red, .btn-outline-blue, .btn-outline-grey {
   background: transparent;

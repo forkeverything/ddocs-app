@@ -32,6 +32,8 @@ class FileRequest extends Model
         'due'
     ];
 
+    protected $with = ['uploads'];
+
     /**
      * Format as Carbon Date only if value given to prevent '0000-00-00 00:00:00'
      *
@@ -57,9 +59,9 @@ class FileRequest extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function files()
+    public function uploads()
     {
-        return $this->hasMany(File::class);
+        return $this->hasMany(File::class)->orderBy('created_at', 'desc');
     }
 
     /**
@@ -74,5 +76,29 @@ class FileRequest extends Model
         $allowedStatuses = ['waiting', 'received', 'rejected'];
         if(! in_array($status, $allowedStatuses)) abort(500, "Can't whether a File has an invalid status: " . $status);
         return $this->status === $status;
+    }
+
+    /**
+     * Reject the latest upload for this File Request.
+     *
+     * @param $reason
+     * @return $this
+     */
+    public function reject($reason)
+    {
+        if(! $this->hasStatus('received')) abort(403, "Can't reject a file we haven't received or already marked rejected.");
+
+        // Mark this request as rejected...
+        $this->update([
+            'status' => 'rejected'
+        ]);
+
+        // Update the upload as well as store the reason
+        $this->uploads->first()->update([
+            'rejected' => 1,
+            'rejected_reason' => $reason
+        ]);
+
+        return $this;
     }
 }

@@ -23,4 +23,6 @@ Route::get('/checklist/make', 'ChecklistsController@getMakeForm');
 Route::post('/checklist/make', 'ChecklistsController@postNewChecklist');
 Route::get('/checklist/{checklist_hash}', 'ChecklistsController@getSingleChecklist');
 Route::get('/checklist/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
-Route::post('/checklist/{checklist_hash}/file/{fileRequest}', 'ChecklistsController@postUploadFile');
+
+Route::post('/file/{fileRequest}', 'FilesController@postUploadFile');
+Route::post('/file/{fileRequest}/reject', 'FilesController@postRejectUploadedFile');

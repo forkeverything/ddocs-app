@@ -13,6 +13,13 @@
 
             @include('checklist.single.search')
             @include('checklist.single.filters.active')
+
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" :aria-valuenow="receivedFilesPercentage" aria-valuemin="0" aria-valuemax="100" :style="'width: ' + receivedFilesPercentage + '%'">
+                    @{{ receivedFilesPercentage }}% Received
+                </div>
+            </div>
+
             @include('checklist.single.table-files')
         </div>
     </checklist-single>

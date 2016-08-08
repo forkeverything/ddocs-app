@@ -7,6 +7,7 @@ namespace App\Repositories;
 use App\Utilities\Traits\EloquentIntegerAndDateFilters;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 abstract class EloquentRepository
@@ -202,6 +203,7 @@ abstract class EloquentRepository
                     if ($key !== 'sortableFields' && $key !== 'searchableFields' && $key !== 'queryParameters') $this->queryParameters[$key] = $value;
                 }
             }
+
             $object['query_parameters'] = $this->queryParameters;
         }
     }

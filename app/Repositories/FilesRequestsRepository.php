@@ -7,6 +7,7 @@ namespace App\Repositories;
 use App\Checklist;
 use App\File;
 use App\FileRequest;
+use Illuminate\Support\Facades\DB;
 
 class FilesRequestsRepository extends EloquentRepository
 {
@@ -64,7 +65,7 @@ class FilesRequestsRepository extends EloquentRepository
         $possibleRequirements = [
             "1", "0"
         ];
-        if(in_array($required, $possibleRequirements, true)) $this->{'required'} = (int)$required;
+        if (in_array($required, $possibleRequirements, true)) $this->{'required'} = (int)$required;
         if (isset($this->required)) $this->query->where('required', $this->required);
         return $this;
     }
@@ -81,8 +82,28 @@ class FilesRequestsRepository extends EloquentRepository
             'waiting', 'received', 'rejected'
         ];
 
-        if(in_array($status, $possibleStatuses, true)) $this->{'status'} = $status;
-        if(isset($this->status)) $this->query->where('status', $this->status);
+        if (in_array($status, $possibleStatuses, true)) $this->{'status'} = $status;
+        if (isset($this->status)) $this->query->where('status', $this->status);
+        return $this;
+    }
+
+    /**
+     * Append the number of received files that match the
+     * search query.
+     *
+     * @return $this
+     */
+    public function withNumReceivedFiles()
+    {
+        // Copy & run query
+        $duplicatedQuery = clone $this->query;
+        $numReceivedFiles = $duplicatedQuery->where('status', 'received')
+                                            ->select(DB::raw(1))
+                                            ->get()
+                                            ->count();
+        // Append to object
+        $this->{'num_received_files'} = $numReceivedFiles;
+
         return $this;
     }
 

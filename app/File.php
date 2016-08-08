@@ -15,6 +15,7 @@ class File extends Model
     protected $fillable = [
         'path',
         'rejected',
+        'rejected_reason',
         'file_request_id'
     ];
 
