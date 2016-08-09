@@ -15,7 +15,7 @@
             @include('checklist.single.filters.active')
 
             <div class="progress">
-                <div class="progress-bar" role="progressbar" :aria-valuenow="receivedFilesPercentage" aria-valuemin="0" aria-valuemax="100" :style="'width: ' + receivedFilesPercentage + '%'">
+                <div class="progress-bar" role="progressbar" :aria-valuenow="receivedFilesPercentage" aria-valuemin="0" aria-valuemax="100" :style="'width: ' + receivedFilesPercentage + '%' + ';min-width: 2em;'">
                     @{{ receivedFilesPercentage }}% Received
                 </div>
             </div>

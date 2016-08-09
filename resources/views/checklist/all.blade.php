@@ -70,7 +70,7 @@
                             </td>
                             <td>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" :aria-valuenow="checklist.progress" aria-valuemin="0" aria-valuemax="100" :style="'width: ' + checklist.progress + '%'">
+                                    <div class="progress-bar" role="progressbar" :aria-valuenow="checklist.progress" aria-valuemin="0" aria-valuemax="100" :style="'width: ' + checklist.progress + '%' + ';min-width: 2em;'">
                                         @{{ checklist.progress }}% Received
                                     </div>
                                 </div>
