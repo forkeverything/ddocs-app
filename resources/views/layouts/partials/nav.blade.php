@@ -12,7 +12,7 @@
                     <a href="#" class="dropdown-toggle text-capitalize" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
                     <ul class="dropdown-menu">
-                        <li><a href="/checklist/make">New Cheklist</a></li>
+                        <li><a href="/checklist/make">New Checklist</a></li>
                         <li><a href="/checklist">My Lists</a></li>
                         <li><a href="#">Account</a></li>
                         <li><a href="/logout" alt="link to logout">Logout</a></li>

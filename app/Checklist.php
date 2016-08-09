@@ -69,7 +69,6 @@ class Checklist extends Model
         $files = $this->requestedFiles;
         $received = $files->where('status', 'received')->count();
         $total = $files->count();
-
-        return round($received / $total, 0);
+        return round(100 * $received / $total, 0);
     }
 }
