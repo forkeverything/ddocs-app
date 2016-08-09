@@ -61,7 +61,7 @@ class FileRequest extends Model
      */
     public function uploads()
     {
-        return $this->hasMany(File::class)->orderBy('created_at', 'desc');
+        return $this->hasMany(File::class)->orderBy('created_at', 'asc');
     }
 
     /**
@@ -94,7 +94,7 @@ class FileRequest extends Model
         ]);
 
         // Update the upload as well as store the reason
-        $this->uploads->first()->update([
+        $this->uploads->last()->update([
             'rejected' => 1,
             'rejected_reason' => $reason
         ]);

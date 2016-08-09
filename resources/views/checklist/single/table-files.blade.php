@@ -1,6 +1,6 @@
 <div class="table-responsive">
     <!-- Files Table -->
-    <table id="table-files" class="table table-standard">
+    <table id="table-files" class="table table-standard table-hover">
         <thead>
         <tr>
             <th class="sortable"
@@ -117,6 +117,40 @@
                                 <button type="submit" class="btn btn-solid-red">Reject</button>
                             </div>
                         </form>
+                    </div>
+
+                    <div class="version-history" v-show="expandedView === 'history'">
+                        <h4>Version History</h4>
+                        <!-- Versions Table -->
+                        <table class="table table-standard">
+                            <thead>
+                                <tr>
+                                    <th class="padding-even">Version</th>
+                                    <th>Rejected Reason</th>
+                                    <th></th>
+                                <tr>
+                            </thead>
+                            <tbody>
+                                <template v-for="(index, upload) in file.uploads">
+                                    <tr>
+                                        <td class="fit-to-content text-center">@{{ index + 1 }}</td>
+                                        <td>
+                                            <span v-if="upload.rejected">
+                                                @{{ upload.rejected_reason }}
+                                            </span>
+                                            <span v-else>-</span>
+                                        </td>
+                                        <td class="fit-to-content">
+                                            <!-- Download -->
+                                            <a :href="'/' + upload.path" :alt="file.name + 'download link'" :download="file.name + '_v' + (index + 1) + '_' + getUploadDate(upload)">
+                                                <button type="button" class="btn btn-unstyled button-download"><i class="fa fa-download"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
                     </div>
 
                 </td>

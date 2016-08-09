@@ -26,7 +26,7 @@ class FilesController extends Controller
 //        if(Auth::check()) $this->authorize('upload', $file);
 
         // Only accept the File if we're waiting on one
-        if (! $fileRequest->hasStatus('waiting')) abort(409, "File already received");
+        if ($fileRequest->hasStatus('received')) abort(409, "File already received");
 
         return FileFactory::store($fileRequest, $request->file('file'));
 

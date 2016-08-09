@@ -1,5 +1,11 @@
 <nav id="top-nav" class="navbar navbar-default navbar-static-top">
     <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                <img alt="Brand" src="/images/logo/fc_logo_v1.svg" class="img-logo">
+            </a>
+        </div>
+
         <ul class="nav navbar-nav navbar-right">
             @if(Auth::check())
                 <li class="dropdown">

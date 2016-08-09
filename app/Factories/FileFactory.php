@@ -66,13 +66,13 @@ class FileFactory
     protected function makeFileName()
     {
 
-//        // If we need DO need to hash name (ie. for security or to avoid over-writes)        
-//        $name = sha1(
-//            time() . $this->uploadedFile->getClientOriginalName()
-//        );
+        // If we need DO need to hash name (ie. for security or to avoid over-writes)
+        $name = sha1(
+            time() . $this->uploadedFile->getClientOriginalName()
+        );
 
         // Convert uploaded file to lower case and join with '_'
-        $name = str_replace(" ", "_", strtolower($this->fileRequest->name));
+//        $name = str_replace(" ", "_", strtolower($this->fileRequest->name));
 
         /**
          * TODO ::: (?) Encrypt file names so if physical files are compromised it'll be harder to find a specific file.
@@ -98,7 +98,7 @@ class FileFactory
                 ->moveFile()
                 ->createFileModel()
                 ->updateDB();
-        return $factory->fileRequest;
+        return $factory->fileRequest->load('uploads');
     }
 
     /**

@@ -5731,9 +5731,11 @@ button.close {
     display: none !important; } }
 
 .navbar {
-  background: #fff;
-  border: 0;
-  margin: 0; }
+  background: #fff; }
+  .navbar .navbar-header .navbar-brand {
+    padding: 5px; }
+    .navbar .navbar-header .navbar-brand .img-logo {
+      height: 100%; }
   .navbar .navbar-nav > .open > a, .navbar .navbar-nav > .open > a:hover, .navbar .navbar-nav > .open > a:focus {
     background: #fff;
     text-decoration: underline; }
@@ -6075,8 +6077,6 @@ table {
     color: #2980B9;
     background: #eff9fd;
     cursor: pointer; }
-  table tbody tr:hover {
-    background: #FFFBE9; }
   table tbody tr td.content-right {
     text-align: right;
     padding: 10px 26px 10px 10px; }
@@ -6224,8 +6224,8 @@ table {
   padding: 10px;
   vertical-align: middle; }
 
-.table-standard.table-hover tbody tr:hover {
-  background: #eff9fd; }
+.table-standard.table-hover tbody > tr:hover {
+  background: #FFFBE9; }
 
 .text-success {
   color: #27AE60; }

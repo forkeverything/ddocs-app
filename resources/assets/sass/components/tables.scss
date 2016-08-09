@@ -27,10 +27,6 @@ table {
   tbody {
     tr {
 
-      &:hover {
-        background: $extra-light-yellow;
-      }
-
       td {
         &.content-right {
           text-align: right;
@@ -253,9 +249,9 @@ table {
 
   &.table-hover {
     tbody {
-      tr {
+       > tr {
         &:hover {
-          background: $extra-light-blue;
+          background: $extra-light-yellow;
         }
       }
     }
