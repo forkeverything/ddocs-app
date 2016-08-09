@@ -3,6 +3,12 @@
 @section('content')
     <checklist-single inline-template :checklist-hash="'{{ $checklistHash }}'" v-cloak>
         <div id="checklist-single" class="container">
+
+            <ol class="breadcrumb">
+                <li><a href="/checklist">My Lists</a></li>
+                <li class="active">{{ $checklist->name }}</li>
+            </ol>
+
             <h1 class="text-center text-capitalize">
                 {{ $checklist->name }}
             </h1>
