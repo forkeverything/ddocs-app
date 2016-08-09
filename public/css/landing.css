@@ -6334,6 +6334,9 @@ table {
       background: #3498DB;
       color: #fff; }
 
+.progress {
+  box-shadow: none; }
+
 [v-cloak] {
   display: none; }
 

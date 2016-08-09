@@ -155,7 +155,7 @@ Vue.component('checklist-single', fetchesFromEloquentRepository.extend({
             self.numReceived = self.params.num_received_files;
         });
 
-        $(document).on('click', '.button-upload-file', function (e) {
+        $(document).on('click', '.button-upload', function (e) {
             e.preventDefault();
             $('#input-file-' + $(this).data('file')).click();
         });

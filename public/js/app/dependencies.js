@@ -226,39 +226,6 @@ function formatNumber(val) {
 function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
-Vue.directive('datepicker', {
-    params: ['button-only'],
-    bind: function() {
-        if(this.params.buttonOnly) {
-            $(this.el).datepicker({
-                dateFormat: "dd/mm/yy",
-                minDate: 0,
-                buttonImage: '/images/icons/calendar.png',
-                buttonImageOnly: true,
-                showOn: 'both'
-            });
-        } else {
-            $(this.el).datepicker({
-                dateFormat: "dd/mm/yy",
-                minDate: 0
-            });
-        }
-    }
-});
-Vue.directive('modal', {
-    twoWay: true,
-    update: function () {
-        var self = this;
-        
-        $(this.el).click(function () {
-            self.set(false);
-        });
-
-        $(this.el).children().click(function (e) {
-            e.stopPropagation();
-        });
-    }
-});
 Vue.component('date-range-field', {
     name: 'dateRangeField',
     template: '<div class="date-range-field" @click.stop="">' +
@@ -557,6 +524,39 @@ Vue.component('per-page-picker', {
     ready: function () {
         this.$watch('currentItemsPerPage', function (numItems) {
             this.newItemsPerPage = numItems;
+        });
+    }
+});
+Vue.directive('datepicker', {
+    params: ['button-only'],
+    bind: function() {
+        if(this.params.buttonOnly) {
+            $(this.el).datepicker({
+                dateFormat: "dd/mm/yy",
+                minDate: 0,
+                buttonImage: '/images/icons/calendar.png',
+                buttonImageOnly: true,
+                showOn: 'both'
+            });
+        } else {
+            $(this.el).datepicker({
+                dateFormat: "dd/mm/yy",
+                minDate: 0
+            });
+        }
+    }
+});
+Vue.directive('modal', {
+    twoWay: true,
+    update: function () {
+        var self = this;
+        
+        $(this.el).click(function () {
+            self.set(false);
+        });
+
+        $(this.el).children().click(function (e) {
+            e.stopPropagation();
         });
     }
 });

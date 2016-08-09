@@ -11,41 +11,12 @@
       .col-upload {
         width: 100px;
 
-        .button-upload-file {
-          width: 100%;
-        }
-
         .progress {
-          height: 10px;
-          margin: 10px 0 0 0;
-
-          &.disabled {
-            background: $dark-grey;
-          }
-        }
-      }
-
-      .col-owner {
-        .button-reject {
-          color: $red;
-          &:hover {
-            color: $dark-red;
-          }
+          height: 5px;
+          margin: 0 0 0 0;
         }
 
-        .button-download:not([disabled]) {
-          color: $blue;
-          &:hover {
-            color: $dark-blue;
-          }
-        }
 
-        .button-history {
-          color: $orange;
-          &:hover {
-            color: $dark-orange;
-          }
-        }
       }
 
       .row-details {
@@ -55,6 +26,36 @@
           padding: 10px 15px 15px 10px;
         }
       }
+    }
+  }
+
+
+  // Button Colors
+  .button-history {
+    color: $orange;
+    &:hover {
+      color: $dark-orange;
+    }
+  }
+
+  .button-upload:not([disabled]) {
+    color: $green;
+    &:hover {
+      color: $dark-green;
+    }
+  }
+
+  .button-download:not([disabled]) {
+    color: $blue;
+    &:hover {
+      color: $dark-blue;
+    }
+  }
+
+  .button-reject {
+    color: $red;
+    &:hover {
+      color: $dark-red;
     }
   }
 }
