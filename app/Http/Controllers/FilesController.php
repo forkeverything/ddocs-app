@@ -32,6 +32,13 @@ class FilesController extends Controller
 
     }
 
+    /**
+     * POST request to mark a File (File Request's most recent upload) as rejected.
+     *
+     * @param FileRequest $fileRequest
+     * @param RejectFileRequest $request
+     * @return FileRequest
+     */
     public function postRejectUploadedFile(FileRequest $fileRequest, RejectFileRequest $request)
     {
         return $fileRequest->reject($request->reason);

@@ -12,13 +12,14 @@
 */
 
 Route::get('/', function () {
+    if(Auth::check())return redirect('/checklist');
     return view('welcome');
 });
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-
+Route::get('/checklist', 'ChecklistsController@getListsView');
+route::get('/checklist/get', 'ChecklistsController@getForAuthenticatedUser');
 Route::get('/checklist/make', 'ChecklistsController@getMakeForm');
 Route::post('/checklist/make', 'ChecklistsController@postNewChecklist');
 Route::get('/checklist/{checklist_hash}', 'ChecklistsController@getSingleChecklist');

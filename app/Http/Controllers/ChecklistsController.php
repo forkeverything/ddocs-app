@@ -10,6 +10,7 @@ use App\FileRequest;
 use App\Http\Requests\NewChecklistRequest;
 use App\Http\Requests\RejectFileRequest;
 use App\Http\Requests\UploadFileRequest;
+use App\Repositories\ChecklistsRespository;
 use App\Repositories\FilesRequestsRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -35,9 +36,43 @@ class ChecklistsController extends Controller
     public function __construct(HashidsManager $hashidsManager)
     {
         $this->middleware('auth', [
-            'only' => ['getMakeForm', 'postNewChecklist']
+            'only' => [
+                'getListsView',
+                'getForAuthenticatedUser',
+                'getMakeForm',
+                'postNewChecklist'
+            ]
         ]);
         $this->hashids = $hashidsManager;
+    }
+
+    /**
+     * Show the view for viewing all Checklist(s) made by User.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getListsView()
+    {
+        return view('checklist.all');
+    }
+
+    /**
+     * Return the Authenticated User's checklists as JSON from
+     * the repository.
+     *
+     * @param Request $request
+     * @return ChecklistsRespository
+     */
+    public function getForAuthenticatedUser(Request $request)
+    {
+        $sort = $request->sort;
+        $order = $request->order;
+        $search = $request->search;
+
+        return ChecklistsRespository::forUser(Auth::user())
+                                    ->searchFor($search)
+                                    ->sortOn($sort, $order)
+                                    ->paginate(20);
     }
 
     /**
@@ -94,13 +129,13 @@ class ChecklistsController extends Controller
         $search = $request->search;
         $perPage = $request->per_page ?: 20;
         return FilesRequestsRepository::forChecklist($checklist)
-                              ->whereRequired($request->required)
-                              ->filterIntegerField('version', $request->version)
-                              ->filterDateField('due', $request->due)
-                              ->withStatus($request->status)
-                              ->searchFor($search)
-                              ->sortOn($sort, $order)
-                                ->withNumReceivedFiles()
-                              ->paginate($perPage);
+                                      ->whereRequired($request->required)
+                                      ->filterIntegerField('version', $request->version)
+                                      ->filterDateField('due', $request->due)
+                                      ->withStatus($request->status)
+                                      ->searchFor($search)
+                                      ->sortOn($sort, $order)
+                                      ->withNumReceivedFiles()
+                                      ->paginate($perPage);
     }
 }

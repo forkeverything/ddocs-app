@@ -1,7 +1,7 @@
 <nav id="top-nav" class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="/checklist">
                 <img alt="Brand" src="/images/logo/fc_logo_v1.svg" class="img-logo">
             </a>
         </div>
@@ -12,7 +12,9 @@
                     <a href="#" class="dropdown-toggle text-capitalize" data-toggle="dropdown" role="button"
                        aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="/checklist/make">New Cheklist</a></li>
+                        <li><a href="/checklist">My Lists</a></li>
+                        <li><a href="#">Account</a></li>
                         <li><a href="/logout" alt="link to logout">Logout</a></li>
                     </ul>
                 </li>

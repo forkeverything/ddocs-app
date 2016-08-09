@@ -11,7 +11,7 @@
         v-model="params.search"
         :class="{
                                     'active': params.search && params.search.length > 0
-                               }"   ``
+                               }"
         >
     </div>
 </form>

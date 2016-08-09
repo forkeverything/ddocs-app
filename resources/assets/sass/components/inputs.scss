@@ -1,7 +1,7 @@
 .form-control {
   @include transition(none);
   @include box-shadow(none);
-  &:focus, &.focus {
+  &.active, &:focus, &.focus {
     border: 1px solid $blue;
     @include box-shadow(none);
   }
