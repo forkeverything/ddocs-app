@@ -67,8 +67,21 @@ class Checklist extends Model
     public function getProgressAttribute()
     {
         $files = $this->requestedFiles;
-        $received = $files->where('status', 'received')->count();
+        // Count only required files that are received....
+        $received = $files->where('required', 1)->where('status', 'received')->count();
         $total = $files->count();
         return round(100 * $received / $total, 0);
+    }
+
+    /**
+     * Quick checker to see if Checklist was made by
+     * the given User.
+     *
+     * @param User $user
+     * @return bool
+     */
+    public function madeBy(User $user)
+    {
+        return $this->user_id === $user->id;
     }
 }

@@ -4,10 +4,13 @@
     <checklist-single inline-template :checklist-hash="'{{ $checklistHash }}'" v-cloak>
         <div id="checklist-single" class="container">
 
+
+            @if(Auth::check() && $checklist->madeBy(Auth::user()))
             <ol class="breadcrumb">
                 <li><a href="/checklist">My Lists</a></li>
                 <li class="active">{{ $checklist->name }}</li>
             </ol>
+            @endif
 
             <h1 class="text-center text-capitalize">
                 {{ $checklist->name }}

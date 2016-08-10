@@ -189,7 +189,7 @@ Vue.component('checklist-single', fetchesFromEloquentRepository.extend({
             return '/checklist/' + this.checklistHash + '/files';
         },
         receivedFilesPercentage: function() {
-            return Math.round((this.numReceived / this.response.total) * 100);
+            return (100 * this.numReceived / this.response.total).toFixed(2);
         }
     },
     methods: {
