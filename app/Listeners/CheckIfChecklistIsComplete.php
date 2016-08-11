@@ -3,10 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\ChecklistCompleted;
-use App\Events\Event;
 use App\Events\FileWasUploaded;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Event;
 
 class CheckIfChecklistIsComplete implements ShouldQueue
 {

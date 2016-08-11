@@ -88,7 +88,7 @@ class FileFactory
      *
      * @param FileRequest $fileRequest
      * @param UploadedFile $uploadedFile
-     * @return mixed
+     * @return FileRequest
      */
     public static function store(FileRequest $fileRequest, UploadedFile $uploadedFile)
     {

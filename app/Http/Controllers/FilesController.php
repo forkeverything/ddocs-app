@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\Event;
 use App\Events\FileWasRejected;
+use App\Events\FileWasUploaded;
 use App\Factories\FileFactory;
 use App\File;
 use App\FileRequest;
@@ -12,6 +12,7 @@ use App\Http\Requests\UploadFileRequest;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Event;
 
 class FilesController extends Controller
 {
@@ -31,7 +32,9 @@ class FilesController extends Controller
         // Only accept the File if we're waiting on one
         if ($fileRequest->hasStatus('received')) abort(409, "File already received");
 
-        return FileFactory::store($fileRequest, $request->file('file'));
+        $fileRequest = FileFactory::store($fileRequest, $request->file('file'));
+        Event::fire(new FileWasUploaded($fileRequest));
+        return $fileRequest;
 
     }
 

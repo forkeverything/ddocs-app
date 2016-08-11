@@ -16,8 +16,8 @@ class FileRequestMailer extends Mailer
     public function sendChangesRequiredEmail(FileRequest $fileRequest)
     {
         $maker = $fileRequest->checklist->user;
-        $subject = 'Files Collector - ' . $maker->name . ' Needs Changes Made To ' . $fileRequest->name;
+        $subject = 'Files Collector - Changes Request By ' . $maker->name;
         $view = 'emails.files.changes';
-        $this->sendTo($fileRequest->checklist->recipient, "Giver of Files", $subject, $view, compact('fileRequest', 'maker'));
+        $this->sendTo($fileRequest->checklist->recipient, "File Holder", $subject, $view, compact('fileRequest', 'maker'));
     }
 }

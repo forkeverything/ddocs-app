@@ -1,7 +1,7 @@
 Hi there,
 <br>
 <br>
-{{ $maker->name }}({{ $maker->email }}) has created a checklist of files to get from you.
+<strong>{{ $maker->name }} ({{ $maker->email }}) has created a checklist of files to get from you.</strong>
 <br>
 <br>
 <strong>If you have no idea what this is pertaining to, please ignore this email. We're really sorry for taking up your time.</strong>
@@ -14,7 +14,6 @@ Periodically, we'll send you a few reminders for upcoming files as well as overd
 <br>
 <br>
 Just one last thing, the link we've sent you is private and was made special for you. Please don't share it with anybody unless {{ $maker->name }} knows you're doing so.
-<br>
-<br>
+
 @include('emails.partials.signature')
 

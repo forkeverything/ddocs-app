@@ -19,8 +19,8 @@ class ChecklistMailer extends Mailer
     {
         $maker = $checklist->user;
         $subject = 'Files Collector - ' . $maker->name . '\'s Request For Files';
-        $view = 'email.checklist.new';
-        $this->sendTo($checklist->recipient, "Giver of Files", $subject, $view, compact('maker', 'checklist'));
+        $view = 'emails.checklist.new';
+        $this->sendTo($checklist->recipient, "File Holder", $subject, $view, compact('maker', 'checklist'));
     }
 
     /**
@@ -31,11 +31,11 @@ class ChecklistMailer extends Mailer
     public function sendUpcomingFilesReminder(Checklist $checklist)
     {
         $subject = 'Files Collector - ' . 'Due Files Coming Up';
-        $view = 'email.files.reminder-upcoming';
+        $view = 'emails.files.reminder-upcoming';
         $upcomingFiles = $checklist->requestedFiles()
                                     ->whereDate('due', '=', Carbon::now()->addDays(4)->format('Y-m-d'))
                                    ->get();
-        $this->sendTo($checklist->recipient, "Giver of Files", $subject, $view, compact('checklist', 'upcomingFiles'));
+        $this->sendTo($checklist->recipient, "File Holder", $subject, $view, compact('checklist', 'upcomingFiles'));
     }
 
     /**
@@ -47,11 +47,11 @@ class ChecklistMailer extends Mailer
     {
         $today = Carbon::now();
         $subject = 'Files Collector - ' . 'Overdue Files Reminder';
-        $view = 'email.files.reminder-late';
+        $view = 'emails.files.reminder-late';
         $lateFiles = $checklist->requestedFiles()
                                ->whereDate('due', '<', $today)->format('Y-m-d')
                                ->get();
-        $this->sendTo($checklist->recipient, "Giver of Files", $subject, $view, compact('checklist', 'lateFiles', 'today'));
+        $this->sendTo($checklist->recipient, "File Holder", $subject, $view, compact('checklist', 'lateFiles', 'today'));
     }
 
     /**
@@ -64,8 +64,8 @@ class ChecklistMailer extends Mailer
     {
         $maker = $checklist->user;
         $subject = 'Files Collector - Another Completed Checklist: ' . $checklist->name;
-        $view = 'email.checklist.complete';
-        $this->sendTo($maker->email, $maker->name, $subject, $view, compact('checkllist', 'maker'));
+        $view = 'emails.checklist.complete';
+        $this->sendTo($maker->email, $maker->name, $subject, $view, compact('checklist', 'maker'));
     }
 
 }

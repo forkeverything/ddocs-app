@@ -4,8 +4,12 @@ namespace App\Providers;
 
 use App\Events\ChecklistCompleted;
 use App\Events\ChecklistCreated;
+use App\Events\FileWasRejected;
+use App\Events\FileWasUploaded;
 use App\Events\NewUserSignedUp;
+use App\Listeners\CheckIfChecklistIsComplete;
 use App\Listeners\EmailChecklistCompleteNotification;
+use App\Listeners\EmailFileRejectedNotification;
 use App\Listeners\EmailRecipientOfNewChecklist;
 use App\Listeners\EmailWelcomeMessage;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
@@ -28,8 +32,14 @@ class EventServiceProvider extends ServiceProvider
         ChecklistCreated::class => [
             EmailRecipientOfNewChecklist::class
         ],
+        FileWasUploaded::class => [
+          CheckIfChecklistIsComplete::class
+        ],
         ChecklistCompleted::class => [
             EmailChecklistCompleteNotification::class
+        ],
+        FileWasRejected::class => [
+            EmailFileRejectedNotification::class
         ]
     ];
 

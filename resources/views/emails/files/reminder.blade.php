@@ -31,6 +31,5 @@ Overdue Files ({{ $lateFiles->count() }})
 <br>
 <br>
 <strong>If you want to stop receiving emails for remaining files, head over to the checklist page and follow the simple instructions to turn off recipient notifications.</strong>
-<br>
-<br>
+
 @include('emails.partials.signature')

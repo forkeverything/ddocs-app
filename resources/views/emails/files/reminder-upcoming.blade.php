@@ -14,6 +14,5 @@ Just dropping by to let you know that you have a few files due soon for {{ $chec
 <br>
 <br>
 <em>If you want to stop receiving emails for remaining files, head over to the checklist page and follow the simple instructions to turn off recipient notifications.</em>
-<br>
-<br>
+
 @include('emails.partials.signature')
