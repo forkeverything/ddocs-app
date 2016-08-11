@@ -28,6 +28,7 @@ class Checklist extends Model
         'progress'
     ];
 
+
     /**
      * A Checklist can have many files that it requires.
      *

@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\ChecklistCreated;
+use App\Events\NewUserSignedUp;
+use App\Listeners\EmailRecipientOfNewChecklist;
+use App\Listeners\EmailWelcomeMessage;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -16,6 +20,12 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
         ],
+        NewUserSignedUp::class => [
+            EmailWelcomeMessage::class
+        ],
+        ChecklistCreated::class => [
+            EmailRecipientOfNewChecklist::class
+        ]
     ];
 
     /**
