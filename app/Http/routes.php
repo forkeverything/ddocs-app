@@ -30,4 +30,5 @@ Route::post('/file/{fileRequest}/reject', 'FilesController@postRejectUploadedFil
 
 Route::post('checklist/make/email', function (\App\Http\Requests\Request $request) {
     \Log::info($request);
+    return response("received hook and logged");
 });
