@@ -14,7 +14,8 @@ class ChecklistFactory
 
     /**
      * The Checklist model
-     * @var
+     *
+     * @var Checklist
      */
     protected $checklist;
 
@@ -49,7 +50,7 @@ class ChecklistFactory
      *
      * @param NewChecklistRequest $request
      * @param User $user
-     * @return static
+     * @return Checklist
      */
     public static function make(NewChecklistRequest $request, User $user)
     {

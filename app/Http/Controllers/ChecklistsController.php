@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Checklist;
+use App\Events\ChecklistCreated;
 use App\Factories\ChecklistFactory;
 use App\Factories\FileFactory;
 use App\File;
@@ -17,6 +18,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Vinkla\Hashids\HashidsManager;
 
@@ -94,6 +96,8 @@ class ChecklistsController extends Controller
     public function postNewChecklist(NewChecklistRequest $request)
     {
         $checklist = ChecklistFactory::make($request, Auth::user());
+
+        Event::fire(new ChecklistCreated($checklist));
 
         return $this->hashids->encode($checklist->id);
     }

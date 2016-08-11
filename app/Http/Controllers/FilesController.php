@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Event;
+use App\Events\FileWasRejected;
 use App\Factories\FileFactory;
+use App\File;
 use App\FileRequest;
 use App\Http\Requests\RejectFileRequest;
 use App\Http\Requests\UploadFileRequest;
@@ -41,7 +44,9 @@ class FilesController extends Controller
      */
     public function postRejectUploadedFile(FileRequest $fileRequest, RejectFileRequest $request)
     {
-        return $fileRequest->reject($request->reason);
+        $fileRequest = $fileRequest->reject($request->reason);
+        Event::fire(new FileWasRejected($fileRequest));
+        return $fileRequest;
     }
 
 }

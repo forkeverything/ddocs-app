@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Events\ChecklistCompleted;
 use App\Events\ChecklistCreated;
 use App\Events\NewUserSignedUp;
+use App\Listeners\EmailChecklistCompleteNotification;
 use App\Listeners\EmailRecipientOfNewChecklist;
 use App\Listeners\EmailWelcomeMessage;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
@@ -25,6 +27,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         ChecklistCreated::class => [
             EmailRecipientOfNewChecklist::class
+        ],
+        ChecklistCompleted::class => [
+            EmailChecklistCompleteNotification::class
         ]
     ];
 
