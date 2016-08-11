@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +29,8 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="30" column="33" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="33" />
+            <state relative-caret-position="594">
+              <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -94,8 +93,8 @@
         <option value="$PROJECT_DIR$/app/Mailers/ChecklistMailer.php" />
         <option value="$PROJECT_DIR$/resources/views/emails/checklist/complete.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/emails/partials/signature.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
       </list>
     </option>
   </component>
@@ -476,12 +475,12 @@
       <workItem from="1470725368970" duration="10682000" />
       <workItem from="1470754624270" duration="6000" />
       <workItem from="1470800723830" duration="26722000" />
-      <workItem from="1470931839906" duration="337000" />
+      <workItem from="1470931839906" duration="434000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111136000" />
+    <option name="totallyTimeSpent" value="111233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="1347" extended-state="0" />
@@ -553,6 +552,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -603,6 +603,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding>
+            <marker date="1470863493000" expanded="true" signature="93:1802" ph="{...}" />
+            <marker date="1470863493000" expanded="true" signature="103:180" ph=" Mass-assignable fields for a Checklist ..." />
+            <marker date="1470863493000" expanded="true" signature="210:293" ph="..." />
+            <marker date="1470863493000" expanded="true" signature="304:381" ph=" Dynamic props to attach to each Model. ..." />
+            <marker date="1470863493000" expanded="true" signature="410:450" ph="..." />
+            <marker date="1470863493000" expanded="true" signature="462:595" ph=" A Checklist can have many files that it requires. ..." />
+            <marker date="1470863493000" expanded="true" signature="634:697" ph="{...}" />
+            <marker date="1470863493000" expanded="true" signature="706:833" ph=" Every Checklist was made by a single User ..." />
+            <marker date="1470863493000" expanded="true" signature="862:920" ph="{...}" />
+            <marker date="1470863493000" expanded="true" signature="929:1003" ph=" Get the hash'd id of this model. ..." />
+            <marker date="1470863493000" expanded="true" signature="1044:1086" ph="{...}" />
+            <marker date="1470863493000" expanded="true" signature="1095:1230" ph=" Calculate the percentage completion of Checklist using ..." />
+            <marker date="1470863493000" expanded="true" signature="1275:1559" ph="{...}" />
+            <marker date="1470863493000" expanded="true" signature="1568:1702" ph=" Quick checker to see if Checklist was made by ..." />
+            <marker date="1470863493000" expanded="true" signature="1743:1800" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -659,6 +676,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding>
+            <marker date="1470041078000" expanded="false" signature="41:104" ph="..." />
+            <marker date="1470041078000" expanded="true" signature="147:884" ph="{...}" />
+            <marker date="1470041078000" expanded="true" signature="157:255" ph=" Determine if the user is authorized to make this request. ..." />
+            <marker date="1470041078000" expanded="true" signature="289:365" ph="{...}" />
+            <marker date="1470041078000" expanded="true" signature="374:467" ph=" Get the validation rules that apply to the request. ..." />
+            <marker date="1470041078000" expanded="true" signature="497:882" ph="{...}" />
+            <marker date="1470041078000" expanded="true" signature="520:718" ph="..." />
+            <marker date="1470041078000" expanded="true" signature="733:874" ph=" TODO ::: (?) Update validation so that we'll only prevent duplicate checklist names if they are for the same recipient. ..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -722,6 +749,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="423">
           <caret line="34" column="31" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="31" />
+          <folding>
+            <marker date="1470734932000" expanded="false" signature="27:81" ph="..." />
+            <marker date="1470734932000" expanded="true" signature="114:2392" ph="{...}" />
+            <marker date="1470734932000" expanded="true" signature="125:182" ph=" Assignable fields. ..." />
+            <marker date="1470734932000" expanded="true" signature="212:351" ph="..." />
+            <marker date="1470734932000" expanded="true" signature="362:454" ph=" Date fields to be converted automatically via Carbon. ..." />
+            <marker date="1470734932000" expanded="true" signature="481:500" ph="..." />
+            <marker date="1470734932000" expanded="true" signature="547:663" ph=" Format as Carbon Date only if value given to prevent '0000-00-00 00:00:00' ..." />
+            <marker date="1470734932000" expanded="true" signature="709:810" ph="{...}" />
+            <marker date="1470734932000" expanded="true" signature="819:969" ph=" All File(s) belong to a single Checklist that has required them. ..." />
+            <marker date="1470734932000" expanded="true" signature="1003:1066" ph="{...}" />
+            <marker date="1470734932000" expanded="true" signature="1075:1232" ph=" A File Request could potentially have many physical files uploaded to it. ..." />
+            <marker date="1470734932000" expanded="true" signature="1264:1350" ph="{...}" />
+            <marker date="1470734932000" expanded="true" signature="1359:1495" ph=" Helper func to see if File's status attribute matches given ..." />
+            <marker date="1470734932000" expanded="true" signature="1536:1774" ph="{...}" />
+            <marker date="1470734932000" expanded="true" signature="1783:1894" ph=" Reject the latest upload for this File Request. ..." />
+            <marker date="1470734932000" expanded="true" signature="1932:2390" ph="{...}" />
+            <marker date="1470734932000" expanded="true" signature="2132:2178" ph="..." />
+            <marker date="1470734932000" expanded="true" signature="2133:2177" ph="..." />
+            <marker date="1470734932000" expanded="true" signature="2278:2359" ph="..." />
+            <marker date="1470734932000" expanded="true" signature="2279:2358" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -878,8 +927,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="30" column="33" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="33" />
+        <state relative-caret-position="594">
+          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
           <folding />
         </state>
       </provider>
