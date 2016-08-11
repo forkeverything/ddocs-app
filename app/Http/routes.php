@@ -27,3 +27,7 @@ Route::get('/checklist/{checklist_hash}/files', 'ChecklistsController@getFilesFo
 
 Route::post('/file/{fileRequest}', 'FilesController@postUploadFile');
 Route::post('/file/{fileRequest}/reject', 'FilesController@postRejectUploadedFile');
+
+Route::post('checklist/make/email', function (\App\Http\Requests\Request $request) {
+    \Log::info($request);
+});
