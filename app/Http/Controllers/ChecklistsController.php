@@ -128,6 +128,7 @@ class ChecklistsController extends Controller
         // Build our form request manually
         $newChecklistRequest = new NewChecklistRequest([
             'recipient' => $request["ToFull"][0]["Email"],
+            'description' => null,
             'name' => $request["Subject"],
             'requested_files' => $requestedFiles
         ]);
