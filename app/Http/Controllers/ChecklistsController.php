@@ -113,7 +113,7 @@ class ChecklistsController extends Controller
 
 
 
-        Log::info('recipient: ' . $request["toFull"]["Email"]);
+        Log::info('recipient: ' . $request["ToFull"]["Email"]);
 
         Log::info('body: ' . $request["TextBody"]);
 
