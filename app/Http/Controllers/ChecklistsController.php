@@ -21,6 +21,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 use Vinkla\Hashids\HashidsManager;
 
 class ChecklistsController extends Controller
@@ -105,35 +106,43 @@ class ChecklistsController extends Controller
 
     public function postNewChecklistFromEmailWebhook(Request $request)
     {
+        $request = $request->all();
+
         // is it going to the right cc address: list@in.filescollector.com
         if($request["OriginalRecipient"] !== 'list@in.filescollector.com') return "Wrong Email Address To Create Checklist";
 
-        $body = $request["TextBody"];
 
-        preg_match_all("/^-([^\[\n]*)(\[(.*)\])?/m", $body, $matches);
 
-        $requestedFiles = [];
+        Log::info('recipient: ' . $request["toFull"]["Email"]);
 
-        foreach ($matches[1] as $key => $fileName) {
-            $file = [
-                "name" => $fileName,
-                "due" => isset($matches[3][$key]) ? $matches[3][$key] : null
-            ];
-            array_push($requestedFiles, $file);
-        }
+        Log::info('body: ' . $request["TextBody"]);
 
-        // Build our form request manually
-        $newChecklistRequest = new NewChecklistRequest([
-            'recipient' => $request["toFull"]["Email"],
-            'name' => $request["Subject"],
-            'requested_files' => $requestedFiles
-        ]);
-
-        $user = User::where('email', $request["From"])->first();
-
-        $checklist = ChecklistFactory::make($newChecklistRequest, $user);
-
-        Event::fire(new ChecklistCreated($checklist));
+//        $body = $request["TextBody"];
+//
+//        preg_match_all("/^-([^\[\n]*)(\[(.*)\])?/m", $body, $matches);
+//
+//        $requestedFiles = [];
+//
+//        foreach ($matches[1] as $key => $fileName) {
+//            $file = [
+//                "name" => $fileName,
+//                "due" => isset($matches[3][$key]) ? $matches[3][$key] : null
+//            ];
+//            array_push($requestedFiles, $file);
+//        }
+//
+//        // Build our form request manually
+//        $newChecklistRequest = new NewChecklistRequest([
+//            'recipient' => $request["toFull"]["Email"],
+//            'name' => $request["Subject"],
+//            'requested_files' => $requestedFiles
+//        ]);
+//
+//        $user = User::where('email', $request["From"])->first();
+//
+//        $checklist = ChecklistFactory::make($newChecklistRequest, $user);
+//
+//        Event::fire(new ChecklistCreated($checklist));
 
         return "Received Create Checklist via Email Request";
     }

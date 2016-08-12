@@ -29,8 +29,8 @@
       <file leaf-file-name="ChecklistsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="96" column="51" selection-start-line="96" selection-start-column="51" selection-end-line="96" selection-end-column="51" />
+            <state relative-caret-position="486">
+              <caret line="107" column="5" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -255,12 +255,12 @@
       <workItem from="1470754624270" duration="6000" />
       <workItem from="1470800723830" duration="26722000" />
       <workItem from="1470931839906" duration="706000" />
-      <workItem from="1470985755227" duration="2077000" />
+      <workItem from="1470985755227" duration="2310000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113582000" />
+    <option name="totallyTimeSpent" value="113815000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="1347" extended-state="0" />
@@ -728,8 +728,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="96" column="51" selection-start-line="96" selection-start-column="51" selection-end-line="96" selection-end-column="51" />
+        <state relative-caret-position="486">
+          <caret line="107" column="5" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
           <folding />
         </state>
       </provider>
