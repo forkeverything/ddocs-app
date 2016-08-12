@@ -120,7 +120,9 @@ class ChecklistsController extends Controller
         foreach ($matches[1] as $key => $fileName) {
             $file = [
                 "name" => $fileName,
-                "due" => isset($matches[3][$key]) ? $matches[3][$key] : null
+                "description" => null,
+                "due" => isset($matches[3][$key]) ? $matches[3][$key] : null,
+                "required" => 1
             ];
             array_push($requestedFiles, $file);
         }
@@ -128,8 +130,8 @@ class ChecklistsController extends Controller
         // Build our form request manually
         $newChecklistRequest = new NewChecklistRequest([
             'recipient' => $request["ToFull"][0]["Email"],
-            'description' => null,
             'name' => $request["Subject"],
+            'description' => null,
             'requested_files' => $requestedFiles
         ]);
 
