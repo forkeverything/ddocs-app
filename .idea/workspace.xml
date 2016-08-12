@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Factories/ChecklistFactory.php" afterPath="$PROJECT_DIR$/app/Factories/ChecklistFactory.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
     </list>
     <ignored path="files-collector.iws" />
@@ -25,36 +26,18 @@
     <favorites_list name="files-collector" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="ChecklistsController.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="990">
-                  <caret line="134" column="20" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="ChecklistFactory.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/Factories/ChecklistFactory.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="947">
-                  <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="29" column="84" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -90,7 +73,6 @@
         <option value="$PROJECT_DIR$/app/Jobs/SendUpcomingDueFileReminders.php" />
         <option value="$PROJECT_DIR$/app/Events/ChecklistCompleted.php" />
         <option value="$PROJECT_DIR$/app/Events/FileWasRejected.php" />
-        <option value="$PROJECT_DIR$/app/Factories/ChecklistFactory.php" />
         <option value="$PROJECT_DIR$/app/Events/FileWasUploaded.php" />
         <option value="$PROJECT_DIR$/app/Listeners/EmailChecklistCompleteNotification.php" />
         <option value="$PROJECT_DIR$/app/Listeners/EmailFileRejectedNotification.php" />
@@ -113,6 +95,7 @@
         <option value="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
+        <option value="$PROJECT_DIR$/app/Factories/ChecklistFactory.php" />
       </list>
     </option>
   </component>
@@ -273,12 +256,12 @@
       <workItem from="1470754624270" duration="6000" />
       <workItem from="1470800723830" duration="26722000" />
       <workItem from="1470931839906" duration="706000" />
-      <workItem from="1470985755227" duration="3190000" />
+      <workItem from="1470985755227" duration="4224000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114695000" />
+    <option name="totallyTimeSpent" value="115729000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -484,13 +467,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Events/FileWasRejected.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -538,13 +514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/emails/checklist/new.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -681,18 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="29" column="84" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
-          <folding>
-            <marker date="1470990567000" expanded="false" signature="9:390" ph="..." />
-            <marker date="1470990567000" expanded="true" signature="405:505" ph="..." />
-            <marker date="1470990567000" expanded="true" signature="423:504" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/NewChecklistRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -727,18 +684,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/emails/checklist/new.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Factories/ChecklistFactory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="947">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="812">
+          <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="134" column="20" selection-start-line="134" selection-start-column="20" selection-end-line="134" selection-end-column="20" />
+        <state relative-caret-position="569">
+          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding>
+            <marker date="1470995099000" expanded="false" signature="44:703" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="750:5133" ph="{...}" />
+            <marker date="1470995099000" expanded="true" signature="760:841" ph=" HashId class to encode/decode ID numbers ..." />
+            <marker date="1470995099000" expanded="true" signature="876:975" ph=" ChecklistsController constructor. ..." />
+            <marker date="1470995099000" expanded="true" signature="1041:1322" ph="{...}" />
+            <marker date="1470995099000" expanded="true" signature="1074:1272" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="1083:1271" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="1107:1261" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="1331:1480" ph=" Show the view for viewing all Checklist(s) made by User. ..." />
+            <marker date="1470995099000" expanded="true" signature="1517:1567" ph="{...}" />
+            <marker date="1470995099000" expanded="true" signature="1576:1743" ph=" Return the Authenticated User's checklists as JSON from ..." />
+            <marker date="1470995099000" expanded="true" signature="1807:2151" ph="{...}" />
+            <marker date="1470995099000" expanded="true" signature="2025:2032" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="2079:2092" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="2141:2143" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="2160:2293" ph=" Return the view to make a new Checklist. ..." />
+            <marker date="1470995099000" expanded="true" signature="2329:2380" ph="{...}" />
+            <marker date="1470995099000" expanded="true" signature="2389:2518" ph=" Handle POST request to make a new Checklist. ..." />
+            <marker date="1470995099000" expanded="true" signature="2587:2780" ph="{...}" />
+            <marker date="1470995099000" expanded="true" signature="2789:2955" ph=" POST Email Webhook (via Postmark) to create a Checklist ..." />
+            <marker date="1470995099000" expanded="true" signature="3028:3539" ph="{...}" />
+            <marker date="1470995099000" expanded="true" signature="3549:3738" ph=" Get the view for a single Checklist. ..." />
+            <marker date="1470995099000" expanded="true" signature="3813:4041" ph="{...}" />
+            <marker date="1470995099000" expanded="true" signature="4051:4204" ph=" Retrieve the files for checklist. ..." />
+            <marker date="1470995099000" expanded="true" signature="4281:5129" ph="{...}" />
+            <marker date="1470995099000" expanded="true" signature="4624:4642" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="4703:4731" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="4789:4809" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="4862:4878" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="4930:4937" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="4986:4999" ph="..." />
+            <marker date="1470995099000" expanded="true" signature="5113:5121" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="29" column="84" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
           <folding />
         </state>
       </provider>

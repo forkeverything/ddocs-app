@@ -104,40 +104,21 @@ class ChecklistsController extends Controller
         return $this->hashids->encode($checklist->id);
     }
 
+    /**
+     * POST Email Webhook (via Postmark) to create a Checklist
+     * only using Email cc: address.
+     *
+     * @param Request $request
+     * @return string
+     */
     public function postNewChecklistFromEmailWebhook(Request $request)
     {
-        $request = $request->all();
-
-        // is it going to the right cc address: list@in.filescollector.com
+        // Is it going to the right cc address: list@in.filescollector.com
         if($request["OriginalRecipient"] !== 'list@in.filescollector.com') return "Wrong Email Address To Create Checklist";
 
-        $body = $request["TextBody"];
+        if(! $user = User::where('email', $request["From"])->first()) return "Account Could Not Be Found";
 
-        preg_match_all("/^-([^\[\n]*)(\[(.*)\])?/m", $body, $matches);
-
-        $requestedFiles = [];
-
-        foreach ($matches[1] as $key => $fileName) {
-            $file = [
-                "name" => $fileName,
-                "description" => null,
-                "due" => isset($matches[3][$key]) ? $matches[3][$key] : null,
-                "required" => 1
-            ];
-            array_push($requestedFiles, $file);
-        }
-
-        // Build our form request manually
-        $newChecklistRequest = new NewChecklistRequest([
-            'recipient' => $request["ToFull"][0]["Email"],
-            'name' => $request["Subject"],
-            'description' => null,
-            'requested_files' => $requestedFiles
-        ]);
-
-        $user = User::where('email', $request["From"])->first();
-
-        $checklist = ChecklistFactory::make($newChecklistRequest, $user);
+        $checklist = ChecklistFactory::makeFromEmail($request, $user);
 
         Event::fire(new ChecklistCreated($checklist));
 

@@ -7,6 +7,7 @@ namespace App\Factories;
 use App\Checklist;
 use App\File;
 use App\Http\Requests\NewChecklistRequest;
+use App\Http\Requests\Request;
 use App\User;
 
 class ChecklistFactory
@@ -62,6 +63,47 @@ class ChecklistFactory
     }
 
     /**
+     * Receives request from email webhook to create a checklist via cc. Parse
+     * the email parameters and manually create NewChecklistRequest Class.
+     * The actually heavy-lifting is still diverted to make().
+     *
+     * @param Request $request
+     * @param User $user
+     * @return Checklist
+     */
+    public static function makeFromEmail(Request $request, User $user)
+    {
+        // Turn request into array - because it's in camel case
+        $request = $request->all();
+
+        $body = $request["TextBody"];
+
+        preg_match_all("/^-([^\[\n]*)(\[(.*)\])?/m", $body, $matches);
+
+        $requestedFiles = [];
+
+        foreach ($matches[1] as $key => $fileName) {
+            $file = [
+                "name" => $fileName,
+                "description" => null,
+                "due" => isset($matches[3][$key]) ? $matches[3][$key] : null,
+                "required" => 1
+            ];
+            array_push($requestedFiles, $file);
+        }
+
+        // Build our form request manually
+        $newChecklistRequest = new NewChecklistRequest([
+            'recipient' => $request["ToFull"][0]["Email"],
+            'name' => $request["Subject"],
+            'description' => null,
+            'requested_files' => $requestedFiles
+        ]);
+
+        return self::make($newChecklistRequest, $user);
+    }
+
+    /**
      * Create our Checklist model.
      */
     protected function createChecklist()
@@ -92,4 +134,5 @@ class ChecklistFactory
 
         return $this;
     }
+
 }
