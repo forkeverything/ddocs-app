@@ -7,8 +7,8 @@ namespace App\Factories;
 use App\Checklist;
 use App\File;
 use App\Http\Requests\NewChecklistRequest;
-use App\Http\Requests\Request;
 use App\User;
+use Illuminate\Http\Request;
 
 class ChecklistFactory
 {
