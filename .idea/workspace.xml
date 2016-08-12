@@ -4,7 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/app/Repositories/FilesRequestsRepository.php" line="45" mnemonic="8" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="" />
+    <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
+    </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -24,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <file leaf-file-name="ChecklistsController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="29" column="84" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
+            <state relative-caret-position="324">
+              <caret line="96" column="51" selection-start-line="96" selection-start-column="51" selection-end-line="96" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -114,7 +116,6 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1280" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="1347" />
@@ -254,15 +255,15 @@
       <workItem from="1470754624270" duration="6000" />
       <workItem from="1470800723830" duration="26722000" />
       <workItem from="1470931839906" duration="706000" />
-      <workItem from="1470985755227" duration="1943000" />
+      <workItem from="1470985755227" duration="2077000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113448000" />
+    <option name="totallyTimeSpent" value="113582000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="23" width="1280" height="1347" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="1347" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -696,6 +697,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="29" column="84" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
+          <folding>
+            <marker date="1470990567000" expanded="false" signature="9:390" ph="..." />
+            <marker date="1470990567000" expanded="true" signature="405:505" ph="..." />
+            <marker date="1470990567000" expanded="true" signature="423:504" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/NewChecklistRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -716,50 +729,7 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="26" />
-          <folding>
-            <marker date="1470991570000" expanded="true" signature="44:667" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="714:5546" ph="{...}" />
-            <marker date="1470991570000" expanded="true" signature="724:805" ph=" HashId class to encode/decode ID numbers ..." />
-            <marker date="1470991570000" expanded="true" signature="840:939" ph=" ChecklistsController constructor. ..." />
-            <marker date="1470991570000" expanded="true" signature="1005:1286" ph="{...}" />
-            <marker date="1470991570000" expanded="true" signature="1038:1236" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="1047:1235" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="1071:1225" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="1295:1444" ph=" Show the view for viewing all Checklist(s) made by User. ..." />
-            <marker date="1470991570000" expanded="true" signature="1481:1531" ph="{...}" />
-            <marker date="1470991570000" expanded="true" signature="1540:1707" ph=" Return the Authenticated User's checklists as JSON from ..." />
-            <marker date="1470991570000" expanded="true" signature="1771:2115" ph="{...}" />
-            <marker date="1470991570000" expanded="true" signature="1989:1996" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="2043:2056" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="2105:2107" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="2124:2257" ph=" Return the view to make a new Checklist. ..." />
-            <marker date="1470991570000" expanded="true" signature="2293:2344" ph="{...}" />
-            <marker date="1470991570000" expanded="true" signature="2353:2482" ph=" Handle POST request to make a new Checklist. ..." />
-            <marker date="1470991570000" expanded="true" signature="2551:2744" ph="{...}" />
-            <marker date="1470991570000" expanded="true" signature="2816:3952" ph="{...}" />
-            <marker date="1470991570000" expanded="true" signature="3218:3426" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="3240:3367" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="3528:3683" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="3962:4151" ph=" Get the view for a single Checklist. ..." />
-            <marker date="1470991570000" expanded="true" signature="4226:4454" ph="{...}" />
-            <marker date="1470991570000" expanded="true" signature="4464:4617" ph=" Retrieve the files for checklist. ..." />
-            <marker date="1470991570000" expanded="true" signature="4694:5542" ph="{...}" />
-            <marker date="1470991570000" expanded="true" signature="5037:5055" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="5116:5144" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="5202:5222" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="5275:5291" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="5343:5350" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="5399:5412" ph="..." />
-            <marker date="1470991570000" expanded="true" signature="5526:5534" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="29" column="84" selection-start-line="29" selection-start-column="84" selection-end-line="29" selection-end-column="84" />
+          <caret line="96" column="51" selection-start-line="96" selection-start-column="51" selection-end-line="96" selection-end-column="51" />
           <folding />
         </state>
       </provider>
