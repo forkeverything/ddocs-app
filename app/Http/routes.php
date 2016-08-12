@@ -22,13 +22,9 @@ Route::get('/checklist', 'ChecklistsController@getListsView');
 route::get('/checklist/get', 'ChecklistsController@getForAuthenticatedUser');
 Route::get('/checklist/make', 'ChecklistsController@getMakeForm');
 Route::post('/checklist/make', 'ChecklistsController@postNewChecklist');
+Route::post('/checklist/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
 Route::get('/checklist/{checklist_hash}', 'ChecklistsController@getSingleChecklist');
 Route::get('/checklist/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
 
 Route::post('/file/{fileRequest}', 'FilesController@postUploadFile');
 Route::post('/file/{fileRequest}/reject', 'FilesController@postRejectUploadedFile');
-
-Route::post('checklist/make/email', function (\Illuminate\Http\Request $request) {
-    \Log::info($request->all());
-    return response("received hook and logged");
-});
