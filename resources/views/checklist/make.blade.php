@@ -13,8 +13,11 @@
             <br>
 
 
+
+
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
+                    <form-errors></form-errors>
                     <form id="form-checklist-make">
                         <div id="new-checklist-recipient">
                                 <label class="text-muted">To: </label>
@@ -65,7 +68,7 @@
                         </ul>
                     </form>
                     <div class="text-right">
-                        <button type="button" class="btn btn-solid-green" @click="sendChecklist" :disabled="! canSendChecklist">Send</button>
+                        <button type="button" class="btn btn-solid-green" @click="sendChecklist" :disabled="! canSendChecklist">@{{ makeListButtonText }}</button>
                     </div>
                 </div>
             </div>

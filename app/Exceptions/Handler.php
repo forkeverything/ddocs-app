@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use App\Events\UserHasRunOutOfCredits;
 use Exception;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -45,6 +47,21 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        switch($e) {
+            case ($e instanceof NotEnoughCredits):
+                Event::fire(new UserHasRunOutOfCredits($e->user));
+
+                return response([
+                    'credits' => [
+                        'Not enough credits to create list!'
+                    ]
+                ], 422);
+
+                break;
+            default:
+                break;
+        }
+
         return parent::render($request, $e);
     }
 }

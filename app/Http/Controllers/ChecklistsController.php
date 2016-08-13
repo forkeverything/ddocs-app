@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Checklist;
 use App\Events\ChecklistCreated;
+use App\Exceptions\NotEnoughCredits;
 use App\Factories\ChecklistFactory;
 use App\Factories\FileFactory;
 use App\File;
@@ -100,9 +101,6 @@ class ChecklistsController extends Controller
     public function postNewChecklist(NewChecklistRequest $request)
     {
         $checklist = ChecklistFactory::make($request, Auth::user());
-
-        Event::fire(new ChecklistCreated($checklist));
-
         return $this->hashids->encode($checklist->id);
     }
 
@@ -120,9 +118,7 @@ class ChecklistsController extends Controller
 
         if (!$user = User::where('email', $request["From"])->first()) return "Account Could Not Be Found";
 
-        $checklist = ChecklistFactory::makeFromEmail($request, $user);
-
-        Event::fire(new ChecklistCreated($checklist));
+        ChecklistFactory::makeFromEmail($request, $user);
 
         return "Received Create Checklist via Email Request";
     }
@@ -131,7 +127,6 @@ class ChecklistsController extends Controller
     /**
      * Get the view for a single Checklist.
      *
-     * @param Request $request
      * @param $checklistHash
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

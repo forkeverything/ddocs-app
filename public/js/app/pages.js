@@ -119,10 +119,10 @@ Vue.component('checklist-all', fetchesFromEloquentRepository.extend({
 }));
 Vue.component('checklist-make', {
     name: 'checklistMake',
-    el: function() {
+    el: function () {
         return '#checklist-make'
     },
-    data: function() {
+    data: function () {
         return {
             ajaxReady: true,
             checklistRecipient: '',
@@ -141,35 +141,39 @@ Vue.component('checklist-make', {
     },
     props: [],
     computed: {
-        checklistNameText: function() {
+        checklistNameText: function () {
             // Used to display a default when a name isn't given
-            if(this.checklistName) return this.checklistName;
+            if (this.checklistName) return this.checklistName;
             return 'List Name';
         },
-        validFiles: function() {
+        validFiles: function () {
             // Only return files with names
             return _.filter(this.files, function (file) {
                 return file.name;
             });
         },
-        fileCount: function() {
-           return this.validFiles.length;
+        fileCount: function () {
+            return this.validFiles.length;
         },
-        canSendChecklist: function() {
+        canSendChecklist: function () {
             // Required fields...
             return this.checklistRecipient && this.checklistName && this.fileCount > 0;
+        },
+        makeListButtonText: function () {
+            if (this.ajaxReady) return 'Create List';
+            return 'Saving...';
         }
     },
     methods: {
-        toggleEditingName: function() {
-            this.editingName = ! this.editingName;
-            if(this.editingName) {
-                this.$nextTick(function() {
+        toggleEditingName: function () {
+            this.editingName = !this.editingName;
+            if (this.editingName) {
+                this.$nextTick(function () {
                     $('#input-checklist-name').focus();
                 });
             }
         },
-        addAnotherFileAfter: function(file) {
+        addAnotherFileAfter: function (file) {
             var fileIndex = _.indexOf(this.files, file);
             var newFile = {
                 name: '',
@@ -182,29 +186,30 @@ Vue.component('checklist-make', {
                 $($('.single-file')[fileIndex + 1]).find('.input-file-name').focus();
             });
         },
-        removeFile: function(file) {
+        removeFile: function (file) {
             var fileIndex = _.indexOf(this.files, file);
-            if(! file.name && fileIndex !== 0) {
+            if (!file.name && fileIndex !== 0) {
                 this.files.splice(fileIndex, 1);
                 this.$nextTick(function () {
                     $($('.single-file')[fileIndex - 1]).find('.input-file-name').focus();
                 });
             }
         },
-        goTo: function(direction, file) {
+        goTo: function (direction, file) {
             var fileIndex = _.indexOf(this.files, file);
-            if(direction === 'prev') {
+            if (direction === 'prev') {
                 $($('.single-file')[fileIndex - 1]).find('.input-file-name').focus();
             } else {
                 $($('.single-file')[fileIndex + 1]).find('.input-file-name').focus();
             }
         },
-        toggleRequired: function(file) {
+        toggleRequired: function (file) {
             file.required = file.required ? 0 : 1;
         },
-        sendChecklist: function() {
+        sendChecklist: function () {
             var self = this;
-            if(!self.ajaxReady) return;
+            vueClearValidationErrors(self);
+            if (!self.ajaxReady) return;
             self.ajaxReady = false;
             $.ajax({
                 url: '/checklist/make',
@@ -215,25 +220,24 @@ Vue.component('checklist-make', {
                     description: self.checklistDescription,
                     requested_files: self.validFiles
                 },
-                success: function(data) {
-                   location.href = "/checklist/" + data;
+                success: function (data) {
+                    location.href = "/checklist/" + data;
                 },
-                error: function(response) {
+                error: function (response) {
                     console.log(response);
+                    vueValidation(response, self);
                     self.ajaxReady = true;
                 }
             });
         }
     },
-    events: {
-
-    },
-    ready: function() {
-        $(document).on('focus', '.input-file-name', function(){
+    events: {},
+    ready: function () {
+        $(document).on('focus', '.input-file-name', function () {
             $(this).parent().addClass('is-focused');
         });
 
-        $(document).on('blur', '.input-file-name', function(){
+        $(document).on('blur', '.input-file-name', function () {
             $(this).parent().removeClass('is-focused');
         });
     }

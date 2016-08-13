@@ -5,10 +5,12 @@ namespace App\Factories;
 
 
 use App\Checklist;
+use App\Events\ChecklistCreated;
 use App\File;
 use App\Http\Requests\NewChecklistRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 
 class ChecklistFactory
 {
@@ -56,11 +58,13 @@ class ChecklistFactory
     public static function make(NewChecklistRequest $request, User $user)
     {
         $factory = new static($request, $user);
-        $factory->createChecklist()
+        $factory->processPayment()
+                ->createChecklist()
                 ->createFiles();
 
         return $factory->checklist;
     }
+
 
     /**
      * Receives request from email webhook to create a checklist via cc. Parse
@@ -104,7 +108,23 @@ class ChecklistFactory
     }
 
     /**
+     * Process the payment required to create a checklist.
+     *
+     * @return $this
+     */
+    protected function processPayment()
+    {
+        // If user is subscribed, we'll just skip credit deduction
+        if ($this->user->subscribed('main')) return $this;
+
+        $this->user->minusOneCredit();
+        return $this;
+    }
+
+    /**
      * Create our Checklist model.
+     *
+     * @return $this
      */
     protected function createChecklist()
     {
@@ -114,6 +134,8 @@ class ChecklistFactory
             'description' => $this->request->description,
             'user_id' => $this->user->id
         ]);
+
+        Event::fire(new ChecklistCreated($this->checklist));
 
         return $this;
     }

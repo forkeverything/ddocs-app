@@ -26,4 +26,17 @@ class UserMailer extends Mailer
         $this->sendTo($user->email, $user->name, $subject, $view, compact('user'));
     }
 
+    /**
+     * Let the User know they we couldn't make a recent list they've requested
+     * because they don't have enough credits.
+     *
+     * @param User $user
+     */
+    public function sendNotEnoughCreditsToMakeListEmail(User $user)
+    {
+        $subject = 'Files Collector - Not Enough Credits For Checklist!';
+        $view = 'emails.user.not-enough-credits';
+        $this->sendTo($user->email, $user->name, $subject, $view, compact('user'));
+    }
+
 }

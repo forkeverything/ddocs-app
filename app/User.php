@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Exceptions\NotEnoughCredits;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Cashier\Billable;
 
@@ -14,7 +15,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'credits'
     ];
 
     /**
@@ -34,5 +38,33 @@ class User extends Authenticatable
     public function checklists()
     {
         return $this->hasMany(Checklist::class);
+    }
+
+
+    /**
+     * Minus a User's credit
+     *
+     * @return $this
+     * @throws NotEnoughCredits
+     */
+    public function minusOneCredit()
+    {
+        if($this->ranOutOfCredits()) throw new NotEnoughCredits($this);
+
+        $this->update([
+            'credits' => $this->credits - 1
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * Check if User has ran out of credits.
+     *
+     * @return bool
+     */
+    protected function ranOutOfCredits()
+    {
+        return $this->credits === 0;
     }
 }

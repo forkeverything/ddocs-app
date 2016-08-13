@@ -27,12 +27,21 @@ class NewChecklistRequest extends Request
     {
         return [
             'recipient' => 'required|email',
-            'name' => 'required|unique:checklists,name,NULL,id,user_id,' . Auth::user()->id,
+            'name' => 'required|checklist_name',
             'requested_files.*.name' => 'required'
         ];
 
         /**
          * TODO ::: (?) Update validation so that we'll only prevent duplicate checklist names if they are for the same recipient.
          */
+    }
+
+    public function messages()
+    {
+        return [
+            'recipient.required' => 'Recipient to send list to cannot be empty.',
+            'recipient.email' => 'Invalid recipient email address.',
+            'name.checklist_name' => 'Can\'t create checklist with same name for the same recipient.'
+        ];
     }
 }

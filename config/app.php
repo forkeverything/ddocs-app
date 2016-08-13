@@ -159,10 +159,15 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-         * Custom Service Providers...
+         * Package Service Providers...
          */
         Vinkla\Hashids\HashidsServiceProvider::class,
-        Laravel\Cashier\CashierServiceProvider::class
+        Laravel\Cashier\CashierServiceProvider::class,
+
+        /*
+         * Custom Service Providers...
+         */
+        App\Providers\ChecklistProvider::class
 
     ],
 

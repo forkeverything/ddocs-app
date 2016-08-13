@@ -7,9 +7,11 @@ use App\Events\ChecklistCreated;
 use App\Events\FileWasRejected;
 use App\Events\FileWasUploaded;
 use App\Events\NewUserSignedUp;
+use App\Events\UserHasRunOutOfCredits;
 use App\Listeners\CheckIfChecklistIsComplete;
 use App\Listeners\EmailChecklistCompleteNotification;
 use App\Listeners\EmailFileRejectedNotification;
+use App\Listeners\EmailNotEnoughCreditsToMakeListNotification;
 use App\Listeners\EmailRecipientOfNewChecklist;
 use App\Listeners\EmailWelcomeMessage;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
@@ -40,6 +42,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         FileWasRejected::class => [
             EmailFileRejectedNotification::class
+        ],
+        UserHasRunOutOfCredits::class => [
+            EmailNotEnoughCreditsToMakeListNotification::class
         ]
     ];
 
