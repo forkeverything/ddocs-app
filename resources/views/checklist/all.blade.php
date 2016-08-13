@@ -59,9 +59,9 @@
                     </thead>
                     <tbody>
                     <template v-for="checklist in checklists">
-                        <tr class="clickable" @click="viewChecklist(checklist)">
+                        <tr>
                             <td>
-                                @{{ checklist.name }}
+                                <a :href="'/checklist/' + checklist.hash ">@{{ checklist.name }}</a>
                             </td>
                             <td>
                                 @{{ checklist.recipient }}

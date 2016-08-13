@@ -15,7 +15,8 @@ class Checklist extends Model
         'recipient',
         'name',
         'description',
-        'user_id'
+        'user_id',
+        'recipient_notifications'
     ];
 
     /**
@@ -84,5 +85,18 @@ class Checklist extends Model
     public function madeBy(User $user)
     {
         return $this->user_id === $user->id;
+    }
+
+    /**
+     * Quick update to turn off recipient notifications property.
+     *
+     * @return $this
+     */
+    public function turnOffRecipientNotifications()
+    {
+        $this->update([
+            'recipient_notifications' => 0
+        ]);
+        return $this;
     }
 }

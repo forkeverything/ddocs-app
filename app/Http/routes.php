@@ -25,6 +25,7 @@ Route::post('/checklist/make', 'ChecklistsController@postNewChecklist');
 Route::post('/checklist/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
 Route::get('/checklist/{checklist_hash}', 'ChecklistsController@getSingleChecklist');
 Route::get('/checklist/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
+Route::post('/checklist/{checklist_hash}/turn_off_notifications', 'ChecklistsController@postTurnOffNotifications');
 
 Route::post('/file/{fileRequest}', 'FilesController@postUploadFile');
 Route::post('/file/{fileRequest}/reject', 'FilesController@postRejectUploadedFile');

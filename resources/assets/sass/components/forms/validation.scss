@@ -1,0 +1,12 @@
+.validation-errors {
+  color: $dark-red;
+  margin: 0 0 15px 0;
+  @include border-radius($border-radius-base);
+  border: 1px solid $dark-red;
+  padding: 10px;
+  background: $extra-light-red;
+
+  .errors-list {
+    margin: 0;
+  }
+}

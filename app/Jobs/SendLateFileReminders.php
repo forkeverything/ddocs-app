@@ -32,7 +32,7 @@ class SendLateFileReminders extends Job implements ShouldQueue
     {
         $checklists = $this->fetchChecklistsWithLateFiles();
         foreach ($checklists as $checklist) {
-            $checklistMailer->sendLateFilesReminder($checklist);
+            if($checklist->recipient_notifications) $checklistMailer->sendLateFilesReminder($checklist);
         }
     }
 

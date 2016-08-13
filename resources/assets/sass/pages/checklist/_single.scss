@@ -1,5 +1,27 @@
 #checklist-single {
 
+  #header {
+    display: flex;
+    margin: 0 0 15px;
+
+    .breadcrumb {
+      margin-bottom: 0;
+    }
+
+    .right {
+      flex: 1;
+      text-align: right;
+    }
+  }
+
+  #form-notifications {
+    margin: 0 0 15px;
+    background: $extra-light-grey;
+    padding: 15px;
+    @include border-radius($border-radius-small);
+    border: 1px solid $border-light;
+  }
+
   #form-checklist-search {
     margin: 0 0 15px;
   }

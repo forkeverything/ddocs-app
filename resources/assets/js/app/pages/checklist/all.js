@@ -13,11 +13,7 @@ Vue.component('checklist-all', fetchesFromEloquentRepository.extend({
     },
     props: [],
     computed: {},
-    methods: {
-        viewChecklist: function(checklist) {
-            location.href = "/checklist/" + checklist.hash
-        }
-    },
+    methods: {},
     events: {},
     ready: function () {
         var self = this;

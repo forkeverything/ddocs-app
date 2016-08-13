@@ -13,11 +13,7 @@ Vue.component('checklist-all', fetchesFromEloquentRepository.extend({
     },
     props: [],
     computed: {},
-    methods: {
-        viewChecklist: function(checklist) {
-            location.href = "/checklist/" + checklist.hash
-        }
-    },
+    methods: {},
     events: {},
     ready: function () {
         var self = this;
@@ -177,13 +173,15 @@ Vue.component('checklist-single', fetchesFromEloquentRepository.extend({
                 }
             ],
             files: [],
-            FileWithExpandedDetails: '',           // Holds a file object
+            fileWithExpandedDetails: '',           // Holds a file object
             expandedView: '',                      // 'history', 'reject'
             reason: '',
-            numReceived: ''
+            numReceived: '',
+            emailToTurnOffNotifications: '',
+            showTurnOffNotificationsPanel: false
         };
     },
-    props: ['checklist-hash'],
+    props: ['checklist-hash', 'recipient-notifications'],
     computed: {
         requestUrl: function () {
             return '/checklist/' + this.checklistHash + '/files';
@@ -256,14 +254,14 @@ Vue.component('checklist-single', fetchesFromEloquentRepository.extend({
         },
         expandFileSection: function (file, section) {
             this.reason = '';
-            this.FileWithExpandedDetails = file;
+            this.fileWithExpandedDetails = file;
             this.expandedView = section;
         },
         fileExpanded: function (file) {
-            return this.FileWithExpandedDetails === file;
+            return this.fileWithExpandedDetails === file;
         },
         hideDetailsSection: function () {
-            this.FileWithExpandedDetails = '';
+            this.fileWithExpandedDetails = '';
         },
         rejectFile: function (file) {
             var self = this;
@@ -284,6 +282,35 @@ Vue.component('checklist-single', fetchesFromEloquentRepository.extend({
                 },
                 error: function (response) {
                     console.log(response);
+                    self.ajaxReady = true;
+                }
+            });
+        },
+        toggleConfirmTurnOffNotifications: function() {
+            this.showTurnOffNotificationsPanel = ! this.showTurnOffNotificationsPanel;
+        },
+        turnOffNotifications: function() {
+
+            var self = this;
+            vueClearValidationErrors(self);
+            if(!self.ajaxReady) return;
+            self.ajaxReady = false;
+            $.ajax({
+                url: '/checklist/' + self.checklistHash + '/turn_off_notifications',
+                method: 'POST',
+                data: {
+                    "email": self.emailToTurnOffNotifications
+                },
+                success: function(data) {
+                   // success
+                   self.recipientNotifications = 0;
+                    self.showTurnOffNotificationsPanel = false;
+                   self.ajaxReady = true;
+                },
+                error: function(response) {
+                    console.log(response);
+                    
+                    vueValidation(response, self);
                     self.ajaxReady = true;
                 }
             });

@@ -32,7 +32,7 @@ class SendUpcomingDueFileReminders extends Job implements ShouldQueue
     {
         $checklists = $this->fetchChecklistsWithFilesDueIn3Days();
         foreach ($checklists as $checklist) {
-            $checklistMailer->sendUpcomingFilesReminder($checklist);
+            if($checklist->recipient_notifications) $checklistMailer->sendUpcomingFilesReminder($checklist);
         }
     }
 

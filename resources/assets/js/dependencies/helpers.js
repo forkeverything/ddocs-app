@@ -38,13 +38,13 @@ function escapeHtml(string) {
  * Takes an AJAX response and vue instance
  * and emits form errors to be caught by
  * 'form-errors' Vue Component.
- * 
+ *
  * @param response
  * @param vue
  */
 function vueValidation(response, vue) {
     if(response.status === 422) {
-        vue.$broadcast('new-errors', response.responseJSON);
+        vueEventBus.$emit('new-errors', response.responseJSON);
     }
 }
 
@@ -54,7 +54,7 @@ function vueValidation(response, vue) {
  * @param vue
  */
 function vueClearValidationErrors(vue) {
-    vue.$broadcast('clear-errors');
+    vueEventBus.$emit('clear-errors');
 }
 
 /**

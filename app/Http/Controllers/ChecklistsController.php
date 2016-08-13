@@ -10,6 +10,7 @@ use App\File;
 use App\FileRequest;
 use App\Http\Requests\NewChecklistRequest;
 use App\Http\Requests\RejectFileRequest;
+use App\Http\Requests\TurnOffRecipientNotificationsRequest;
 use App\Http\Requests\UploadFileRequest;
 use App\Repositories\ChecklistsRespository;
 use App\Repositories\FilesRequestsRepository;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 use Vinkla\Hashids\HashidsManager;
 
 class ChecklistsController extends Controller
@@ -114,9 +116,9 @@ class ChecklistsController extends Controller
     public function postNewChecklistFromEmailWebhook(Request $request)
     {
         // Is it going to the right cc address: list@in.filescollector.com
-        if($request["OriginalRecipient"] !== 'list@in.filescollector.com') return "Wrong Email Address To Create Checklist";
+        if ($request["OriginalRecipient"] !== 'list@in.filescollector.com') return "Wrong Email Address To Create Checklist";
 
-        if(! $user = User::where('email', $request["From"])->first()) return "Account Could Not Be Found";
+        if (!$user = User::where('email', $request["From"])->first()) return "Account Could Not Be Found";
 
         $checklist = ChecklistFactory::makeFromEmail($request, $user);
 
@@ -133,9 +135,10 @@ class ChecklistsController extends Controller
      * @param $checklistHash
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getSingleChecklist(Request $request, $checklistHash)
+    public function getSingleChecklist($checklistHash)
     {
         $checklist = Checklist::findOrFail(unhashId($checklistHash));
+
 //        if(Auth::check()) $this->authorize('view', $checklist);
         return view('checklist.single', compact('checklist', 'checklistHash'));
     }
@@ -164,6 +167,32 @@ class ChecklistsController extends Controller
                                       ->sortOn($sort, $order)
                                       ->withNumReceivedFiles()
                                       ->paginate($perPage);
+    }
+
+    /**
+     * POST request to turn off notifications for a Checklist. Recipient
+     * will stop receiving email reminders or file changes required
+     * notifications.
+     *
+     * @param Request $request
+     * @param $checklistHash
+     * @return string
+     */
+    public function postTurnOffNotifications(Request $request, $checklistHash)
+    {
+
+        $checklist = Checklist::findOrFail(unhashId($checklistHash));
+        $email = strtolower($request->email);
+
+        if ($email !== $checklist->recipient) {
+            return response([
+                'email' => [
+                    'Email address is different to recipient'
+                ]
+            ], 422);
+        }
+        $checklist->turnOffRecipientNotifications();
+        return "Turned off notifications";
     }
 
 

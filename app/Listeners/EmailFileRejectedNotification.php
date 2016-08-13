@@ -32,6 +32,6 @@ class EmailFileRejectedNotification implements ShouldQueue
      */
     public function handle(FileWasRejected $event)
     {
-        $this->fileRequestMailer->sendChangesRequiredEmail($event->fileRequest);
+        if($event->fileRequest->checklist->recipient_notifications) $this->fileRequestMailer->sendChangesRequiredEmail($event->fileRequest);
     }
 }

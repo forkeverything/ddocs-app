@@ -20,6 +20,9 @@ class CreateChecklistsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
 
+            // Whether recipient receives email notifications
+            $table->boolean('recipient_notifications')->default(1);
+
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

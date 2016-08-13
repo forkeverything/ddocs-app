@@ -47,13 +47,13 @@ function escapeHtml(string) {
  * Takes an AJAX response and vue instance
  * and emits form errors to be caught by
  * 'form-errors' Vue Component.
- * 
+ *
  * @param response
  * @param vue
  */
 function vueValidation(response, vue) {
     if(response.status === 422) {
-        vue.$broadcast('new-errors', response.responseJSON);
+        vueEventBus.$emit('new-errors', response.responseJSON);
     }
 }
 
@@ -63,7 +63,7 @@ function vueValidation(response, vue) {
  * @param vue
  */
 function vueClearValidationErrors(vue) {
-    vue.$broadcast('clear-errors');
+    vueEventBus.$emit('clear-errors');
 }
 
 /**
@@ -226,39 +226,6 @@ function formatNumber(val) {
 function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
-Vue.directive('datepicker', {
-    params: ['button-only'],
-    bind: function() {
-        if(this.params.buttonOnly) {
-            $(this.el).datepicker({
-                dateFormat: "dd/mm/yy",
-                minDate: 0,
-                buttonImage: '/images/icons/calendar.png',
-                buttonImageOnly: true,
-                showOn: 'both'
-            });
-        } else {
-            $(this.el).datepicker({
-                dateFormat: "dd/mm/yy",
-                minDate: 0
-            });
-        }
-    }
-});
-Vue.directive('modal', {
-    twoWay: true,
-    update: function () {
-        var self = this;
-        
-        $(this.el).click(function () {
-            self.set(false);
-        });
-
-        $(this.el).children().click(function (e) {
-            e.stopPropagation();
-        });
-    }
-});
 Vue.component('date-range-field', {
     name: 'dateRangeField',
     template: '<div class="date-range-field" @click.stop="">' +
@@ -398,6 +365,35 @@ var fetchesFromEloquentRepository = Vue.extend({
         this.checkSetup();
         this.fetchResults();
         onPopCallFunction(this.fetchResults);
+    }
+});
+Vue.component('form-errors', {
+    template: '<div class="validation-errors" v-show="errors.length > 0">' +
+    '<ul class="errors-list list-unstyled"' +
+    'v-show="errors.length > 0"' +
+    '>' +
+    '<li v-for="error in errors">{{ error }}</li>' +
+    '</ul>' +
+    '</div>',
+    data: function () {
+        return {
+            errors: []
+        }
+    },
+    ready: function() {
+        var self = this;
+
+        vueEventBus.$on('new-errors', function (errors) {
+            var newErrors = [];
+            _.forEach(errors, function (error) {
+                if (newErrors.indexOf(error[0]) == -1) newErrors.push(error[0]);
+            });
+            self.errors = newErrors;
+        });
+
+        vueEventBus.$on('clear-errors', function(errors) {
+            self.errors = [];
+        });
     }
 });
 Vue.component('integer-range-field', {
@@ -557,6 +553,39 @@ Vue.component('per-page-picker', {
     ready: function () {
         this.$watch('currentItemsPerPage', function (numItems) {
             this.newItemsPerPage = numItems;
+        });
+    }
+});
+Vue.directive('datepicker', {
+    params: ['button-only'],
+    bind: function() {
+        if(this.params.buttonOnly) {
+            $(this.el).datepicker({
+                dateFormat: "dd/mm/yy",
+                minDate: 0,
+                buttonImage: '/images/icons/calendar.png',
+                buttonImageOnly: true,
+                showOn: 'both'
+            });
+        } else {
+            $(this.el).datepicker({
+                dateFormat: "dd/mm/yy",
+                minDate: 0
+            });
+        }
+    }
+});
+Vue.directive('modal', {
+    twoWay: true,
+    update: function () {
+        var self = this;
+        
+        $(this.el).click(function () {
+            self.set(false);
+        });
+
+        $(this.el).children().click(function (e) {
+            e.stopPropagation();
         });
     }
 });
