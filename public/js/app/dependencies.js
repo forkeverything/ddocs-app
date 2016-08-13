@@ -226,6 +226,9 @@ function formatNumber(val) {
 function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
 Vue.component('date-range-field', {
     name: 'dateRangeField',
     template: '<div class="date-range-field" @click.stop="">' +

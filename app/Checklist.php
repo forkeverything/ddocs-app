@@ -72,6 +72,7 @@ class Checklist extends Model
         // Count only required files that are received....
         $received = $files->where('required', 1)->where('status', 'received')->count();
         $total = $files->count();
+        if(! $total) return;
         return round(100 * $received / $total, 0);
     }
 

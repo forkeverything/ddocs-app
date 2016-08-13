@@ -10,7 +10,7 @@
             @if(Auth::check())
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle text-capitalize" data-toggle="dropdown" role="button"
-                       aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                       aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} @include('layouts.partials.credit-or-subscribed')</a>
                     <ul class="dropdown-menu">
                         <li><a href="/checklist/make">New Checklist</a></li>
                         <li><a href="/checklist">My Lists</a></li>

@@ -6039,6 +6039,9 @@ table {
 .text-danger, .text-error {
   color: #C0392B; }
 
+.text-info {
+  color: #3498DB; }
+
 .file-status.waiting {
   color: #9CA1A8; }
 
