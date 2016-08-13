@@ -5795,7 +5795,7 @@ button.close {
   color: #3498DB; }
 
 .dropdown-menu li a:hover, .dropdown-menu li a:focus {
-  color: #fff;
+  color: #fff !important;
   background: #3498DB !important;
   text-decoration: none !important; }
 
