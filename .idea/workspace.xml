@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Factories/ChecklistFactory.php" afterPath="$PROJECT_DIR$/app/Factories/ChecklistFactory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/SendLateFileReminders.php" afterPath="$PROJECT_DIR$/app/Jobs/SendLateFileReminders.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/SendUpcomingDueFileReminders.php" afterPath="$PROJECT_DIR$/app/Jobs/SendUpcomingDueFileReminders.php" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,20 +25,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="files-collector" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="ChecklistsController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="785">
-              <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,8 +56,6 @@
         <option value="$PROJECT_DIR$/app/Jobs/EmailFileReminders.php" />
         <option value="$PROJECT_DIR$/app/Console/Kernel.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/pages/checklist/single.js" />
-        <option value="$PROJECT_DIR$/app/Jobs/SendLateFileReminders.php" />
-        <option value="$PROJECT_DIR$/app/Jobs/SendUpcomingDueFileReminders.php" />
         <option value="$PROJECT_DIR$/app/Events/ChecklistCompleted.php" />
         <option value="$PROJECT_DIR$/app/Events/FileWasRejected.php" />
         <option value="$PROJECT_DIR$/app/Events/FileWasUploaded.php" />
@@ -96,6 +81,8 @@
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
         <option value="$PROJECT_DIR$/app/Factories/ChecklistFactory.php" />
+        <option value="$PROJECT_DIR$/app/Jobs/SendLateFileReminders.php" />
+        <option value="$PROJECT_DIR$/app/Jobs/SendUpcomingDueFileReminders.php" />
       </list>
     </option>
   </component>
@@ -146,11 +133,42 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
-        <subPane />
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -257,16 +275,17 @@
       <workItem from="1470800723830" duration="26722000" />
       <workItem from="1470931839906" duration="706000" />
       <workItem from="1470985755227" duration="4255000" />
-      <workItem from="1470995468300" duration="46000" />
+      <workItem from="1470995468300" duration="265000" />
+      <workItem from="1471057560897" duration="119000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115806000" />
+    <option name="totallyTimeSpent" value="116144000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -331,32 +350,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_07_31_060512_create_file_requests_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Jobs/EmailFileReminders.php" />
     <entry file="file://$PROJECT_DIR$/resources/assets/js/app/pages/checklist/single.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Jobs/SendLateFileReminders.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Jobs/SendUpcomingDueFileReminders.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1082">
-          <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -395,13 +393,6 @@
             <marker date="1470863493000" expanded="true" signature="1568:1702" ph=" Quick checker to see if Checklist was made by ..." />
             <marker date="1470863493000" expanded="true" signature="1743:1800" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="34" column="43" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -672,16 +663,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1470040016000" expanded="false" signature="11:94" ph="..." />
-            <marker date="1470040016000" expanded="true" signature="141:829" ph="{...}" />
-            <marker date="1470040016000" expanded="true" signature="151:211" ph=" Run the migrations. ..." />
-            <marker date="1470040016000" expanded="true" signature="238:677" ph="{...}" />
-            <marker date="1470040016000" expanded="true" signature="268:669" ph="..." />
-            <marker date="1470040016000" expanded="true" signature="311:668" ph="..." />
-            <marker date="1470040016000" expanded="true" signature="686:750" ph=" Reverse the migrations. ..." />
-            <marker date="1470040016000" expanded="true" signature="779:827" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -696,7 +677,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -704,11 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <marker date="1470990567000" expanded="false" signature="9:390" ph="..." />
-            <marker date="1470990567000" expanded="true" signature="405:505" ph="..." />
-            <marker date="1470990567000" expanded="true" signature="423:504" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -718,7 +693,6 @@
           <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
           <folding>
             <marker date="1470995506000" expanded="true" signature="39:153" ph="..." />
-            <marker date="1470995506000" expanded="true" signature="177:3362" ph="{...}" />
             <marker date="1470995506000" expanded="true" signature="188:250" ph=" The Checklist model ..." />
             <marker date="1470995506000" expanded="true" signature="287:376" ph=" The request to make a new Checklist. ..." />
             <marker date="1470995506000" expanded="true" signature="411:478" ph=" The User making the Checklist ..." />
@@ -746,8 +720,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="785">
-          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+        <state relative-caret-position="650">
+          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="758">
+          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_07_31_060512_create_file_requests_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Jobs/SendUpcomingDueFileReminders.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1134">
+          <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Jobs/SendLateFileReminders.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1107">
+          <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="38" />
           <folding />
         </state>
       </provider>
