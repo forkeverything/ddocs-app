@@ -7,6 +7,9 @@
             <p class="text-center">Hi {{ Auth::user()->name }}, here are all the checklists you've made with us.</p>
             <br>
 
+            <div class="form-group text-right">
+                <a href="/checklist/make"><button type="button" class="btn btn-solid-green">New Checklist</button></a>
+            </div>
 
             <form id="form-all-checklists-search" @submit.prevent="searchTerm">
                 <div class="form-group">
