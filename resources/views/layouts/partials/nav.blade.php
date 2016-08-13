@@ -14,7 +14,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="/checklist/make">New Checklist</a></li>
                         <li><a href="/checklist">My Lists</a></li>
-                        <li><a href="#">Account</a></li>
+                        <li><a href="/account">Account</a></li>
                         <li><a href="/logout" alt="link to logout">Logout</a></li>
                     </ul>
                 </li>

@@ -6498,4 +6498,12 @@ textarea {
 #checklist-all .progress {
   margin: 0; }
 
+#account-overview #form-credit-card .expiry-fields {
+  display: -ms-flexbox;
+  display: flex; }
+  #account-overview #form-credit-card .expiry-fields .separator {
+    margin: 0 10px;
+    font-size: 1.75em;
+    color: #9CA1A8; }
+
 /*# sourceMappingURL=app.css.map */

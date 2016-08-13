@@ -29,3 +29,8 @@ Route::post('/checklist/{checklist_hash}/turn_off_notifications', 'ChecklistsCon
 
 Route::post('/file/{fileRequest}', 'FilesController@postUploadFile');
 Route::post('/file/{fileRequest}/reject', 'FilesController@postRejectUploadedFile');
+
+Route::get('/account', 'AccountsController@getAccountOverview');
+Route::post('/account/subscription', 'AccountsController@postSubscribe');
+Route::delete('/account/subscription', 'AccountsController@deleteCancelSubscription');
+Route::post('/account/subscription/resume', 'AccountsController@postResumeSubscription');

@@ -1,0 +1,15 @@
+#account-overview {
+
+
+  #form-credit-card {
+
+    .expiry-fields {
+      display: flex;
+      .separator {
+        margin: 0 10px;
+        font-size: 1.75em;
+        color: $text-muted;
+      }
+    }
+  }
+}

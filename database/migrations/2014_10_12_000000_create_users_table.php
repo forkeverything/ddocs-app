@@ -21,6 +21,11 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             $table->integer('credits')->default('5')->unsigned();
+
+            $table->string('stripe_id')->nullable();
+            $table->string('card_brand')->nullable();
+            $table->string('card_last_four')->nullable();
+            $table->timestamp('trial_ends_at')->nullable();
         });
     }
 
@@ -30,7 +35,7 @@ class CreateUsersTable extends Migration
      * @return void
      */
     public function down()
-    {\
+    {
         Schema::drop('users');
     }
 }

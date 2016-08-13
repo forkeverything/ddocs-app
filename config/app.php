@@ -161,7 +161,8 @@ return [
         /*
          * Custom Service Providers...
          */
-        Vinkla\Hashids\HashidsServiceProvider::class
+        Vinkla\Hashids\HashidsServiceProvider::class,
+        Laravel\Cashier\CashierServiceProvider::class
 
     ],
 
