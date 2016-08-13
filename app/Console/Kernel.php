@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\ReplenishUserCredits;
 use App\Jobs\SendLateFileReminders;
 use App\Jobs\SendUpcomingDueFileReminders;
 use Illuminate\Console\Scheduling\Schedule;
@@ -43,6 +44,10 @@ class Kernel extends ConsoleKernel
             $this->dispatch(new SendUpcomingDueFileReminders);
         })->dailyAt('06:00');
 
+        // Replenish user credits to 5 / month
+        $schedule->call(function () {
+            $this->dispatch(new ReplenishUserCredits);
+        })->monthlyOn(1, '00:00');
 
         /*
          * TODO ::: Maybe we can move dispatching the jobs into an Artisan command and have
