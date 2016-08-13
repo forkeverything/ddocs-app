@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Events\RecipientClaimedInvitation;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Event;
 
 class Checklist extends Model
 {
@@ -16,7 +18,8 @@ class Checklist extends Model
         'name',
         'description',
         'user_id',
-        'recipient_notifications'
+        'recipient_notifications',
+        'invitation_claimed'
     ];
 
     /**
@@ -98,6 +101,25 @@ class Checklist extends Model
         $this->update([
             'recipient_notifications' => 0
         ]);
+        return $this;
+    }
+
+    /**
+     * Recipient (User) claim invite for this Checklist to get
+     * free credits for recipient and user that made checklist.
+     *
+     * @param User $recipient
+     * @return $this
+     */
+    public function claimInvite(User $recipient)
+    {
+        $this->update(['invitation_claimed' => 1]);
+        $this->user->addCredits(10);
+        // Give recipient 10 including default of 5.
+        $recipient->addCredits(10);
+
+        Event::fire(new RecipientClaimedInvitation($this, $recipient));
+
         return $this;
     }
 }

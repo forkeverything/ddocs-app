@@ -67,4 +67,19 @@ class User extends Authenticatable
     {
         return $this->credits === 0;
     }
+
+    /**
+     * Add credits to User.
+     *
+     * @param int $numCredits
+     * @return $this
+     */
+    public function addCredits($numCredits)
+    {
+        $currentCredits = $this->credits;
+        $this->update([
+            'credits' => ($this->credits + $numCredits)
+        ]);
+        return $this;
+    }
 }

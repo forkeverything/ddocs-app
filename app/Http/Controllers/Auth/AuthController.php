@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Checklist;
 use App\Events\NewUserSignedUp;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -35,7 +38,6 @@ class AuthController extends Controller
     /**
      * Create a new authentication controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -75,5 +77,66 @@ class AuthController extends Controller
         Event::fire(new NewUserSignedUp($user));
 
         return $user;
+    }
+
+    /**
+     * Over-write show registration form method to get invite key (checklist hash)
+     * from url
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm(Request $request)
+    {
+
+        $inviteKey = $request->invite_key;
+        
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView, compact('inviteKey'));
+        }
+
+        return view('auth.register', compact('inviteKey'));
+    }
+
+
+    /**
+     * Over-write to add credits if valid inviteKey provided. When User has
+     * claimed offer to sign-up as a recipient of a checklist.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        // create user
+        $user = $this->create($request->all());
+
+        $this->addInviteCredits($request->invite_key, $user);
+
+        Auth::guard($this->getGuard())->login($user);
+
+        return redirect($this->redirectPath());
+    }
+
+    /**
+     * Add credits to the recipient and person who made the Checklist.
+     *
+     * @param $inviteKey
+     * @param User $recipient
+     */
+    protected function addInviteCredits($inviteKey, User $recipient)
+    {
+        $checklist = Checklist::find(unhashId($inviteKey));
+        if ($checklist) {
+            $checklist->claimInvite($recipient);
+        }
     }
 }

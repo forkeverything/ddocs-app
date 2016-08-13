@@ -6446,6 +6446,12 @@ textarea {
       #checklist-make .single-file .input-due.filled {
         color: #000; }
 
+#checklist-single #join-offer {
+  background: #FFFBE9;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin: 0 0 15px; }
+
 #checklist-single #header {
   display: -ms-flexbox;
   display: flex;

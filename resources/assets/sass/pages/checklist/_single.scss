@@ -1,5 +1,12 @@
 #checklist-single {
 
+  #join-offer {
+    background: $extra-light-yellow;
+    @include border-radius($border-radius-small);
+    padding: 5px 10px;
+    margin: 0 0 15px;
+  }
+
   #header {
     display: flex;
     margin: 0 0 15px;

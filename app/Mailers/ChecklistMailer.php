@@ -5,6 +5,7 @@ namespace App\Mailers;
 
 
 use App\Checklist;
+use App\User;
 use Carbon\Carbon;
 
 class ChecklistMailer extends Mailer
@@ -66,6 +67,20 @@ class ChecklistMailer extends Mailer
         $subject = 'Files Collector - Another Completed Checklist: ' . $checklist->name;
         $view = 'emails.checklist.complete';
         $this->sendTo($maker->email, $maker->name, $subject, $view, compact('checklist', 'maker'));
+    }
+
+    /**
+     * Let the maker of the Checklist know that the recipient has created an account
+     * and signed up using the offer. So the maker has received free credits!
+     *
+     * @param Checklist $checklist
+     * @param User $recipient
+     */
+    public function sendFreeCreditsReceived(Checklist $checklist, User $recipient)
+    {
+        $subject = 'Files Collector - ' . 'Free Credits From ' . $recipient->name;
+        $view = 'emails.checklist.free-credits';
+        $this->sendTo($checklist->user->email, $checklist->user->name, $subject, $view, compact('checklist', 'recipient'));
     }
 
 }
