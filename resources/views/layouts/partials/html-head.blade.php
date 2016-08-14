@@ -1,4 +1,4 @@
-<title>Files Collector</title>
+<title>Files Collector: Get it on time</title>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
