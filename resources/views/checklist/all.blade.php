@@ -2,7 +2,7 @@
 
 @section('fb-track')
     <script>
-        fbq('track', 'All Checklist');
+        fbq('track', 'ViewAllChecklist');
     </script>
 @endsection
 

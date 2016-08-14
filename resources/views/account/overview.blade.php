@@ -2,7 +2,7 @@
 
 @section('fb-track')
     <script>
-        fbq('track', 'Account Overview');
+        fbq('track', 'ViewAccountOverview');
     </script>
 @endsection
 
