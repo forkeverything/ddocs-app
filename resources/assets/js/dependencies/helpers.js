@@ -44,7 +44,8 @@ function escapeHtml(string) {
  */
 function vueValidation(response, vue) {
     if(response.status === 422) {
-        vueEventBus.$emit('new-errors', response.responseJSON);
+        var eventBus = vue || vueGlobalEventBus;
+        eventBus.$emit('new-errors', response.responseJSON);
     }
 }
 
@@ -54,7 +55,8 @@ function vueValidation(response, vue) {
  * @param vue
  */
 function vueClearValidationErrors(vue) {
-    vueEventBus.$emit('clear-errors');
+    var eventBus = vue || vueGlobalEventBus;
+    eventBus.$emit('clear-errors');
 }
 
 /**

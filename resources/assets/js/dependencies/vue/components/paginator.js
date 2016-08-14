@@ -93,8 +93,8 @@ Vue.component('paginator', {
         },
         goToPage: function (page) {
             // if we get a custom event name - fire it
-            if(this.eventName) vueEventBus.$emit(this.eventName, page);
-            vueEventBus.$emit('go-to-page', page);
+            if(this.eventName) vueGlobalEventBus.$emit(this.eventName, page);
+            vueGlobalEventBus.$emit('go-to-page', page);
             this.$dispatch('go-to-page', page);         // TODO ::: REMOVE WILL BE DEPRACATED Vue 2.0 <
             if (0 < page && page <= this.lastPage && typeof(this.reqFunction) == 'function') this.reqFunction(updateQueryString('page', page));
         }

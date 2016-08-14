@@ -11,10 +11,13 @@ Vue.component('form-errors', {
             errors: []
         }
     },
+    props: ['event-bus'],
     ready: function() {
         var self = this;
 
-        vueEventBus.$on('new-errors', function (errors) {
+        var eventBus = this.eventBus || vueGlobalEventBus;
+
+        eventBus.$on('new-errors', function (errors) {
             var newErrors = [];
             _.forEach(errors, function (error) {
                 if (newErrors.indexOf(error[0]) == -1) newErrors.push(error[0]);
@@ -22,7 +25,7 @@ Vue.component('form-errors', {
             self.errors = newErrors;
         });
 
-        vueEventBus.$on('clear-errors', function(errors) {
+        eventBus.$on('clear-errors', function(errors) {
             self.errors = [];
         });
     }

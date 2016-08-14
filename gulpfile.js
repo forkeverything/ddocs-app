@@ -42,7 +42,12 @@ elixir(function(mix) {
             // Dependencies
             mix.scripts([
                 'ajax.js',
-                'vue/directives/modal.js'
+                'autosize.js',
+                'helpers.js',
+                'tooltip.js',
+                'vue/directives/**/*.js',
+                'vue/filters/**/*.js',
+                'vue/components/form-errors.js'
             ], 'public/js/landing/dependencies.js', 'resources/assets/js/dependencies');
             // Main
             mix.scriptsIn('resources/assets/js/landing', 'public/js/landing/main.js');

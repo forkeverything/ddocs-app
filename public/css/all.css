@@ -5746,48 +5746,6 @@ button.close {
   .navbar a:hover {
     text-decoration: underline !important; }
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.8);
-  width: 100%;
-  height: 100%;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-align: center;
-  align-items: center;
-  z-index: 3; }
-  .modal .modal-body {
-    background: #fff;
-    padding: 30px 45px;
-    max-height: 100%;
-    overflow: scroll;
-    position: relative;
-    border-radius: 4px;
-    width: 375px; }
-    @media screen and (min-width: 768px) {
-      .modal .modal-body {
-        width: 500px; } }
-    @media screen and (min-width: 992px) {
-      .modal .modal-body {
-        width: 600px; } }
-    .modal .modal-body .button-hide-modal {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: transparent;
-      font-size: 1.5em;
-      color: #353535;
-      opacity: 0.2;
-      padding: 0.5em 1em; }
-      .modal .modal-body .button-hide-modal:focus, .modal .modal-body .button-hide-modal:hover, .modal .modal-body .button-hide-modal:active {
-        box-shadow: none;
-        opacity: 0.5;
-        transition: opacity 0.15s; }
-
 .caret {
   color: #999999; }
 
@@ -6351,6 +6309,14 @@ table {
 textarea {
   resize: none; }
 
+.inline-label {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center; }
+  .inline-label label {
+    margin: 0 10px 0 0; }
+
 .validation-errors {
   color: #C0392B;
   margin: 0 0 15px 0;
@@ -6372,26 +6338,16 @@ textarea {
 
 #checklist-make {
   padding-bottom: 30px; }
-  #checklist-make #form-checklist-make {
-    margin: 0 0 15px;
-    border: 1px solid #ccc;
-    padding: 30px; }
-  #checklist-make #new-checklist-recipient {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center; }
-    #checklist-make #new-checklist-recipient label {
-      margin-top: 10px;
-      margin-right: 10px; }
-    #checklist-make #new-checklist-recipient #input-recipient-email {
-      -ms-flex: 1;
-      flex: 1; }
-  #checklist-make #title-checklist-name {
+
+#form-checklist-make {
+  margin: 0 0 15px;
+  border: 1px solid #ccc;
+  padding: 30px; }
+  #form-checklist-make #title-checklist-name {
     color: #9CA1A8; }
-    #checklist-make #title-checklist-name.filled {
+    #form-checklist-make #title-checklist-name.filled {
       color: #000; }
-  #checklist-make #input-checklist-name {
+  #form-checklist-make #input-checklist-name {
     font-size: 30px;
     height: 33px;
     border: 0;
@@ -6402,48 +6358,48 @@ textarea {
     padding: 0;
     font-weight: 500;
     line-height: 1.1; }
-  #checklist-make #textarea-new-checklist-description {
+  #form-checklist-make #textarea-new-checklist-description {
     border-color: transparent;
     box-shadow: none;
     width: calc(100% + 24px);
     margin-left: -12px; }
-    #checklist-make #textarea-new-checklist-description:hover {
+    #form-checklist-make #textarea-new-checklist-description:hover {
       border-color: #ccc; }
-    #checklist-make #textarea-new-checklist-description:focus {
+    #form-checklist-make #textarea-new-checklist-description:focus {
       border-color: #3498DB; }
-  #checklist-make .single-file {
+  #form-checklist-make .single-file {
     display: -ms-flexbox;
     display: flex; }
-    #checklist-make .single-file .line-el {
+    #form-checklist-make .single-file .line-el {
       border-top: 1px solid #ccc !important;
       border-bottom: 1px solid transparent !important; }
-    #checklist-make .single-file:first-child .line-el {
+    #form-checklist-make .single-file:first-child .line-el {
       border-top: 0 !important; }
-    #checklist-make .single-file.is-focused .line-el {
+    #form-checklist-make .single-file.is-focused .line-el {
       border-top: 1px solid #67BAFF !important;
       border-bottom: 1px solid #67BAFF !important; }
-    #checklist-make .single-file.is-focused + li .line-el {
+    #form-checklist-make .single-file.is-focused + li .line-el {
       border-top: 0 !important;
       border-bottom: 0 !important; }
-    #checklist-make .single-file .button-required {
+    #form-checklist-make .single-file .button-required {
       padding-left: 0; }
-      #checklist-make .single-file .button-required.required {
+      #form-checklist-make .single-file .button-required.required {
         color: #3498DB; }
-    #checklist-make .single-file .input-file-name {
+    #form-checklist-make .single-file .input-file-name {
       -ms-flex: 1;
       flex: 1;
       border: 0;
       box-shadow: none;
       border-radius: 0;
       padding-left: 0; }
-    #checklist-make .single-file .input-due {
+    #form-checklist-make .single-file .input-due {
       width: 75px;
       border: 0;
       text-align: center;
       outline: 0 !important;
       color: #fff;
       cursor: pointer; }
-      #checklist-make .single-file .input-due.filled {
+      #form-checklist-make .single-file .input-due.filled {
         color: #000; }
 
 #checklist-single #join-offer {

@@ -145,7 +145,7 @@ Vue.component('checklist-single', fetchesFromEloquentRepository.extend({
         turnOffNotifications: function() {
 
             var self = this;
-            vueClearValidationErrors(self);
+            vueClearValidationErrors();
             if(!self.ajaxReady) return;
             self.ajaxReady = false;
             $.ajax({
@@ -163,7 +163,7 @@ Vue.component('checklist-single', fetchesFromEloquentRepository.extend({
                 error: function(response) {
                     console.log(response);
                     
-                    vueValidation(response, self);
+                    vueValidation(response);
                     self.ajaxReady = true;
                 }
             });

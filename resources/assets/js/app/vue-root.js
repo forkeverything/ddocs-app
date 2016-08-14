@@ -2,7 +2,7 @@
 // Root script that gets run on EVERY page
 
 // Initialize our event bus
-var vueEventBus = new Vue();
+var vueGlobalEventBus = new Vue();
 
 // root Vue instance
 new Vue({

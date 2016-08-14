@@ -53,7 +53,8 @@ function escapeHtml(string) {
  */
 function vueValidation(response, vue) {
     if(response.status === 422) {
-        vueEventBus.$emit('new-errors', response.responseJSON);
+        var eventBus = vue || vueGlobalEventBus;
+        eventBus.$emit('new-errors', response.responseJSON);
     }
 }
 
@@ -63,7 +64,8 @@ function vueValidation(response, vue) {
  * @param vue
  */
 function vueClearValidationErrors(vue) {
-    vueEventBus.$emit('clear-errors');
+    var eventBus = vue || vueGlobalEventBus;
+    eventBus.$emit('clear-errors');
 }
 
 /**
@@ -383,10 +385,13 @@ Vue.component('form-errors', {
             errors: []
         }
     },
+    props: ['event-bus'],
     ready: function() {
         var self = this;
 
-        vueEventBus.$on('new-errors', function (errors) {
+        var eventBus = this.eventBus || vueGlobalEventBus;
+
+        eventBus.$on('new-errors', function (errors) {
             var newErrors = [];
             _.forEach(errors, function (error) {
                 if (newErrors.indexOf(error[0]) == -1) newErrors.push(error[0]);
@@ -394,7 +399,7 @@ Vue.component('form-errors', {
             self.errors = newErrors;
         });
 
-        vueEventBus.$on('clear-errors', function(errors) {
+        eventBus.$on('clear-errors', function(errors) {
             self.errors = [];
         });
     }
@@ -503,8 +508,8 @@ Vue.component('paginator', {
         },
         goToPage: function (page) {
             // if we get a custom event name - fire it
-            if(this.eventName) vueEventBus.$emit(this.eventName, page);
-            vueEventBus.$emit('go-to-page', page);
+            if(this.eventName) vueGlobalEventBus.$emit(this.eventName, page);
+            vueGlobalEventBus.$emit('go-to-page', page);
             this.$dispatch('go-to-page', page);         // TODO ::: REMOVE WILL BE DEPRACATED Vue 2.0 <
             if (0 < page && page <= this.lastPage && typeof(this.reqFunction) == 'function') this.reqFunction(updateQueryString('page', page));
         }

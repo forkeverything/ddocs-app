@@ -89,7 +89,7 @@ Vue.component('checklist-make', {
         },
         sendChecklist: function () {
             var self = this;
-            vueClearValidationErrors(self);
+            vueClearValidationErrors();
             if (!self.ajaxReady) return;
             self.ajaxReady = false;
             $.ajax({
@@ -106,7 +106,7 @@ Vue.component('checklist-make', {
                 },
                 error: function (response) {
                     console.log(response);
-                    vueValidation(response, self);
+                    vueValidation(response);
                     self.ajaxReady = true;
                 }
             });
