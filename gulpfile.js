@@ -47,7 +47,8 @@ elixir(function(mix) {
                 'tooltip.js',
                 'vue/directives/**/*.js',
                 'vue/filters/**/*.js',
-                'vue/components/form-errors.js'
+                'vue/components/form-errors.js',
+                'ga-tracker.js'
             ], 'public/js/landing/dependencies.js', 'resources/assets/js/dependencies');
             // Main
             mix.scriptsIn('resources/assets/js/landing', 'public/js/landing/main.js');
