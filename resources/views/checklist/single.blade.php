@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('fb-track')
+    <script>
+        fbq('track', 'Single Checklist');
+    </script>
+@endsection
+
 @section('content')
     <checklist-single inline-template :checklist-hash="'{{ $checklistHash }}'"
                       :recipient-notifications="{{ $checklist->recipient_notifications }}" v-cloak>

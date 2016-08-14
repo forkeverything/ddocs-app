@@ -8,6 +8,10 @@
     <link href="{{ asset('/css/landing.css') }}" rel="stylesheet">
 
     @include('trackers.fb-pixel')
+
+    <script>
+        fbq('track', 'Landed');
+    </script>
 </head>
 
 <body>
