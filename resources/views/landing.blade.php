@@ -6,6 +6,8 @@
 
 
     <link href="{{ asset('/css/landing.css') }}" rel="stylesheet">
+
+    @include('trackers.fb-pixel')
 </head>
 
 <body>
