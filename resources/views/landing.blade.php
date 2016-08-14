@@ -93,7 +93,7 @@
                     Create up to 5 lists per month.
                 </div>
                 <div id="price-paid" class="col-sm-6 price">
-                    <h3>$5 / month</h3>
+                    <h3>$15 / month</h3>
                     <img src="/images/gorilla_xs.jpg" alt="Chimp pic">
                     Unlimited lists - an offer you can't refuse.
                 </div>

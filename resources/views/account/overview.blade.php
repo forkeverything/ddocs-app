@@ -25,7 +25,7 @@
                 <h5>Subscription</h5>
                 @if($user->subscribed('main'))
                     <p>
-                        $5/month - Unlimited Lists
+                        $15/month - Unlimited Lists
                     </p>
                     @if($user->subscription('main')->onGracePeriod())
                         <p class="text-muted">
@@ -54,7 +54,7 @@
                     <p>
                         If you make a ton of lists or just enjoy our service, you can help <strong>keep us around for
                             only
-                            $5 / month</strong>.
+                            $15 / month</strong>.
                         <br>
                         You'll get <strong>unlimited lists</strong>, and you'll still get to <strong>keep your
                             credits</strong> if you decide to cancel your subscription.
@@ -66,7 +66,7 @@
                           v-show="showCreditCardForm">
                         <hr>
                         <h3>Add Credit Card</h3>
-                        <p>After you add a card with us we'll bill you $5 monthly.
+                        <p>After you add a card with us we'll bill you $15 monthly.
                             <br>
                             You can <strong>cancel at any time</strong> and your subscription will still be active until
                             the end of the billing cycle.</p>
