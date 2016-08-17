@@ -75,6 +75,8 @@
                 </div>
             </div>
 
+                <p class="text-muted text-right small">* Maximum file size: 20MB</p>
+
             @include('checklist.single.table-files')
         </div>
     </checklist-single>

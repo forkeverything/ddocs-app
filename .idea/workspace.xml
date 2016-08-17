@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/Repositories/FilesRequestsRepository.php" line="45" mnemonic="8" />
+    <bookmark url="file://$PROJECT_DIR$/resources/views/checklist/single.blade.php" line="77" mnemonic="8" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/checklist/single/buttons/download.blade.php" afterPath="$PROJECT_DIR$/resources/views/checklist/single/buttons/download.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/checklist/single.blade.php" afterPath="$PROJECT_DIR$/resources/views/checklist/single.blade.php" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,13 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="download.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/checklist/single/buttons/download.blade.php">
+      <file leaf-file-name="single.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/checklist/single.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="1" column="43" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
-              <caret line="1" column="189" selection-start-line="1" selection-start-column="189" selection-end-line="1" selection-end-column="189" />
-              <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
+            <state relative-caret-position="1109">
+              <caret line="77" column="58" selection-start-line="77" selection-start-column="58" selection-end-line="77" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -93,10 +92,10 @@
         <option value="$PROJECT_DIR$/resources/views/landing.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/account/overview.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/checklist/single.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/checklist/all.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/app/pages/checklist/single.js" />
         <option value="$PROJECT_DIR$/resources/views/checklist/single/buttons/download.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/checklist/single.blade.php" />
       </list>
     </option>
   </component>
@@ -118,8 +117,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
+    <option name="x" value="1280" />
     <option name="y" value="23" />
-    <option name="width" value="2560" />
+    <option name="width" value="1280" />
     <option name="height" value="1347" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -390,20 +390,20 @@
       <workItem from="1471204523171" duration="32000" />
       <workItem from="1471204664314" duration="473000" />
       <workItem from="1471212831967" duration="810000" />
-      <workItem from="1471388345115" duration="774000" />
+      <workItem from="1471388345115" duration="1269000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169667000" />
+    <option name="totallyTimeSpent" value="170162000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
+    <frame x="1280" y="23" width="1280" height="1347" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08359375" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08359375" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -782,32 +782,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/checklist/single.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1055">
-          <caret line="77" column="47" selection-start-line="77" selection-start-column="47" selection-end-line="77" selection-end-column="47" />
-          <folding>
-            <marker date="1471213750000" expanded="true" signature="45:118" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="57:116" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="150:3859" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="229:3857" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="382:3833" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="485:1003" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="609:870" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="1053:1895" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="1168:1332" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="1470:1853" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="2017:3025" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="2242:2747" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="2390:2493" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="2628:2697" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="3079:3136" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="3427:3764" ph="..." />
-            <marker date="1471213750000" expanded="true" signature="3548:3745" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/checklist/single/table-files.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
@@ -873,10 +847,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/checklist/single/buttons/download.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="1" column="43" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
-          <caret line="1" column="189" selection-start-line="1" selection-start-column="189" selection-end-line="1" selection-end-column="189" />
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
+        <state relative-caret-position="189">
+          <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
+          <folding>
+            <marker date="1471389287000" expanded="true" signature="221:388" ph="..." />
+            <marker date="1471389287000" expanded="true" signature="339:383" ph="..." />
+            <marker date="1471389287000" expanded="true" signature="468:519" ph="..." />
+            <marker date="1471389287000" expanded="true" signature="471:510" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/checklist/single.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1109">
+          <caret line="77" column="58" selection-start-line="77" selection-start-column="58" selection-end-line="77" selection-end-column="58" />
           <folding />
         </state>
       </provider>
