@@ -50,7 +50,7 @@ class ChecklistMailer extends Mailer
         $subject = 'Files Collector - ' . 'Overdue Files Reminder';
         $view = 'emails.files.reminder-late';
         $lateFiles = $checklist->requestedFiles()
-                               ->whereDate('due', '<', $today)->format('Y-m-d')
+                               ->whereDate('due', '<', $today->format('Y-m-d'))
                                ->get();
         $this->sendTo($checklist->recipient, "File Holder", $subject, $view, compact('checklist', 'lateFiles', 'today'));
     }

@@ -1,9 +1,13 @@
-Good news!
-<br>
-<br>
-<strong>You've just received 10 Free Credits!</strong>
-<br>
-<br>
-Because you created a checklist with {{ $recipient->email }} as the recipient and {{ $recipient->name }} has signed up with Files Collector, you both get bunch of free credits. Free credits never expire. Keep creating lists and you can keep earning free credits.
+@extends('emails.partials.standard')
 
-@include('emails.partials.signature')
+@section('header-color', '#2ECC71')
+@section('header-text', 'Free Credits')
+@section('subheading', 'Woo!')
+@section('summary')You've just received 10 Free Credits.@endsection
+@section('body')
+    <div>
+        {{ $recipient->name }} ({{ $recipient->email }}) has signed up. And copped you both bonus credits. Remember, credits never expire so keep on creating lists to keep on earning!
+    </div>
+@endsection
+@section('button-link'){{ env('DOMAIN') }}/checklist/make@endsection
+@section('button-text', 'New Checklist')

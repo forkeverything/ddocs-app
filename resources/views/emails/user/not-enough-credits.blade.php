@@ -1,22 +1,29 @@
-Hi {{ $user->name }},
-<br>
-<br>
-Thank you so much for using our service!
-<br>
-<br>
-<strong>Unfortunately, it looks like we couldn't create your last checklist because you've ran out of credits.</strong>
-<br>
-<br>
-To keep on using Files Collector for your file collection, you'll need to do one of the following:
-<br>
-<br>
-a) Subscribe to our services ($15/month) and get unlimited lists
-<br>
-b) Ask previous recipients to join. You get bonus credits when recipients sign up and create accounts!
-<br>
-c) Wait until the beginning of next month.
-<br>
-<br>
-Sorry to put you on the spot but it's the only way we can keep our servers affordable, and help as many people (handle their files) as we can.
+@extends('emails.partials.standard')
 
-@include('emails.partials.signature')
+@section('header-color', '#FFA339')
+@section('header-text', 'Not Enough Credits')
+@section('subheading', 'Oops!')
+@section('summary', 'We couldn\'t create your last checklist because you\'ve ran out of credits.')
+@section('body')
+    <div>
+        <p>
+            To keep on using Files Collector, you'll have to do one of the following:
+        </p>
+        <br>
+        <ol>
+            <li>
+                Subscribe for $15 / month (unlimited lists)
+            </li>
+            <li>
+                Ask recipients to join (bonus credits)
+            </li>
+            <li>
+                Wait for next month (5 free lists)
+            </li>
+        </ol>
+    </div>
+@endsection
+@section('button-link')
+    {{ env('DOMAIN') }}/account
+@endsection
+@section('button-text', 'My Account')

@@ -1,18 +1,19 @@
-Good Morning!
+@extends('emails.partials.standard')
 
-Just dropping by to let you know that you have a few files due soon for {{ $checklist->user->name }}'s list: <a href="{{ env('DOMAIN') }}/checklist/{{ hashId($checklist) }}">{{ $checklist->name }}</a>.
-<br>
-<br>
-<strong>Upcoming Files ({{ $upcomingFiles->count() }})</strong>
-<br>
-<br>
-    <ul>
-        @foreach($upcomingFiles as $files)
-            <li>{{ $files->name }} [{{ $files->due->format('d M Y') }}]</li>
-        @endforeach
-    </ul>
-<br>
-<br>
-<em>If you want to stop receiving emails for remaining files, head over to the checklist page and follow the simple instructions to turn off recipient notifications.</em>
-
-@include('emails.partials.signature')
+@section('header-color', '#3498DB')
+@section('header-text', 'Upcoming Files')
+@section('subheading'){{ $checklist->name }}@endsection
+@section('summary', 'You have files due soon for the above checklist')
+@section('body')
+    <div>
+        <strong>Upcoming Files ({{ count($upcomingFiles) }})</strong>
+        <br>
+        <ul>
+            @foreach($upcomingFiles as $files)
+                <li>{{ $files->name }} [{{ $files->due->format('d M Y') }}]</li>
+            @endforeach
+        </ul>
+    </div>
+@endsection
+@section('button-link'){{ env('DOMAIN') }}/checklist/{{ hashId($checklist) }}@endsection
+@section('button-text', 'View Checklist')

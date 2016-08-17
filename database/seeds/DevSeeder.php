@@ -65,6 +65,7 @@ class DevSeeder extends Seeder
      */
     protected function seedChecklists()
     {
+        factory(\App\Checklist::class)->create(['recipient' => 'mail@wumike.com', 'user_id' => $this->user->id]);
         factory(\App\Checklist::class, 5)->create(['user_id' => $this->user->id]);
         return $this;
     }

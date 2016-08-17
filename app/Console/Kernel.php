@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\SendTestEmails;
 use App\Jobs\ReplenishUserCredits;
 use App\Jobs\SendLateFileReminders;
 use App\Jobs\SendUpcomingDueFileReminders;
@@ -20,6 +21,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         // Commands\Inspire::class,
+        SendTestEmails::class
     ];
 
     /**
