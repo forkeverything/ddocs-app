@@ -8,10 +8,8 @@
     <link href="{{ asset('/css/landing.css') }}" rel="stylesheet">
 
     @include('trackers.fb-pixel')
+    @include('fonts.type-kit')
 
-    <script>
-        fbq('track', 'Landed');
-    </script>
 </head>
 
 <body>
@@ -23,21 +21,28 @@
 
     <div id="hero">
         <div id="hero-content">
-            <h1>Collect files like a boss.</h1>
-            <p>Asking for files from other people is way harder than it should be.
+            <h1>
+                Web service for
                 <br>
-                We make it easy.</p>
-            <p><a href="#list-maker" class="btn btn-lg" id="hero-button">Show Me</a></p>
+                professionals who
+            </h1>
+            <ul class="list-unstyled">
+                <li>
+                    Regularly asks for lots of files
+                </li>
+                <li>Have long project schedules</li>
+                <li>Don't enjoy chasing people up</li>
+            </ul>
         </div>
     </div>
 
     <div class="container">
 
         <div id="tagline">
-            <h1 class="text-center">On time, every time.</h1>
-            <h3 class="text-center">We help you keep track of received files, send reminders (so you don't have
-                to)
-                <br>and manage revisions or updates.</h3>
+            <h1 class="text-center">What we do</h1>
+            <h3 class="text-center">We help you keep track of received files, send reminders <span class="no-wrap">(so you don't have
+                to)</span>,
+                <br> manage change requests and keep your files organized.</h3>
         </div>
 
 
@@ -66,14 +71,13 @@
                 </p>
             </div>
         </div>
-
     </div>
 
 
     <div id="list-maker">
         <div class="container">
             <div class="content">
-                <h2 class="text-center">Your First Checklist</h2>
+                <h2 class="text-center">Try it out (make a checklist)</h2>
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
                         <form-errors></form-errors>
@@ -87,6 +91,8 @@
             </div>
         </div>
     </div>
+
+
 
     <div class="container">
 
@@ -110,7 +116,7 @@
 
     <div id="email-maker">
         <div class="container">
-            <h2 class="text-center">Create lists on the fly</h2>
+            <h2 class="text-center">Make lists on the fly</h2>
             <h4 class="text-center">cc: lists@in.filescollector.com</h4>
             <br>
             <div class="row">
@@ -154,13 +160,12 @@ Mike</textarea>
                 </div>
                 <div class="col-sm-4 right">
                     <h3>Everywhere You Go</h3>
-                    <p>Create lists whenever you want. As long as you can send an email, we'll have your back. Desktop,
-                        laptop, mobile or those standing computers at airports.</p>
+                    <p>Create lists whenever you want. As long as you can send an email, we got your back.</p>
                     <br>
-                    <h3>Formatting Rules</h3>
+                    <h3>Formatting</h3>
                     <ol>
                         <li>- before each file name</li>
-                        <li>Put file names on it's own line</li>
+                        <li>One file per line</li>
                         <li>Due date (if any) in square brackets: [dd/mm/yyyy]</li>
                     </ol>
                     <h4 class="text-center">Basically, list out the files as usual and we'll handle the rest.</h4>

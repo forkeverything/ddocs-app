@@ -1,11 +1,5 @@
 @extends('layouts.app')
 
-@section('fb-track')
-    <script>
-        fbq('track', 'ViewAllChecklist');
-    </script>
-@endsection
-
 @section('content')
     <checklist-all inline-template v-cloak>
         <div id="checklist-all" class="container">

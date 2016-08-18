@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
 
-    @include('layouts.partials.html-head')
+@include('layouts.partials.html-head')
 
-    <!-- Styles -->
+<!-- Styles -->
     <link href="{{ asset('/css/all.css') }}" rel="stylesheet">
 
     <!-- External Scripts -->
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-        @include('trackers.fb-pixel')
-        @yield('fb-track')
+    @include('trackers.fb-pixel')
+    @include('fonts.type-kit')
 </head>
 <body id="app-layout">
 

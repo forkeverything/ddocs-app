@@ -6336,12 +6336,19 @@ textarea {
 .clickable {
   cursor: pointer; }
 
+h1, h2, h3 {
+  font-family: "Proxima Nova", Helvetica, Arial, Helvetica, sans-serif; }
+
+h4, h5, p, ol, ul, span {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  letter-spacing: 0.3px; }
+
 #form-checklist-make {
   margin: 0 0 15px;
   border: 1px solid #ccc;
   padding: 30px; }
   #form-checklist-make #title-checklist-name {
-    color: #9CA1A8; }
+    color: #999999; }
     #form-checklist-make #title-checklist-name.filled {
       color: #000; }
   #form-checklist-make #input-checklist-name {
@@ -6412,7 +6419,7 @@ textarea {
 
 #landing #hero {
   background-position: center top;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(/images/monkey-onsen.jpg);
+  background: linear-gradient(black, rgba(0, 0, 0, 0.5)), url(/images/monkey-onsen.jpg);
   color: #fff;
   width: 100%;
   height: 100vh;
@@ -6429,17 +6436,22 @@ textarea {
     display: inline-block;
     text-align: center; }
     #landing #hero #hero-content h1 {
-      font-size: 3.8em; }
+      font-size: 3em;
+      margin-bottom: 20px; }
+      @media screen and (min-width: 768px) {
+        #landing #hero #hero-content h1 {
+          font-size: 6em; } }
+    #landing #hero #hero-content ul {
+      margin: 0 0 30px;
+      font-size: 1.2em;
+      line-height: 2em;
+      font-family: "adelle", Arial, serif; }
+      @media screen and (min-width: 768px) {
+        #landing #hero #hero-content ul {
+          font-size: 1.5em; } }
     #landing #hero #hero-content p {
       font-size: 1.35em;
       line-height: 1.5em; }
-    #landing #hero #hero-content #hero-button {
-      color: #fff;
-      border: 1px solid #fff;
-      transition: all ease-in 0.3s; }
-      #landing #hero #hero-content #hero-button:hover {
-        background: #2980B9;
-        border: 1px solid #2980B9; }
 
 #landing #tagline {
   padding: 60px 0; }
@@ -6447,7 +6459,8 @@ textarea {
     font-size: 50px; }
   #landing #tagline h3 {
     font-weight: normal;
-    color: #5A5A5A; }
+    color: #5A5A5A;
+    line-height: 1.5em; }
 
 #landing #features {
   margin: 0 0 100px; }
@@ -6477,12 +6490,15 @@ textarea {
     display: block;
     width: 100%; }
     #landing #list-maker .content > h2 {
-      margin: 0 0 30px; }
+      font-size: 1.75em;
+      margin: 0 0 20px;
+      color: #9CA1A8;
+      text-transform: uppercase; }
     #landing #list-maker .content form {
       background: #fff; }
 
 #landing #pricing {
-  padding: 0 0 40px 0; }
+  padding: 50px 0 100px 0; }
   #landing #pricing h1 {
     margin: 0 0 20px; }
   #landing #pricing img {

@@ -1,11 +1,5 @@
 @extends('layouts.app')
 
-@section('fb-track')
-    <script>
-        fbq('track', 'ViewAccountOverview');
-    </script>
-@endsection
-
 @section('content')
     <account-overview inline-template v-cloak>
         <div id="account-overview" class="container">
