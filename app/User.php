@@ -100,7 +100,8 @@ class User extends Authenticatable
         $user = static::create([
             'name' => $request["FromFull"]["Name"],
             'email' => $request["From"],
-            'password' => bcrypt($randomPassword)
+            'password' => bcrypt($randomPassword),
+            'credits' => 5
         ]);
 
         Event::fire(new CreatedUserFromEmailWebhook($user, $randomPassword));
