@@ -16,7 +16,8 @@
 
 
 <div id="landing-start" v-cloak>
-    @include('layouts.partials.nav')
+    @include('layouts.partials.nav', [
+    'homeLink' => '/start'])
     <div id="elevator">
         <div class="container">
             <h1 class="text-center">

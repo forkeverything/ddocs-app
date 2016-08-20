@@ -5,40 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/sass/landing/main.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/sass/landing/start.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/emails/user/welcome-password.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/landing/start.blade.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/landing/main.js.map" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/landing/main.js" afterPath="$PROJECT_DIR$/resources/assets/js/landing/start/root.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/assets/js/landing/1.registration-modal.js" afterPath="$PROJECT_DIR$/resources/assets/js/dependencies/vue/components/registration-modal.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/assets/js/landing/2.main.js" afterPath="$PROJECT_DIR$/resources/assets/js/landing/main/root.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/views/landing.blade.php" afterPath="$PROJECT_DIR$/resources/views/landing/main.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Commands/SendTestEmails.php" afterPath="$PROJECT_DIR$/app/Console/Commands/SendTestEmails.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Mailers/UserMailer.php" afterPath="$PROJECT_DIR$/app/Mailers/UserMailer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/all.css" afterPath="$PROJECT_DIR$/public/css/all.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/all.css.map" afterPath="$PROJECT_DIR$/public/css/all.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css.map" afterPath="$PROJECT_DIR$/public/css/app.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/landing.css" afterPath="$PROJECT_DIR$/public/css/landing.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/landing.css.map" afterPath="$PROJECT_DIR$/public/css/landing.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/dependencies.js" afterPath="$PROJECT_DIR$/public/js/app/dependencies.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/dependencies.js.map" afterPath="$PROJECT_DIR$/public/js/app/dependencies.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/landing/dependencies.js" afterPath="$PROJECT_DIR$/public/js/landing/dependencies.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/landing/dependencies.js.map" afterPath="$PROJECT_DIR$/public/js/landing/dependencies.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/css/landing/main.css" afterPath="$PROJECT_DIR$/resources/assets/css/landing/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/css/landing/main.css.map" afterPath="$PROJECT_DIR$/resources/assets/css/landing/main.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/fixes/all.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/fixes/all.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/landing.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/landing.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/setup/all.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/setup/all.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/partials/html-head.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/html-head.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/landing/start.blade.php" afterPath="$PROJECT_DIR$/resources/views/landing/start.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,13 +27,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ChecklistsController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
+      <file leaf-file-name="start.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/landing/start.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="882">
-              <caret line="124" column="34" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
+            <state relative-caret-position="405">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
-                <element signature="e#40#58#0#PHP" expanded="true" />
+                <marker date="1471683994000" expanded="true" signature="284:337" ph="..." />
+                <marker date="1471683994000" expanded="true" signature="309:336" ph="..." />
               </folding>
             </state>
           </provider>
@@ -79,7 +48,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/storage/framework/views/812d317bef7d754e5285740a94e1bd90dc8fbf8a.php" />
         <option value="$PROJECT_DIR$/storage/framework/views/a69b4df58486e0c7a34be042e28cc128723b67de.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/dependencies/ga-tracker.js" />
         <option value="$PROJECT_DIR$/resources/views/trackers/fb-pixel.blade.php" />
@@ -128,8 +96,9 @@
         <option value="$PROJECT_DIR$/app/Events/CreatedUserFromEmailWebhook.php" />
         <option value="$PROJECT_DIR$/app/Console/Commands/SendTestEmails.php" />
         <option value="$PROJECT_DIR$/resources/views/emails/user/welcome-password.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/landing/start.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/landing/start.blade.php" />
       </list>
     </option>
   </component>
@@ -408,12 +377,12 @@
       <workItem from="1471420275178" duration="14000" />
       <workItem from="1471499232511" duration="4735000" />
       <workItem from="1471665349759" duration="13873000" />
-      <workItem from="1471683779769" duration="78000" />
+      <workItem from="1471683779769" duration="364000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201409000" />
+    <option name="totallyTimeSpent" value="201695000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="23" width="1280" height="1347" extended-state="0" />
@@ -460,13 +429,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/checklist/all.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/checklist/single.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -659,6 +621,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="963">
           <caret line="149" column="28" selection-start-line="149" selection-start-column="28" selection-end-line="149" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -812,63 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/landing/start.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="866">
-          <caret line="159" column="50" selection-start-line="159" selection-start-column="50" selection-end-line="159" selection-end-column="50" />
-          <folding>
-            <marker date="1471683798000" expanded="true" signature="31:7592" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="38:226" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="234:7584" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="269:7318" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="330:908" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="362:897" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="399:508" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="538:882" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="593:863" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="648:840" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="935:3290" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="967:3279" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="1068:1800" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="1123:1231" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="1286:1781" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="1331:1541" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="1431:1515" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="1595:1758" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="1838:2577" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="1893:1997" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="2052:2558" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="2097:2166" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="2220:2535" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="2615:3264" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="2670:2776" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="2831:3245" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="2876:2949" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="3003:3222" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="3311:6297" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="3339:5570" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="3375:5555" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="3416:3592" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="3633:3931" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="3973:4134" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="4195:5536" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="4416:4585" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="4644:4828" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="4887:5076" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="5153:5461" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="5598:6286" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="5634:6271" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="5883:6252" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="6028:6229" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="6318:6689" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="6350:6678" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="6712:7265" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="6744:7254" ph="..." />
-            <marker date="1471683798000" expanded="true" signature="6816:6973" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="758">
@@ -936,10 +842,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="124" column="34" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
+        <state relative-caret-position="963">
+          <caret line="127" column="5" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
           <folding>
-            <element signature="e#40#58#0#PHP" expanded="true" />
+            <marker date="1471683848000" expanded="true" signature="44:842" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="889:6020" ph="{...}" />
+            <marker date="1471683848000" expanded="true" signature="899:980" ph=" HashId class to encode/decode ID numbers ..." />
+            <marker date="1471683848000" expanded="true" signature="1015:1114" ph=" ChecklistsController constructor. ..." />
+            <marker date="1471683848000" expanded="true" signature="1180:1461" ph="{...}" />
+            <marker date="1471683848000" expanded="true" signature="1213:1411" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="1222:1410" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="1246:1400" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="1470:1619" ph=" Show the view for viewing all Checklist(s) made by User. ..." />
+            <marker date="1471683848000" expanded="true" signature="1656:1706" ph="{...}" />
+            <marker date="1471683848000" expanded="true" signature="1715:1882" ph=" Return the Authenticated User's checklists as JSON from ..." />
+            <marker date="1471683848000" expanded="true" signature="1946:2290" ph="{...}" />
+            <marker date="1471683848000" expanded="true" signature="2164:2171" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="2218:2231" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="2280:2282" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="2299:2432" ph=" Return the view to make a new Checklist. ..." />
+            <marker date="1471683848000" expanded="true" signature="2468:2519" ph="{...}" />
+            <marker date="1471683848000" expanded="true" signature="2528:2657" ph=" Handle POST request to make a new Checklist. ..." />
+            <marker date="1471683848000" expanded="true" signature="2726:2862" ph="{...}" />
+            <marker date="1471683848000" expanded="true" signature="2871:3037" ph=" POST Email Webhook (via Postmark) to create a Checklist ..." />
+            <marker date="1471683848000" expanded="true" signature="3110:3682" ph="{...}" />
+            <marker date="1471683848000" expanded="true" signature="3441:3553" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="3692:3850" ph=" Get the view for a single Checklist. ..." />
+            <marker date="1471683848000" expanded="true" signature="3907:4136" ph="{...}" />
+            <marker date="1471683848000" expanded="true" signature="4146:4299" ph=" Retrieve the files for checklist. ..." />
+            <marker date="1471683848000" expanded="true" signature="4376:5224" ph="{...}" />
+            <marker date="1471683848000" expanded="true" signature="4719:4737" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="4798:4826" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="4884:4904" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="4957:4973" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="5025:5032" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="5081:5094" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="5208:5216" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="5233:5491" ph=" POST request to turn off notifications for a Checklist. Recipient ..." />
+            <marker date="1471683848000" expanded="true" signature="5572:6016" ph="{...}" />
+            <marker date="1471683848000" expanded="true" signature="5744:5913" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="5773:5902" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="5774:5896" ph="..." />
+            <marker date="1471683848000" expanded="true" signature="5803:5882" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="891">
+          <caret line="33" column="61" selection-start-line="33" selection-start-column="61" selection-end-line="33" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/landing/start.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <marker date="1471683994000" expanded="true" signature="284:337" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="309:336" ph="..." />
           </folding>
         </state>
       </provider>

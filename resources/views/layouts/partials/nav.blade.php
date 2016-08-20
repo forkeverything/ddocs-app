@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" @if($homeLink)href="{{ $homeLink }}" @else href="/"@endif>
                 <img alt="Brand" src="/images/logo/fc_logo_v1.svg" class="img-logo">
             </a>
         </div>
