@@ -6557,7 +6557,8 @@ h4, h5, p, ol, ul, span {
       height: 100vh; } }
   #landing-start #elevator h1 {
     font-weight: bold;
-    font-size: 2em; }
+    font-size: 2em;
+    text-decoration: underline; }
     @media screen and (min-width: 768px) {
       #landing-start #elevator h1 {
         font-size: 2.5em; } }

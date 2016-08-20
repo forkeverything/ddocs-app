@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/landing/start.blade.php" afterPath="$PROJECT_DIR$/resources/views/landing/start.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/landing/start.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/landing/start.scss" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,15 +26,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="start.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/landing/start.blade.php">
+      <file leaf-file-name="start.scss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/assets/sass/landing/start.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding>
-                <marker date="1471683994000" expanded="true" signature="284:337" ph="..." />
-                <marker date="1471683994000" expanded="true" signature="309:336" ph="..." />
-              </folding>
+            <state relative-caret-position="540">
+              <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,7 +84,6 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/partials/html-head.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/landing/main.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/sass/setup/all.scss" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/landing/start.scss" />
         <option value="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Mailers/UserMailer.php" />
         <option value="$PROJECT_DIR$/app/Listeners/EmailWelcomeMessageAndPassword.php" />
@@ -99,6 +94,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/landing/start.blade.php" />
+        <option value="$PROJECT_DIR$/resources/assets/sass/landing/start.scss" />
       </list>
     </option>
   </component>
@@ -378,11 +374,12 @@
       <workItem from="1471499232511" duration="4735000" />
       <workItem from="1471665349759" duration="13873000" />
       <workItem from="1471683779769" duration="364000" />
+      <workItem from="1471684401008" duration="29000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201695000" />
+    <option name="totallyTimeSpent" value="201724000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="23" width="1280" height="1347" extended-state="0" />
@@ -617,14 +614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/landing/start.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="963">
-          <caret line="149" column="28" selection-start-line="149" selection-start-column="28" selection-end-line="149" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-565">
@@ -672,16 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="729">
           <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <marker date="1471683151000" expanded="false" signature="34:159" ph="..." />
-            <marker date="1471683151000" expanded="true" signature="208:751" ph="{...}" />
-            <marker date="1471683151000" expanded="true" signature="245:268" ph=" @var User ..." />
-            <marker date="1471683151000" expanded="true" signature="297:315" ph=" @var ..." />
-            <marker date="1471683151000" expanded="true" signature="348:446" ph=" Create a new event instance. ..." />
-            <marker date="1471683151000" expanded="true" signature="503:581" ph="{...}" />
-            <marker date="1471683151000" expanded="true" signature="590:682" ph=" Get the channels the event should be broadcast on. ..." />
-            <marker date="1471683151000" expanded="true" signature="718:749" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -753,25 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
           <caret line="96" column="29" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
-          <folding>
-            <marker date="1471683334000" expanded="false" signature="44:200" ph="..." />
-            <marker date="1471683334000" expanded="true" signature="238:3361" ph="{...}" />
-            <marker date="1471683334000" expanded="true" signature="248:334" ph=" The name and signature of the console command. ..." />
-            <marker date="1471683334000" expanded="true" signature="387:459" ph=" The console command description. ..." />
-            <marker date="1471683334000" expanded="true" signature="534:563" ph=" @var UserMailer ..." />
-            <marker date="1471683334000" expanded="true" signature="598:632" ph=" @var ChecklistMailer ..." />
-            <marker date="1471683334000" expanded="true" signature="672:708" ph=" @var FileRequestMailer ..." />
-            <marker date="1471683334000" expanded="true" signature="751:794" ph=" Mike's User model ..." />
-            <marker date="1471683334000" expanded="true" signature="881:1067" ph=" Create a new command instance. ..." />
-            <marker date="1471683334000" expanded="true" signature="1197:1471" ph="{...}" />
-            <marker date="1471683334000" expanded="true" signature="1480:1550" ph=" Execute the console command. ..." />
-            <marker date="1471683334000" expanded="true" signature="1581:1771" ph="{...}" />
-            <marker date="1471683334000" expanded="true" signature="1812:2199" ph="{...}" />
-            <marker date="1471683334000" expanded="true" signature="2245:2881" ph="{...}" />
-            <marker date="1471683334000" expanded="true" signature="2929:3357" ph="{...}" />
-            <marker date="1471683334000" expanded="true" signature="3042:3170" ph="..." />
-            <marker date="1471683334000" expanded="true" signature="3043:3169" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -779,30 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="758">
           <caret line="95" column="27" selection-start-line="95" selection-start-column="27" selection-end-line="95" selection-end-column="27" />
-          <folding>
-            <marker date="1471683151000" expanded="false" signature="27:256" ph="..." />
-            <marker date="1471683151000" expanded="true" signature="292:2334" ph="{...}" />
-            <marker date="1471683151000" expanded="true" signature="320:399" ph=" The attributes that are mass assignable. ..." />
-            <marker date="1471683151000" expanded="true" signature="429:505" ph="..." />
-            <marker date="1471683151000" expanded="true" signature="516:603" ph=" The attributes that should be hidden for arrays. ..." />
-            <marker date="1471683151000" expanded="true" signature="631:674" ph="..." />
-            <marker date="1471683151000" expanded="true" signature="685:825" ph=" A User can create many Checklist(s) of required File(s). ..." />
-            <marker date="1471683151000" expanded="true" signature="860:921" ph="{...}" />
-            <marker date="1471683151000" expanded="true" signature="931:1026" ph=" Minus a User's credit ..." />
-            <marker date="1471683151000" expanded="true" signature="1065:1253" ph="{...}" />
-            <marker date="1471683151000" expanded="true" signature="1167:1222" ph="..." />
-            <marker date="1471683151000" expanded="true" signature="1168:1221" ph="..." />
-            <marker date="1471683151000" expanded="true" signature="1262:1340" ph=" Check if User has ran out of credits. ..." />
-            <marker date="1471683151000" expanded="true" signature="1383:1432" ph="{...}" />
-            <marker date="1471683151000" expanded="true" signature="1441:1533" ph=" Add credits to User. ..." />
-            <marker date="1471683151000" expanded="true" signature="1579:1747" ph="{...}" />
-            <marker date="1471683151000" expanded="true" signature="1650:1717" ph="..." />
-            <marker date="1471683151000" expanded="true" signature="1651:1716" ph="..." />
-            <marker date="1471683151000" expanded="true" signature="1756:1913" ph=" Create a new User from the HTTP Request of PostMark's inbound ..." />
-            <marker date="1471683151000" expanded="true" signature="1988:2332" ph="{...}" />
-            <marker date="1471683151000" expanded="true" signature="2068:2222" ph="..." />
-            <marker date="1471683151000" expanded="true" signature="2069:2221" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -810,33 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="77" column="27" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="27" />
-          <folding>
-            <marker date="1471099769000" expanded="false" signature="39:224" ph="..." />
-            <marker date="1471099769000" expanded="true" signature="248:3903" ph="{...}" />
-            <marker date="1471099769000" expanded="true" signature="259:321" ph=" The Checklist model ..." />
-            <marker date="1471099769000" expanded="true" signature="358:447" ph=" The request to make a new Checklist. ..." />
-            <marker date="1471099769000" expanded="true" signature="482:549" ph=" The User making the Checklist ..." />
-            <marker date="1471099769000" expanded="true" signature="581:699" ph=" ChecklistFactory constructor. ..." />
-            <marker date="1471099769000" expanded="true" signature="775:851" ph="{...}" />
-            <marker date="1471099769000" expanded="true" signature="860:991" ph=" Static wrapper... ..." />
-            <marker date="1471099769000" expanded="true" signature="1067:1268" ph="{...}" />
-            <marker date="1471099769000" expanded="true" signature="1278:1589" ph=" Receives request from email webhook to create a checklist via cc. Parse ..." />
-            <marker date="1471099769000" expanded="true" signature="1662:2607" ph="{...}" />
-            <marker date="1471099769000" expanded="true" signature="1964:2244" ph="..." />
-            <marker date="1471099769000" expanded="true" signature="1986:2185" ph="..." />
-            <marker date="1471099769000" expanded="true" signature="2346:2541" ph="..." />
-            <marker date="1471099769000" expanded="true" signature="2616:2709" ph=" Process the payment required to create a checklist. ..." />
-            <marker date="1471099769000" expanded="true" signature="2751:2951" ph="{...}" />
-            <marker date="1471099769000" expanded="true" signature="2960:3029" ph=" Create our Checklist model. ..." />
-            <marker date="1471099769000" expanded="true" signature="3072:3425" ph="{...}" />
-            <marker date="1471099769000" expanded="true" signature="3124:3332" ph="..." />
-            <marker date="1471099769000" expanded="true" signature="3125:3331" ph="..." />
-            <marker date="1471099769000" expanded="true" signature="3434:3499" ph=" Create each individual File model from the request. ..." />
-            <marker date="1471099769000" expanded="true" signature="3538:3900" ph="{...}" />
-            <marker date="1471099769000" expanded="true" signature="3605:3870" ph="..." />
-            <marker date="1471099769000" expanded="true" signature="3661:3859" ph="..." />
-            <marker date="1471099769000" expanded="true" signature="3662:3858" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -844,47 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="963">
           <caret line="127" column="5" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
-          <folding>
-            <marker date="1471683848000" expanded="true" signature="44:842" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="889:6020" ph="{...}" />
-            <marker date="1471683848000" expanded="true" signature="899:980" ph=" HashId class to encode/decode ID numbers ..." />
-            <marker date="1471683848000" expanded="true" signature="1015:1114" ph=" ChecklistsController constructor. ..." />
-            <marker date="1471683848000" expanded="true" signature="1180:1461" ph="{...}" />
-            <marker date="1471683848000" expanded="true" signature="1213:1411" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="1222:1410" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="1246:1400" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="1470:1619" ph=" Show the view for viewing all Checklist(s) made by User. ..." />
-            <marker date="1471683848000" expanded="true" signature="1656:1706" ph="{...}" />
-            <marker date="1471683848000" expanded="true" signature="1715:1882" ph=" Return the Authenticated User's checklists as JSON from ..." />
-            <marker date="1471683848000" expanded="true" signature="1946:2290" ph="{...}" />
-            <marker date="1471683848000" expanded="true" signature="2164:2171" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="2218:2231" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="2280:2282" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="2299:2432" ph=" Return the view to make a new Checklist. ..." />
-            <marker date="1471683848000" expanded="true" signature="2468:2519" ph="{...}" />
-            <marker date="1471683848000" expanded="true" signature="2528:2657" ph=" Handle POST request to make a new Checklist. ..." />
-            <marker date="1471683848000" expanded="true" signature="2726:2862" ph="{...}" />
-            <marker date="1471683848000" expanded="true" signature="2871:3037" ph=" POST Email Webhook (via Postmark) to create a Checklist ..." />
-            <marker date="1471683848000" expanded="true" signature="3110:3682" ph="{...}" />
-            <marker date="1471683848000" expanded="true" signature="3441:3553" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="3692:3850" ph=" Get the view for a single Checklist. ..." />
-            <marker date="1471683848000" expanded="true" signature="3907:4136" ph="{...}" />
-            <marker date="1471683848000" expanded="true" signature="4146:4299" ph=" Retrieve the files for checklist. ..." />
-            <marker date="1471683848000" expanded="true" signature="4376:5224" ph="{...}" />
-            <marker date="1471683848000" expanded="true" signature="4719:4737" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="4798:4826" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="4884:4904" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="4957:4973" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="5025:5032" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="5081:5094" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="5208:5216" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="5233:5491" ph=" POST request to turn off notifications for a Checklist. Recipient ..." />
-            <marker date="1471683848000" expanded="true" signature="5572:6016" ph="{...}" />
-            <marker date="1471683848000" expanded="true" signature="5744:5913" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="5773:5902" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="5774:5896" ph="..." />
-            <marker date="1471683848000" expanded="true" signature="5803:5882" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -892,7 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="891">
           <caret line="33" column="61" selection-start-line="33" selection-start-column="61" selection-end-line="33" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -901,9 +768,65 @@
         <state relative-caret-position="405">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
+            <marker date="1471683994000" expanded="true" signature="31:7623" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="38:226" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="234:7615" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="269:7349" ph="..." />
             <marker date="1471683994000" expanded="true" signature="284:337" ph="..." />
             <marker date="1471683994000" expanded="true" signature="309:336" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="361:939" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="393:928" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="430:539" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="569:913" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="624:894" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="679:871" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="966:3321" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="998:3310" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="1099:1831" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="1154:1262" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="1317:1812" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="1362:1572" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="1462:1546" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="1626:1789" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="1869:2608" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="1924:2028" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="2083:2589" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="2128:2197" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="2251:2566" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="2646:3295" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="2701:2807" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="2862:3276" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="2907:2980" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="3034:3253" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="3342:6328" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="3370:5601" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="3406:5586" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="3447:3623" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="3664:3962" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="4004:4165" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="4226:5567" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="4447:4616" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="4675:4859" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="4918:5107" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="5184:5492" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="5629:6317" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="5665:6302" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="5914:6283" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="6059:6260" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="6349:6720" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="6381:6709" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="6743:7296" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="6775:7285" ph="..." />
+            <marker date="1471683994000" expanded="true" signature="6847:7004" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/landing/start.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
