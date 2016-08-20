@@ -27,6 +27,20 @@ class UserMailer extends Mailer
     }
 
     /**
+     * Send welcome email with the generated password to login. Usually sent after
+     * creating account via email webhook in.
+     *
+     * @param User $user
+     */
+    public function sendWelcomeWithPasswordEmail(User $user, $password)
+    {
+        $subject = 'Files Collector - Account Created';
+        $view = 'emails.user.welcome-password';
+        $this->sendTo($user->email, $user->name, $subject, $view, compact('user', 'password'));
+    }
+
+
+    /**
      * Let the User know they we couldn't make a recent list they've requested
      * because they don't have enough credits.
      *

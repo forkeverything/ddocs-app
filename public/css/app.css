@@ -6330,6 +6330,9 @@ textarea {
 [v-cloak] {
   display: none; }
 
+body {
+  font-size: 16px; }
+
 .no-wrap {
   white-space: nowrap; }
 

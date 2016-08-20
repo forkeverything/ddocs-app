@@ -16,6 +16,10 @@ Route::get('/', function () {
     return view('landing');
 });
 
+Route::get('/', 'PagesController@getLandingMain');
+
+Route::get('/start', 'PagesController@getLandingStart');
+
 Route::auth();
 
 Route::get('/checklist', 'ChecklistsController@getListsView');

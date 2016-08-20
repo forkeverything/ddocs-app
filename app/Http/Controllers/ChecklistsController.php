@@ -116,7 +116,11 @@ class ChecklistsController extends Controller
         // Is it going to the right cc address: list@in.filescollector.com
         if ($request["OriginalRecipient"] !== 'list@in.filescollector.com') return "Wrong Email Address To Create Checklist";
 
-        if (!$user = User::where('email', $request["From"])->first()) return "Account Could Not Be Found";
+        // If the user doesn't have an account yet
+        if (! $user = User::where('email', $request["From"])->first()){
+            // we'll make one for him
+            $user = User::makeNewUserFromEmailWebhook($request);
+        }
 
         ChecklistFactory::makeFromEmail($request, $user);
 

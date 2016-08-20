@@ -1,9 +1,11 @@
 // Create our global bus
 var vueGlobalEventBus = new Vue();
 new Vue({
-    el: '#landing',
+    el: '#landing-start',
     data: {
         ajaxReady: true,
+        emailExample: false,
+        listMaker: false,
         checklistRecipient: '',
         checklistName: '',
         checklistDescription: '',
@@ -40,6 +42,12 @@ new Vue({
     },
     props: [],
     methods: {
+        showEmailExample: function() {
+            this.emailExample = true;
+        },
+        showListMaker: function() {
+            this.listMaker = true;
+        },
         showRegisterModal: function () {
             if (this.createdAccount) {
                 this.sendChecklist();
@@ -129,5 +137,3 @@ new Vue({
     }
 });
 
-
-//# sourceMappingURL=main.js.map

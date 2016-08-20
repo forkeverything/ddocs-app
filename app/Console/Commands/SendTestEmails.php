@@ -46,6 +46,8 @@ class SendTestEmails extends Command
 
     private $checklist;
 
+    protected $sentEmails = 0;
+
     /**
      * Create a new command instance.
      *
@@ -73,13 +75,17 @@ class SendTestEmails extends Command
         $this->sendUserEmails()
              ->sendChecklistEmails()
              ->sendFileRequestEmails();
-        $this->info('and done!');
+        $this->info('and done! Sent Emails = ' . $this->sentEmails);
     }
 
     protected function sendUserEmails()
     {
         $this->userMailer->sendWelcomeEmail($this->user);
+        $this->sentEmails ++;
+        $this->userMailer->sendWelcomeWithPasswordEmail($this->user, 'abcd1234');
+        $this->sentEmails ++;
         $this->userMailer->sendNotEnoughCreditsToMakeListEmail($this->user);
+        $this->sentEmails ++;
 
         $this->info('Finished User Emails');
         return $this;
@@ -88,10 +94,15 @@ class SendTestEmails extends Command
     protected function sendChecklistEmails()
     {
         $this->checklistMailer->sendNewChecklistNotificationEmail($this->checklist);
+        $this->sentEmails ++;
         $this->checklistMailer->sendChecklistCompleteEmail($this->checklist);
+        $this->sentEmails ++;
         $this->checklistMailer->sendUpcomingFilesReminder($this->checklist);
+        $this->sentEmails ++;
         $this->checklistMailer->sendLateFilesReminder($this->checklist);
+        $this->sentEmails ++;
         $this->checklistMailer->sendFreeCreditsReceived($this->checklist, $this->user);
+        $this->sentEmails ++;
 
         $this->info('Finished Checklist Emails');
         return $this;
@@ -106,6 +117,7 @@ class SendTestEmails extends Command
             'rejected_reason' => 'Not good enough'
         ]);
         $this->fileRequestMailer->sendChangesRequiredEmail($fileRequest);
+        $this->sentEmails ++;
         $this->info('Finished File Request Emails');
         return $this;
     }

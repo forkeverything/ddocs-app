@@ -15,6 +15,8 @@
 <body>
 
 
+
+
 <div id="landing" v-cloak>
 
     @include('layouts.partials.nav')

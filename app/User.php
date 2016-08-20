@@ -2,8 +2,11 @@
 
 namespace App;
 
+use App\Events\CreatedUserFromEmailWebhook;
 use App\Exceptions\NotEnoughCredits;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
@@ -81,5 +84,27 @@ class User extends Authenticatable
             'credits' => ($this->credits + $numCredits)
         ]);
         return $this;
+    }
+
+    /**
+     * Create a new User from the HTTP Request of PostMark's inbound
+     * email webhook.
+     *
+     * @param Request $request
+     * @return static
+     */
+    public static function makeNewUserFromEmailWebhook(Request $request)
+    {
+        $randomPassword = str_random(6);
+
+        $user = static::create([
+            'name' => $request["FromFull"]["Name"],
+            'email' => $request["From"],
+            'password' => bcrypt($randomPassword)
+        ]);
+
+        Event::fire(new CreatedUserFromEmailWebhook($user, $randomPassword));
+
+        return $user;
     }
 }
