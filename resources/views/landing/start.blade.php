@@ -9,6 +9,7 @@
 
     @include('trackers.fb-pixel')
     @include('fonts.type-kit')
+    @include('trackers.ga-tracker')
 
 </head>
 

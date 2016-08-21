@@ -11,6 +11,7 @@
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     @include('trackers.fb-pixel')
     @include('fonts.type-kit')
+    @include('trackers.ga-tracker')
 </head>
 <body id="app-layout">
 

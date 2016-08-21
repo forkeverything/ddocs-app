@@ -48,8 +48,7 @@ elixir(function(mix) {
                 'vue/directives/**/*.js',
                 'vue/filters/**/*.js',
                 'vue/components/form-errors.js',
-                'vue/components/registration-modal.js',
-                'ga-tracker.js'
+                'vue/components/registration-modal.js'
             ], 'public/js/landing/dependencies.js', 'resources/assets/js/dependencies');
             // Main
             mix.scriptsIn('resources/assets/js/landing/main', 'public/js/landing/main.js');
