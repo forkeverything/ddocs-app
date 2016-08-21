@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 
+    @include('trackers.ga-experiment')
+
     @include('layouts.partials.html-head')
 
 

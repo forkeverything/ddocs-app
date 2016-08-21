@@ -55,7 +55,7 @@ class Handler extends ExceptionHandler
                     'credits' => [
                         'Not enough credits to create list!'
                     ]
-                ], 422);
+                ], 402);
 
                 break;
             default:
