@@ -30,13 +30,14 @@
                         Scroll down if you regularly request lots of files, have long project lead times and enjoy
                         optimizing your work flow.
                     </h3>
+                    <img src="/images/folder-bulb.svg" alt="hero folder image">
                 </div>
             </div>
         </div>
     </div>
     <div id="main-course">
         <div class="container">
-            <h1 class="text-center">How we'll get it done</h1>
+            <h1 class="text-center">How it's done</h1>
             <div class="row feature">
                 <div class="col-sm-2 col-sm-offset-1">
                     <img src="/images/icons/alarm-clock.svg" alt="Alarm clock icon">
@@ -148,6 +149,7 @@ Mike</textarea>
     </div>
 
     <div id="cost">
+        <div id="grass"></div>
         <div class="container">
             <h1>We found that 78% of our users only make 2 or 3 lists a month. So, we made it <strong>free for up to 5 lists</strong>, every month. And for only <strong>$15 per month, you get unlimited lists</strong>. This lets us keep everyone happy without compromising on delivery speed or storage space.</h1>
         </div>
@@ -159,7 +161,7 @@ Mike</textarea>
             <div class="text-center">
                 <a href="/register" class="visible-xs"><button type="button" class="btn btn-solid-green btn-lg">Free Sign Up</button></a>
             </div>
-            <h3 class="hidden-xs">Congrats, you've made it this far without bouncing! Since you're already here, you might as well <a href="/register">sign up</a> for an account (did we mention it was free?) and see for yourself how we'll help you be more pro.</h3>
+            <h3 class="hidden-xs">Congrats, you've made it to the bottom! Since you're already here, you might as well <a href="/register">sign up</a> for an account (did we mention it was free?) and see for yourself.</h3>
         </div>
     </div>
     <registration-modal></registration-modal>

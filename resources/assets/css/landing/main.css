@@ -6580,9 +6580,16 @@ h4, h5, p, ol, ul, span {
       #landing-start #elevator h3 {
         font-size: 1.4em;
         line-height: 2.2em; } }
+  #landing-start #elevator img {
+    width: 35%;
+    margin: 0 auto;
+    display: block; }
+    @media screen and (min-width: 768px) {
+      #landing-start #elevator img {
+        width: 25%; } }
 
 #landing-start #main-course {
-  background: #2ECC71;
+  background: url("/images/folder-pattern.jpg");
   color: #fff;
   padding: 5em 0; }
   #landing-start #main-course h1 {
@@ -6659,8 +6666,18 @@ h4, h5, p, ol, ul, span {
     margin: 1em 0 2em 0; }
 
 #landing-start #cost {
-  padding: 3em 0;
-  background: #2ECC71; }
+  padding: 5em 0 3em 0;
+  background: #2ECC71;
+  position: relative; }
+  #landing-start #cost #grass {
+    background: url("/images/grass.jpg");
+    background-size: contain;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; }
   #landing-start #cost h1 {
     color: #C8FFC6;
     font-size: 1.5em;
