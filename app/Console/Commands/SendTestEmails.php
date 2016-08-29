@@ -24,7 +24,7 @@ class SendTestEmails extends Command
      *
      * @var string
      */
-    protected $signature = 'emails:test';
+    protected $signature = 'emails:test {email=mail@wumike.com}';
 
     /**
      * The console command description.
@@ -46,6 +46,13 @@ class SendTestEmails extends Command
      */
     private $checklist;
 
+    /**
+     * The User model that has the same email we're sending emaisl too.
+     *
+     * @var
+     */
+    private $existingUser;
+
     /*
     *
      * @var int
@@ -60,10 +67,6 @@ class SendTestEmails extends Command
     public function __construct()
     {
         parent::__construct();
-        if(Schema::hasTable('checklists')) {
-            $this->checklist = Checklist::first();
-            $this->user = User::first();
-        }
     }
 
     /**
@@ -73,9 +76,35 @@ class SendTestEmails extends Command
      */
     public function handle()
     {
+
+
+        if(! Schema::hasTable('checklists')) return;
+
+        $this->existingUser = User::where('email', $this->argument('email'))->first();
+
+        if($this->existingUser) $this->existingUser->update(['email' => 'temporaryemail@emailz.com']);
+
+        $this->user = User::create([
+            'name' => 'John Dough',
+            'email' => $this->argument('email'),
+            'password' => bcrypt('secret')
+        ]);
+
+
+        $this->checklist = Checklist::create([
+            'recipient' => $this->argument('email'),
+            'name' => 'Test Checklist',
+            'description' => 'Best checklist that could.',
+            'user_id' => $this->user->id
+        ]);
+
+
+
+
         $this->sendUserEmails()
              ->sendChecklistEmails()
-             ->sendFileRequestEmails();
+             ->sendFileRequestEmails()
+        ->cleanUpRecords();
         $this->info('and done! Sent Emails = ' . $this->sentEmails);
     }
 
@@ -117,7 +146,15 @@ class SendTestEmails extends Command
 
     protected function sendFileRequestEmails()
     {
-        $fileRequest = $this->checklist->requestedFiles->first();
+
+        $fileRequest =  $this->checklist->requestedFiles()->create([
+            'name' => 'Super important file',
+            'description' => 'not much to say here',
+            'due' => '01/06/2017',
+            'required' => 1,
+            'checklist_id' => $this->checklist->id
+        ]);
+
         $fileRequest->uploads()->create([
             'path' => 'foo/bar.jpg',
             'rejected' => 1,
@@ -130,6 +167,12 @@ class SendTestEmails extends Command
         $this->sentEmails ++;
         $this->info('Finished File Request Emails');
         return $this;
+    }
+
+    protected function cleanUpRecords()
+    {
+        $this->user->delete();
+        if($this->existingUser) $this->existingUser->update(['email' => $this->argument('email')]);
     }
 
 }
