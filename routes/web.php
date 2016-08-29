@@ -21,7 +21,6 @@ Route::get('/checklist', 'ChecklistsController@getListsView');
 Route::get('/checklist/get', 'ChecklistsController@getForAuthenticatedUser');
 Route::get('/checklist/make', 'ChecklistsController@getMakeForm');
 Route::post('/checklist/make', 'ChecklistsController@postNewChecklist');
-Route::post('/checklist/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
 Route::get('/checklist/{checklist_hash}', 'ChecklistsController@getSingleChecklist');
 Route::get('/checklist/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
 Route::post('/checklist/{checklist_hash}/turn_off_notifications', 'ChecklistsController@postTurnOffNotifications');

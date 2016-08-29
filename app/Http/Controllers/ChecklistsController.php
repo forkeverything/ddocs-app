@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Vinkla\Hashids\HashidsManager;
 
 class ChecklistsController extends Controller
@@ -101,6 +102,7 @@ class ChecklistsController extends Controller
      */
     public function postNewChecklistFromEmailWebhook(Request $request)
     {
+        Log::info($request->all());
         // Is it going to the right cc address: list@in.filescollector.com
         if ($request["OriginalRecipient"] !== 'list@in.filescollector.com') return "Wrong Email Address To Create Checklist";
 
