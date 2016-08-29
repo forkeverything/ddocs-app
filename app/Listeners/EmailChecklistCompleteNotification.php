@@ -3,26 +3,21 @@
 namespace App\Listeners;
 
 use App\Events\ChecklistCompleted;
-use App\Mailers\ChecklistMailer;
+use App\Mail\ChecklistComplete;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
 
-class EmailChecklistCompleteNotification implements ShouldQueue
+class EmailChecklistCompleteNotification
 {
-    /**
-     * @var ChecklistMailer
-     */
-    private $checklistMailer;
-
     /**
      * Create the event listener.
      *
      * @return void
      */
-    public function __construct(ChecklistMailer $checklistMailer)
+    public function __construct()
     {
         //
-        $this->checklistMailer = $checklistMailer;
     }
 
     /**
@@ -33,6 +28,6 @@ class EmailChecklistCompleteNotification implements ShouldQueue
      */
     public function handle(ChecklistCompleted $event)
     {
-        $this->checklistMailer->sendChecklistCompleteEmail($event->checklist);
+        Mail::to($event->checklist->user)->send(new ChecklistComplete($event->checklist));
     }
 }

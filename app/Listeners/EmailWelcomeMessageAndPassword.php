@@ -3,26 +3,21 @@
 namespace App\Listeners;
 
 use App\Events\CreatedUserFromEmailWebhook;
-use App\Mailers\UserMailer;
+use App\Mail\WelcomeWithGeneratedPassword;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
 
-class EmailWelcomeMessageAndPassword implements ShouldQueue
+class EmailWelcomeMessageAndPassword
 {
-    /**
-     * @var UserMailer
-     */
-    private $userMailer;
-
     /**
      * Create the event listener.
      *
-     * @param UserMailer $userMailer
+     * @return void
      */
-    public function __construct(UserMailer $userMailer)
+    public function __construct()
     {
-
-        $this->userMailer = $userMailer;
+        //
     }
 
     /**
@@ -33,6 +28,6 @@ class EmailWelcomeMessageAndPassword implements ShouldQueue
      */
     public function handle(CreatedUserFromEmailWebhook $event)
     {
-        $this->userMailer->sendWelcomeWithPasswordEmail($event->user, $event->password);
+        Mail::to($event->user)->send(new WelcomeWithGeneratedPassword($event->user, $event->password));
     }
 }

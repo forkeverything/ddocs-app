@@ -10,7 +10,6 @@ use App\Events\FileWasUploaded;
 use App\Events\NewUserSignedUp;
 use App\Events\RecipientClaimedInvitation;
 use App\Events\UserHasRunOutOfCredits;
-use App\Listeners\CheckIfChecklistIsComplete;
 use App\Listeners\EmailChecklistCompleteNotification;
 use App\Listeners\EmailChecklistOwnerFreeCreditsFromRecipient;
 use App\Listeners\EmailFileRejectedNotification;
@@ -18,8 +17,7 @@ use App\Listeners\EmailNotEnoughCreditsToMakeListNotification;
 use App\Listeners\EmailRecipientOfNewChecklist;
 use App\Listeners\EmailWelcomeMessage;
 use App\Listeners\EmailWelcomeMessageAndPassword;
-use App\Listeners\SendUserWelcomeWithPasswordEmail;
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -30,9 +28,6 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\SomeEvent' => [
-            'App\Listeners\EventListener',
-        ],
         NewUserSignedUp::class => [
             EmailWelcomeMessage::class
         ],
@@ -40,7 +35,7 @@ class EventServiceProvider extends ServiceProvider
             EmailRecipientOfNewChecklist::class
         ],
         FileWasUploaded::class => [
-          CheckIfChecklistIsComplete::class
+            // Do something
         ],
         ChecklistCompleted::class => [
             EmailChecklistCompleteNotification::class
@@ -60,14 +55,13 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     /**
-     * Register any other events for your application.
+     * Register any events for your application.
      *
-     * @param  \Illuminate\Contracts\Events\Dispatcher  $events
      * @return void
      */
-    public function boot(DispatcherContract $events)
+    public function boot()
     {
-        parent::boot($events);
+        parent::boot();
 
         //
     }

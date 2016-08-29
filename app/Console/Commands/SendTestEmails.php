@@ -3,11 +3,19 @@
 namespace App\Console\Commands;
 
 use App\Checklist;
-use App\Mailers\ChecklistMailer;
-use App\Mailers\FileRequestMailer;
-use App\Mailers\UserMailer;
+use App\Mail\ChecklistComplete;
+use App\Mail\FileChangesRequired;
+use App\Mail\FreeCreditsReceived;
+use App\Mail\LateFilesReminder;
+use App\Mail\NewChecklist;
+use App\Mail\NotEnoughCreditsForList;
+use App\Mail\UpcomingFilesReminder;
+use App\Mail\Welcome;
+use App\Mail\WelcomeWithGeneratedPassword;
 use App\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Schema;
 
 class SendTestEmails extends Command
 {
@@ -26,43 +34,36 @@ class SendTestEmails extends Command
     protected $description = 'Send test emails for each view.';
 
     /**
-     * @var UserMailer
-     */
-    private $userMailer;
-    /**
-     * @var ChecklistMailer
-     */
-    private $checklistMailer;
-    /**
-     * @var FileRequestMailer
-     */
-    private $fileRequestMailer;
-
-    /**
      * Mike's User model
      * @var
      */
     private $user;
 
+    /**
+     * The first Checklist in DB We assume it's the dev seeded one.
+     * TODO ::: Create a new checklist so it'll always be consistent.
+     * @var
+     */
     private $checklist;
 
+    /*
+    *
+     * @var int
+     */
     protected $sentEmails = 0;
 
     /**
      * Create a new command instance.
      *
-     * @param UserMailer $userMailer
-     * @param ChecklistMailer $checklistMailer
-     * @param FileRequestMailer $fileRequestMailer
+     * @return void
      */
-    public function __construct(UserMailer $userMailer, ChecklistMailer $checklistMailer, FileRequestMailer $fileRequestMailer)
+    public function __construct()
     {
         parent::__construct();
-        $this->userMailer = $userMailer;
-        $this->checklistMailer = $checklistMailer;
-        $this->fileRequestMailer = $fileRequestMailer;
-        $this->checklist = Checklist::first();
-        $this->user = User::first();
+        if(Schema::hasTable('checklists')) {
+            $this->checklist = Checklist::first();
+            $this->user = User::first();
+        }
     }
 
     /**
@@ -80,11 +81,11 @@ class SendTestEmails extends Command
 
     protected function sendUserEmails()
     {
-        $this->userMailer->sendWelcomeEmail($this->user);
+        Mail::to($this->user)->send(new Welcome($this->user));
         $this->sentEmails ++;
-        $this->userMailer->sendWelcomeWithPasswordEmail($this->user, 'abcd1234');
+        Mail::to($this->user)->send(new WelcomeWithGeneratedPassword($this->user, 'abcd1234'));
         $this->sentEmails ++;
-        $this->userMailer->sendNotEnoughCreditsToMakeListEmail($this->user);
+        Mail::to($this->user)->send(new NotEnoughCreditsForList($this->user));
         $this->sentEmails ++;
 
         $this->info('Finished User Emails');
@@ -93,15 +94,21 @@ class SendTestEmails extends Command
 
     protected function sendChecklistEmails()
     {
-        $this->checklistMailer->sendNewChecklistNotificationEmail($this->checklist);
+
+        Mail::to($this->checklist->recipient)->send(new NewChecklist($this->checklist));
         $this->sentEmails ++;
-        $this->checklistMailer->sendChecklistCompleteEmail($this->checklist);
+
+        Mail::to($this->checklist->user)->send(new ChecklistComplete($this->checklist));
         $this->sentEmails ++;
-        $this->checklistMailer->sendUpcomingFilesReminder($this->checklist);
+
+        Mail::to($this->checklist->recipient)->send(new UpcomingFilesReminder($this->checklist));
         $this->sentEmails ++;
-        $this->checklistMailer->sendLateFilesReminder($this->checklist);
+
+        Mail::to($this->checklist->recipient)->send(new LateFilesReminder($this->checklist));
         $this->sentEmails ++;
-        $this->checklistMailer->sendFreeCreditsReceived($this->checklist, $this->user);
+
+
+        Mail::to($this->checklist->user)->send(new FreeCreditsReceived($this->checklist, $this->user));
         $this->sentEmails ++;
 
         $this->info('Finished Checklist Emails');
@@ -116,11 +123,13 @@ class SendTestEmails extends Command
             'rejected' => 1,
             'rejected_reason' => 'Not good enough'
         ]);
-        $this->fileRequestMailer->sendChangesRequiredEmail($fileRequest);
+
+
+        Mail::to($this->checklist->recipient)->send(new FileChangesRequired($fileRequest));
+
         $this->sentEmails ++;
         $this->info('Finished File Request Emails');
         return $this;
     }
-
 
 }

@@ -13,7 +13,7 @@ class PagesController extends Controller
         // If the user is logged in, redirect to checklist page
         $this->middleware('guest', [
             'only' => [
-                'getLandingMain', 'getLandingStart'
+                'getLandingMain'
             ]
         ]);
     }
@@ -29,13 +29,4 @@ class PagesController extends Controller
         return view('landing.main');
     }
 
-    /**
-     * Secondary landing page
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getLandingStart()
-    {
-        return view('landing.start');
-    }
 }

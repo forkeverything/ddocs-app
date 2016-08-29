@@ -1,0 +1,95 @@
+.filters-menu {
+  padding: 10px 15px!important;
+  width: 300px;
+  margin-top: 10px;
+
+  .form-control {
+    float: none;
+    display: block;
+  }
+
+  label {
+    color: $text-muted;
+    font-size: 0.8em;
+    font-weight: normal;
+    display: block;
+  }
+
+  .select-filter, .filter-fields {
+    margin: 0 0 10px;
+  }
+
+  .filter-fields {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      margin: 0 5px 0 0;
+    }
+  }
+
+  .integer-range-field, .date-range-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .starting, .ending {
+      flex: 1;
+
+      label {
+        margin: 0 0 3px;
+
+      }
+
+      input {
+        text-align: center;
+        height: 34px;
+        padding: 6px 12px;
+        border: 1px solid $laravel-border-color;
+        border-radius: 4px;
+        width: 100%;
+
+        &:focus {
+          border: 1px solid $brand-primary;
+          outline: 0;
+        }
+      }
+    }
+
+    .dash {
+      font-size: 1.5em;
+      color: $text-muted;
+      margin: 0 5px;
+    }
+  }
+
+  .date-range-field {
+    .dash {
+      margin: 10px 5px 0 5px;
+    }
+  }
+
+  .button-add-filter {
+    width: 100%;
+    @include border-radius($border-radius-base!important);
+  }
+}
+
+.active-filters {
+  margin: 0 -5px 15px -5px;
+
+  .button-remove-filter {
+    background: lighten($brand-primary, 45%);
+    @include border-radius($border-radius-small);
+    margin: 0 5px;
+    color: darken($brand-primary, 10%);
+    border: 1px solid $brand-primary;
+
+    &:hover {
+      background: $brand-primary;
+      color: #fff;
+    }
+  }
+}
+

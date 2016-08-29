@@ -1,0 +1,34 @@
+//.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus
+
+.dropdown-menu {
+  li {
+    a {
+      &.active {
+        color: $green;
+      }
+
+      &:hover, &:focus {
+        color: #fff!important;
+        background: $green!important;
+        text-decoration: none!important;
+      }
+    }
+  }
+}
+
+.input-group-btn {
+
+  .btn.btn-default.dropdown-toggle:hover, .btn.btn-default.dropdown-toggle:focus, .btn.btn-default.dropdown-toggle.focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
+    border-color: $btn-default-border!important;
+  }
+
+  &.open {
+    > button {
+     color: $green !important;
+   }
+    span {
+      color: $green;
+    }
+  }
+}
+

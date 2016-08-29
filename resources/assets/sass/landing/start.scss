@@ -35,7 +35,7 @@
 
     h3 {
       margin-top: 0;
-      font-family: "adelle", Arial, serif;
+      font-family: $font-family-serif;
       font-size: 1em;
       line-height: 2em;
 
@@ -112,7 +112,7 @@
 
       p {
         color: $extra-light-green;
-        font-family: "adelle", Arial, serif;
+        font-family: $font-family-serif;
       }
     }
   }
@@ -161,7 +161,7 @@
 
       #form-email {
         margin: 2em 0 0 1em;
-        border: 1px solid $border-light;
+        border: 1px solid $laravel-border-color;
         @include border-radius($border-radius-large);
         padding: 1em 2em;
         background: $extra-light-grey;

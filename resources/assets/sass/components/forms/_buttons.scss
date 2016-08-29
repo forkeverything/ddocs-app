@@ -1,0 +1,22 @@
+.btn {
+  background: transparent;
+
+  &:focus, &:active, &:hover {
+    outline: 0 !important;
+    @include box-shadow(none);
+  }
+
+
+
+  &.btn-space {
+    margin-right: 10px;
+  }
+
+  @import "buttons/default";
+  @import "buttons/unstyled";
+  @import "buttons/text";
+}
+
+@import "buttons/outline";
+@import "buttons/solid";
+

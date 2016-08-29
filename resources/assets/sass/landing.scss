@@ -1,9 +1,19 @@
-@import "variables/all";
-@import "../../../resources/assets/bower/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "components/all";
-@import "fixes/all";
-@import "setup/all";
-@import "pages/checklist/form-make-checklist";
+// Variables
+@import "variables";
 
-@import "landing/main";
+// Utility Classes
+@import "utilities";
+
+// Bootstrap
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Font Awesome
+@import "../../../node_modules/font-awesome/scss/font-awesome";
+
+// Components
+@import "components";
+
+// Checklist
+@import "checklist/maker";
+
 @import "landing/start";

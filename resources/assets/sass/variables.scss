@@ -1,0 +1,62 @@
+
+
+@import "variables/colors";
+@import "variables/mixins";
+
+// Body
+$body-bg: #FFFFFF;
+
+// Borders
+$laravel-border-color: darken($body-bg, 10%);
+$list-group-border: $laravel-border-color;
+$navbar-default-border: $laravel-border-color;
+$panel-default-border: $laravel-border-color;
+$panel-inner-border: $laravel-border-color;
+
+// Brands
+$brand-primary: $green;
+$brand-info: $blue;
+$brand-success: #2ab27b;
+$brand-warning: #cbb956;
+$brand-danger:  #bf5329;
+
+// Typography
+$headings-font-family: "Proxima Nova", Helvetica, Arial, Helvetica, sans-serif;
+$font-family-sans-serif: "Helvetica Neue", Helvetica, sans-serif;
+$font-family-serif: "adelle", Arial, serif;
+$font-size-base: 16px;
+$line-height-base: 1.6;
+$text-color: #000;
+$link-color: $brand-info;
+
+// Navbar
+$navbar-default-bg: #fff;
+
+// Buttons
+$btn-default-color: $extra-dark-grey;
+$btn-default-border: $dark-grey;
+
+// Inputs
+$input-border: $btn-default-border;
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: $dark-grey;
+
+// Panels
+$panel-default-heading-bg: #fff;
+
+// Text
+$text-muted: #9CA1A8;
+
+// Progress Bars
+$progress-bar-success-bg: $green;
+$progress-bar-info-bg: $blue;
+$progress-bar-warning-bg: $orange;
+$progress-bar-danger-bg: $red;
+
+// Breadcrumbs
+$breadcrumb-bg: #fff;
+$breadcrumb-active-color: $text-muted;
+
+// Pagination
+$pagination-active-bg: $blue;
+$pagination-active-border: $blue;

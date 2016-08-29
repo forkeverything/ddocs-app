@@ -24,9 +24,9 @@ class DevSeeder extends Seeder
     public function run()
     {
         $this->truncateTables()
-            ->seedMikeAccount()
-        ->seedChecklists()
-        ->seedFiles();
+             ->seedMikeAccount()
+             ->seedChecklists()
+             ->seedFiles();
     }
 
     /**

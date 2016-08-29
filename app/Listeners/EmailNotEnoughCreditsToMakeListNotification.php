@@ -3,25 +3,21 @@
 namespace App\Listeners;
 
 use App\Events\UserHasRunOutOfCredits;
-use App\Mailers\UserMailer;
+use App\Mail\NotEnoughCreditsForList;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
 
-class EmailNotEnoughCreditsToMakeListNotification implements ShouldQueue
+class EmailNotEnoughCreditsToMakeListNotification
 {
-    /**
-     * @var UserMailer
-     */
-    private $userMailer;
-
     /**
      * Create the event listener.
      *
-     * @param UserMailer $userMailer
+     * @return void
      */
-    public function __construct(UserMailer $userMailer)
+    public function __construct()
     {
-        $this->userMailer = $userMailer;
+        //
     }
 
     /**
@@ -32,6 +28,6 @@ class EmailNotEnoughCreditsToMakeListNotification implements ShouldQueue
      */
     public function handle(UserHasRunOutOfCredits $event)
     {
-        $this->userMailer->sendNotEnoughCreditsToMakeListEmail($event->user);
+        Mail::to($event->user)->send(new NotEnoughCreditsForList($event->user));
     }
 }

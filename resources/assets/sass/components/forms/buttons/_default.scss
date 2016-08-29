@@ -1,19 +1,19 @@
 &.btn-default {
   background-color: #fff!important;
   &:hover {
-    color: $blue;
-    border-color: $blue!important;
+    color: $brand-primary;
+    border-color: $brand-primary;
 
     .caret {
-      color: $blue;
+      color: $brand-primary;
     }
   }
 
   &:hover:active, &:active:focus, &.focus:active, &.active:hover, &.active:focus, &.active.focus, &.dropdown-toggle:hover, &.dropdown-toggle:focus, &.dropdown-toggle.focus {
-    color: $blue !important;
-    border-color: $blue!important;
+    color: $brand-primary !important;
+    border-color: $brand-primary;
     .caret {
-      color: $blue;
+      color: $brand-primary;
     }
   }
 }

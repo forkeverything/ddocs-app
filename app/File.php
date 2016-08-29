@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
@@ -28,5 +27,4 @@ class File extends Model
     {
         return $this->belongsTo(FileRequest::class);
     }
-
 }

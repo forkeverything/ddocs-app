@@ -3,26 +3,21 @@
 namespace App\Listeners;
 
 use App\Events\NewUserSignedUp;
-use App\Mailers\UserMailer;
+use App\Mail\Welcome;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
 
-class EmailWelcomeMessage implements ShouldQueue
+class EmailWelcomeMessage
 {
-    /**
-     * @var UserMailer
-     */
-    private $userMailer;
-
     /**
      * Create the event listener.
      *
-     * @param UserMailer $userMailer
+     * @return void
      */
-    public function __construct(UserMailer $userMailer)
+    public function __construct()
     {
         //
-        $this->userMailer = $userMailer;
     }
 
     /**
@@ -33,6 +28,6 @@ class EmailWelcomeMessage implements ShouldQueue
      */
     public function handle(NewUserSignedUp $event)
     {
-        $this->userMailer->sendWelcomeEmail($event->user);
+        Mail::to($event->user)->send(new Welcome($event->user));
     }
 }

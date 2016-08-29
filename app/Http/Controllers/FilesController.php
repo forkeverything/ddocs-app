@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Events\FileWasRejected;
 use App\Events\FileWasUploaded;
 use App\Factories\FileFactory;
-use App\File;
 use App\FileRequest;
 use App\Http\Requests\RejectFileRequest;
 use App\Http\Requests\UploadFileRequest;
+use App\Jobs\CheckIfChecklistComplete;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Event;
 
 class FilesController extends Controller
 {
-
     /**
      * Handle POST request to upload a file for a File Request within a Checklist.
      *
@@ -33,7 +32,10 @@ class FilesController extends Controller
         if ($fileRequest->hasStatus('received')) abort(409, "File already received");
 
         $fileRequest = FileFactory::store($fileRequest, $request->file('file'));
-        Event::fire(new FileWasUploaded($fileRequest));
+
+        // Check if the Checklist the FileRequest belongs to is complete
+        dispatch(new CheckIfChecklistComplete($fileRequest->checklist));
+
         return $fileRequest;
 
     }
@@ -51,5 +53,4 @@ class FilesController extends Controller
         Event::fire(new FileWasRejected($fileRequest));
         return $fileRequest;
     }
-
 }

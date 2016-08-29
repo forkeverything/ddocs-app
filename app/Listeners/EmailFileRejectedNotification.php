@@ -3,25 +3,21 @@
 namespace App\Listeners;
 
 use App\Events\FileWasRejected;
-use App\Mailers\FileRequestMailer;
+use App\Mail\FileChangesRequired;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
 
-class EmailFileRejectedNotification implements ShouldQueue
+class EmailFileRejectedNotification
 {
-    /**
-     * @var FileRequestMailer
-     */
-    private $fileRequestMailer;
-
     /**
      * Create the event listener.
      *
-     * @param FileRequestMailer $fileRequestMailer
+     * @return void
      */
-    public function __construct(FileRequestMailer $fileRequestMailer)
+    public function __construct()
     {
-        $this->fileRequestMailer = $fileRequestMailer;
+        //
     }
 
     /**
@@ -32,6 +28,6 @@ class EmailFileRejectedNotification implements ShouldQueue
      */
     public function handle(FileWasRejected $event)
     {
-        if($event->fileRequest->checklist->recipient_notifications) $this->fileRequestMailer->sendChangesRequiredEmail($event->fileRequest);
+        Mail::to($event->fileRequest->checklist->user)->send(new FileChangesRequired($event->fileRequest));
     }
 }

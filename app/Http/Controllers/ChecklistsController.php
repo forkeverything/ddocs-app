@@ -3,28 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Checklist;
-use App\Events\ChecklistCreated;
-use App\Exceptions\NotEnoughCredits;
 use App\Factories\ChecklistFactory;
-use App\Factories\FileFactory;
-use App\File;
-use App\FileRequest;
 use App\Http\Requests\NewChecklistRequest;
-use App\Http\Requests\RejectFileRequest;
-use App\Http\Requests\TurnOffRecipientNotificationsRequest;
-use App\Http\Requests\UploadFileRequest;
 use App\Repositories\ChecklistsRespository;
 use App\Repositories\FilesRequestsRepository;
 use App\User;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
 use Vinkla\Hashids\HashidsManager;
 
 class ChecklistsController extends Controller
@@ -75,11 +62,12 @@ class ChecklistsController extends Controller
         $sort = $request->sort;
         $order = $request->order;
         $search = $request->search;
+        $perPage = $request->per_page ?: 20;
 
         return ChecklistsRespository::forUser(Auth::user())
                                     ->searchFor($search)
                                     ->sortOn($sort, $order)
-                                    ->paginate(20);
+                                    ->paginate($perPage);
     }
 
     /**
@@ -186,13 +174,12 @@ class ChecklistsController extends Controller
         if ($email !== $checklist->recipient) {
             return response([
                 'email' => [
-                    'Email address is different to recipient'
+                    'Incorrect recipient email address.'
                 ]
             ], 422);
         }
         $checklist->turnOffRecipientNotifications();
         return "Turned off notifications";
     }
-
 
 }

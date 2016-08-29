@@ -4,14 +4,16 @@ namespace App;
 
 use App\Events\CreatedUserFromEmailWebhook;
 use App\Exceptions\NotEnoughCredits;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Event;
 use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
-    use Billable;
+    use Notifiable, Billable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -32,6 +34,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
 
     /**
      * A User can create many Checklist(s) of required File(s).

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class FileRequest extends Model
 {
-
     /**
      * Assignable fields.
      *

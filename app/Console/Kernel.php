@@ -5,22 +5,18 @@ namespace App\Console;
 use App\Console\Commands\SendTestEmails;
 use App\Jobs\ReplenishUserCredits;
 use App\Jobs\SendLateFileReminders;
-use App\Jobs\SendUpcomingDueFileReminders;
+use App\Jobs\SendUpcomingDueFilesReminders;
 use Illuminate\Console\Scheduling\Schedule;
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
-    use DispatchesJobs;
-
     /**
      * The Artisan commands provided by your application.
      *
      * @var array
      */
     protected $commands = [
-        // Commands\Inspire::class,
         SendTestEmails::class
     ];
 
@@ -43,7 +39,7 @@ class Kernel extends ConsoleKernel
 
         // Every morning, send upcoming file reminders at 06:00
         $schedule->call(function () {
-            $this->dispatch(new SendUpcomingDueFileReminders);
+            $this->dispatch(new SendUpcomingDueFilesReminders);
         })->dailyAt('06:00');
 
         // Replenish user credits to 5 / month
@@ -56,5 +52,16 @@ class Kernel extends ConsoleKernel
          * the scheduler call the command. But maybe the extra abstraction is unecessary
          * unless we're going to be calling the job manually too.
          */
+
+    }
+
+    /**
+     * Register the Closure based commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        require base_path('routes/console.php');
     }
 }

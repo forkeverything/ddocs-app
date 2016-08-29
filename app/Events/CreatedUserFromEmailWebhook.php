@@ -2,14 +2,17 @@
 
 namespace App\Events;
 
-use App\Events\Event;
 use App\User;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class CreatedUserFromEmailWebhook extends Event
+class CreatedUserFromEmailWebhook
 {
-    use SerializesModels;
+    use InteractsWithSockets, SerializesModels;
 
     /**
      * @var User
@@ -34,12 +37,12 @@ class CreatedUserFromEmailWebhook extends Event
     }
 
     /**
-     * Get the channels the event should be broadcast on.
+     * Get the channels the event should broadcast on.
      *
-     * @return array
+     * @return Channel|array
      */
     public function broadcastOn()
     {
-        return [];
+        return new PrivateChannel('channel-name');
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-use App\Checklist;
 use App\File;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -13,15 +12,23 @@ class FileUploadPolicy
 
     /**
      * Create a new policy instance.
+     *
+     * @return void
      */
     public function __construct()
     {
         //
     }
 
+    /**
+     * Only Logged-in User who is recipient may upload.
+     *
+     * @param User $user
+     * @param File $file
+     * @return bool
+     */
     public function upload(User $user, File $file)
     {
         return $user->email === $file->checklist->recipient;
     }
-
 }

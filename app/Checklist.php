@@ -67,7 +67,7 @@ class Checklist extends Model
      * Calculate the percentage completion of Checklist using
      * the number of File(s) received.
      *
-     * @return float
+     * @return float|null
      */
     public function getProgressAttribute()
     {
@@ -75,7 +75,7 @@ class Checklist extends Model
         // Count only required files that are received....
         $received = $files->where('required', 1)->where('status', 'received')->count();
         $total = $files->count();
-        if(! $total) return;
+        if(! $total) return 0;
         return round(100 * $received / $total, 0);
     }
 

@@ -6,7 +6,7 @@ namespace App\Factories;
 
 use App\Checklist;
 use App\Events\ChecklistCreated;
-use App\File;
+
 use App\Http\Requests\NewChecklistRequest;
 use App\User;
 use Illuminate\Http\Request;

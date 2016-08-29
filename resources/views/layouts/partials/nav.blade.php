@@ -26,7 +26,17 @@
                             <li><a href="/checklist/make">New Checklist</a></li>
                             <li><a href="/checklist">My Lists</a></li>
                             <li><a href="/account">Account</a></li>
-                            <li><a href="/logout" alt="link to logout">Logout</a></li>
+                            <li>
+                                <a href="{{ url('/logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
                         </ul>
                     </li>
                 @else

@@ -2,15 +2,15 @@
 
 namespace App\Jobs;
 
-use App\Jobs\Job;
 use App\User;
+use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ReplenishUserCredits extends Job implements ShouldQueue
+class ReplenishUserCredits implements ShouldQueue
 {
-    use InteractsWithQueue, SerializesModels;
+    use InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * Create a new job instance.

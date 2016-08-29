@@ -2,14 +2,17 @@
 
 namespace App\Events;
 
-use App\Events\Event;
 use App\FileRequest;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class FileWasUploaded extends Event
+class FileWasUploaded
 {
-    use SerializesModels;
+    use InteractsWithSockets, SerializesModels;
 
     /**
      * @var FileRequest
@@ -23,16 +26,17 @@ class FileWasUploaded extends Event
      */
     public function __construct(FileRequest $fileRequest)
     {
+
         $this->fileRequest = $fileRequest;
     }
 
     /**
-     * Get the channels the event should be broadcast on.
+     * Get the channels the event should broadcast on.
      *
-     * @return array
+     * @return Channel|array
      */
     public function broadcastOn()
     {
-        return [];
+        return new PrivateChannel('channel-name');
     }
 }

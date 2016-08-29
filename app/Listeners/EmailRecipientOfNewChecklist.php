@@ -3,25 +3,21 @@
 namespace App\Listeners;
 
 use App\Events\ChecklistCreated;
-use App\Mailers\ChecklistMailer;
+use App\Mail\NewChecklist;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
 
-class EmailRecipientOfNewChecklist implements ShouldQueue
+class EmailRecipientOfNewChecklist
 {
-    /**
-     * @var ChecklistMailer
-     */
-    private $checklistMailer;
-
     /**
      * Create the event listener.
      *
-     * @param ChecklistMailer $checklistMailer
+     * @return void
      */
-    public function __construct(ChecklistMailer $checklistMailer)
+    public function __construct()
     {
-        $this->checklistMailer = $checklistMailer;
+        //
     }
 
     /**
@@ -32,6 +28,6 @@ class EmailRecipientOfNewChecklist implements ShouldQueue
      */
     public function handle(ChecklistCreated $event)
     {
-        $this->checklistMailer->sendNewChecklistNotificationEmail($event->checklist);
+        Mail::to($event->checklist->recipient)->send(new NewChecklist($event->checklist));
     }
 }

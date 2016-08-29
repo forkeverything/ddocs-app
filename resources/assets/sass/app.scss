@@ -1,6 +1,25 @@
-@import "variables/all";
-@import "../../../resources/assets/bower/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "components/all";
-@import "fixes/all";
-@import "setup/all";
-@import "pages/all";
+// Variables
+@import "variables";
+
+// Utility Classes
+@import "utilities";
+
+// Bootstrap
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Font Awesome
+@import "../../../node_modules/font-awesome/scss/font-awesome";
+
+//Layout
+@import "layout";
+
+// Components
+@import "components";
+
+// Checklist
+@import "checklist/maker";
+@import "checklist/all";
+@import "checklist/single";
+
+// Account
+@import "account/overview";

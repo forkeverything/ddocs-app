@@ -2,27 +2,21 @@
 <html lang="en">
 <head>
 
-@include('layouts.partials.html-head')
 
-<!-- Styles -->
-    <link href="{{ asset('/css/all.css') }}" rel="stylesheet">
+    @include('layouts.partials.head')
 
-    <!-- External Scripts -->
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    @include('trackers.fb-pixel')
-    @include('fonts.type-kit')
-    @include('trackers.ga-tracker')
+    <!-- Styles -->
+    <link href="/css/vendor.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 </head>
-<body id="app-layout">
+<body>
 
-@include('layouts.partials.nav')
+    @include('layouts.partials.nav')
 
-@yield('content')
+    @yield('content')
 
-<!-- Local Scripts -->
-<script type="text/javascript" src="{{ asset('/js/app/vendor.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/js/app/dependencies.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/js/app/pages.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/js/app/root.js') }}"></script>
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
+
 </body>
 </html>

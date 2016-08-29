@@ -3,15 +3,19 @@
 namespace App\Events;
 
 use App\Checklist;
-use App\Events\Event;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class ChecklistCompleted extends Event
+class ChecklistCompleted
 {
-    use SerializesModels;
+    use InteractsWithSockets, SerializesModels;
 
     /**
+     * Completed Checklist.
      * @var Checklist
      */
     public $checklist;
@@ -27,12 +31,12 @@ class ChecklistCompleted extends Event
     }
 
     /**
-     * Get the channels the event should be broadcast on.
+     * Get the channels the event should broadcast on.
      *
-     * @return array
+     * @return Channel|array
      */
     public function broadcastOn()
     {
-        return [];
+        return new PrivateChannel('channel-name');
     }
 }

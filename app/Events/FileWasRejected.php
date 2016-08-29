@@ -2,14 +2,17 @@
 
 namespace App\Events;
 
-use App\Events\Event;
 use App\FileRequest;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class FileWasRejected extends Event
+class FileWasRejected
 {
-    use SerializesModels;
+    use InteractsWithSockets, SerializesModels;
 
     /**
      * @var FileRequest
@@ -27,12 +30,12 @@ class FileWasRejected extends Event
     }
 
     /**
-     * Get the channels the event should be broadcast on.
+     * Get the channels the event should broadcast on.
      *
-     * @return array
+     * @return Channel|array
      */
     public function broadcastOn()
     {
-        return [];
+        return new PrivateChannel('channel-name');
     }
 }
