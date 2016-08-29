@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/api.php" afterPath="$PROJECT_DIR$/routes/api.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,36 +22,18 @@
     <favorites_list name="files-collector" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/routes/web.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="351">
-                  <caret line="22" column="72" selection-start-line="22" selection-start-column="72" selection-end-line="22" selection-end-column="72" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="ChecklistsController.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="801">
-                  <caret line="102" column="52" selection-start-line="102" selection-start-column="20" selection-end-line="102" selection-end-column="52" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name=".env" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="783">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -108,11 +87,11 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_08_29_082212_update_failed_jobs_table.php" />
         <option value="$PROJECT_DIR$/config/mail.php" />
         <option value="$PROJECT_DIR$/database/seeds/DevSeeder.php" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
+        <option value="$PROJECT_DIR$/.env" />
       </list>
     </option>
   </component>
@@ -167,88 +146,7 @@
     </navigator>
     <panes>
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
       <pane id="Scope" />
       <pane id="Scratches" />
@@ -388,12 +286,12 @@
       <workItem from="1472366599529" duration="14442000" />
       <workItem from="1472402252932" duration="1829000" />
       <workItem from="1472404521717" duration="7300000" />
-      <workItem from="1472443492074" duration="17545000" />
+      <workItem from="1472443492074" duration="18179000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246872000" />
+    <option name="totallyTimeSpent" value="247506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -1146,22 +1044,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/services.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/mail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/console.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -1198,14 +1080,6 @@
             <marker date="1472410381000" expanded="true" signature="1731:1828" ph=" Register the Closure based commands for the application. ..." />
             <marker date="1472410381000" expanded="true" signature="1864:1925" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Commands/SendTestEmails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="92" column="5" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1371,22 +1245,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="801">
-          <caret line="102" column="52" selection-start-line="102" selection-start-column="20" selection-end-line="102" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/api.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -1403,8 +1261,124 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="22" column="72" selection-start-line="22" selection-start-column="72" selection-end-line="22" selection-end-column="72" />
+        <state relative-caret-position="432">
+          <caret line="25" column="115" selection-start-line="25" selection-start-column="115" selection-end-line="25" selection-end-column="115" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="882">
+          <caret line="105" column="106" selection-start-line="105" selection-start-column="106" selection-end-line="105" selection-end-column="106" />
+          <folding>
+            <marker date="1472465688000" expanded="false" signature="44:402" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="449:5625" ph="{...}" />
+            <marker date="1472465688000" expanded="true" signature="459:540" ph=" HashId class to encode/decode ID numbers ..." />
+            <marker date="1472465688000" expanded="true" signature="575:674" ph=" ChecklistsController constructor. ..." />
+            <marker date="1472465688000" expanded="true" signature="740:1021" ph="{...}" />
+            <marker date="1472465688000" expanded="true" signature="773:971" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="782:970" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="806:960" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="1030:1179" ph=" Show the view for viewing all Checklist(s) made by User. ..." />
+            <marker date="1472465688000" expanded="true" signature="1216:1266" ph="{...}" />
+            <marker date="1472465688000" expanded="true" signature="1275:1442" ph=" Return the Authenticated User's checklists as JSON from ..." />
+            <marker date="1472465688000" expanded="true" signature="1506:1901" ph="{...}" />
+            <marker date="1472465688000" expanded="true" signature="1769:1776" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="1823:1836" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="1885:1893" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="1910:2043" ph=" Return the view to make a new Checklist. ..." />
+            <marker date="1472465688000" expanded="true" signature="2079:2130" ph="{...}" />
+            <marker date="1472465688000" expanded="true" signature="2139:2268" ph=" Handle POST request to make a new Checklist. ..." />
+            <marker date="1472465688000" expanded="true" signature="2337:2473" ph="{...}" />
+            <marker date="1472465688000" expanded="true" signature="2482:2648" ph=" POST Email Webhook (via Postmark) to create a Checklist ..." />
+            <marker date="1472465688000" expanded="true" signature="2721:3293" ph="{...}" />
+            <marker date="1472465688000" expanded="true" signature="3052:3164" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="3303:3461" ph=" Get the view for a single Checklist. ..." />
+            <marker date="1472465688000" expanded="true" signature="3518:3747" ph="{...}" />
+            <marker date="1472465688000" expanded="true" signature="3757:3910" ph=" Retrieve the files for checklist. ..." />
+            <marker date="1472465688000" expanded="true" signature="3987:4835" ph="{...}" />
+            <marker date="1472465688000" expanded="true" signature="4330:4348" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="4409:4437" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="4495:4515" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="4568:4584" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="4636:4643" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="4692:4705" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="4819:4827" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="4844:5102" ph=" POST request to turn off notifications for a Checklist. Recipient ..." />
+            <marker date="1472465688000" expanded="true" signature="5183:5622" ph="{...}" />
+            <marker date="1472465688000" expanded="true" signature="5355:5519" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="5384:5508" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="5385:5502" ph="..." />
+            <marker date="1472465688000" expanded="true" signature="5414:5488" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Console/Commands/SendTestEmails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+          <folding>
+            <marker date="1472410444000" expanded="false" signature="44:478" ph="..." />
+            <marker date="1472410444000" expanded="true" signature="516:3452" ph="{...}" />
+            <marker date="1472410444000" expanded="true" signature="526:612" ph=" The name and signature of the console command. ..." />
+            <marker date="1472410444000" expanded="true" signature="665:737" ph=" The console command description. ..." />
+            <marker date="1472410444000" expanded="true" signature="812:855" ph=" Mike's User model ..." />
+            <marker date="1472410444000" expanded="true" signature="885:1041" ph=" The first Checklist in DB We assume it's the dev seeded one. ..." />
+            <marker date="1472410444000" expanded="true" signature="1075:1103" ph="..." />
+            <marker date="1472410444000" expanded="true" signature="1145:1216" ph=" Create a new command instance. ..." />
+            <marker date="1472410444000" expanded="true" signature="1252:1442" ph="{...}" />
+            <marker date="1472410444000" expanded="true" signature="1334:1435" ph="..." />
+            <marker date="1472410444000" expanded="true" signature="1451:1521" ph=" Execute the console command. ..." />
+            <marker date="1472410444000" expanded="true" signature="1552:1742" ph="{...}" />
+            <marker date="1472410444000" expanded="true" signature="1783:2191" ph="{...}" />
+            <marker date="1472410444000" expanded="true" signature="2237:2952" ph="{...}" />
+            <marker date="1472410444000" expanded="true" signature="3000:3449" ph="{...}" />
+            <marker date="1472410444000" expanded="true" signature="3113:3241" ph="..." />
+            <marker date="1472410444000" expanded="true" signature="3114:3240" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/mail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <folding>
+            <marker date="1472461583000" expanded="true" signature="15:4034" ph="..." />
+            <marker date="1472461583000" expanded="true" signature="23:561" ph="..." />
+            <marker date="1472461583000" expanded="true" signature="616:1037" ph="..." />
+            <marker date="1472461583000" expanded="true" signature="1100:1515" ph="..." />
+            <marker date="1472461583000" expanded="true" signature="1563:1988" ph="..." />
+            <marker date="1472461583000" expanded="true" signature="2007:2100" ph="..." />
+            <marker date="1472461583000" expanded="true" signature="2110:2540" ph="..." />
+            <marker date="1472461583000" expanded="true" signature="2602:3029" ph="..." />
+            <marker date="1472461583000" expanded="true" signature="3080:3507" ph="..." />
+            <marker date="1472461583000" expanded="true" signature="3558:3985" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/services.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+          <folding>
+            <marker date="1472363655000" expanded="true" signature="15:977" ph="..." />
+            <marker date="1472363655000" expanded="true" signature="23:518" ph="..." />
+            <marker date="1472363655000" expanded="true" signature="540:631" ph="..." />
+            <marker date="1472363655000" expanded="true" signature="649:759" ph="..." />
+            <marker date="1472363655000" expanded="true" signature="783:833" ph="..." />
+            <marker date="1472363655000" expanded="true" signature="854:973" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="783">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
