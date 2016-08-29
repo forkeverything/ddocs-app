@@ -82,7 +82,7 @@ class ChecklistFactory
 
         $body = $request["TextBody"];
 
-        preg_match_all("/^-([^\[\n]*)(\[(.*)\])?/m", $body, $matches);
+        preg_match_all("/^-\s*([^\[\n]*)(\[(.*)\])?/m", $body, $matches);
 
         $requestedFiles = [];
 
