@@ -1,5 +1,5 @@
 <template>
-    <div id="my-checklists">
+    <div id="my-checklists" v-cloak>
         <form id="form-all-checklists-search" @submit.prevent="searchTerm">
             <div class="form-group">
                 <input class="form-control input-search"

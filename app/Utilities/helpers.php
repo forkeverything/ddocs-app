@@ -24,3 +24,13 @@ function unhashId($hash)
 {
     return array_first(Hashids::decode($hash));
 }
+
+/**
+ * Returns the AWS URL using our credentials in .env
+ *
+ * @return string
+ */
+function awsURL()
+{
+    return 'https://s3-' . env('AWS_REGION') . '.amazonaws.com/' . env('AWS_BUCKET') .  '/';
+}

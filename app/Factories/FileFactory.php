@@ -12,13 +12,6 @@ class FileFactory
 {
 
     /**
-     * Our root directory for all uploads
-     *
-     * @var string
-     */
-    protected $baseDir = 'uploads';
-
-    /**
      * Where to store the File
      *
      * @var
@@ -47,6 +40,13 @@ class FileFactory
     protected $name;
 
     /**
+     * Path of file that's returned after we store it.
+     *
+     * @var
+     */
+    protected $path;
+
+    /**
      * FileFactory constructor.
      *
      * @param FileRequest $fileRequest
@@ -66,17 +66,9 @@ class FileFactory
     protected function makeFileName()
     {
 
-        // If we need DO need to hash name (ie. for security or to avoid over-writes)
-        $name = sha1(
-            time() . $this->uploadedFile->getClientOriginalName()
-        );
-
         // Convert uploaded file to lower case and join with '_'
-//        $name = str_replace(" ", "_", strtolower($this->fileRequest->name));
+        $name = str_replace(" ", "_", strtolower($this->fileRequest->name)). '_v' . ($this->fileRequest->version + 1) . '_' . $this->fileRequest->created_at->format('d-m-Y');
 
-        /**
-         * TODO ::: (?) Encrypt file names so if physical files are compromised it'll be harder to find a specific file.
-         */
 
         $extension = $this->uploadedFile->getClientOriginalExtension();
 
@@ -94,11 +86,12 @@ class FileFactory
     {
         $factory = new static($fileRequest, $uploadedFile);
         $factory->setDirectory()
-                ->setName()
                 ->moveFile()
                 ->createFileModel()
                 ->updateDB();
-        return $factory->fileRequest->load('uploads');
+
+        // fetch a fresh copy - without eager-loaded baggage.
+        return $factory->fileRequest;
     }
 
     /**
@@ -108,20 +101,10 @@ class FileFactory
      */
     protected function setDirectory()
     {
-        $this->directory = $this->baseDir . '/user/' . $this->fileRequest->checklist->user_id . '/checklists/' . hashId($this->fileRequest->checklist);
+        $this->directory = env('APP_ENV', 'local') . '/user/' . $this->fileRequest->checklist->user_id . '/checklists/' . hashId($this->fileRequest->checklist);
         return $this;
     }
 
-    /**
-     * Set name property
-     *
-     * @return $this
-     */
-    protected function setName()
-    {
-        $this->name = $this->makeFileName();
-        return $this;
-    }
 
     /**
      * Move the file into the directory with a new name
@@ -130,7 +113,7 @@ class FileFactory
      */
     protected function moveFile()
     {
-        $this->uploadedFile->move($this->directory, $this->name);
+        $this->path = $this->uploadedFile->storeAs($this->directory, $this->makeFileName(), 's3');
         return $this;
     }
 
@@ -142,7 +125,7 @@ class FileFactory
     protected function createFileModel()
     {
         File::create([
-            'path' => $this->directory . '/' . $this->name,
+            'path' => $this->path,
             'file_request_id' => $this->fileRequest->id
         ]);
 

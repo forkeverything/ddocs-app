@@ -33,10 +33,12 @@ class FilesController extends Controller
 
         $fileRequest = FileFactory::store($fileRequest, $request->file('file'));
 
+
         // Check if the Checklist the FileRequest belongs to is complete
         dispatch(new CheckIfChecklistComplete($fileRequest->checklist));
 
-        return $fileRequest;
+        // Re-load a fresh FileRequest without the checklist baggage.
+        return $fileRequest->fresh();
 
     }
 

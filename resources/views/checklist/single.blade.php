@@ -37,7 +37,7 @@
         @endif
         <br>
 
-            <checklist-file-requests :checklist-hash="'{{ $checklistHash }}'" :can-upload="{{Auth::guest() || $checklist->user_id !== Auth::user()->id}}"></checklist-file-requests>
+            <checklist-file-requests :checklist-hash="'{{ $checklistHash }}'" :can-upload="{{Auth::guest() || $checklist->user_id !== Auth::user()->id}}" :aws-url="'{{ awsURL() }}'"></checklist-file-requests>
 
     </div>
 @endsection

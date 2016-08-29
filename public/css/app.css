@@ -7991,8 +7991,9 @@ body {
   background: #2ECC71 !important;
   text-decoration: none !important; }
 
-.input-group-btn .btn.btn-default.dropdown-toggle:hover, .input-group-btn .btn.btn-default.dropdown-toggle:focus, .input-group-btn .btn.btn-default.dropdown-toggle.focus, .input-group-btn .btn-default:active, .input-group-btn .btn-default.active, .input-group-btn .open > .btn-default.dropdown-toggle {
-  border-color: #999999 !important; }
+.input-group-btn .btn.btn-default.dropdown-toggle, .input-group-btn .btn.btn-default.dropdown-toggle:hover, .input-group-btn .btn.btn-default.dropdown-toggle:focus, .input-group-btn .btn.btn-default.dropdown-toggle.focus, .input-group-btn .btn-default:active, .input-group-btn .btn-default.active, .input-group-btn .open > .btn-default.dropdown-toggle {
+  border-color: #999999 !important;
+  border-right: 0 !important; }
 
 .input-group-btn.open > button {
   color: #2ECC71 !important; }

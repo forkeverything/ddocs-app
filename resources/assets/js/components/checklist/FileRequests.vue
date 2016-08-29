@@ -3,13 +3,15 @@
         <form id="form-checklist-search" @submit.prevent="searchTerm">
             <div class="input-group">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span></button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span></button>
                     <ul class="dropdown-menu filters-menu" @click.stop="">
                         <li>
                             <p class="text-muted">Show where</p>
                             <select class="form-control select-filter" v-model="filter" placeholder="Select one...">
                                 <option value="" selected disabled>Select filter</option>
-                                <option v-for="option in filterOptions" :value="option.value">{{ option.label }}</option>
+                                <option v-for="option in filterOptions" :value="option.value">{{ option.label }}
+                                </option>
                             </select>
 
                             <!-- Filter: Requirement -->
@@ -25,13 +27,15 @@
                             <!-- Filter: Version -->
                             <p class="text-muted" v-show="filter === 'version'">is between</p>
                             <div class="filter-fields version" v-show="filter === 'version'">
-                                <integer-range-field :min.sync="minFilterValue" :max.sync="maxFilterValue"></integer-range-field>
+                                <integer-range-field :min.sync="minFilterValue"
+                                                     :max.sync="maxFilterValue"></integer-range-field>
                             </div>
 
                             <!-- Filter: Due (Date) -->
                             <p class="text-muted" v-show="filter === 'due'">is between</p>
                             <div class="filter-fields due" v-show="filter === 'due'">
-                                <date-range-field :min.sync="minFilterValue" :max.sync="maxFilterValue"></date-range-field>
+                                <date-range-field :min.sync="minFilterValue"
+                                                  :max.sync="maxFilterValue"></date-range-field>
                             </div>
 
                             <!-- Filter: Status -->
@@ -67,7 +71,8 @@
 
         <div class="active-filters">
             <!-- Active Filter: Required-->
-            <button type="button" v-if="params.required === 1 || params.required === 0" class="btn button-remove-filter" @click="removeFilter('required')">
+            <button type="button" v-if="params.required === 1 || params.required === 0" class="btn button-remove-filter"
+                    @click="removeFilter('required')">
                 <span v-if="params.required">Compulsory Files</span>
                 <span v-else>Optional Files</span>
             </button>
@@ -76,7 +81,8 @@
             <button type="button" v-if="params.version_filter_integer" class="btn button-remove-filter" @click="
                         removeFilter('version')">
                 <span class="field">File Version: </span><span
-                    v-if="params.version_filter_integer[0]">{{ params.version_filter_integer[0] }}</span><span v-else>~ </span><span
+                    v-if="params.version_filter_integer[0]">{{ params.version_filter_integer[0] }}</span><span
+                    v-else>~ </span><span
                     v-if="params.version_filter_integer[0] && params.version_filter_integer[1]"> - </span><span
                     v-if="params.version_filter_integer[1]">{{ params.version_filter_integer[1] }}</span><span
                     v-else> ~</span></button>
@@ -85,8 +91,10 @@
             <button type="button" v-if="params.due_filter_date" class="btn button-remove-filter" @click="
                         removeFilter('due')"><span
                     class="field">Due: </span><span v-if="params.due_filter_date[0]">{{ params.due_filter_date[0] | date }}</span>
-                <span v-else>~ </span><span v-if="params.due_filter_date[0] && params.due_filter_date[1]"> - </span><span
-                        v-if="params.due_filter_date[1]">{{ params.due_filter_date[1] | date }}</span><span v-else> ~</span></button>
+                <span v-else>~ </span><span
+                        v-if="params.due_filter_date[0] && params.due_filter_date[1]"> - </span><span
+                        v-if="params.due_filter_date[1]">{{ params.due_filter_date[1] | date }}</span><span
+                        v-else> ~</span></button>
 
             <!-- Active Filter: Status -->
             <button type="button" v-if="params.status" class="btn button-remove-filter" @click="removeFilter('status')">
@@ -94,14 +102,14 @@
             </button>
         </div>
 
-    <div class="progress">
-    <div class="progress-bar" role="progressbar" :aria-valuenow="receivedFilesPercentage" aria-valuemin="0"
-             aria-valuemax="100" :style="'width: ' + receivedFilesPercentage + '%' + ';min-width: 2em;'">
-        {{ receivedFilesPercentage }}% Received
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" :aria-valuenow="receivedFilesPercentage" aria-valuemin="0"
+                 aria-valuemax="100" :style="'width: ' + receivedFilesPercentage + '%' + ';min-width: 2em;'">
+                {{ receivedFilesPercentage }}% Received
+            </div>
         </div>
-    </div>
 
-    <p class="text-muted text-right small">* Maximum file size: 20MB</p>
+        <p class="text-muted small text-right">* maximum file size 1GB</p>
 
         <div class="table-responsive">
             <!-- Files Table -->
@@ -178,9 +186,10 @@
                         <td>
                             <span class="file-status" :class="file.status">{{ file.status }}</span>
                         </td>
-                        <td class="col-upload" v-if="canUpload">
+                        <td class="col-upload fit-to-content no-wrap" v-if="canUpload">
                             <!-- History -->
-                            <button type="button" class="btn btn-unstyled button-history" @click="expandFileSection(file, 'history')" :disabled="! file.uploads[0]">
+                            <button type="button" class="btn btn-unstyled button-history"
+                                    @click="expandFileSection(file, 'history')" :disabled="! file.uploads[0]">
                                 <i class="fa fa-clock-o"></i>
                             </button>
                             <!-- Upload -->
@@ -190,11 +199,11 @@
                             >
                                 <i class="fa fa-upload"></i>
                             </button>
-                            <input  :id="'input-file-' + file.id "
-                                    type="file"
-                                    name="file"
-                                    class="input-file-upload hide"
-                                    @change="uploadFile(file, $event)"
+                            <input :id="'input-file-' + file.id "
+                                   type="file"
+                                   name="file"
+                                   class="input-file-upload hide"
+                                   @change="uploadFile(file, $event)"
                             >
                             <div class="progress" :class="{ 'disabled': file.status === 'received' }">
                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0"
@@ -205,17 +214,22 @@
                         </td>
                         <td class="col-owner fit-to-content no-wrap" v-else>
                             <!-- History -->
-                            <button type="button" class="btn btn-unstyled button-history" @click="expandFileSection(file, 'history')" :disabled="! file.uploads[0]">
+                            <button type="button" class="btn btn-unstyled button-history"
+                                    @click="expandFileSection(file, 'history')" :disabled="! file.uploads[0]">
                                 <i class="fa fa-clock-o"></i>
                             </button>
                             <!-- Reject -->
-                            <button type="button" class="btn btn-unstyled button-reject" @click="expandFileSection(file, 'reject')" :disabled="file.status !== 'received'">
+                            <button type="button" class="btn btn-unstyled button-reject"
+                                    @click="expandFileSection(file, 'reject')" :disabled="file.status !== 'received'">
                                 <i class="fa fa-close"></i>
                             </button>
                             <!-- Download -->
-                            <a :href="'/' + file.uploads[(file.uploads.length - 1)].path" :alt="file.name + 'download link'" :download="file.name + '_v' + file.version + '_' + getUploadDate(file.uploads[(file.uploads.length - 1)])"
+                            <a :href=" awsUrl + file.uploads[(file.uploads.length - 1)].path"
+                               :alt="file.name + 'download link'"
+
                                v-if="file.uploads[(file.uploads.length - 1)]">
-                                <button type="button" class="btn btn-unstyled button-download"><i class="fa fa-download"></i>
+                                <button type="button" class="btn btn-unstyled button-download"><i
+                                        class="fa fa-download"></i>
                                 </button>
                             </a>
                             <button type="button" class="btn btn-unstyled button-download" v-else disabled><i
@@ -236,8 +250,10 @@
                                         <textarea rows="5" class="form-control autosize" v-model="reason"></textarea>
                                     </div>
                                     <div class="text-right">
-                                        <button type="button" class="btn btn-outline-grey btn-space" @click="hideDetailsSection"
-                                        >Cancel</button>
+                                        <button type="button" class="btn btn-outline-grey btn-space"
+                                                @click="hideDetailsSection"
+                                        >Cancel
+                                        </button>
                                         <button type="submit" class="btn btn-solid-red">Reject</button>
                                     </div>
                                 </form>
@@ -266,8 +282,9 @@
                                             </td>
                                             <td class="fit-to-content">
                                                 <!-- Download -->
-                                                <a :href="'/' + upload.path" :alt="file.name + 'download link'" :download="file.name + '_v' + (index + 1) + '_' + getUploadDate(upload)">
-                                                    <button type="button" class="btn btn-unstyled button-download"><i class="fa fa-download"></i>
+                                                <a :href=" awsUrl + upload.path" :alt="file.name + 'download link'">
+                                                    <button type="button" class="btn btn-unstyled button-download"><i
+                                                            class="fa fa-download"></i>
                                                     </button>
                                                 </a>
                                             </td>
@@ -324,13 +341,13 @@
                 numReceived: ''
             }
         },
-        props: ['checklist-hash', 'can-upload'],
+        props: ['checklist-hash', 'can-upload', 'aws-url'],
         computed: {
             requestUrl: function () {
                 return '/checklist/' + this.checklistHash + '/files';
             },
-            receivedFilesPercentage: function() {
-                if(! this.response.total) return 0;
+            receivedFilesPercentage: function () {
+                if (!this.response.total) return 0;
                 return (100 * this.numReceived / this.response.total).toFixed(2);
             }
         },
@@ -340,61 +357,46 @@
                 return moment(file.created_at).format('DDMMYYYY');
             },
             uploadFile: function (file, $event) {
+
+                var self = this;
+                if (!self.ajaxReady) return;
+                self.ajaxReady = false;
+
                 var fd = new FormData();
                 var uploadedFile = $event.srcElement.files[0];
 
                 fd.append('file', uploadedFile);
 
-                var self = this;
-                if (!self.ajaxReady) return;
-                self.ajaxReady = false;
-                $.ajax({
-                    url: '/file/' + file.id,
-                    method: 'POST',
-                    data: fd,
-                    contentType: false,
-                    processData: false,
-                    xhr: function () {
-                        var myXhr = $.ajaxSettings.xhr();
-                        if (myXhr.upload) myXhr.upload.addEventListener('progress', function (e) {
-                            if (e.lengthComputable) {
-                                var max = e.total;
-                                var current = e.loaded;
-                                var progress = Math.round((current * 100) / max);
-                                $('#input-file-' + file.id).siblings('.progress').children('.progress-bar').css(
-                                        'width',
-                                        progress + '%'
-                                ).attr('aria-valuenow', progress).children('.sr-only').html(progress + '%');
-                            }
-                        }, false);
-                        return myXhr;
-                    },
-                    success: function (file) {
-                        self.replaceFile(file);
-                        self.numReceived ++;
 
-                        self.ajaxReady = true;
-                    },
-                    error: function (response) {
-                        console.log(response);
-                        self.ajaxReady = true;
+
+                self.$http.post('/file/' + file.id, fd, {
+                    progress: (event) => {
+                        var progress = Math.round(100 * event.loaded / event.total);
+
+                        console.log(progress);
+
+                        $('#input-file-' + file.id).siblings('.progress').children('.progress-bar').css(
+                                'width',
+                                progress + '%'
+                        ).attr('aria-valuenow', progress).children('.sr-only').html(progress + '%');
+
                     }
+                }).then((response) => {
+                    // success
+                    self.replaceFile(JSON.parse(response.data));
+                    self.numReceived++;
+                    self.ajaxReady = true;
+                }, (response) => {
+                    // error
+                    console.log('GET REQ Error!');
+                    console.log(response);
+                    self.ajaxReady = true;
                 });
             },
             replaceFile: function (updatedFileModel) {
                 var self = this;
                 var index = _.indexOf(self.files, _.find(self.files, {id: updatedFileModel.id}));
                 self.files.splice(index, 1, updatedFileModel);
-            },
-            updateProgress: function (e) {
-                if (e.lengthComputable) {
-                    var max = e.total;
-                    var current = e.loaded;
-                    var Percentage = Math.round((current * 100) / max);
-                    if (Percentage >= 100) {
-                        // process completed
-                    }
-                }
             },
             expandFileSection: function (file, section) {
                 this.reason = '';
@@ -421,7 +423,7 @@
                         // success
                         self.reason = '';
                         self.replaceFile(file);
-                        self.numReceived --;
+                        self.numReceived--;
                         self.ajaxReady = true;
                     },
                     error: function (response) {
@@ -431,7 +433,7 @@
                 });
             }
         },
-        ready: function() {
+        ready: function () {
 
             var self = this;
 
