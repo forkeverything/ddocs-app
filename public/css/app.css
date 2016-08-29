@@ -8066,15 +8066,14 @@ table {
   table thead th.heading-right {
     text-align: right; }
   table thead th.sortable:hover {
-    color: #2980B9;
-    background: #eff9fd;
+    color: #25a25a;
     cursor: pointer; }
   table tbody tr td.content-right {
     text-align: right;
-    padding: 10px 26px 10px 10px; }
+    padding: 20px 26px 20px 10px; }
   table tbody tr td.content-center {
     text-align: center;
-    padding: 10px 26px 10px 10px; }
+    padding: 20px 26px 20px 10px; }
   table tbody tr td.fit-to-content {
     width: 1%; }
   table tbody tr td.success, table tbody tr td.warning, table tbody tr td.danger {
@@ -8117,7 +8116,7 @@ table {
     margin: 0 0 15px; } }
 
 .table-standard .padding-even {
-  padding: 10px; }
+  padding: 20px 10px; }
 
 .table-standard thead tr th {
   border: 0;
@@ -8127,7 +8126,7 @@ table {
   font-size: 0.9em;
   vertical-align: middle;
   position: relative;
-  border-bottom: 2px solid #3498DB; }
+  border-bottom: 2px solid #2ECC71; }
   .table-standard thead tr th.required:after {
     position: absolute;
     top: 7px;
@@ -8192,7 +8191,7 @@ table {
             padding: 0 10px; }
             .table-standard thead tr th.heading-select .bulk-actions .popover-content .bulk-dropdown-list .bulk-single-action:hover {
               cursor: pointer;
-              color: #3498DB; }
+              color: #2ECC71; }
   .table-standard thead tr th a {
     color: #000; }
     .table-standard thead tr th a:hover {
@@ -8208,15 +8207,15 @@ table {
   border-bottom: 1px solid #e6e6e6; }
 
 .table-standard tbody tr.is-selected {
-  background: #FFFBE9; }
+  background: #F7F7F7; }
 
 .table-standard tbody tr td {
   border-top: 1px solid #e6e6e6;
-  padding: 10px;
+  padding: 20px 10px;
   vertical-align: middle; }
 
 .table-standard.table-hover tbody > tr:hover {
-  background: #FFFBE9; }
+  background: #F7F7F7; }
 
 .text-success {
   color: #27AE60; }
@@ -8405,7 +8404,7 @@ table {
     box-shadow: inset 0px 0px 0px 1px #27AE60;
     color: #27AE60;
     border-color: #27AE60;
-    background: #C8FFC6; }
+    background: #E3FFDC; }
   .btn-outline-green:focus, .btn-outline-green.focus {
     box-shadow: inset 0px 0px 0px 1px #27AE60;
     color: #2ECC71; }
@@ -8457,7 +8456,7 @@ table {
     box-shadow: inset 0px 0px 0px 1px #999999;
     color: #999999;
     border-color: #999999;
-    background: #F5F5F5; }
+    background: #F7F7F7; }
   .btn-outline-grey:focus, .btn-outline-grey.focus {
     box-shadow: inset 0px 0px 0px 1px #999999;
     color: #999999; }
@@ -8667,7 +8666,7 @@ textarea {
     margin: 0 0 0 0; }
 
 #checklist-single #table-files tbody .row-details {
-  background: #F5F5F5; }
+  background: #F7F7F7; }
   #checklist-single #table-files tbody .row-details .col-details {
     padding: 10px 15px 15px 10px; }
 

@@ -16,8 +16,7 @@ table {
 
       &.sortable {
         &:hover {
-          color: $dark-blue;
-          background: $extra-light-blue;
+          color: darken($brand-primary, 10%);
           cursor: pointer;
         }
       }
@@ -30,12 +29,12 @@ table {
       td {
         &.content-right {
           text-align: right;
-          padding: 10px 26px 10px 10px;
+          padding: 20px 26px 20px 10px;
         }
 
         &.content-center {
           text-align: center;
-          padding: 10px 26px 10px 10px;
+          padding: 20px 26px 20px 10px;
         }
 
         &.fit-to-content {
@@ -95,7 +94,7 @@ table {
   }
 
   .padding-even {
-    padding: 10px;
+    padding: 20px 10px;
   }
 
   thead {
@@ -109,7 +108,7 @@ table {
         font-size: 0.9em;
         vertical-align: middle;
         position: relative;
-        border-bottom: 2px solid $blue;
+        border-bottom: 2px solid $brand-primary;
 
         &.required:after {
           position: absolute;
@@ -198,7 +197,7 @@ table {
 
                   &:hover {
                     cursor: pointer;
-                    color: $blue;
+                    color: $brand-primary;
                   }
                 }
               }
@@ -236,12 +235,12 @@ table {
       }
 
       &.is-selected {
-        background: $extra-light-yellow;
+        background: $extra-light-grey;
       }
 
       td {
         border-top: 1px solid $laravel-border-color;
-        padding: 10px;
+        padding: 20px 10px;
         vertical-align: middle;
       }
     }
@@ -251,7 +250,7 @@ table {
     tbody {
        > tr {
         &:hover {
-          background: $extra-light-yellow;
+          background: $extra-light-grey;
         }
       }
     }
