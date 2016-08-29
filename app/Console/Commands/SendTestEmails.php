@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Checklist;
+use App\Jobs\DeleteEmailTestUser;
 use App\Mail\ChecklistComplete;
 use App\Mail\FileChangesRequired;
 use App\Mail\FreeCreditsReceived;
@@ -171,8 +172,9 @@ class SendTestEmails extends Command
 
     protected function cleanUpRecords()
     {
-        $this->user->delete();
-        if($this->existingUser) $this->existingUser->update(['email' => $this->argument('email')]);
+        // Dispatch a job onto the queue so we don't delete prematurely.
+        dispatch(new DeleteEmailTestUser($this->user, $this->existingUser, $this->argument('email')));
+        return $this;
     }
 
 }
