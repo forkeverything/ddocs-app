@@ -1,9 +1,11 @@
 <template>
     <div class="per-page-picker">
-        <select class="form-control" @change="changeItemsPerPage" v-model="newItemsPerPage">
-            <option v-for="option in itemsPerPageOptions">{{ option }}</option>
-        </select>
-        <span>per page</span>
+        <div v-if="moreThanOnePage">
+            <select class="form-control" @change="changeItemsPerPage" v-model="newItemsPerPage">
+                <option v-for="option in itemsPerPageOptions">{{ option }}</option>
+            </select>
+            <span>per page</span>
+        </div>
     </div>
 </template>
 <script>
@@ -20,6 +22,9 @@
         computed: {
             currentItemsPerPage: function () {
                 return this.response.per_page;
+            },
+            moreThanOnePage: function() {
+                return this.response.last_page > 1;
             }
         },
         methods: {

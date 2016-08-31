@@ -16,7 +16,7 @@
 
         <div class="table-responsive" v-show="checklists.length > 0">
             <!-- Checklists Table -->
-            <table class="table table-standard table-hover">
+            <table class="table-checklists table table-standard table-hover">
                 <thead>
                 <tr>
                     <th class="sortable"
@@ -74,8 +74,8 @@
             </table>
         </div>
 
-        <h3 v-else class="text-center text-muted">Sorry we couldn't find any lists for you. <a href="/checklist/make">Make</a> a new one or
-            <a href="#" @click.prevent="clearSearch">clear</a> your search to see more.</h3>
+        <p v-else class="text-muted">Sorry we couldn't find any lists for you. <a href="/checklist/make">Make</a> a new one or
+            <a href="#" @click.prevent="clearSearch">clear</a> your search to see more.</p>
 
         <div class="page-controls">
         <per-page-picker :response="response" :req-function="fetchResults"></per-page-picker>

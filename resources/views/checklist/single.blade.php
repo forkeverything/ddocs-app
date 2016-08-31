@@ -15,13 +15,15 @@
             </div>
         @endif
 
-        <div id="header">
+
             @if(Auth::check() && $checklist->madeBy(Auth::user()))
                 <ol class="breadcrumb">
                     <li><a href="/checklist">My Lists</a></li>
                     <li class="active">{{ $checklist->name }}</li>
                 </ol>
             @endif
+
+        <div id="header">
             @if(! Auth::check() || ! $checklist->madeBy(Auth::user()))
                     <div class="right">
                         <checklist-notifications-control :user="{{ Auth::user() }}" :recipient-notifications="{{ $checklist->recipient_notifications }}" :checklist-hash="'{{ $checklistHash }}'"></checklist-notifications-control>
@@ -29,13 +31,17 @@
             @endif
         </div>
 
-        <h1 class="text-center text-capitalize">
-            {{ $checklist->name }}
-        </h1>
-        @if($checklist->description)
-            <p class="text-center">{{ $checklist->description }}</p>
-        @endif
-        <br>
+            <h3>
+                <strong>
+                    <span class="text-capitalize">{{ $checklist->name }}</span>
+                </strong>
+            </h3>
+
+            @if($checklist->description)
+                <p>{{ $checklist->description }}</p>
+            @endif
+
+            <hr>
 
             <checklist-file-requests :checklist-hash="'{{ $checklistHash }}'" :can-upload="{{Auth::guest() || $checklist->user_id !== Auth::user()->id}}" :aws-url="'{{ awsURL() }}'"></checklist-file-requests>
 

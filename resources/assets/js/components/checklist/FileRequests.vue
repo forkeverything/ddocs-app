@@ -300,10 +300,10 @@
 
                 </tbody>
             </table>
-            <div class="page-controls">
-                <per-page-picker :response="response" :req-function="fetchResults"></per-page-picker>
-                <paginator :response="response" :req-function="fetchResults"></paginator>
-            </div>
+        </div>
+        <div class="page-controls">
+            <per-page-picker :response="response" :req-function="fetchResults"></per-page-picker>
+            <paginator :response="response" :req-function="fetchResults"></paginator>
         </div>
     </div>
 </template>

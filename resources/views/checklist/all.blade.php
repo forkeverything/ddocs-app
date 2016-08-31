@@ -3,15 +3,22 @@
 @section('content')
 
     <div id="checklist-all" class="container">
-        <h1 class="text-center">My Lists</h1>
-        <p class="text-center">Hi {{ Auth::user()->name }}, here are all the checklists you've made with us.</p>
-        <br>
+        <h3>
+            <strong>
+                Your Checklists
+            </strong>
+        </h3>
+        <p>Hi {{ Auth::user()->name }}, here are all the checklists you've made with us.</p>
+        <hr>
 
-        <div class="form-group text-right">
+        <div>
             <a href="/checklist/make">
                 <button type="button" class="btn btn-solid-green">New Checklist</button>
             </a>
         </div>
+
+            <br>
+
 
         <my-checklists></my-checklists>
     </div>
