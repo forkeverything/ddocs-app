@@ -11,6 +11,7 @@
 |
 */
 
+
 Auth::routes();
 
 // Static Pages
@@ -34,5 +35,4 @@ Route::get('/account', 'AccountController@getAccountOverview');
 Route::post('/account/subscription', 'AccountController@postSubscribe');
 Route::delete('/account/subscription', 'AccountController@deleteCancelSubscription');
 Route::post('/account/subscription/resume', 'AccountController@postResumeSubscription');
-
-
+Route::post('/account/coupon', 'AccountController@postClaimCoupon');

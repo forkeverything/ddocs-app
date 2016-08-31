@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+use App\Coupon;
 use App\Events\UserHasRunOutOfCredits;
+use App\Exceptions\Handlers\CouponHandlers;
+use App\Exceptions\Handlers\UserHandlers;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -10,6 +13,9 @@ use Illuminate\Support\Facades\Event;
 
 class Handler extends ExceptionHandler
 {
+    // Traits that hold our handle methods.
+    use CouponHandlers, UserHandlers;
+
     /**
      * A list of the exception types that should not be reported.
      *
@@ -29,7 +35,7 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
      * @return void
      */
     public function report(Exception $exception)
@@ -40,36 +46,25 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $exception
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
     {
-
-        switch($exception) {
-            case ($exception instanceof NotEnoughCredits):
-                Event::fire(new UserHasRunOutOfCredits($exception->user));
-
-                return response([
-                    'credits' => [
-                        'Not enough credits to create list!'
-                    ]
-                ], 402);
-
-                break;
-            default:
-                break;
-        }
-
+        // Look for a handle method that matches the exception and call it.
+        $reflector = new \ReflectionClass($exception);
+        $methodName = 'handle' . $reflector->getShortName();
+        if(in_array($methodName, get_class_methods(Handler::class))) return $this->{$methodName}($request, $exception);
+        
         return parent::render($request, $exception);
     }
 
     /**
      * Convert an authentication exception into an unauthenticated response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Auth\AuthenticationException $exception
      * @return \Illuminate\Http\Response
      */
     protected function unauthenticated($request, AuthenticationException $exception)

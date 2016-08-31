@@ -97,10 +97,11 @@
         <div id="thanks">
             <div class="container">
                 <h1>You made it!</h1>
-                <div class="text-center">
-                    <a href="/register" class="visible-xs"><button type="button" class="btn btn-solid-green btn-lg">Free Sign Up</button></a>
-                </div>
                 <h3 class="hidden-xs">We heard you were looking for an easier way to handle your docs. You should <a href="/register">sign up</a> for an account (did we mention it was free?) and see how we can help.</h3>
+                <br>
+                <div class="text-center">
+                    <a href="/register"><button type="button" class="btn btn-solid-green btn-lg">Free Sign Up</button></a>
+                </div>
             </div>
         </div>
         <registration-modal></registration-modal>

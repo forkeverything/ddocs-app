@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Coupon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -67,6 +68,19 @@ class AccountController extends Controller
     public function postResumeSubscription()
     {
         Auth::user()->subscription('main')->resume();
+        return redirect()->back();
+    }
+
+    /**
+     * Have the currently authenticated User claim
+     * a coupon.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \App\Exceptions\InvalidCouponCode
+     */
+    public function postClaimCoupon()
+    {
+        Coupon::findByCode(request('coupon_code'))->claim(Auth::user());
         return redirect()->back();
     }
 }

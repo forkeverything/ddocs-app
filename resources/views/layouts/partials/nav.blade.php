@@ -45,6 +45,11 @@
                             Login
                         </a>
                     </li>
+                    <li>
+                        <a href="/register" class="navbar-link">
+                            Sign Up
+                        </a>
+                    </li>
                 @endif
             </ul>
         </div><!-- /.navbar-collapse -->
