@@ -23,13 +23,14 @@
                 </ol>
             @endif
 
-        <div id="header">
             @if(! Auth::check() || ! $checklist->madeBy(Auth::user()))
+                <div id="header">
                     <div class="right">
                         <checklist-notifications-control :user="{{ Auth::user() }}" :recipient-notifications="{{ $checklist->recipient_notifications }}" :checklist-hash="'{{ $checklistHash }}'"></checklist-notifications-control>
                     </div>
+                </div>
             @endif
-        </div>
+
 
             <h3>
                 <strong>
@@ -41,7 +42,7 @@
                 <p>{{ $checklist->description }}</p>
             @endif
 
-            <hr>
+            <br>
 
             <checklist-file-requests :checklist-hash="'{{ $checklistHash }}'" :can-upload="{{Auth::guest() || $checklist->user_id !== Auth::user()->id}}" :aws-url="'{{ awsURL() }}'"></checklist-file-requests>
 

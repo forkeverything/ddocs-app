@@ -26,7 +26,7 @@ $font-family-sans-serif: "Helvetica Neue", Helvetica, sans-serif;
 $font-family-serif: "adelle", Arial, serif;
 $font-size-base: 16px;
 $line-height-base: 1.6;
-$text-color: #000;
+$text-color: #1B2432;
 $link-color: $brand-info;
 
 // Navbar
@@ -53,6 +53,18 @@ $progress-bar-info-bg: $blue;
 $progress-bar-warning-bg: $orange;
 $progress-bar-danger-bg: $red;
 
+// Breadcrumbs
+$breadcrumb-bg: #fff;
+$breadcrumb-padding-horizontal: 0;
+
 // Pagination
-$pagination-active-bg: $dark-blue;
-$pagination-active-border: $dark-blue;
+$pagination-active-bg: #fff;
+$pagination-hover-color: $black;
+$pagination-hover-border: transparent;
+$pagination-hover-bg: #fff;
+$pagination-active-color: $brand-primary;
+$pagination-color: $dark-grey;
+$pagination-disabled-color: $grey;
+$pagination-disabled-border: transparnet;
+$pagination-border: transparent;
+$pagination-active-border: transparent;

@@ -89,6 +89,73 @@
   }
 }
 
+#fr-body {
+  display: flex;
+
+  #fr-center-pane {
+    flex: 12 0 370px;
+    background: #fff;
+    z-index: 2;
+    border: 1px solid $laravel-border-color;
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  #fr-right-pane {
+    max-width: 400px;
+    flex: 1 0 295px;
+    margin-left: -400px;
+    @include transition(margin-left 0.2s);
+    display: none;
+
+    @media screen and (min-width: $screen-sm-min) {
+      display: block;
+    }
+
+    &.expanded {
+      margin-left: 15px;
+      border: 1px solid $laravel-border-color;
+    }
+
+    .header {
+      border-bottom: 1px solid $laravel-border-color;
+      display: flex;
+      justify-content: space-between;
+      padding: 25px 15px 10px 15px;
+      position: relative;
+
+      .close {
+        outline: 0!important;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+      }
+
+      .file-name {
+        margin: 0;
+        width: 0;
+        word-wrap: break-word;
+        flex: 1;
+      }
+
+      .date-due {
+        flex: 0 0 90px;
+        font-size: 0.9em;
+        color: $text-muted;
+      }
+    }
+    .body {
+      padding: 10px 15px;
+
+      .table-versions {
+        th {
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+}
+
 
 #files-collection {
 
@@ -233,6 +300,10 @@
 
         .content-column {
           padding: 15px 10px 5px 10px;
+
+          @media screen and (min-width: $screen-sm-min) {
+            padding: 15px 10px 15px 10px;
+          }
         }
       }
 
@@ -249,6 +320,7 @@
 
         @media screen and (min-width: $screen-sm-min) {
           padding: 0 175px 0 60px;
+          display: none;
         }
 
         .table-versions-wrap {

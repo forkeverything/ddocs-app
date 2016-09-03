@@ -1,10 +1,9 @@
 <template>
     <div class="per-page-picker">
-        <div v-if="moreThanOnePage">
-            <select class="form-control" @change="changeItemsPerPage" v-model="newItemsPerPage">
+            <select class="form-control" @change="changeItemsPerPage" v-model="newItemsPerPage" v-if="moreThanOnePage">
                 <option v-for="option in itemsPerPageOptions">{{ option }}</option>
             </select>
-            <span>per page</span>
+            <span v-if="moreThanOnePage">per page</span>
         </div>
     </div>
 </template>

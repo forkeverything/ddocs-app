@@ -1063,7 +1063,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  color: #000;
+  color: #1B2432;
   background-color: #FFFFFF; }
 
 input,
@@ -2696,7 +2696,7 @@ select[multiple].input-lg,
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #404040; }
+  color: #486085; }
 
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -4037,10 +4037,10 @@ tbody.collapse.in {
       color: #444; }
 
 .breadcrumb {
-  padding: 8px 15px;
+  padding: 8px 0;
   margin-bottom: 25px;
   list-style: none;
-  background-color: #f5f5f5;
+  background-color: #fff;
   border-radius: 4px; }
   .breadcrumb > li {
     display: inline-block; }
@@ -4065,9 +4065,9 @@ tbody.collapse.in {
       padding: 6px 12px;
       line-height: 1.6;
       text-decoration: none;
-      color: #3498DB;
+      color: #999999;
       background-color: #fff;
-      border: 1px solid #ddd;
+      border: 1px solid transparent;
       margin-left: -1px; }
     .pagination > li:first-child > a,
     .pagination > li:first-child > span {
@@ -4082,17 +4082,17 @@ tbody.collapse.in {
   .pagination > li > span:hover,
   .pagination > li > span:focus {
     z-index: 2;
-    color: #1d6fa5;
-    background-color: #eeeeee;
-    border-color: #ddd; }
+    color: #353535;
+    background-color: #fff;
+    border-color: transparent; }
   .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
   .pagination > .active > span,
   .pagination > .active > span:hover,
   .pagination > .active > span:focus {
     z-index: 3;
-    color: #fff;
-    background-color: #2980B9;
-    border-color: #2980B9;
+    color: #2ECC71;
+    background-color: #fff;
+    border-color: transparent;
     cursor: default; }
   .pagination > .disabled > span,
   .pagination > .disabled > span:hover,
@@ -4100,9 +4100,9 @@ tbody.collapse.in {
   .pagination > .disabled > a,
   .pagination > .disabled > a:hover,
   .pagination > .disabled > a:focus {
-    color: #777777;
+    color: #D2D2D2;
     background-color: #fff;
-    border-color: #ddd;
+    border-color: transparnet;
     cursor: not-allowed; }
 
 .pagination-lg > li > a,
@@ -4154,12 +4154,12 @@ tbody.collapse.in {
       display: inline-block;
       padding: 5px 14px;
       background-color: #fff;
-      border: 1px solid #ddd;
+      border: 1px solid transparent;
       border-radius: 15px; }
     .pager li > a:hover,
     .pager li > a:focus {
       text-decoration: none;
-      background-color: #eeeeee; }
+      background-color: #fff; }
   .pager .next > a,
   .pager .next > span {
     float: right; }
@@ -4170,7 +4170,7 @@ tbody.collapse.in {
   .pager .disabled > a:hover,
   .pager .disabled > a:focus,
   .pager .disabled > span {
-    color: #777777;
+    color: #D2D2D2;
     background-color: #fff;
     cursor: not-allowed; }
 
@@ -4317,7 +4317,7 @@ a.badge:hover, a.badge:focus {
     margin-right: auto; }
   .thumbnail .caption {
     padding: 9px;
-    color: #000; }
+    color: #1B2432; }
 
 a.thumbnail:hover,
 a.thumbnail:focus,
@@ -8586,7 +8586,7 @@ label {
   font-size: 0.9em; }
 
 .panel-floating {
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3); }
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
 
 #form-checklist-make {
   margin: 0 0 15px;
@@ -8602,7 +8602,7 @@ label {
     margin-top: 25px;
     margin-bottom: 12.5px;
     font-family: "Proxima Nova", Helvetica, Arial, Helvetica, sans-serif;
-    color: #000;
+    color: #1B2432;
     border: 0;
     box-shadow: none;
     border-radius: 0;
@@ -8678,7 +8678,7 @@ label {
   border: 1px solid #e6e6e6;
   display: block;
   padding: 15px 20px;
-  color: #000;
+  color: #1B2432;
   position: relative; }
   #checklist-all #list-checklists .single-checklist .checklist-link:hover, #checklist-all #list-checklists .single-checklist .checklist-link:focus {
     background: #eefbf4;
@@ -8750,6 +8750,60 @@ label {
   color: #E74C3C; }
   #checklist-single .button-reject:hover {
     color: #C0392B; }
+
+#fr-body {
+  display: -webkit-box;
+  display: flex; }
+  #fr-body #fr-center-pane {
+    -webkit-box-flex: 12;
+    flex: 12 0 370px;
+    background: #fff;
+    z-index: 2;
+    border: 1px solid #e6e6e6;
+    max-width: 100%;
+    padding: 15px; }
+  #fr-body #fr-right-pane {
+    max-width: 400px;
+    -webkit-box-flex: 1;
+    flex: 1 0 295px;
+    margin-left: -400px;
+    -webkit-transition: margin-left 0.2s;
+    transition: margin-left 0.2s;
+    display: none; }
+    @media screen and (min-width: 768px) {
+      #fr-body #fr-right-pane {
+        display: block; } }
+    #fr-body #fr-right-pane.expanded {
+      margin-left: 15px;
+      border: 1px solid #e6e6e6; }
+    #fr-body #fr-right-pane .header {
+      border-bottom: 1px solid #e6e6e6;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      padding: 25px 15px 10px 15px;
+      position: relative; }
+      #fr-body #fr-right-pane .header .close {
+        outline: 0 !important;
+        position: absolute;
+        top: 5px;
+        right: 10px; }
+      #fr-body #fr-right-pane .header .file-name {
+        margin: 0;
+        width: 0;
+        word-wrap: break-word;
+        -webkit-box-flex: 1;
+        flex: 1; }
+      #fr-body #fr-right-pane .header .date-due {
+        -webkit-box-flex: 0;
+        flex: 0 0 90px;
+        font-size: 0.9em;
+        color: #9CA1A8; }
+    #fr-body #fr-right-pane .body {
+      padding: 10px 15px; }
+      #fr-body #fr-right-pane .body .table-versions th {
+        font-size: 0.8em; }
 
 #files-collection #files-header {
   white-space: nowrap; }
@@ -8862,6 +8916,9 @@ label {
     position: relative; }
     #files-collection #files-list .single-file.is-selected .content-column {
       padding: 15px 10px 5px 10px; }
+      @media screen and (min-width: 768px) {
+        #files-collection #files-list .single-file.is-selected .content-column {
+          padding: 15px 10px 15px 10px; } }
   #files-collection #files-list .single-file .col-file i {
     font-size: 2em; }
   #files-collection #files-list .single-file .expanded-view {
@@ -8871,7 +8928,8 @@ label {
     padding: 0 10px; }
     @media screen and (min-width: 768px) {
       #files-collection #files-list .single-file .expanded-view {
-        padding: 0 175px 0 60px; } }
+        padding: 0 175px 0 60px;
+        display: none; } }
     #files-collection #files-list .single-file .expanded-view .table-versions-wrap {
       margin: 0 0 7px;
       position: relative; }
