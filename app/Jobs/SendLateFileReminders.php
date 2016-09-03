@@ -50,7 +50,6 @@ class SendLateFileReminders implements ShouldQueue
         return Checklist::whereExists(function ($query) {
             $query->select(DB::raw(1))
                   ->from('file_requests')
-                  ->where('required', 1)
                   ->where('status', '!=', 'received')
                   ->whereDate('due', '<', Carbon::now()->format('Y-m-d'))
                   ->whereRaw('checklist_id = checklists.id');

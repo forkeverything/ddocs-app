@@ -4,7 +4,6 @@
             <button type="button"
                     class="btn btn-link"
                     @click="togglePanel"
-                    v-show="! showPanel"
             >
                 Turn Off Notifications
             </button>
@@ -13,7 +12,7 @@
         <form id="form-notifications"
               v-show="showPanel"
               @submit.prevent="turnOffNotifications"
-              class="panel panel-default animated"
+              class="panel panel-default animated panel-floating"
               transition="fade-slide"
         >
             <div class="panel-heading">

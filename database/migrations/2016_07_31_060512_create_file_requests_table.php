@@ -20,7 +20,6 @@ class CreateFileRequestsTable extends Migration
             $table->text('description')->nullable();
 
             $table->dateTime('due')->nullable();
-            $table->boolean('required')->default(1);
             $table->string('version')->default(1);
 
             $table->string('status')->default('waiting');       // 'waiting', 'received', 'rejected'

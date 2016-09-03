@@ -82,7 +82,7 @@ module.exports = {
                 search: term,
                 page: 1
             }))
-        }, 200),
+        }, 400),
         clearSearch: function () {
             this.params.search = '';
             this.searchTerm();

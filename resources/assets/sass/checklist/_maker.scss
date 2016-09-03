@@ -60,7 +60,7 @@
 
     &:first-child {
       .line-el {
-        border-top: 0 !important;
+        border-top-color: transparent !important;
       }
     }
 
@@ -68,6 +68,11 @@
       .line-el {
         border-top: 1px solid $light-green !important;
         border-bottom: 1px solid $light-green !important;
+      }
+
+      .icon-file {
+        padding: 5px 10px 5px 0;
+        color: $brand-primary;
       }
 
       & + li {
@@ -78,13 +83,12 @@
       }
     }
 
-    .button-required {
-      padding-left: 0;
-
-      &.required {
-        color: $green;
-      }
+    .icon-file {
+      padding: 6px 10px 5px 0;
+      color: $grey;
     }
+
+
 
     .input-file-name {
       flex: 1;

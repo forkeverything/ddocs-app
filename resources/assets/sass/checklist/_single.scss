@@ -25,6 +25,7 @@
       width: 336px;
       top: 0;
       right: 0;
+      z-index: 3;
     }
   }
 
@@ -32,30 +33,30 @@
     margin: 0 0 15px;
   }
 
-  #table-files {
-
-    tbody {
-
-      .col-upload {
-        width: 100px;
-
-        .progress {
-          height: 5px;
-          margin: 0 0 0 0;
-        }
-
-
-      }
-
-      .row-details {
-        background: $extra-light-grey;
-
-        .col-details {
-          padding: 10px 15px 15px 10px;
-        }
-      }
-    }
-  }
+  //#table-files {
+  //
+  //  tbody {
+  //
+  //    .col-upload {
+  //      width: 100px;
+  //
+  //      .progress {
+  //        height: 5px;
+  //        margin: 0 0 0 0;
+  //      }
+  //
+  //
+  //    }
+  //
+  //    .row-details {
+  //      background: $extra-light-grey;
+  //
+  //      .col-details {
+  //        padding: 10px 15px 15px 10px;
+  //      }
+  //    }
+  //  }
+  //}
 
 
   // Button Colors
@@ -84,6 +85,225 @@
     color: $red;
     &:hover {
       color: $dark-red;
+    }
+  }
+}
+
+
+#files-collection {
+
+  #files-header {
+    white-space: nowrap;
+  }
+
+  #files-header, .single-file {
+    display: flex;
+  }
+
+  .column {
+    display: inline-block;
+    border: 0;
+
+    &:not(.col-name) {
+      display: none;
+
+      @media screen and (min-width: $screen-sm-min) {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .header-column {
+    padding: 5px 10px;
+    cursor: pointer;
+    position: relative;
+
+    &.current_asc, &.current_desc {
+      font-weight: bold;
+
+      &:after {
+        color: $dark-grey;
+        font-family: FontAwesome;
+        font-size: 1.3em;
+        position: absolute;
+        top: 2px;
+        right: 5px;
+      }
+
+      &.current_asc:after {
+        content: '\f0d8';
+      }
+
+      &.current_desc:after {
+        content: '\f0d7';
+      }
+    }
+  }
+
+  .content-column {
+    padding: 15px 10px;
+
+    &.col-due {
+      font-size: 0.9em;
+    }
+  }
+
+  .file-status {
+    color: $grey;
+
+    &.received {
+      color: $green;
+    }
+
+    &.rejected {
+      color: $red;
+    }
+  }
+
+  .col-file {
+    flex: 0 0 50px;
+  }
+
+  .col-name {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .name {
+      word-wrap: break-word;
+      flex: 1;
+      width: 0;
+      margin: 0 15px 0 0;
+
+      @media screen and (min-width: $screen-sm-min) {
+        margin: 0;
+      }
+    }
+
+    .file-status {
+      font-size: 1.2em;
+      @media screen and (min-width: $screen-sm-min) {
+        display: none;
+      }
+    }
+  }
+
+  .col-due {
+    flex: 0 0 115px;
+  }
+
+  .col-upload {
+    flex: 0 0 50px;
+
+      .upload-percentage {
+        font-size: 0.9em;
+        color: darken($brand-primary, 10%);
+      }
+  }
+
+  #files-header {
+    margin-left: 0;
+    border-bottom: 2px solid $laravel-border-color;
+    font-size: 0.9em;
+    margin-bottom: -1px;
+  }
+
+  #files-list {
+
+    .single-file {
+      border-top: 1px solid $laravel-border-color;
+      border-bottom: 1px solid $laravel-border-color;
+      margin-bottom: -1px;
+      flex-wrap: wrap;
+
+      &:hover {
+        border-color: $brand-primary;
+        background: lighten($brand-primary, 49%);
+        z-index: 2;
+        position: relative;
+      }
+
+      &.is-selected {
+        background: lighten($brand-primary, 48%);
+        border-color: darken($brand-primary, 10%);
+        z-index: 3;
+        position: relative;
+
+        .content-column {
+          padding: 15px 10px 5px 10px;
+        }
+      }
+
+      .col-file {
+        i {
+          font-size: 2em;
+        }
+      }
+
+      .expanded-view {
+        flex: 100%;
+        font-size: 0.8em;
+        padding: 0 10px;
+
+        @media screen and (min-width: $screen-sm-min) {
+          padding: 0 175px 0 60px;
+        }
+
+        .table-versions-wrap {
+          margin: 0 0 7px;
+          position: relative;
+
+          .table-versions {
+            margin: 0;
+
+            th {
+              color: darken($brand-primary, 10%);
+            }
+
+
+            th {
+              padding: 3px 10px;
+              font-weight: normal;
+              border-bottom: 1px solid $brand-primary;
+
+              &:first-child {
+                padding-left: 0;
+                padding-right: 0;
+              }
+            }
+
+            td {
+              padding: 5px 10px;
+              border-color: $brand-primary;
+            }
+
+            .file-buttons {
+              font-size: 1em;
+              padding: 0;
+
+              &.button-reject {
+                margin-right: 10px;
+              }
+            }
+
+            .col-version-controls {
+              position: relative;
+            }
+          }
+          .reject-panel {
+            position: absolute;
+            width: 300px;
+            top: -30px;
+            right: 0;
+
+            .btn {
+              padding: 3px 10px
+            }
+          }
+        }
+      }
     }
   }
 }

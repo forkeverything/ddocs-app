@@ -3,10 +3,8 @@
 @section('content')
 
     <div id="checklist-all" class="container">
-        <h3>
-            <strong>
-                Your Checklists
-            </strong>
+        <h3 class="page-title">
+            <strong>Your Checklists</strong>
         </h3>
         <p>Hi {{ Auth::user()->name }}, here are all the checklists you've made with us.</p>
         <hr>
@@ -17,7 +15,7 @@
             </a>
         </div>
 
-            <br>
+        <br>
 
 
         <my-checklists></my-checklists>

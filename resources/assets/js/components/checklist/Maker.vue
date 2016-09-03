@@ -22,14 +22,13 @@
             <p class="text-muted">Hit Enter/Return to insert a new file. Delete files by clearing it's name.</p>
             <ul class="list-files list-unstyled">
                 <li v-for="(index, file) in files" class="single-file">
-                    <button type="button"
-                            class="btn btn-unstyled button-required line-el"
-                            :class="{
-                                            'required': file.required
-                                        }"
-                            @click="toggleRequired(file)"
-                    >
-                        <i class="fa fa-file"></i></button>
+
+                    <span class="icon-file line-el">
+                    <i class="fa fa-file"></i>
+                    </span>
+
+
+
                     <input type="text"
                            class="form-control input-file-name line-el"
                            v-model="file.name"
@@ -71,8 +70,7 @@
                     {
                         name: '',
                         description: '',
-                        due: '',
-                        required: 1
+                        due: ''
                     }
                 ]
             }
@@ -116,8 +114,7 @@
                 var newFile = {
                     name: '',
                     description: '',
-                    due: '',
-                    required: 1
+                    due: ''
                 };
                 this.files.splice(fileIndex + 1, 0, newFile);
                 this.$nextTick(function () {
@@ -140,9 +137,6 @@
                 } else {
                     $($('.single-file')[fileIndex + 1]).find('.input-file-name').focus();
                 }
-            },
-            toggleRequired: function (file) {
-                file.required = file.required ? 0 : 1;
             },
             sendChecklist: function () {
 

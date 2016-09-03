@@ -17,7 +17,6 @@ class FileRequest extends Model
         'description',
         'due',
         'version',
-        'required',
         'status',
         'checklist_id'
     ];

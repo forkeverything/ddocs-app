@@ -29,7 +29,8 @@ class Checklist extends Model
      */
     protected $appends = [
         'hash',
-        'progress'
+        'progress',
+        'received'
     ];
 
 
@@ -73,10 +74,20 @@ class Checklist extends Model
     {
         $files = $this->requestedFiles;
         // Count only required files that are received....
-        $received = $files->where('required', 1)->where('status', 'received')->count();
+        $received = $this->received;
         $total = $files->count();
         if(! $total) return 0;
         return round(100 * $received / $total, 0);
+    }
+
+    /**
+     * The number of received files.
+     *
+     * @return mixed
+     */
+    public function getReceivedAttribute()
+    {
+        return $received = $this->requestedFiles->where('status', 'received')->count();
     }
 
     /**

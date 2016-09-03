@@ -39,12 +39,7 @@ class CheckIfChecklistComplete implements ShouldQueue
      */
     public function handle()
     {
-        $requiredFiles = $this->checklist->requestedFiles()->where('required', 1)->get();
-
-        $totalRequired = $requiredFiles->count();
-        $numCompleted = $requiredFiles->where('status', 'received')->count();
-
-        // If we received all compulsory files
-        if($numCompleted === $totalRequired) Event::fire(new ChecklistCompleted($this->checklist));
+        // If all file requests are received
+        if($this->checklist->received === $this->checklist->requestedFiles->count()) Event::fire(new ChecklistCompleted($this->checklist));
     }
 }
