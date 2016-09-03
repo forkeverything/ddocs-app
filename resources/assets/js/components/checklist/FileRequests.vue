@@ -306,7 +306,7 @@
                     <form class="reject-panel panel panel-default panel-floating"
                           v-if="! canUpload || index + 1 === selectedFile.uploads.length"
                           @submit.prevent="rejectFile(selectedFile)"
-                          v-show="fileToReject === selectedFile"
+                          v-show="fileToReject && fileToReject === selectedFile"
                     >
                         <div class="panel-heading">
                             Reason / Changes Required
