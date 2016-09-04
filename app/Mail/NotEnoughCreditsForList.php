@@ -36,7 +36,7 @@ class NotEnoughCreditsForList extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $subject = 'Files Collector - Not Enough Credits For Checklist!';
+        $subject = 'You\'ve Ran Out Of Credits';
         $view = 'emails.user.not-enough-credits';
         return $this->subject($subject)->view($view);
     }

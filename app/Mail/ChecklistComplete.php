@@ -45,7 +45,7 @@ class ChecklistComplete extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $subject = 'Files Collector - Another Completed Checklist: ' . $this->checklist->name;
+        $subject = 'Received all files for: ' . $this->checklist->name;
         return $this->subject($subject)
                     ->view('emails.checklist.complete');
     }

@@ -46,7 +46,7 @@ class FreeCreditsReceived extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $subject = 'Files Collector - ' . 'Free Credits From ' . $this->recipient->name;
+        $subject = 'Free Credits From ' . $this->recipient->name;
         $view = 'emails.checklist.free-credits';
         return $this->subject($subject)
                     ->view($view);

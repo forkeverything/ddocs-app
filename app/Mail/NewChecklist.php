@@ -45,7 +45,7 @@ class NewChecklist extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $subject = 'Files Collector - ' . $this->maker->name . '\'s Request For Files';
+        $subject = 'Documents request from ' . $this->maker->name;
         $view = 'emails.checklist.new';
 
         return $this->subject($subject)->view($view);

@@ -56,7 +56,7 @@ class LateFilesReminder extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $subject = 'Files Collector - ' . 'Overdue Files Reminder';
+        $subject = 'Overdue Files: ' . $this->checklist->name;
         $view = 'emails.files.reminder-late';
         return $this->subject($subject)->view($view);
     }

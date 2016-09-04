@@ -45,7 +45,7 @@ class WelcomeWithGeneratedPassword extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $subject = 'Files Collector - Account Created';
+        $subject = 'New Account Created';
         $view = 'emails.user.welcome-password';
         return $this->subject($subject)->view($view);
     }

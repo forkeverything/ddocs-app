@@ -47,7 +47,7 @@ class UpcomingFilesReminder extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $subject = 'Files Collector - ' . 'Due Files Coming Up';
+        $subject =  'Upcoming Files: ' . $this->checklist->name;
         $view = 'emails.files.reminder-upcoming';
         return $this->subject($subject)->view($view);
     }

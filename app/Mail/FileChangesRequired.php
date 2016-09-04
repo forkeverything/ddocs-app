@@ -45,7 +45,7 @@ class FileChangesRequired extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        $subject = 'Files Collector - Changes Request By ' . $this->maker->name;
+        $subject = 'Changes Required: ' . $this->fileRequest->name;
         $view = 'emails.files.changes';
         return $this->subject($subject)
                     ->view($view);
