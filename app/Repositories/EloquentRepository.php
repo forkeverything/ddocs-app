@@ -70,8 +70,7 @@ abstract class EloquentRepository
     {
         $this->{'order'} = ($order === 'desc') ? 'desc' : 'asc';
         $this->{'sort'} = in_array($sort, $this->sortableFields) ? $sort : $this->sortableFields[0];
-        $sortField = $this->sort;
-        $this->query->orderBy(\DB::raw("-`${sortField}`"), ($this->order === 'desc' ? 'asc' : 'desc'));
+        $this->query->orderBy($this->sort, $this->order);
         return $this;
     }
 

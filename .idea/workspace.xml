@@ -28,8 +28,8 @@
       <file leaf-file-name="EloquentRepository.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Repositories/EloquentRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="783">
-              <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+            <state relative-caret-position="756">
+              <caret line="71" column="100" selection-start-line="71" selection-start-column="100" selection-end-line="71" selection-end-column="100" />
               <folding />
             </state>
           </provider>
@@ -425,12 +425,12 @@
       <workItem from="1473025033867" duration="608000" />
       <workItem from="1473039995196" duration="291000" />
       <workItem from="1473040836316" duration="4000" />
-      <workItem from="1473041233525" duration="2142000" />
+      <workItem from="1473041233525" duration="2302000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="313060000" />
+    <option name="totallyTimeSpent" value="313220000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="1347" extended-state="0" />
@@ -1147,8 +1147,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Repositories/EloquentRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+        <state relative-caret-position="756">
+          <caret line="71" column="100" selection-start-line="71" selection-start-column="100" selection-end-line="71" selection-end-column="100" />
           <folding />
         </state>
       </provider>
