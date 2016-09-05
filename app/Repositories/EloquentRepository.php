@@ -68,10 +68,11 @@ abstract class EloquentRepository
      */
     public function sortOn($sort = null, $order = null)
     {
-        $this->{'order'} = ($order === 'desc') ? 'asc' : 'desc';    // Flipped this around - so that we can make NULL values last
+        $this->{'order'} = ($order === 'desc') ? 'desc' : 'asc';
         $this->{'sort'} = in_array($sort, $this->sortableFields) ? $sort : $this->sortableFields[0];
         $sortField = $this->sort;
-        $this->query->orderBy(\DB::raw("-${sortField}"), $this->order);
+        $this->query->select(['*', \DB::raw("IF(`${sortField}` IS NOT NULL, `${sortField}`, 1000000000) `${$sortField}`")]);
+        $this->query->orderBy($this->sort, $this->order);
         return $this;
     }
 
