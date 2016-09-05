@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Kernel.php" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Mail/LateFilesReminder.php" afterPath="$PROJECT_DIR$/app/Mail/LateFilesReminder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Repositories/FilesRequestsRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/FilesRequestsRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/factories/ModelFactory.php" afterPath="$PROJECT_DIR$/database/factories/ModelFactory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LateFilesReminder.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Mail/LateFilesReminder.php">
+      <file leaf-file-name="FileRequests.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
+            <state relative-caret-position="450">
+              <caret line="142" column="82" selection-start-line="142" selection-start-column="82" selection-end-line="142" selection-end-column="82" />
               <folding />
             </state>
           </provider>
@@ -70,7 +65,6 @@
         <option value="$PROJECT_DIR$/resources/assets/sass/variables.scss" />
         <option value="$PROJECT_DIR$/resources/views/checklist/single.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/pagination/PerPagePicker.vue" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue" />
         <option value="$PROJECT_DIR$/app/Mail/ChecklistComplete.php" />
         <option value="$PROJECT_DIR$/resources/views/emails/checklist/complete.blade.php" />
         <option value="$PROJECT_DIR$/app/Mail/NewChecklist.php" />
@@ -98,6 +92,7 @@
         <option value="$PROJECT_DIR$/app/Repositories/FilesRequestsRepository.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
         <option value="$PROJECT_DIR$/app/Mail/LateFilesReminder.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue" />
       </list>
     </option>
   </component>
@@ -122,7 +117,6 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1280" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="1347" />
@@ -430,15 +424,15 @@
       <workItem from="1473025033867" duration="608000" />
       <workItem from="1473039995196" duration="291000" />
       <workItem from="1473040836316" duration="4000" />
-      <workItem from="1473041233525" duration="821000" />
+      <workItem from="1473041233525" duration="1119000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="311739000" />
+    <option name="totallyTimeSpent" value="312037000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="23" width="1280" height="1347" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="1347" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -742,13 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="86" column="128" selection-start-line="86" selection-start-column="128" selection-end-line="86" selection-end-column="128" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/console/Application.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -987,8 +974,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Mail/LateFilesReminder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
+        <state relative-caret-position="623">
+          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding>
+            <marker date="1473042066000" expanded="false" signature="32:253" ph="..." />
+            <marker date="1473042066000" expanded="true" signature="318:1464" ph="{...}" />
+            <marker date="1473042066000" expanded="true" signature="366:448" ph=" The Checklist that holds the late file. ..." />
+            <marker date="1473042066000" expanded="true" signature="482:572" ph=" Collection of Checklist's late FileRequest(s). ..." />
+            <marker date="1473042066000" expanded="true" signature="606:677" ph=" DateTime now (carbon instance). ..." />
+            <marker date="1473042066000" expanded="true" signature="707:793" ph=" Create a new message instance. ..." />
+            <marker date="1473042066000" expanded="true" signature="849:1188" ph="{...}" />
+            <marker date="1473042066000" expanded="true" signature="1029:1055" ph="..." />
+            <marker date="1473042066000" expanded="true" signature="1100:1141" ph="..." />
+            <marker date="1473042066000" expanded="true" signature="1197:1257" ph=" Build the message. ..." />
+            <marker date="1473042066000" expanded="true" signature="1287:1462" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="142" column="82" selection-start-line="142" selection-start-column="82" selection-end-line="142" selection-end-column="82" />
           <folding />
         </state>
       </provider>

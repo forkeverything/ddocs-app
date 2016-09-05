@@ -140,7 +140,7 @@
                             <i class="fa fa-file-o"></i>
                         </span>
                             </div>
-                            <div class="column col-due content-column">{{ file.created_at | date }}</div>
+                            <div class="column col-due content-column">{{ file.due | date }}</div>
                             <div class="column col-upload content-column">
                                 <!-- Upload -->
                                 <button :id="'upload-button-file-' + file.id"
