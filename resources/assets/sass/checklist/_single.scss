@@ -91,12 +91,16 @@
   display: flex;
 
   #fr-center-pane {
-    flex: 1000 0 370px;
+    flex: 1000 0 440px;
     background: #fff;
     z-index: 2;
     border: 1px solid $laravel-border-color;
     max-width: 100%;
     padding: 15px;
+
+    .per-page-picker {
+      margin-bottom: 10px;
+    }
   }
 
   #fr-right-pane {
