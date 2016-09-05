@@ -45,6 +45,7 @@ class LateFilesReminder extends Mailable implements ShouldQueue
         $this->checklist = $checklist;
         $this->today = Carbon::now();
         $this->lateFiles = $checklist->requestedFiles()
+                                ->where('status', '!=', 'received')
                                ->whereDate('due', '<', $this->today->format('Y-m-d'))
                                ->get();
     }

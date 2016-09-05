@@ -37,7 +37,6 @@ $factory->define(\App\FileRequest::class, function (Faker\Generator $faker) {
         'name' => $faker->word,
         'description' => $faker->sentences(3, true),
         'due' => $faker->dateTimeBetween('now', '+1 year')->format('d/m/Y'),
-        'required' => $faker->boolean(80),
         'checklist_id' => factory(Checklist::class)->create()->id
     ];
 });

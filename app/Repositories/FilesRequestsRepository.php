@@ -17,7 +17,6 @@ class FilesRequestsRepository extends EloquentRepository
      * @var array
      */
     protected $sortableFields = [
-        'required',
         'name',
         'version',
         'due',
@@ -53,22 +52,7 @@ class FilesRequestsRepository extends EloquentRepository
     {
         return new static($checklist);
     }
-
-    /**
-     * Required / Optional filter.
-     *
-     * @param $required
-     * @return $this
-     */
-    public function whereRequired($required)
-    {
-        $possibleRequirements = [
-            "1", "0"
-        ];
-        if (in_array($required, $possibleRequirements, true)) $this->{'required'} = (int)$required;
-        if (isset($this->required)) $this->query->where('required', $this->required);
-        return $this;
-    }
+    
 
     /**
      * Status filter.

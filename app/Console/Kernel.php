@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\SendLateFileEmails;
 use App\Console\Commands\SendTestEmails;
 use App\Jobs\ReplenishUserCredits;
 use App\Jobs\SendLateFileReminders;
@@ -17,7 +18,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        SendTestEmails::class
+        SendTestEmails::class,
+        SendLateFileEmails::class
     ];
 
     /**
@@ -34,17 +36,17 @@ class Kernel extends ConsoleKernel
         // Let recipients know on Monday night that they have late files. Because generally
         // people are more productive on Tues mornings.
         $schedule->call(function () {
-            $this->dispatch(new SendLateFileReminders);
+            dispatch(new SendLateFileReminders);
         })->weekly()->mondays()->at('21:00');
 
         // Every morning, send upcoming file reminders at 06:00
         $schedule->call(function () {
-            $this->dispatch(new SendUpcomingDueFilesReminders);
+            dispatch(new SendUpcomingDueFilesReminders);
         })->dailyAt('06:00');
 
         // Replenish user credits to 5 / month
         $schedule->call(function () {
-            $this->dispatch(new ReplenishUserCredits);
+            dispatch(new ReplenishUserCredits);
         })->monthlyOn(1, '00:00');
 
         /*

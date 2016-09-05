@@ -147,7 +147,6 @@ class ChecklistsController extends Controller
         $search = $request->search;
         $perPage = $request->per_page ?: 20;
         return FilesRequestsRepository::forChecklist($checklist)
-                                      ->whereRequired($request->required)
                                       ->filterIntegerField('version', $request->version)
                                       ->filterDateField('due', $request->due)
                                       ->withStatus($request->status)
