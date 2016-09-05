@@ -97,8 +97,9 @@ class Checklist extends Model
      * @param User $user
      * @return bool
      */
-    public function madeBy(User $user)
+    public function madeBy(User $user = null)
     {
+        if(!$user) return false;
         return $this->user_id === $user->id;
     }
 

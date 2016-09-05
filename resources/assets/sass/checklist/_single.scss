@@ -60,11 +60,9 @@
 
 
   // Button Colors
-  .button-history {
-    color: $orange;
-    &:hover {
-      color: $dark-orange;
-    }
+
+  .file-buttons {
+    padding: 0 5px;
   }
 
   .button-upload:not([disabled]) {

@@ -20,6 +20,11 @@ Vue.component('checklist-maker', require('./components/checklist/Maker.vue'));
 Vue.component('checklist-notifications-control', require('./components/checklist/NotificationsControl.vue'));
 Vue.component('checklist-file-requests', require('./components/checklist/FileRequests.vue'));
 
+// File Requests
+Vue.component('file-reject-panel', require('./components/file/RejectPanel.vue'));
+Vue.component('file-filters', require('./components/file/Filters.vue'));
+Vue.component('file-active-filters', require('./components/file/ActiveFilters.vue'));
+
 Vue.component('add-credit-card', require('./components/account/AddCreditCard.vue'));
 
 Vue.component('per-page-picker', require('./components/pagination/PerPagePicker.vue'));
