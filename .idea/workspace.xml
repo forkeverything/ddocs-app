@@ -28,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="504">
-              <caret line="144" column="47" selection-start-line="144" selection-start-column="47" selection-end-line="144" selection-end-column="47" />
+              <caret line="144" column="54" selection-start-line="144" selection-start-column="54" selection-end-line="144" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -424,12 +424,12 @@
       <workItem from="1473025033867" duration="608000" />
       <workItem from="1473039995196" duration="291000" />
       <workItem from="1473040836316" duration="4000" />
-      <workItem from="1473041233525" duration="1262000" />
+      <workItem from="1473041233525" duration="1329000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="312180000" />
+    <option name="totallyTimeSpent" value="312247000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="1347" extended-state="0" />
@@ -1005,7 +1005,7 @@
     <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
-          <caret line="144" column="47" selection-start-line="144" selection-start-column="47" selection-end-line="144" selection-end-column="47" />
+          <caret line="144" column="54" selection-start-line="144" selection-start-column="54" selection-end-line="144" selection-end-column="54" />
           <folding />
         </state>
       </provider>

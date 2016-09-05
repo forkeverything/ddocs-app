@@ -141,7 +141,7 @@
                         </span>
                             </div>
                             <div class="column col-due content-column">
-                                <span class="date">{{ file.due | date }}</span>
+                                <span class="date" v-if="file.due">{{ file.due | date }}</span>
                                 <span v-else>--</span>
                             </div>
                             <div class="column col-upload content-column">
