@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/filters.js" afterPath="$PROJECT_DIR$/resources/assets/js/filters.js" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,7 +42,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/assets/sass/components/_text.scss" />
         <option value="$PROJECT_DIR$/resources/views/checklist/all.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_07_31_060512_create_file_requests_table.php" />
         <option value="$PROJECT_DIR$/app/FileRequest.php" />
@@ -93,6 +92,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
         <option value="$PROJECT_DIR$/app/Mail/LateFilesReminder.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue" />
+        <option value="$PROJECT_DIR$/resources/assets/js/filters.js" />
       </list>
     </option>
   </component>
@@ -424,12 +424,12 @@
       <workItem from="1473025033867" duration="608000" />
       <workItem from="1473039995196" duration="291000" />
       <workItem from="1473040836316" duration="4000" />
-      <workItem from="1473041233525" duration="1119000" />
+      <workItem from="1473041233525" duration="1218000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="312037000" />
+    <option name="totallyTimeSpent" value="312136000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="1347" extended-state="0" />
@@ -476,13 +476,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/NotificationsControl.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/sass/components/_tables.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="693">
@@ -988,6 +981,23 @@
             <marker date="1473042066000" expanded="true" signature="1100:1141" ph="..." />
             <marker date="1473042066000" expanded="true" signature="1197:1257" ph=" Build the message. ..." />
             <marker date="1473042066000" expanded="true" signature="1287:1462" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/filters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
+          <folding>
+            <marker date="1473042672000" expanded="true" signature="36:239" ph="{...}" />
+            <marker date="1473042672000" expanded="true" signature="122:211" ph="{...}" />
+            <marker date="1473042672000" expanded="true" signature="288:484" ph="{...}" />
+            <marker date="1473042672000" expanded="true" signature="378:456" ph="{...}" />
+            <marker date="1473042672000" expanded="true" signature="532:748" ph="{...}" />
+            <marker date="1473042672000" expanded="true" signature="622:720" ph="{...}" />
+            <marker date="1473042672000" expanded="true" signature="796:1004" ph="{...}" />
+            <marker date="1473042672000" expanded="true" signature="886:976" ph="{...}" />
           </folding>
         </state>
       </provider>
