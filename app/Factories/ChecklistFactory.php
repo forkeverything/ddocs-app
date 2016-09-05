@@ -90,8 +90,7 @@ class ChecklistFactory
             $file = [
                 "name" => $fileName,
                 "description" => null,
-                "due" => isset($matches[3][$key]) ? $matches[3][$key] : null,
-                "required" => 1
+                "due" => isset($matches[3][$key]) ? $matches[3][$key] : null
             ];
             array_push($requestedFiles, $file);
         }
@@ -149,8 +148,7 @@ class ChecklistFactory
             $this->checklist->requestedFiles()->create([
                 'name' => $file['name'],
                 'description' => $file['description'],
-                'due' => $file['due'],
-                'required' => $file['required']
+                'due' => $file['due']
             ]);
         }
 
