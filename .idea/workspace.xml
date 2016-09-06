@@ -2,46 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/emails/partials/turn-off-notifications.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/recipients/turned-off-notifications.blade.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/MultipleRecipients.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/NotificationsControl.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/emails/partials/layout.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/emails/partials/signature.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/emails/partials/standard.blade.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Console/Commands/SendTestEmails.php" afterPath="$PROJECT_DIR$/app/Console/Commands/SendTestEmails.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Factories/ChecklistFactory.php" afterPath="$PROJECT_DIR$/app/Factories/ChecklistFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Requests/NewChecklistRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/NewChecklistRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/SendLateFileReminders.php" afterPath="$PROJECT_DIR$/app/Jobs/SendLateFileReminders.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Jobs/SendUpcomingDueFilesReminders.php" afterPath="$PROJECT_DIR$/app/Jobs/SendUpcomingDueFilesReminders.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Listeners/EmailFileRejectedNotification.php" afterPath="$PROJECT_DIR$/app/Listeners/EmailFileRejectedNotification.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Listeners/EmailRecipientOfNewChecklist.php" afterPath="$PROJECT_DIR$/app/Listeners/EmailRecipientOfNewChecklist.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Mail/FileChangesRequired.php" afterPath="$PROJECT_DIR$/app/Mail/FileChangesRequired.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Mail/LateFilesReminder.php" afterPath="$PROJECT_DIR$/app/Mail/LateFilesReminder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Mail/NewChecklist.php" afterPath="$PROJECT_DIR$/app/Mail/NewChecklist.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Mail/UpcomingFilesReminder.php" afterPath="$PROJECT_DIR$/app/Mail/UpcomingFilesReminder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/ChecklistServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/ChecklistServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Recipient.php" afterPath="$PROJECT_DIR$/app/Recipient.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DevSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DevSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css.map" afterPath="$PROJECT_DIR$/public/css/app.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/landing.css" afterPath="$PROJECT_DIR$/public/css/landing.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/landing.css.map" afterPath="$PROJECT_DIR$/public/css/landing.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/landing.js" afterPath="$PROJECT_DIR$/public/js/landing.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app.js" afterPath="$PROJECT_DIR$/resources/assets/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/Maker.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/Maker.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/_maker.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/_maker.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/variables/_colors.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/variables/_colors.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/checklist/single.blade.php" afterPath="$PROJECT_DIR$/resources/views/checklist/single.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/emails/checklist/new.blade.php" afterPath="$PROJECT_DIR$/resources/views/emails/checklist/new.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/emails/files/changes.blade.php" afterPath="$PROJECT_DIR$/resources/views/emails/files/changes.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/emails/files/reminder-late.blade.php" afterPath="$PROJECT_DIR$/resources/views/emails/files/reminder-late.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/emails/files/reminder-upcoming.blade.php" afterPath="$PROJECT_DIR$/resources/views/emails/files/reminder-upcoming.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,8 +27,8 @@
       <file leaf-file-name="ChecklistFactory.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Factories/ChecklistFactory.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="98" column="8" lean-forward="true" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="8" />
+            <state relative-caret-position="639">
+              <caret line="160" column="43" lean-forward="false" selection-start-line="160" selection-start-column="43" selection-end-line="160" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -188,7 +150,7 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="2560" />
+    <option name="width" value="1280" />
     <option name="height" value="1347" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -503,15 +465,15 @@
       <workItem from="1473053691644" duration="534000" />
       <workItem from="1473054712682" duration="15829000" />
       <workItem from="1473142751138" duration="13932000" />
-      <workItem from="1473191830448" duration="6822000" />
+      <workItem from="1473191830448" duration="7089000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="350463000" />
+    <option name="totallyTimeSpent" value="350730000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="1347" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10429688" sideWeight="0.53584903" order="2" side_tool="true" content_ui="tabs" />
@@ -600,35 +562,6 @@
             <marker date="1472369754000" expanded="true" signature="2043:2415" ph="{...}" />
             <marker date="1472369754000" expanded="true" signature="2123:2305" ph="..." />
             <marker date="1472369754000" expanded="true" signature="2124:2304" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repositories/FilesRequestsRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="49" column="7" lean-forward="true" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
-          <folding>
-            <element signature="e#38#56#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repositories/ChecklistsRespository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
-          <folding>
-            <marker date="1473177776000" expanded="false" signature="42:70" ph="..." />
-            <marker date="1473177776000" expanded="true" signature="126:834" ph="{...}" />
-            <marker date="1473177776000" expanded="true" signature="136:201" ph=" Which fields are sortable/ ..." />
-            <marker date="1473177776000" expanded="true" signature="237:279" ph="..." />
-            <marker date="1473177776000" expanded="true" signature="290:372" ph=" Which fields to include in our text search. ..." />
-            <marker date="1473177776000" expanded="true" signature="410:430" ph="..." />
-            <marker date="1473177776000" expanded="true" signature="442:503" ph=" Build our repo. ..." />
-            <marker date="1473177776000" expanded="true" signature="549:624" ph="{...}" />
-            <marker date="1473177776000" expanded="true" signature="633:735" ph=" Static wrapper - nothing new here! ..." />
-            <marker date="1473177776000" expanded="true" signature="784:830" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1597,7 +1530,7 @@
         <state relative-caret-position="405">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
+            <element signature="e#23#62#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1964,10 +1897,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/landing/main.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="87" column="14" lean-forward="true" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Repositories/ChecklistsRespository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding>
+            <marker date="1473177776000" expanded="false" signature="42:70" ph="..." />
+            <marker date="1473177776000" expanded="true" signature="126:834" ph="{...}" />
+            <marker date="1473177776000" expanded="true" signature="136:201" ph=" Which fields are sortable/ ..." />
+            <marker date="1473177776000" expanded="true" signature="237:279" ph="..." />
+            <marker date="1473177776000" expanded="true" signature="290:372" ph=" Which fields to include in our text search. ..." />
+            <marker date="1473177776000" expanded="true" signature="410:430" ph="..." />
+            <marker date="1473177776000" expanded="true" signature="442:503" ph=" Build our repo. ..." />
+            <marker date="1473177776000" expanded="true" signature="549:624" ph="{...}" />
+            <marker date="1473177776000" expanded="true" signature="633:735" ph=" Static wrapper - nothing new here! ..." />
+            <marker date="1473177776000" expanded="true" signature="784:830" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="747">
-          <caret line="113" column="33" lean-forward="true" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
+        <state relative-caret-position="812">
+          <caret line="148" column="30" lean-forward="true" selection-start-line="148" selection-start-column="30" selection-end-line="148" selection-end-column="30" />
           <folding>
             <marker date="1473195417000" expanded="false" signature="44:402" ph="..." />
             <marker date="1473195417000" expanded="true" signature="449:4765" ph="{...}" />
@@ -2005,18 +1965,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/landing/main.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Repositories/FilesRequestsRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="87" column="14" lean-forward="true" selection-start-line="87" selection-start-column="14" selection-end-line="87" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="594">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding>
+            <marker date="1473041911000" expanded="false" signature="42:126" ph="..." />
+            <marker date="1473041911000" expanded="true" signature="184:2052" ph="{...}" />
+            <marker date="1473041911000" expanded="true" signature="194:260" ph=" Sortable fields for File(s) ..." />
+            <marker date="1473041911000" expanded="true" signature="296:368" ph="..." />
+            <marker date="1473041911000" expanded="true" signature="379:447" ph=" Searchable fields for File(s) ..." />
+            <marker date="1473041911000" expanded="true" signature="485:505" ph="..." />
+            <marker date="1473041911000" expanded="true" signature="516:639" ph=" FilesRequestsRepository constructor. Set up our query builder here. ..." />
+            <marker date="1473041911000" expanded="true" signature="695:782" ph="{...}" />
+            <marker date="1473041911000" expanded="true" signature="791:902" ph=" Static wrapper to build our Repo. ..." />
+            <marker date="1473041911000" expanded="true" signature="966:1017" ph="{...}" />
+            <marker date="1473041911000" expanded="true" signature="1031:1109" ph=" Status filter. ..." />
+            <marker date="1473041911000" expanded="true" signature="1151:1438" ph="{...}" />
+            <marker date="1473041911000" expanded="true" signature="1187:1242" ph="..." />
+            <marker date="1473041911000" expanded="true" signature="1447:1560" ph=" Append the number of received files that match the ..." />
+            <marker date="1473041911000" expanded="true" signature="1605:2048" ph="{...}" />
+            <marker date="1473041911000" expanded="true" signature="1814:1824" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Factories/ChecklistFactory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="98" column="8" lean-forward="true" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="8" />
+        <state relative-caret-position="639">
+          <caret line="160" column="43" lean-forward="false" selection-start-line="160" selection-start-column="43" selection-end-line="160" selection-end-column="43" />
           <folding />
         </state>
       </provider>

@@ -96,7 +96,7 @@ class ChecklistFactory
             ];
             array_push($requestedFiles, $file);
         }
-        
+
         $recipients = [];
 
         // add TO address
@@ -158,7 +158,7 @@ class ChecklistFactory
      */
     protected function createRecipients()
     {
-        foreach (request('recipients') as $recipient) {
+        foreach ($this->request->recipients as $recipient) {
             $this->checklist->recipients()->create([
                 'email' => $recipient,
             ]);
