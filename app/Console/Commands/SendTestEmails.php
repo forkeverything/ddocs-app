@@ -13,6 +13,7 @@ use App\Mail\NotEnoughCreditsForList;
 use App\Mail\UpcomingFilesReminder;
 use App\Mail\Welcome;
 use App\Mail\WelcomeWithGeneratedPassword;
+use App\Recipient;
 use App\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
@@ -46,6 +47,13 @@ class SendTestEmails extends Command
      * @var
      */
     private $checklist;
+
+    /**
+     * Recipient we're sending to.
+     *
+     * @var
+     */
+    private $recipient;
 
     /**
      * The User model that has the same email we're sending emaisl too.
@@ -93,10 +101,14 @@ class SendTestEmails extends Command
 
 
         $this->checklist = Checklist::create([
-            'recipient' => $this->argument('email'),
             'name' => 'Test Checklist',
             'description' => 'Best checklist that could.',
             'user_id' => $this->user->id
+        ]);
+
+        $this->recipient = Recipient::create([
+            'email' => $this->argument('email'),
+            'checklist_id' => $this->checklist->id
         ]);
 
 
@@ -125,16 +137,16 @@ class SendTestEmails extends Command
     protected function sendChecklistEmails()
     {
 
-        Mail::to($this->checklist->recipient)->send(new NewChecklist($this->checklist));
+        Mail::to($this->recipient->email)->send(new NewChecklist($this->recipient, $this->checklist));
         $this->sentEmails ++;
 
         Mail::to($this->checklist->user)->send(new ChecklistComplete($this->checklist));
         $this->sentEmails ++;
 
-        Mail::to($this->checklist->recipient)->send(new UpcomingFilesReminder($this->checklist));
+        Mail::to($this->recipient->email)->send(new UpcomingFilesReminder($this->recipient, $this->checklist));
         $this->sentEmails ++;
 
-        Mail::to($this->checklist->recipient)->send(new LateFilesReminder($this->checklist));
+        Mail::to($this->recipient->email)->send(new LateFilesReminder($this->recipient, $this->checklist));
         $this->sentEmails ++;
 
 
@@ -163,7 +175,7 @@ class SendTestEmails extends Command
         ]);
 
 
-        Mail::to($this->checklist->recipient)->send(new FileChangesRequired($fileRequest));
+        Mail::to($this->recipient->email)->send(new FileChangesRequired($this->recipient, $fileRequest));
 
         $this->sentEmails ++;
         $this->info('Finished File Request Emails');

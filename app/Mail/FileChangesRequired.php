@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\FileRequest;
+use App\Recipient;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -28,14 +29,21 @@ class FileChangesRequired extends Mailable implements ShouldQueue
     public $maker;
 
     /**
+     * @var Recipient getting the email
+     */
+    public $recipient;
+
+    /**
      * Create a new message instance.
      *
      * @param FileRequest $fileRequest
+     * @param Recipient $recipient
      */
-    public function __construct(FileRequest $fileRequest)
+    public function __construct(Recipient $recipient, FileRequest $fileRequest)
     {
         $this->fileRequest = $fileRequest;
         $this->maker = $fileRequest->checklist->user;
+        $this->recipient = $recipient;
     }
 
     /**

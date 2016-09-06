@@ -76,7 +76,7 @@ class DevSeeder extends Seeder
         // and 5 by mike - but to random emails
         $randomRecipientLists = factory(\App\Checklist::class, 5)->create(['user_id' => $this->user->id]);
         foreach($randomRecipientLists as $checklist) {
-            factory(\App\Recipient::class, 5)->create([
+            factory(\App\Recipient::class, mt_rand(1, 5))->create([
                 'checklist_id' => $checklist->id
             ]);
         }

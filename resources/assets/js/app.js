@@ -20,8 +20,6 @@ Vue.component('tagger', require('./components/utilities/Tagger.vue'));
 // Checklist
 Vue.component('my-checklists', require('./components/checklist/MyChecklists.vue'));
 Vue.component('checklist-maker', require('./components/checklist/Maker.vue'));
-Vue.component('checklist-recipients', require('./components/checklist/MultipleRecipients.vue'));
-Vue.component('checklist-notifications-control', require('./components/checklist/NotificationsControl.vue'));
 Vue.component('checklist-file-requests', require('./components/checklist/FileRequests.vue'));
 
 // File Requests

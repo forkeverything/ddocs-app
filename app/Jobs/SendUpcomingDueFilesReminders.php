@@ -35,7 +35,9 @@ class SendUpcomingDueFilesReminders implements ShouldQueue
     {
         $checklists = $this->fetchChecklistsWithFilesDueIn3Days();
         foreach ($checklists as $checklist) {
-            if($checklist->recipient_notifications) Mail::to($checklist->recipient)->send(new UpcomingFilesReminder($checklist));
+            foreach($checklist->recipients as $recipient) {
+                if($recipient->receive_notifications) Mail::to($recipient->email)->send(new UpcomingFilesReminder($recipient, $checklist));
+            }
         }
     }
 

@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Checklist;
+use App\Recipient;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Database\Eloquent\Collection;
@@ -36,11 +37,17 @@ class LateFilesReminder extends Mailable implements ShouldQueue
     public $today;
 
     /**
+     * @var Recipient
+     */
+    public $recipient;
+
+    /**
      * Create a new message instance.
      *
+     * @param Recipient $recipient
      * @param Checklist $checklist
      */
-    public function __construct(Checklist $checklist)
+    public function __construct(Recipient $recipient, Checklist $checklist)
     {
         $this->checklist = $checklist;
         $this->today = Carbon::now();
@@ -48,6 +55,7 @@ class LateFilesReminder extends Mailable implements ShouldQueue
                                 ->where('status', '!=', 'received')
                                ->whereDate('due', '<', $this->today->format('Y-m-d'))
                                ->get();
+        $this->recipient = $recipient;
     }
 
     /**

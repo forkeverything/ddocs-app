@@ -4,9 +4,6 @@
         <form id="form-checklist-make" action="/checklist/make" method="POST">
             <div class="inline-label">
                 <label class="text-muted">To: </label>
-
-                <!--<checklist-recipients :checklist-recipients.sync="checklistRecipients"></checklist-recipients>-->
-
                 <tagger :tags.sync="checklistRecipients" :validate-function="validateRecipient" :placeholder="'Emails'"></tagger>
             </div>
             <h2 id="title-checklist-name"
@@ -98,7 +95,7 @@
             },
             canSendChecklist: function () {
                 // Required fields...
-                return this.checklistRecipient && this.checklistName && this.fileCount > 0;
+                return this.checklistRecipients.length > 0 && this.checklistName && this.fileCount > 0;
             },
             submitButtonText: function () {
                 if (!this.ajaxReady) return 'Saving...';
@@ -108,7 +105,7 @@
         methods: {
             validateRecipient: function(tagger, recipient) {
                 if(! validateEmail(recipient))  {
-                    tagger.validateError = 'Not a valid email.';
+                    tagger.validateError = 'Please enter a valid email.';
                     tagger.showError = true;
                     setTimeout(() => {
                         tagger.showError = false;
@@ -169,7 +166,7 @@
 
 
                 self.$http.post('/checklist/make', {
-                    recipient: self.checklistRecipient,
+                    recipients: self.checklistRecipients,
                     name: self.checklistName,
                     description: self.checklistDescription,
                     requested_files: self.validFiles

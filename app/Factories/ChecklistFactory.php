@@ -60,7 +60,9 @@ class ChecklistFactory
         $factory = new static($request, $user);
         $factory->processPayment()
                 ->createChecklist()
-                ->createFiles();
+                ->createRecipients()
+                ->createFiles()
+                ->fireEvent();
 
         return $factory->checklist;
     }
@@ -94,10 +96,21 @@ class ChecklistFactory
             ];
             array_push($requestedFiles, $file);
         }
+        
+        $recipients = [];
+
+        // add TO address
+        array_push($recipients, $request["ToFull"][0]["Email"]);
+
+        // add each CC: that is NOT inbound email
+        foreach ($request["CcFull"] as $cc) {
+            $email = $cc["Email"];
+            if($email !== 'list@in.filescollector.com') array_push($recipients, $email);
+        }
 
         // Build our form request manually
         $newChecklistRequest = new NewChecklistRequest([
-            'recipient' => $request["ToFull"][0]["Email"],
+            'recipients' => $recipients,
             'name' => $request["Subject"],
             'description' => null,
             'requested_files' => $requestedFiles
@@ -116,7 +129,9 @@ class ChecklistFactory
         // If user is subscribed, we'll just skip credit deduction
         if ($this->user->subscribed('main')) return $this;
 
+        // THE ONLY PLACE WHERE CREDIT DEDUCTION OCCURS
         $this->user->minusOneCredit();
+
         return $this;
     }
 
@@ -128,14 +143,26 @@ class ChecklistFactory
     protected function createChecklist()
     {
         $this->checklist = Checklist::create([
-            'recipient' => $this->request->recipient,
             'name' => $this->request->name,
             'description' => $this->request->description,
             'user_id' => $this->user->id
         ]);
 
-        Event::fire(new ChecklistCreated($this->checklist));
+        return $this;
+    }
 
+    /**
+     * Create Recipient models from request.
+     *
+     * @return $this
+     */
+    protected function createRecipients()
+    {
+        foreach (request('recipients') as $recipient) {
+            $this->checklist->recipients()->create([
+                'email' => $recipient,
+            ]);
+        }
         return $this;
     }
 
@@ -152,6 +179,17 @@ class ChecklistFactory
             ]);
         }
 
+        return $this;
+    }
+
+    /**
+     * Fire when complete.
+     *
+     * @return $this
+     */
+    protected function fireEvent()
+    {
+        Event::fire(new ChecklistCreated($this->checklist));
         return $this;
     }
 

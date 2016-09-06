@@ -24,7 +24,9 @@ Route::get('/checklist/make', 'ChecklistsController@getMakeForm');
 Route::post('/checklist/make', 'ChecklistsController@postNewChecklist');
 Route::get('/checklist/{checklist_hash}', 'ChecklistsController@getSingleChecklist');
 Route::get('/checklist/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
-Route::post('/checklist/{checklist_hash}/turn_off_notifications', 'ChecklistsController@postTurnOffNotifications');
+
+// Recipients
+Route::get('/recipients/{recipient_hash}/turn_off_notifications', 'RecipientsController@getTurnOffNotifications');
 
 // Files
 Route::post('/file/{fileRequest}', 'FilesController@postUploadFile');

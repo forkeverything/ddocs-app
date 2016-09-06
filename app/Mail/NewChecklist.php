@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Checklist;
+use App\Recipient;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -28,14 +29,21 @@ class NewChecklist extends Mailable implements ShouldQueue
     public $maker;
 
     /**
+     * @var Recipient
+     */
+    public $recipient;
+
+    /**
      * Create a new message instance.
      *
+     * @param Recipient $recipient
      * @param Checklist $checklist
      */
-    public function __construct(Checklist $checklist)
+    public function __construct(Recipient $recipient, Checklist $checklist)
     {
         $this->checklist = $checklist;
         $this->maker = $checklist->user;
+        $this->recipient = $recipient;
     }
 
     /**

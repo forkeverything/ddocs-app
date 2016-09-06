@@ -156,30 +156,5 @@ class ChecklistsController extends Controller
                                       ->paginate($perPage);
     }
 
-    /**
-     * POST request to turn off notifications for a Checklist. Recipient
-     * will stop receiving email reminders or file changes required
-     * notifications.
-     *
-     * @param Request $request
-     * @param $checklistHash
-     * @return string
-     */
-    public function postTurnOffNotifications(Request $request, $checklistHash)
-    {
-
-        $checklist = Checklist::findOrFail(unhashId($checklistHash));
-        $email = strtolower($request->email);
-
-        if ($email !== $checklist->recipient) {
-            return response([
-                'email' => [
-                    'Incorrect recipient email address.'
-                ]
-            ], 422);
-        }
-        $checklist->turnOffRecipientNotifications();
-        return "Turned off notifications";
-    }
 
 }

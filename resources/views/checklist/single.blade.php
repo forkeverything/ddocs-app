@@ -16,35 +16,38 @@
         @endif
 
 
-            @if(Auth::check() && $checklist->madeBy(Auth::user()))
-                <ol class="breadcrumb">
-                    <li><a href="/checklist">My Lists</a></li>
-                    <li class="active">{{ $checklist->name }}</li>
-                </ol>
-            @endif
-
-            @if(! Auth::check() || ! $checklist->madeBy(Auth::user()))
-                <div id="header">
-                    <div class="right">
-                        <checklist-notifications-control :user="{{ Auth::user() }}" :recipient-notifications="{{ $checklist->recipient_notifications }}" :checklist-hash="'{{ $checklistHash }}'"></checklist-notifications-control>
-                    </div>
-                </div>
-            @endif
+        @if(Auth::check() && $checklist->madeBy(Auth::user()))
+            <ol class="breadcrumb">
+                <li><a href="/checklist">My Lists</a></li>
+                <li class="active">{{ $checklist->name }}</li>
+            </ol>
+        @endif
 
 
-            <h3>
-                <strong>
-                    <span class="text-capitalize">{{ $checklist->name }}</span>
-                </strong>
-            </h3>
+        <h3>
+            <strong>
+                <span class="text-capitalize">{{ $checklist->name }}</span>
+            </strong>
+        </h3>
 
-            @if($checklist->description)
-                <p>{{ $checklist->description }}</p>
-            @endif
+            <div class="recipients">
+                <span class="span-to">To: </span>
+                <ul class="recipients-list list-unstyled list-inline">
+                    @foreach($checklist->recipients as $recipient)
+                        <li>{{ $recipient->email }}</li>
+                    @endforeach
+                </ul>
+            </div>
 
-            <br>
+        @if($checklist->description)
+            <p>{{ $checklist->description }}</p>
+        @endif
 
-            <checklist-file-requests :checklist-hash="'{{ $checklistHash }}'" :is-owner="{{ $checklist->madeBy(Auth::user()) }}" :aws-url="'{{ awsURL() }}'"></checklist-file-requests>
+        <br>
+
+        <checklist-file-requests :checklist-hash="'{{ $checklistHash }}'"
+                                 :is-owner="{{ $checklist->madeBy(Auth::user()) }}"
+                                 :aws-url="'{{ awsURL() }}'"></checklist-file-requests>
 
     </div>
 @endsection

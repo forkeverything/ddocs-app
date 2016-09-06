@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Checklist;
+use App\Recipient;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -28,16 +29,23 @@ class UpcomingFilesReminder extends Mailable implements ShouldQueue
     public $upcomingFiles;
 
     /**
+     * @var Recipient
+     */
+    public $recipient;
+
+    /**
      * Create a new message instance.
      *
+     * @param Recipient $recipient
      * @param Checklist $checklist
      */
-    public function __construct(Checklist $checklist)
+    public function __construct(Recipient $recipient, Checklist $checklist)
     {
         $this->checklist = $checklist;
         $this->upcomingFiles = $this->checklist->requestedFiles()
                                          ->whereDate('due', '=', Carbon::now()->addDays(4)->format('Y-m-d'))
                                          ->get();
+        $this->recipient = $recipient;
     }
 
     /**

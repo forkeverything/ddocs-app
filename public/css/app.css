@@ -8424,17 +8424,17 @@ h5 {
     color: #41B883; }
 
 .btn-outline-yellow {
-  color: #FFB400;
-  border-color: #FFB400;
-  box-shadow: inset 0px 0px 0px 1px #FFB400; }
+  color: #F0A830;
+  border-color: #F0A830;
+  box-shadow: inset 0px 0px 0px 1px #F0A830; }
   .btn-outline-yellow:hover, .btn-outline-yellow:focus:active {
-    box-shadow: inset 0px 0px 0px 1px #FFB400;
-    color: #FFB400;
-    border-color: #FFB400;
+    box-shadow: inset 0px 0px 0px 1px #F0A830;
+    color: #F0A830;
+    border-color: #F0A830;
     background: #FFFBE9; }
   .btn-outline-yellow:focus, .btn-outline-yellow.focus {
-    box-shadow: inset 0px 0px 0px 1px #FFB400;
-    color: #FFB400; }
+    box-shadow: inset 0px 0px 0px 1px #F0A830;
+    color: #F0A830; }
 
 .btn-outline-red {
   color: #C0392B;
@@ -8662,44 +8662,6 @@ label {
   margin: 0 0 15px;
   border: 1px solid #e6e6e6;
   padding: 30px; }
-  #form-checklist-make #recipients-selector {
-    width: 100%;
-    position: relative;
-    border: 1px solid #e6e6e6;
-    border-radius: 4px;
-    padding: 6px 6px;
-    cursor: text;
-    margin-bottom: -6px; }
-    #form-checklist-make #recipients-selector .placeholder {
-      position: absolute;
-      top: 0;
-      left: 6px;
-      color: #9CA1A8;
-      z-index: 1;
-      padding: 8px 3px; }
-    #form-checklist-make #recipients-selector .single-recipient {
-      background: #d5f0e4;
-      display: inline-block;
-      margin: 0 3px 6px 3px;
-      padding: 0 10px;
-      border-radius: 3px; }
-      #form-checklist-make #recipients-selector .single-recipient:focus {
-        background: #8ad5b4 !important; }
-    #form-checklist-make #recipients-selector #input-recipient-email {
-      min-width: 4px;
-      background: transparent;
-      position: relative;
-      border: 0;
-      display: inline-block;
-      z-index: 2;
-      padding: 6px 0; }
-      #form-checklist-make #recipients-selector #input-recipient-email:focus {
-        background: #fff; }
-    #form-checklist-make #recipients-selector .input-sizer {
-      opacity: 0;
-      display: inline-block;
-      position: absolute;
-      top: 0; }
   #form-checklist-make #title-checklist-name {
     color: #999999; }
     #form-checklist-make #title-checklist-name.filled {
@@ -8818,23 +8780,27 @@ label {
   padding: 5px 10px;
   margin: 0 0 15px; }
 
-#checklist-single #header {
-  display: -webkit-box;
-  display: flex;
+#checklist-single .recipients {
+  border: 1px solid #e6e6e6;
+  border-radius: 3px;
+  position: relative;
+  padding: 6px;
   margin: 0 0 15px; }
-  #checklist-single #header .right {
-    -webkit-box-flex: 1;
-    flex: 1;
-    text-align: right; }
-
-#checklist-single #checklist-notifications-control {
-  position: relative; }
-  #checklist-single #checklist-notifications-control #form-notifications {
+  #checklist-single .recipients .span-to {
+    color: #9CA1A8;
     position: absolute;
-    width: 336px;
+    left: 0;
     top: 0;
-    right: 0;
-    z-index: 3; }
+    padding: 6px 11px; }
+  #checklist-single .recipients .recipients-list {
+    margin: 0 0 -5px;
+    display: inline-block;
+    padding-left: 32px; }
+    #checklist-single .recipients .recipients-list li {
+      background: #E9E9E9;
+      border-radius: 4px;
+      padding: 0 8px;
+      margin: 0 3px 5px 3px; }
 
 #checklist-single #form-checklist-search {
   margin: 0 0 15px; }

@@ -25,8 +25,8 @@ class NewChecklistRequest extends FormRequest
     public function rules()
     {
         return [
-            'recipient' => 'required|email',
-            'name' => 'required|checklist_name',
+            'recipients.*' => 'required|email',
+            'name' => 'required',
             'requested_files.*.name' => 'required'
         ];
 
@@ -38,9 +38,8 @@ class NewChecklistRequest extends FormRequest
     public function messages()
     {
         return [
-            'recipient.required' => 'Recipient to send list to cannot be empty.',
-            'recipient.email' => 'Invalid recipient email address.',
-            'name.checklist_name' => 'Can\'t create checklist with same name for the same recipient.'
+            'recipients.*.required' => 'Need at least one recipient.',
+            'recipients.*.email' => 'Invalid recipient email.'
         ];
     }
 }

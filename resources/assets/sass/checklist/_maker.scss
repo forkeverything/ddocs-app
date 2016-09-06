@@ -3,57 +3,6 @@
   border: 1px solid $laravel-border-color;
   padding: 30px;
 
-  #recipients-selector {
-    width: 100%;
-    position: relative;
-    border: 1px solid $laravel-border-color;
-    border-radius: $border-radius-base;
-    padding: 6px 6px;
-    cursor: text;
-    margin-bottom: -6px;
-
-    .placeholder {
-      position: absolute;
-      top: 0;
-      left: 6px;
-      color: $text-muted;
-      z-index: 1;
-      padding: 8px 3px;
-    }
-
-    .single-recipient {
-      background: lighten($brand-primary, 40%);
-      display: inline-block;
-      margin: 0 3px 6px 3px;
-      padding: 0 10px;
-      border-radius: 3px;
-
-      &:focus {
-        background: lighten($brand-primary, 20%)!important;
-      }
-    }
-
-    #input-recipient-email {
-      min-width: 4px;
-      background: transparent;
-      position: relative;
-      border: 0;
-      display: inline-block;
-      z-index: 2;
-      padding: 6px 0;
-
-      &:focus {
-        background: #fff;
-      }
-    }
-
-    .input-sizer {
-      opacity: 0;
-      display: inline-block;
-      position: absolute;
-      top: 0;
-    }
-  }
 
   #title-checklist-name {
     color: $dark-grey;

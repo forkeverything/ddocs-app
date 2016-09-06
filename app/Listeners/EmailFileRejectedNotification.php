@@ -28,6 +28,8 @@ class EmailFileRejectedNotification
      */
     public function handle(FileWasRejected $event)
     {
-        Mail::to($event->fileRequest->checklist->user)->send(new FileChangesRequired($event->fileRequest));
+        foreach ($event->fileRequest->checklist->recipients as $recipient) {
+            Mail::to($recipient->email)->send(new FileChangesRequired($recipient, $event->fileRequest));
+        }
     }
 }

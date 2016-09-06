@@ -28,6 +28,8 @@ class EmailRecipientOfNewChecklist
      */
     public function handle(ChecklistCreated $event)
     {
-        Mail::to($event->checklist->recipient)->send(new NewChecklist($event->checklist));
+        foreach ($event->checklist->recipients as $recipient) {
+            Mail::to($recipient->email)->send(new NewChecklist($recipient, $event->checklist));
+        }
     }
 }

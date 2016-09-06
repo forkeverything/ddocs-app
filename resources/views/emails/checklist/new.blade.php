@@ -398,6 +398,7 @@
                                             <tr style="padding:0;text-align:left;vertical-align:top">
                                                 <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
                                                     <br>
+                                                    @include('emails.partials.turn-off-notifications')
                                                     <p class="text-center reply-email"
                                                        style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:.9em;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:center">
                                                         If you have any questions, you can reply to this email and it'll
