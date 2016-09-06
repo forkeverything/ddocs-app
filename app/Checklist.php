@@ -14,12 +14,9 @@ class Checklist extends Model
      * @var array
      */
     protected $fillable = [
-        'recipient',
         'name',
         'description',
-        'user_id',
-        'recipient_notifications',
-        'invitation_claimed'
+        'user_id'
     ];
 
     /**
@@ -52,6 +49,16 @@ class Checklist extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Checklist can have multiple Recipient(s).
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function recipients()
+    {
+        return $this->hasMany(Recipient::class);
     }
 
     /**
@@ -134,4 +141,5 @@ class Checklist extends Model
 
         return $this;
     }
+
 }

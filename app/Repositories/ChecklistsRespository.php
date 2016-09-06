@@ -15,7 +15,6 @@ class ChecklistsRespository extends EloquentRepository
      * @var array
      */
     protected $sortableFields = [
-        'recipient',
         'name',
         'created_at'
     ];
@@ -26,7 +25,6 @@ class ChecklistsRespository extends EloquentRepository
      * @var array
      */
     protected $searchableFields = [
-        'recipient',
         'name'
     ];
 

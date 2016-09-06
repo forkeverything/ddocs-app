@@ -12,6 +12,7 @@
 */
 
 use App\Checklist;
+use App\Recipient;
 use App\User;
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
@@ -23,9 +24,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(Recipient::class, function (Faker\Generator $faker) {
+    return [
+        'email' => $faker->email,
+        'checklist_id' => factory(Checklist::class)->create()->id
+    ];
+});
+
 $factory->define(Checklist::class, function (Faker\Generator $faker) {
     return [
-        'recipient' => $faker->email,
         'name' => $faker->name,
         'description' => $faker->paragraphs(1, true),
         'user_id' => factory(User::class)->create()->id

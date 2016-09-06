@@ -13,10 +13,14 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('form-errors', require('./components/FormErrors.vue'));
+// Utilities
+Vue.component('form-errors', require('./components/utilities/FormErrors.vue'));
+Vue.component('tagger', require('./components/utilities/Tagger.vue'));
 
+// Checklist
 Vue.component('my-checklists', require('./components/checklist/MyChecklists.vue'));
 Vue.component('checklist-maker', require('./components/checklist/Maker.vue'));
+Vue.component('checklist-recipients', require('./components/checklist/MultipleRecipients.vue'));
 Vue.component('checklist-notifications-control', require('./components/checklist/NotificationsControl.vue'));
 Vue.component('checklist-file-requests', require('./components/checklist/FileRequests.vue'));
 
@@ -25,11 +29,14 @@ Vue.component('file-reject-panel', require('./components/file/RejectPanel.vue'))
 Vue.component('file-filters', require('./components/file/Filters.vue'));
 Vue.component('file-active-filters', require('./components/file/ActiveFilters.vue'));
 
+// Account
 Vue.component('add-credit-card', require('./components/account/AddCreditCard.vue'));
 
+// Pagination
 Vue.component('per-page-picker', require('./components/pagination/PerPagePicker.vue'));
 Vue.component('paginator', require('./components/pagination/Paginator.vue'));
 
+// Filters
 Vue.component('integer-range-field', require('./components/filters/IntegerRange.vue'));
 Vue.component('date-range-field', require('./components/filters/DateRange.vue'));
 

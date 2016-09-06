@@ -4,7 +4,10 @@
         <form id="form-checklist-make" action="/checklist/make" method="POST">
             <div class="inline-label">
                 <label class="text-muted">To: </label>
-                <input id="input-recipient-email" type="email" class="form-control" placeholder="Email" v-model="checklistRecipient" name="recipient">
+
+                <!--<checklist-recipients :checklist-recipients.sync="checklistRecipients"></checklist-recipients>-->
+
+                <tagger :tags.sync="checklistRecipients" :validate-function="validateRecipient" :placeholder="'Emails'"></tagger>
             </div>
             <h2 id="title-checklist-name"
                 v-show="! editingName"
@@ -15,8 +18,10 @@
                                 }"
                 tabindex="0"
             >{{ checklistNameText }}</h2>
-            <input id="input-checklist-name" type="text" class="form-control" v-show="editingName" @blur="toggleEditingName" v-model="checklistName" name="name">
-            <textarea id="textarea-new-checklist-description" rows="2" class="autosize form-control borderless" placeholder="description" v-model="checklistDescription" name="description"></textarea>
+            <input id="input-checklist-name" type="text" class="form-control" v-show="editingName"
+                   @blur="toggleEditingName" v-model="checklistName" name="name">
+            <textarea id="textarea-new-checklist-description" rows="2" class="autosize form-control borderless"
+                      placeholder="description" v-model="checklistDescription" name="description"></textarea>
             <hr>
             <h4>Files List ({{ fileCount }})</h4>
             <p class="text-muted">Hit Enter/Return to insert a new file. Delete files by clearing it's name.</p>
@@ -26,7 +31,6 @@
                     <span class="icon-file line-el">
                     <i class="fa fa-file"></i>
                     </span>
-
 
 
                     <input type="text"
@@ -53,7 +57,8 @@
         </form>
         <div class="text-right">
             <button type="button" class="btn btn-solid-green" @click="sendChecklist" :disabled="
-                    ! canSendChecklist">{{ submitButtonText }}</button>
+                    ! canSendChecklist">{{ submitButtonText }}
+            </button>
         </div>
     </div>
 </template>
@@ -62,7 +67,7 @@
         data: function () {
             return {
                 ajaxReady: true,
-                checklistRecipient: '',
+                checklistRecipients: [],
                 checklistName: '',
                 checklistDescription: '',
                 editingName: false,
@@ -96,11 +101,23 @@
                 return this.checklistRecipient && this.checklistName && this.fileCount > 0;
             },
             submitButtonText: function () {
-                if (! this.ajaxReady) return 'Saving...';
+                if (!this.ajaxReady) return 'Saving...';
                 return 'Create List';
             }
         },
         methods: {
+            validateRecipient: function(tagger, recipient) {
+                if(! validateEmail(recipient))  {
+                    tagger.validateError = 'Not a valid email.';
+                    tagger.showError = true;
+                    setTimeout(() => {
+                        tagger.showError = false;
+                    }, 1500);
+                    return false;
+                }
+                return true;
+
+            },
             toggleEditingName: function () {
                 this.editingName = !this.editingName;
                 if (this.editingName) {

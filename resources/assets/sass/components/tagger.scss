@@ -1,0 +1,94 @@
+.tagger {
+  width: 100%;
+  position: relative;
+
+  .tagger-container {
+    position: relative;
+    cursor: text;
+    border: 1px solid $laravel-border-color;
+    border-radius: $border-radius-base;
+    padding: 6px 6px 0 6px;
+
+    &.with-error {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .placeholder {
+      position: absolute;
+      top: 0;
+      left: 6px;
+      color: $text-muted;
+      padding: 9px 3px;
+    }
+
+    .tag-input-container {
+      display: inline-block;
+      margin-bottom: 6px;
+
+      .tag-input {
+        position: relative;
+        display: inline-block;
+
+        .sizer {
+          opacity: 0;
+          display: inline-block;
+          position: absolute;
+          padding: 0;
+          margin: 0;
+          border: 0;
+          font-size: inherit;
+          font-family: inherit;
+        }
+
+        input {
+          min-width: 6px;
+          background: transparent;
+          position: relative;
+          border: 0;
+          display: inline-block;
+          height: 30px;
+          padding: 1px 0;
+
+          &:focus {
+            outline: 0;
+          }
+        }
+      }
+    }
+
+    .btn-tag {
+      background: lighten($brand-primary, 40%);
+      display: inline-block;
+      margin: 0 3px 6px 3px;
+      padding: 0 10px;
+      border-radius: 3px;
+      white-space: normal;
+      word-wrap: break-word;
+      max-width: 100%;
+
+      &:hover {
+        color: initial;
+      }
+
+      &:focus, &.focus {
+        background: lighten($brand-primary, 8%);
+        color: #fff;
+      }
+    }
+  }
+
+  .tagger-error-container {
+    position: absolute;
+    width: 100%;
+    padding: 3px 12px;
+    font-size: 0.9em;
+    border: 1px solid $red;
+    border-radius: $border-radius-base;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: -1px;
+    background: $red;
+    color: #fff;
+  }
+}

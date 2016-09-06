@@ -21,7 +21,7 @@
   }
 }
 
-@mixin btn-solid-colors($color, $dark-color) {
+@mixin btn-solid-colors($color) {
   border-color: $color;
   background-color: $color;
 
@@ -31,33 +31,33 @@
   }
 
   &:hover, &:focus:active {
-    background-color: $dark-color;
-    border-color: $dark-color;
+    background-color: darken($color, 10%);
+    border-color: darken($color, 10%);
     color: #fff;
   }
 }
 
 .btn-solid-green {
   @extend .btn-solid;
-  @include btn-solid-colors($green, $dark-green);
+  @include btn-solid-colors($green);
 }
 
 .btn-solid-yellow {
   @extend .btn-solid;
-  @include btn-solid-colors($yellow, $dark-yellow);
+  @include btn-solid-colors($yellow);
 }
 
 .btn-solid-blue {
   @extend .btn-solid;
-  @include btn-solid-colors($blue, $dark-blue);
+  @include btn-solid-colors($blue);
 }
 
 .btn-solid-red {
   @extend .btn-solid;
-  @include btn-solid-colors($red, $dark-red);
+  @include btn-solid-colors($red);
 }
 
 .btn-solid-grey {
   @extend .btn-solid;
-  @include btn-solid-colors($dark-grey, $extra-dark-grey);
+  @include btn-solid-colors($dark-grey);
 }
