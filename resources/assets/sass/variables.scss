@@ -68,3 +68,16 @@ $pagination-disabled-color: $grey;
 $pagination-disabled-border: transparnet;
 $pagination-border: transparent;
 $pagination-active-border: transparent;
+
+// z-indexes
+  // Modal
+  $z-modal-overlay: 5;
+  // Layout
+  $z-page-fixed-top: 4;
+  // File Request List
+  $z-file-list-hover: 2;
+  $z-file-list-selected: 3;
+  // Tables
+  $z-table-heading: 3;
+  $z-table-bulk-actions-menu: 2;
+  $z-table-row-hover: 2;

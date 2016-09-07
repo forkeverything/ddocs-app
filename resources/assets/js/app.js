@@ -18,9 +18,9 @@ Vue.component('form-errors', require('./components/utilities/FormErrors.vue'));
 Vue.component('tagger', require('./components/utilities/Tagger.vue'));
 
 // Checklist
-Vue.component('my-checklists', require('./components/checklist/MyChecklists.vue'));
+Vue.component('checklist-all', require('./components/checklist/All.vue'));
+Vue.component('checklist-single', require('./components/checklist/Single.vue'));
 Vue.component('checklist-maker', require('./components/checklist/Maker.vue'));
-Vue.component('checklist-file-requests', require('./components/checklist/FileRequests.vue'));
 
 // File Requests
 Vue.component('file-reject-panel', require('./components/file/RejectPanel.vue'));

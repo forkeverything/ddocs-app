@@ -1,4 +1,3 @@
-
 window._ = require('lodash');
 
 /**
@@ -54,7 +53,7 @@ $.ajaxSetup({
 
 // Initialize autosize() for textareas.
 let autosize = require('autosize');
-$(document).ready(()=> autosize($('textarea')));
+$(document).ready(() => autosize($('textarea')));
 
 // Define moment.js
 window.moment = require('moment');
@@ -76,4 +75,29 @@ require('./animations.js');
 
 // JS Helpers (utility functions)
 require('./helpers.js');
+
+// Page Fixed/Scroll Height adjustments
+let ResizeSensor = require('../../../node_modules/css-element-queries/src/ResizeSensor');
+$(window).on('load', () => {
+    let element = document.getElementById('page-fixed-top');
+    if(! element){
+        adjustScrollDivPosition(0);
+        return;
+    }
+    adjustScrollDivPosition(element.clientHeight);
+    let sensor = new ResizeSensor(element, function () {
+        adjustScrollDivPosition(element.clientHeight);
+    });
+});
+function adjustScrollDivPosition(fixedDivHeight) {
+    let navHeight = 50;
+    $('#page-scroll-content').css('top', fixedDivHeight + navHeight);
+    revealContent();
+}
+function revealContent() {
+    $('#page-scroll-content').css('opacity', 1);
+    $('#page-fixed-top').css('opacity', 1);
+}
+
+
 

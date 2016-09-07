@@ -40,176 +40,173 @@
     margin: 0 0 15px;
   }
 
-  #files-collection {
+  // Table setup
+  #files-header {
+    white-space: nowrap;
+  }
 
-    // Table setup
-    #files-header {
-      white-space: nowrap;
+  #files-header, .single-file {
+    display: flex;
+  }
+
+  .column {
+    display: flex;
+    border: 0;
+    align-items: center;
+
+    &.col-upload {
+      display: none;
     }
 
-    #files-header, .single-file {
-      display: flex;
-    }
-
-    .column {
-      display: flex;
-      border: 0;
-      align-items: center;
-
+    @media screen and (min-width: $screen-sm-min) {
       &.col-upload {
-        display: none;
-      }
-
-      @media screen and (min-width: $screen-sm-min) {
-        &.col-upload {
-          display: inline-block;
-        }
-      }
-    }
-
-    // Header Columns
-    .header-column {
-      padding: 5px 10px;
-      cursor: pointer;
-      position: relative;
-
-      &.current_asc, &.current_desc {
-        font-weight: bold;
-
-        &:after {
-          color: $grey;
-          font-family: FontAwesome;
-          font-size: 1.3em;
-          position: absolute;
-          top: 2px;
-          margin-left: 10px;
-        }
-
-        &.current_asc:after {
-          content: '\f0d8';
-        }
-
-        &.current_desc:after {
-          content: '\f0d7';
-        }
-      }
-    }
-
-    // Content Columns
-    .content-column {
-      padding: 15px 10px;
-
-      &.col-due {
-        font-size: 0.9em;
-      }
-    }
-
-    // Individual Columns
-    .file-status {
-      color: $grey;
-
-      &.received {
-        color: $green;
-      }
-
-      &.rejected {
-        color: $red;
-      }
-    }
-
-    .col-file {
-      flex: 0 0 41px;
-
-      @media screen and (min-width: $screen-sm-min) {
-        flex: 0 0 50px;
-      }
-
-      &:after {
-        margin-left: 20px!important;
-      }
-    }
-
-    .col-name {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .name {
-        word-wrap: break-word;
-        flex: 1;
-        width: 0;
-        margin: 0 15px 0 0;
-
-        @media screen and (min-width: $screen-sm-min) {
-          margin: 0;
-        }
-      }
-
-      .file-status {
-        font-size: 1.2em;
-        @media screen and (min-width: $screen-sm-min) {
-          display: none;
-        }
-      }
-    }
-
-    .col-due {
-      flex: 0 0 115px;
-    }
-
-    .col-upload {
-
-    }
-
-    // Header Specific
-    #files-header {
-      margin-left: 0;
-      border-bottom: 2px solid $laravel-border-color;
-      font-size: 0.9em;
-      margin-bottom: -1px;
-    }
-
-    // Body / List Specific
-    #files-list {
-
-      .single-file {
-        border-top: 1px solid $laravel-border-color;
-        border-bottom: 1px solid $laravel-border-color;
-        margin-bottom: -1px;
-        flex-wrap: wrap;
-
-        &:hover {
-          border-color: $brand-primary;
-          background: lighten($brand-primary, 49%);
-          z-index: 2;
-          position: relative;
-        }
-
-        &.is-selected {
-          background: lighten($brand-primary, 48%);
-          border-color: darken($brand-primary, 10%);
-          z-index: 3;
-          position: relative;
-        }
-
-        .col-file {
-          i {
-            font-size: 1.5em;
-            @media screen and (min-width: $screen-sm-min) {
-              font-size: 2em;
-            }
-          }
-        }
-
-        .col-upload {
-          .btn {
-            font-size: 1.2em;
-            padding: 0 7px;
-          }
-        }
+        display: inline-block;
       }
     }
   }
 
+  // Header Columns
+  .header-column {
+    padding: 5px 10px;
+    cursor: pointer;
+    position: relative;
+
+    &.current_asc, &.current_desc {
+      font-weight: bold;
+
+      &:after {
+        color: $grey;
+        font-family: FontAwesome;
+        font-size: 1.3em;
+        position: absolute;
+        top: 2px;
+        margin-left: 10px;
+      }
+
+      &.current_asc:after {
+        content: '\f0d8';
+      }
+
+      &.current_desc:after {
+        content: '\f0d7';
+      }
+    }
+  }
+
+  // Content Columns
+  .content-column {
+    padding: 15px 10px;
+
+    &.col-due {
+      font-size: 0.9em;
+    }
+  }
+
+  // Individual Columns
+  .file-status {
+    color: $grey;
+
+    &.received {
+      color: $green;
+    }
+
+    &.rejected {
+      color: $red;
+    }
+  }
+
+  .col-file {
+    flex: 0 0 41px;
+
+    @media screen and (min-width: $screen-sm-min) {
+      flex: 0 0 50px;
+    }
+
+    &:after {
+      margin-left: 20px !important;
+    }
+  }
+
+  .col-name {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .name {
+      word-wrap: break-word;
+      flex: 1;
+      width: 0;
+      margin: 0 15px 0 0;
+
+      @media screen and (min-width: $screen-sm-min) {
+        margin: 0;
+      }
+    }
+
+    .file-status {
+      font-size: 1.2em;
+      @media screen and (min-width: $screen-sm-min) {
+        display: none;
+      }
+    }
+  }
+
+  .col-due {
+    flex: 0 0 115px;
+  }
+
+  .col-upload {
+    width: 55px;
+  }
+
+  // Header Specific
+  #files-header {
+    margin-left: 0;
+    border-bottom: 1px solid $laravel-border-color;
+    font-size: 0.9em;
+    margin-bottom: -1px;
+  }
+
+  // Body / List Specific
+  #files-list {
+    padding-top: 1px;
+
+    .single-file {
+      border-top: 1px solid $laravel-border-color;
+      border-bottom: 1px solid $laravel-border-color;
+      margin-bottom: -1px;
+      flex-wrap: wrap;
+
+      &:hover {
+        border-color: $brand-primary;
+        background: lighten($brand-primary, 49%);
+        z-index: $z-file-list-hover;
+        position: relative;
+      }
+
+      &.is-selected {
+        background: lighten($brand-primary, 48%);
+        border-color: darken($brand-primary, 10%);
+        z-index: $z-file-list-selected;
+        position: relative;
+      }
+
+      .col-file {
+        i {
+          font-size: 1.5em;
+          @media screen and (min-width: $screen-sm-min) {
+            font-size: 2em;
+          }
+        }
+      }
+
+      .col-upload {
+        .btn {
+          font-size: 1.2em;
+          padding: 0 7px;
+        }
+      }
+    }
+  }
 }

@@ -1,5 +1,12 @@
 #account-overview {
 
+  #page-fixed-top {
+    border-bottom: 1px solid $laravel-border-color;
+  }
+
+  #page-scroll-content {
+    padding-top: 15px;
+  }
 
   #form-credit-card {
 

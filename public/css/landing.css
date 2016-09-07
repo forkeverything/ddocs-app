@@ -8,6 +8,26 @@
 [v-cloak] {
   display: none; }
 
+.no-gutter {
+  padding-left: 0px;
+  padding-right: 0px; }
+
+.container-no-gutter {
+  width: 100%;
+  padding-right: 30px; }
+  @media screen and (min-width: 768px) {
+    .container-no-gutter {
+      width: 720px;
+      padding-right: 0; } }
+  @media screen and (min-width: 992px) {
+    .container-no-gutter {
+      width: 940px;
+      padding-right: 0; } }
+  @media screen and (min-width: 1200px) {
+    .container-no-gutter {
+      width: 1140px;
+      padding-right: 0; } }
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -7962,7 +7982,9 @@ button.close {
   clip: auto; }
 
 .navbar {
-  background: #fff; }
+  background: #fff;
+  border: 0;
+  margin: 0; }
   .navbar .navbar-header .navbar-brand {
     padding: 5px; }
     .navbar .navbar-header .navbar-brand .img-logo {

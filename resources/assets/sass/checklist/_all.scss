@@ -1,26 +1,49 @@
 #checklist-all {
 
+  .header {
+    margin: 15px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .page-title {
+      margin: 0;
+    }
+  }
+
   .progress {
     margin: 0;
   }
 
   #checklist-sort {
-    margin: 0 0 15px;
+    margin: 0;
+    padding: 3px 9px;
+    border: 1px solid $laravel-border-color;
+    background: lighten($brand-primary, 15%);
 
     label {
       font-size: 1em;
+      margin: 0;
+      color: lighten($brand-primary, 42%);
     }
 
     select {
+      background: lighten($brand-primary, 15%);
+      color: #fff;
       display: inline-block;
       width: 95px;
       border: 0;
       appearance: none;
       padding: 0;
+      height: 26px;
+      text-decoration: underline;
     }
   }
 
   #list-checklists {
+    padding: 15px 10px;
+    border: 1px solid $laravel-border-color;
+    border-top: 0;
 
     .single-checklist {
 
@@ -31,9 +54,10 @@
       .checklist-link {
         border: 1px solid $laravel-border-color;
         display: block;
-        padding: 15px 20px;
+        padding: 10px 15px;
         color: $text-color;
         position: relative;
+        @include border-radius($border-radius-base);
 
         &:hover, &:focus {
           background: lighten($brand-primary, 47%);

@@ -19,6 +19,7 @@
   "dependencies": {
     "animate.css": "^3.5.1",
     "autosize": "^3.0.17",
+    "css-element-queries": "^0.3.2",
     "font-awesome": "^4.6.3",
     "jquery-ui": "^1.12.0",
     "moment": "^2.14.1"

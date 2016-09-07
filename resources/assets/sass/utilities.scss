@@ -1,3 +1,5 @@
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
 .no-wrap {
   white-space: nowrap;
 }
@@ -9,3 +11,28 @@
 [v-cloak] {
   display: none;
 }
+
+.no-gutter {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+
+.container-no-gutter {
+  width: 100%;
+  padding-right: $grid-gutter-width;
+  @media screen and (min-width: $screen-sm-min) {
+    width: $container-tablet - $grid-gutter-width;
+    padding-right: 0;
+  }
+  @media screen and (min-width: $screen-md-min) {
+    width: $container-desktop - $grid-gutter-width;
+    padding-right: 0;
+  }
+  @media screen and (min-width: $screen-lg-min) {
+    width: $container-large-desktop - $grid-gutter-width;
+    padding-right: 0;
+  }
+}
+
