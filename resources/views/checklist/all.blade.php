@@ -11,7 +11,7 @@
 
         <div>
             <a href="/checklist/make">
-                <button type="button" class="btn btn-solid-green">New Checklist</button>
+                <button type="button" class="btn btn-primary">New Checklist</button>
             </a>
         </div>
 

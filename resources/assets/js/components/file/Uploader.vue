@@ -2,12 +2,12 @@
     <div class="file-uploader">
         <button type="button"
                 v-show="! progress"
-                class="btn button-upload"
+                class="btn btn-primary"
                 v-el:upload-button
                 :disabled="alreadyReceivedFile"
                 @click="selectFile"
         >
-            <i class="fa fa-upload"></i><span v-if="withText"> Upload</span>
+            <i class="fa fa-upload"></i>
         </button>
         <input v-el:input
                type="file"
@@ -32,7 +32,7 @@
                 return this.fileRequest.status === 'received';
             }
         },
-        props: ['file-request', 'with-text'],
+        props: ['file-request'],
         methods: {
             selectFile: function () {
                 $(this.$els.input).click();

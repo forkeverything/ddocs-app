@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-solid-green form-control">
+                        <button type="submit" class="btn btn-primary form-control">
                             <i class="fa fa-btn fa-sign-in"></i> Login
                         </button>
                     </div>

@@ -1,0 +1,17 @@
+&.btn-unstyled {
+  color: $dark-grey;
+  border: 0;
+  @include border-radius(0);
+
+  &:focus, &:active {
+    color: $dark-grey;
+  }
+
+  &:not([disabled]):hover {
+    color: $extra-dark-grey;
+  }
+
+  &:disabled {
+    color: $dark-grey!important;
+  }
+}
