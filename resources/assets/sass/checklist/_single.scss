@@ -40,6 +40,72 @@
     margin: 0 0 15px;
   }
 
+  #selected-file-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 34px;
+
+    .file-name {
+      padding-left: 10px;
+      flex: 1;
+      margin-right: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .list-menu-items {
+      margin: 0;
+
+      .menu-item {
+        &:last-child {
+          margin-right: 5px;
+        }
+
+        a {
+
+          &:hover {
+
+            .icon {
+              opacity: 1;
+            }
+          }
+
+          .icon {
+            opacity: 0.6;
+            margin-right: 3px;
+            font-size: 1.2em;
+
+            &.reject {
+              color: $red;
+            }
+
+            &:history {
+              color: $dark-yellow;
+            }
+
+            &.rename {
+              color: $dark-green;
+            }
+
+            &.delete {
+              color: $gray;
+            }
+          }
+
+          &.disabled {
+            color: $text-muted;
+            pointer-events: none;
+            .icon {
+              color: $text-muted;
+            }
+          }
+        }
+      }
+    }
+  }
+
   // Table setup
   #files-header {
     white-space: nowrap;
@@ -161,7 +227,7 @@
   }
 
   // Header Specific
-  #files-header {
+  .table-header {
     margin-left: 0;
     border-bottom: 1px solid $laravel-border-color;
     font-size: 0.9em;
@@ -185,11 +251,12 @@
         position: relative;
       }
 
-      &.is-selected {
-        background: lighten($brand-primary, 48%);
+      &:focus, &.focus, &.is-selected {
+        background: lighten($brand-primary, 42%);
         border-color: darken($brand-primary, 10%);
         z-index: $z-file-list-selected;
         position: relative;
+        outline: 0;
       }
 
       .col-file {

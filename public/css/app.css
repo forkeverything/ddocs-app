@@ -2913,28 +2913,28 @@ fieldset[disabled] a.btn {
 
 .btn-success {
   color: #fff;
-  background-color: #2ab27b;
-  border-color: #259d6d; }
+  background-color: #41B883;
+  border-color: #3aa576; }
   .btn-success:focus, .btn-success.focus {
     color: #fff;
-    background-color: #20895e;
-    border-color: #0d3625; }
+    background-color: #349268;
+    border-color: #194733; }
   .btn-success:hover {
     color: #fff;
-    background-color: #20895e;
-    border-color: #196c4b; }
+    background-color: #349268;
+    border-color: #2a7855; }
   .btn-success:active, .btn-success.active,
   .open > .btn-success.dropdown-toggle {
     color: #fff;
-    background-color: #20895e;
-    border-color: #196c4b; }
+    background-color: #349268;
+    border-color: #2a7855; }
     .btn-success:active:hover, .btn-success:active:focus, .btn-success:active.focus, .btn-success.active:hover, .btn-success.active:focus, .btn-success.active.focus,
     .open > .btn-success.dropdown-toggle:hover,
     .open > .btn-success.dropdown-toggle:focus,
     .open > .btn-success.dropdown-toggle.focus {
       color: #fff;
-      background-color: #196c4b;
-      border-color: #0d3625; }
+      background-color: #2a7855;
+      border-color: #194733; }
   .btn-success:active, .btn-success.active,
   .open > .btn-success.dropdown-toggle {
     background-image: none; }
@@ -2942,10 +2942,10 @@ fieldset[disabled] a.btn {
   fieldset[disabled] .btn-success:hover,
   fieldset[disabled] .btn-success:focus,
   fieldset[disabled] .btn-success.focus {
-    background-color: #2ab27b;
-    border-color: #259d6d; }
+    background-color: #41B883;
+    border-color: #3aa576; }
   .btn-success .badge {
-    color: #2ab27b;
+    color: #41B883;
     background-color: #fff; }
 
 .btn-info {
@@ -3024,28 +3024,28 @@ fieldset[disabled] a.btn {
 
 .btn-danger {
   color: #fff;
-  background-color: #bf5329;
-  border-color: #aa4a24; }
+  background-color: #E85346;
+  border-color: #e53e2f; }
   .btn-danger:focus, .btn-danger.focus {
     color: #fff;
-    background-color: #954120;
-    border-color: #411c0e; }
+    background-color: #df2b1c;
+    border-color: #851a10; }
   .btn-danger:hover {
     color: #fff;
-    background-color: #954120;
-    border-color: #78341a; }
+    background-color: #df2b1c;
+    border-color: #bf2518; }
   .btn-danger:active, .btn-danger.active,
   .open > .btn-danger.dropdown-toggle {
     color: #fff;
-    background-color: #954120;
-    border-color: #78341a; }
+    background-color: #df2b1c;
+    border-color: #bf2518; }
     .btn-danger:active:hover, .btn-danger:active:focus, .btn-danger:active.focus, .btn-danger.active:hover, .btn-danger.active:focus, .btn-danger.active.focus,
     .open > .btn-danger.dropdown-toggle:hover,
     .open > .btn-danger.dropdown-toggle:focus,
     .open > .btn-danger.dropdown-toggle.focus {
       color: #fff;
-      background-color: #78341a;
-      border-color: #411c0e; }
+      background-color: #bf2518;
+      border-color: #851a10; }
   .btn-danger:active, .btn-danger.active,
   .open > .btn-danger.dropdown-toggle {
     background-image: none; }
@@ -3053,10 +3053,10 @@ fieldset[disabled] a.btn {
   fieldset[disabled] .btn-danger:hover,
   fieldset[disabled] .btn-danger:focus,
   fieldset[disabled] .btn-danger.focus {
-    background-color: #bf5329;
-    border-color: #aa4a24; }
+    background-color: #E85346;
+    border-color: #e53e2f; }
   .btn-danger .badge {
-    color: #bf5329;
+    color: #E85346;
     background-color: #fff; }
 
 .btn-link {
@@ -4227,9 +4227,9 @@ a.label:hover, a.label:focus {
     background-color: #349268; }
 
 .label-success {
-  background-color: #2ab27b; }
+  background-color: #41B883; }
   .label-success[href]:hover, .label-success[href]:focus {
-    background-color: #20895e; }
+    background-color: #349268; }
 
 .label-info {
   background-color: #3498DB; }
@@ -8033,12 +8033,12 @@ body {
   margin-top: 10px;
   padding: 0.5em;
   background: #fff;
-  border: 1px solid #41B883;
+  border: 1px solid #349268;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3);
-  border-radius: 3px; }
+  border-radius: 4px; }
   #ui-datepicker-div .ui-datepicker-header {
     margin: -0.5em -.5em 0 -.5em;
-    background: #41B883;
+    background: #349268;
     color: #fff; }
     #ui-datepicker-div .ui-datepicker-header .ui-datepicker-prev, #ui-datepicker-div .ui-datepicker-header .ui-datepicker-next {
       top: -2px;
@@ -8108,7 +8108,7 @@ table {
   table tbody tr td.warning {
     color: #FFA339; }
   table tbody tr td.danger {
-    color: #C0392B; }
+    color: #E85346; }
 
 .table-controls {
   margin: 0 0 15px 0; }
@@ -8259,7 +8259,7 @@ table {
   color: #D35400; }
 
 .text-danger, .text-error {
-  color: #C0392B; }
+  color: #E85346; }
 
 .text-info {
   color: #3498DB; }
@@ -8271,7 +8271,7 @@ table {
   color: #27AE60; }
 
 .file-status.rejected {
-  color: #C0392B; }
+  color: #E85346; }
 
 h5 {
   font-weight: bold;
@@ -8355,7 +8355,7 @@ h5 {
     border-radius: 4px !important; }
 
 .active-filters {
-  margin: 0 0 10px;
+  margin: 0 0 15px;
   font-size: 0.9em;
   display: -webkit-box;
   display: flex;
@@ -8413,10 +8413,10 @@ textarea {
     margin: 0 10px 0 0; }
 
 .validation-errors {
-  color: #C0392B;
+  color: #E85346;
   margin: 0 0 15px 0;
   border-radius: 4px;
-  border: 1px solid #C0392B;
+  border: 1px solid #E85346;
   padding: 10px;
   background: #FAE5E5; }
   .validation-errors .errors-list {
@@ -8437,6 +8437,8 @@ label {
   fieldset[disabled] .btn {
     opacity: 0.35;
     filter: alpha(opacity=35); }
+  .btn .caret {
+    color: #fff; }
 
 .panel-floating {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
@@ -8688,6 +8690,46 @@ label {
 #checklist-single #form-checklist-search {
   margin: 0 0 15px; }
 
+#checklist-single #selected-file-menu {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 34px; }
+  #checklist-single #selected-file-menu .file-name {
+    padding-left: 10px;
+    -webkit-box-flex: 1;
+    flex: 1;
+    margin-right: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  #checklist-single #selected-file-menu .list-menu-items {
+    margin: 0; }
+    #checklist-single #selected-file-menu .list-menu-items .menu-item:last-child {
+      margin-right: 5px; }
+    #checklist-single #selected-file-menu .list-menu-items .menu-item a:hover .icon {
+      opacity: 1; }
+    #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon {
+      opacity: 0.6;
+      margin-right: 3px;
+      font-size: 1.2em; }
+      #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon.reject {
+        color: #ff6a6a; }
+      #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon:history {
+        color: #F0A830; }
+      #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon.rename {
+        color: #27AE60; }
+      #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon.delete {
+        color: #555555; }
+    #checklist-single #selected-file-menu .list-menu-items .menu-item a.disabled {
+      color: #9CA1A8;
+      pointer-events: none; }
+      #checklist-single #selected-file-menu .list-menu-items .menu-item a.disabled .icon {
+        color: #9CA1A8; }
+
 #checklist-single #files-header {
   white-space: nowrap; }
 
@@ -8778,7 +8820,7 @@ label {
 #checklist-single .col-upload {
   width: 55px; }
 
-#checklist-single #files-header {
+#checklist-single .table-header {
   margin-left: 0;
   border-bottom: 1px solid #e6e6e6;
   font-size: 0.9em;
@@ -8796,11 +8838,12 @@ label {
       background: #f7fcfa;
       z-index: 2;
       position: relative; }
-    #checklist-single #files-list .single-file.is-selected {
-      background: #f3fbf7;
+    #checklist-single #files-list .single-file:focus, #checklist-single #files-list .single-file.focus, #checklist-single #files-list .single-file.is-selected {
+      background: #dcf3e9;
       border-color: #349268;
       z-index: 3;
-      position: relative; }
+      position: relative;
+      outline: 0; }
     #checklist-single #files-list .single-file .col-file i {
       font-size: 1.5em; }
       @media screen and (min-width: 768px) {

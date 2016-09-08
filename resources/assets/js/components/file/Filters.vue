@@ -36,7 +36,7 @@
             </div>
 
             <!-- Filter Button -->
-            <button class="button-add-filter btn btn-default"
+            <button class="button-add-filter btn btn-primary"
                     v-show="filter && (filterValue || minFilterValue || maxFiltervalue)"
                     @click.stop.prevent="addFilter">Add Filter
             </button>

@@ -7,14 +7,14 @@
   margin-top: 10px;
   padding: 0.5em;
   background: #fff;
-  border: 1px solid $green;
+  border: 1px solid darken($brand-primary, 10%);
   @include box-shadow(1px 3px 5px rgba(0, 0, 0, 0.3));
-  @include border-radius($border-radius-small);
+  @include border-radius($border-radius-base);
 
   .ui-datepicker-header {
     margin: -0.5em -.5em 0 -.5em;
 
-    background: $green;
+    background: darken($brand-primary, 10%);
     color: #fff;
 
     .ui-datepicker-prev, .ui-datepicker-next {
@@ -87,7 +87,7 @@
     a {
       color: #000;
       &:hover {
-        color: $green;
+        color: $brand-primary;
         font-weight: bold;
       }
     }

@@ -34,7 +34,7 @@
         <form id="form-checklist-search" @submit.prevent="searchTerm">
             <div class="input-group">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span>
                     </button>
 
@@ -45,7 +45,7 @@
                 </div>
                 <input class="form-control input-search"
                        type="text"
-                       placeholder="Search..."
+                       placeholder="Search"
                        @keyup="searchTerm"
                        v-model="params.search"
                        :class="{
@@ -57,7 +57,23 @@
 
         <file-active-filters :params.sync="params" :remove-filter="removeFilter"></file-active-filters>
 
-        <ul id="files-header" class="list-unstyled list-inline">
+        <div id="selected-file-menu"
+             class="table-header"
+             v-show="selectedFile"
+        >
+            <span class="file-name" v-if="selectedFile">{{ selectedFile.name }}</span>
+            <ul class="list-menu-items list-inline list-unstyled">
+                <li class="menu-item"><a href="#" @click.prevent="showRejectModal" :class="{ 'disabled': ! canRejectFile }"><i class="icon reject fa fa-close"></i>Reject</a></li>
+                <li class="menu-item"><a href="#"><i class="icon history fa fa-clock-o"></i>History</a></li>
+                <li class="menu-item"><a href="#"><i class="icon rename fa fa-edit"></i>Rename</a></li>
+                <li class="menu-item"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
+            </ul>
+        </div>
+
+        <ul id="files-header"
+            class="list-unstyled list-inline table-header"
+            v-show="! selectedFile"
+        >
             <li class="column col-file header-column"
                 :class="{
                             'current_asc': params.sort === 'status' && params.order === 'asc',
@@ -93,7 +109,14 @@
 
     <div id="page-scroll-content">
         <ul id="files-list" class="list-unstyled">
-            <li class="single-file" v-for="file in files">
+            <li class="single-file"
+                v-for="(index, file) in files"
+                @focus="selectFile(index)"
+                tabindex="1"
+                :class="{ 'is-selected': file === selectedFile }"
+                @keydown.up="selectFile(index - 1)"
+                @keydown.down="selectFile(index + 1)"
+            >
                 <div class="column col-file content-column file-status" :class="file.status">
                     <i class="fa fa-file-o"></i>
                 </div>
@@ -110,6 +133,7 @@
             </li>
         </ul>
     </div>
+    <file-reject-modal></file-reject-modal>
 </div>
 </template>
 <script>
@@ -136,15 +160,22 @@
                     }
                 ],
                 files: [],
-                numReceived: ''
+                numReceived: '',
+                selectedFileIndex: ''
             }
         },
         computed: {
+            selectedFile: function() {
+                return this.files[this.selectedFileIndex];
+            },
             checklistBelongsToUser: function () {
                 return this.user.id === this.checklist.user_id;
             },
             requestUrl: function () {
                 return '/checklist/' + this.checklistHash + '/files';
+            },
+            canRejectFile: function() {
+                return this.selectedFile.status === 'received';
             },
             receivedFilesPercentage: function () {
                 if (!this.response.total) return 0;
@@ -153,16 +184,59 @@
         },
         props: ['user', 'checklist', 'checklist-hash'],
         mixins: [fetchesFromEloquentRepository],
-        methods: {},
+        methods: {
+            getFileIndex: function(file) {
+                return _.indexOf(this.files, _.find(this.files, {id: file.id}));
+            },
+            selectFile: function(index) {
+                if(! this.files[index]) return;  // file doesn't exist
+                this.selectedFileIndex = index;
+                this.$nextTick(() => {
+                    this.focusOnFile(this.selectedFileIndex);
+                });
+            },
+            focusOnFile: function(index) {
+                $('.single-file')[index].focus();
+            },
+            showRejectModal: function() {
+                if(this.canRejectFile) vueGlobalEventBus.$emit('show-reject-modal', this.selectedFile);
+            }
+        },
         ready: function() {
 
             var self = this;
 
+            // Parse out our request params
             self.$watch('response', (response) => {
                 self.files = $.map(_.omit(response.data, 'query_parameters'), (file, index) => {
                     return file;
                 });
                 self.numReceived = self.params.num_received_files;
+            });
+
+            // Click event bind - Unselect file if we didn't click inside list or within select menu
+                // Elements that even if we click on, we don't want to lose selectedFile
+                let focusContainers = [
+                    $('#selected-file-menu'),
+                    $('#files-list'),
+                    $('.reject-modal')
+                ];
+                $(document).on('click', (e) => {
+                    let clickedInside = false;
+                    for(var i = 0; i < focusContainers.length; i ++ ) {
+                        if (focusContainers[i].is(e.target) || focusContainers[i].has(e.target).length !== 0)
+                        {
+                            clickedInside = true;
+                            break;
+                        }
+                    }
+                    if(! clickedInside) self.selectedFileIndex = '';
+                });
+
+            // when we reject a file updated it...
+            vueGlobalEventBus.$on('rejected-file', (updatedFileModel) => {
+                let index = self.getFileIndex(updatedFileModel);
+                self.$set('files[' + index + ']', updatedFileModel);
             });
         }
     };
