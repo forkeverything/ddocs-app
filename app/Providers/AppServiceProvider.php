@@ -14,11 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Eloquent Events to keep FileRequest in sync whenever we modify it's File(s)
 
-        File::created(function ($file) {
-            if($file->fileRequest->uploads->count() > 1) $file->fileRequest->update(['version' => $file->fileRequest->version + 1]);
-        });
     }
 
     /**

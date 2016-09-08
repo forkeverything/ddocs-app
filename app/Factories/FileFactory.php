@@ -67,7 +67,7 @@ class FileFactory
     {
 
         // Convert uploaded file to lower case and join with '_'
-        $name = str_replace(" ", "_", strtolower($this->fileRequest->name)). '_v' . ($this->fileRequest->version + 1) . '_' . $this->fileRequest->created_at->format('d-m-Y');
+        $name = str_replace(" ", "_", strtolower($this->fileRequest->name)). '_v' . $this->fileRequest->version . '_' . $this->fileRequest->created_at->format('d-m-Y');
 
 
         $extension = $this->uploadedFile->getClientOriginalExtension();

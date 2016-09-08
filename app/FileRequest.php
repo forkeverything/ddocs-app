@@ -86,9 +86,10 @@ class FileRequest extends Model
     {
         if(! $this->hasStatus('received')) abort(403, "Can't reject a file we haven't received or already marked rejected.");
 
-        // Mark this request as rejected...
+        // Mark this request as rejected and we'll also increment version
         $this->update([
-            'status' => 'rejected'
+            'status' => 'rejected',
+            'version' => $this->version + 1
         ]);
 
         // Update the upload as well as store the reason
