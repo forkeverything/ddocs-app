@@ -9,11 +9,14 @@
     }
   }
 
-  &:hover:active, &:active:focus, &.focus:active, &.active:hover, &.active:focus, &.active.focus, &.dropdown-toggle:hover, &.dropdown-toggle:focus, &.dropdown-toggle.focus {
+  &:hover:active, &:active:focus, &.focus:active, &.active:hover, &.active:focus, &.active.focus {
     color: $brand-primary !important;
     border-color: $brand-primary;
     .caret {
       color: $brand-primary;
+    }
+    &.dropdown-toggle:hover, &.dropdown-toggle:focus, &.dropdown-toggle.focus {
+      background: transparent;
     }
   }
 }

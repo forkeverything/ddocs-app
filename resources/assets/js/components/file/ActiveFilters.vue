@@ -1,34 +1,48 @@
 <template>
     <div class="active-filters">
+        <ul class="list-active-filters list-unstyled list-inline">
+            <!-- Active Filter: Version -->
+            <li v-if="params.version_filter_integer" class="single-filter">
+                <div class="text">
+                    <span class="field">File Version: </span><span
+                        v-if="params.version_filter_integer[0]">{{ params.version_filter_integer[0] }}</span><span
+                        v-else>~ </span><span
+                        v-if="params.version_filter_integer[0] && params.version_filter_integer[1]"> - </span><span
+                        v-if="params.version_filter_integer[1]">{{ params.version_filter_integer[1] }}</span><span
+                        v-else> ~</span>
+                </div>
+                <button type="button" class="btn close" @click="
+                        removeFilter('version')">&times;</button>
+            </li>
 
-        <!-- Active Filter: Version -->
-        <button type="button" v-if="params.version_filter_integer" class="btn button-remove-filter" @click="
-                        removeFilter('version')">
-            <span class="field">File Version: </span><span
-                v-if="params.version_filter_integer[0]">{{ params.version_filter_integer[0] }}</span><span
-                v-else>~ </span><span
-                v-if="params.version_filter_integer[0] && params.version_filter_integer[1]"> - </span><span
-                v-if="params.version_filter_integer[1]">{{ params.version_filter_integer[1] }}</span><span
-                v-else> ~</span></button>
+            <!-- Active Filter: Due (date) -->
+            <li v-if="params.due_filter_date" class="single-filter">
+                <div class="text">
+                    <span class="field">Due: </span>
+                    <span v-if="params.due_filter_date[0]">{{ params.due_filter_date[0] | date }}</span>
+                    <span v-else>~ </span>
+                    <span v-if="params.due_filter_date[0] && params.due_filter_date[1]"> - </span>
+                    <span v-if="params.due_filter_date[1]">{{ params.due_filter_date[1] | date }}</span>
+                    <span v-else> ~</span>
+                </div>
+                <button type="button" class="btn close" @click="removeFilter('due')">&times;</button>
+            </li>
 
-        <!-- Active Filter: Due (date) -->
-        <button type="button" v-if="params.due_filter_date" class="btn button-remove-filter" @click="
-                        removeFilter('due')"><span
-                class="field">Due: </span><span v-if="params.due_filter_date[0]">{{ params.due_filter_date[0] | date }}</span>
-            <span v-else>~ </span><span
-                    v-if="params.due_filter_date[0] && params.due_filter_date[1]"> - </span><span
-                    v-if="params.due_filter_date[1]">{{ params.due_filter_date[1] | date }}</span><span
-                    v-else> ~</span></button>
-
-        <!-- Active Filter: Status -->
-        <button type="button" v-if="params.status" class="btn button-remove-filter"
-                @click="removeFilter('status')">
-            Status: {{ params.status }}
-        </button>
+            <!-- Active Filter: Status -->
+            <li v-if="params.status" class="single-filter">
+                <div class="text">Status: {{ params.status }}</div>
+                <button type="button" class="btn close" @click="removeFilter('status')">&times;</button>
+            </li>
+        </ul>
     </div>
 </template>
 <script>
-export default {
-    props: ['params', 'remove-filter']
-}
+    export default {
+        computed: {
+            hasFilters: function () {
+                return this.params.version_filter_integer || this.params.version_filter_integer || this.params.due_filter_date;
+            }
+        },
+        props: ['params', 'remove-filter']
+    }
 </script>

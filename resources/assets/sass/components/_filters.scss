@@ -77,18 +77,47 @@
 }
 
 .active-filters {
-  margin: 0 -5px 15px -5px;
+  margin: 0 0 10px;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 
-  .button-remove-filter {
-    background: lighten($brand-primary, 45%);
-    @include border-radius($border-radius-small);
-    margin: 0 5px;
-    color: darken($brand-primary, 10%);
-    border: 1px solid $brand-primary;
+  .list-active-filters {
+    margin: 0;
 
-    &:hover {
+    .single-filter {
       background: $brand-primary;
       color: #fff;
+      @include border-radius($border-radius-large);
+      padding: 0;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      .text {
+        display: inline-block;
+        padding: 3px 5px 3px 10px;
+      }
+
+      .btn.close {
+        font-size: 1.2em;
+        opacity: 0.65;
+        padding-bottom: 4px;
+        color: #fff;
+        width: 32px;
+        height: 29px;
+        line-height: 1;
+        outline: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+
+        &:hover {
+          opacity: 1;
+          background: darken($brand-primary, 10%);
+        }
+      }
     }
   }
 }

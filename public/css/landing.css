@@ -8010,16 +8010,6 @@ button.close {
   background: #41B883 !important;
   text-decoration: none !important; }
 
-.input-group-btn .btn.btn-default.dropdown-toggle, .input-group-btn .btn.btn-default.dropdown-toggle:hover, .input-group-btn .btn.btn-default.dropdown-toggle:focus, .input-group-btn .btn.btn-default.dropdown-toggle.focus, .input-group-btn .btn-default:active, .input-group-btn .btn-default.active, .input-group-btn .open > .btn-default.dropdown-toggle {
-  border-color: #999999 !important;
-  border-right: 0 !important; }
-
-.input-group-btn.open > button {
-  color: #41B883 !important; }
-
-.input-group-btn.open span {
-  color: #41B883; }
-
 .ui-datepicker-trigger {
   width: 20px;
   cursor: pointer; }
@@ -8350,16 +8340,39 @@ h5 {
     border-radius: 4px !important; }
 
 .active-filters {
-  margin: 0 -5px 15px -5px; }
-  .active-filters .button-remove-filter {
-    background: #e8f7f0;
-    border-radius: 3px;
-    margin: 0 5px;
-    color: #349268;
-    border: 1px solid #41B883; }
-    .active-filters .button-remove-filter:hover {
+  margin: 0 0 10px;
+  font-size: 0.9em;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-wrap: wrap; }
+  .active-filters .list-active-filters {
+    margin: 0; }
+    .active-filters .list-active-filters .single-filter {
       background: #41B883;
-      color: #fff; }
+      color: #fff;
+      border-radius: 6px;
+      padding: 0; }
+      .active-filters .list-active-filters .single-filter:not(:last-child) {
+        margin-right: 10px; }
+      .active-filters .list-active-filters .single-filter .text {
+        display: inline-block;
+        padding: 3px 5px 3px 10px; }
+      .active-filters .list-active-filters .single-filter .btn.close {
+        font-size: 1.2em;
+        opacity: 0.65;
+        padding-bottom: 4px;
+        color: #fff;
+        width: 32px;
+        height: 29px;
+        line-height: 1;
+        outline: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0; }
+        .active-filters .list-active-filters .single-filter .btn.close:hover {
+          opacity: 1;
+          background: #349268; }
 
 .progress {
   background: #E9E9E9;

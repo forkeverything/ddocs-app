@@ -16,20 +16,20 @@
   }
 }
 
-.input-group-btn {
-
-  .btn.btn-default.dropdown-toggle, .btn.btn-default.dropdown-toggle:hover, .btn.btn-default.dropdown-toggle:focus, .btn.btn-default.dropdown-toggle.focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
-    border-color: $btn-default-border!important;
-    border-right: 0!important;
-  }
-
-  &.open {
-    > button {
-     color: $green !important;
-   }
-    span {
-      color: $green;
-    }
-  }
-}
+//.input-group-btn {
+//
+//  .btn.btn-default.dropdown-toggle, .btn.btn-default.dropdown-toggle:hover, .btn.btn-default.dropdown-toggle:focus, .btn.btn-default.dropdown-toggle.focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
+//    border-color: $btn-default-border!important;
+//    border-right: 0!important;
+//  }
+//
+//  &.open {
+//    > button {
+//     color: $green !important;
+//   }
+//    span {
+//      color: $green;
+//    }
+//  }
+//}
 

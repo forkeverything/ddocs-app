@@ -19,7 +19,7 @@
     margin: 0;
     padding: 3px 9px;
     border: 1px solid $laravel-border-color;
-    background: lighten($brand-primary, 15%);
+    background: lighten($brand-primary, 10%);
 
     label {
       font-size: 1em;
@@ -28,7 +28,7 @@
     }
 
     select {
-      background: lighten($brand-primary, 15%);
+      background: lighten($brand-primary, 10%);
       color: #fff;
       display: inline-block;
       width: 95px;
