@@ -86,12 +86,12 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="select-menu-more">
-                            <li class="menu-item"><a :href="'/file/' + selectedFile.hash + '/history'"><i class="icon history fa fa-clock-o"></i>History</a></li>
+                            <li class="menu-item"><a :href="'/file/' + selectedFile.hash + '/history'" :class="{'disabled': ! selectedFile.latest_upload }"><i class="icon history fa fa-clock-o"></i>History</a></li>
                             <li class="menu-item"><a href="#"><i class="icon rename fa fa-edit"></i>Rename</a></li>
                             <li class="menu-item"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item hidden-xs"><a :href="'/file/' + selectedFile.hash + '/history'"><i class="icon history fa fa-clock-o"></i>History</a></li>
+                    <li class="menu-item hidden-xs"><a :href="'/file/' + selectedFile.hash + '/history'" :class="{'disabled': ! selectedFile.latest_upload }"><i class="icon history fa fa-clock-o"></i>History</a></li>
                     <li class="menu-item hidden-xs"><a href="#"><i class="icon rename fa fa-edit"></i>Rename</a></li>
                     <li class="menu-item hidden-xs"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
                 </ul>
