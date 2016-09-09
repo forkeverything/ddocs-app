@@ -101,7 +101,7 @@ class FileFactory
      */
     protected function setDirectory()
     {
-        $this->directory = env('APP_ENV', 'local') . '/user/' . $this->fileRequest->checklist->user_id . '/checklists/' . hashId($this->fileRequest->checklist);
+        $this->directory = env('APP_ENV', 'local') . '/user/' . $this->fileRequest->checklist->user_id . '/checklists/' . hashId('checklist', $this->fileRequest->checklist);
         return $this;
     }
 

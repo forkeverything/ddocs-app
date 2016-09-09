@@ -4,14 +4,14 @@ use Illuminate\Database\Eloquent\Model;
 use Vinkla\Hashids\Facades\Hashids;
 
 /**
- * Returns the hash id for an Eloquent Model
- *
+ * Hash eloquent model id
+ * @param $connection
  * @param Model $model
  * @return mixed
  */
-function hashId(Model $model)
+function hashId($connection, Model $model)
 {
-    return Hashids::encode($model->id);
+    return Hashids::connection($connection)->encode($model->id);
 }
 
 /**
@@ -20,9 +20,9 @@ function hashId(Model $model)
  * @param $hash
  * @return mixed
  */
-function unhashId($hash)
+function unhashId($connection, $hash)
 {
-    return array_first(Hashids::decode($hash));
+    return array_first(Hashids::connection($connection)->decode($hash));
 }
 
 /**

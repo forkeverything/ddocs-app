@@ -53,7 +53,7 @@
                 if (!self.ajaxReady) return;
                 self.ajaxReady = false;
 
-                self.$http.post('/file/' + this.file.id + '/reject', {
+                self.$http.post('/file/' + this.file.hash + '/reject', {
                     reason: self.reason
                 }).then((response) => {
                     // success

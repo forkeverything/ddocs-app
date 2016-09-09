@@ -13,22 +13,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
-use Vinkla\Hashids\HashidsManager;
 
 class ChecklistsController extends Controller
 {
-    /**
-     * HashId class to encode/decode ID numbers
-     * @var HashidsManager
-     */
-    protected $hashids;
 
     /**
      * ChecklistsController constructor.
      *
-     * @param HashidsManager $hashidsManager
      */
-    public function __construct(HashidsManager $hashidsManager)
+    public function __construct()
     {
         $this->middleware('auth', [
             'only' => [
@@ -38,7 +31,6 @@ class ChecklistsController extends Controller
                 'postNewChecklist'
             ]
         ]);
-        $this->hashids = $hashidsManager;
     }
 
     /**
@@ -90,7 +82,7 @@ class ChecklistsController extends Controller
     public function postNewChecklist(NewChecklistRequest $request)
     {
         $checklist = ChecklistFactory::make($request, Auth::user());
-        return $this->hashids->encode($checklist->id);
+        return hashId('checklist', $checklist);
     }
 
     /**
@@ -125,7 +117,7 @@ class ChecklistsController extends Controller
      */
     public function getSingleChecklist($checklistHash)
     {
-        $checklist = Checklist::findOrFail(unhashId($checklistHash));
+        $checklist = Checklist::findOrFail(unhashId('checklist', $checklistHash));
         $checklist->load('recipients');
 
 //        if(Auth::check()) $this->authorize('view', $checklist);
@@ -142,7 +134,7 @@ class ChecklistsController extends Controller
      */
     public function getFilesForChecklist(Request $request, $checklistHash)
     {
-        $checklist = Checklist::findOrFail(unhashId($checklistHash));
+        $checklist = Checklist::findOrFail(unhashId('checklist', $checklistHash));
         $sort = $request->sort;
         $order = $request->order;
         $search = $request->search;

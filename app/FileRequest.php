@@ -32,6 +32,18 @@ class FileRequest extends Model
 
     protected $with = ['uploads'];
 
+    protected $appends = ['hash'];
+
+    /**
+     * Get the hash'd id of this model.
+     *
+     * @return mixed
+     */
+    public function getHashAttribute()
+    {
+        return hashId('file-request',  $this);
+    }
+
     /**
      * Format as Carbon Date only if value given to prevent '0000-00-00 00:00:00'
      *

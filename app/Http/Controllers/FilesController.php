@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\FileWasRejected;
 use App\Events\FileWasUploaded;
 use App\Factories\FileFactory;
+use App\File;
 use App\FileRequest;
 use App\Http\Requests\RejectFileRequest;
 use App\Http\Requests\UploadFileRequest;
@@ -16,15 +17,17 @@ use Illuminate\Support\Facades\Event;
 
 class FilesController extends Controller
 {
+
     /**
      * Handle POST request to upload a file for a File Request within a Checklist.
      *
-     * @param FileRequest $fileRequest
+     * @param $fileRequestHash
      * @param UploadFileRequest $request
      * @return mixed
      */
-    public function postUploadFile(FileRequest $fileRequest, UploadFileRequest $request)
+    public function postUploadFile($fileRequestHash, UploadFileRequest $request)
     {
+        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
         // If user is logged in - make sure they are the recipient
 //        if(Auth::check()) $this->authorize('upload', $file);
 
@@ -45,13 +48,14 @@ class FilesController extends Controller
     /**
      * POST request to mark a File (File Request's most recent upload) as rejected.
      *
-     * @param FileRequest $fileRequest
+     * @param $fileRequestHash
      * @param RejectFileRequest $request
      * @return FileRequest
      */
-    public function postRejectUploadedFile(FileRequest $fileRequest, RejectFileRequest $request)
+    public function postRejectUploadedFile($fileRequestHash, RejectFileRequest $request)
     {
-        $fileRequest = $fileRequest->reject($request->reason);
+        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash))
+                                  ->reject($request->reason);
         Event::fire(new FileWasRejected($fileRequest));
         return $fileRequest;
     }

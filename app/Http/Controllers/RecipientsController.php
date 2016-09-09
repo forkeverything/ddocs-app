@@ -17,7 +17,7 @@ class RecipientsController extends Controller
      */
     public function getTurnOffNotifications($recipientHash)
     {
-        if($recipient = Recipient::find(unhashId($recipientHash))) $recipient->turnOffNotifications();
+        if($recipient = Recipient::find(unhashId('recipient', $recipientHash))) $recipient->turnOffNotifications();
         return view('recipients.turned-off-notifications', compact('recipient'));
     }
 }

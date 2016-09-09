@@ -43,10 +43,22 @@ return [
             'alphabet' => '0123456789abcdef',
         ],
 
-        'alternative' => [
-            'salt' => 'your-salt-string',
-            'length' => 'your-length-integer',
-            'alphabet' => 'your-alphabet-string',
+        'recipient' => [
+            'salt' => 'keeping our recipients private',
+            'length' => '12',
+            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
+        ],
+
+        'checklist' => [
+            'salt' => 'super secret checklists are the best',
+            'length' => '12',
+            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
+        ],
+
+        'file-request' => [
+            'salt' => 'hope nobody finds this file',
+            'length' => '12',
+            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
         ],
 
     ],

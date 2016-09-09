@@ -68,7 +68,7 @@ class Checklist extends Model
      */
     public function getHashAttribute()
     {
-        return hashId($this);
+        return hashId('checklist',  $this);
     }
 
     /**
