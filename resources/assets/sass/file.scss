@@ -1,3 +1,10 @@
 .file-uploader {
   display: inline-block;
+
+  .loader {
+    width: 34px;
+    font-size: 1.2em;
+    text-align: center;
+    color: $brand-primary;
+  }
 }

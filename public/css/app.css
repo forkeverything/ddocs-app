@@ -8699,7 +8699,6 @@ label {
   align-items: center;
   height: 34px; }
   #checklist-single #selected-file-menu .file-name {
-    padding-left: 10px;
     -webkit-box-flex: 1;
     flex: 1;
     margin-right: 5px;
@@ -8707,9 +8706,7 @@ label {
     overflow: hidden;
     text-overflow: ellipsis; }
   #checklist-single #selected-file-menu .list-menu-items {
-    margin: 0; }
-    #checklist-single #selected-file-menu .list-menu-items .menu-item:last-child {
-      margin-right: 5px; }
+    margin: 0 -5px 0 0; }
     #checklist-single #selected-file-menu .list-menu-items .menu-item a:hover .icon {
       opacity: 1; }
     #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon {
@@ -8855,6 +8852,11 @@ label {
 
 .file-uploader {
   display: inline-block; }
+  .file-uploader .loader {
+    width: 34px;
+    font-size: 1.2em;
+    text-align: center;
+    color: #41B883; }
 
 #account-overview #page-fixed-top {
   border-bottom: 1px solid #e6e6e6; }

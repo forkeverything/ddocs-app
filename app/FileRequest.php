@@ -30,9 +30,18 @@ class FileRequest extends Model
         'due'
     ];
 
-    protected $with = ['uploads'];
+    /**
+     * Dynamic attributes we want to attach to each model.
+     *
+     * @var array
+     */
+    protected $appends = ['hash', 'latest_upload'];
 
-    protected $appends = ['hash'];
+    public function getLatestUploadAttribute()
+    {
+        return File::where('file_request_id', $this->id)->orderBy('created_at', 'desc')->first();
+    }
+
 
     /**
      * Get the hash'd id of this model.

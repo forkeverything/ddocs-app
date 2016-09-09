@@ -47,7 +47,6 @@
     height: 34px;
 
     .file-name {
-      padding-left: 10px;
       flex: 1;
       margin-right: 5px;
       white-space: nowrap;
@@ -56,12 +55,9 @@
     }
 
     .list-menu-items {
-      margin: 0;
+      margin: 0 -5px 0 0;
 
       .menu-item {
-        &:last-child {
-          margin-right: 5px;
-        }
 
         a {
 

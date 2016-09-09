@@ -124,7 +124,7 @@
                     </div>
                     <div class="column col-name content-column">
                         <!-- Download -->
-                        <a v-if="file.uploads.length > 0" :href=" awsUrl + file.uploads[(file.uploads.length - 1)].path" :alt="file.name + 'download link'">
+                        <a v-if="file.latest_upload" :href=" awsUrl + file.latest_upload.path" :alt="file.name + 'download link'">
                             {{ file.name }}
                         </a>
                         <span v-else>{{ file.name }}</span>

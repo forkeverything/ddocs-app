@@ -1,7 +1,7 @@
 <template>
     <div class="file-uploader">
         <button type="button"
-                v-show="! progress"
+                v-show="! uploading"
                 class="btn btn-primary"
                 v-el:upload-button
                 :disabled="alreadyReceivedFile"
@@ -15,15 +15,17 @@
                class="input-file-upload hide"
                @change="uploadFile(file, $event)"
         >
-        <span class="upload-percentage"
-              v-show="progress"
-        >{{ progress }} %</span>
+        <div class="loader" v-show="uploading">
+            <i class="fa fa-spinner fa-pulse fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
     </div>
 </template>
 <script>
     export default {
         data: function () {
             return {
+                uploading: false,
                 progress: ''
             }
         },
@@ -41,6 +43,8 @@
 
                 var self = this;
 
+                self.uploading = true;
+
                 var fd = new FormData();
                 var uploadedFile = $event.srcElement.files[0];
 
@@ -48,16 +52,18 @@
 
                 self.$http.post('/file/' + self.fileRequest.hash, fd, {
                     progress: (event) => {
-                        self.progress = Math.round(100 * event.loaded / event.total);
+//                        self.progress = Math.round(100 * event.loaded / event.total);
                     }
                 }).then((response) => {
-                    self.progress = '';
+//                    self.progress = '';
                     self.fileRequest = JSON.parse(response.data);
+                    self.uploading = false;
 
                 }, (response) => {
-                    self.progress = '';
+//                    self.progress = '';
                     console.log('Upload file error.');
                     console.log(response);
+                    self.uploading = false;
                 });
             }
         }
