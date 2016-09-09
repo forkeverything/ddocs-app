@@ -8823,14 +8823,9 @@ label {
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  justify-content: space-between; }
-  #checklist-single .col-name .file-status {
-    font-size: 1.2em; }
-    @media screen and (min-width: 768px) {
-      #checklist-single .col-name .file-status {
-        display: none; } }
+  align-items: center; }
+  #checklist-single .col-name .name {
+    word-break: break-all; }
 
 #checklist-single .col-due {
   -webkit-box-flex: 0;
@@ -8879,6 +8874,14 @@ label {
     font-size: 1.2em;
     text-align: center;
     color: #41B883; }
+
+.file-renamer {
+  width: 100%; }
+  .file-renamer input {
+    padding: 3px 5px;
+    line-height: 1em;
+    height: 29px;
+    border-radius: 0; }
 
 #file-history .btn-download {
   min-width: 120px; }

@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/file/Renamer.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css.map" afterPath="$PROJECT_DIR$/public/css/app.css.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/landing.js" afterPath="$PROJECT_DIR$/public/js/landing.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/bootstrap.js" afterPath="$PROJECT_DIR$/resources/assets/js/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app.js" afterPath="$PROJECT_DIR$/resources/assets/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/file.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/file.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,36 +33,18 @@
     <favorites_list name="files-collector" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="Single.vue" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="bootstrap.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/assets/js/bootstrap.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="704">
-                  <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="Single.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="974">
+              <caret line="257" column="71" lean-forward="false" selection-start-line="257" selection-start-column="71" selection-end-line="257" selection-end-column="71" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,7 +52,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue" />
         <option value="$PROJECT_DIR$/resources/views/checklist/all.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/sass/layout.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/All.vue" />
@@ -97,21 +86,22 @@
         <option value="$PROJECT_DIR$/resources/views/emails/partials/turn-off-notifications.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
         <option value="$PROJECT_DIR$/config/hashids.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/app.js" />
         <option value="$PROJECT_DIR$/app/FileRequest.php" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/file.scss" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" />
         <option value="$PROJECT_DIR$/resources/assets/sass/utilities.scss" />
         <option value="$PROJECT_DIR$/resources/assets/sass/components/_dropdown.scss" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" />
         <option value="$PROJECT_DIR$/resources/assets/sass/app.scss" />
         <option value="$PROJECT_DIR$/resources/views/file/history.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/sass/file/history.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/file/RejectModal.vue" />
         <option value="$PROJECT_DIR$/app/Listeners/EmailFileRejectedNotification.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/bootstrap.js" />
+        <option value="$PROJECT_DIR$/resources/assets/js/app.js" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" />
+        <option value="$PROJECT_DIR$/resources/assets/sass/file.scss" />
+        <option value="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/file/Renamer.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
       </list>
     </option>
@@ -170,7 +160,7 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="2560" />
+    <option name="width" value="1280" />
     <option name="height" value="1347" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -580,15 +570,15 @@
       <workItem from="1473361057994" duration="112000" />
       <workItem from="1473387237807" duration="1444000" />
       <workItem from="1473395377820" duration="1916000" />
-      <workItem from="1473397347622" duration="7726000" />
+      <workItem from="1473397347622" duration="14541000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="390532000" />
+    <option name="totallyTimeSpent" value="397347000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="1347" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10429688" sideWeight="0.53584903" order="2" side_tool="true" content_ui="tabs" />
@@ -640,27 +630,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/mixins/replacesFileFromFilesArray.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_07_31_060512_create_file_requests_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/ChecklistServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -699,39 +668,6 @@
             <marker date="1468264385000" expanded="true" signature="428:614" ph="{...}" />
             <marker date="1468264385000" expanded="true" signature="438:522" ph=" Get the registered name of the component. ..." />
             <marker date="1468264385000" expanded="true" signature="574:612" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Factories/FileFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="103" column="128" lean-forward="false" selection-start-line="103" selection-start-column="122" selection-end-line="103" selection-end-column="128" />
-          <folding>
-            <marker date="1473396828000" expanded="false" signature="39:103" ph="..." />
-            <marker date="1473396828000" expanded="true" signature="133:189" ph=" Where to store the File ..." />
-            <marker date="1473396828000" expanded="true" signature="226:290" ph=" UploadedFile Class ..." />
-            <marker date="1473396828000" expanded="true" signature="330:385" ph=" FileRequest Model ..." />
-            <marker date="1473396828000" expanded="true" signature="424:480" ph=" Generated new File name ..." />
-            <marker date="1473396828000" expanded="true" signature="512:592" ph=" Path of file that's returned after we store it. ..." />
-            <marker date="1473396828000" expanded="true" signature="624:749" ph=" FileFactory constructor. ..." />
-            <marker date="1473396828000" expanded="true" signature="837:937" ph="{...}" />
-            <marker date="1473396828000" expanded="true" signature="946:1034" ph=" Make a file name, based on the uploaded file. ..." />
-            <marker date="1473396828000" expanded="true" signature="1074:1435" ph="{...}" />
-            <marker date="1473396828000" expanded="true" signature="1444:1617" ph=" Static wrapper - store a File after upload... ..." />
-            <marker date="1473396828000" expanded="true" signature="1706:2007" ph="{...}" />
-            <marker date="1473396828000" expanded="true" signature="2016:2098" ph=" Determine the directory to store a File ..." />
-            <marker date="1473396828000" expanded="true" signature="2138:2346" ph="{...}" />
-            <marker date="1473396828000" expanded="true" signature="2356:2446" ph=" Move the file into the directory with a new name ..." />
-            <marker date="1473396828000" expanded="true" signature="2482:2615" ph="{...}" />
-            <marker date="1473396828000" expanded="true" signature="2624:2715" ph=" The File model that references the physical file. ..." />
-            <marker date="1473396828000" expanded="true" signature="2758:2919" ph="{...}" />
-            <marker date="1473396828000" expanded="true" signature="2786:2888" ph="..." />
-            <marker date="1473396828000" expanded="true" signature="2787:2887" ph="..." />
-            <marker date="1473396828000" expanded="true" signature="2928:3000" ph=" Update our database records... ..." />
-            <marker date="1473396828000" expanded="true" signature="3036:3155" ph="{...}" />
-            <marker date="1473396828000" expanded="true" signature="3078:3124" ph="..." />
-            <marker date="1473396828000" expanded="true" signature="3079:3123" ph="..." />
           </folding>
         </state>
       </provider>
@@ -923,30 +859,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="26" column="72" lean-forward="true" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
-          <folding>
-            <marker date="1473397393000" expanded="true" signature="1:222" ph="/** First we will load all of this project's JavaScript dependencies which ...*/" />
-            <marker date="1473397393000" expanded="true" signature="249:470" ph="/** Next, we will create a fresh Vue application instance and attach it to ...*/" />
-            <marker date="1473397393000" expanded="true" signature="1739:1757" ph="{&quot;el&quot;: 'body'...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/sass/components.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/file.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -988,34 +904,6 @@
             <marker date="1473401345000" expanded="true" signature="2601:2690" ph="..." />
             <marker date="1473401345000" expanded="true" signature="2791:2872" ph="..." />
             <marker date="1473401345000" expanded="true" signature="2792:2871" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="47" column="40" lean-forward="true" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
-          <folding>
-            <marker date="1473404722000" expanded="true" signature="9:717" ph="..." />
-            <marker date="1473404722000" expanded="true" signature="41:705" ph="..." />
-            <marker date="1473404722000" expanded="true" signature="72:336" ph="..." />
-            <marker date="1473404722000" expanded="true" signature="363:522" ph="..." />
-            <marker date="1473404722000" expanded="true" signature="570:694" ph="..." />
-            <marker date="1473404722000" expanded="true" signature="726:2303" ph="..." />
-            <marker date="1473404722000" expanded="true" signature="747:2294" ph="{...}" />
-            <marker date="1473404722000" expanded="true" signature="775:884" ph="{...}" />
-            <marker date="1473404722000" expanded="true" signature="796:874" ph="{&quot;progress&quot;: ''...}" />
-            <marker date="1473404722000" expanded="true" signature="904:1039" ph="{...}" />
-            <marker date="1473404722000" expanded="true" signature="951:1029" ph="{...}" />
-            <marker date="1473404722000" expanded="true" signature="1091:2150" ph="{...}" />
-            <marker date="1473404722000" expanded="true" signature="1129:1188" ph="{...}" />
-            <marker date="1473404722000" expanded="true" signature="1238:2140" ph="{...}" />
-            <marker date="1473404722000" expanded="true" signature="1540:1712" ph="{...}" />
-            <marker date="1473404722000" expanded="true" signature="1583:1694" ph="{...}" />
-            <marker date="1473404722000" expanded="true" signature="1733:1905" ph="{...}" />
-            <marker date="1473404722000" expanded="true" signature="1921:2124" ph="{...}" />
-            <marker date="1473404722000" expanded="true" signature="2178:2288" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1067,27 +955,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
-          <caret line="122" column="41" lean-forward="true" selection-start-line="122" selection-start-column="41" selection-end-line="122" selection-end-column="41" />
-          <folding>
-            <element signature="e#1268#1786#0" expanded="false" />
-            <element signature="e#3741#3773#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="33" column="68" lean-forward="false" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="68" />
-          <folding>
-            <marker date="1473406998000" expanded="false" signature="9:384" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/account/overview.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -1131,14 +998,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/sass/file/history.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1159,23 +1018,6 @@
             <marker date="1472376568000" expanded="true" signature="616:671" ph="{...}" />
             <marker date="1472376568000" expanded="true" signature="680:777" ph=" Get the channels the event should broadcast on. ..." />
             <marker date="1472376568000" expanded="true" signature="813:876" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FilesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
-          <folding>
-            <marker date="1473407933000" expanded="false" signature="44:381" ph="..." />
-            <marker date="1473407933000" expanded="true" signature="423:2216" ph="{...}" />
-            <marker date="1473407933000" expanded="true" signature="434:623" ph=" Handle POST request to upload a file for a File Request within a Checklist. ..." />
-            <marker date="1473407933000" expanded="true" signature="706:1423" ph="{...}" />
-            <marker date="1473407933000" expanded="true" signature="1432:1628" ph=" POST request to mark a File (File Request's most recent upload) as rejected. ..." />
-            <marker date="1473407933000" expanded="true" signature="1719:1969" ph="{...}" />
-            <marker date="1473407933000" expanded="true" signature="1860:1876" ph="..." />
-            <marker date="1473407933000" expanded="true" signature="2019:2214" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1275,16 +1117,161 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+        <state relative-caret-position="1109">
+          <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="52" column="75" lean-forward="false" selection-start-line="52" selection-start-column="75" selection-end-line="52" selection-end-column="75" />
+          <folding>
+            <marker date="1473411272000" expanded="true" signature="9:717" ph="..." />
+            <marker date="1473411272000" expanded="true" signature="41:705" ph="..." />
+            <marker date="1473411272000" expanded="true" signature="72:336" ph="..." />
+            <marker date="1473411272000" expanded="true" signature="363:522" ph="..." />
+            <marker date="1473411272000" expanded="true" signature="570:694" ph="..." />
+            <marker date="1473411272000" expanded="true" signature="726:2315" ph="..." />
+            <marker date="1473411272000" expanded="true" signature="747:2306" ph="{...}" />
+            <marker date="1473411272000" expanded="true" signature="775:884" ph="{...}" />
+            <marker date="1473411272000" expanded="true" signature="796:874" ph="{&quot;progress&quot;: ''...}" />
+            <marker date="1473411272000" expanded="true" signature="904:1039" ph="{...}" />
+            <marker date="1473411272000" expanded="true" signature="951:1029" ph="{...}" />
+            <marker date="1473411272000" expanded="true" signature="1091:2162" ph="{...}" />
+            <marker date="1473411272000" expanded="true" signature="1129:1188" ph="{...}" />
+            <marker date="1473411272000" expanded="true" signature="1238:2152" ph="{...}" />
+            <marker date="1473411272000" expanded="true" signature="1552:1724" ph="{...}" />
+            <marker date="1473411272000" expanded="true" signature="1595:1706" ph="{...}" />
+            <marker date="1473411272000" expanded="true" signature="1745:1917" ph="{...}" />
+            <marker date="1473411272000" expanded="true" signature="1933:2136" ph="{...}" />
+            <marker date="1473411272000" expanded="true" signature="2190:2300" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="31" column="68" lean-forward="false" selection-start-line="31" selection-start-column="68" selection-end-line="31" selection-end-column="68" />
+          <folding>
+            <marker date="1473411414000" expanded="false" signature="9:384" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Factories/FileFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="109" column="48" lean-forward="false" selection-start-line="109" selection-start-column="48" selection-end-line="109" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FilesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="891">
+          <caret line="45" column="28" lean-forward="true" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+          <folding>
+            <marker date="1473411604000" expanded="false" signature="44:381" ph="..." />
+            <marker date="1473411604000" expanded="true" signature="423:2586" ph="{...}" />
+            <marker date="1473411604000" expanded="true" signature="499:795" ph="{...}" />
+            <marker date="1473411604000" expanded="true" signature="804:993" ph=" Handle POST request to upload a file for a File Request within a Checklist. ..." />
+            <marker date="1473411604000" expanded="true" signature="1076:1793" ph="{...}" />
+            <marker date="1473411604000" expanded="true" signature="1802:1998" ph=" POST request to mark a File (File Request's most recent upload) as rejected. ..." />
+            <marker date="1473411604000" expanded="true" signature="2089:2339" ph="{...}" />
+            <marker date="1473411604000" expanded="true" signature="2230:2246" ph="..." />
+            <marker date="1473411604000" expanded="true" signature="2389:2584" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="24" column="16" lean-forward="true" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/NewChecklistRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-79">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/app.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="22" column="25" lean-forward="false" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/file.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+          <folding>
+            <marker date="1473414868000" expanded="true" signature="15:150" ph="{...}" />
+            <marker date="1473414868000" expanded="true" signature="53:148" ph="{...}" />
+            <marker date="1473414868000" expanded="true" signature="166:291" ph="{...}" />
+            <marker date="1473414868000" expanded="true" signature="191:289" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="212" column="35" lean-forward="true" selection-start-line="212" selection-start-column="35" selection-end-line="212" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/Renamer.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="785">
+          <caret line="53" column="42" lean-forward="false" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="141" column="2" lean-forward="false" selection-start-line="141" selection-start-column="2" selection-end-line="141" selection-end-column="2" />
+          <folding>
+            <marker date="1469479699000" expanded="false" signature="0:427" ph="/*...*/" />
+            <marker date="1469479699000" expanded="true" signature="444:4733" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="465:524" ph="//..." />
+            <marker date="1469479699000" expanded="true" signature="644:701" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="761:1098" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="828:986" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="1125:1769" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="1218:1764" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="1814:2715" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="2009:2693" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="2107:2340" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="2761:3660" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="3124:3230" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="3665:3726" ph="//..." />
+            <marker date="1469479699000" expanded="true" signature="3754:4006" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="3789:4001" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="4115:4164" ph="//..." />
+            <marker date="1469479699000" expanded="true" signature="4207:4252" ph="{...}" />
+            <marker date="1469479699000" expanded="true" signature="4257:4336" ph="//..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+        <state relative-caret-position="974">
+          <caret line="257" column="71" lean-forward="false" selection-start-line="257" selection-start-column="71" selection-end-line="257" selection-end-column="71" />
           <folding />
         </state>
       </provider>

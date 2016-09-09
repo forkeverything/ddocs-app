@@ -26,8 +26,8 @@
                     <li v-for="recipient in checklist.recipients">{{ recipient.email }}</li>
                 </ul>
             </div>
-            
-                <p v-if="checklist.description">{{ checklist.description }}</p>
+
+            <p v-if="checklist.description">{{ checklist.description }}</p>
 
             <form id="form-checklist-search" @submit.prevent="searchTerm">
                 <div class="input-group">
@@ -58,6 +58,7 @@
             <div id="selected-file-menu"
                  class="table-header"
                  v-if="selectedFile"
+                 @click.stop=""
             >
                 <span class="file-name" v-if="selectedFile">{{ selectedFile.name }}</span>
                 <ul class="list-menu-items list-inline list-unstyled">
@@ -78,7 +79,7 @@
                         </a>
                     </li>
                     <li class="dropdown visible-xs-inline">
-                        <a id="select-menu-more" href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
+                        <a id="select-menu-more" @click.prevent.stop="showSelectMenuDropdown" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">
                             More
                             <span class="caret"></span>
@@ -88,14 +89,17 @@
                             <li class="menu-item"><a :href="'/file/' + selectedFile.hash + '/history'"
                                                      :class="{'disabled': ! selectedFile.latest_upload }"><i
                                     class="icon history fa fa-clock-o"></i>History</a></li>
-                            <li class="menu-item"><a href="#"><i class="icon rename fa fa-edit"></i>Rename</a></li>
+                            <li class="menu-item"><a href="#" @click.prevent="renameSelectedFile"><i
+                                    class="icon rename fa fa-edit"></i>Rename</a></li>
                             <li class="menu-item"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
                         </ul>
+
                     </li>
                     <li class="menu-item hidden-xs"><a :href="'/file/' + selectedFile.hash + '/history'"
                                                        :class="{'disabled': ! selectedFile.latest_upload }"><i
                             class="icon history fa fa-clock-o"></i>History</a></li>
-                    <li class="menu-item hidden-xs"><a href="#"><i class="icon rename fa fa-edit"></i>Rename</a></li>
+                    <li class="menu-item hidden-xs"><a href="#" @click.prevent="renameSelectedFile"><i
+                            class="icon rename fa fa-edit"></i>Rename</a></li>
                     <li class="menu-item hidden-xs"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
                 </ul>
             </div>
@@ -153,11 +157,17 @@
                     </div>
                     <div class="column col-name content-column">
                         <!-- Download -->
-                        <a v-if="file.latest_upload" :href=" awsUrl + file.latest_upload.path"
-                           :alt="file.name + 'download link'" class="name">
+                        <a v-if="file.latest_upload"
+                           :href=" awsUrl + file.latest_upload.path"
+                           :alt="file.name + 'download link'"
+                           class="name"
+                           v-show="! file.renaming"
+                        >
                             {{ file.name }}
                         </a>
-                        <span v-else class="name">{{ file.name }}</span>
+                        <span v-else class="name" v-show="! file.renaming">{{ file.name }}</span>
+
+                        <file-renamer :file.sync="file" v-show="file.renaming"></file-renamer>
                     </div>
                     <div class="column col-due content-column">
                         <span class="date" v-if="file.due">{{ file.due | date }}</span>
@@ -240,6 +250,12 @@
             },
             uploadSelected: function () {
                 vueGlobalEventBus.$emit('upload-selected-file-' + this.selectedFile.id);
+            },
+            renameSelectedFile: function () {
+                this.$set('selectedFile.renaming', true);
+            },
+            showSelectMenuDropdown: function() {
+                $('#select-menu-more').next('.dropdown-menu').toggle();
             }
         },
         ready: function () {

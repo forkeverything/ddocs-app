@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\Event;
 class FilesController extends Controller
 {
 
+    public function putModifyRequest($fileRequestHash, Request $request)
+    {
+        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
+        $attributes = [];
+        if($name = $request->name) $attributes += ['name' => $name];
+        if(! empty($attributes)) $fileRequest->update($attributes);
+        return $fileRequest;
+    }
+
     /**
      * Handle POST request to upload a file for a File Request within a Checklist.
      *

@@ -29,7 +29,8 @@ Route::get('/checklist/{checklist_hash}/files', 'ChecklistsController@getFilesFo
 Route::get('/recipients/{recipient_hash}/turn_off_notifications', 'RecipientsController@getTurnOffNotifications');
 
 // Files
-Route::post('/file/{file_request_hash}', 'FilesController@postUploadFile');
+Route::put('/file/{file_request}', 'FilesController@putModifyRequest');
+Route::post('/file/{file_request_hash}/upload', 'FilesController@postUploadFile');
 Route::post('/file/{file_request_hash}/reject', 'FilesController@postRejectUploadedFile');
 Route::get('/file/{file_request_hash}/history', 'FilesController@getHistory');
 

@@ -8,3 +8,13 @@
     color: $brand-primary;
   }
 }
+
+.file-renamer {
+  width: 100%;
+  input {
+    padding: 3px 5px;
+    line-height: 1em;
+    height: 29px;
+    @include border-radius(0);
+  }
+}

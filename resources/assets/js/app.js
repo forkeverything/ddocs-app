@@ -27,6 +27,7 @@ Vue.component('file-reject-modal', require('./components/file/RejectModal.vue'))
 Vue.component('file-filters', require('./components/file/Filters.vue'));
 Vue.component('file-active-filters', require('./components/file/ActiveFilters.vue'));
 Vue.component('file-uploader', require('./components/file/Uploader.vue'));
+Vue.component('file-renamer', require('./components/file/Renamer.vue'));
 
 // Account
 Vue.component('add-credit-card', require('./components/account/AddCreditCard.vue'));
