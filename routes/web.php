@@ -31,7 +31,7 @@ Route::get('/recipients/{recipient_hash}/turn_off_notifications', 'RecipientsCon
 // Files
 Route::post('/file/{file_request_hash}', 'FilesController@postUploadFile');
 Route::post('/file/{file_request_hash}/reject', 'FilesController@postRejectUploadedFile');
-Route::get('/file/{file_request_hash}/history', 'FilesController@getFileHistory');
+Route::get('/file/{file_request_hash}/history', 'FilesController@getHistory');
 
 // Account
 Route::get('/account', 'AccountController@getAccountOverview');

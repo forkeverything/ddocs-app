@@ -28,6 +28,22 @@
       width: 1140px;
       padding-right: 0; } }
 
+@media screen and (max-width: 767px) {
+  .visible-xs-inline {
+    display: inline-block !important; } }
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .visible-sm-inline {
+    display: inline-block !important; } }
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .visible-md-inline {
+    display: inline-block !important; } }
+
+@media screen and (min-width: 1200px) and (max-width: 1200px) {
+  .visible-lg-inline {
+    display: inline-block !important; } }
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -8009,6 +8025,8 @@ button.close {
   color: #fff !important;
   background: #41B883 !important;
   text-decoration: none !important; }
+  .dropdown-menu li a:hover i, .dropdown-menu li a:focus i {
+    color: #fff !important; }
 
 .ui-datepicker-trigger {
   width: 20px;

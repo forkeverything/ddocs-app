@@ -66,6 +66,9 @@
                     self.uploading = false;
                 });
             }
+        },
+        ready: function() {
+            vueGlobalEventBus.$on('upload-selected-file-' + this.fileRequest.id, this.selectFile);
         }
     }
 </script>

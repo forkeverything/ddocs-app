@@ -59,4 +59,10 @@ class FilesController extends Controller
         Event::fire(new FileWasRejected($fileRequest));
         return $fileRequest;
     }
+
+    public function getHistory($fileRequestHash)
+    {
+        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash))->load('checklist', 'uploads');
+        return view('file.history', compact('fileRequest'));
+    }
 }

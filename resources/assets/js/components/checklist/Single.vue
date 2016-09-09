@@ -59,18 +59,46 @@
 
             <div id="selected-file-menu"
                  class="table-header"
-                 v-show="selectedFile"
+                 v-if="selectedFile"
             >
                 <span class="file-name" v-if="selectedFile">{{ selectedFile.name }}</span>
                 <ul class="list-menu-items list-inline list-unstyled">
-                    <li class="menu-item"><a href="#" @click.prevent="showRejectModal"
-                                             :class="{ 'disabled': ! canRejectFile }"><i
-                            class="icon reject fa fa-close"></i>Reject</a></li>
-                    <li class="menu-item"><a href="#"><i class="icon history fa fa-clock-o"></i>History</a></li>
-                    <li class="menu-item"><a href="#"><i class="icon rename fa fa-edit"></i>Rename</a></li>
-                    <li class="menu-item"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
+                    <li class="menu-item visible-xs-inline">
+                        <a href="#"
+                           :class="{'disabled': selectedFile.status === 'received'}"
+                           @click="uploadSelected"
+
+                        >
+                            <i class="icon upload fa fa-upload"></i>Upload
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#"
+                           @click.prevent="showRejectModal"
+                           :class="{ 'disabled': ! canRejectFile }">
+                            <i class="icon reject fa fa-close"></i>Reject
+                        </a>
+                    </li>
+                    <li class="dropdown visible-xs-inline">
+                        <a id="select-menu-more" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            More
+                            <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="select-menu-more">
+                            <li class="menu-item"><a :href="'/file/' + selectedFile.hash + '/history'"><i class="icon history fa fa-clock-o"></i>History</a></li>
+                            <li class="menu-item"><a href="#"><i class="icon rename fa fa-edit"></i>Rename</a></li>
+                            <li class="menu-item"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item hidden-xs"><a :href="'/file/' + selectedFile.hash + '/history'"><i class="icon history fa fa-clock-o"></i>History</a></li>
+                    <li class="menu-item hidden-xs"><a href="#"><i class="icon rename fa fa-edit"></i>Rename</a></li>
+                    <li class="menu-item hidden-xs"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
                 </ul>
             </div>
+
+
+
 
             <ul id="files-header"
                 class="list-unstyled list-inline table-header"
@@ -124,10 +152,11 @@
                     </div>
                     <div class="column col-name content-column">
                         <!-- Download -->
-                        <a v-if="file.latest_upload" :href=" awsUrl + file.latest_upload.path" :alt="file.name + 'download link'">
+                        <a v-if="file.latest_upload" :href=" awsUrl + file.latest_upload.path"
+                           :alt="file.name + 'download link'" class="name">
                             {{ file.name }}
                         </a>
-                        <span v-else>{{ file.name }}</span>
+                        <span v-else class="name">{{ file.name }}</span>
                     </div>
                     <div class="column col-due content-column">
                         <span class="date" v-if="file.due">{{ file.due | date }}</span>
@@ -207,6 +236,9 @@
             },
             showRejectModal: function () {
                 if (this.canRejectFile) vueGlobalEventBus.$emit('show-reject-modal', this.selectedFile);
+            },
+            uploadSelected: function() {
+                vueGlobalEventBus.$emit('upload-selected-file-' + this.selectedFile.id);
             }
         },
         ready: function () {

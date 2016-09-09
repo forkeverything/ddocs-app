@@ -2,15 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/sass/file/history.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/file/history.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/FileRequest.php" afterPath="$PROJECT_DIR$/app/FileRequest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css.map" afterPath="$PROJECT_DIR$/public/css/app.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/landing.css" afterPath="$PROJECT_DIR$/public/css/landing.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/landing.css.map" afterPath="$PROJECT_DIR$/public/css/landing.css.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/app.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/app.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/file.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/file.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/components/_dropdown.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/components/_dropdown.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/utilities.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/utilities.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,18 +37,38 @@
     <favorites_list name="files-collector" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Single.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="785">
-              <caret line="235" column="30" lean-forward="true" selection-start-line="235" selection-start-column="30" selection-end-line="235" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="EmailFileRejectedNotification.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/Listeners/EmailFileRejectedNotification.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="270">
+                  <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+                  <folding>
+                    <element signature="e#33#64#0#PHP" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="RejectModal.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/RejectModal.vue">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="704">
+                  <caret line="61" column="63" lean-forward="false" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="63" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,16 +76,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/components/_nav.scss" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/components/_tables.scss" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/utilities.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/FileRequests.vue" />
         <option value="$PROJECT_DIR$/resources/views/checklist/all.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/sass/layout.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/All.vue" />
         <option value="$PROJECT_DIR$/resources/views/checklist/make.blade.php" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/app.scss" />
         <option value="$PROJECT_DIR$/resources/assets/sass/checklist/make.scss" />
         <option value="$PROJECT_DIR$/resources/assets/sass/landing.scss" />
         <option value="$PROJECT_DIR$/resources/views/account/overview.blade.php" />
@@ -66,7 +88,6 @@
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/sass/components/buttons/_default.scss" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/components/_dropdown.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/file/ActiveFilters.vue" />
         <option value="$PROJECT_DIR$/resources/assets/sass/components/_buttons.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/file/Filters.vue" />
@@ -78,7 +99,6 @@
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
         <option value="$PROJECT_DIR$/resources/assets/sass/checklist/_all.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/bootstrap.js" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Checklist.php" />
         <option value="$PROJECT_DIR$/app/Factories/FileFactory.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/RecipientsController.php" />
@@ -92,14 +112,21 @@
         <option value="$PROJECT_DIR$/resources/views/emails/partials/turn-off-notifications.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
         <option value="$PROJECT_DIR$/config/hashids.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/file/RejectModal.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/app.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
         <option value="$PROJECT_DIR$/app/FileRequest.php" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" />
         <option value="$PROJECT_DIR$/resources/assets/sass/file.scss" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" />
+        <option value="$PROJECT_DIR$/resources/assets/sass/utilities.scss" />
+        <option value="$PROJECT_DIR$/resources/assets/sass/components/_dropdown.scss" />
+        <option value="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" />
+        <option value="$PROJECT_DIR$/resources/assets/sass/app.scss" />
+        <option value="$PROJECT_DIR$/resources/views/file/history.blade.php" />
+        <option value="$PROJECT_DIR$/resources/assets/sass/file/history.scss" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/file/RejectModal.vue" />
+        <option value="$PROJECT_DIR$/app/Listeners/EmailFileRejectedNotification.php" />
       </list>
     </option>
   </component>
@@ -178,7 +205,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -202,11 +228,123 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="psy" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="psysh" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="psy" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="psysh" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="psy" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="psysh" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fixtures" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="psy" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="psysh" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fixtures" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="legacy" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".psysh" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -227,10 +365,6 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emails" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -247,210 +381,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emails" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="partials" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sass" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sass" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sass" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="forms" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sass" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="buttons" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -468,69 +398,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css-element-queries" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css-element-queries" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css-element-queries" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css-element-queries" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -545,29 +413,12 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files-collector" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mail" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -743,12 +594,12 @@
       <workItem from="1473361057994" duration="112000" />
       <workItem from="1473387237807" duration="1444000" />
       <workItem from="1473395377820" duration="1916000" />
-      <workItem from="1473397347622" duration="1734000" />
+      <workItem from="1473397347622" duration="6660000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="384540000" />
+    <option name="totallyTimeSpent" value="389466000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -756,7 +607,7 @@
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10429688" sideWeight="0.53584903" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24257812" sideWeight="0.46415094" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2421875" sideWeight="0.46415094" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -790,102 +641,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="14" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/auth/RegistrationModal.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/ActiveFilters.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/Filters.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/components/_buttons.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
-          <caret line="33" column="16" lean-forward="false" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/components/_datepicker.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/utilities/Tagger.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="41" column="4" lean-forward="false" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/components/_filters.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="94" column="11" lean-forward="false" selection-start-line="94" selection-start-column="11" selection-end-line="94" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/utilities.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="29" column="21" lean-forward="true" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="954">
-          <caret line="368" column="19" lean-forward="false" selection-start-line="368" selection-start-column="19" selection-end-line="368" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_scaffolding.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_buttons.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2349">
-          <caret line="87" column="59" lean-forward="false" selection-start-line="87" selection-start-column="59" selection-end-line="87" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/variables.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/variables/_colors.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="29" column="15" lean-forward="true" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/mixins/replacesFileFromFilesArray.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1168,44 +928,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FilesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="893">
-          <caret line="52" column="26" lean-forward="true" selection-start-line="52" selection-start-column="26" selection-end-line="52" selection-end-column="26" />
-          <folding>
-            <marker date="1473397494000" expanded="false" signature="44:381" ph="..." />
-            <marker date="1473397494000" expanded="true" signature="423:1971" ph="{...}" />
-            <marker date="1473397494000" expanded="true" signature="434:623" ph=" Handle POST request to upload a file for a File Request within a Checklist. ..." />
-            <marker date="1473397494000" expanded="true" signature="706:1423" ph="{...}" />
-            <marker date="1473397494000" expanded="true" signature="1432:1628" ph=" POST request to mark a File (File Request's most recent upload) as rejected. ..." />
-            <marker date="1473397494000" expanded="true" signature="1719:1969" ph="{...}" />
-            <marker date="1473397494000" expanded="true" signature="1860:1876" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/landing.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="33" column="82" lean-forward="true" selection-start-line="33" selection-start-column="82" selection-end-line="33" selection-end-column="82" />
-          <folding>
-            <marker date="1473396417000" expanded="false" signature="9:384" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Utilities/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -1219,6 +945,30 @@
             <marker date="1473397393000" expanded="true" signature="249:470" ph="/** Next, we will create a fresh Vue application instance and attach it to ...*/" />
             <marker date="1473397393000" expanded="true" signature="1739:1757" ph="{&quot;el&quot;: 'body'...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/components.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/file.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/nikic/php-parser/test/code/parser/stmt/class/name.test">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1255,108 +1005,356 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/RejectModal.vue">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1028">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state relative-caret-position="434">
+          <caret line="47" column="40" lean-forward="true" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
           <folding>
-            <marker date="1473397392000" expanded="true" signature="9:1434" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="40:1422" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="112:1411" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="167:1396" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="211:1377" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="258:525" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="359:439" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="365:430" ph="..." />
-            <marker date="1473397392000" expanded="false" signature="417:424" ph="×" />
-            <marker date="1473397392000" expanded="true" signature="570:876" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="619:849" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="732:818" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="923:1354" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="1011:1180" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="1277:1327" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="1443:3036" ph="..." />
-            <marker date="1473397392000" expanded="true" signature="1464:3027" ph="{...}" />
-            <marker date="1473397392000" expanded="true" signature="1492:1624" ph="{...}" />
-            <marker date="1473397392000" expanded="true" signature="1513:1614" ph="{&quot;file&quot;: ''...}" />
-            <marker date="1473397392000" expanded="true" signature="1663:1816" ph="{...}" />
-            <marker date="1473397392000" expanded="true" signature="1701:1806" ph="{...}" />
-            <marker date="1473397392000" expanded="true" signature="1835:2723" ph="{...}" />
-            <marker date="1473397392000" expanded="true" signature="1871:1920" ph="{...}" />
-            <marker date="1473397392000" expanded="true" signature="1958:2713" ph="{...}" />
-            <marker date="1473397392000" expanded="true" signature="2150:2209" ph="{&quot;reason&quot;: self.reason...}" />
-            <marker date="1473397392000" expanded="true" signature="2230:2547" ph="{...}" />
-            <marker date="1473397392000" expanded="true" signature="2563:2697" ph="{...}" />
-            <marker date="1473397392000" expanded="true" signature="2752:3021" ph="{...}" />
-            <marker date="1473397392000" expanded="true" signature="2910:3009" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="9:717" ph="..." />
+            <marker date="1473404722000" expanded="true" signature="41:705" ph="..." />
+            <marker date="1473404722000" expanded="true" signature="72:336" ph="..." />
+            <marker date="1473404722000" expanded="true" signature="363:522" ph="..." />
+            <marker date="1473404722000" expanded="true" signature="570:694" ph="..." />
+            <marker date="1473404722000" expanded="true" signature="726:2303" ph="..." />
+            <marker date="1473404722000" expanded="true" signature="747:2294" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="775:884" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="796:874" ph="{&quot;progress&quot;: ''...}" />
+            <marker date="1473404722000" expanded="true" signature="904:1039" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="951:1029" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="1091:2150" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="1129:1188" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="1238:2140" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="1540:1712" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="1583:1694" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="1733:1905" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="1921:2124" ph="{...}" />
+            <marker date="1473404722000" expanded="true" signature="2178:2288" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/Filters.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <marker date="1473324449000" expanded="true" signature="9:2022" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="53:2010" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="81:2000" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="203:470" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="404:448" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="666:836" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="731:817" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="1022:1183" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="1084:1164" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="1296:1714" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="1409:1695" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="1813:1986" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="2031:2169" ph="..." />
+            <marker date="1473324449000" expanded="true" signature="2048:2160" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="307" column="1" lean-forward="false" selection-start-line="307" selection-start-column="1" selection-end-line="307" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/utilities.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1109">
+          <caret line="56" column="20" lean-forward="true" selection-start-line="56" selection-start-column="20" selection-end-line="56" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/components/_dropdown.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="118" column="16" lean-forward="false" selection-start-line="118" selection-start-column="16" selection-end-line="118" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/components.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/app.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="891">
+          <caret line="122" column="41" lean-forward="true" selection-start-line="122" selection-start-column="41" selection-end-line="122" selection-end-column="41" />
           <folding>
-            <marker date="1473403096000" expanded="true" signature="9:717" ph="..." />
-            <marker date="1473403096000" expanded="true" signature="41:705" ph="..." />
-            <marker date="1473403096000" expanded="true" signature="72:336" ph="..." />
-            <marker date="1473403096000" expanded="true" signature="363:522" ph="..." />
-            <marker date="1473403096000" expanded="true" signature="570:694" ph="..." />
-            <marker date="1473403096000" expanded="true" signature="726:2165" ph="..." />
-            <marker date="1473403096000" expanded="true" signature="747:2156" ph="{...}" />
-            <marker date="1473403096000" expanded="true" signature="775:884" ph="{...}" />
-            <marker date="1473403096000" expanded="true" signature="796:874" ph="{&quot;progress&quot;: ''...}" />
-            <marker date="1473403096000" expanded="true" signature="904:1039" ph="{...}" />
-            <marker date="1473403096000" expanded="true" signature="951:1029" ph="{...}" />
-            <marker date="1473403096000" expanded="true" signature="1091:2150" ph="{...}" />
-            <marker date="1473403096000" expanded="true" signature="1129:1188" ph="{...}" />
-            <marker date="1473403096000" expanded="true" signature="1238:2140" ph="{...}" />
-            <marker date="1473403096000" expanded="true" signature="1540:1712" ph="{...}" />
-            <marker date="1473403096000" expanded="true" signature="1583:1694" ph="{...}" />
-            <marker date="1473403096000" expanded="true" signature="1733:1905" ph="{...}" />
-            <marker date="1473403096000" expanded="true" signature="1921:2124" ph="{...}" />
+            <element signature="e#1268#1786#0" expanded="false" />
+            <element signature="e#3741#3773#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/file.scss">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="648">
+          <caret line="33" column="68" lean-forward="false" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="68" />
+          <folding>
+            <marker date="1473406998000" expanded="false" signature="9:384" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="785">
-          <caret line="235" column="30" lean-forward="true" selection-start-line="235" selection-start-column="30" selection-end-line="235" selection-end-column="30" />
+        <state relative-caret-position="396">
+          <caret line="67" column="48" lean-forward="false" selection-start-line="67" selection-start-column="48" selection-end-line="67" selection-end-column="48" />
+          <folding>
+            <marker date="1473407137000" expanded="true" signature="9:8275" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="59:8263" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="121:6632" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="223:771" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="344:642" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="789:936" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="814:918" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="974:1229" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="1095:1210" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="1275:1336" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="1412:2578" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="1454:2558" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="1504:2108" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="1614:1758" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="1870:2080" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="2170:2535" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="2730:5028" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="2980:5009" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="3041:3370" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="3078:3344" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="3413:3707" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="3450:3681" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="3767:4584" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="3906:4024" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="4131:4558" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="5067:6617" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="5242:5633" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="5692:6053" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="6111:6468" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="6529:6599" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="6672:8204" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="6727:8189" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="6768:8171" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="7198:7278" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="7343:7729" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="7481:7629" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="7793:7955" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="8022:8149" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="8284:12346" ph="..." />
+            <marker date="1473407137000" expanded="true" signature="8404:12336" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="8432:9073" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="8453:9063" ph="{&quot;numReceived&quot;: ''...}" />
+            <marker date="1473407137000" expanded="true" signature="8553:8950" ph="[...]" />
+            <marker date="1473407137000" expanded="true" signature="8575:8681" ph="{&quot;value&quot;: 'version'...}" />
+            <marker date="1473407137000" expanded="true" signature="8703:8806" ph="{&quot;value&quot;: 'due'...}" />
+            <marker date="1473407137000" expanded="true" signature="8828:8932" ph="{&quot;value&quot;: 'status'...}" />
+            <marker date="1473407137000" expanded="true" signature="9093:9843" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="9133:9207" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="9257:9336" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="9374:9459" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="9500:9633" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="9684:9833" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="9978:10843" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="10022:10118" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="10161:10416" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="10319:10400" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="10460:10525" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="10568:10688" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="10729:10833" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="10872:12330" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="10999:11231" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="11096:11148" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="11247:11420" ph="//..." />
+            <marker date="1473407137000" expanded="true" signature="11455:11581" ph="[...]" />
+            <marker date="1473407137000" expanded="true" signature="11626:12041" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="11736:11962" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="11844:11944" ph="{...}" />
+            <marker date="1473407137000" expanded="true" signature="12169:12318" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/account/overview.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="83" lean-forward="true" selection-start-line="15" selection-start-column="83" selection-end-line="15" selection-end-column="83" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Utilities/helpers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="32" column="9" lean-forward="false" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+          <folding>
+            <marker date="1473396828000" expanded="false" signature="11:82" ph="..." />
+            <marker date="1473396828000" expanded="true" signature="87:177" ph=" Hash eloquent model id ..." />
+            <marker date="1473396828000" expanded="true" signature="222:291" ph="{...}" />
+            <marker date="1473396828000" expanded="true" signature="296:401" ph=" Takes a hashed Id and decodes it to return an Eloquent Model Id ..." />
+            <marker date="1473396828000" expanded="true" signature="441:518" ph="{...}" />
+            <marker date="1473396828000" expanded="true" signature="523:599" ph=" Returns the AWS URL using our credentials in .env ..." />
+            <marker date="1473396828000" expanded="true" signature="619:716" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/finder/Iterator/FilecontentFilterIterator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1467178916000" expanded="false" signature="9:234" ph="..." />
+            <marker date="1467178916000" expanded="true" signature="287:488" ph=" FilecontentFilterIterator filters files by their contents using patterns (regexps or strings). ..." />
+            <marker date="1467178916000" expanded="true" signature="557:1444" ph="{...}" />
+            <marker date="1467178916000" expanded="true" signature="567:686" ph=" Filters the iterator values. ..." />
+            <marker date="1467178916000" expanded="true" signature="717:1116" ph="{...}" />
+            <marker date="1467178916000" expanded="true" signature="785:819" ph="..." />
+            <marker date="1467178916000" expanded="true" signature="922:957" ph="..." />
+            <marker date="1467178916000" expanded="true" signature="1029:1064" ph="..." />
+            <marker date="1467178916000" expanded="true" signature="1125:1315" ph=" Converts string to regexp if necessary. ..." />
+            <marker date="1467178916000" expanded="true" signature="1354:1442" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/app.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/file/history.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/file/history.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="35" column="82" lean-forward="false" selection-start-line="35" selection-start-column="82" selection-end-line="35" selection-end-column="82" />
+          <caret line="38" column="82" lean-forward="false" selection-start-line="38" selection-start-column="82" selection-end-line="38" selection-end-column="82" />
+          <folding>
+            <marker date="1473408172000" expanded="true" signature="43:2076" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="88:2074" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="150:508" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="167:493" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="346:475" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="349:468" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="547:2063" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="644:2048" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="668:811" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="689:782" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="786:803" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="835:2027" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="929:1974" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="958:1207" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="1259:1948" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="1329:1918" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="1515:1601" ph="..." />
+            <marker date="1473408172000" expanded="true" signature="1742:1846" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Events/FileWasRejected.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="26" column="20" lean-forward="false" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+          <folding>
+            <marker date="1472376568000" expanded="true" signature="34:320" ph="..." />
+            <marker date="1472376568000" expanded="true" signature="343:878" ph="{...}" />
+            <marker date="1472376568000" expanded="true" signature="402:432" ph=" @var FileRequest ..." />
+            <marker date="1472376568000" expanded="true" signature="468:556" ph=" Create a new event instance. ..." />
+            <marker date="1472376568000" expanded="true" signature="616:671" ph="{...}" />
+            <marker date="1472376568000" expanded="true" signature="680:777" ph=" Get the channels the event should broadcast on. ..." />
+            <marker date="1472376568000" expanded="true" signature="813:876" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FilesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+          <folding>
+            <marker date="1473407933000" expanded="false" signature="44:381" ph="..." />
+            <marker date="1473407933000" expanded="true" signature="423:2216" ph="{...}" />
+            <marker date="1473407933000" expanded="true" signature="434:623" ph=" Handle POST request to upload a file for a File Request within a Checklist. ..." />
+            <marker date="1473407933000" expanded="true" signature="706:1423" ph="{...}" />
+            <marker date="1473407933000" expanded="true" signature="1432:1628" ph=" POST request to mark a File (File Request's most recent upload) as rejected. ..." />
+            <marker date="1473407933000" expanded="true" signature="1719:1969" ph="{...}" />
+            <marker date="1473407933000" expanded="true" signature="1860:1876" ph="..." />
+            <marker date="1473407933000" expanded="true" signature="2019:2214" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/EventServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="43" column="28" lean-forward="false" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+          <folding>
+            <marker date="1472395618000" expanded="false" signature="37:811" ph="..." />
+            <marker date="1472395618000" expanded="true" signature="863:1968" ph="{...}" />
+            <marker date="1472395618000" expanded="true" signature="873:960" ph=" The event listener mappings for the application. ..." />
+            <marker date="1472395618000" expanded="true" signature="988:1796" ph="..." />
+            <marker date="1472395618000" expanded="true" signature="1024:1072" ph="..." />
+            <marker date="1472395618000" expanded="true" signature="1111:1168" ph="..." />
+            <marker date="1472395618000" expanded="true" signature="1206:1243" ph="..." />
+            <marker date="1472395618000" expanded="true" signature="1284:1347" ph="..." />
+            <marker date="1472395618000" expanded="true" signature="1385:1443" ph="..." />
+            <marker date="1472395618000" expanded="true" signature="1488:1560" ph="..." />
+            <marker date="1472395618000" expanded="true" signature="1609:1681" ph="..." />
+            <marker date="1472395618000" expanded="true" signature="1731:1790" ph="..." />
+            <marker date="1472395618000" expanded="true" signature="1807:1889" ph=" Register any events for your application. ..." />
+            <marker date="1472395618000" expanded="true" signature="1918:1966" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Mail/FileChangesRequired.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+          <folding>
+            <marker date="1473197841000" expanded="false" signature="32:224" ph="..." />
+            <marker date="1473197841000" expanded="true" signature="291:1295" ph="{...}" />
+            <marker date="1473197841000" expanded="true" signature="339:400" ph=" The FileRequest. ..." />
+            <marker date="1473197841000" expanded="true" signature="436:534" ph=" The User that made the Checklist that holds the FileRequest. ..." />
+            <marker date="1473197841000" expanded="true" signature="564:610" ph=" @var Recipient getting the email ..." />
+            <marker date="1473197841000" expanded="true" signature="644:769" ph=" Create a new message instance. ..." />
+            <marker date="1473197841000" expanded="true" signature="851:999" ph="{...}" />
+            <marker date="1473197841000" expanded="true" signature="1008:1068" ph=" Build the message. ..." />
+            <marker date="1473197841000" expanded="true" signature="1098:1293" ph="{...}" />
+            <marker date="1473197841000" expanded="true" signature="1280:1285" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/RejectModal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="61" column="63" lean-forward="false" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Listeners/EmailFileRejectedNotification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
+          <folding>
+            <element signature="e#33#64#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
