@@ -77,7 +77,7 @@ require('./animations.js');
 require('./helpers.js');
 
 // Page Fixed/Scroll Height adjustments
-let ResizeSensor = require('css-element-queries/src/ResizeSensor');
+window.ResizeSensor = require('css-element-queries/src/ResizeSensor');
 $(window).on('load', () => {
     let element = document.getElementById('page-fixed-top');
     if(! element){

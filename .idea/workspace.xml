@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/landing.js" afterPath="$PROJECT_DIR$/public/js/landing.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/bootstrap.js" afterPath="$PROJECT_DIR$/resources/assets/js/bootstrap.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
     </list>
     <ignored path="files-collector.iws" />
@@ -22,19 +25,36 @@
     <favorites_list name="files-collector" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Single.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="88" column="153" lean-forward="false" selection-start-line="88" selection-start-column="153" selection-end-line="88" selection-end-column="153" />
-              <caret line="93" column="155" lean-forward="false" selection-start-line="93" selection-start-column="155" selection-end-line="93" selection-end-column="155" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="Single.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="459">
+                  <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="bootstrap.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/assets/js/bootstrap.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="704">
+                  <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,7 +84,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_07_31_060512_create_file_requests_table.php" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
         <option value="$PROJECT_DIR$/resources/assets/sass/checklist/_all.scss" />
-        <option value="$PROJECT_DIR$/resources/assets/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/app/Checklist.php" />
         <option value="$PROJECT_DIR$/app/Factories/FileFactory.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/RecipientsController.php" />
@@ -92,6 +111,7 @@
         <option value="$PROJECT_DIR$/resources/assets/sass/file/history.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/file/RejectModal.vue" />
         <option value="$PROJECT_DIR$/app/Listeners/EmailFileRejectedNotification.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
       </list>
     </option>
@@ -560,12 +580,12 @@
       <workItem from="1473361057994" duration="112000" />
       <workItem from="1473387237807" duration="1444000" />
       <workItem from="1473395377820" duration="1916000" />
-      <workItem from="1473397347622" duration="6811000" />
+      <workItem from="1473397347622" duration="7726000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="389617000" />
+    <option name="totallyTimeSpent" value="390532000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -666,13 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1260,11 +1273,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="88" column="153" lean-forward="false" selection-start-line="88" selection-start-column="153" selection-end-line="88" selection-end-column="153" />
-          <caret line="93" column="155" lean-forward="false" selection-start-line="93" selection-start-column="155" selection-end-line="93" selection-end-column="155" />
+        <state relative-caret-position="459">
+          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
           <folding />
         </state>
       </provider>

@@ -26,10 +26,8 @@
                     <li v-for="recipient in checklist.recipients">{{ recipient.email }}</li>
                 </ul>
             </div>
-
-            <p v-if="checklist.description">
-                {{ checklist.description }}
-            </p>
+            
+                <p v-if="checklist.description">{{ checklist.description }}</p>
 
             <form id="form-checklist-search" @submit.prevent="searchTerm">
                 <div class="input-group">
@@ -80,24 +78,27 @@
                         </a>
                     </li>
                     <li class="dropdown visible-xs-inline">
-                        <a id="select-menu-more" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a id="select-menu-more" href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">
                             More
                             <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="select-menu-more">
-                            <li class="menu-item"><a :href="'/file/' + selectedFile.hash + '/history'" :class="{'disabled': ! selectedFile.latest_upload }"><i class="icon history fa fa-clock-o"></i>History</a></li>
+                            <li class="menu-item"><a :href="'/file/' + selectedFile.hash + '/history'"
+                                                     :class="{'disabled': ! selectedFile.latest_upload }"><i
+                                    class="icon history fa fa-clock-o"></i>History</a></li>
                             <li class="menu-item"><a href="#"><i class="icon rename fa fa-edit"></i>Rename</a></li>
                             <li class="menu-item"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
                         </ul>
                     </li>
-                    <li class="menu-item hidden-xs"><a :href="'/file/' + selectedFile.hash + '/history'" :class="{'disabled': ! selectedFile.latest_upload }"><i class="icon history fa fa-clock-o"></i>History</a></li>
+                    <li class="menu-item hidden-xs"><a :href="'/file/' + selectedFile.hash + '/history'"
+                                                       :class="{'disabled': ! selectedFile.latest_upload }"><i
+                            class="icon history fa fa-clock-o"></i>History</a></li>
                     <li class="menu-item hidden-xs"><a href="#"><i class="icon rename fa fa-edit"></i>Rename</a></li>
                     <li class="menu-item hidden-xs"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
                 </ul>
             </div>
-
-
 
 
             <ul id="files-header"
@@ -237,7 +238,7 @@
             showRejectModal: function () {
                 if (this.canRejectFile) vueGlobalEventBus.$emit('show-reject-modal', this.selectedFile);
             },
-            uploadSelected: function() {
+            uploadSelected: function () {
                 vueGlobalEventBus.$emit('upload-selected-file-' + this.selectedFile.id);
             }
         },
