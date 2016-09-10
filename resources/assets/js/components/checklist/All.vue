@@ -7,7 +7,7 @@
                 <strong>Your Checklists</strong>
             </h3>
             <div>
-                <a href="/checklist/make">
+                <a href="/c/make">
                     <button type="button" class="btn btn-primary">New Checklist</button>
                 </a>
             </div>
@@ -41,7 +41,7 @@
         <div id="page-scroll-content">
             <ul id="list-checklists" v-show="checklists.length > 0" class="list-unstyled">
                 <li class="single-checklist" v-for="checklist in checklists">
-                    <a :href="'/checklist/' + checklist.hash" class="checklist-link">
+                    <a :href="'/c/' + checklist.hash" class="checklist-link">
                         <div class="header">
                             <h4>{{ checklist.name }}</h4>
                             <span class="date-made">{{ checklist.created_at | easyDate }}</span>
@@ -56,7 +56,7 @@
                 </li>
             </ul>
 
-            <p v-else class="text-muted">Sorry we couldn't find any lists for you. <a href="/checklist/make">Make</a> a
+            <p v-else class="text-muted">Sorry we couldn't find any lists for you. <a href="/c/make">Make</a> a
                 new
                 one or
                 <a href="#" @click.prevent="clearSearch">clear</a> your search to see more.</p>
@@ -77,7 +77,7 @@
             return {
                 ajaxReady: true,
                 hasFilters: false,
-                requestUrl: "checklist/get",
+                requestUrl: "c/get",
                 checklists: [],
                 sortField: ''
             }

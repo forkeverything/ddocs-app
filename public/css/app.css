@@ -8589,7 +8589,7 @@ label {
       border-radius: 0;
       padding-left: 0; }
     #form-checklist-make .single-file .input-due {
-      width: 75px;
+      width: 100px;
       border: 0;
       text-align: center;
       outline: 0 !important;
@@ -8761,7 +8761,7 @@ label {
 #checklist-single #files-header {
   white-space: nowrap; }
 
-#checklist-single #files-header, #checklist-single .single-file {
+#checklist-single #files-header, #checklist-single .single-file-request {
   display: -webkit-box;
   display: flex; }
 
@@ -8842,28 +8842,28 @@ label {
 
 #checklist-single #files-list {
   padding-top: 1px; }
-  #checklist-single #files-list .single-file {
+  #checklist-single #files-list .single-file-request {
     border-top: 1px solid #e6e6e6;
     border-bottom: 1px solid #e6e6e6;
     margin-bottom: -1px;
     flex-wrap: wrap; }
-    #checklist-single #files-list .single-file:hover {
+    #checklist-single #files-list .single-file-request:hover {
       border-color: #41B883;
       background: #f7fcfa;
       z-index: 2;
       position: relative; }
-    #checklist-single #files-list .single-file:focus, #checklist-single #files-list .single-file.focus, #checklist-single #files-list .single-file.is-selected {
+    #checklist-single #files-list .single-file-request:focus, #checklist-single #files-list .single-file-request.focus, #checklist-single #files-list .single-file-request.is-selected {
       background: #dcf3e9;
       border-color: #349268;
       z-index: 3;
       position: relative;
       outline: 0; }
-    #checklist-single #files-list .single-file .col-file i {
+    #checklist-single #files-list .single-file-request .col-file i {
       font-size: 1.5em; }
       @media screen and (min-width: 768px) {
-        #checklist-single #files-list .single-file .col-file i {
+        #checklist-single #files-list .single-file-request .col-file i {
           font-size: 2em; } }
-    #checklist-single #files-list .single-file .col-upload .btn {
+    #checklist-single #files-list .single-file-request .col-upload .btn {
       font-size: 1.2em;
       padding: 0 7px; }
 

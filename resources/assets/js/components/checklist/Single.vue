@@ -57,14 +57,14 @@
 
             <div id="selected-file-menu"
                  class="table-header keep-selected-file"
-                 v-if="selectedFile"
+                 v-if="selectedFileRequest"
                  @click.stop=""
             >
-                <span class="file-name" v-if="selectedFile">{{ selectedFile.name }}</span>
+                <span class="file-name" v-if="selectedFileRequest">{{ selectedFileRequest.name }}</span>
                 <ul class="list-menu-items list-inline list-unstyled">
                     <li class="menu-item visible-xs-inline">
                         <a href="#"
-                           :class="{'disabled': selectedFile.status === 'received'}"
+                           :class="{'disabled': selectedFileRequest.status === 'received'}"
                            @click="uploadSelected"
 
                         >
@@ -84,22 +84,25 @@
                             More
                             <span class="caret"></span>
                         </a>
-
                         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="select-menu-more">
-                            <li class="menu-item"><a :href="'/file/' + selectedFile.hash + '/history'"
-                                                     :class="{'disabled': ! selectedFile.latest_upload }"><i
-                                    class="icon history fa fa-clock-o"></i>History</a></li>
-                            <li class="menu-item"><a href="#" @click.prevent="renameSelectedFile"><i
-                                    class="icon rename fa fa-edit"></i>Rename</a></li>
-                            <li class="menu-item"><a href="#" @click.prevent="showDeleteModal"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
+                            <li class="menu-item">
+                                <a :href="'/fr/' + selectedFileRequest.hash + '/history'"
+                                   :class="{'disabled': ! selectedFileRequest.latest_upload }">
+                                    <i class="icon history fa fa-clock-o"></i>History
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#"
+                                   @click.prevent="showDeleteModal"
+                                >
+                                    <i class="icon delete fa fa-trash-o"></i>Delete
+                                </a>
+                            </li>
                         </ul>
-
                     </li>
-                    <li class="menu-item hidden-xs"><a :href="'/file/' + selectedFile.hash + '/history'"
-                                                       :class="{'disabled': ! selectedFile.latest_upload }"><i
+                    <li class="menu-item hidden-xs"><a :href="'/fr/' + selectedFileRequest.hash + '/history'"
+                                                       :class="{'disabled': ! selectedFileRequest.latest_upload }"><i
                             class="icon history fa fa-clock-o"></i>History</a></li>
-                    <li class="menu-item hidden-xs"><a href="#" @click.prevent="renameSelectedFile"><i
-                            class="icon rename fa fa-edit"></i>Rename</a></li>
                     <li class="menu-item hidden-xs"><a href="#" @click.prevent="showDeleteModal"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
                 </ul>
             </div>
@@ -107,7 +110,7 @@
 
             <ul id="files-header"
                 class="list-unstyled list-inline table-header"
-                v-show="! selectedFile"
+                v-show="! selectedFileRequest"
             >
                 <li class="column col-file header-column"
                     :class="{
@@ -144,43 +147,40 @@
 
         <div id="page-scroll-content">
             <ul id="files-list" class="list-unstyled keep-selected-file">
-                <li class="single-file"
-                    v-for="(index, file) in files"
-                    @focus="selectFile(index)"
+                <li class="single-file-request"
+                    v-for="(index, fileRequest) in fileRequests"
+                    @focus="selectFileRequest(index)"
                     tabindex="1"
-                    :class="{ 'is-selected': file === selectedFile }"
-                    @keydown.up="selectFile(index - 1)"
-                    @keydown.down="selectFile(index + 1)"
+                    :class="{ 'is-selected': fileRequest === selectedFileRequest }"
+                    @keydown.up="selectFileRequest(index - 1)"
+                    @keydown.down="selectFileRequest(index + 1)"
                 >
-                    <div class="column col-file content-column file-status" :class="file.status">
+                    <div class="column col-file content-column file-status" :class="fileRequest.status">
                         <i class="fa fa-file-o"></i>
                     </div>
                     <div class="column col-name content-column">
                         <!-- Download -->
-                        <a v-if="file.latest_upload"
-                           :href=" awsUrl + file.latest_upload.path"
-                           :alt="file.name + 'download link'"
+                        <a v-if="fileRequest.latest_upload"
+                           :href=" awsUrl + fileRequest.latest_upload.path"
+                           :alt="fileRequest.name + 'download link'"
                            class="name"
-                           v-show="! file.renaming"
                         >
-                            {{ file.name }}
+                            {{ fileRequest.name }}
                         </a>
-                        <span v-else class="name" v-show="! file.renaming">{{ file.name }}</span>
-
-                        <file-renamer :file.sync="file" v-show="file.renaming"></file-renamer>
+                        <span v-else class="name">{{ fileRequest.name }}</span>
                     </div>
                     <div class="column col-due content-column">
-                        <span class="date" v-if="file.due">{{ file.due | date }}</span>
+                        <span class="date" v-if="fileRequest.due">{{ fileRequest.due | date }}</span>
                         <span v-else>--</span>
                     </div>
                     <div class="column col-upload content-column">
-                        <file-uploader :file-request.sync="file" :with-text="true"></file-uploader>
+                        <file-uploader :file-request.sync="fileRequest"></file-uploader>
                     </div>
                 </li>
             </ul>
         </div>
-        <file-reject-modal :file="selectedFile"></file-reject-modal>
-        <file-delete-modal :file="selectedFile"></file-delete-modal>
+        <file-reject-modal :file="selectedFileRequest"></file-reject-modal>
+        <file-delete-modal :file="selectedFileRequest"></file-delete-modal>
     </div>
 </template>
 <script>
@@ -206,24 +206,24 @@
                         label: 'Status'
                     }
                 ],
-                files: [],
+                fileRequests: [],
                 numReceived: '',
-                selectedFileIndex: ''
+                selectedFileRequestIndex: ''
             }
         },
         computed: {
-            selectedFile: function () {
-                    return this.files[this.selectedFileIndex];
+            selectedFileRequest: function () {
+                    return this.fileRequests[this.selectedFileRequestIndex];
             },
             checklistBelongsToUser: function () {
                 return this.user.id === this.checklist.user_id;
             },
             requestUrl: function () {
-                return '/checklist/' + this.checklistHash + '/files';
+                return '/c/' + this.checklistHash + '/files';
             },
             canRejectFile: function () {
-                if (!this.selectedFile) return false;
-                return this.selectedFile.status === 'received';
+                if (!this.selectedFileRequest) return false;
+                return this.selectedFileRequest.status === 'received';
             },
             receivedFilesPercentage: function () {
                 if (!this.response.total) return 0;
@@ -233,30 +233,27 @@
         props: ['aws-url', 'user', 'checklist', 'checklist-hash'],
         mixins: [fetchesFromEloquentRepository],
         methods: {
-            getFileIndex: function (file) {
-                return _.indexOf(this.files, _.find(this.files, {id: file.id}));
+            getFileRequestIndex: function (file) {
+                return _.indexOf(this.fileRequests, _.find(this.fileRequests, {id: file.id}));
             },
-            selectFile: function (index) {
-                if (!this.files[index]) return;  // file doesn't exist
-                this.selectedFileIndex = index;
+            selectFileRequest: function (index) {
+                if (!this.fileRequests[index]) return;  // fr doesn't exist
+                this.selectedFileRequestIndex = index;
                 this.$nextTick(() => {
-                    this.focusOnFile(this.selectedFileIndex);
+                    this.focusOnFileRequest(this.selectedFileRequestIndex);
                 });
             },
-            focusOnFile: function (index) {
-                $('.single-file')[index].focus();
+            focusOnFileRequest: function (index) {
+                $('.single-file-request')[index].focus();
             },
             showRejectModal: function () {
                 if (this.canRejectFile) vueGlobalEventBus.$emit('show-reject-modal');
             },
             showDeleteModal: function() {
-                vueGlobalEventBus.$emit('show-delete-modal', this.selectedFile);
+                vueGlobalEventBus.$emit('show-delete-modal', this.selectedFileRequest);
             },
             uploadSelected: function () {
-                vueGlobalEventBus.$emit('upload-selected-file-' + this.selectedFile.id);
-            },
-            renameSelectedFile: function () {
-                this.$set('selectedFile.renaming', true);
+                vueGlobalEventBus.$emit('upload-selected-file-' + this.selectedFileRequest.id);
             },
             showSelectMenuDropdown: function() {
                 $('#select-menu-more').next('.dropdown-menu').toggle();
@@ -268,18 +265,16 @@
 
             // Parse out our request params
             self.$watch('response', (response) => {
-                self.files = $.map(_.omit(response.data, 'query_parameters'), (file, index) => {
-                    return file;
+                self.fileRequests = $.map(_.omit(response.data, 'query_parameters'), (fileRequest, index) => {
+                    return fileRequest;
                 });
                 self.numReceived = self.params.num_received_files;
             });
 
             // Click event bind - Unselect file if we didn't click inside list or within select menu
-            // Elements that even if we click on, we don't want to lose selectedFile
+            // Elements that even if we click on, we don't want to lose selectedFileRequest
             $(document).on('click', (e) => {
                 let focusContainers = $('.keep-selected-file');
-                console.log(focusContainers.length);
-                console.log(focusContainers);
                 let clickedInside = false;
                 for (var i = 0; i < focusContainers.length; i++) {
                     if ($(focusContainers[i]).is(e.target) || $(focusContainers[i]).has(e.target).length !== 0) {
@@ -287,19 +282,19 @@
                         break;
                     }
                 }
-                if (!clickedInside) self.selectedFileIndex = '';
+                if (!clickedInside) self.selectedFileRequestIndex = '';
             });
 
             // When updated file request model
-            vueGlobalEventBus.$on('updated-file-request', (updatedFile) => {
-                let index = this.getFileIndex(updatedFile);
-                this.$set('files[' + index + ']', updatedFile);
+            vueGlobalEventBus.$on('updated-file-request', (updatedFileRequest) => {
+                let index = this.getFileRequestIndex(updatedFileRequest);
+                this.$set('fileRequests[' + index + ']', updatedFileRequest);
             });
 
             // When we delete a file
             vueGlobalEventBus.$on('deleted-selected-file', () => {
-                this.files.splice(this.selectedFileIndex, 1);
-                this.selectedFileIndex = '';
+                this.fileRequests.splice(this.selectedFileRequestIndex, 1);
+                this.selectedFileRequestIndex = '';
             });
         }
     };

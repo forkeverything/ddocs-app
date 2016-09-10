@@ -1,7 +1,7 @@
 <template>
     <div>
         <form-errors></form-errors>
-        <form id="form-checklist-make" action="/checklist/make" method="POST">
+        <form id="form-checklist-make" action="/c/make" method="POST">
             <div class="inline-label">
                 <label class="text-muted">To: </label>
                 <tagger :tags.sync="checklistRecipients" :validate-function="validateRecipient" :placeholder="'Emails'"></tagger>
@@ -53,7 +53,7 @@
             </ul>
         </form>
         <div class="text-right">
-            <button type="button" class="btn btn-solid-green" @click="sendChecklist" :disabled="
+            <button type="button" class="btn btn-primary" @click="sendChecklist" :disabled="
                     ! canSendChecklist">{{ submitButtonText }}
             </button>
         </div>
@@ -165,13 +165,13 @@
                 self.ajaxReady = false;
 
 
-                self.$http.post('/checklist/make', {
+                self.$http.post('/c/make', {
                     recipients: self.checklistRecipients,
                     name: self.checklistName,
                     description: self.checklistDescription,
                     requested_files: self.validFiles
                 }).then((response) => {
-                    location.href = "/checklist/" + response.data;
+                    location.href = "/c/" + response.data;
                 }, (response) => {
                     console.log(response);
                     vueValidation(response);

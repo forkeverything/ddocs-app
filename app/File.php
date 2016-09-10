@@ -12,15 +12,15 @@ class File extends Model
      * @var array
      */
     protected $fillable = [
-        'path',
-        'rejected',
-        'rejected_reason',
-        'file_request_id'
+        'name',
+        'description',
+        'user_id'
     ];
 
-    protected $appends = [
-        'file_name'
-    ];
+
+//    protected $appends = [
+//        'file_name'
+//    ];
 
     /**
      * File name as parsed out from path.
@@ -41,5 +41,15 @@ class File extends Model
     public function fileRequest()
     {
         return $this->belongsTo(FileRequest::class);
+    }
+
+    /**
+     * Each File is specific to a User.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

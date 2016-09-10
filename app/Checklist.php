@@ -41,6 +41,8 @@ class Checklist extends Model
         return $this->hasMany(FileRequest::class);
     }
 
+
+
     /**
      * Every Checklist was made by a single User
      *

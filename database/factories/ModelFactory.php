@@ -12,6 +12,7 @@
 */
 
 use App\Checklist;
+use App\File;
 use App\Recipient;
 use App\User;
 
@@ -39,11 +40,19 @@ $factory->define(Checklist::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(\App\FileRequest::class, function (Faker\Generator $faker) {
+$factory->define(File::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'description' => $faker->sentences(3, true),
-        'due' => $faker->dateTimeBetween('now', '+1 year')->format('d/m/Y'),
-        'checklist_id' => factory(Checklist::class)->create()->id
+        'user_id' => factory(User::class)->create()->id
     ];
 });
+
+$factory->define(\App\FileRequest::class, function (Faker\Generator $faker) {
+    return [
+        'due' => $faker->dateTimeBetween('now', '+1 year')->format('d/m/Y'),
+        'checklist_id' => factory(Checklist::class)->create()->id,
+        'file_id' => factory(File::class)->create()->id
+    ];
+});
+

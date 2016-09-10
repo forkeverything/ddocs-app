@@ -50,7 +50,7 @@
 
                 fd.append('file', uploadedFile);
 
-                self.$http.post('/file/' + self.fileRequest.hash + '/upload', fd, {
+                self.$http.post('/fr/' + self.fileRequest.hash + '/upload', fd, {
                     progress: (event) => {
 //                        self.progress = Math.round(100 * event.loaded / event.total);
                     }

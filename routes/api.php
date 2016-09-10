@@ -19,4 +19,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 
-Route::post('/checklist/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
+Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');

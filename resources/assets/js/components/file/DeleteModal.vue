@@ -45,7 +45,7 @@
                 var self = this;
                 if (!self.ajaxReady) return;
 
-                self.$http.delete('/file/' + this.file.hash)
+                self.$http.delete('/fr/' + this.file.hash)
                         .then((response) => {
                             vueGlobalEventBus.$emit('deleted-selected-file');
                             $(this.$els.modal).modal('hide');

@@ -7,6 +7,7 @@ namespace App\Factories;
 use App\Checklist;
 use App\Events\ChecklistCreated;
 
+use App\File;
 use App\Http\Requests\NewChecklistRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -171,11 +172,21 @@ class ChecklistFactory
      */
     protected function createFiles()
     {
+        // Clean array of duplicate values (case insensitive)
         foreach ($this->request->requested_files as $file) {
+
+            if( ! $fileModel = File::where('name', $file['name'])->where('user_id', $this->user->id)->first()) {
+                $fileModel = File::create([
+                    'name' => $file['name'],
+                    'description' => $file['description'],
+                    'user_id' => $this->user->id
+                ]);
+            };
+
+
             $this->checklist->requestedFiles()->create([
-                'name' => $file['name'],
-                'description' => $file['description'],
-                'due' => $file['due']
+                'due' => $file['due'],
+                'file_id' => $fileModel->id
             ]);
         }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class NewChecklistRequest extends FormRequest
 {
@@ -26,8 +27,7 @@ class NewChecklistRequest extends FormRequest
     {
         return [
             'recipients.*' => 'required|email',
-            'name' => 'required',
-            'requested_files.*.name' => 'required'
+            'name' => 'required'
         ];
 
         /**

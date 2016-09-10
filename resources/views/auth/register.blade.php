@@ -72,7 +72,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4 text-right">
-                                <button type="submit" class="btn btn-solid-green form-control">
+                                <button type="submit" class="btn btn-success form-control">
                                     <i class="fa fa-btn fa-user"></i> Register
                                 </button>
                             </div>

@@ -23,8 +23,8 @@
                            aria-haspopup="true"
                            aria-expanded="false">{{ Auth::user()->name }} @include('layouts.partials.credit-or-subscribed')</a>
                         <ul class="dropdown-menu">
-                            <li><a href="/checklist/make">New Checklist</a></li>
-                            <li><a href="/checklist">My Lists</a></li>
+                            <li><a href="/c/make">New Checklist</a></li>
+                            <li><a href="/c">My Lists</a></li>
                             <li><a href="/account">Account</a></li>
                             <li>
                                 <a href="{{ url('/logout') }}"

@@ -16,17 +16,18 @@ class CreateFileRequestsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->string('name');
-            $table->text('description')->nullable();
-
+            // Manually filled
             $table->dateTime('due')->nullable();
-            $table->string('version')->default(1);
 
+            // Automatic fields
+            $table->string('version')->default(1);
             $table->string('status')->default('waiting');       // 'waiting', 'received', 'rejected'
 
             $table->integer('checklist_id')->unsigned();
             $table->foreign('checklist_id')->references('id')->on('checklists')->onDelete('cascade');
 
+            $table->integer('file_id')->unsigned();
+            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
         });
     }
 

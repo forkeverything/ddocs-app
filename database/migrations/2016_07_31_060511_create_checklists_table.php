@@ -16,14 +16,8 @@ class CreateChecklistsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->string('recipient');
             $table->string('name');
             $table->text('description')->nullable();
-
-            // Whether recipient receives email notifications
-            $table->boolean('recipient_notifications')->default(1);
-            // Has the invitation offer been claimed by recipient?
-            $table->boolean('invitation_claimed')->default(0);
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -34,3 +34,28 @@ function awsURL()
 {
     return 'https://s3-' . env('AWS_REGION') . '.amazonaws.com/' . env('AWS_BUCKET') .  '/';
 }
+
+/**
+ * Returns unique values for an array. Unlike array_unique(), this is
+ * case insensitive.
+ *
+ * @param $array
+ * @return array
+ */
+function array_iunique($array) {
+    return array_intersect_key(
+        $array,
+        array_unique(array_map("StrToLower",$array))
+    );
+}
+
+/**
+ * Same as array_unique() but it will check multi-dimensional arrays.
+ *
+ * @param $array
+ * @return array
+ */
+function array_unique_nested($array)
+{
+    return array_map("unserialize", array_unique(array_map("serialize", $array)));
+}

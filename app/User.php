@@ -46,6 +46,16 @@ class User extends Authenticatable
         return $this->hasMany(Checklist::class);
     }
 
+    /**
+     * User can have many File(s) that they may request.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
+
 
     /**
      * Minus a User's credit

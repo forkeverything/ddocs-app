@@ -40,7 +40,7 @@
                 if (!self.ajaxReady) return;
                 self.ajaxReady = false;
 
-                self.$http.put('/file/' + this.file.hash, {
+                self.$http.put('/fr/' + this.file.hash, {
                     name: self.name
                 }).then((response) => {
                     // success

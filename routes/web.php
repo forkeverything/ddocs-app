@@ -18,22 +18,23 @@ Auth::routes();
 Route::get('/', 'PagesController@getLandingMain');
 
 // Checklists
-Route::get('/checklist', 'ChecklistsController@getListsView');
-Route::get('/checklist/get', 'ChecklistsController@getForAuthenticatedUser');
-Route::get('/checklist/make', 'ChecklistsController@getMakeForm');
-Route::post('/checklist/make', 'ChecklistsController@postNewChecklist');
-Route::get('/checklist/{checklist_hash}', 'ChecklistsController@getSingleChecklist');
-Route::get('/checklist/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
+Route::get('/c', 'ChecklistsController@getListsView');
+Route::get('/c/get', 'ChecklistsController@getForAuthenticatedUser');
+Route::get('/c/make', 'ChecklistsController@getMakeForm');
+Route::post('/c/make', 'ChecklistsController@postNewChecklist');
+Route::get('/c/{checklist_hash}', 'ChecklistsController@getSingleChecklist');
+Route::get('/c/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
 
 // Recipients
-Route::get('/recipients/{recipient_hash}/turn_off_notifications', 'RecipientsController@getTurnOffNotifications');
+Route::get('/r/{recipient_hash}/turn_off_notifications', 'RecipientsController@getTurnOffNotifications');
 
-// Files
-Route::put('/file/{file_request}', 'FilesController@putModifyRequest');
-Route::post('/file/{file_request_hash}/upload', 'FilesController@postUploadFile');
-Route::post('/file/{file_request_hash}/reject', 'FilesController@postRejectUploadedFile');
-Route::get('/file/{file_request_hash}/history', 'FilesController@getHistory');
-Route::delete('/file/{file_request_hash}', 'FilesController@deleteFiles');
+// FileRequests
+Route::post('/fr/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
+Route::put('/fr/{file_request}', 'FileRequestsController@putModifyRequest');
+Route::post('/fr/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
+Route::post('/fr/{file_request_hash}/reject', 'FileRequestsController@postRejectUploadedFile');
+Route::get('/fr/{file_request_hash}/history', 'FileRequestsController@getHistory');
+Route::delete('/fr/{file_request_hash}', 'FileRequestsController@deleteFiles');
 
 // Account
 Route::get('/account', 'AccountController@getAccountOverview');

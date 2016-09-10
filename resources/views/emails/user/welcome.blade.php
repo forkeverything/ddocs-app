@@ -403,7 +403,7 @@
                                                                 <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
                                                                     <tr style="padding:0;text-align:left;vertical-align:top">
                                                                         <td style="-moz-hyphens:auto;-webkit-hyphens:auto;Margin:0;background:#2199e8;border:none;border-collapse:collapse!important;border-radius:3px;color:#fefefe;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;hyphens:auto;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;word-wrap:break-word">
-                                                                            <a href="{{ env('APP_URL') }}/checklist/make"
+                                                                            <a href="{{ env('APP_URL') }}/c/make"
                                                                                style="Margin:0;border:0 solid #2199e8;border-radius:3px;color:#fefefe;display:inline-block;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;line-height:1.3;margin:0;padding:8px 16px 8px 16px;text-align:left;text-decoration:none">Make
                                                                                 a checklist</a></td>
                                                                     </tr>

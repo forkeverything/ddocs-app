@@ -39,7 +39,13 @@ class FilesRequestsRepository extends EloquentRepository
      */
     public function __construct(Checklist $checklist)
     {
-        $this->query = FileRequest::where('checklist_id', $checklist->id);
+        $this->query = FileRequest::join('files', 'file_requests.file_id', '=', 'files.id')
+                                  ->where('checklist_id', $checklist->id)
+                                  ->selectRaw('
+                                  file_requests.*, 
+                                  files.name, 
+                                  files.description
+                                  ');
     }
 
     /**
@@ -52,7 +58,7 @@ class FilesRequestsRepository extends EloquentRepository
     {
         return new static($checklist);
     }
-    
+
 
     /**
      * Status filter.

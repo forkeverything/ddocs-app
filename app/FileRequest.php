@@ -13,12 +13,11 @@ class FileRequest extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'description',
         'due',
         'version',
         'status',
-        'checklist_id'
+        'checklist_id',
+        'file_id'
     ];
 
     /**
@@ -35,13 +34,26 @@ class FileRequest extends Model
      *
      * @var array
      */
-    protected $appends = ['hash', 'latest_upload'];
+    protected $appends = [
+        'name',
+        'hash',
+        'latest_upload'
+    ];
+
+    /**
+     * Get the name from the File.
+     *
+     * @return mixed
+     */
+    public function getNameAttribute()
+    {
+        return $this->file->name;
+    }
 
     public function getLatestUploadAttribute()
     {
-        return File::where('file_request_id', $this->id)->orderBy('created_at', 'desc')->first();
+        return Upload::where('file_request_id', $this->id)->orderBy('created_at', 'desc')->first();
     }
-
 
     /**
      * Get the hash'd id of this model.
@@ -74,13 +86,23 @@ class FileRequest extends Model
     }
 
     /**
-     * A File Request could potentially have many physical files uploaded to it.
+     * A File Request could potentially have many uploads.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function uploads()
     {
-        return $this->hasMany(File::class)->orderBy('created_at', 'asc');
+        return $this->hasMany(Upload::class)->orderBy('created_at', 'asc');
+    }
+
+    /**
+     * FileRequest belongs to a File.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function file()
+    {
+        return $this->belongsTo(File::class);
     }
 
     /**

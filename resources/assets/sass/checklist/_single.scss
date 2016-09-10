@@ -132,7 +132,7 @@
     white-space: nowrap;
   }
 
-  #files-header, .single-file {
+  #files-header, .single-file-request {
     display: flex;
   }
 
@@ -244,7 +244,7 @@
   #files-list {
     padding-top: 1px;
 
-    .single-file {
+    .single-file-request {
       border-top: 1px solid $laravel-border-color;
       border-bottom: 1px solid $laravel-border-color;
       margin-bottom: -1px;

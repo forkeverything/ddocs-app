@@ -8,7 +8,7 @@
                 {{ $fileRequest->name }}
                 <br>
                 <span class="small"><a
-                            href="/checklist/{{$fileRequest->checklist->hash}}">{{ $fileRequest->checklist->name }}</a></span>
+                            href="/c/{{$fileRequest->checklist->hash}}">{{ $fileRequest->checklist->name }}</a></span>
             </h3>
         </div>
         <div id="page-scroll-content">
