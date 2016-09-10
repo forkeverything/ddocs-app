@@ -33,6 +33,7 @@ Route::put('/file/{file_request}', 'FilesController@putModifyRequest');
 Route::post('/file/{file_request_hash}/upload', 'FilesController@postUploadFile');
 Route::post('/file/{file_request_hash}/reject', 'FilesController@postRejectUploadedFile');
 Route::get('/file/{file_request_hash}/history', 'FilesController@getHistory');
+Route::delete('/file/{file_request_hash}', 'FilesController@deleteFiles');
 
 // Account
 Route::get('/account', 'AccountController@getAccountOverview');

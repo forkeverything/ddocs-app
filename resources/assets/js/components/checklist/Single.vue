@@ -56,7 +56,7 @@
             <file-active-filters :params.sync="params" :remove-filter="removeFilter"></file-active-filters>
 
             <div id="selected-file-menu"
-                 class="table-header"
+                 class="table-header keep-selected-file"
                  v-if="selectedFile"
                  @click.stop=""
             >
@@ -91,7 +91,7 @@
                                     class="icon history fa fa-clock-o"></i>History</a></li>
                             <li class="menu-item"><a href="#" @click.prevent="renameSelectedFile"><i
                                     class="icon rename fa fa-edit"></i>Rename</a></li>
-                            <li class="menu-item"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
+                            <li class="menu-item"><a href="#" @click.prevent="showDeleteModal"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
                         </ul>
 
                     </li>
@@ -100,7 +100,7 @@
                             class="icon history fa fa-clock-o"></i>History</a></li>
                     <li class="menu-item hidden-xs"><a href="#" @click.prevent="renameSelectedFile"><i
                             class="icon rename fa fa-edit"></i>Rename</a></li>
-                    <li class="menu-item hidden-xs"><a href="#"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
+                    <li class="menu-item hidden-xs"><a href="#" @click.prevent="showDeleteModal"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
                 </ul>
             </div>
 
@@ -143,7 +143,7 @@
         </div>
 
         <div id="page-scroll-content">
-            <ul id="files-list" class="list-unstyled">
+            <ul id="files-list" class="list-unstyled keep-selected-file">
                 <li class="single-file"
                     v-for="(index, file) in files"
                     @focus="selectFile(index)"
@@ -179,7 +179,8 @@
                 </li>
             </ul>
         </div>
-        <file-reject-modal></file-reject-modal>
+        <file-reject-modal :file="selectedFile"></file-reject-modal>
+        <file-delete-modal :file="selectedFile"></file-delete-modal>
     </div>
 </template>
 <script>
@@ -212,7 +213,7 @@
         },
         computed: {
             selectedFile: function () {
-                return this.files[this.selectedFileIndex];
+                    return this.files[this.selectedFileIndex];
             },
             checklistBelongsToUser: function () {
                 return this.user.id === this.checklist.user_id;
@@ -246,7 +247,10 @@
                 $('.single-file')[index].focus();
             },
             showRejectModal: function () {
-                if (this.canRejectFile) vueGlobalEventBus.$emit('show-reject-modal', this.selectedFile);
+                if (this.canRejectFile) vueGlobalEventBus.$emit('show-reject-modal');
+            },
+            showDeleteModal: function() {
+                vueGlobalEventBus.$emit('show-delete-modal', this.selectedFile);
             },
             uploadSelected: function () {
                 vueGlobalEventBus.$emit('upload-selected-file-' + this.selectedFile.id);
@@ -272,15 +276,13 @@
 
             // Click event bind - Unselect file if we didn't click inside list or within select menu
             // Elements that even if we click on, we don't want to lose selectedFile
-            let focusContainers = [
-                $('#selected-file-menu'),
-                $('#files-list'),
-                $('.reject-modal')
-            ];
             $(document).on('click', (e) => {
+                let focusContainers = $('.keep-selected-file');
+                console.log(focusContainers.length);
+                console.log(focusContainers);
                 let clickedInside = false;
                 for (var i = 0; i < focusContainers.length; i++) {
-                    if (focusContainers[i].is(e.target) || focusContainers[i].has(e.target).length !== 0) {
+                    if ($(focusContainers[i]).is(e.target) || $(focusContainers[i]).has(e.target).length !== 0) {
                         clickedInside = true;
                         break;
                     }
@@ -288,10 +290,16 @@
                 if (!clickedInside) self.selectedFileIndex = '';
             });
 
-            // when we reject a file updated it...
-            vueGlobalEventBus.$on('rejected-file', (updatedFileModel) => {
-                let index = self.getFileIndex(updatedFileModel);
-                self.$set('files[' + index + ']', updatedFileModel);
+            // When updated file request model
+            vueGlobalEventBus.$on('updated-file-request', (updatedFile) => {
+                let index = this.getFileIndex(updatedFile);
+                this.$set('files[' + index + ']', updatedFile);
+            });
+
+            // When we delete a file
+            vueGlobalEventBus.$on('deleted-selected-file', () => {
+                this.files.splice(this.selectedFileIndex, 1);
+                this.selectedFileIndex = '';
             });
         }
     };

@@ -68,7 +68,7 @@ class FileFactory
 
         // Convert uploaded file to lower case and join with '_'
         $name = str_replace(" ", "_", strtolower($this->fileRequest->name)). '_v' . $this->fileRequest->version;
-        
+
         $extension = $this->uploadedFile->getClientOriginalExtension();
 
         return "{$name}.{$extension}";

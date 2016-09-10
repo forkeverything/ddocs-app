@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Storage;
 
 class FilesController extends Controller
 {
@@ -69,9 +70,23 @@ class FilesController extends Controller
         return $fileRequest;
     }
 
+    /**
+     * The history view with different versions of a File Request.
+     *
+     * @param $fileRequestHash
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getHistory($fileRequestHash)
     {
         $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash))->load('checklist', 'uploads');
         return view('file.history', compact('fileRequest'));
+    }
+
+    public function deleteFiles($fileRequestHash)
+    {
+        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
+        $uploadPaths = $fileRequest->uploads->pluck('path')->toArray();
+        if(Storage::delete($uploadPaths)) $fileRequest->delete();
+        return response("Deleted file request and uploads");
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="reject-modal">
+    <div class="reject-modal keep-selected-file">
         <div class="modal fade" tabindex="-1" role="dialog" v-el:modal>
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -33,11 +33,10 @@
         data: function () {
             return {
                 ajaxReady: true,
-                file: '',
                 reason: ''
             }
         },
-        props: [],
+        props: ['file'],
         computed: {
             submitText: function () {
                 if (!this.ajaxReady) return 'Saving...';
@@ -58,24 +57,26 @@
                 }).then((response) => {
                     // success
                     self.reason = '';
-                    self.file = JSON.parse(response.data);
-                    vueGlobalEventBus.$emit('rejected-file', self.file);
+
+                    // We'll update the file model through an event because the prop we're receiving is
+                    // a computed property. If we used a setter() on the property, it would re-init
+                    // everytime we selected a file, even without any changes.
+                    vueGlobalEventBus.$emit('updated-file-request', JSON.parse(response.data));
+
                     $(this.$els.modal).modal('hide');
                     self.ajaxReady = true;
                 }, (response) => {
                     // error
                     console.log(response);
                     self.ajaxReady = true;
+                    $(this.$els.modal).modal('hide');
                 });
             }
         },
         ready: function () {
             $(this.$els.modal).on('shown.bs.modal', () => $(this.$els.textArea).focus());
 
-            vueGlobalEventBus.$on('show-reject-modal', (file) => {
-                this.file = file;
-                $(this.$els.modal).modal('show');
-            });
+            vueGlobalEventBus.$on('show-reject-modal', () => $(this.$els.modal).modal('show'));
         }
     }
 </script>

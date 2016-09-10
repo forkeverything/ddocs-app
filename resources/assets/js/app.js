@@ -24,6 +24,7 @@ Vue.component('checklist-maker', require('./components/checklist/Maker.vue'));
 
 // File Requests
 Vue.component('file-reject-modal', require('./components/file/RejectModal.vue'));
+Vue.component('file-delete-modal', require('./components/file/DeleteModal.vue'));
 Vue.component('file-filters', require('./components/file/Filters.vue'));
 Vue.component('file-active-filters', require('./components/file/ActiveFilters.vue'));
 Vue.component('file-uploader', require('./components/file/Uploader.vue'));
