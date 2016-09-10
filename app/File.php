@@ -18,6 +18,21 @@ class File extends Model
         'file_request_id'
     ];
 
+    protected $appends = [
+        'file_name'
+    ];
+
+    /**
+     * File name as parsed out from path.
+     *
+     * @return mixed
+     */
+    public function getFileNameAttribute()
+    {
+        preg_match("/[^\/]+$/", $this->path, $name);
+        return $name[0];
+    }
+
     /**
      * Each Physical File only belongs to a single File Request.
      *

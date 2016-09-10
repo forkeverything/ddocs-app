@@ -16,6 +16,7 @@
             <table class="table table-standard table-hover">
                 <thead>
                 <tr>
+                    <th>File</th>
                     <th>Reason / Changes</th>
                     <th></th>
                 <tr>
@@ -23,6 +24,7 @@
                 <tbody>
                 @foreach($fileRequest->uploads as $index => $upload)
                     <tr>
+                        <td class="fit-to-content no-wrap">{{ $upload->file_name }}</td>
                         <td>
                             @if($reason = $upload->rejected_reason )
                                 {{ $reason }}
