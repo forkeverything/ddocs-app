@@ -21,6 +21,7 @@ Vue.component('tagger', require('./components/utilities/Tagger.vue'));
 Vue.component('checklist-all', require('./components/checklist/All.vue'));
 Vue.component('checklist-single', require('./components/checklist/Single.vue'));
 Vue.component('checklist-maker', require('./components/checklist/Maker.vue'));
+Vue.component('maker-files', require('./components/checklist/maker/SelectFiles.vue'));
 
 // File Requests
 Vue.component('file-reject-modal', require('./components/file/RejectModal.vue'));
