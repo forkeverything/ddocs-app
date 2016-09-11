@@ -36,6 +36,10 @@ Route::post('/fr/{file_request_hash}/reject', 'FileRequestsController@postReject
 Route::get('/fr/{file_request_hash}/history', 'FileRequestsController@getHistory');
 Route::delete('/fr/{file_request_hash}', 'FileRequestsController@deleteFiles');
 
+// Files
+Route::get('/files', 'FilesController@getForUser');
+
+
 // Account
 Route::get('/account', 'AccountController@getAccountOverview');
 Route::post('/account/subscription', 'AccountController@postSubscribe');

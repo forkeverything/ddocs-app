@@ -6,7 +6,7 @@ use App\Checklist;
 use App\Factories\ChecklistFactory;
 use App\Http\Requests\NewChecklistRequest;
 use App\Repositories\ChecklistsRespository;
-use App\Repositories\FilesRequestsRepository;
+use App\Repositories\FileRequestsRepository;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -130,7 +130,7 @@ class ChecklistsController extends Controller
      *
      * @param Request $request
      * @param $checklistHash
-     * @return FilesRequestsRepository
+     * @return FileRequestsRepository
      */
     public function getFilesForChecklist(Request $request, $checklistHash)
     {
@@ -139,7 +139,7 @@ class ChecklistsController extends Controller
         $order = $request->order;
         $search = $request->search;
         $perPage = $request->per_page ?: 20;
-        return FilesRequestsRepository::forChecklist($checklist)
+        return FileRequestsRepository::forChecklist($checklist)
                                       ->filterIntegerField('version', $request->version)
                                       ->filterDateField('due', $request->due)
                                       ->withStatus($request->status)

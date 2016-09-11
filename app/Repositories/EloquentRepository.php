@@ -243,9 +243,9 @@ abstract class EloquentRepository
      * @param $limit
      * @return $this
      */
-    public function take($limit)
+    public function take($limit = null)
     {
-        $this->query->take($limit);
+        if($limit) $this->query->take($limit);
         return $this;
     }
 
