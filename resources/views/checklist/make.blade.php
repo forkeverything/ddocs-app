@@ -5,8 +5,8 @@
 
         <div id="page-fixed-top" class="container-no-gutter">
             <div class="header">
-                <h3><strong>New Checklist</strong></h3>
-                <p>
+                <h3 class="text-center"><strong>New Checklist</strong></h3>
+                <p class="text-center">
                     Create a list of all the files that you need along with their due dates (if any) and
                     we'll handle the rest.
                 </p>
