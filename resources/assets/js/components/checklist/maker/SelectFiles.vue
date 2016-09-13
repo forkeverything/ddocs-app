@@ -11,7 +11,7 @@
                    v-model="file.name"
                    placeholder="File name"
                    @keyup.enter="addFile"
-                   @keydown.delete="removeFile"
+                   @keydown.delete="removeFile($event)"
                    @keydown.up.prevent.stop="pressedArrow('prev')"
                    @keyup="searchForFileName($event, file, index)"
                    @keydown.down.prevent.stop="pressedArrow('next')"
@@ -70,6 +70,8 @@
             },
             searchForFileName: function(event, file, index) {
                 if(event.key.length === 1 || event.key === "Backspace") {
+                    // Abort old unfinished requests
+                    this.clearSearchRequests();
                     // input a character or backspaced
                     this.fetchFileNames(file.name, index);
                 }
@@ -85,8 +87,6 @@
                 if(! searchString) return;
                 this.$http.get('/files?name_only=1&limit=5&search=' + searchString, {
                     before: (xhr) => {
-                        // Abort old unfinished requests
-                        this.clearSearchRequests();
                         // Add current request to the queue
                         xhr_requests.push(xhr);
                     }
@@ -103,7 +103,7 @@
                             // append results
                             this.fileNameOptions = results;
                         });
-            }, 200),
+            }, 50),
             addFile: function() {
                 let selectedOption = this.fileNameOptions[this.selectedOptionIndex];
                 let currentFileName = this.files[this.focusedFileIndex].name;
@@ -123,10 +123,11 @@
                     this.goTo('next');
                 });
             },
-            removeFile: function () {
+            removeFile: function (event) {
                 if (!this.files[this.focusedFileIndex].name && this.focusedFileIndex !== 0) {
                     this.files.splice(this.focusedFileIndex, 1);
                     this.$nextTick(function () {
+                        event.preventDefault();
                         $($('.single-file')[this.focusedFileIndex - 1]).find('.input-file-name').focus();
                     });
                 }
