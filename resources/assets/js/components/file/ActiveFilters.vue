@@ -1,6 +1,6 @@
 <template>
     <div class="active-filters">
-        <ul class="list-active-filters list-unstyled list-inline">
+        <ul class="list-active-filters list-unstyled list-inline" v-show="hasFilters">
             <!-- Active Filter: Version -->
             <li v-if="params.version_filter_integer" class="single-filter">
                 <div class="text">

@@ -1,6 +1,7 @@
 body {
-  padding-top: 50px;
+  padding-top: $navbar-height;
   padding-bottom: 3em;
+  height: 100vh;
 }
 
 #page-fixed-top {

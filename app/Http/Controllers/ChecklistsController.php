@@ -118,7 +118,7 @@ class ChecklistsController extends Controller
     public function getSingleChecklist($checklistHash)
     {
         $checklist = Checklist::findOrFail(unhashId('checklist', $checklistHash));
-        $checklist->load('recipients');
+        $checklist->load('user', 'recipients');
 
 //        if(Auth::check()) $this->authorize('view', $checklist);
         return view('checklist.single', compact('checklist', 'checklistHash'));

@@ -1,50 +1,132 @@
 #checklist-single {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
-  #join-offer {
-    background: $extra-light-yellow;
-    @include border-radius($border-radius-small);
-    padding: 5px 10px;
-    margin: 0 0 15px;
+  #header {
+    width: 100%;
+    border-bottom: 1px solid $laravel-border-color;
+    @include box-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
+    margin-bottom: 15px;
   }
 
-  .recipients {
-    border: 1px solid $laravel-border-color;
-    @include border-radius($border-radius-small);
-    position: relative;
-    padding: 6px;
-    margin: 0 0 15px;
 
-    .span-to {
-      color: $text-muted;
-      position: absolute;
-      left: 0;
-      top: 0;
-      padding: 6px 11px;
+  //#join-offer {
+  //  background: $extra-light-yellow;
+  //  @include border-radius($border-radius-small);
+  //  padding: 5px 10px;
+  //  margin: 0 0 15px;
+  //}
+
+
+  #checklist-body {
+    flex: 1;
+    max-width: 1400px;
+    padding: 0 15px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    h5 {
+      margin: 0;
     }
 
-    .recipients-list {
-      margin: 0 0 -5px;
-      display: inline-block;
-      padding-left: 32px;
+    #checklist-recipients {
+      padding: 15px 20px;
+      margin: 0 0 15px;
+      border: 1px solid $laravel-border-color;
+      @include box-shadow(0 1px 2px 0 rgba(0, 0, 0, 0.1));
 
-      li {
-        background: $light-grey;
-        @include border-radius($border-radius-base);
-        padding: 0 8px;
-        margin: 0 3px 5px 3px;
+      .recipients {
+        position: relative;
+        padding: 6px 6px 6px 0;
+
+        .span-to {
+          color: $text-muted;
+          position: absolute;
+          left: 0;
+          top: 0;
+          padding: 6px 11px 6px 0px;
+        }
+
+        .recipients-list {
+          margin: 0 0 -5px;
+          display: inline-block;
+          padding-left: 32px;
+
+          li {
+            background: $light-grey;
+            @include border-radius($border-radius-base);
+            padding: 0 8px;
+            margin: 0 3px 5px 3px;
+          }
+        }
+      }
+    }
+
+    #split-view {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+      opacity: 0;
+
+      .pane {
+        padding: 15px 20px;
+      }
+
+      .pane-nav {
+        padding: 6px 0;
+
+        i {
+          font-size: 1.2em;
+        }
+      }
+
+      #main-pane {
+        @include transition(margin-left 0.25s ease-out,width 0.25s ease-out);
+        flex: 5500 1 605px;
+        z-index: 2;
+        position: relative;
+        background: #fff;
+        border: 1px solid $laravel-border-color;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        &.collapsed {
+          margin-left: calc(-100% - 15px);
+        }
+      }
+
+      #right-pane {
+        flex: 4500 1 359px;
+        @include transition(margin-left 0.2s);
+        margin-left: 15px;
+        max-width: 475px;
+        position: relative;
+        z-index: 0;
+        border: 1px solid $laravel-border-color;
+
+        &.is-main {
+          max-width: initial;
+        }
+
+        &.collapsed {
+          margin-left: -475px;
+        }
       }
     }
   }
 
   #form-checklist-search {
-    margin: 0 0 15px;
+    margin: 0 0 10px;
   }
 
   #selected-file-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 34px;
+    min-height: 35px;
 
     .file-name {
       flex: 1;
@@ -130,6 +212,7 @@
   // Table setup
   #files-header {
     white-space: nowrap;
+    min-height: 35px;
   }
 
   #files-header, .single-file-request {
@@ -243,6 +326,7 @@
   // Body / List Specific
   #files-list {
     padding-top: 1px;
+    overflow-y: scroll;
 
     .single-file-request {
       border-top: 1px solid $laravel-border-color;

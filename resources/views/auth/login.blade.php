@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="page-scroll-content">
         <div id="login" class="container">
             <div class="row">
                 <div id="login-body" class="col-sm-6 col-sm-offset-3">
@@ -52,5 +51,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection

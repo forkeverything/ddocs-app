@@ -77,14 +77,13 @@
 }
 
 .active-filters {
-  margin: 0 0 15px;
   font-size: 0.9em;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 
   .list-active-filters {
-    margin: 0;
+    margin: 0 0 15px;
 
     .single-filter {
       background: $brand-primary;
