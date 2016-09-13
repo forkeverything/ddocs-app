@@ -1,52 +1,51 @@
 <template>
     <div class="maker">
-        <div id="page-fixed-top" class="container-no-gutter">
-            <div class="header">
-                <h3 class="text-center"><strong>New Checklist</strong></h3>
-                <p class="text-center">
-                    Create a list of all the files that you need along with their due dates (if any) and
-                    we'll handle the rest.
-                </p>
-            </div>
+
+        <div class="header">
+            <h3 class="text-center"><strong>New Checklist</strong></h3>
+            <p class="text-center">
+                Create a list of all the files that you need along with their due dates (if any) and
+                we'll handle the rest.
+            </p>
         </div>
-        <div id="page-scroll-content">
-            <form-errors></form-errors>
-            <div class="weighting-switch">
-                <label>Weightings</label>
-                <toggle-switch :model.sync="weightings"></toggle-switch>
+
+
+        <form-errors></form-errors>
+        <div class="weighting-switch">
+            <label>Weightings</label>
+            <toggle-switch :model.sync="weightings"></toggle-switch>
+        </div>
+        <form id="form-checklist-make" action="/c/make" method="POST">
+            <div class="inline-label">
+                <label class="text-muted">To: </label>
+                <tagger :tags.sync="checklistRecipients" :validate-function="validateRecipient"
+                        :placeholder="'Emails'"></tagger>
             </div>
-            <form id="form-checklist-make" action="/c/make" method="POST">
-                <div class="inline-label">
-                    <label class="text-muted">To: </label>
-                    <tagger :tags.sync="checklistRecipients" :validate-function="validateRecipient"
-                            :placeholder="'Emails'"></tagger>
-                </div>
-                <h2 id="title-checklist-name"
-                    v-show="! editingName"
-                    @click="toggleEditingName"
-                    @focus="toggleEditingName"
-                    :class="{
+            <h2 id="title-checklist-name"
+                v-show="! editingName"
+                @click="toggleEditingName"
+                @focus="toggleEditingName"
+                :class="{
                                     'filled': checklistName
                                 }"
-                    tabindex="0"
-                >{{ checklistNameText }}</h2>
-                <input id="input-checklist-name" type="text" class="form-control" v-show="editingName"
-                       @blur="toggleEditingName" v-model="checklistName" name="name">
-                <textarea id="textarea-new-checklist-description" rows="2" class="autosize form-control borderless"
-                          placeholder="description" v-model="checklistDescription" name="description"></textarea>
-                <hr>
-                <h4 class="title-files">Files</h4>
-                <ul class="files-summary text-muted list-unstyled list-inline">
-                    <li class="num_files">Count {{ fileCount }}</li>
-                    <li class="weightings" v-show="weightings">Total Weightings {{ totalWeights }}%</li>
-                </ul>
-                <maker-files :files.sync="files" :weightings="weightings"></maker-files>
-            </form>
-            <div class="text-right">
-                <button type="button" class="btn btn-primary" @click="sendChecklist" :disabled="
+                tabindex="0"
+            >{{ checklistNameText }}</h2>
+            <input id="input-checklist-name" type="text" class="form-control" v-show="editingName"
+                   @blur="toggleEditingName" v-model="checklistName" name="name">
+            <textarea id="textarea-new-checklist-description" rows="2" class="autosize form-control borderless"
+                      placeholder="description" v-model="checklistDescription" name="description"></textarea>
+            <hr>
+            <h4 class="title-files">Files</h4>
+            <ul class="files-summary text-muted list-unstyled list-inline">
+                <li class="num_files">Count {{ fileCount }}</li>
+                <li class="weightings" v-show="weightings">Total Weightings {{ totalWeights }}%</li>
+            </ul>
+            <maker-files :files.sync="files" :weightings="weightings"></maker-files>
+        </form>
+        <div class="text-right">
+            <button type="button" class="btn btn-primary" @click="sendChecklist" :disabled="
                     ! canSendChecklist">{{ submitButtonText }}
-                </button>
-            </div>
+            </button>
         </div>
     </div>
 </template>
@@ -92,10 +91,10 @@
             fileCount: function () {
                 return this.validFiles.length;
             },
-            totalWeights: function() {
+            totalWeights: function () {
                 let totalWeightings = 0;
                 _.map(this.files, (file) => {
-                    if(file.weighting) totalWeightings += parseFloat(file.weighting);
+                    if (file.weighting) totalWeightings += parseFloat(file.weighting);
                 });
                 return totalWeightings.toFixed(2);
             },

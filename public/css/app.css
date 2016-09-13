@@ -7998,6 +7998,7 @@ button.close {
   clip: auto; }
 
 body {
+  padding-top: 50px;
   padding-bottom: 3em; }
 
 #page-fixed-top {

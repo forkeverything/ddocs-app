@@ -1,184 +1,182 @@
 <template>
     <div id="checklist-single" class="container">
-        <div id="page-fixed-top" class="container-no-gutter">
 
 
-            <div id="join-offer" v-if="! checklistBelongsToUser && ! checklist.invitation_claimed">
-                <h3 class="text-center">Help {{ checklist.user.name }} Out!</h3>
-                <p class="text-center">Join Files Collector and give {{ checklist.user.name }} 10 free
-                    credits.
-                    You'll also get 5 bonus credits for being an awesome friend.
-                    <br>
-                    Think of it as our way of saying thanks for trying us out!
-                </p>
-                <a href="/register?invite_key={{ $checklistHash }}"><p class="text-center">Sign Me Up</p></a>
-            </div>
+        <div id="join-offer" v-if="! checklistBelongsToUser && ! checklist.invitation_claimed">
+            <h3 class="text-center">Help {{ checklist.user.name }} Out!</h3>
+            <p class="text-center">Join Files Collector and give {{ checklist.user.name }} 10 free
+                credits.
+                You'll also get 5 bonus credits for being an awesome friend.
+                <br>
+                Think of it as our way of saying thanks for trying us out!
+            </p>
+            <a href="/register?invite_key={{ $checklistHash }}"><p class="text-center">Sign Me Up</p></a>
+        </div>
 
-            <h3>
-                <strong>
-                    <span class="text-capitalize">{{ checklist.name }}</span>
-                </strong>
-            </h3>
+        <h3>
+            <strong>
+                <span class="text-capitalize">{{ checklist.name }}</span>
+            </strong>
+        </h3>
 
-            <div class="recipients">
-                <span class="span-to">To: </span>
-                <ul class="recipients-list list-unstyled list-inline">
-                    <li v-for="recipient in checklist.recipients">{{ recipient.email }}</li>
-                </ul>
-            </div>
+        <div class="recipients">
+            <span class="span-to">To: </span>
+            <ul class="recipients-list list-unstyled list-inline">
+                <li v-for="recipient in checklist.recipients">{{ recipient.email }}</li>
+            </ul>
+        </div>
 
-            <p v-if="checklist.description">{{ checklist.description }}</p>
+        <p v-if="checklist.description">{{ checklist.description }}</p>
 
-            <form id="form-checklist-search" @submit.prevent="searchTerm">
-                <div class="input-group">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span>
-                        </button>
+        <form id="form-checklist-search" @submit.prevent="searchTerm">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span>
+                    </button>
 
-                        <file-filters :filter-options="filterOptions" :min-filter-value.sync="minFilterValue"
-                                      :max-filter-value.sync="maxFilterValue" :filter.sync="filter"
-                                      :filter-value.sync="filterValue" :add-filter="addFilter"></file-filters>
+                    <file-filters :filter-options="filterOptions" :min-filter-value.sync="minFilterValue"
+                                  :max-filter-value.sync="maxFilterValue" :filter.sync="filter"
+                                  :filter-value.sync="filterValue" :add-filter="addFilter"></file-filters>
 
-                    </div>
-                    <input class="form-control input-search"
-                           type="text"
-                           placeholder="Search"
-                           @keyup="searchTerm"
-                           v-model="params.search"
-                           :class="{
+                </div>
+                <input class="form-control input-search"
+                       type="text"
+                       placeholder="Search"
+                       @keyup="searchTerm"
+                       v-model="params.search"
+                       :class="{
                                     'active': params.search && params.search.length > 0
                                }"
-                    >
-                </div>
-            </form>
-
-            <file-active-filters :params.sync="params" :remove-filter="removeFilter"></file-active-filters>
-
-            <div id="selected-file-menu"
-                 class="table-header keep-selected-file"
-                 v-if="selectedFileRequest"
-                 @click.stop=""
-            >
-                <span class="file-name" v-if="selectedFileRequest">{{ selectedFileRequest.name }}</span>
-                <ul class="list-menu-items list-inline list-unstyled">
-                    <li class="menu-item visible-xs-inline">
-                        <a href="#"
-                           :class="{'disabled': selectedFileRequest.status === 'received'}"
-                           @click="uploadSelected"
-
-                        >
-                            <i class="icon upload fa fa-upload"></i>Upload
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#"
-                           @click.prevent="showRejectModal"
-                           :class="{ 'disabled': ! canRejectFile }">
-                            <i class="icon reject fa fa-close"></i>Reject
-                        </a>
-                    </li>
-                    <li class="dropdown visible-xs-inline">
-                        <a id="select-menu-more" @click.prevent.stop="showSelectMenuDropdown" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">
-                            More
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="select-menu-more">
-                            <li class="menu-item">
-                                <a :href="'/fr/' + selectedFileRequest.hash + '/history'"
-                                   :class="{'disabled': ! selectedFileRequest.latest_upload }">
-                                    <i class="icon history fa fa-clock-o"></i>History
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#"
-                                   @click.prevent="showDeleteModal"
-                                >
-                                    <i class="icon delete fa fa-trash-o"></i>Delete
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu-item hidden-xs"><a :href="'/fr/' + selectedFileRequest.hash + '/history'"
-                                                       :class="{'disabled': ! selectedFileRequest.latest_upload }"><i
-                            class="icon history fa fa-clock-o"></i>History</a></li>
-                    <li class="menu-item hidden-xs"><a href="#" @click.prevent="showDeleteModal"><i class="icon delete fa fa-trash-o"></i>Delete</a></li>
-                </ul>
+                >
             </div>
+        </form>
+
+        <file-active-filters :params.sync="params" :remove-filter="removeFilter"></file-active-filters>
+
+        <div id="selected-file-menu"
+             class="table-header keep-selected-file"
+             v-if="selectedFileRequest"
+             @click.stop=""
+        >
+            <span class="file-name" v-if="selectedFileRequest">{{ selectedFileRequest.name }}</span>
+            <ul class="list-menu-items list-inline list-unstyled">
+                <li class="menu-item visible-xs-inline">
+                    <a href="#"
+                       :class="{'disabled': selectedFileRequest.status === 'received'}"
+                       @click="uploadSelected"
+
+                    >
+                        <i class="icon upload fa fa-upload"></i>Upload
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#"
+                       @click.prevent="showRejectModal"
+                       :class="{ 'disabled': ! canRejectFile }">
+                        <i class="icon reject fa fa-close"></i>Reject
+                    </a>
+                </li>
+                <li class="dropdown visible-xs-inline">
+                    <a id="select-menu-more" @click.prevent.stop="showSelectMenuDropdown" data-toggle="dropdown"
+                       role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        More
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="select-menu-more">
+                        <li class="menu-item">
+                            <a :href="'/fr/' + selectedFileRequest.hash + '/history'"
+                               :class="{'disabled': ! selectedFileRequest.latest_upload }">
+                                <i class="icon history fa fa-clock-o"></i>History
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#"
+                               @click.prevent="showDeleteModal"
+                            >
+                                <i class="icon delete fa fa-trash-o"></i>Delete
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item hidden-xs"><a :href="'/fr/' + selectedFileRequest.hash + '/history'"
+                                                   :class="{'disabled': ! selectedFileRequest.latest_upload }"><i
+                        class="icon history fa fa-clock-o"></i>History</a></li>
+                <li class="menu-item hidden-xs"><a href="#" @click.prevent="showDeleteModal"><i
+                        class="icon delete fa fa-trash-o"></i>Delete</a></li>
+            </ul>
+        </div>
 
 
-            <ul id="files-header"
-                class="list-unstyled list-inline table-header"
-                v-show="! selectedFileRequest"
-            >
-                <li class="column col-file header-column"
-                    :class="{
+        <ul id="files-header"
+            class="list-unstyled list-inline table-header"
+            v-show="! selectedFileRequest"
+        >
+            <li class="column col-file header-column"
+                :class="{
                             'current_asc': params.sort === 'status' && params.order === 'asc',
                             'current_desc': params.sort === 'status' && params.order === 'desc',
                             }"
-                    @click="changeSort('status')"
-                >
-                    <i class="fa fa-file-o"></i>
-                </li>
-                <li class="column col-name header-column"
-                    :class="{
+                @click="changeSort('status')"
+            >
+                <i class="fa fa-file-o"></i>
+            </li>
+            <li class="column col-name header-column"
+                :class="{
                             'current_asc': params.sort === 'name' && params.order === 'asc',
                             'current_desc': params.sort === 'name' && params.order === 'desc',
                             }"
-                    @click="changeSort('name')"
-                >
-                    File
-                </li>
-                <li class="column col-due header-column"
-                    :class="{
+                @click="changeSort('name')"
+            >
+                File
+            </li>
+            <li class="column col-due header-column"
+                :class="{
                             'current_asc': params.sort === 'due' && params.order === 'asc',
                             'current_desc': params.sort === 'due' && params.order === 'desc',
                             }"
-                    @click="changeSort('due')"
-                >
-                    Due
-                </li>
-                <li class="column col-upload header-column">
-                    <!-- empty spacer column-->
-                </li>
-            </ul>
-        </div>
+                @click="changeSort('due')"
+            >
+                Due
+            </li>
+            <li class="column col-upload header-column">
+                <!-- empty spacer column-->
+            </li>
+        </ul>
 
-        <div id="page-scroll-content">
-            <ul id="files-list" class="list-unstyled keep-selected-file">
-                <li class="single-file-request"
-                    v-for="(index, fileRequest) in fileRequests"
-                    @focus="selectFileRequest(index)"
-                    tabindex="1"
-                    :class="{ 'is-selected': fileRequest === selectedFileRequest }"
-                    @keydown.up="selectFileRequest(index - 1)"
-                    @keydown.down="selectFileRequest(index + 1)"
-                >
-                    <div class="column col-file content-column file-status" :class="fileRequest.status">
-                        <i class="fa fa-file-o"></i>
-                    </div>
-                    <div class="column col-name content-column">
-                        <!-- Download -->
-                        <a v-if="fileRequest.latest_upload"
-                           :href=" awsUrl + fileRequest.latest_upload.path"
-                           :alt="fileRequest.name + 'download link'"
-                           class="name"
-                        >
-                            {{ fileRequest.name }}
-                        </a>
-                        <span v-else class="name">{{ fileRequest.name }}</span>
-                    </div>
-                    <div class="column col-due content-column">
-                        <span class="date" v-if="fileRequest.due">{{ fileRequest.due | date }}</span>
-                        <span v-else>--</span>
-                    </div>
-                    <div class="column col-upload content-column">
-                        <file-uploader :file-request.sync="fileRequest"></file-uploader>
-                    </div>
-                </li>
-            </ul>
-        </div>
+        <ul id="files-list" class="list-unstyled keep-selected-file">
+            <li class="single-file-request"
+                v-for="(index, fileRequest) in fileRequests"
+                @focus="selectFileRequest(index)"
+                tabindex="1"
+                :class="{ 'is-selected': fileRequest === selectedFileRequest }"
+                @keydown.up="selectFileRequest(index - 1)"
+                @keydown.down="selectFileRequest(index + 1)"
+            >
+                <div class="column col-file content-column file-status" :class="fileRequest.status">
+                    <i class="fa fa-file-o"></i>
+                </div>
+                <div class="column col-name content-column">
+                    <!-- Download -->
+                    <a v-if="fileRequest.latest_upload"
+                       :href=" awsUrl + fileRequest.latest_upload.path"
+                       :alt="fileRequest.name + 'download link'"
+                       class="name"
+                    >
+                        {{ fileRequest.name }}
+                    </a>
+                    <span v-else class="name">{{ fileRequest.name }}</span>
+                </div>
+                <div class="column col-due content-column">
+                    <span class="date" v-if="fileRequest.due">{{ fileRequest.due | date }}</span>
+                    <span v-else>--</span>
+                </div>
+                <div class="column col-upload content-column">
+                    <file-uploader :file-request.sync="fileRequest"></file-uploader>
+                </div>
+            </li>
+        </ul>
         <file-reject-modal :file="selectedFileRequest"></file-reject-modal>
         <file-delete-modal :file="selectedFileRequest"></file-delete-modal>
     </div>
@@ -213,7 +211,7 @@
         },
         computed: {
             selectedFileRequest: function () {
-                    return this.fileRequests[this.selectedFileRequestIndex];
+                return this.fileRequests[this.selectedFileRequestIndex];
             },
             checklistBelongsToUser: function () {
                 return this.user.id === this.checklist.user_id;
@@ -249,13 +247,13 @@
             showRejectModal: function () {
                 if (this.canRejectFile) vueGlobalEventBus.$emit('show-reject-modal');
             },
-            showDeleteModal: function() {
+            showDeleteModal: function () {
                 vueGlobalEventBus.$emit('show-delete-modal', this.selectedFileRequest);
             },
             uploadSelected: function () {
                 vueGlobalEventBus.$emit('upload-selected-file-' + this.selectedFileRequest.id);
             },
-            showSelectMenuDropdown: function() {
+            showSelectMenuDropdown: function () {
                 $('#select-menu-more').next('.dropdown-menu').toggle();
             }
         },
