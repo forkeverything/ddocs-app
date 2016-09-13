@@ -175,6 +175,7 @@ class ChecklistFactory
         // Clean array of duplicate values (case insensitive)
         foreach ($this->request->requested_files as $file) {
 
+            // Track down or create new File
             if( ! $fileModel = File::where('name', $file['name'])->where('user_id', $this->user->id)->first()) {
                 $fileModel = File::create([
                     'name' => $file['name'],
@@ -183,9 +184,10 @@ class ChecklistFactory
                 ]);
             };
 
-
+            // Create a request for the file
             $this->checklist->requestedFiles()->create([
                 'due' => $file['due'],
+                'weighting' => $file['weighting'],
                 'file_id' => $fileModel->id
             ]);
         }

@@ -18,6 +18,7 @@ class CreateFileRequestsTable extends Migration
 
             // Manually filled
             $table->dateTime('due')->nullable();
+            $table->decimal('weighting', 6, 2)->nullable();
 
             // Automatic fields
             $table->string('version')->default(1);

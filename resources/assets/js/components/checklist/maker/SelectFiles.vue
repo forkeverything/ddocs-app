@@ -45,6 +45,15 @@
                    :class="{'filled': file.due}"
                    :name="'files[' + index + '][due]'"
             >
+
+            <div class="file-weighting line-el" v-show="weightings">
+                <input type="number"
+                       class="input-weighting form-control"
+                       v-model="file.weighting"
+                       placeholder="%"
+                       tabindex="0"
+                >
+            </div>
         </li>
     </ul>
 </template>
@@ -60,7 +69,7 @@
                 fileNameOptions: []
             }
         },
-        props: ['files'],
+        props: ['files', 'weightings'],
         methods: {
             selectOption: function (index) {
                 this.selectedOptionIndex = index;
@@ -119,7 +128,8 @@
                 var newFile = {
                     name: '',
                     description: '',
-                    due: ''
+                    due: '',
+                    weighting: ''
                 };
 
                 this.files.splice(this.focusedFileIndex + 1, 0, newFile);
@@ -177,6 +187,7 @@
                     this.blurInput();
                 }
             });
+
         }
     };
 </script>

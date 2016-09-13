@@ -8531,6 +8531,77 @@ label {
     background: #ff6a6a;
     color: #fff; }
 
+.onoffswitch {
+  position: relative;
+  width: 60px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none; }
+
+.onoffswitch-checkbox {
+  display: none; }
+
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #999999;
+  border-radius: 20px; }
+
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  -webkit-transition: margin 0.3s ease-in 0s;
+  transition: margin 0.3s ease-in 0s; }
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 18px;
+  padding: 0;
+  line-height: 18px;
+  font-size: 12px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  box-sizing: border-box; }
+
+.onoffswitch-inner:before {
+  content: "ON";
+  padding-left: 8px;
+  background-color: #41B883;
+  color: #FFFFFF; }
+
+.onoffswitch-inner:after {
+  content: "OFF";
+  padding-right: 8px;
+  background-color: #EEEEEE;
+  color: #999999;
+  text-align: right; }
+
+.onoffswitch-switch {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 5px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 38px;
+  border: 2px solid #999999;
+  border-radius: 20px;
+  -webkit-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s; }
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0; }
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px; }
+
 #form-checklist-make {
   margin: 0 0 15px;
   border: 1px solid #e6e6e6;
@@ -8561,6 +8632,11 @@ label {
       border-color: #e6e6e6; }
     #form-checklist-make #textarea-new-checklist-description:focus {
       border-color: #41B883; }
+  #form-checklist-make .title-files {
+    margin-bottom: 0; }
+  #form-checklist-make .files-summary {
+    margin-bottom: 12.5px;
+    font-size: 0.9em; }
   #form-checklist-make .single-file {
     display: -webkit-box;
     display: flex;
@@ -8618,12 +8694,40 @@ label {
       cursor: pointer; }
       #form-checklist-make .single-file .input-due.filled {
         color: #000; }
+    #form-checklist-make .single-file .file-weighting {
+      border-left: 1px solid #e6e6e6;
+      -webkit-box-flex: 0;
+      flex: 0 0 80px;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center; }
+      #form-checklist-make .single-file .file-weighting input {
+        border-radius: 0;
+        height: 30px;
+        width: 100%;
+        border: 0; }
 
 #checklist-make .header {
-  border-bottom: 1px solid #e6e6e6; }
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 15px; }
 
-#checklist-make #form-checklist-make {
-  margin-top: 15px; }
+#checklist-make .weighting-switch {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 10px 0;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  flex-wrap: nowrap; }
+  #checklist-make .weighting-switch > label {
+    margin: 0 10px 0 0;
+    font-weight: bold; }
+  #checklist-make .weighting-switch .onoffswitch {
+    display: inline-block; }
+    #checklist-make .weighting-switch .onoffswitch label {
+      margin-bottom: 0; }
 
 #checklist-all .header {
   margin: 15px 0 0 0;

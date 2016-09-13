@@ -43,6 +43,15 @@
     }
   }
 
+  .title-files {
+    margin-bottom: 0;
+  }
+
+  .files-summary {
+    margin-bottom: 12.5px;
+    font-size: 0.9em;
+  }
+
   .single-file {
     display: flex;
     position: relative;
@@ -136,6 +145,20 @@
 
       &.filled {
         color: #000;
+      }
+    }
+
+    .file-weighting {
+      border-left: 1px solid $laravel-border-color;
+      flex: 0 0 80px;
+      display: flex;
+      align-items: center;
+
+      input {
+        border-radius: 0;
+        height: 30px;
+        width: 100%;
+        border: 0;
       }
     }
   }

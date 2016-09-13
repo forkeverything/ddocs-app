@@ -14,6 +14,7 @@ class FileRequest extends Model
      */
     protected $fillable = [
         'due',
+        'weighting',
         'version',
         'status',
         'checklist_id',
