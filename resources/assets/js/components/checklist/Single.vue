@@ -12,16 +12,22 @@
         <div id="checklist-body">
 
             <div id="checklist-recipients">
-                <h5><strong>Recipients</strong></h5>
-                <div class="recipients">
+                <div class="recipients" :class="{ expanded: expandRecipients }">
                     <span class="span-to">To: </span>
                     <ul class="recipients-list list-unstyled list-inline">
                         <li v-for="recipient in checklist.recipients">{{ recipient.email }}</li>
                     </ul>
                 </div>
+                <div class="recipients recipients-sizer" :class="{ expanded: expandRecipients }">
+                    <span class="span-to">To: </span>
+                    <ul class="recipients-list list-unstyled list-inline">
+                        <li v-for="recipient in checklist.recipients">{{ recipient.email }}</li>
+                    </ul>
+                </div>
+                <div class="expander"><span @click="toggleRecipientsCollapse"><i v-show="! expandRecipients" class="fa fa-angle-double-down"></i><i v-else class="fa fa-angle-double-up"></i></span></div>
             </div>
 
-            <div id="split-view">
+            <div id="split-view" class="keep-selected-file">
                 <div id="main-pane"
                      :class="{
                         'collapsed': singleView && showRightPanel
@@ -32,7 +38,7 @@
                         <a v-show="singleView"
                            @click.prevent="toggleRightPanel"
                            class="btn btn-link pane-nav">
-                            Details <i class="fa fa-angle-double-right"></i>
+                            <span v-if="selectedFileRequest">File</span><span v-else>Summary</span> <i class="fa fa-angle-double-right"></i>
                         </a>
                     </div>
                     <form id="form-checklist-search" @submit.prevent="searchTerm">
@@ -196,11 +202,17 @@
                     <a v-show="singleView"
                        @click.prevent="toggleRightPanel"
                        class="btn btn-link pane-nav">
-                        <i class="fa fa-angle-double-left"></i> View List
+                        <i class="fa fa-angle-double-left"></i> List
                     </a>
-                    <div id="description" class="content">
-                        <h5><strong>Description</strong></h5>
-                        <p v-if="checklist.description">{{ checklist.description }}</p>
+                    <div id="file-view" class="content" v-if="selectedFileRequest">
+                        <button type="button" class="btn close" @click="unselectFileRequest">&times;</button>
+                        <h4><strong>{{ selectedFileRequest.name }}</strong></h4>
+                    </div>
+                    <div id="summary-view" class="content" v-else>
+                        <div id="description" >
+                            <h5><strong>List Description</strong></h5>
+                            <p v-if="checklist.description">{{ checklist.description }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -237,7 +249,8 @@
                 numReceived: '',
                 selectedFileRequestIndex: '',
                 singleView: false,
-                showRightPanel: false
+                showRightPanel: false,
+                expandRecipients: false
             }
         },
         computed: {
@@ -266,6 +279,9 @@
             getFileRequestIndex: function (file) {
                 return _.indexOf(this.fileRequests, _.find(this.fileRequests, {id: file.id}));
             },
+            unselectFileRequest: function() {
+                this.selectedFileRequestIndex = '';
+            },
             selectFileRequest: function (index) {
                 if (!this.fileRequests[index]) return;  // fr doesn't exist
                 this.selectedFileRequestIndex = index;
@@ -293,7 +309,19 @@
             },
             setSplitView: function(element) {
                 $(element).css('opacity', 1);
-                this.singleView = (element.clientWidth <= 768);
+                this.singleView = (element.clientWidth <= 767);
+            },
+            toggleRecipientsCollapse: function() {
+                this.expandRecipients = !this.expandRecipients;
+            },
+            setRecipientsCollapsability: function(element) {
+                let containerWidth = $('#checklist-recipients').width();
+                let contentWidth = $('.recipients-sizer').outerWidth() + 10;
+                if(contentWidth > containerWidth) {
+                    $(element).addClass('expandable');
+                } else {
+                    $(element).removeClass('expandable');
+                }
             }
         },
         ready: function () {
@@ -335,13 +363,20 @@
             });
 
             $(window).on('load', () => {
-                let element = document.getElementById('split-view');
+                let element = document.getElementById('checklist-body');
                 self.setSplitView(element);
-                self.singleView = (element.clientWidth <= 768);
                 let sensor = new ResizeSensor(element, function() {
                     self.setSplitView(element)
                 });
             });
+
+            $(window).on('load', () => {
+                let element = document.getElementById('checklist-recipients');
+                self.setRecipientsCollapsability(element);
+                new ResizeSensor(element, function() {
+                    self.setRecipientsCollapsability(element);
+                });
+            })
 
 
 

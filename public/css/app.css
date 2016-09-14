@@ -7999,7 +7999,6 @@ button.close {
 
 body {
   padding-top: 42px;
-  padding-bottom: 3em;
   height: 100vh; }
 
 #page-fixed-top {
@@ -8827,14 +8826,27 @@ label {
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    flex-direction: column; }
+    flex-direction: column;
+    opacity: 0; }
     #checklist-single #checklist-body h5 {
       margin: 0; }
     #checklist-single #checklist-body #checklist-recipients {
-      padding: 15px 20px;
+      padding: 5px 10px;
       margin: 0 0 15px;
       border: 1px solid #e6e6e6;
       box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1); }
+      #checklist-single #checklist-body #checklist-recipients.expandable {
+        display: -webkit-box;
+        display: flex; }
+        #checklist-single #checklist-body #checklist-recipients.expandable .recipients {
+          -webkit-box-flex: 1;
+          flex: 1;
+          max-height: 36px;
+          overflow: hidden; }
+          #checklist-single #checklist-body #checklist-recipients.expandable .recipients.expanded {
+            max-height: initial; }
+        #checklist-single #checklist-body #checklist-recipients.expandable .expander {
+          display: inline-block; }
       #checklist-single #checklist-body #checklist-recipients .recipients {
         position: relative;
         padding: 6px 6px 6px 0; }
@@ -8853,19 +8865,31 @@ label {
             border-radius: 4px;
             padding: 0 8px;
             margin: 0 3px 5px 3px; }
+        #checklist-single #checklist-body #checklist-recipients .recipients.recipients-sizer {
+          position: absolute;
+          opacity: 0;
+          z-index: -1; }
+      #checklist-single #checklist-body #checklist-recipients .expander {
+        -webkit-box-flex: 0;
+        flex: 0 0 10px;
+        padding-top: 5px;
+        text-align: center;
+        display: none; }
+        #checklist-single #checklist-body #checklist-recipients .expander i {
+          color: #9CA1A8;
+          font-size: 0.9em;
+          cursor: pointer; }
     #checklist-single #checklist-body #split-view {
       -webkit-box-flex: 1;
       flex: 1;
       display: -webkit-box;
       display: flex;
-      overflow: hidden;
-      opacity: 0; }
+      overflow: hidden; }
       #checklist-single #checklist-body #split-view .pane {
-        padding: 15px 20px; }
+        padding: 15px 20px 0 20px; }
       #checklist-single #checklist-body #split-view .pane-nav {
-        padding: 6px 0; }
-        #checklist-single #checklist-body #split-view .pane-nav i {
-          font-size: 1.2em; }
+        padding: 6px 0;
+        font-size: 0.9em; }
       #checklist-single #checklist-body #split-view #main-pane {
         -webkit-transition: margin-left 0.25s ease-out, width 0.25s ease-out;
         transition: margin-left 0.25s ease-out, width 0.25s ease-out;
@@ -8897,6 +8921,8 @@ label {
           max-width: initial; }
         #checklist-single #checklist-body #split-view #right-pane.collapsed {
           margin-left: -475px; }
+      #checklist-single #checklist-body #split-view #file-view .close {
+        margin-top: -15px; }
   #checklist-single #form-checklist-search {
     margin: 0 0 10px; }
   #checklist-single #selected-file-menu {
@@ -8907,6 +8933,9 @@ label {
     -webkit-box-align: center;
     align-items: center;
     min-height: 35px; }
+    @media screen and (min-width: 768px) {
+      #checklist-single #selected-file-menu {
+        display: none; } }
     #checklist-single #selected-file-menu .file-name {
       -webkit-box-flex: 1;
       flex: 1;
@@ -8951,6 +8980,10 @@ label {
   #checklist-single #files-header {
     white-space: nowrap;
     min-height: 35px; }
+    @media screen and (min-width: 768px) {
+      #checklist-single #files-header {
+        display: -webkit-box !important;
+        display: flex !important; } }
   #checklist-single #files-header, #checklist-single .single-file-request {
     display: -webkit-box;
     display: flex; }
@@ -9022,7 +9055,8 @@ label {
     margin-bottom: -1px; }
   #checklist-single #files-list {
     padding-top: 1px;
-    overflow-y: scroll; }
+    overflow-y: scroll;
+    margin-bottom: 0; }
     #checklist-single #files-list .single-file-request {
       border-top: 1px solid #e6e6e6;
       border-bottom: 1px solid #e6e6e6;

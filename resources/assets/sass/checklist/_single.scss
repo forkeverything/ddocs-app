@@ -26,16 +26,32 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    opacity: 0;
 
     h5 {
       margin: 0;
     }
 
     #checklist-recipients {
-      padding: 15px 20px;
+      padding: 5px 10px;
       margin: 0 0 15px;
       border: 1px solid $laravel-border-color;
       @include box-shadow(0 1px 2px 0 rgba(0, 0, 0, 0.1));
+
+      &.expandable {
+        display: flex;
+        .recipients {
+          flex: 1;
+          max-height: 36px;
+          overflow: hidden;
+          &.expanded {
+            max-height: initial;
+          }
+        }
+        .expander {
+          display: inline-block;
+        }
+      }
 
       .recipients {
         position: relative;
@@ -61,6 +77,24 @@
             margin: 0 3px 5px 3px;
           }
         }
+
+        &.recipients-sizer {
+          position: absolute;
+          opacity: 0;
+          z-index: -1;
+        }
+      }
+
+      .expander {
+        flex: 0 0 10px;
+        padding-top: 5px;
+        text-align: center;
+        display: none;
+        i {
+          color: $text-muted;
+          font-size: 0.9em;
+          cursor: pointer;
+        }
       }
     }
 
@@ -68,18 +102,14 @@
       flex: 1;
       display: flex;
       overflow: hidden;
-      opacity: 0;
 
       .pane {
-        padding: 15px 20px;
+        padding: 15px 20px 0 20px;
       }
 
       .pane-nav {
         padding: 6px 0;
-
-        i {
-          font-size: 1.2em;
-        }
+        font-size: 0.9em;
       }
 
       #main-pane {
@@ -115,6 +145,12 @@
           margin-left: -475px;
         }
       }
+
+      #file-view {
+        .close {
+          margin-top: -15px;
+        }
+      }
     }
   }
 
@@ -127,6 +163,10 @@
     justify-content: space-between;
     align-items: center;
     min-height: 35px;
+
+    @media screen and (min-width: $screen-sm-min) {
+      display: none;
+    }
 
     .file-name {
       flex: 1;
@@ -213,6 +253,10 @@
   #files-header {
     white-space: nowrap;
     min-height: 35px;
+
+    @media screen and (min-width: $screen-sm-min) {
+      display: flex!important;
+    }
   }
 
   #files-header, .single-file-request {
@@ -327,6 +371,7 @@
   #files-list {
     padding-top: 1px;
     overflow-y: scroll;
+    margin-bottom: 0;
 
     .single-file-request {
       border-top: 1px solid $laravel-border-color;
