@@ -25,8 +25,7 @@
     export default {
         data: function () {
             return {
-                uploading: false,
-                progress: ''
+                uploading: false
             }
         },
         computed: {
@@ -52,15 +51,13 @@
 
                 self.$http.post('/fr/' + self.fileRequest.hash + '/upload', fd, {
                     progress: (event) => {
-//                        self.progress = Math.round(100 * event.loaded / event.total);
+                        self.$set('fileRequest.uploadProgress', Math.round(100 * event.loaded / event.total));
                     }
                 }).then((response) => {
-//                    self.progress = '';
                     self.fileRequest = JSON.parse(response.data);
                     self.uploading = false;
 
                 }, (response) => {
-//                    self.progress = '';
                     console.log('Upload file error.');
                     console.log(response);
                     self.uploading = false;

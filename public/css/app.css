@@ -8879,6 +8879,29 @@ label {
           color: #9CA1A8;
           font-size: 0.9em;
           cursor: pointer; }
+    #checklist-single #checklist-body .menu-item a:hover .icon {
+      opacity: 1; }
+    #checklist-single #checklist-body .menu-item a .icon {
+      opacity: 0.6;
+      margin-right: 3px;
+      font-size: 1.2em; }
+      #checklist-single #checklist-body .menu-item a .icon.upload {
+        color: #27AE60; }
+      #checklist-single #checklist-body .menu-item a .icon.reject {
+        color: #ff6a6a; }
+      #checklist-single #checklist-body .menu-item a .icon.more {
+        color: #9CA1A8; }
+      #checklist-single #checklist-body .menu-item a .icon.history {
+        color: #F0A830; }
+      #checklist-single #checklist-body .menu-item a .icon.rename {
+        color: #2980B9; }
+      #checklist-single #checklist-body .menu-item a .icon.delete {
+        color: #555555; }
+    #checklist-single #checklist-body .menu-item a.disabled {
+      color: #9CA1A8;
+      pointer-events: none; }
+      #checklist-single #checklist-body .menu-item a.disabled .icon {
+        color: #9CA1A8; }
     #checklist-single #checklist-body #split-view {
       -webkit-box-flex: 1;
       flex: 1;
@@ -8923,6 +8946,26 @@ label {
           margin-left: -475px; }
       #checklist-single #checklist-body #split-view #file-view .close {
         margin-top: -15px; }
+      #checklist-single #checklist-body #split-view #file-view h3 {
+        margin-bottom: 5px; }
+      #checklist-single #checklist-body #split-view #file-view #single-file-request-menu {
+        font-size: 0.9em;
+        margin-bottom: 12.5px; }
+      #checklist-single #checklist-body #split-view #file-view #progress-status {
+        background: #E9E9E9;
+        display: block;
+        height: 2px;
+        margin-bottom: 12.5px; }
+        #checklist-single #checklist-body #split-view #file-view #progress-status .progress-bar {
+          display: inline-block;
+          width: 0px;
+          background: #41B883; }
+        #checklist-single #checklist-body #split-view #file-view #progress-status.rejected .progress-bar {
+          width: 100%;
+          background: #ff6a6a; }
+        #checklist-single #checklist-body #split-view #file-view #progress-status.received .progress-bar {
+          width: 100%;
+          background: #41B883; }
   #checklist-single #form-checklist-search {
     margin: 0 0 10px; }
   #checklist-single #selected-file-menu {
@@ -8945,29 +8988,6 @@ label {
       text-overflow: ellipsis; }
     #checklist-single #selected-file-menu .list-menu-items {
       margin: 0 -5px 0 0; }
-      #checklist-single #selected-file-menu .list-menu-items .menu-item a:hover .icon {
-        opacity: 1; }
-      #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon {
-        opacity: 0.6;
-        margin-right: 3px;
-        font-size: 1.2em; }
-        #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon.upload {
-          color: #27AE60; }
-        #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon.reject {
-          color: #ff6a6a; }
-        #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon.more {
-          color: #9CA1A8; }
-        #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon.history {
-          color: #F0A830; }
-        #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon.rename {
-          color: #2980B9; }
-        #checklist-single #selected-file-menu .list-menu-items .menu-item a .icon.delete {
-          color: #555555; }
-      #checklist-single #selected-file-menu .list-menu-items .menu-item a.disabled {
-        color: #9CA1A8;
-        pointer-events: none; }
-        #checklist-single #selected-file-menu .list-menu-items .menu-item a.disabled .icon {
-          color: #9CA1A8; }
     #checklist-single #selected-file-menu .dropdown-menu {
       min-width: 120px; }
       #checklist-single #selected-file-menu .dropdown-menu .menu-item {

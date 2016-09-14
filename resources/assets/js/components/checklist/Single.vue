@@ -24,7 +24,9 @@
                         <li v-for="recipient in checklist.recipients">{{ recipient.email }}</li>
                     </ul>
                 </div>
-                <div class="expander"><span @click="toggleRecipientsCollapse"><i v-show="! expandRecipients" class="fa fa-angle-double-down"></i><i v-else class="fa fa-angle-double-up"></i></span></div>
+                <div class="expander"><span @click="toggleRecipientsCollapse"><i v-show="! expandRecipients"
+                                                                                 class="fa fa-angle-double-down"></i><i
+                        v-else class="fa fa-angle-double-up"></i></span></div>
             </div>
 
             <div id="split-view" class="keep-selected-file">
@@ -38,7 +40,8 @@
                         <a v-show="singleView"
                            @click.prevent="toggleRightPanel"
                            class="btn btn-link pane-nav">
-                            <span v-if="selectedFileRequest">File</span><span v-else>Summary</span> <i class="fa fa-angle-double-right"></i>
+                            <span v-if="selectedFileRequest">File</span><span v-else>Summary</span> <i
+                                class="fa fa-angle-double-right"></i>
                         </a>
                     </div>
                     <form id="form-checklist-search" @submit.prevent="searchTerm">
@@ -206,10 +209,44 @@
                     </a>
                     <div id="file-view" class="content" v-if="selectedFileRequest">
                         <button type="button" class="btn close" @click="unselectFileRequest">&times;</button>
-                        <h4><strong>{{ selectedFileRequest.name }}</strong></h4>
+                        <h3><strong>{{ selectedFileRequest.name }}</strong></h3>
+                        <div id="progress-status"
+                             :class="{
+                                rejected: selectedFileRequest.status === 'rejected',
+                                 received: selectedFileRequest.status === 'received'
+                             }"
+                        >
+                            <div class="progress-bar"
+                                 :style="{
+                                    width: selectedFileRequest.uploadProgress + '%'
+                                 }"
+                            ></div>
+                        </div>
+                        <ul id="single-file-request-menu" class="list-inline list-unstyled">
+                            <li class="menu-item">
+                                <a href="#"
+                                   @click.prevent="showRejectModal"
+                                   :class="{ 'disabled': ! canRejectFile }">
+                                    <i class="icon reject fa fa-close"></i>Reject
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a :href="'/fr/' + selectedFileRequest.hash + '/history'"
+                                   :class="{'disabled': ! selectedFileRequest.latest_upload }">
+                                    <i class="icon history fa fa-clock-o"></i>History
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#"
+                                   @click.prevent="showDeleteModal"
+                                >
+                                    <i class="icon delete fa fa-trash-o"></i>Delete
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                     <div id="summary-view" class="content" v-else>
-                        <div id="description" >
+                        <div id="description">
                             <h5><strong>List Description</strong></h5>
                             <p v-if="checklist.description">{{ checklist.description }}</p>
                         </div>
@@ -279,7 +316,7 @@
             getFileRequestIndex: function (file) {
                 return _.indexOf(this.fileRequests, _.find(this.fileRequests, {id: file.id}));
             },
-            unselectFileRequest: function() {
+            unselectFileRequest: function () {
                 this.selectedFileRequestIndex = '';
             },
             selectFileRequest: function (index) {
@@ -307,17 +344,17 @@
             toggleRightPanel: function () {
                 this.showRightPanel = !this.showRightPanel;
             },
-            setSplitView: function(element) {
+            setSplitView: function (element) {
                 $(element).css('opacity', 1);
                 this.singleView = (element.clientWidth <= 767);
             },
-            toggleRecipientsCollapse: function() {
+            toggleRecipientsCollapse: function () {
                 this.expandRecipients = !this.expandRecipients;
             },
-            setRecipientsCollapsability: function(element) {
+            setRecipientsCollapsability: function (element) {
                 let containerWidth = $('#checklist-recipients').width();
                 let contentWidth = $('.recipients-sizer').outerWidth() + 10;
-                if(contentWidth > containerWidth) {
+                if (contentWidth > containerWidth) {
                     $(element).addClass('expandable');
                 } else {
                     $(element).removeClass('expandable');
@@ -365,7 +402,7 @@
             $(window).on('load', () => {
                 let element = document.getElementById('checklist-body');
                 self.setSplitView(element);
-                let sensor = new ResizeSensor(element, function() {
+                let sensor = new ResizeSensor(element, function () {
                     self.setSplitView(element)
                 });
             });
@@ -373,11 +410,10 @@
             $(window).on('load', () => {
                 let element = document.getElementById('checklist-recipients');
                 self.setRecipientsCollapsability(element);
-                new ResizeSensor(element, function() {
+                new ResizeSensor(element, function () {
                     self.setRecipientsCollapsability(element);
                 });
             })
-
 
 
         }
