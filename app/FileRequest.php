@@ -73,7 +73,11 @@ class FileRequest extends Model
      */
     public function setDueAttribute($value)
     {
-        if($value) $this->attributes['due'] = Carbon::createFromFormat('d/m/Y', $value);
+        if($value) {
+            $this->attributes['due'] = Carbon::createFromFormat('d/m/Y', $value);
+        } else {
+            $this->attributes['due'] = null;
+        }
     }
 
     /**

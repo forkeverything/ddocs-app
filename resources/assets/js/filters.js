@@ -37,7 +37,7 @@ Vue.filter('smartDate', function (value) {
         let tomorrow = today.clone().add(1, 'days').startOf('day');
         let yesterday = today.clone().subtract(1, 'days').startOf('day');
         let nextSunday = today.clone().day(7).startOf('day');
-        let date = moment(value, "YYYY-MM-DD HH:mm:ss");
+        let date = moment(value, ["DD/MM/YYYY", "YYYY-MM-DD HH:mm:ss"]);
 
 
         // TODO ::: Find a locale friendly way of doing this

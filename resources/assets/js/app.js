@@ -21,6 +21,7 @@ Vue.component('toggle-switch', require('./components/utilities/ToggleSwitch.vue'
 // Checklist
 Vue.component('checklist-all', require('./components/checklist/All.vue'));
 Vue.component('checklist-single', require('./components/checklist/Single.vue'));
+Vue.component('selected-file-date', require('./components/checklist/single/DateSelectedFile.vue'));
 Vue.component('checklist-maker', require('./components/checklist/Maker.vue'));
 Vue.component('maker-files', require('./components/checklist/maker/SelectFiles.vue'));
 Vue.component('checklist-offer-join', require('./components/checklist/single/Offer.vue'));

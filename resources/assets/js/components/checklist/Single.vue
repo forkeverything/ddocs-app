@@ -209,6 +209,9 @@
                     </a>
                     <div id="file-view" class="content" v-if="selectedFileRequest">
                         <button type="button" class="btn close" @click="unselectFileRequest">&times;</button>
+                        <div id="selected-file-requirements">
+                            <selected-file-date :file-request.sync="fileRequests[selectedFileRequestIndex]"></selected-file-date>
+                        </div>
                         <h3><strong>{{ selectedFileRequest.name }}</strong></h3>
                         <div id="progress-status"
                              :class="{
@@ -373,19 +376,23 @@
                 self.numReceived = self.params.num_received_files;
             });
 
-            // Click event bind - Unselect file if we didn't click inside list or within select menu
-            // Elements that even if we click on, we don't want to lose selectedFileRequest
-            $(document).on('click', (e) => {
-                let focusContainers = $('.keep-selected-file');
-                let clickedInside = false;
-                for (var i = 0; i < focusContainers.length; i++) {
-                    if ($(focusContainers[i]).is(e.target) || $(focusContainers[i]).has(e.target).length !== 0) {
-                        clickedInside = true;
-                        break;
-                    }
-                }
-                if (!clickedInside) self.selectedFileRequestIndex = '';
-            });
+//            ====================================================================================================================================
+//            NOT IMPLEMENTED
+//            Can't make it play nicely with datepicker. Datepicker prev/next month clicks aren't registering.
+//            ====================================================================================================================================
+//            // Click event bind - Unselect file if we didn't click inside list or within select menu
+//            // Elements that even if we click on, we don't want to lose selectedFileRequest
+//            $(document).on('click', (e) => {
+//                let focusContainers = $('.keep-selected-file');
+//                let clickedInside = false;
+//                for (var i = 0; i < focusContainers.length; i++) {
+//                    if ($(focusContainers[i]).is(e.target) || $(focusContainers[i]).has(e.target).length !== 0) {
+//                        clickedInside = true;
+//                        break;
+//                    }
+//                }
+//                if (!clickedInside) self.selectedFileRequestIndex = '';
+//            });
 
             // When updated file request model
             vueGlobalEventBus.$on('updated-file-request', (updatedFileRequest) => {
@@ -413,9 +420,7 @@
                 new ResizeSensor(element, function () {
                     self.setRecipientsCollapsability(element);
                 });
-            })
-
-
+            });
         }
     };
 </script>

@@ -10,7 +10,7 @@
         </button>
         <input type="text"
                class="input-due line-el"
-               v-model="date"
+               v-model="datePicker"
                v-datepicker
                @keydown.delete.prevent="removeDate"
                placeholder="Due date"
@@ -23,10 +23,19 @@
     export default {
         props: ['date'],
         computed: {
+            datePicker: {
+                get() {
+                    return this.date;
+                },
+                set(newDate) {
+                    newDate = newDate || null;
+                    if(newDate !== this.date) vueGlobalEventBus.$emit('updated-date', newDate);
+                    this.date = newDate;
+                }
+            },
             formattedDate() {
                 if (!this.date) return;
-                let date = moment(this.date, 'DD/MM/YYYY').format('YYYY-MM-DD');
-                return Vue.filter('smartDate')(date);
+                return Vue.filter('smartDate')(this.date);
             }
         },
         methods: {
@@ -37,9 +46,7 @@
                 this.date = '';
             }
         },
-        ready: function () {
-//        console.log(this.date);
-//        console.log(Vue.filter('smartDate')('2016-09-15'));
-        }
+        watch: {},
+        ready: function () {}
     }
 </script>

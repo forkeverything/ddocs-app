@@ -30,7 +30,7 @@ Route::get('/r/{recipient_hash}/turn_off_notifications', 'RecipientsController@g
 
 // FileRequests
 Route::post('/fr/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
-Route::put('/fr/{file_request}', 'FileRequestsController@putModifyRequest');
+Route::put('/fr/{file_request_hash}', 'FileRequestsController@putModifyRequest');
 Route::post('/fr/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
 Route::post('/fr/{file_request_hash}/reject', 'FileRequestsController@postRejectUploadedFile');
 Route::get('/fr/{file_request_hash}/history', 'FileRequestsController@getHistory');

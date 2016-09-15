@@ -73,6 +73,25 @@ class FileRequestsController extends Controller
         return view('file.history', compact('fileRequest'));
     }
 
+    /**
+     * Modify FileRequest
+     *
+     * @param $fileRequestHash
+     * @param Request $request
+     */
+    public function putModifyRequest($fileRequestHash, Request $request)
+    {
+        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
+        $fileRequest->update($request->all());
+        return $fileRequest;
+    }
+
+    /**
+     * Delete FileRequest
+     *
+     * @param $fileRequestHash
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function deleteFiles($fileRequestHash)
     {
         $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
@@ -80,4 +99,5 @@ class FileRequestsController extends Controller
         if(Storage::delete($uploadPaths)) $fileRequest->delete();
         return response("Deleted file request and uploads");
     }
+
 }
