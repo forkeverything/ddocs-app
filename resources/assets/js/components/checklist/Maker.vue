@@ -112,7 +112,7 @@
                 if (!validateEmail(recipient)) {
                     tagger.validateError = 'Please enter a valid email.';
                     tagger.showError = true;
-                    setTimeout(() => {
+                    setTimeout(function () {
                         tagger.showError = false;
                     }, 1500);
                     return false;

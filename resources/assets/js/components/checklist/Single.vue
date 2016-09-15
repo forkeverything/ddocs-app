@@ -186,7 +186,7 @@
                                 <span v-else class="name">{{ fileRequest.name }}</span>
                             </div>
                             <div class="column col-due content-column">
-                                <span class="date" v-if="fileRequest.due">{{ fileRequest.due | date }}</span>
+                                <span class="date no-wrap" v-if="fileRequest.due">{{ fileRequest.due | smartDate }}</span>
                                 <span v-else>--</span>
                             </div>
                             <div class="column col-upload content-column">

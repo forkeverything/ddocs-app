@@ -8,7 +8,7 @@
     color: $dark-grey;
 
     &.filled {
-      color: #000;
+      color: $input-color;
     }
   }
 
@@ -135,18 +135,31 @@
       }
     }
 
-    .input-due {
-      width: 100px;
-      border: 0;
-      text-align: center;
-      outline: 0 !important;
-      color: #fff;
-      cursor: pointer;
+    .file-date-input {
+      position: relative;
 
-      &.filled {
-        color: #000;
+      button {
+        background: transparent;
+        color: $input-color-placeholder;
+        padding: 6px 12px;
+        outline: 0;
+        box-shadow: none;
+        border: 0;
+
+        &.filled {
+          color: $input-color;
+        }
+      }
+
+      input {
+        opacity: 0;
+        position: absolute;
+        top: 5px;
+        left: 0;
+        z-index: -1;
       }
     }
+
 
     .file-weighting {
       border-left: 1px solid $laravel-border-color;

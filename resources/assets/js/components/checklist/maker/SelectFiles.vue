@@ -36,22 +36,15 @@
                 </li>
             </ul>
 
-            <input type="text"
-                   class="input-due line-el"
-                   v-model="file.due"
-                   v-datepicker
-                   placeholder="Due date"
-                   tabindex="-1"
-                   :class="{'filled': file.due}"
-                   :name="'files[' + index + '][due]'"
-            >
+            <file-date-input :date.sync="file.due"></file-date-input>
 
             <div class="file-weighting line-el" v-show="weightings">
                 <input type="number"
                        class="input-weighting form-control"
                        v-model="file.weighting"
-                       placeholder="%"
+                       step="0.01"
                        tabindex="0"
+                       placeholder="%"
                 >
             </div>
         </li>

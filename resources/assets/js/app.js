@@ -31,6 +31,8 @@ Vue.component('file-delete-modal', require('./components/file/DeleteModal.vue'))
 Vue.component('file-filters', require('./components/file/Filters.vue'));
 Vue.component('file-active-filters', require('./components/file/ActiveFilters.vue'));
 Vue.component('file-uploader', require('./components/file/Uploader.vue'));
+Vue.component('file-date-input', require('./components/file/DateInput.vue'));
+
 // Vue.component('file-renamer', require('./components/file/Renamer.vue'));
 
 // Account

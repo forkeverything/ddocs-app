@@ -8595,7 +8595,7 @@ label {
   #form-checklist-make #title-checklist-name {
     color: #999999; }
     #form-checklist-make #title-checklist-name.filled {
-      color: #000; }
+      color: #555555; }
   #form-checklist-make #input-checklist-name {
     font-size: 34px;
     height: 37px;
@@ -8671,15 +8671,23 @@ label {
         #form-checklist-make .single-file .list-name-options .single-name.is-selected {
           background: #64c89b;
           color: #fff; }
-    #form-checklist-make .single-file .input-due {
-      width: 100px;
-      border: 0;
-      text-align: center;
-      outline: 0 !important;
-      color: #fff;
-      cursor: pointer; }
-      #form-checklist-make .single-file .input-due.filled {
-        color: #000; }
+    #form-checklist-make .single-file .file-date-input {
+      position: relative; }
+      #form-checklist-make .single-file .file-date-input button {
+        background: transparent;
+        color: #999999;
+        padding: 6px 12px;
+        outline: 0;
+        box-shadow: none;
+        border: 0; }
+        #form-checklist-make .single-file .file-date-input button.filled {
+          color: #555555; }
+      #form-checklist-make .single-file .file-date-input input {
+        opacity: 0;
+        position: absolute;
+        top: 5px;
+        left: 0;
+        z-index: -1; }
     #form-checklist-make .single-file .file-weighting {
       border-left: 1px solid #e6e6e6;
       -webkit-box-flex: 0;
