@@ -40,10 +40,11 @@
         },
         methods: {
             pickDate() {
-                $(this.$els.input).focus();
+                $(this.$els.input).datepicker('show');
             },
             removeDate () {
-                this.date = '';
+                this.datePicker = '';
+                $(this.$els.input).datepicker('hide');
             }
         },
         watch: {},

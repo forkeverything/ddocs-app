@@ -2,24 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/DateSelectedFile.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/FileRequest.php" afterPath="$PROJECT_DIR$/app/FileRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css.map" afterPath="$PROJECT_DIR$/public/css/app.css.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/landing.css" afterPath="$PROJECT_DIR$/public/css/landing.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/landing.css.map" afterPath="$PROJECT_DIR$/public/css/landing.css.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/landing.js" afterPath="$PROJECT_DIR$/public/js/landing.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app.js" afterPath="$PROJECT_DIR$/resources/assets/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/file/DateInput.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/file/DateInput.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/filters.js" afterPath="$PROJECT_DIR$/resources/assets/js/filters.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/_list-maker.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/_list-maker.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/file.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/file.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/variables.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/variables.scss" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,12 +34,14 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="DateSelectedFile.vue" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/single/DateSelectedFile.vue">
+          <file leaf-file-name="DateInput.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/DateInput.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="54">
-                  <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-                  <folding />
+                <state relative-caret-position="974">
+                  <caret line="46" column="53" lean-forward="false" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
+                  <folding>
+                    <marker date="1473935611000" expanded="true" signature="1526:1527" ph="{...}" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -60,8 +53,8 @@
           <file leaf-file-name="_single.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="855">
-                  <caret line="222" column="36" lean-forward="false" selection-start-line="222" selection-start-column="36" selection-end-line="222" selection-end-column="36" />
+                <state relative-caret-position="261">
+                  <caret line="161" column="25" lean-forward="false" selection-start-line="161" selection-start-column="25" selection-end-line="161" selection-end-column="25" />
                   <folding />
                 </state>
               </provider>
@@ -100,7 +93,6 @@
         <option value="$PROJECT_DIR$/resources/views/account/overview.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/checklist/single.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/variables.scss" />
         <option value="$PROJECT_DIR$/resources/assets/sass/components/_nav.scss" />
         <option value="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/single/Offer.vue" />
@@ -124,9 +116,10 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_07_31_060512_create_file_requests_table.php" />
         <option value="$PROJECT_DIR$/app/FileRequest.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/file/DateInput.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/single/DateSelectedFile.vue" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/file/DateInput.vue" />
+        <option value="$PROJECT_DIR$/resources/assets/sass/variables.scss" />
         <option value="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
       </list>
     </option>
@@ -468,12 +461,12 @@
       <workItem from="1473752702666" duration="147000" />
       <workItem from="1473752909088" duration="700000" />
       <workItem from="1473763028983" duration="10862000" />
-      <workItem from="1473804853354" duration="21089000" />
+      <workItem from="1473804853354" duration="22247000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="466459000" />
+    <option name="totallyTimeSpent" value="467617000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -924,14 +917,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="19" lean-forward="true" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/variables.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="26" column="1" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1594,30 +1579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/DateInput.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="41" lean-forward="true" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
-          <folding>
-            <marker date="1473931572000" expanded="true" signature="9:634" ph="..." />
-            <marker date="1473931572000" expanded="true" signature="51:622" ph="..." />
-            <marker date="1473931572000" expanded="true" signature="82:324" ph="..." />
-            <marker date="1473931572000" expanded="true" signature="352:611" ph="..." />
-            <marker date="1473931572000" expanded="true" signature="643:1471" ph="..." />
-            <marker date="1473931572000" expanded="true" signature="664:1462" ph="{...}" />
-            <marker date="1473931572000" expanded="true" signature="709:1218" ph="{...}" />
-            <marker date="1473931572000" expanded="true" signature="735:1064" ph="{...}" />
-            <marker date="1473931572000" expanded="true" signature="759:816" ph="{...}" />
-            <marker date="1473931572000" expanded="true" signature="847:1050" ph="{...}" />
-            <marker date="1473931572000" expanded="true" signature="1094:1208" ph="{...}" />
-            <marker date="1473931572000" expanded="true" signature="1237:1406" ph="{...}" />
-            <marker date="1473931572000" expanded="true" signature="1262:1321" ph="{...}" />
-            <marker date="1473931572000" expanded="true" signature="1349:1396" ph="{...}" />
-            <marker date="1473931572000" expanded="true" signature="1454:1455" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
@@ -1629,15 +1590,48 @@
     <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/single/DateSelectedFile.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
-          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <caret line="2" column="56" lean-forward="false" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
+          <folding>
+            <marker date="1473934804000" expanded="true" signature="9:280" ph="..." />
+            <marker date="1473934804000" expanded="true" signature="39:268" ph="..." />
+            <marker date="1473934804000" expanded="true" signature="149:261" ph="..." />
+            <marker date="1473934804000" expanded="true" signature="289:1299" ph="..." />
+            <marker date="1473934804000" expanded="true" signature="306:1290" ph="{...}" />
+            <marker date="1473934804000" expanded="true" signature="328:390" ph="{...}" />
+            <marker date="1473934804000" expanded="true" signature="345:384" ph="{...}" />
+            <marker date="1473934804000" expanded="true" signature="434:1113" ph="{...}" />
+            <marker date="1473934804000" expanded="true" signature="464:1107" ph="{...}" />
+            <marker date="1473934804000" expanded="true" signature="631:680" ph="{&quot;due&quot;: date...}" />
+            <marker date="1473934804000" expanded="true" signature="701:854" ph="{...}" />
+            <marker date="1473934804000" expanded="true" signature="869:1096" ph="{...}" />
+            <marker date="1473934804000" expanded="true" signature="1127:1288" ph="{...}" />
+            <marker date="1473934804000" expanded="true" signature="1188:1281" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/DateInput.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="974">
+          <caret line="46" column="53" lean-forward="false" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
+          <folding>
+            <marker date="1473935611000" expanded="true" signature="1526:1527" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="222" column="36" lean-forward="false" selection-start-line="222" selection-start-column="36" selection-end-line="222" selection-end-column="36" />
+        <state relative-caret-position="261">
+          <caret line="161" column="25" lean-forward="false" selection-start-line="161" selection-start-column="25" selection-end-line="161" selection-end-column="25" />
           <folding />
         </state>
       </provider>
