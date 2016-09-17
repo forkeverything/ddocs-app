@@ -8943,31 +8943,56 @@ label {
         top: 5px;
         right: 10px; }
       #checklist-single #checklist-body #split-view #file-view #selected-file-requirements {
-        margin: 0 0 5px; }
-        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date {
+        margin: 0 0 10px; }
+        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements .loader {
+          position: absolute;
+          top: 0;
+          left: -1px;
+          background: #fff;
+          width: calc(100% + 1px);
+          text-align: center;
+          opacity: 0.7;
+          color: #41B883; }
+        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements button {
+          font-size: 0.9em;
+          padding: 0 !important;
+          height: 24px;
+          outline: 0; }
+          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements button i {
+            font-size: 1.2em; }
+          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements button:hover {
+            border-color: #5A5A5A !important; }
+        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements > div {
           position: relative;
           display: inline-block; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .loader {
-            position: absolute;
-            top: 0;
-            left: -1px;
-            background: #fff;
-            width: calc(100% + 1px);
-            text-align: center;
-            opacity: 0.7;
-            color: #41B883; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date button {
+        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date {
+          margin-right: 10px; }
+          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date button.filled:before {
+            content: "\f073";
+            font-family: FontAwesome;
+            margin-right: 3px; }
+        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting button {
+          font-size: 1.1em;
+          background: #fff;
+          color: #9CA1A8;
+          line-height: 1;
+          box-shadow: none;
+          border: 0 !important; }
+          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting button:hover {
+            color: #5A5A5A; }
+          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting button.filled {
             font-size: 0.9em;
-            padding: 0 !important;
-            height: 24px; }
-            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date button i {
-              font-size: 1.2em; }
-            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date button.filled:before {
-              content: "\f073";
-              font-family: FontAwesome;
+            color: #555555; }
+            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting button.filled:before {
+              content: "%";
+              font-size: 1.1em;
               margin-right: 3px; }
-            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date button:hover {
-              border-color: #5A5A5A !important; }
+        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting input {
+          height: 26px;
+          padding: 0;
+          font-size: 0.9em;
+          outline: 0;
+          width: 100px; }
       #checklist-single #checklist-body #split-view #file-view h3 {
         margin: 0 0 10px; }
       #checklist-single #checklist-body #split-view #file-view #single-file-request-menu {
@@ -9076,6 +9101,10 @@ label {
         flex: 0 0 50px; } }
     #checklist-single .col-file:after {
       margin-left: 20px !important; }
+  #checklist-single .col-weighting {
+    -webkit-box-flex: 0;
+    flex: 0 0 45px;
+    font-size: 0.9em; }
   #checklist-single .col-name {
     -webkit-box-flex: 1;
     flex: 1;
@@ -9104,6 +9133,8 @@ label {
       border-bottom: 1px solid #dedede;
       margin-bottom: -1px;
       flex-wrap: wrap; }
+      #checklist-single #files-list .single-file-request:last-child {
+        margin-bottom: 0; }
       #checklist-single #files-list .single-file-request:hover {
         border-color: #41B883;
         background: #f7fcfa;

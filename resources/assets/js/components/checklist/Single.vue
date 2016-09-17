@@ -139,6 +139,16 @@
                         >
                             <i class="fa fa-file-o"></i>
                         </li>
+                        <li v-if="checklist.weightings.set"
+                            class="column col-weighting header-column"
+                            :class="{
+                            'current_asc': params.sort === 'weighting' && params.order === 'asc',
+                            'current_desc': params.sort === 'weighting' && params.order === 'desc',
+                            }"
+                            @click="changeSort('weighting')"
+                        >
+                            %
+                        </li>
                         <li class="column col-name header-column"
                             :class="{
                             'current_asc': params.sort === 'name' && params.order === 'asc',
@@ -173,6 +183,10 @@
                         >
                             <div class="column col-file content-column file-status" :class="fileRequest.status">
                                 <i class="fa fa-file-o"></i>
+                            </div>
+                            <div class="column col-weighting content-column" v-if="checklist.weightings.set">
+                                <span v-if="fileRequest.weighting">{{ fileRequest.weighting }}</span>
+                                <span v-else>--</span>
                             </div>
                             <div class="column col-name content-column">
                                 <!-- Download -->
@@ -211,6 +225,7 @@
                         <button type="button" class="btn close" @click="unselectFileRequest">&times;</button>
                         <div id="selected-file-requirements">
                             <selected-file-date :file-request.sync="fileRequests[selectedFileRequestIndex]"></selected-file-date>
+                            <selected-file-weighting :file-request.sync="fileRequests[selectedFileRequestIndex]"></selected-file-weighting>
                         </div>
                         <h3><strong>{{ selectedFileRequest.name }}</strong></h3>
                         <div id="progress-status"
@@ -249,9 +264,20 @@
                         </ul>
                     </div>
                     <div id="summary-view" class="content" v-else>
+                        <h4><strong>List Overview</strong></h4>
                         <div id="description">
-                            <h5><strong>List Description</strong></h5>
+                            <h5><strong>Description</strong></h5>
                             <p v-if="checklist.description">{{ checklist.description }}</p>
+                        </div>
+                        <div id="files-count">
+                            <h5><strong>Files Recevied</strong></h5>
+                            <p>{{ checklist.received }} / {{ checklist.requested_files.length }}</p>
+                        </div>
+                        <div id="list-weighting" v-if="checklist.weightings.set">
+                            <h5><strong>Progress</strong></h5>
+                            <p>
+                                Completed {{ checklist.weightings.progress }}% out of a total of {{ checklist.weightings.total }}%
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -420,6 +446,18 @@
                 new ResizeSensor(element, function () {
                     self.setRecipientsCollapsability(element);
                 });
+            });
+
+            vueGlobalEventBus.$on('updated-weighting', () => {
+                this.$http.get('/c/' + this.checklist.hash + '/weightings')
+                    .then((response) => {
+                        // Success
+                        this.checklist.weightings = JSON.parse(response.data);
+                    }, (response) => {
+                    	// error
+                        console.log('GET REQ Error!');
+                        console.log(response);
+                    })
             });
         }
     };

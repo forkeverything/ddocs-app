@@ -32,7 +32,7 @@ export default {
                     console.log('GET REQ Error!');
                     console.log(response);
                     self.ajaxReady = true;
-                    vueValidation(response);
+
                 })
         }
     },

@@ -118,10 +118,22 @@ class ChecklistsController extends Controller
     public function getSingleChecklist($checklistHash)
     {
         $checklist = Checklist::findOrFail(unhashId('checklist', $checklistHash));
-        $checklist->load('user', 'recipients');
+        $checklist->load('user', 'recipients')->withWeightings();
 
 //        if(Auth::check()) $this->authorize('view', $checklist);
         return view('checklist.single', compact('checklist', 'checklistHash'));
+    }
+
+    /**
+     * Get weightings for Checklist.
+     *
+     * @param $checklistHash
+     * @return mixed
+     */
+    public function getWeightings($checklistHash)
+    {
+        $checklist = Checklist::findOrFail(unhashId('checklist', $checklistHash));
+        return (array)$checklist->withWeightings()->weightings;
     }
 
 

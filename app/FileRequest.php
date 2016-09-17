@@ -81,6 +81,20 @@ class FileRequest extends Model
     }
 
     /**
+     * Mutator for weighting property.
+     *
+     * @param $value
+     */
+    public function setWeightingAttribute($value)
+    {
+        if($value) {
+            $this->attributes['weighting'] = $value;
+        } else {
+            $this->attributes['weighting'] = null;
+        }
+    }
+
+    /**
      * All File(s) belong to a single Checklist that has required them.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

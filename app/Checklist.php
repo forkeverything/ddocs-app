@@ -26,7 +26,6 @@ class Checklist extends Model
      */
     protected $appends = [
         'hash',
-        'progress',
         'received'
     ];
 
@@ -79,7 +78,7 @@ class Checklist extends Model
      *
      * @return float|null
      */
-    public function getProgressAttribute()
+    public function getPercentageReceivedAttribute()
     {
         $files = $this->requestedFiles;
         // Count only required files that are received....
@@ -141,6 +140,55 @@ class Checklist extends Model
 
         Event::fire(new RecipientClaimedInvitation($this, $recipient));
 
+        return $this;
+    }
+
+    /**
+     * Are there any FileRequest(s) with weightings?
+     *
+     * @return bool
+     */
+    public function weightingsSet()
+    {
+        return !! FileRequest::where('checklist_id', $this->id)->whereNotNull('weighting')->selectRaw(1)->first();
+    }
+
+    /**
+     * Sum of all weightings.
+     *
+     * @param $fileRequestsWithWeightings
+     * @return number
+     */
+    public function weightingsTotal($fileRequestsWithWeightings)
+    {
+        return array_sum($fileRequestsWithWeightings->pluck('weighting')->toArray());
+    }
+
+    /**
+     * Sum of all received FileRequest(s) weightings.
+     *
+     * @param $fileRequestsWithWeightings
+     * @return number
+     */
+    public function weightingsProgress($fileRequestsWithWeightings)
+    {
+        return array_sum($fileRequestsWithWeightings->where('status', 'received')->pluck('weighting')->toArray());
+    }
+
+    /**
+     * Append weightings property to Checklist model.
+     *
+     * @return $this
+     */
+    public function withWeightings()
+    {
+        $fileRequestsWithWeightings = FileRequest::where('checklist_id', $this->id)->whereNotNull('weighting')->get();
+
+        $this->setAttribute('weightings', (object) [
+            'set' => $this->weightingsSet(),
+            'total' => $this->weightingsTotal($fileRequestsWithWeightings),
+            'progress' => $this->weightingsProgress($fileRequestsWithWeightings)
+        ]);
         return $this;
     }
 

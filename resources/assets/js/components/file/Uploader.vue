@@ -56,7 +56,7 @@
                 }).then((response) => {
                     self.fileRequest = JSON.parse(response.data);
                     self.uploading = false;
-
+                    vueGlobalEventBus.$emit('updated-weighting');
                 }, (response) => {
                     console.log('Upload file error.');
                     console.log(response);

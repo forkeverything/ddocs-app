@@ -209,32 +209,43 @@
         }
 
         #selected-file-requirements {
-          margin: 0 0 5px;
+          margin: 0 0 10px;
 
-          #selected-file-date {
-            position: relative;
-            display: inline-block;
+          .loader {
+            position: absolute;
+            top: 0;
+            left: -1px;
+            background: #fff;
+            width: calc(100% + 1px);
+            text-align: center;
+            opacity: 0.7;
+            color: $brand-primary;
+          }
 
-            .loader {
-              position: absolute;
-              top: 0;
-              left: -1px;
-              background: #fff;
-              width: calc(100% + 1px);
-              text-align: center;
-              opacity: 0.7;
-              color: $brand-primary;
+          button {
+            font-size: 0.9em;
+            padding: 0!important;
+            height: 24px;
+            outline: 0;
+
+            i {
+              font-size: 1.2em;
             }
 
+            &:hover {
+              border-color: $extra-dark-grey!important;
+            }
+          }
+
+          > div {
+            position: relative;
+            display: inline-block;
+          }
+
+          #selected-file-date {
+            margin-right: 10px;
+
             button {
-              font-size: 0.9em;
-              padding: 0!important;
-              height: 24px;
-
-              i {
-                font-size: 1.2em;
-              }
-
               &.filled {
                 &:before {
                   content: "\f073";
@@ -242,10 +253,41 @@
                   margin-right: 3px;
                 }
               }
+            }
+          }
+
+          #selected-file-weighting {
+            button {
+              font-size: 1.1em;
+              background: #fff;
+              color: $text-muted;
+              line-height: 1;
+              box-shadow: none;
+              border: 0!important;
 
               &:hover {
-                border-color: $extra-dark-grey!important;
+                color: $extra-dark-grey;
               }
+
+              &.filled {
+                font-size: 0.9em;
+                color: $input-color;
+
+                &:before {
+                  content: "%";
+                  font-size: 1.1em;
+                  margin-right: 3px;
+                }
+              }
+            }
+
+            input {
+              height: 26px;
+              padding: 0;
+              font-size: 0.9em;
+              outline: 0;
+              width: 100px;
+
             }
           }
         }
@@ -425,6 +467,11 @@
     }
   }
 
+  .col-weighting {
+    flex: 0 0 45px;
+    font-size: 0.9em;
+  }
+
   .col-name {
     flex: 1;
     display: flex;
@@ -462,6 +509,10 @@
       border-bottom: 1px solid $laravel-border-color;
       margin-bottom: -1px;
       flex-wrap: wrap;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       &:hover {
         border-color: $brand-primary;

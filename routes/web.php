@@ -23,6 +23,7 @@ Route::get('/c/get', 'ChecklistsController@getForAuthenticatedUser');
 Route::get('/c/make', 'ChecklistsController@getMakeForm');
 Route::post('/c/make', 'ChecklistsController@postNewChecklist');
 Route::get('/c/{checklist_hash}', 'ChecklistsController@getSingleChecklist');
+Route::get('/c/{checklist_hash}/weightings', 'ChecklistsController@getWeightings');
 Route::get('/c/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
 
 // Recipients

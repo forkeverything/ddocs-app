@@ -63,6 +63,8 @@
                     // everytime we selected a file, even without any changes.
                     vueGlobalEventBus.$emit('updated-file-request', JSON.parse(response.data));
 
+                    vueGlobalEventBus.$emit('updated-weighting');
+                    
                     $(this.$els.modal).modal('hide');
                     self.ajaxReady = true;
                 }, (response) => {
