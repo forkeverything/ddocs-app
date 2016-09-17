@@ -8938,81 +8938,109 @@ label {
           max-width: initial; }
         #checklist-single #checklist-body #split-view #right-pane.collapsed {
           margin-left: -475px; }
-      #checklist-single #checklist-body #split-view #file-view .close {
-        position: absolute;
-        top: 5px;
-        right: 10px; }
-      #checklist-single #checklist-body #split-view #file-view #selected-file-requirements {
-        margin: 0 0 10px; }
-        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements .loader {
-          position: absolute;
-          top: 0;
-          left: -1px;
-          background: #fff;
-          width: calc(100% + 1px);
-          text-align: center;
-          opacity: 0.7;
-          color: #41B883; }
-        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements button {
+      #checklist-single #checklist-body #split-view #file-view {
+        padding-top: 40px; }
+        #checklist-single #checklist-body #split-view #file-view #back-to-summary {
+          background: #41B883;
+          width: 100%;
+          display: block;
+          color: #fff !important;
+          font-weight: 800;
           font-size: 0.9em;
-          padding: 0 !important;
-          height: 24px;
-          outline: 0; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements button i {
-            font-size: 1.2em; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements button:hover {
-            border-color: #5A5A5A !important; }
+          cursor: pointer;
+          text-decoration: none !important;
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 40px; }
         #checklist-single #checklist-body #split-view #file-view #selected-file-requirements > div {
-          position: relative;
-          display: inline-block; }
+          display: inline-block;
+          margin-bottom: 10px; }
         #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date {
           margin-right: 10px; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date button.filled:before {
-            content: "\f073";
-            font-family: FontAwesome;
-            margin-right: 3px; }
-        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting button {
-          font-size: 1.1em;
-          background: #fff;
-          color: #9CA1A8;
-          line-height: 1;
-          box-shadow: none;
-          border: 0 !important; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting button:hover {
-            color: #5A5A5A; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting button.filled {
-            font-size: 0.9em;
-            color: #555555; }
-            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting button.filled:before {
-              content: "%";
-              font-size: 1.1em;
-              margin-right: 3px; }
-        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting input {
-          height: 26px;
+          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date {
+            background: transparent;
+            position: relative;
+            border: 1px solid #999999;
+            padding: 0;
+            outline: 0;
+            border-radius: 4px;
+            height: 30px;
+            color: #999999; }
+            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date.filled {
+              color: #555555; }
+            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date span {
+              float: left; }
+            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date .icon {
+              background: #999999;
+              color: #fff;
+              font-size: 0.9em;
+              height: 28px;
+              width: 30px;
+              display: inline-block;
+              padding-top: 2px; }
+            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date .date {
+              display: inline-block;
+              padding: 2px 10px 0 10px;
+              text-align: center; }
+            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date input {
+              opacity: 0;
+              position: absolute;
+              top: 5px;
+              left: 0;
+              z-index: -1; }
+        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting .btn-weighting {
+          border: 1px solid #999999;
+          border-radius: 4px;
+          height: 30px;
+          background: transparent;
           padding: 0;
-          font-size: 0.9em;
           outline: 0;
-          width: 100px; }
-      #checklist-single #checklist-body #split-view #file-view h3 {
-        margin: 0 0 10px; }
-      #checklist-single #checklist-body #split-view #file-view #single-file-request-menu {
-        font-size: 0.9em;
-        margin-bottom: 12.5px; }
-      #checklist-single #checklist-body #split-view #file-view #progress-status {
-        background: #E9E9E9;
-        display: block;
-        height: 2px;
-        margin-bottom: 12.5px; }
-        #checklist-single #checklist-body #split-view #file-view #progress-status .progress-bar {
-          display: inline-block;
-          width: 0px;
-          background: #41B883; }
-        #checklist-single #checklist-body #split-view #file-view #progress-status.rejected .progress-bar {
-          width: 100%;
-          background: #ff6a6a; }
-        #checklist-single #checklist-body #split-view #file-view #progress-status.received .progress-bar {
-          width: 100%;
-          background: #41B883; }
+          color: #999999; }
+          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting .btn-weighting.filled {
+            color: #555555; }
+          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting .btn-weighting .icon {
+            width: 30px;
+            font-size: 0.9em;
+            text-align: center;
+            background: #999999;
+            display: inline-block;
+            height: 100%;
+            float: left;
+            color: #fff;
+            padding-top: 2px; }
+          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting .btn-weighting .weighting {
+            float: left;
+            padding: 2px 10px 0 10px;
+            text-align: left; }
+          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting .btn-weighting input {
+            border: 0;
+            width: 100px;
+            padding: 2px 10px 0 10px;
+            float: left;
+            border-radius: 4px;
+            outline: 0;
+            color: #555555; }
+        #checklist-single #checklist-body #split-view #file-view h3 {
+          margin: 0 0 10px; }
+        #checklist-single #checklist-body #split-view #file-view #single-file-request-menu {
+          font-size: 0.9em;
+          margin-bottom: 12.5px; }
+        #checklist-single #checklist-body #split-view #file-view #progress-status {
+          background: #E9E9E9;
+          display: block;
+          height: 2px;
+          margin-bottom: 12.5px; }
+          #checklist-single #checklist-body #split-view #file-view #progress-status .progress-bar {
+            display: inline-block;
+            width: 0px;
+            background: #41B883; }
+          #checklist-single #checklist-body #split-view #file-view #progress-status.rejected .progress-bar {
+            width: 100%;
+            background: #ff6a6a; }
+          #checklist-single #checklist-body #split-view #file-view #progress-status.received .progress-bar {
+            width: 100%;
+            background: #41B883; }
   #checklist-single #form-checklist-search {
     margin: 0 0 10px; }
   #checklist-single #selected-file-menu {

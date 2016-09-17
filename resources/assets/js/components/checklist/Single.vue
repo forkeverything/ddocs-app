@@ -200,7 +200,8 @@
                                 <span v-else class="name">{{ fileRequest.name }}</span>
                             </div>
                             <div class="column col-due content-column">
-                                <span class="date no-wrap" v-if="fileRequest.due">{{ fileRequest.due | smartDate }}</span>
+                                <span class="date no-wrap"
+                                      v-if="fileRequest.due">{{ fileRequest.due | smartDate }}</span>
                                 <span v-else>--</span>
                             </div>
                             <div class="column col-upload content-column">
@@ -222,10 +223,13 @@
                         <i class="fa fa-angle-double-left"></i> List
                     </a>
                     <div id="file-view" class="content" v-if="selectedFileRequest">
-                        <button type="button" class="btn close" @click="unselectFileRequest">&times;</button>
+                        <a id="back-to-summary" class="btn btn-link" @click.prevent="unselectFileRequest"><i class="fa fa-chevron-left"></i> List
+                            Overview</a>
                         <div id="selected-file-requirements">
-                            <selected-file-date :file-request.sync="fileRequests[selectedFileRequestIndex]"></selected-file-date>
-                            <selected-file-weighting :file-request.sync="fileRequests[selectedFileRequestIndex]"></selected-file-weighting>
+                            <selected-file-date
+                                    :file-request.sync="fileRequests[selectedFileRequestIndex]"></selected-file-date>
+                            <selected-file-weighting
+                                    :file-request.sync="fileRequests[selectedFileRequestIndex]"></selected-file-weighting>
                         </div>
                         <h3><strong>{{ selectedFileRequest.name }}</strong></h3>
                         <div id="progress-status"
@@ -276,7 +280,8 @@
                         <div id="list-weighting" v-if="checklist.weightings.set">
                             <h5><strong>Progress</strong></h5>
                             <p>
-                                Completed {{ checklist.weightings.progress }}% out of a total of {{ checklist.weightings.total }}%
+                                Completed {{ checklist.weightings.progress }}% out of a total of {{
+                                checklist.weightings.total }}%
                             </p>
                         </div>
                     </div>
@@ -450,14 +455,14 @@
 
             vueGlobalEventBus.$on('updated-weighting', () => {
                 this.$http.get('/c/' + this.checklist.hash + '/weightings')
-                    .then((response) => {
-                        // Success
-                        this.checklist.weightings = JSON.parse(response.data);
-                    }, (response) => {
-                    	// error
-                        console.log('GET REQ Error!');
-                        console.log(response);
-                    })
+                        .then((response) => {
+                            // Success
+                            this.checklist.weightings = JSON.parse(response.data);
+                        }, (response) => {
+                            // error
+                            console.log('GET REQ Error!');
+                            console.log(response);
+                        })
             });
         }
     };

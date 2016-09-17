@@ -11,14 +11,12 @@
     margin-bottom: 15px;
   }
 
-
   //#join-offer {
   //  background: $extra-light-yellow;
   //  @include border-radius($border-radius-small);
   //  padding: 5px 10px;
   //  margin: 0 0 15px;
   //}
-
 
   #checklist-body {
     flex: 1;
@@ -158,7 +156,7 @@
 
       .pane {
         padding: 15px 20px 0 20px;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         background: #fff;
       }
 
@@ -168,7 +166,7 @@
       }
 
       #main-pane {
-        @include transition(margin-left 0.25s ease-out,width 0.25s ease-out);
+        @include transition(margin-left 0.25s ease-out, width 0.25s ease-out);
         flex: 5500 1 605px;
         z-index: 2;
         position: relative;
@@ -201,95 +199,122 @@
       }
 
       #file-view {
+        padding-top: 40px;
 
-        .close {
+        #back-to-summary {
+          background: $brand-primary;
+          width: 100%;
+          display: block;
+          color: #fff !important;
+          font-weight: 800;
+          font-size: 0.9em;
+          cursor: pointer;
+          text-decoration: none !important;
           position: absolute;
-          top: 5px;
-          right: 10px;
+          left: 0;
+          top: 0;
+          height: 40px;
         }
 
         #selected-file-requirements {
-          margin: 0 0 10px;
-
-          .loader {
-            position: absolute;
-            top: 0;
-            left: -1px;
-            background: #fff;
-            width: calc(100% + 1px);
-            text-align: center;
-            opacity: 0.7;
-            color: $brand-primary;
-          }
-
-          button {
-            font-size: 0.9em;
-            padding: 0!important;
-            height: 24px;
-            outline: 0;
-
-            i {
-              font-size: 1.2em;
-            }
-
-            &:hover {
-              border-color: $extra-dark-grey!important;
-            }
-          }
 
           > div {
-            position: relative;
             display: inline-block;
+            margin-bottom: 10px;
           }
 
           #selected-file-date {
             margin-right: 10px;
 
-            button {
+            .btn-due-date {
+              background: transparent;
+              position: relative;
+              border: 1px solid $dark-grey;
+              padding: 0;
+              outline: 0;
+              border-radius: $border-radius-base;
+              height: 30px;
+              color: $input-color-placeholder;
+
               &.filled {
-                &:before {
-                  content: "\f073";
-                  font-family: FontAwesome;
-                  margin-right: 3px;
-                }
+                color: $input-color;
+              }
+
+              span {
+                float: left;
+              }
+
+              .icon {
+                background: $dark-grey;
+                color: #fff;
+                font-size: 0.9em;
+                height: 28px;
+                width: 30px;
+                display: inline-block;
+                padding-top: 2px;
+              }
+
+              .date {
+                display: inline-block;
+                padding: 2px 10px 0 10px;
+                text-align: center;
+              }
+
+              input {
+                opacity: 0;
+                position: absolute;
+                top: 5px;
+                left: 0;
+                z-index: -1;
               }
             }
           }
 
           #selected-file-weighting {
-            button {
-              font-size: 1.1em;
-              background: #fff;
-              color: $text-muted;
-              line-height: 1;
-              box-shadow: none;
-              border: 0!important;
 
-              &:hover {
-                color: $extra-dark-grey;
-              }
+            .btn-weighting {
+              border: 1px solid $dark-grey;
+              border-radius: $border-radius-base;
+              height: 30px;
+              background: transparent;
+              padding: 0;
+              outline: 0;
+              color: $input-color-placeholder;
 
               &.filled {
-                font-size: 0.9em;
                 color: $input-color;
+              }
 
-                &:before {
-                  content: "%";
-                  font-size: 1.1em;
-                  margin-right: 3px;
-                }
+              .icon {
+                width: 30px;
+                font-size: 0.9em;
+                text-align: center;
+                background: $dark-grey;
+                display: inline-block;
+                height: 100%;
+                float: left;
+                color: #fff;
+                padding-top: 2px;
+              }
+
+              .weighting {
+                float: left;
+                padding: 2px 10px 0 10px;
+                text-align: left;
+              }
+
+              input {
+                border: 0;
+                width: 100px;
+                padding: 2px 10px 0 10px;
+                float: left;
+                border-radius: $border-radius-base;
+                outline: 0;
+                color: $input-color;
               }
             }
-
-            input {
-              height: 26px;
-              padding: 0;
-              font-size: 0.9em;
-              outline: 0;
-              width: 100px;
-
-            }
           }
+
         }
 
         h3 {
@@ -381,7 +406,7 @@
     min-height: 35px;
 
     @media screen and (min-width: $screen-sm-min) {
-      display: flex!important;
+      display: flex !important;
     }
   }
 
