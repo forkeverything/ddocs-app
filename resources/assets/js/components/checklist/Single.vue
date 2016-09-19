@@ -415,9 +415,6 @@
                     $(element).removeClass('expandable');
                 }
             },
-//            scrollList(event) {
-//                if ( $(event.srcElement).innerHeight() + $(event.srcElement).scrollTop() >= (event.srcElement.scrollHeight - 100)) this.fetchNextPage();
-//            }
             scrollList: _.throttle(function(event) {
                 if ($(event.srcElement).innerHeight() + $(event.srcElement).scrollTop() >= (event.srcElement.scrollHeight - 100)) this.fetchNextPage();
             }, 100)
@@ -456,6 +453,7 @@
                 this.selectedFileRequestIndex = '';
             });
 
+            // Sensor for split view
             $(window).on('load', () => {
                 let element = document.getElementById('checklist-body');
                 self.setSplitView(element);
@@ -464,6 +462,7 @@
                 });
             });
 
+            // Sensor for recipients
             $(window).on('load', () => {
                 let element = document.getElementById('checklist-recipients');
                 self.setRecipientsCollapsability(element);
@@ -472,6 +471,7 @@
                 });
             });
 
+            // Update checklist weightings
             vueGlobalEventBus.$on('updated-weighting', () => {
                 this.$http.get('/c/' + this.checklist.hash + '/weightings')
                         .then((response) => {
@@ -482,6 +482,11 @@
                             console.log('GET REQ Error!');
                             console.log(response);
                         })
+            });
+
+            // Check if we need to fetch more data for inf. load
+            $(window).on('load', () => {
+                this.scrollList();
             });
 
 
