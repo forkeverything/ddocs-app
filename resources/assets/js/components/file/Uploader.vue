@@ -50,12 +50,17 @@
                 fd.append('file', uploadedFile);
 
                 self.$http.post('/fr/' + self.fileRequest.hash + '/upload', fd, {
-                    progress: (event) => {
+                    before() {
+                        self.$set('fileRequest.uploading', self.uploading);
+                        self.$set('fileRequest.uploadProgress', 0);
+                    },
+                    progress(event) {
                         self.$set('fileRequest.uploadProgress', Math.round(100 * event.loaded / event.total));
                     }
                 }).then((response) => {
                     self.fileRequest = JSON.parse(response.data);
                     self.uploading = false;
+                    self.$set('fileRequest.uploading', self.uploading);
                     vueGlobalEventBus.$emit('updated-weighting');
                 }, (response) => {
                     console.log('Upload file error.');

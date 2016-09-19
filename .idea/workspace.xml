@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css.map" afterPath="$PROJECT_DIR$/public/css/app.css.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/variables.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/variables.scss" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,13 +35,13 @@
           <file leaf-file-name="Single.vue" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="785">
-                  <caret line="70" column="87" lean-forward="false" selection-start-line="70" selection-start-column="87" selection-end-line="70" selection-end-column="87" />
+                <state relative-caret-position="612">
+                  <caret line="254" column="57" lean-forward="true" selection-start-line="254" selection-start-column="57" selection-end-line="254" selection-end-column="57" />
                   <folding>
                     <element signature="n#ul#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
                     <element signature="n#div#1;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <marker date="1474268918000" expanded="true" signature="13068:13252" ph="..." />
-                    <marker date="1474268918000" expanded="true" signature="21655:21827" ph="{...}" />
+                    <marker date="1474289475000" expanded="true" signature="13068:13252" ph="..." />
+                    <marker date="1474289475000" expanded="true" signature="21739:21911" ph="{...}" />
                   </folding>
                 </state>
               </provider>
@@ -47,36 +50,18 @@
         </leaf>
       </split-first>
       <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.5">
-          <split-first>
-            <leaf>
-              <file leaf-file-name="_single.scss" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="288">
-                      <caret line="411" column="35" lean-forward="false" selection-start-line="411" selection-start-column="35" selection-end-line="411" selection-end-column="35" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-first>
-          <split-second>
-            <leaf>
-              <file leaf-file-name="variables.scss" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/resources/assets/sass/variables.scss">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="920">
-                      <caret line="77" column="23" lean-forward="false" selection-start-line="77" selection-start-column="2" selection-end-line="77" selection-end-column="23" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-second>
-        </splitter>
+        <leaf>
+          <file leaf-file-name="_single.scss" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="720">
+                  <caret line="343" column="11" lean-forward="false" selection-start-line="343" selection-start-column="11" selection-end-line="343" selection-end-column="11" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
       </split-second>
     </splitter>
   </component>
@@ -124,7 +109,6 @@
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/WeightingSelectedFile.vue" />
         <option value="$PROJECT_DIR$/app/FileRequest.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/file/RejectModal.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/single/DateSelectedFile.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/single/WeightingSelectedFile.vue" />
@@ -134,9 +118,10 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/file/ActiveFilters.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/mixins/fetchesFromEloquentRepository.js" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
         <option value="$PROJECT_DIR$/resources/assets/sass/variables.scss" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" />
         <option value="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
       </list>
     </option>
   </component>
@@ -606,12 +591,12 @@
       <workItem from="1474120559047" duration="6054000" />
       <workItem from="1474126797254" duration="268000" />
       <workItem from="1474252499591" duration="8263000" />
-      <workItem from="1474264705483" duration="3742000" />
+      <workItem from="1474264705483" duration="5906000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="492022000" />
+    <option name="totallyTimeSpent" value="494186000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -626,7 +611,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981133" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981133" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20859376" sideWeight="0.5116981" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -697,6 +682,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
           <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -845,13 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="25" column="80" lean-forward="false" selection-start-line="25" selection-start-column="80" selection-end-line="25" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="839">
-          <caret line="58" column="20" lean-forward="false" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1035,32 +1014,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue">
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/variables.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="785">
-          <caret line="70" column="87" lean-forward="false" selection-start-line="70" selection-start-column="87" selection-end-line="70" selection-end-column="87" />
-          <folding>
-            <element signature="n#ul#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <marker date="1474268918000" expanded="true" signature="13068:13252" ph="..." />
-            <marker date="1474268918000" expanded="true" signature="21655:21827" ph="{...}" />
-          </folding>
+        <state relative-caret-position="704">
+          <caret line="69" column="25" lean-forward="true" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/variables.scss">
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="77" column="23" lean-forward="false" selection-start-line="77" selection-start-column="2" selection-end-line="77" selection-end-column="23" />
-          <folding />
+        <state relative-caret-position="596">
+          <caret line="52" column="5" lean-forward="false" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
+          <folding>
+            <marker date="1474272525000" expanded="true" signature="9:717" ph="..." />
+            <marker date="1474272525000" expanded="true" signature="41:705" ph="..." />
+            <marker date="1474272525000" expanded="true" signature="72:336" ph="..." />
+            <marker date="1474272525000" expanded="true" signature="363:522" ph="..." />
+            <marker date="1474272525000" expanded="true" signature="570:694" ph="..." />
+            <marker date="1474272525000" expanded="true" signature="726:2552" ph="..." />
+            <marker date="1474272525000" expanded="true" signature="747:2543" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="775:854" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="796:844" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="874:1009" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="921:999" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="1061:2399" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="1099:1158" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="1208:2389" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="1520:1755" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="1520:1908" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="1551:1718" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="1756:1786" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="1756:1890" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="1929:1955" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="2212:2373" ph="{...}" />
+            <marker date="1474272525000" expanded="true" signature="2427:2537" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="411" column="35" lean-forward="false" selection-start-line="411" selection-start-column="35" selection-end-line="411" selection-end-column="35" />
+        <state relative-caret-position="720">
+          <caret line="343" column="11" lean-forward="false" selection-start-line="343" selection-start-column="11" selection-end-line="343" selection-end-column="11" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="254" column="57" lean-forward="true" selection-start-line="254" selection-start-column="57" selection-end-line="254" selection-end-column="57" />
+          <folding>
+            <element signature="n#ul#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <marker date="1474289475000" expanded="true" signature="13068:13252" ph="..." />
+            <marker date="1474289475000" expanded="true" signature="21739:21911" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

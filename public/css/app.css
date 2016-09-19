@@ -9075,8 +9075,7 @@ label {
             margin-right: 5px !important; }
   #checklist-single #files-header {
     white-space: nowrap;
-    min-height: 35px;
-    z-index: 3; }
+    min-height: 35px; }
     @media screen and (min-width: 768px) {
       #checklist-single #files-header {
         display: -webkit-box !important;

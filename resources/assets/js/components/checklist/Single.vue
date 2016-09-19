@@ -248,14 +248,14 @@
                             <h3><strong>{{ selectedFileRequest.name }}</strong></h3>
                             <div id="progress-status"
                                  :class="{
-                                rejected: selectedFileRequest.status === 'rejected',
-                                 received: selectedFileRequest.status === 'received'
-                             }"
+                                 received: ! selectedFileRequest.uploading && selectedFileRequest.status === 'received',
+                                 rejected: ! selectedFileRequest.uploading && selectedFileRequest.status === 'rejected',
+                                 }"
                             >
                                 <div class="progress-bar"
                                      :style="{
-                                    width: selectedFileRequest.uploadProgress + '%'
-                                 }"
+                                        width: selectedFileRequest.uploadProgress + '%'
+                                     }"
                                 ></div>
                             </div>
                             <ul id="single-file-request-menu" class="list-inline list-unstyled">
