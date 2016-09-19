@@ -135,7 +135,6 @@
 
                         <ul id="files-header"
                             class="list-unstyled list-inline table-header"
-                            v-show="! selectedFileRequest"
                             v-if="params"
                         >
                             <li class="column col-file header-column"

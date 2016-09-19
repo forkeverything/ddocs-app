@@ -409,6 +409,7 @@
   #files-header {
     white-space: nowrap;
     min-height: 35px;
+    z-index: $z-files-header-index;
 
     @media screen and (min-width: $screen-sm-min) {
       display: flex !important;
