@@ -155,14 +155,28 @@
       overflow: hidden;
 
       .pane {
-        padding: 15px 20px 0 20px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         background: #fff;
       }
 
+      .pane-container {
+        padding: 10px 10px 0 10px;
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (min-width: $screen-sm-min) {
+          padding: 20px 15px 0 15px;
+        }
+      }
+
       .pane-nav {
-        padding: 6px 0;
-        font-size: 0.9em;
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid $laravel-border-color;
+
+        a {
+          font-size: 0.9em;
+        }
       }
 
       #main-pane {
@@ -198,25 +212,16 @@
         }
       }
 
-      #file-view {
-        padding-top: 40px;
-
-        #back-to-summary {
-          background: $brand-primary;
-          width: 100%;
-          display: block;
-          color: #fff !important;
-          font-weight: 800;
-          font-size: 0.9em;
-          cursor: pointer;
-          text-decoration: none !important;
-          position: absolute;
-          left: 0;
-          top: 0;
-          height: 40px;
+      #summary-view {
+        h4 {
+          margin-top: 0;
         }
+      }
+
+      #file-view {
 
         #selected-file-requirements {
+          margin: 0 0 10px;
 
           > div {
             display: inline-block;

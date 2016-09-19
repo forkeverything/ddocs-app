@@ -8902,12 +8902,24 @@ label {
       display: flex;
       overflow: hidden; }
       #checklist-single #checklist-body #split-view .pane {
-        padding: 15px 20px 0 20px;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         background: #fff; }
+      #checklist-single #checklist-body #split-view .pane-container {
+        padding: 10px 10px 0 10px;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column; }
+        @media screen and (min-width: 768px) {
+          #checklist-single #checklist-body #split-view .pane-container {
+            padding: 20px 15px 0 15px; } }
       #checklist-single #checklist-body #split-view .pane-nav {
-        padding: 6px 0;
-        font-size: 0.9em; }
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid #dedede; }
+        #checklist-single #checklist-body #split-view .pane-nav a {
+          font-size: 0.9em; }
       #checklist-single #checklist-body #split-view #main-pane {
         -webkit-transition: margin-left 0.25s ease-out, width 0.25s ease-out;
         transition: margin-left 0.25s ease-out, width 0.25s ease-out;
@@ -8938,21 +8950,10 @@ label {
           max-width: initial; }
         #checklist-single #checklist-body #split-view #right-pane.collapsed {
           margin-left: -475px; }
-      #checklist-single #checklist-body #split-view #file-view {
-        padding-top: 40px; }
-        #checklist-single #checklist-body #split-view #file-view #back-to-summary {
-          background: #41B883;
-          width: 100%;
-          display: block;
-          color: #fff !important;
-          font-weight: 800;
-          font-size: 0.9em;
-          cursor: pointer;
-          text-decoration: none !important;
-          position: absolute;
-          left: 0;
-          top: 0;
-          height: 40px; }
+      #checklist-single #checklist-body #split-view #summary-view h4 {
+        margin-top: 0; }
+      #checklist-single #checklist-body #split-view #file-view #selected-file-requirements {
+        margin: 0 0 10px; }
         #checklist-single #checklist-body #split-view #file-view #selected-file-requirements > div {
           display: inline-block;
           margin-bottom: 10px; }
@@ -9021,26 +9022,26 @@ label {
             border-radius: 4px;
             outline: 0;
             color: #555555; }
-        #checklist-single #checklist-body #split-view #file-view h3 {
-          margin: 0 0 10px; }
-        #checklist-single #checklist-body #split-view #file-view #single-file-request-menu {
-          font-size: 0.9em;
-          margin-bottom: 12.5px; }
-        #checklist-single #checklist-body #split-view #file-view #progress-status {
-          background: #E9E9E9;
-          display: block;
-          height: 2px;
-          margin-bottom: 12.5px; }
-          #checklist-single #checklist-body #split-view #file-view #progress-status .progress-bar {
-            display: inline-block;
-            width: 0px;
-            background: #41B883; }
-          #checklist-single #checklist-body #split-view #file-view #progress-status.rejected .progress-bar {
-            width: 100%;
-            background: #ff6a6a; }
-          #checklist-single #checklist-body #split-view #file-view #progress-status.received .progress-bar {
-            width: 100%;
-            background: #41B883; }
+      #checklist-single #checklist-body #split-view #file-view h3 {
+        margin: 0 0 10px; }
+      #checklist-single #checklist-body #split-view #file-view #single-file-request-menu {
+        font-size: 0.9em;
+        margin-bottom: 12.5px; }
+      #checklist-single #checklist-body #split-view #file-view #progress-status {
+        background: #E9E9E9;
+        display: block;
+        height: 2px;
+        margin-bottom: 12.5px; }
+        #checklist-single #checklist-body #split-view #file-view #progress-status .progress-bar {
+          display: inline-block;
+          width: 0px;
+          background: #41B883; }
+        #checklist-single #checklist-body #split-view #file-view #progress-status.rejected .progress-bar {
+          width: 100%;
+          background: #ff6a6a; }
+        #checklist-single #checklist-body #split-view #file-view #progress-status.received .progress-bar {
+          width: 100%;
+          background: #41B883; }
   #checklist-single #form-checklist-search {
     margin: 0 0 10px; }
   #checklist-single #selected-file-menu {
