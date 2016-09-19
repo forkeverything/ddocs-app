@@ -47,16 +47,19 @@
                     </div>
 
                     <div class="pane-container">
-                        <form id="form-checklist-search" @submit.prevent="searchTerm">
+                        <form id="form-checklist-search" @submit.prevent="searchTerm" v-if="params">
                             <div class="input-group">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span>
+                                            aria-haspopup="true" aria-expanded="false">Filters <span
+                                            class="caret"></span>
                                     </button>
 
-                                    <file-filters :filter-options="filterOptions" :min-filter-value.sync="minFilterValue"
+                                    <file-filters :filter-options="filterOptions"
+                                                  :min-filter-value.sync="minFilterValue"
                                                   :max-filter-value.sync="maxFilterValue" :filter.sync="filter"
-                                                  :filter-value.sync="filterValue" :add-filter="addFilter"></file-filters>
+                                                  :filter-value.sync="filterValue"
+                                                  :add-filter="addFilter"></file-filters>
 
                                 </div>
                                 <input class="form-control input-search"
@@ -120,8 +123,9 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="menu-item hidden-xs"><a :href="'/fr/' + selectedFileRequest.hash + '/history'"
-                                                                   :class="{'disabled': ! selectedFileRequest.latest_upload }"><i
+                                <li class="menu-item hidden-xs"><a
+                                        :href="'/fr/' + selectedFileRequest.hash + '/history'"
+                                        :class="{'disabled': ! selectedFileRequest.latest_upload }"><i
                                         class="icon history fa fa-clock-o"></i>History</a></li>
                                 <li class="menu-item hidden-xs"><a href="#" @click.prevent="showDeleteModal"><i
                                         class="icon delete fa fa-trash-o"></i>Delete</a></li>
@@ -132,6 +136,7 @@
                         <ul id="files-header"
                             class="list-unstyled list-inline table-header"
                             v-show="! selectedFileRequest"
+                            v-if="params"
                         >
                             <li class="column col-file header-column"
                                 :class="{
@@ -175,7 +180,7 @@
                             </li>
                         </ul>
 
-                        <ul id="files-list" class="list-unstyled keep-selected-file">
+                        <ul id="files-list" class="list-unstyled keep-selected-file" @scroll="scrollList($event)">
                             <li class="single-file-request"
                                 v-for="(index, fileRequest) in fileRequests"
                                 @focus="selectFileRequest(index)"
@@ -313,6 +318,7 @@
             return {
                 ajaxReady: true,
                 hasFilters: true,
+                container: 'files-list',
                 filterOptions: [
                     {
                         value: 'version',
@@ -327,8 +333,6 @@
                         label: 'Status'
                     }
                 ],
-                fileRequests: [],
-                numReceived: '',
                 selectedFileRequestIndex: '',
                 singleView: false,
                 showRightPanel: false,
@@ -336,7 +340,14 @@
             }
         },
         computed: {
+            fileRequests() {
+                return this.response.data;
+            },
+            numReceived(){
+                return this.response.query_parameters.num_received_files;
+            },
             selectedFileRequest: function () {
+                if(! this.fileRequests) return;
                 return this.fileRequests[this.selectedFileRequestIndex];
             },
             checklistBelongsToUser: function () {
@@ -404,19 +415,17 @@
                 } else {
                     $(element).removeClass('expandable');
                 }
-            }
+            },
+//            scrollList(event) {
+//                if ( $(event.srcElement).innerHeight() + $(event.srcElement).scrollTop() >= (event.srcElement.scrollHeight - 100)) this.fetchNextPage();
+//            }
+            scrollList: _.throttle(function(event) {
+                if ($(event.srcElement).innerHeight() + $(event.srcElement).scrollTop() >= (event.srcElement.scrollHeight - 100)) this.fetchNextPage();
+            }, 100)
         },
         ready: function () {
 
             var self = this;
-
-            // Parse out our request params
-            self.$watch('response', (response) => {
-                self.fileRequests = $.map(_.omit(response.data, 'query_parameters'), (fileRequest, index) => {
-                    return fileRequest;
-                });
-                self.numReceived = self.params.num_received_files;
-            });
 
 //            ====================================================================================================================================
 //            NOT IMPLEMENTED
@@ -475,6 +484,8 @@
                             console.log(response);
                         })
             });
+
+
         }
     };
 </script>

@@ -5,13 +5,17 @@ module.exports = {
             ajaxReady: true,
             request: {},
             response: {},
-            params: {},
             showFiltersDropdown: false,
             filter: '',
             filterValue: '',
             minFilterValue: '',
             maxFilterValue: ''
         };
+    },
+    computed: {
+        params() {
+            return this.response.query_parameters;
+        }
     },
     methods: {
         checkSetup: function() {
@@ -31,33 +35,27 @@ module.exports = {
 
             if (!self.ajaxReady) return;
             self.ajaxReady = false;
-            self.request = $.ajax({
-                url: url,
-                method: 'GET',
-                success: function (response) {
-                    // Update data
-                    self.response = response;
 
-                    // Attach filters
-                    // Reset obj
-                    self.params = {};
-                    // Loop through and attach everything (Only pre-defined keys in data obj above will be accessible with Vue)
-                    _.forEach(response.data.query_parameters, function (value, key) {
-                        self.params[key] = value;
-                    });
-
-
-                    // push state (if query is different from url)
-                    pushStateIfDiffQuery(query);
-
-                    document.getElementsByTagName('body')[0].scrollTop = 0;
-
-                    self.ajaxReady = true;
-                },
-                error: function (res, status, req) {
-                    console.log(status);
-                    self.ajaxReady = true;
+            self.$http.get(url, {
+                before: function(xhr) {
+                    this.request = xhr;
                 }
+            }).then((response) => {
+                // update data
+                self.response = response.json();
+                // push state (if query is different from url)
+                pushStateIfDiffQuery(query);
+                // scroll top
+                if(this.container) {
+                    document.getElementById(this.container).scrollTop = 0;
+                } else {
+                    document.getElementsByTagName('body')[0].scrollTop = 0;
+                }
+                // ready again
+                self.ajaxReady = true;
+            }, (response) => {
+                console.log(response);
+                self.ajaxReady = true;
             });
         },
         changeSort: function (sort) {
@@ -76,13 +74,16 @@ module.exports = {
             }
         },
         searchTerm: _.debounce(function () {
-            if (this.request && this.request.readyState != 4) this.request.abort();
+            if (this.request && this.request.readyState != 4) {
+                this.request.abort();
+                this.ajaxReady = true;
+            }
             var term = this.params.search || null;
             this.fetchResults(updateQueryString({
                 search: term,
                 page: 1
             }))
-        }, 400),
+        }, 200),
         clearSearch: function () {
             this.params.search = '';
             this.searchTerm();
@@ -116,6 +117,27 @@ module.exports = {
                 queryObj[option.value] = null;
             });
             this.fetchResults(updateQueryString(queryObj));
+        },
+        fetchNextPage() {
+            // If we are at last page - return
+            if (this.response.current_page === this.response.last_page) return;
+            let query = updateQueryString('page', this.response.current_page + 1);
+            let url = this.requestUrl + '?' + query;
+            if (!this.ajaxReady) return;
+            this.ajaxReady = false;
+            this.$http.get(url).then((response) => {
+                this.response.current_page = response.json().current_page;
+                let data = response.json().data;
+                for(let i = 0; i < data.length; i++) {
+                    this.response.data.push(data[i]);
+                }
+                this.ajaxReady = true;
+            }, (response) => {
+                console.log('error fetching data');
+                console.log(response);
+            })
+        },
+        infLoadNextPage() {
         }
     },
     ready: function() {

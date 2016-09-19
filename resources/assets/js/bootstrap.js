@@ -79,3 +79,5 @@ require('./helpers.js');
 // Page Fixed/Scroll Height adjustments
 window.ResizeSensor = require('css-element-queries/src/ResizeSensor');
 
+// Scroll monitor
+window.scrollMonitor = require("scrollmonitor");

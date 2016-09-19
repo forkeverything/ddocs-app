@@ -96,9 +96,10 @@ abstract class EloquentRepository
      */
     public function get()
     {
-        $data = $this->query->get();
-        $this->addPropertiesToResults($data);
-        return $data;
+        $results = [
+            'data' => $this->query->get()
+        ];
+        return $this->addPropertiesToResults($results);
     }
 
     /**
@@ -128,13 +129,13 @@ abstract class EloquentRepository
         if ($term) {
             $this->{'search'} = $term;
             // If one-time search fields defined, use them
-            if($searchFieldsArray) $this->searchableFields = $searchFieldsArray;
+            if ($searchFieldsArray) $this->searchableFields = $searchFieldsArray;
             // perform search
             $this->query->where(function ($query) use ($term) {
                 foreach ($this->searchableFields as $index => $field) {
                     $fieldsArray = explode('.', $field);
 
-                    if(count($fieldsArray) === 1 ) {
+                    if (count($fieldsArray) === 1) {
                         $this->searchQueryDirect($query, $fieldsArray[0], $term, $index);
                     } else {
                         $this->searchQueryRelated($query, $fieldsArray, $term, $index);
@@ -193,19 +194,16 @@ abstract class EloquentRepository
      *
      * @param $object
      */
-    protected function addPropertiesToResults($object)
+    protected function addPropertiesToResults($array)
     {
-        // Whether our results are paginated or just a collection (ie. using get())
-        if ($object instanceof LengthAwarePaginator || $object instanceof Collection) {
-            // Transfer object properties onto it
-            foreach (get_object_vars($this) as $key => $value) {
-                if (!($value instanceof LengthAwarePaginator) && !($value instanceof Builder)) {
-                    if ($key !== 'sortableFields' && $key !== 'searchableFields' && $key !== 'queryParameters') $this->queryParameters[$key] = $value;
-                }
+        // Transfer object properties onto it
+        foreach (get_object_vars($this) as $key => $value) {
+            if (!($value instanceof LengthAwarePaginator) && !($value instanceof Builder)) {
+                if ($key !== 'sortableFields' && $key !== 'searchableFields' && $key !== 'queryParameters') $this->queryParameters[$key] = $value;
             }
-
-            $object['query_parameters'] = $this->queryParameters;
         }
+        $array['query_parameters'] = $this->queryParameters;
+        return $array;
     }
 
     /**
@@ -218,10 +216,9 @@ abstract class EloquentRepository
     public function paginate($itemsPerPage = 20)
     {
         // Set paginated property to hold our paginated results
-        $paginatedObject = $this->{'paginated'} = $this->query->paginate($itemsPerPage);
+        $paginatedArray = $this->query->paginate($itemsPerPage)->toArray();
         // add our custom properties
-        $this->addPropertiesToResults($paginatedObject);
-        return $this->paginated;
+        return $this->addPropertiesToResults($paginatedArray);
     }
 
     /**
@@ -245,7 +242,7 @@ abstract class EloquentRepository
      */
     public function take($limit = null)
     {
-        if($limit) $this->query->take($limit);
+        if ($limit) $this->query->take($limit);
         return $this;
     }
 

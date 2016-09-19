@@ -234,7 +234,7 @@
             .btn-due-date {
               background: transparent;
               position: relative;
-              border: 1px solid $dark-grey;
+              border: 1px solid $brand-primary;
               padding: 0;
               outline: 0;
               border-radius: $border-radius-base;
@@ -250,7 +250,7 @@
               }
 
               .icon {
-                background: $dark-grey;
+                background: $brand-primary;
                 color: #fff;
                 font-size: 0.9em;
                 height: 28px;
@@ -278,7 +278,7 @@
           #selected-file-weighting {
 
             .btn-weighting {
-              border: 1px solid $dark-grey;
+              border: 1px solid $brand-primary;
               border-radius: $border-radius-base;
               height: 30px;
               background: transparent;
@@ -294,7 +294,7 @@
                 width: 30px;
                 font-size: 0.9em;
                 text-align: center;
-                background: $dark-grey;
+                background: $brand-primary;
                 display: inline-block;
                 height: 100%;
                 float: left;

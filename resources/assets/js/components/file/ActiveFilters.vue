@@ -1,6 +1,6 @@
 <template>
     <div class="active-filters">
-        <ul class="list-active-filters list-unstyled list-inline" v-show="hasFilters">
+        <ul v-if="params" class="list-active-filters list-unstyled list-inline" v-show="withFilters">
             <!-- Active Filter: Version -->
             <li v-if="params.version_filter_integer" class="single-filter">
                 <div class="text">
@@ -39,8 +39,9 @@
 <script>
     export default {
         computed: {
-            hasFilters: function () {
-                return this.params.version_filter_integer || this.params.version_filter_integer || this.params.due_filter_date;
+            withFilters: function () {
+                // look out for these properties that indicate we're filtering the data
+                return this.params.version_filter_integer || this.params.status || this.params.due_filter_date;
             }
         },
         props: ['params', 'remove-filter']
