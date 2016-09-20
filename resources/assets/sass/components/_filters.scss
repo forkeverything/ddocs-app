@@ -86,7 +86,7 @@
     margin: 0 0 15px;
 
     .single-filter {
-      background: $brand-primary;
+      background: lighten($brand-primary, 15%);
       color: #fff;
       @include border-radius($border-radius-large);
       padding: 0;

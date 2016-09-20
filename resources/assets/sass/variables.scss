@@ -2,7 +2,7 @@
 @import "variables/mixins";
 
 // Body
-$body-bg: #F7F7F7;
+$body-bg: #FFFFFF;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -12,7 +12,7 @@ $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
 // Brands
-$brand-primary: $green;
+$brand-primary: $black;
 $brand-info: $blue;
 $brand-success: $green;
 $brand-warning: #cbb956;
@@ -37,7 +37,7 @@ $btn-default-border: $dark-grey;
 $btn-danger-bg: $dark-red;
 
 // Inputs
-$input-border: $btn-default-border;
+$input-border: lighten($btn-default-border, 20%);
 $input-border-focus: lighten($brand-primary, 25%);
 $input-color-placeholder: $dark-grey;
 

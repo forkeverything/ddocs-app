@@ -14,7 +14,7 @@
   .ui-datepicker-header {
     margin: -0.5em -.5em 0 -.5em;
 
-    background: darken($brand-primary, 10%);
+    background: lighten($brand-primary, 15%);
     color: #fff;
 
     .ui-datepicker-prev, .ui-datepicker-next {

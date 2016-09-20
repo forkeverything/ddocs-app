@@ -4,12 +4,12 @@
   li {
     a {
       &.active {
-        color: $green;
+        color: $blue;
       }
 
       &:hover, &:focus {
         color: #fff!important;
-        background: $green!important;
+        background: $blue!important;
         text-decoration: none!important;
         i {
           color: #fff!important;

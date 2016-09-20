@@ -1,25 +1,22 @@
 <template>
     <div id="checklist-single">
 
-        <div id="header" class="container-fluid">
-            <h4 class="text-center">
-                <strong>
-                    <span class="text-capitalize">{{ checklist.name }}</span>
-                </strong>
-            </h4>
-        </div>
-
         <div id="checklist-body">
+            <h3 class="text-capitalize">
+                <span class="small text-muted">Documents Checklist</span>
+                <br>
+                {{ checklist.name }}
+            </h3>
 
             <div id="checklist-recipients">
                 <div class="recipients" :class="{ expanded: expandRecipients }">
-                    <span class="span-to">To: </span>
+                    <span class="span-to"><i class="fa fa-users"></i></span>
                     <ul class="recipients-list list-unstyled list-inline">
                         <li v-for="recipient in checklist.recipients">{{ recipient.email }}</li>
                     </ul>
                 </div>
                 <div class="recipients recipients-sizer" :class="{ expanded: expandRecipients }">
-                    <span class="span-to">To: </span>
+                    <span class="span-to"><i class="fa fa-users"></i></span>
                     <ul class="recipients-list list-unstyled list-inline">
                         <li v-for="recipient in checklist.recipients">{{ recipient.email }}</li>
                     </ul>
@@ -39,10 +36,10 @@
 
                     <div class="pane-nav">
                         <a v-show="singleView"
-                           @click.prevent="toggleRightPanel"
+                           @click.prevent="showListOverview"
                            class="btn btn-link"
                         >
-                            <span v-if="selectedFileRequest">File Details</span><span v-else>List Overview</span>
+                            <span>List Overview</span>
                         </a>
                     </div>
 
@@ -174,12 +171,15 @@
                             >
                                 Due
                             </li>
+                            <li class="column col-file-view header-column">
+                                <!-- empty spacer column-->
+                            </li>
                             <li class="column col-upload header-column">
                                 <!-- empty spacer column-->
                             </li>
                         </ul>
 
-                        <ul id="files-list" class="list-unstyled keep-selected-file" @scroll="scrollList($event)">
+                        <ul id="files-list" class="list-unstyled keep-selected-file" @scroll="scrollList">
                             <li class="single-file-request"
                                 v-for="(index, fileRequest) in fileRequests"
                                 @focus="selectFileRequest(index)"
@@ -210,6 +210,11 @@
                                 <span class="date no-wrap"
                                       v-if="fileRequest.due">{{ fileRequest.due | smartDate }}</span>
                                     <span v-else>--</span>
+                                </div>
+                                <div class="column col-file-view content-column">
+                                    <button type="button" class="btn btn-primary" @click="showFileView(index)">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </button>
                                 </div>
                                 <div class="column col-upload content-column">
                                     <file-uploader :file-request.sync="fileRequest"></file-uploader>
@@ -245,7 +250,7 @@
                                 <selected-file-weighting
                                         :file-request.sync="fileRequests[selectedFileRequestIndex]"></selected-file-weighting>
                             </div>
-                            <h3><strong>{{ selectedFileRequest.name }}</strong></h3>
+                            <h4>{{ selectedFileRequest.name }}</h4>
                             <div id="progress-status"
                                  :class="{
                                  received: ! selectedFileRequest.uploading && selectedFileRequest.status === 'received',
@@ -282,17 +287,17 @@
                             </ul>
                         </div>
                         <div id="summary-view" class="content" v-else>
-                            <h4><strong>List Overview</strong></h4>
+                            <h4>List Overview</h4>
                             <div id="description">
-                                <h5><strong>Description</strong></h5>
+                                <h5>Description</h5>
                                 <p v-if="checklist.description">{{ checklist.description }}</p>
                             </div>
                             <div id="files-count">
-                                <h5><strong>Files Recevied</strong></h5>
+                                <h5>Files Recevied</h5>
                                 <p>{{ checklist.received }} / {{ checklist.requested_files.length }}</p>
                             </div>
                             <div id="list-weighting" v-if="checklist.weightings.set">
-                                <h5><strong>Progress</strong></h5>
+                                <h5>Progress</h5>
                                 <p>
                                     Completed {{ checklist.weightings.progress }}% out of a total of {{
                                     checklist.weightings.total }}%
@@ -345,22 +350,22 @@
             numReceived(){
                 return this.response.query_parameters.num_received_files;
             },
-            selectedFileRequest: function () {
-                if(! this.fileRequests) return;
+            selectedFileRequest() {
+                if (!this.fileRequests) return;
                 return this.fileRequests[this.selectedFileRequestIndex];
             },
-            checklistBelongsToUser: function () {
+            checklistBelongsToUser() {
                 if (!this.user) return false;
                 return this.user.id === this.checklist.user_id;
             },
-            requestUrl: function () {
+            requestUrl() {
                 return '/c/' + this.checklistHash + '/files';
             },
-            canRejectFile: function () {
+            canRejectFile() {
                 if (!this.selectedFileRequest) return false;
                 return this.selectedFileRequest.status === 'received';
             },
-            receivedFilesPercentage: function () {
+            receivedFilesPercentage() {
                 if (!this.response.total) return 0;
                 return (100 * this.numReceived / this.response.total).toFixed(2);
             }
@@ -368,45 +373,53 @@
         props: ['aws-url', 'user', 'checklist', 'checklist-hash'],
         mixins: [fetchesFromEloquentRepository],
         methods: {
-            getFileRequestIndex: function (file) {
+            getFileRequestIndex(file) {
                 return _.indexOf(this.fileRequests, _.find(this.fileRequests, {id: file.id}));
             },
-            unselectFileRequest: function () {
+            unselectFileRequest() {
                 this.selectedFileRequestIndex = '';
             },
-            selectFileRequest: function (index) {
+            selectFileRequest(index) {
                 if (!this.fileRequests[index]) return;  // fr doesn't exist
                 this.selectedFileRequestIndex = index;
                 this.$nextTick(() => {
                     this.focusOnFileRequest(this.selectedFileRequestIndex);
                 });
             },
-            focusOnFileRequest: function (index) {
+            focusOnFileRequest(index) {
                 $('.single-file-request')[index].focus();
             },
-            showRejectModal: function () {
+            showRejectModal() {
                 if (this.canRejectFile) vueGlobalEventBus.$emit('show-reject-modal');
             },
-            showDeleteModal: function () {
+            showDeleteModal() {
                 vueGlobalEventBus.$emit('show-delete-modal', this.selectedFileRequest);
             },
-            uploadSelected: function () {
+            uploadSelected() {
                 vueGlobalEventBus.$emit('upload-selected-file-' + this.selectedFileRequest.id);
             },
-            showSelectMenuDropdown: function () {
+            showSelectMenuDropdown() {
                 $('#select-menu-more').next('.dropdown-menu').toggle();
             },
-            toggleRightPanel: function () {
+            toggleRightPanel() {
                 this.showRightPanel = !this.showRightPanel;
             },
-            setSplitView: function (element) {
+            showFileView(index) {
+                this.selectFileRequest(index);
+                this.toggleRightPanel();
+            },
+            showListOverview()  {
+                this.unselectFileRequest();
+                this.toggleRightPanel();
+            },
+            setSplitView(element) {
                 $(element).css('opacity', 1);
                 this.singleView = (element.clientWidth <= 767);
             },
-            toggleRecipientsCollapse: function () {
+            toggleRecipientsCollapse() {
                 this.expandRecipients = !this.expandRecipients;
             },
-            setRecipientsCollapsability: function (element) {
+            setRecipientsCollapsability(element) {
                 let containerWidth = $('#checklist-recipients').width();
                 let contentWidth = $('.recipients-sizer').outerWidth() + 10;
                 if (contentWidth > containerWidth) {
@@ -415,8 +428,9 @@
                     $(element).removeClass('expandable');
                 }
             },
-            scrollList: _.throttle(function(event) {
-                if ($(event.srcElement).innerHeight() + $(event.srcElement).scrollTop() >= (event.srcElement.scrollHeight - 100)) this.fetchNextPage();
+            scrollList: _.throttle(function (event) {
+                let el = document.getElementById('files-list');
+                if ($(el).innerHeight() + $(el).scrollTop() >= (el.scrollHeight - 100)) this.fetchNextPage();
             }, 100)
         },
         ready: function () {
