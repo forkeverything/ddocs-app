@@ -17,6 +17,7 @@ require('./bootstrap');
 Vue.component('form-errors', require('./components/utilities/FormErrors.vue'));
 Vue.component('tagger', require('./components/utilities/Tagger.vue'));
 Vue.component('toggle-switch', require('./components/utilities/ToggleSwitch.vue'));
+Vue.component('smart-date', require('./components/utilities/SmartDate.vue'));
 
 // Checklist
 Vue.component('checklist-all', require('./components/checklist/All.vue'));

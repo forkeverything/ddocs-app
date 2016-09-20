@@ -139,8 +139,7 @@
                                     <span v-else class="name">{{ fileRequest.name }}</span>
                                 </div>
                                 <div class="column col-due content-column">
-                                <span class="date no-wrap"
-                                      v-if="fileRequest.due">{{ fileRequest.due | smartDate }}</span>
+                                    <smart-date v-if="fileRequest.due" :date="fileRequest.due"></smart-date>
                                     <span v-else>--</span>
                                 </div>
                                 <div class="column col-file-view content-column">

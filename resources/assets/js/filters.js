@@ -45,7 +45,7 @@ Vue.filter('smartDate', function (value) {
         if(date.isSame(yesterday, 'd')) return 'Yesterday';
         if(date.isSame(tomorrow, 'd')) return 'Tomorrow';
         // Within the week -> what day: Wednesday, Thursday, Friday ...
-        if(date < nextSunday) return date.format('dddd');
+        if(today < date && date < nextSunday) return date.format('dddd');
         // Within the year -> month and date
         if(date.year() === today.year()) return date.format('MMM D');
         // Not this year -> month date, year

@@ -4,7 +4,6 @@ Vue.directive('datepicker', {
         if (this.params.buttonOnly) {
             $(this.el).datepicker({
                 dateFormat: "dd/mm/yy",
-                minDate: 0,
                 buttonImage: '/images/icons/calendar.png',
                 buttonImageOnly: true,
                 showOn: 'both'
@@ -12,7 +11,6 @@ Vue.directive('datepicker', {
         } else {
             $(this.el).datepicker({
                 dateFormat: "dd/mm/yy",
-                minDate: 0
             });
         }
     }
