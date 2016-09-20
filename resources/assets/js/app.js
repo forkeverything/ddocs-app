@@ -20,7 +20,7 @@ Vue.component('toggle-switch', require('./components/utilities/ToggleSwitch.vue'
 Vue.component('smart-date', require('./components/utilities/SmartDate.vue'));
 
 // Checklist
-Vue.component('checklist-all', require('./components/checklist/All.vue'));
+Vue.component('checklist-collection', require('./components/checklist/Collection.vue'));
 Vue.component('checklist-single', require('./components/checklist/Single.vue'));
 Vue.component('checklist-recipients', require('./components/checklist/single/Recipients.vue'));
 Vue.component('mobile-file-menu', require('./components/checklist/single/MobileFileMenu.vue'));
