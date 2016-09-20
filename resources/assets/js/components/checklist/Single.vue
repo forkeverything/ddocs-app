@@ -34,9 +34,8 @@
                      class="pane"
                 >
 
-                    <div class="pane-nav">
-                        <a v-show="singleView"
-                           @click.prevent="showListOverview"
+                    <div class="pane-nav" v-show="singleView">
+                        <a @click.prevent="showListOverview"
                            class="btn btn-link"
                         >
                             <span>List Overview</span>
@@ -231,7 +230,7 @@
                      class="pane"
                 >
 
-                    <div class="pane-nav">
+                    <div class="pane-nav" v-show="singleView || selectedFileRequest">
                         <a v-if="singleView"
                            @click.prevent="toggleRightPanel"
                            class="btn btn-link">
@@ -287,7 +286,7 @@
                             </ul>
                         </div>
                         <div id="summary-view" class="content" v-else>
-                            <h4>List Overview</h4>
+                            <h4 class="title-list-overview">List Overview</h4>
                             <div id="description">
                                 <h5>Description</h5>
                                 <p v-if="checklist.description">{{ checklist.description }}</p>

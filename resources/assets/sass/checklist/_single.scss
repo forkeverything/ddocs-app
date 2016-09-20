@@ -145,11 +145,11 @@
       }
 
       .pane-container {
-        padding: 10px 10px 0 10px;
+        padding: 20px 10px 0 10px;
         display: flex;
         flex-direction: column;
 
-        @media screen and (min-width: $screen-sm-min) {
+        @media screen and (min-width: $screen-md-min) {
           padding: 20px 15px 0 15px;
         }
       }
@@ -200,13 +200,18 @@
       #summary-view {
         h4 {
           margin-top: 0;
+
+          &.title-list-overview {
+            border-bottom: 1px solid $black;
+            padding-bottom: 5px;
+          }
         }
       }
 
       #file-view {
 
         #selected-file-requirements {
-          margin: 0 0 10px;
+          margin: 0 0 5px;
 
           > div {
             display: inline-block;
@@ -320,7 +325,7 @@
 
         }
 
-        h3 {
+        h4 {
           margin: 0 0 10px;
         }
 

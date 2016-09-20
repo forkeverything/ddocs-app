@@ -8011,7 +8011,8 @@ button.close {
     background: #fff;
     text-decoration: underline; }
   .navbar .navbar-nav li > .dropdown-menu {
-    margin-top: -5px; }
+    margin-top: -5px;
+    right: 15px; }
     .navbar .navbar-nav li > .dropdown-menu li a:hover, .navbar .navbar-nav li > .dropdown-menu li a:focus {
       background: #fff; }
   .navbar a:hover {
