@@ -9055,7 +9055,7 @@ label {
       box-shadow: none; }
       #checklist-single #form-checklist-search .dropdown-toggle .caret {
         color: #1B2432; }
-  #checklist-single #selected-file-menu {
+  #checklist-single #mobile-file-menu {
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: justify;
@@ -9065,11 +9065,12 @@ label {
     min-height: 35px;
     border: 1px dashed #3498DB;
     padding: 5px;
-    margin: 0 0 5px; }
+    margin: 0 0 5px;
+    font-size: 0.9em; }
     @media screen and (min-width: 768px) {
-      #checklist-single #selected-file-menu {
+      #checklist-single #mobile-file-menu {
         display: none; } }
-    #checklist-single #selected-file-menu .file-name {
+    #checklist-single #mobile-file-menu .file-name {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -9077,17 +9078,17 @@ label {
       -webkit-box-flex: 100%;
       flex: 100%;
       width: 0; }
-    #checklist-single #selected-file-menu .list-menu-items {
+    #checklist-single #mobile-file-menu .list-menu-items {
       -webkit-box-flex: 1;
       flex: 1 0 210px;
       margin: 0 -5px 0 0; }
-    #checklist-single #selected-file-menu .dropdown-menu {
+    #checklist-single #mobile-file-menu .dropdown-menu {
       min-width: 120px; }
-      #checklist-single #selected-file-menu .dropdown-menu .menu-item {
+      #checklist-single #mobile-file-menu .dropdown-menu .menu-item {
         font-size: 0.9em; }
-        #checklist-single #selected-file-menu .dropdown-menu .menu-item a {
+        #checklist-single #mobile-file-menu .dropdown-menu .menu-item a {
           padding: 2px 10px; }
-          #checklist-single #selected-file-menu .dropdown-menu .menu-item a .icon {
+          #checklist-single #mobile-file-menu .dropdown-menu .menu-item a .icon {
             width: 18px;
             margin-right: 5px !important; }
   #checklist-single #files-header {

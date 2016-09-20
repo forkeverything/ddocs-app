@@ -6,7 +6,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                        <h4>Are you sure?</h4>
+                        <h4 class="modal-title">Are you sure?</h4>
                     </div>
                     <div class="modal-body">
                         <p>Deleting a file request will also irreversibly remove all previously uploaded files.</p>
@@ -33,7 +33,7 @@
                 ajaxReady: true,
             }
         },
-        props: ['file'],
+        props: ['file-requests', 'selected-file-request'],
         computed: {
             submitText: function () {
                 if (!this.ajaxReady) return 'Processing...';
@@ -41,26 +41,32 @@
             }
         },
         methods: {
+            getFileRequestIndex(file) {
+                return _.indexOf(this.fileRequests, _.find(this.fileRequests, {id: file.id}));
+            },
             deleteFile: function () {
                 var self = this;
                 if (!self.ajaxReady) return;
 
-                self.$http.delete('/fr/' + this.file.hash)
+                self.$http.delete('/fr/' + this.selectedFileRequest.hash)
                         .then((response) => {
-                            vueGlobalEventBus.$emit('deleted-selected-file');
+                            let updatedFileRequest = response.json();
+                            let index = this.getFileRequestIndex(updatedFileRequest);
+                            this.fileRequests.splice(index, 1);
+                            this.selectedFileRequestIndex = '';
                             vueGlobalEventBus.$emit('updated-weighting');
                             $(this.$els.modal).modal('hide');
                             self.ajaxReady = true;
-                        }, (response) => {
+                        },(response) => {
                             // error
                             console.log(response);
                             $(this.$els.modal).modal('hide');
                             self.ajaxReady = true;
                         });
+                }
+            },
+            ready: function () {
+                vueGlobalEventBus.$on('show-delete-modal', () => $(this.$els.modal).modal('show'));
             }
-        },
-        ready: function () {
-            vueGlobalEventBus.$on('show-delete-modal', () => $(this.$els.modal).modal('show'));
         }
-    }
 </script>

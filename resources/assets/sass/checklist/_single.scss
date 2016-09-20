@@ -381,7 +381,7 @@
     }
   }
 
-  #selected-file-menu {
+  #mobile-file-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -389,6 +389,7 @@
     border: 1px dashed $blue;
     padding: 5px;
     margin: 0 0 5px;
+    font-size: 0.9em;
 
     @media screen and (min-width: $screen-sm-min) {
       display: none;

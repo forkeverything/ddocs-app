@@ -75,6 +75,29 @@ abstract class EloquentRepository
     }
 
     /**
+     * Sort that puts null values last.
+     *
+     * @param $sort
+     * @param $order
+     * @param $nullableFields
+     * @return $this
+     */
+    public function sortWithNull($sort, $order, $nullableFields)
+    {
+        $this->{'order'} = ($order === 'desc') ? 'desc' : 'asc';
+        $this->{'sort'} = in_array($sort, $this->sortableFields) ? $sort : $this->sortableFields[0];
+
+        if( in_array($sort, $nullableFields) && $order === 'asc') {
+            $sort = '-' . $sort;
+            $this->query->orderBy(\DB::raw($sort), 'desc');
+        } else {
+            $this->query->orderBy($this->sort, $this->order);
+        }
+
+        return $this;
+    }
+
+    /**
      * Wrapper - Used to only select certain
      * fields
      *

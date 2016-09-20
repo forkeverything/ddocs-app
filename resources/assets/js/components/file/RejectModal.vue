@@ -6,7 +6,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                        <h4>Reason / Changes Required</h4>
+                        <h4 class="modal-title">Reason / Changes Required</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -36,7 +36,7 @@
                 reason: ''
             }
         },
-        props: ['file'],
+        props: ['file-requests', 'selected-file-request'],
         computed: {
             submitText: function () {
                 if (!this.ajaxReady) return 'Saving...';
@@ -47,21 +47,23 @@
             hideModal: function() {
                 this.reason = '';
             },
+            getFileRequestIndex(file) {
+                return _.indexOf(this.fileRequests, _.find(this.fileRequests, {id: file.id}));
+            },
             rejectFile: function () {
                 var self = this;
                 if (!self.ajaxReady) return;
                 self.ajaxReady = false;
 
-                self.$http.post('/fr/' + this.file.hash + '/reject', {
+                self.$http.post('/fr/' + this.selectedFileRequest.hash + '/reject', {
                     reason: self.reason
                 }).then((response) => {
                     // success
                     self.reason = '';
 
-                    // We'll update the file model through an event because the prop we're receiving is
-                    // a computed property. If we used a setter() on the property, it would re-init
-                    // everytime we selected a file, even without any changes.
-                    vueGlobalEventBus.$emit('updated-file-request', JSON.parse(response.data));
+                    let updatedFileRequest = response.json();
+                    let index = this.getFileRequestIndex(updatedFileRequest);
+                    this.$set('fileRequests[' + index + ']', updatedFileRequest);
 
                     vueGlobalEventBus.$emit('updated-weighting');
                     

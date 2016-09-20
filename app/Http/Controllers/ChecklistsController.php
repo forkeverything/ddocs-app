@@ -156,7 +156,7 @@ class ChecklistsController extends Controller
                                       ->filterDateField('due', $request->due)
                                       ->withStatus($request->status)
                                       ->searchFor($search)
-                                      ->sortOn($sort, $order)
+                                      ->sortWithNull($sort, $order, ['due', 'weighting'])
                                       ->withNumReceivedFiles()
                                       ->paginate($perPage);
     }

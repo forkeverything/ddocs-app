@@ -97,7 +97,7 @@ class FileRequestsController extends Controller
         $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
         $uploadPaths = $fileRequest->uploads->pluck('path')->toArray();
         if(Storage::delete($uploadPaths)) $fileRequest->delete();
-        return response("Deleted file request and uploads");
+        return $fileRequest;
     }
 
 }
