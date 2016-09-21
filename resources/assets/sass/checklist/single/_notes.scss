@@ -1,5 +1,17 @@
 .notes  {
 
+  .loader {
+    padding-top: 15px;
+    .loader-cube {
+      width: 20px;
+      height: 20px;
+
+      .sk-cube:before {
+        background-color: lighten($purple, 35%);
+      }
+    }
+  }
+
   .btn-add-note {
     border-color: $purple!important;
     background: #fff !important;
@@ -8,7 +20,7 @@
     font-size: 0.9em;
     transition: all 0.2s ease-out;
     outline: 0!important;
-    margin: 0 0 5px;
+    margin: 0 0 10px;
 
     &:hover {
       background: lighten($purple, 45%) !important;

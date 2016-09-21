@@ -158,9 +158,6 @@ class ChecklistsController extends Controller
                                      ->searchFor($search)
                                      ->sortWithNull($sort, $order, ['due', 'weighting'])
                                      ->withNumReceivedFiles()
-                                     ->with(array('notes' => function($query) {
-                                         $query->orderBy('position', 'ASC');
-                                     }))
                                      ->paginate($perPage);
     }
 

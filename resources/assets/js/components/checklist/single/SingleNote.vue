@@ -46,8 +46,7 @@ export default {
     data: function(){
         return {
             ajaxReady: true,
-            textAreaHeight: '25px',
-            previousBody: ''
+            textAreaHeight: '25px'
         }
     },
     computed: {
@@ -82,33 +81,17 @@ export default {
             this.updateExistingNote();
         },
         addNoteAfterThisOne() {
-            this.updateExistingNote();
             vueGlobalEventBus.$emit('add-new-note', this.index);
         },
         removeThisNote(event) {
             if(this.note.body) return;
-            vueGlobalEventBus.$emit('delete-note', {
+            vueGlobalEventBus.$emit('remove-note', {
                 index: this.index,
                 event: event
             });
         },
         updateExistingNote(){
-            if (!this.ajaxReady) return;
-            this.ajaxReady = false;
-            this.$http.put('/note/' + this.note.id, {
-                'position': this.index,
-                'body': this.note.body,
-                'checked': this.note.checked
-            }).then((response) => {
-                // success
-                console.log('updated note!');
-                this.previousBody = this.note.body;
-                this.ajaxReady = true;
-            }, (response) => {
-                // error
-                console.log(response);
-                this.ajaxReady = true;
-            });
+            vueGlobalEventBus.$emit('save-changes-note', this.index);
         },
         pressedArrow: function (direction) {
             let indexToFocus = (direction === 'prev') ? this.index - 1 : this.index + 1;
@@ -116,7 +99,6 @@ export default {
         }
     },
     ready() {
-        this.previousBody = this.note.body;
         this.setTextAreaHeight();
     }
 }

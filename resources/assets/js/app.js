@@ -18,6 +18,7 @@ Vue.component('form-errors', require('./components/utilities/FormErrors.vue'));
 Vue.component('tagger', require('./components/utilities/Tagger.vue'));
 Vue.component('toggle-switch', require('./components/utilities/ToggleSwitch.vue'));
 Vue.component('smart-date', require('./components/utilities/SmartDate.vue'));
+Vue.component('cube-loader', require('./components/utilities/CubeLoader.vue'));
 
 // Checklist
 Vue.component('checklist-collection', require('./components/checklist/Collection.vue'));
@@ -30,7 +31,6 @@ Vue.component('selected-file-date', require('./components/checklist/single/DateS
 Vue.component('selected-file-weighting', require('./components/checklist/single/WeightingSelectedFile.vue'));
 Vue.component('file-request-notes', require('./components/checklist/single/FileRequestNotes.vue'));
 Vue.component('single-note', require('./components/checklist/single/SingleNote.vue'));
-Vue.component('note-body', require('./components/checklist/single/NoteBody.vue'));
 Vue.component('checklist-maker', require('./components/checklist/Maker.vue'));
 Vue.component('maker-files', require('./components/checklist/maker/SelectFiles.vue'));
 Vue.component('checklist-offer-join', require('./components/checklist/single/Offer.vue'));

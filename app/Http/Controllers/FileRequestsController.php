@@ -74,6 +74,18 @@ class FileRequestsController extends Controller
     }
 
     /**
+     * Get notes for file request.
+     *
+     * @param $fileRequestHash
+     * @return mixed
+     */
+    public function getNotes($fileRequestHash)
+    {
+        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash))->load('checklist', 'uploads');
+        return $fileRequest->notes()->orderBy('position', 'ASC')->get();
+    }
+
+    /**
      * Modify FileRequest
      *
      * @param $fileRequestHash
