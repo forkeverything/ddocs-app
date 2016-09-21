@@ -30,6 +30,13 @@
     @include opacity(.35);
   }
 
+  font-weight: 300;
+  border-radius: $border-radius-small;
+
+  &.btn-link {
+    font-weight: normal;
+  }
+
   .caret {
     color: #fff;
   }

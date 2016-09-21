@@ -77,13 +77,13 @@
 
     &.is-focused {
       .line-el {
-        border-top: 1px solid darken($brand-primary, 10%) !important;
-        border-bottom: 1px solid darken($brand-primary, 10%) !important;
+        border-top: 1px solid darken($green, 10%) !important;
+        border-bottom: 1px solid darken($green, 10%) !important;
       }
 
       .icon-file {
         padding: 5px 10px 5px 0;
-        color: $brand-primary;
+        color: $green;
       }
 
       & + li {
@@ -116,8 +116,8 @@
       margin-bottom: 30px;
       width: 100%;
       left: 0;
-      border-bottom: 1px solid darken($brand-primary, 10%);
-      background: lighten($brand-primary, 45%);
+      border-bottom: 1px solid darken($green, 10%);
+      background: lighten($green, 45%);
       z-index: $z-file-name-search-results;
 
       .single-name {
@@ -129,7 +129,7 @@
         white-space: nowrap;
 
         &.is-selected {
-          background: lighten($brand-primary, 10%);
+          background: lighten($green, 10%);
           color: #fff;
         }
       }
@@ -150,4 +150,9 @@
       }
     }
   }
+}
+#btn-create-list {
+    background: $light-green;
+    border: 0;
+    border-bottom: 2px solid darken($light-green, 20%);
 }

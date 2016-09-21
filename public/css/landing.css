@@ -8437,11 +8437,15 @@ label {
 
 .btn {
   -webkit-transition: all 0.15s ease-out;
-  transition: all 0.15s ease-out; }
+  transition: all 0.15s ease-out;
+  font-weight: 300;
+  border-radius: 3px; }
   .btn.disabled, .btn[disabled],
   fieldset[disabled] .btn {
     opacity: 0.35;
     filter: alpha(opacity=35); }
+  .btn.btn-link {
+    font-weight: normal; }
   .btn .caret {
     color: #fff; }
 
@@ -8492,18 +8496,20 @@ label {
           .tagger .tagger-container .tag-input-container .tag-input input:focus {
             outline: 0; }
     .tagger .tagger-container .btn-tag {
-      background: #9b9b9b;
+      background: #e1f0fa;
       display: inline-block;
       margin: 0 3px 6px 3px;
       padding: 0 10px;
       border-radius: 3px;
       white-space: normal;
       word-wrap: break-word;
-      max-width: 100%; }
+      max-width: 100%;
+      outline: 0;
+      font-weight: normal; }
       .tagger .tagger-container .btn-tag:hover {
         color: initial; }
       .tagger .tagger-container .btn-tag:focus, .tagger .tagger-container .btn-tag.focus {
-        background: #494949;
+        background: #5faee3;
         color: #fff; }
   .tagger .tagger-error-container {
     position: absolute;
@@ -8552,7 +8558,6 @@ label {
   font-size: 12px;
   color: white;
   font-family: Trebuchet, Arial, sans-serif;
-  font-weight: bold;
   box-sizing: border-box; }
 
 .onoffswitch-inner:before {
@@ -8634,11 +8639,11 @@ label {
     #form-checklist-make .single-file:first-child .line-el {
       border-top-color: transparent !important; }
     #form-checklist-make .single-file.is-focused .line-el {
-      border-top: 1px solid #1c1c1c !important;
-      border-bottom: 1px solid #1c1c1c !important; }
+      border-top: 1px solid #349268 !important;
+      border-bottom: 1px solid #349268 !important; }
     #form-checklist-make .single-file.is-focused .icon-file {
       padding: 5px 10px 5px 0;
-      color: #353535; }
+      color: #41B883; }
     #form-checklist-make .single-file.is-focused + li .line-el {
       border-top: 0 !important;
       border-bottom: 0 !important; }
@@ -8659,8 +8664,8 @@ label {
       margin-bottom: 30px;
       width: 100%;
       left: 0;
-      border-bottom: 1px solid #1c1c1c;
-      background: #a8a8a8;
+      border-bottom: 1px solid #349268;
+      background: #e8f7f0;
       z-index: 2; }
       #form-checklist-make .single-file .list-name-options .single-name {
         display: block;
@@ -8670,7 +8675,7 @@ label {
         cursor: pointer;
         white-space: nowrap; }
         #form-checklist-make .single-file .list-name-options .single-name.is-selected {
-          background: #4f4f4f;
+          background: #64c89b;
           color: #fff; }
     #form-checklist-make .single-file .file-weighting {
       border-left: 1px solid #e6e6e6;
@@ -8685,6 +8690,11 @@ label {
         height: 30px;
         width: 100%;
         border: 0; }
+
+#btn-create-list {
+  background: #49D699;
+  border: 0;
+  border-bottom: 2px solid #229764; }
 
 #landing-start .navbar {
   position: absolute;

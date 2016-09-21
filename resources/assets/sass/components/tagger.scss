@@ -58,7 +58,7 @@
     }
 
     .btn-tag {
-      background: lighten($brand-primary, 40%);
+      background: lighten($blue, 40%);
       display: inline-block;
       margin: 0 3px 6px 3px;
       padding: 0 10px;
@@ -66,13 +66,15 @@
       white-space: normal;
       word-wrap: break-word;
       max-width: 100%;
+      outline: 0;
+      font-weight: normal;
 
       &:hover {
         color: initial;
       }
 
       &:focus, &.focus {
-        background: lighten($brand-primary, 8%);
+        background: lighten($blue, 10%);
         color: #fff;
       }
     }

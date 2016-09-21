@@ -1,16 +1,10 @@
 <template>
     <div class="maker">
 
-        <div class="header">
-            <h3 class="text-center"><strong>New Checklist</strong></h3>
-            <p class="text-center">
-                Create a list of all the files that you need along with their due dates (if any) and
-                we'll handle the rest.
-            </p>
-        </div>
-
+            <h3>New Checklist</h3>
 
         <form-errors></form-errors>
+
         <div class="weighting-switch">
             <label>Weightings</label>
             <toggle-switch :model.sync="weightings"></toggle-switch>
@@ -43,7 +37,7 @@
             <maker-files :files.sync="files" :weightings="weightings"></maker-files>
         </form>
         <div class="text-right">
-            <button type="button" class="btn btn-primary" @click="sendChecklist" :disabled="
+            <button type="button" id="btn-create-list" class="btn btn-primary" @click="sendChecklist" :disabled="
                     ! canSendChecklist">{{ submitButtonText }}
             </button>
         </div>

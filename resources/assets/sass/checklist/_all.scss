@@ -12,6 +12,12 @@
     .page-title {
       margin: 0;
     }
+
+    .btn {
+      background: $light-blue;
+      border: 0;
+      border-bottom: 2px solid darken($light-blue, 20%);
+    }
   }
 
   .progress {
@@ -66,12 +72,12 @@
           color: $text-color;
           position: relative;
           @include border-radius($border-radius-base);
+          outline: none;
+          text-decoration: none;
 
-          &:hover, &:focus {
+          &:hover {
             background: lighten($purple, 47%);
             border-color: $purple;
-            text-decoration: none;
-            outline: none;
           }
 
           p {

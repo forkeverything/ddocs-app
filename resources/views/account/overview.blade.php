@@ -2,9 +2,9 @@
 
 @section('content')
     <div id="account-overview" class="container">
-        <h3><strong>Account Settings</strong></h3>
+        <h3>Account Settings</h3>
         <div id="account-details">
-            <h4><strong>Details</strong></h4>
+            <h4>Details</h4>
             <h5>Name</h5>
             <p>
                 {{ $user->name }}
@@ -16,10 +16,10 @@
                 {{ $user->email }}
             </p>
 
-            <br>
+            <hr>
 
-            <h4><strong>Coupon</strong></h4>
-            <p>Enter your code here to get free credits</p>
+            <h4>Coupon</h4>
+            <p>Enter your code here to claim your free credits</p>
             <div class="row">
                 <div class="col-sm-4">
                     <form action="/account/coupon" method="POST">
@@ -43,9 +43,9 @@
                 </div>
             </div>
 
-            <br>
+            <hr>
 
-            <h4><strong>Credits & Subcription</strong></h4>
+            <h4>Credits & Subcription</h4>
             <h5>Credits Remaining</h5>
             <span>{{ $user->credits }}</span>
             <br>
