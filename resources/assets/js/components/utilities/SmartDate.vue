@@ -44,6 +44,7 @@ export default {
                 return this.parsedDate.format('MMM D, YYYY');
         },
         styleClass() {
+            if(! this.parsedDate) return;
             if(this.parsedDate.isBefore(this.today, 'day')) return 'text-warning';
             if(this.parsedDate.isSame(this.today, 'd') || this.parsedDate.isSame(this.tomorrow, 'd')) return 'text-success';
         }
