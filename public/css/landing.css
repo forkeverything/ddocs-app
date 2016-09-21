@@ -8496,7 +8496,8 @@ label {
           .tagger .tagger-container .tag-input-container .tag-input input:focus {
             outline: 0; }
     .tagger .tagger-container .btn-tag {
-      background: #e1f0fa;
+      border: 1px solid #F0A830;
+      background: #fff;
       display: inline-block;
       margin: 0 3px 6px 3px;
       padding: 0 10px;
@@ -8509,7 +8510,8 @@ label {
       .tagger .tagger-container .btn-tag:hover {
         color: initial; }
       .tagger .tagger-container .btn-tag:focus, .tagger .tagger-container .btn-tag.focus {
-        background: #5faee3;
+        background: #f0a830;
+        border: 1px solid #f0a830;
         color: #fff; }
   .tagger .tagger-error-container {
     position: absolute;
@@ -8597,7 +8599,8 @@ label {
 #form-checklist-make {
   margin: 0 0 15px;
   border: 1px solid #e6e6e6;
-  padding: 30px; }
+  padding: 30px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
   #form-checklist-make #title-checklist-name {
     color: #999999; }
     #form-checklist-make #title-checklist-name.filled {
