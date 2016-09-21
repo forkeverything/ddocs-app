@@ -24,6 +24,7 @@
         data: function () {
             return {
                 loading: true,
+                fetchRequests: [],
                 notes: [],
                 focusedIndex: ''
             }
@@ -39,7 +40,14 @@
             getNotes(){
                 this.loading = true;
                 this.notes = [];
-                this.$http.get('/fr/' + this.fileRequest.hash + '/notes').then((response) => {
+                this.$http.get('/fr/' + this.fileRequest.hash + '/notes', {
+                    before(xhr) {
+                        for (var i = 0; i < this.fetchRequests.length; i++) {
+                            this.fetchRequests.shift().abort();
+                        }
+                        this.fetchRequests.push(xhr);
+                    }
+                }).then((response) => {
                     this.notes = _.map(response.json(), (note) => {
                         note.queue = {
                             updating: [],
