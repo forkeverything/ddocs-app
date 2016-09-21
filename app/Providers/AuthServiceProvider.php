@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Checklist;
 use App\File;
+use App\Note;
 use App\Policies\ChecklistPolicy;
 use App\Policies\FileUploadPolicy;
+use App\Policies\NotePolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -19,7 +21,8 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
         Checklist::class => ChecklistPolicy::class,
-        File::class => FileUploadPolicy::class
+        File::class => FileUploadPolicy::class,
+        Note::class => NotePolicy::class
     ];
 
     /**

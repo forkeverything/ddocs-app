@@ -40,6 +40,9 @@
                 </a>
             </li>
         </ul>
+
+        <file-request-notes :file-request.sync="fileRequests[selectedFileRequestIndex]"></file-request-notes>
+
     </div>
 </template>
 <script>

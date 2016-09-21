@@ -187,6 +187,8 @@
         position: relative;
         z-index: 0;
         border: 1px solid $laravel-border-color;
+        overflow-y: scroll;
+        padding-bottom: 15px;
 
         &.is-main {
           max-width: initial;
@@ -331,7 +333,7 @@
 
         #single-file-request-menu {
           font-size: 0.9em;
-          margin-bottom: 12.5px;
+          margin-bottom: 15px;
         }
 
         #progress-status {
@@ -596,15 +598,15 @@
       }
 
       &:hover {
-        border-color: $blue;
-        background: lighten($blue, 44%);
+        border-color: $light-blue;
+        background: lighten($light-blue, 30%);
         z-index: $z-file-list-hover;
         position: relative;
       }
 
       &:focus, &.focus, &.is-selected {
-        background: lighten($blue, 40%);
-        border-color: darken($blue, 10%);
+        background: lighten($light-blue, 27%);
+        border-color: darken($light-blue, 10%);
         z-index: $z-file-list-selected;
         position: relative;
         outline: 0;

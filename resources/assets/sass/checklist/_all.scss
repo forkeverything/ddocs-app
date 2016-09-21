@@ -17,6 +17,11 @@
       background: $light-blue;
       border: 0;
       border-bottom: 2px solid darken($light-blue, 20%);
+      outline: 0;
+
+      &:hover {
+        background: darken($light-blue, 20%);
+      }
     }
   }
 

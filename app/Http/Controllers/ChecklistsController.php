@@ -98,7 +98,7 @@ class ChecklistsController extends Controller
         if ($request["OriginalRecipient"] !== 'list@in.filescollector.com') return "Wrong Email Address To Create Checklist";
 
         // If the user doesn't have an account yet
-        if (! $user = User::where('email', $request["From"])->first()){
+        if (!$user = User::where('email', $request["From"])->first()) {
             // we'll make one for him
             $user = User::makeNewUserFromEmailWebhook($request);
         }
@@ -152,13 +152,16 @@ class ChecklistsController extends Controller
         $search = $request->search;
         $perPage = $request->per_page ?: 20;
         return FileRequestsRepository::forChecklist($checklist)
-                                      ->filterIntegerField('version', $request->version)
-                                      ->filterDateField('due', $request->due)
-                                      ->withStatus($request->status)
-                                      ->searchFor($search)
-                                      ->sortWithNull($sort, $order, ['due', 'weighting'])
-                                      ->withNumReceivedFiles()
-                                      ->paginate($perPage);
+                                     ->filterIntegerField('version', $request->version)
+                                     ->filterDateField('due', $request->due)
+                                     ->withStatus($request->status)
+                                     ->searchFor($search)
+                                     ->sortWithNull($sort, $order, ['due', 'weighting'])
+                                     ->withNumReceivedFiles()
+                                     ->with(array('notes' => function($query) {
+                                         $query->orderBy('position', 'ASC');
+                                     }))
+                                     ->paginate($perPage);
     }
 
 

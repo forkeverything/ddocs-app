@@ -13,8 +13,8 @@
                    :name="'files[' + index + '][name]'"
                    @keyup.enter="addFile"
                    @keydown.delete="removeFile($event)"
-                   @keydown.up.prevent.stop="pressedArrow('prev')"
                    @keyup="searchForFileName($event, file, index)"
+                   @keydown.up.prevent.stop="pressedArrow('prev')"
                    @keydown.down.prevent.stop="pressedArrow('next')"
                    @focus="focusNameInput(index, file)"
                    v-el:name-input

@@ -1,0 +1,99 @@
+.notes  {
+
+  .btn-add-note {
+    border-color: $purple!important;
+    background: #fff !important;
+    color: lighten($purple, 10%) !important;
+    padding: 2px 10px;
+    font-size: 0.9em;
+    transition: all 0.2s ease-out;
+    outline: 0!important;
+    margin: 0 0 5px;
+
+    &:hover {
+      background: lighten($purple, 45%) !important;
+    }
+  }
+
+  .table-notes {
+    margin: 0;
+    border-collapse: initial;
+
+    .row-single-note {
+
+      &:hover {
+        background: $extra-light-grey;
+      }
+
+      td {
+        border-bottom: 1px solid $laravel-border-color;
+        border-color: transparent;
+        padding: 5px;
+
+        &.is-focused {
+          border-color: $purple;
+          background: lighten($purple, 45%);
+
+          textarea {
+            border-color: $purple!important;
+          }
+        }
+      }
+
+      .col-check {
+        padding-top: 4px;
+
+        .btn-check {
+          background: transparent;
+          width: 20px;
+          height: 20px;
+          color: $grey;
+          border: 1px solid $grey;
+          outline: 0;
+          padding: 0 0 1px 0;
+          font-size: 0.7em;
+          transition: all 0.15s ease-out;
+
+          &:hover, &.checked {
+            color: $purple;
+            border-color: $purple;
+          }
+        }
+      }
+
+      .col-body {
+        padding-left: 0;
+
+        .note-body {
+          position: relative;
+
+          textarea, .sizer {
+            padding: 0 5px;
+          }
+
+          textarea {
+            border: 1px dashed $purple;
+            border-color: transparent;
+            overflow: hidden;
+            min-height: 25px;
+            line-height: 25px;
+            transition: border-color 0.15s ease-in;
+          }
+
+          .sizer {
+            word-break: break-all;
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+          }
+
+          &.checked {
+            textarea {
+              color: lighten($purple, 24%);
+            }
+          }
+        }
+      }
+    }
+  }
+}

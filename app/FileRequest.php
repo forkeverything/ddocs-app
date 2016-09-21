@@ -125,6 +125,16 @@ class FileRequest extends Model
     }
 
     /**
+     * FileRequest could potentially ahve many Note(s) attached
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    /**
      * Helper func to see if File's status attribute matches given
      * param.
      *

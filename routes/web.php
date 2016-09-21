@@ -37,6 +37,12 @@ Route::post('/fr/{file_request_hash}/reject', 'FileRequestsController@postReject
 Route::get('/fr/{file_request_hash}/history', 'FileRequestsController@getHistory');
 Route::delete('/fr/{file_request_hash}', 'FileRequestsController@deleteFiles');
 
+// Notes
+Route::post('/note', 'NotesController@postNew');
+Route::put('/note/{note}', 'NotesController@putUpdate');
+Route::delete('/note/{note}', 'NotesController@delete');
+
+
 // Files
 Route::get('/files', 'FilesController@getForUser');
 
