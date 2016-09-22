@@ -25,6 +25,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="/c/make">New Checklist</a></li>
                             <li><a href="/c">My Lists</a></li>
+                            <li><a href="/projects">Projects</a></li>
                             <li><a href="/account">Account</a></li>
                             <li>
                                 <a href="{{ url('/logout') }}"

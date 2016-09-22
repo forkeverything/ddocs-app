@@ -8820,14 +8820,14 @@ label {
   -webkit-box-direction: normal;
   flex-direction: column; }
   #checklist-all .header {
-    margin: 15px 0 0 0;
+    margin: 25px 0 12.5px 0;
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: justify;
     justify-content: space-between;
     -webkit-box-align: center;
     align-items: center; }
-    #checklist-all .header .page-title {
+    #checklist-all .header h3 {
       margin: 0; }
     #checklist-all .header .btn {
       background: #66ccf5;
@@ -9472,6 +9472,55 @@ label {
 
 #file-history .btn-download {
   min-width: 120px; }
+
+#projects-all .header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  margin: 25px 0 12.5px 0; }
+  #projects-all .header h3 {
+    margin: 0;
+    display: inline-block; }
+  #projects-all .header .btn {
+    background: #49D699;
+    border: 0;
+    border-bottom: 2px solid #229764;
+    outline: 0; }
+    #projects-all .header .btn:hover {
+      background: #229764; }
+
+#projects-single {
+  max-width: 1400px;
+  padding: 0 15px;
+  margin: 0 auto; }
+  #projects-single #project-board {
+    margin-left: -15px; }
+    #projects-single #project-board .list-board-items {
+      margin-left: 15px; }
+      #projects-single #project-board .list-board-items .single-item {
+        padding: 8px; }
+        #projects-single #project-board .list-board-items .single-item .name.project_category {
+          font-weight: bold; }
+        #projects-single #project-board .list-board-items .single-item.field-new-item {
+          background: #E9E9E9;
+          display: -webkit-box;
+          display: flex; }
+          #projects-single #project-board .list-board-items .single-item.field-new-item .input-name {
+            width: 100%;
+            border: 1px dashed #353535;
+            border-color: transparent;
+            outline: 0;
+            margin-right: 8px; }
+            #projects-single #project-board .list-board-items .single-item.field-new-item .input-name:focus {
+              border-color: #353535; }
+          #projects-single #project-board .list-board-items .single-item.field-new-item .submit-buttons {
+            white-space: nowrap; }
+            #projects-single #project-board .list-board-items .single-item.field-new-item .submit-buttons .btn {
+              width: 80px;
+              padding: 4px 10px 6px 10px;
+              outline: 0;
+              border-radius: 0; }
 
 #account-overview #page-fixed-top {
   border-bottom: 1px solid #e6e6e6; }

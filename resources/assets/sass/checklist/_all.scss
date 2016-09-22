@@ -4,12 +4,12 @@
   flex-direction: column;
 
   .header {
-    margin: 15px 0 0 0;
+    margin: 25px 0 12.5px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .page-title {
+    h3 {
       margin: 0;
     }
 

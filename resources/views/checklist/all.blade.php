@@ -7,11 +7,9 @@
             <h3>
                 Your Checklists
             </h3>
-            <div>
-                <a href="/c/make">
-                    <button type="button" class="btn btn-info">New Checklist</button>
-                </a>
-            </div>
+            <a href="/c/make">
+                <button type="button" class="btn btn-info btn-sm">New Checklist</button>
+            </a>
         </div>
         <br>
         <checklist-collection></checklist-collection>

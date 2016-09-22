@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Vinkla\Hashids\Facades\Hashids;
 
 /**
@@ -58,4 +59,59 @@ function array_iunique($array) {
 function array_unique_nested($array)
 {
     return array_map("unserialize", array_unique(array_map("serialize", $array)));
+}
+
+function getProjectItems($type, $id)
+{
+
+    /**
+     * 1. We can't use Laravel collections because you can't merge 2 different collections.
+     * 2. To do a UNION, have to select same number of columns - select AS NULL.
+     * 3. If select isn't in EXACT SAME order, it will mess up the types of the values.
+     */
+
+    $categories = DB::table('project_categories')
+                    ->where('parent_type', $type)
+                    ->where('parent_id', $id)
+                    ->selectRaw('
+                                id,
+                                created_at,
+                                updated_at,
+                                position,
+                                name,
+                                NULL AS description,
+                                NULL AS weighting,
+                                type,
+                                NULL AS file_request_id,
+                                project_id,
+                                parent_type,
+                                parent_id
+                            ');
+
+    $files = DB::table('project_files')
+               ->where('parent_type', $type)
+               ->where('parent_id', $id)
+               ->selectRaw('
+                            id,
+                            created_at,
+                            updated_at,
+                            position,
+                            name,
+                            description,
+                            weighting,
+                            type,
+                            file_request_id,
+                            project_id,
+                            parent_type,
+                            parent_id
+                    ');
+
+    $directItems = $categories->union($files)->orderBy('position', 'asc')->get();
+
+    foreach ($directItems as $directItem) {
+        $directItem->items = getProjectItems($directItem->type, $directItem->id);
+    }
+
+    return $directItems;
+
 }

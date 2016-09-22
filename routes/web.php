@@ -47,6 +47,16 @@ Route::delete('/note/{note_hash}', 'NotesController@delete');
 // Files
 Route::get('/files', 'FilesController@getForUser');
 
+// Projects
+Route::get('/projects', 'ProjectsController@getAll');
+Route::get('/projects/start', 'ProjectsController@getStartForm');
+Route::post('/projects', 'ProjectsController@postSaveNew');
+Route::get('/projects/{project}', 'ProjectsController@getSingle');
+Route::put('/projects/{project}', 'ProjectsController@putUpdate');
+Route::delete('/projects/{project}', 'ProjectsController@delete');
+    // Cat & Files
+    Route::post('/projects/{project}/categories', 'ProjectsController@postNewCategory');
+    Route::post('/projects/{project}/files', 'ProjectsController@postNewFile');
 
 // Account
 Route::get('/account', 'AccountController@getAccountOverview');
@@ -54,3 +64,8 @@ Route::post('/account/subscription', 'AccountController@postSubscribe');
 Route::delete('/account/subscription', 'AccountController@deleteCancelSubscription');
 Route::post('/account/subscription/resume', 'AccountController@postResumeSubscription');
 Route::post('/account/coupon', 'AccountController@postClaimCoupon');
+
+Route::get('/test', function () {
+    return getProjectItems('App\Project', 1);
+    return \App\Project::first()->items();
+});

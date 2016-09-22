@@ -26,7 +26,8 @@ class DevSeeder extends Seeder
         $this->truncateTables()
              ->seedMikeAccount()
              ->seedChecklists()
-             ->seedFiles();
+             ->seedFiles()
+        ->seedProject();
     }
 
     /**
@@ -92,7 +93,7 @@ class DevSeeder extends Seeder
     protected function seedFiles()
     {
         foreach ($this->user->checklists as $checklist) {
-            $files = factory(\App\File::class, mt_rand(0, 100))->create([
+            $files = factory(\App\File::class, mt_rand(0, 30))->create([
                 'user_id' => $this->user->id
             ]);
             foreach ($files as $file) {
@@ -103,6 +104,19 @@ class DevSeeder extends Seeder
             }
         }
 
+        return $this;
+    }
+
+    /**
+     * Seed Dev project.
+     *
+     * @return $this
+     */
+    protected function seedProject()
+    {
+        $this->user->projects()->create([
+            'name' => 'Palu'
+        ]);
         return $this;
     }
 }

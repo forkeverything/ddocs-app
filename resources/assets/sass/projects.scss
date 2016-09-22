@@ -1,0 +1,75 @@
+#projects-all {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0 12.5px 0;
+
+    h3 {
+      margin: 0;
+      display: inline-block;
+    }
+
+    .btn {
+      background: $light-green;
+      border: 0;
+      border-bottom: 2px solid darken($light-green, 20%);
+      outline: 0;
+
+      &:hover {
+        background: darken($light-green, 20%);
+      }
+    }
+  }
+}
+
+#projects-single {
+  max-width: 1400px;
+  padding: 0 15px;
+  margin: 0 auto;
+
+  #project-board {
+    margin-left: -15px;
+
+    .list-board-items {
+      margin-left: 15px;
+
+      .single-item {
+        padding: 8px;
+
+        .name {
+          &.project_category {
+            font-weight: bold;
+          }
+        }
+
+        &.field-new-item {
+          background: $light-grey;
+          display: flex;
+
+          .input-name {
+            width: 100%;
+            border: 1px dashed $black;
+            border-color: transparent;
+            outline: 0;
+            margin-right: 8px;
+
+            &:focus {
+              border-color: $black;
+            }
+          }
+
+          .submit-buttons {
+            white-space: nowrap;
+
+            .btn {
+              width: 80px;
+              padding: 4px 10px 6px 10px;
+              outline: 0;
+              border-radius: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
