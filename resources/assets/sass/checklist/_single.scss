@@ -229,6 +229,7 @@
             outline: 0;
             color: $input-color-placeholder;
             border-radius: $border-radius-base;
+            font-weight: normal;
 
             .icon {
               border-radius: $border-radius-base;
@@ -240,6 +241,20 @@
               .icon {
                 background: $light-grey;
               }
+            }
+          }
+
+          .uneditable {
+            display: inline-block;
+            .icon {
+              font-size: 0.9em;
+              margin-right: 8px;
+              float: left;
+              padding-top: 5px;
+            }
+
+            > div {
+              display: inline-block;
             }
           }
 
@@ -321,6 +336,12 @@
                 border-radius: $border-radius-base;
                 outline: 0;
                 color: $input-color;
+              }
+            }
+
+            .uneditable {
+              .icon {
+                padding-top: 1px;
               }
             }
           }

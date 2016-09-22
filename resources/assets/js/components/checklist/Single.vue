@@ -173,7 +173,7 @@
                     </div>
 
                     <div class="pane-container">
-                        <file-view v-if="selectedFileRequest" :file-requests.sync="fileRequests" :selected-file-request-index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
+                        <file-view :user="user" v-if="selectedFileRequest" :file-requests.sync="fileRequests" :selected-file-request-index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
                         <summary-view v-else :checklist.sync="checklist"></summary-view>
                     </div>
                 </div>

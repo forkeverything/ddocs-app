@@ -1,8 +1,8 @@
 <template>
     <div id="selected-file-weighting">
 
-
-        <button type="button"
+        <button v-if="user"
+                type="button"
                 class="btn btn-weighting"
                 @click="showInput"
                 :class="{
@@ -23,25 +23,13 @@
             >
         </button>
 
-
-        <!--<button type="button"-->
-        <!--class="btn"-->
-        <!--:class="{-->
-        <!--filled: this.fileRequest.weighting-->
-        <!--}"-->
-        <!--v-show="! inputVisible"-->
-        <!--@click="showInput"-->
-        <!--&gt;-->
-        <!--<span v-if="fileRequest.weighting">{{ fileRequest.weighting }}</span>-->
-        <!--<span v-else>%</span>-->
-        <!--</button>-->
-        <!--<input v-else-->
-        <!--type="number"-->
-        <!--v-el:input-->
-        <!--step="0.01"-->
-        <!--v-model="input"-->
-        <!--@blur="blurInput"-->
-        <!--&gt;-->
+        <div class="uneditable" v-else>
+            <span class="icon">%</span>
+            <div class="weighting">
+                <span v-if="fileRequest.weighting">{{ fileRequest.weighting }}</span>
+                <span v-else>--</span>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -53,7 +41,7 @@
                 input: ''
             }
         },
-        props: ['file-request'],
+        props: ['user', 'file-request'],
         methods: {
             showInput() {
                 this.inputVisible = true;

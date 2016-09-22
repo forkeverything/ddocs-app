@@ -18,6 +18,10 @@ class Note extends Model
         'file_request_id'
     ];
 
+    protected $appends = [
+        'hash'
+    ];
+
     /**
      * Notes are attached to a FileRequest.
      *
@@ -26,5 +30,15 @@ class Note extends Model
     public function fileRequest()
     {
         return $this->belongsTo(FileRequest::class);
+    }
+
+    /**
+     * Get the hash'd id of this model.
+     *
+     * @return mixed
+     */
+    public function getHashAttribute()
+    {
+        return hashId('note',  $this);
     }
 }

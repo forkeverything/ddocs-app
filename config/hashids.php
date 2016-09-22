@@ -61,6 +61,12 @@ return [
             'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
         ],
 
+        'note' => [
+            'salt' => 'notes keep everybody on the same page',
+            'length' => '8',
+            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
+        ]
+
     ],
 
 ];

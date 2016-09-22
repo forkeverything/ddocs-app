@@ -57,7 +57,6 @@
                     });
                     this.loading = false;
                 }, (response) => {
-                    console.log("Couldn't fetch notes.");
                     console.log(response);
                 });
             },
@@ -83,7 +82,7 @@
             },
             saveChanges(index) {
                 let note = this.notes[index];
-                if (!note.id && !note.saving) {
+                if (!note.hash && !note.saving) {
                     this.saveNewNote(note, index)
                 } else {
                     if (note.saving) {
@@ -97,15 +96,13 @@
                 note.saving = true;
                 this.$http.post('/note', note).then((response) => {
                     // success
-                    console.log('saved new note');
-                    note.id = response.json().id;
+                    note.hash = response.json().hash;
                     note.saving = false;
                     if (note.needs_delete) {
                         this.deleteNote(note);
                         return;
                     }
                     if (note.needs_update) {
-                        console.log('updated note after saving!');
                         this.updateNote(note, index);
                     }
                 }, (response) => {
@@ -121,7 +118,7 @@
             },
             updateNote(note, index) {
                 if (note.deleting) return;
-                this.$http.put('/note/' + note.id, {
+                this.$http.put('/note/' + note.hash, {
                     'position': index,
                     'body': note.body,
                     'checked': note.checked
@@ -132,7 +129,6 @@
                     }
                 }).then((response) => {
                     // success
-                    console.log('updated note!');
                 }, (response) => {
                     // error
                     console.log(response);
@@ -147,7 +143,7 @@
                     this.focusNote(index - 1);
                 });
                 // If we're removing an unsaved note
-                if (!note.id) {
+                if (!note.hash) {
                     note.needs_delete = true;
                 } else {
                     this.deleteNote(note);
@@ -155,14 +151,14 @@
             },
             deleteNote(note) {
                 note.deleting = true;
-                this.$http.delete('/note/' + note.id, {
+                this.$http.delete('/note/' + note.hash, {
                     before(xhr) {
                         this.clearQueue(note, 'updating');
                         this.clearQueue(note, 'deleting');
                         note.queue.deleting.push(xhr);
                     }
                 }).then((response) => {
-                    console.log('deleted note');
+
                 }, (response) => {
                     console.log(response);
                 })

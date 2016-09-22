@@ -1,7 +1,8 @@
 <template>
     <div id="selected-file-date">
 
-        <button type="button" class="btn btn-due-date" @click="pickDate" :class="{ filled: fileRequest.due }">
+        <button type="button" class="btn btn-due-date" @click="pickDate" :class="{ filled: fileRequest.due }"
+                v-if="user">
             <span class="icon">
                 <i class="fa fa-calendar" v-if="ajaxReady"></i>
                 <i class="fa fa-spinner fa-pulse fa-fw" v-else></i>
@@ -16,6 +17,13 @@
                    v-el:input
             >
         </button>
+
+        <div class="uneditable" v-else>
+            <i class="fa fa-calendar icon"></i>
+            <smart-date v-show="fileRequest.due" :date="fileRequest.due"></smart-date>
+            <span v-show="! fileRequest.due">--</span>
+        </div>
+
     </div>
 </template>
 <script>
@@ -26,7 +34,7 @@
                 newDate: ''
             }
         },
-        props: ['file-request'],
+        props: ['user', 'file-request'],
         computed: {
             formattedDate() {
                 if (!this.fileRequest.due) return;

@@ -13,6 +13,7 @@ use App\Jobs\CheckIfChecklistComplete;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Storage;
 
@@ -90,10 +91,12 @@ class FileRequestsController extends Controller
      *
      * @param $fileRequestHash
      * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
     public function putModifyRequest($fileRequestHash, Request $request)
     {
         $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
+        if(! Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
         $fileRequest->update($request->all());
         return $fileRequest;
     }

@@ -40,8 +40,8 @@ Route::delete('/fr/{file_request_hash}', 'FileRequestsController@deleteFiles');
 
 // Notes
 Route::post('/note', 'NotesController@postNew');
-Route::put('/note/{note}', 'NotesController@putUpdate');
-Route::delete('/note/{note}', 'NotesController@delete');
+Route::put('/note/{note_hash}', 'NotesController@putUpdate');
+Route::delete('/note/{note_hash}', 'NotesController@delete');
 
 
 // Files
