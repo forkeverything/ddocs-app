@@ -1,5 +1,5 @@
 <template>
-    <li class="single-board-item field-new-item">
+    <li class="single-board-item field-new-item" :data-position="(parent.items.length - 1)">
         <div class="wrap" v-show="parent.newItemField">
             <input type="text" class="input-name" v-model="name" v-el:input @blur="checkHideField">
             <div class="submit-buttons">

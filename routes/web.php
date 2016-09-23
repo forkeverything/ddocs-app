@@ -58,6 +58,7 @@ Route::delete('/projects/{project}', 'ProjectsController@delete');
     Route::post('/projects/{project}/categories', 'ProjectsController@postNewCategory');
     Route::post('/projects/{project}/files', 'ProjectsController@postNewFile');
     Route::put('/projects/{project}/item', 'ProjectsController@putUpdateItem');
+    Route::put('/projects/{project}/positions', 'ProjectsController@putUpdatePositions');
 
 // Account
 Route::get('/account', 'AccountController@getAccountOverview');

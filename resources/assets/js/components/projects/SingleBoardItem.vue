@@ -1,5 +1,5 @@
 <template>
-    <li class="single-board-item">
+    <li class="single-board-item" :data-position="item.position" :data-type="item.type" :data-id="item.id">
         <div class="main">
             <board-item-name :item.sync="item"></board-item-name>
             <ul class="list-unstyled list-inline list-item-actions">
@@ -12,6 +12,8 @@
             :class="{
                 'has-items': hasNestedItems
             }"
+            :data-parent-type="item.type"
+            :data-parent-id="item.id"
         >
             <single-board-item v-for="nestedItem in item.items" :item.sync="nestedItem"></single-board-item>
             <new-board-item :parent.sync="item"></new-board-item>

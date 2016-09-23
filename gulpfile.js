@@ -26,7 +26,8 @@ elixir(mix => {
     // Node Package Styles
     mix.styles([
         'jquery-ui/themes/base/datepicker.css',
-        'animate.css/animate.min.css'
+        'animate.css/animate.min.css',
+        'dragula/dist/dragula.css'
     ], 'public/css/vendor.css', 'node_modules');
 
 

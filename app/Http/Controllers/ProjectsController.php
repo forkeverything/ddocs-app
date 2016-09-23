@@ -133,11 +133,26 @@ class ProjectsController extends Controller
 
     public function putUpdateItem(Project $project, Request $request)
     {
-        // Make sure item does belong to project
-        if($request->project_id !== $project->id) return response("Board item does not belong to project", 403);
+        $item = $this->findProjectItem($request->type, $request->id, $project->id);
 
-        $item = call_user_func($request->type . '::find', $request->id);
         $item->update($request->all());
+        return $item;
+    }
+
+    public function putUpdatePositions(Project $project, Request $request)
+    {
+        // track down item
+        $item = $this->findProjectItem($request->type, $request->id, $project->id);
+
+        $item->update($request->all());
+
+        return $item;
+    }
+
+    protected function findProjectItem($type, $id, $project_id)
+    {
+        $item = call_user_func($type . '::find', $id);
+        if($item->project_id !== $project_id) abort(403, "Board item does not belong to project");
         return $item;
     }
 }
