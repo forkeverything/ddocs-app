@@ -27,7 +27,8 @@ class ProjectsController extends Controller
                 'putUpdate',
                 'delete',
                 'postNewCategory',
-                'postNewFile'
+                'postNewFile',
+                'putUpdateItem'
             ]
         ]);
     }
@@ -128,5 +129,15 @@ class ProjectsController extends Controller
     public function postNewFile(Project $project, Request $request)
     {
         return ProjectFile::create($request->all());
+    }
+
+    public function putUpdateItem(Project $project, Request $request)
+    {
+        // Make sure item does belong to project
+        if($request->project_id !== $project->id) return response("Board item does not belong to project", 403);
+
+        $item = call_user_func($request->type . '::find', $request->id);
+        $item->update($request->all());
+        return $item;
     }
 }

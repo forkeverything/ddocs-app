@@ -47,6 +47,7 @@ Vue.component('file-date-input', require('./components/file/DateInput.vue'));
 Vue.component('project-board', require('./components/projects/ProjectBoard.vue'));
 Vue.component('single-board-item', require('./components/projects/SingleBoardItem.vue'));
 Vue.component('new-board-item', require('./components/projects/NewBoardItem.vue'));
+Vue.component('board-item-name', require('./components/projects/BoardItemName.vue'));
 
 // Vue.component('file-renamer', require('./components/file/Renamer.vue'));
 

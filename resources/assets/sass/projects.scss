@@ -61,7 +61,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 30px;
+            height: 40px;
             padding: 4px 0 4px 8px;
 
             &:hover {
@@ -71,8 +71,47 @@
             }
 
             .name {
-              &.category {
-                font-weight: bold;
+              display: flex;
+              align-items: center;
+
+              .current_name {
+                float: left;
+                display: inline-block;
+
+                &.category {
+                  font-weight: bold;
+                }
+              }
+
+              .btn-edit-name {
+                float: left;
+                visibility: hidden;
+                opacity: 0;
+                background: transparent;
+                font-size: 0.8em;
+                outline: 0;
+                color: $dark-grey;
+                width: 30px;
+                height: 30px;
+                padding: 2px 0 0 4px;
+                border-radius: 0;
+                box-shadow: none;
+
+                &:hover {
+                  color: $black;
+                }
+              }
+
+              &:hover {
+                .btn-edit-name {
+                  visibility: visible;
+                  opacity: 1;
+                }
+              }
+
+              .input-name {
+                outline: 0;
+                border: 1px dashed $black;
               }
             }
 

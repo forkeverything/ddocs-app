@@ -57,6 +57,7 @@ Route::delete('/projects/{project}', 'ProjectsController@delete');
     // Cat & Files
     Route::post('/projects/{project}/categories', 'ProjectsController@postNewCategory');
     Route::post('/projects/{project}/files', 'ProjectsController@postNewFile');
+    Route::put('/projects/{project}/item', 'ProjectsController@putUpdateItem');
 
 // Account
 Route::get('/account', 'AccountController@getAccountOverview');

@@ -9517,14 +9517,43 @@ label {
     align-items: center;
     -webkit-box-pack: justify;
     justify-content: space-between;
-    height: 30px;
+    height: 40px;
     padding: 4px 0 4px 8px; }
     #projects-single #project-board .list-board-items .single-board-item .main:hover {
       background: #F7F7F7;
       border-top: 1px solid #e6e6e6;
       border-bottom: 1px solid #e6e6e6; }
-    #projects-single #project-board .list-board-items .single-board-item .main .name.category {
-      font-weight: bold; }
+    #projects-single #project-board .list-board-items .single-board-item .main .name {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center; }
+      #projects-single #project-board .list-board-items .single-board-item .main .name .current_name {
+        float: left;
+        display: inline-block; }
+        #projects-single #project-board .list-board-items .single-board-item .main .name .current_name.category {
+          font-weight: bold; }
+      #projects-single #project-board .list-board-items .single-board-item .main .name .btn-edit-name {
+        float: left;
+        visibility: hidden;
+        opacity: 0;
+        background: transparent;
+        font-size: 0.8em;
+        outline: 0;
+        color: #999999;
+        width: 30px;
+        height: 30px;
+        padding: 2px 0 0 4px;
+        border-radius: 0;
+        box-shadow: none; }
+        #projects-single #project-board .list-board-items .single-board-item .main .name .btn-edit-name:hover {
+          color: #353535; }
+      #projects-single #project-board .list-board-items .single-board-item .main .name:hover .btn-edit-name {
+        visibility: visible;
+        opacity: 1; }
+      #projects-single #project-board .list-board-items .single-board-item .main .name .input-name {
+        outline: 0;
+        border: 1px dashed #353535; }
     #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions {
       display: none;
       margin-left: 10px; }

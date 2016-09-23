@@ -1,7 +1,7 @@
 <template>
     <li class="single-board-item">
         <div class="main">
-            <span class="name" :class="typeClassName">{{ item.name }}</span>
+            <board-item-name :item.sync="item"></board-item-name>
             <ul class="list-unstyled list-inline list-item-actions">
                 <li><button type="button" class="btn btn-add-sub-item" @click="showNewSubItemField"><i class="fa fa-level-down"></i></button></li>
                 <li><button type="button" class="btn btn-delete"><i class="fa fa-close"></i></button></li>
@@ -13,7 +13,7 @@
                 'has-items': hasNestedItems
             }"
         >
-            <single-board-item v-for="nestedItem in item.items" :item="nestedItem"></single-board-item>
+            <single-board-item v-for="nestedItem in item.items" :item.sync="nestedItem"></single-board-item>
             <new-board-item :parent.sync="item"></new-board-item>
         </ul>
     </li>
@@ -26,21 +26,41 @@
         computed: {
             hasNestedItems(){
                 return this.item.items.length > 0;
-            },
-            typeClassName() {
-                switch(this.item.type) {
-                    case 'App\\ProjectCategory':
-                        return 'category';
-                    case 'App\\ProjectFile':
-                        return 'file';
-                }
             }
         },
         props: ['item'],
         methods: {
             showNewSubItemField() {
                 this.$set('item.newItemField', true);
+            },
+            isThisItem(item) {
+                return item.type === this.item.type && item.id === this.item.id;
+            },
+            clearQueue() {
+                for (var i = 0; i < this.item.requests_queue.length; i++) {
+                    this.item.requests_queue.shift().abort();
+                }
+            },
+            updateItem(){
+                this.$http.put('/projects/' + this.item.project_id + '/item', this.item, {
+                    before(xhr){
+                        this.clearQueue();
+                        this.item.requests_queue.push(xhr);
+                    }
+                }).then((res) => {
+                }, (res) => {
+                    console.log('update item error');
+                    console.log(res);
+                });
             }
+        },
+        ready() {
+            // initialize a queue
+            this.$set('item.requests_queue', []);
+
+            vueGlobalEventBus.$on('update-board-item', (item) => {
+                if(this.isThisItem(item)) this.updateItem();
+            });
         }
     }
 </script>
