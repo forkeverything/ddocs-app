@@ -23,7 +23,7 @@ class CreateProjectFilesTable extends Migration
             $table->text('description')->nullable();
             $table->decimal('weighting', 6, 2)->nullable();
 
-            $table->string('type')->default('App\\\ProjectFile');
+            $table->string('type');
 
             $table->integer('file_request_id')->unsigned()->nullable();
             $table->foreign('file_request_id')->references('id')->on('file_requests')->onDelete('set null');

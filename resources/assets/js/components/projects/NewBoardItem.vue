@@ -1,9 +1,11 @@
 <template>
-    <li class="single-item field-new-item">
-        <input type="text" class="input-name" v-model="name">
-        <div class="submit-buttons">
-            <button type="button" class="btn btn-sm btn-primary" @click="addItem('file')">File</button>
-            <button type="button" class="btn btn-sm btn-info" @click="addItem('category')">Category</button>
+    <li class="single-board-item field-new-item">
+        <div class="wrap" v-show="parent.newItemField">
+            <input type="text" class="input-name" v-model="name" v-el:input @blur="checkHideField">
+            <div class="submit-buttons">
+                <button type="button" class="btn btn-sm btn-primary" @click="addItem('file')">File</button>
+                <button type="button" class="btn btn-sm btn-info" @click="addItem('category')">Category</button>
+            </div>
         </div>
     </li>
 </template>
@@ -16,12 +18,26 @@
             }
         },
         props: ['parent'],
+        watch: {
+          'parent.newItemField'(visible) {
+              if(visible) {
+                  this.$nextTick(() => {
+                      $(this.$els.input).focus();
+                  });
+              }
+          }
+        },
         methods: {
+            checkHideField() {
+              if(!this.name) {
+                  this.$set('parent.newItemField', false);
+              }
+            },
             addItem(type) {
                 let projectId = (this.parent.type === "App\\Project") ? this.parent.id : this.parent.project_id;
                 let url = '/projects/' + projectId + '/' + (type === 'file' ? 'files' : 'categories');
 
-                if(! this.ajaxReady) return;
+                if (!this.ajaxReady) return;
                 this.ajaxReady = false;
 
                 this.$http.post(url, {
@@ -35,6 +51,9 @@
                     this.parent.items.push(response.json());
                     this.name = '';
                     this.ajaxReady = true;
+                    this.$nextTick(() => {
+                        $(this.$els.input).focus();
+                    });
                 }, (response) => {
                     // error
                     console.log('error adding item');

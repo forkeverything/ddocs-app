@@ -24,6 +24,10 @@ class ProjectFile extends Model
         'items'
     ];
 
+    protected $attributes = [
+        'type' => 'App\\ProjectFile'
+    ];
+
     /**
      * Set which Project this File belongs to. It will save us from hunting
      * through nested relationships when we just want all the files.

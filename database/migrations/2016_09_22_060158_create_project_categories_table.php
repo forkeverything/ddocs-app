@@ -20,7 +20,7 @@ class CreateProjectCategoriesTable extends Migration
             $table->string('name');
             $table->integer('position');
 
-            $table->string('type')->default('App\\\ProjectCategory');
+            $table->string('type');
 
             $table->integer('project_id')->unsigned();
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');

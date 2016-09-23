@@ -21,6 +21,10 @@ class ProjectCategory extends Model
         'items'
     ];
 
+    protected $attributes = [
+        'type' => 'App\\ProjectCategory'
+    ];
+
     /**
      * Category can belong to a Project, Category or even a File.
      *

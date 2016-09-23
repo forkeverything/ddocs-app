@@ -16,6 +16,10 @@ class Project extends Model
         'user_id'
     ];
 
+    protected $attributes = [
+        'type' => 'App\\Project'
+    ];
+
     /**
      * Project can have many Categories.
      *
