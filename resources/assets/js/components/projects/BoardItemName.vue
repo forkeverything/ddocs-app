@@ -19,6 +19,7 @@
                v-el:input
                v-show="editing"
                @blur="sendUpdateItemEvent"
+               @keydown.enter.prevent="blurInput"
         >
     </span>
 </template>
@@ -41,6 +42,9 @@ export default {
     },
     props: ['item'],
     methods: {
+        blurInput() {
+            $(this.$els.input).blur();
+        },
         enterEditMode() {
             this.editing = true;
             this.$nextTick(() => {

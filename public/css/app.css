@@ -9494,122 +9494,181 @@ label {
   max-width: 1400px;
   padding: 0 15px;
   margin: 0 auto; }
-  #projects-single #project-board #btn-new-item {
-    border-color: #3498DB !important;
-    background: #fff !important;
-    color: #5faee3 !important;
-    padding: 2px 10px;
-    font-size: 0.9em;
-    -webkit-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
-    outline: 0 !important;
-    margin: 0 0 12.5px; }
-    #projects-single #project-board #btn-new-item:hover {
-      background: #eaf4fb !important; }
-  #projects-single #project-board .list-board-items.nested {
-    margin-left: 30px; }
-    #projects-single #project-board .list-board-items.nested.has-items {
-      padding: 10px 0; }
-  #projects-single #project-board .list-board-items .single-board-item .main {
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    height: 40px;
-    padding: 4px 0 4px 8px; }
-    #projects-single #project-board .list-board-items .single-board-item .main:hover {
-      background: #F7F7F7;
-      border-top: 1px solid #e6e6e6;
-      border-bottom: 1px solid #e6e6e6; }
-    #projects-single #project-board .list-board-items .single-board-item .main .name {
-      display: -webkit-box;
-      display: flex;
-      -webkit-box-align: center;
-      align-items: center; }
-      #projects-single #project-board .list-board-items .single-board-item .main .name .current_name {
-        float: left;
-        display: inline-block; }
-        #projects-single #project-board .list-board-items .single-board-item .main .name .current_name.category {
-          font-weight: bold; }
-      #projects-single #project-board .list-board-items .single-board-item .main .name .btn-edit-name {
-        float: left;
-        visibility: hidden;
-        opacity: 0;
-        background: transparent;
-        font-size: 0.8em;
-        outline: 0;
-        color: #999999;
-        width: 30px;
-        height: 30px;
-        padding: 2px 0 0 4px;
-        border-radius: 0;
-        box-shadow: none; }
-        #projects-single #project-board .list-board-items .single-board-item .main .name .btn-edit-name:hover {
-          color: #353535; }
-      #projects-single #project-board .list-board-items .single-board-item .main .name:hover .btn-edit-name {
-        visibility: visible;
-        opacity: 1; }
-      #projects-single #project-board .list-board-items .single-board-item .main .name .input-name {
-        outline: 0;
-        border: 1px dashed #353535; }
-    #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions {
-      display: none;
-      margin-left: 10px; }
-      #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li {
-        padding: 0 2px; }
-        #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li .btn {
-          margin: 5px 0;
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          border: 1px solid #D2D2D2;
-          line-height: 0;
-          outline: 0;
-          font-size: 0.75em;
-          background: transparent;
-          padding: 0;
-          color: #D2D2D2;
-          box-shadow: none;
-          opacity: 0.6; }
-          #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li .btn.btn-add-sub-item {
-            color: #3498DB;
-            border-color: #3498DB; }
-          #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li .btn.btn-delete {
-            color: #ff6a6a;
-            border-color: #ff6a6a; }
-          #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li .btn.btn-link {
-            color: #41B883;
-            border-color: #41B883; }
-          #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li .btn:hover {
-            opacity: 1; }
-    #projects-single #project-board .list-board-items .single-board-item .main:hover .list-item-actions {
-      display: inline-block; }
-  #projects-single #project-board .list-board-items .single-board-item.field-new-item .wrap {
-    margin-top: 5px;
-    display: -webkit-box;
-    display: flex;
-    padding: 0 0 0 8px;
-    -webkit-box-align: center;
-    align-items: center;
-    height: 30px; }
-    #projects-single #project-board .list-board-items .single-board-item.field-new-item .wrap .input-name {
+  #projects-single #project-board {
+    position: relative; }
+    #projects-single #project-board #updating-position-overlay {
+      position: absolute;
+      background: #fff;
+      top: 0;
+      left: 0;
       width: 100%;
-      border: 1px dashed #353535;
-      border-color: transparent;
-      outline: 0;
-      margin-right: 8px;
-      height: 25px; }
-      #projects-single #project-board .list-board-items .single-board-item.field-new-item .wrap .input-name:focus {
-        border-color: #353535; }
-    #projects-single #project-board .list-board-items .single-board-item.field-new-item .wrap .submit-buttons {
-      white-space: nowrap; }
-      #projects-single #project-board .list-board-items .single-board-item.field-new-item .wrap .submit-buttons .btn {
-        width: 80px;
-        padding: 0 10px 2px 10px;
-        outline: 0;
-        border-radius: 0; }
+      height: 100%;
+      z-index: 5;
+      opacity: 0.6; }
+      #projects-single #project-board #updating-position-overlay .loader {
+        position: fixed;
+        width: 100%;
+        height: calc(100vh - 42px);
+        top: 42px;
+        left: 0;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center; }
+      #projects-single #project-board #updating-position-overlay .loader-cube .sk-cube:before {
+        background: #353535; }
+    #projects-single #project-board #btn-new-item {
+      border-color: #3498DB !important;
+      background: #fff !important;
+      color: #5faee3 !important;
+      padding: 2px 10px;
+      font-size: 0.9em;
+      -webkit-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+      outline: 0 !important;
+      margin: 0 0 12.5px; }
+      #projects-single #project-board #btn-new-item:hover {
+        background: #eaf4fb !important; }
+    #projects-single #project-board .list-board-items.nested {
+      margin-left: 45px; }
+    #projects-single #project-board .list-board-items .drag-space {
+      height: 10px;
+      display: none; }
+    #projects-single #project-board .list-board-items .single-board-item {
+      margin: 10px 0; }
+      #projects-single #project-board .list-board-items .single-board-item.gu-transit {
+        opacity: 1; }
+        #projects-single #project-board .list-board-items .single-board-item.gu-transit .main {
+          border: 1px dashed #353535; }
+          #projects-single #project-board .list-board-items .single-board-item.gu-transit .main .name, #projects-single #project-board .list-board-items .single-board-item.gu-transit .main .list-item-actions {
+            opacity: 0; }
+      #projects-single #project-board .list-board-items .single-board-item.without-nested {
+        margin-bottom: 0; }
+      #projects-single #project-board .list-board-items .single-board-item .main {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        height: 40px;
+        padding: 4px 0 4px 8px; }
+        #projects-single #project-board .list-board-items .single-board-item .main:hover {
+          background: #F7F7F7;
+          border-top: 1px solid #e6e6e6;
+          border-bottom: 1px solid #e6e6e6; }
+        #projects-single #project-board .list-board-items .single-board-item .main .name {
+          display: -webkit-box;
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center; }
+          #projects-single #project-board .list-board-items .single-board-item .main .name .current_name {
+            float: left;
+            display: inline-block; }
+            #projects-single #project-board .list-board-items .single-board-item .main .name .current_name.category {
+              font-weight: bold; }
+          #projects-single #project-board .list-board-items .single-board-item .main .name .btn-edit-name {
+            float: left;
+            visibility: hidden;
+            opacity: 0;
+            background: transparent;
+            font-size: 0.8em;
+            outline: 0;
+            color: #999999;
+            width: 30px;
+            height: 30px;
+            padding: 2px 0 0 4px;
+            border-radius: 0;
+            box-shadow: none; }
+            #projects-single #project-board .list-board-items .single-board-item .main .name .btn-edit-name:hover {
+              color: #353535; }
+          #projects-single #project-board .list-board-items .single-board-item .main .name:hover .btn-edit-name {
+            visibility: visible;
+            opacity: 1; }
+          #projects-single #project-board .list-board-items .single-board-item .main .name .input-name {
+            outline: 0;
+            border: 1px dashed #353535; }
+        #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions {
+          display: none;
+          margin-left: 10px; }
+          #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li {
+            padding: 0 2px; }
+            #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li .btn {
+              margin: 5px 0;
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              border: 1px solid #D2D2D2;
+              line-height: 0;
+              outline: 0;
+              font-size: 0.75em;
+              background: transparent;
+              padding: 0;
+              color: #D2D2D2;
+              box-shadow: none;
+              opacity: 0.6; }
+              #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li .btn.btn-add-sub-item {
+                color: #3498DB;
+                border-color: #3498DB; }
+              #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li .btn.btn-delete {
+                color: #ff6a6a;
+                border-color: #ff6a6a; }
+              #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li .btn.btn-link {
+                color: #41B883;
+                border-color: #41B883; }
+              #projects-single #project-board .list-board-items .single-board-item .main .list-item-actions li .btn:hover {
+                opacity: 1; }
+        #projects-single #project-board .list-board-items .single-board-item .main:hover .list-item-actions {
+          display: inline-block; }
+      #projects-single #project-board .list-board-items .single-board-item.field-new-item {
+        margin: 0; }
+        #projects-single #project-board .list-board-items .single-board-item.field-new-item .wrap {
+          margin: 10px 0;
+          display: -webkit-box;
+          display: flex;
+          padding: 0 0 0 8px;
+          -webkit-box-align: center;
+          align-items: center;
+          height: 40px;
+          background: #F7F7F7; }
+          #projects-single #project-board .list-board-items .single-board-item.field-new-item .wrap .input-name {
+            width: 100%;
+            border: 1px dashed #353535;
+            border-color: transparent;
+            outline: 0;
+            margin-right: 8px;
+            height: 25px; }
+            #projects-single #project-board .list-board-items .single-board-item.field-new-item .wrap .input-name:focus {
+              border-color: #353535; }
+          #projects-single #project-board .list-board-items .single-board-item.field-new-item .wrap .submit-buttons {
+            white-space: nowrap; }
+            #projects-single #project-board .list-board-items .single-board-item.field-new-item .wrap .submit-buttons .btn {
+              width: 80px;
+              padding: 0 10px 2px 10px;
+              outline: 0;
+              border-radius: 0; }
+    #projects-single #project-board.dragging .single-board-item.without-nested {
+      margin-bottom: -10px; }
+    #projects-single #project-board.dragging .single-board-item.field-new-item {
+      display: none !important; }
+    #projects-single #project-board.dragging .single-board-item .drag-space {
+      display: block; }
+
+.gu-mirror {
+  background: #fff;
+  opacity: 0.85;
+  list-style: none;
+  padding: 4px 0 4px 8px; }
+  .gu-mirror .btn-edit-name, .gu-mirror .list-item-actions {
+    display: none; }
+  .gu-mirror .main {
+    height: 40px; }
+  .gu-mirror ul {
+    margin-left: 45px; }
+    .gu-mirror ul li {
+      margin: 10px 0; }
 
 #account-overview #page-fixed-top {
   border-bottom: 1px solid #e6e6e6; }

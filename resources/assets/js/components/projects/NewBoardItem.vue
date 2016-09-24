@@ -1,5 +1,5 @@
 <template>
-    <li class="single-board-item field-new-item" :data-position="(parent.items.length - 1)">
+    <li class="single-board-item field-new-item" :data-position="dataPosition">
         <div class="wrap" v-show="parent.newItemField">
             <input type="text" class="input-name" v-model="name" v-el:input @blur="checkHideField">
             <div class="submit-buttons">
@@ -19,19 +19,24 @@
         },
         props: ['parent'],
         watch: {
-          'parent.newItemField'(visible) {
-              if(visible) {
-                  this.$nextTick(() => {
-                      $(this.$els.input).focus();
-                  });
-              }
-          }
+            'parent.newItemField'(visible) {
+                if (visible) {
+                    this.$nextTick(() => {
+                        $(this.$els.input).focus();
+                    });
+                }
+            }
+        },
+        computed: {
+            dataPosition () {
+                return (this.parent.items.length > 0) ? this.parent.items.length - 1 : 0;
+            }
         },
         methods: {
             checkHideField() {
-              if(!this.name) {
-                  this.$set('parent.newItemField', false);
-              }
+                if (!this.name) {
+                    this.$set('parent.newItemField', false);
+                }
             },
             addItem(type) {
                 let projectId = (this.parent.type === "App\\Project") ? this.parent.id : this.parent.project_id;
@@ -53,6 +58,7 @@
                     this.ajaxReady = true;
                     this.$nextTick(() => {
                         $(this.$els.input).focus();
+                        this.$emit('init-drag');
                     });
                 }, (response) => {
                     // error

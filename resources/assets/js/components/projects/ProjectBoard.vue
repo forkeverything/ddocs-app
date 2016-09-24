@@ -1,5 +1,14 @@
 <template>
-    <div id="project-board">
+    <div id="project-board"
+         :class="{
+            'dragging': dragging
+         }"
+    >
+        <div id="updating-position-overlay" v-show="updatingPosition">
+            <div class="loader">
+                <cube-loader></cube-loader>
+            </div>
+        </div>
         <button id="btn-new-item"
                 type="button"
                 class="btn btn-sm"
@@ -16,10 +25,44 @@
 <script>
     export default {
         data: function () {
-            return {}
+            return {
+                dragging: false,
+                drake: '',
+                updatingPosition: true
+            }
         },
         props: ['project'],
         methods: {
+            initDrag(){
+                // if we're re-initializing
+                if(this.drake) this.drake.destroy();
+                // create our drake instance
+                this.drake = dragula(Array.prototype.slice.call(document.querySelectorAll('.list-board-items')), {
+                    moves: (el, source, handle, sibling) => {
+                        // Don't want to make the new board item field draggable
+                        return !el.classList.contains('field-new-item');
+                    },
+                    accepts: (el, target, source, sibling) => {
+                        // prevent dragged containers from trying to drop inside itself and
+                        // prevent dropping as last item (needs sibling)
+                        return !this.contains(el, target) && sibling && ! sibling.classList.contains('drag-space');
+                    }
+                });
+                // 'dragging' class
+                this.drake.on('drag', () => {
+                    this.dragging = true;
+                });
+                this.drake.on('dragend', () => {
+                    this.dragging = false;
+                });
+                // Handle drop
+                this.drake.on('drop', (el, target, source, sibling) => {
+                    this.drake.cancel(true);
+                    this.updateItemPosition(el, target, sibling);
+                });
+
+                this.updatingPosition = false;
+            },
             showNewRootItemField(){
                 this.$set('project.newItemField', true);
             },
@@ -30,6 +73,10 @@
             },
             updateItemPosition(el, target, sibling) {
 
+                this.updatingPosition = true;
+
+                console.log(sibling);
+
                 let data = {
                     'parent_type': target.dataset.parentType,
                     'parent_id': target.dataset.parentId,
@@ -39,21 +86,45 @@
                 };
 
                 console.log(data);
+
+                this.$http.put('/projects/' + this.project.id + '/positions', data)
+                        .then((response) => {
+
+                            this.project = response.json();
+
+                            let itemsContainer = [];
+
+                            function pushItems(container, items) {
+
+                                for(let i = 0; i < items.length; i ++) {
+
+                                    let itemObject = {
+                                        name: items[i].name,
+                                        position: items[i].position,
+                                        items: []
+                                    };
+
+                                    if(items[i].items.length > 0) pushItems(itemObject.items, items[i].items);
+
+                                    container.push(itemObject);
+                                }
+                            }
+
+                            pushItems(itemsContainer, response.json().items);
+
+                            console.log(itemsContainer);
+
+                            this.$nextTick(() => this.initDrag());
+                        }, (response) => {
+                            console.log("Couldn't update item positions");
+                            console.log(response);
+                        });
             }
         },
         ready(){
-            let drake = dragula(Array.prototype.slice.call(document.querySelectorAll('.list-board-items')), {
-                moves: (el, source, handle, sibling) => {
-                    return true;
-                    return el.classList.contains('single-board-item');
-                },
-                accepts: (el, target, source, sibling) => {
-                    // prevent dragged containers from trying to drop inside itself
-                    return !this.contains(el, target) && sibling;
-                }
-            });
+            this.initDrag();
 
-            drake.on('drop', (el, target, source, sibling) => this.updateItemPosition(el, target, sibling));
+            vueGlobalEventBus.$on('init-drag', this.initDrag);
         }
     }
 </script>               

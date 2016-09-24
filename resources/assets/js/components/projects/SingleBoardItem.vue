@@ -1,5 +1,5 @@
 <template>
-    <li class="single-board-item" :data-position="item.position" :data-type="item.type" :data-id="item.id">
+    <li class="single-board-item" :data-position="item.position" :data-type="item.type" :data-id="item.id" :class="{'without-nested': ! hasNestedItems}">
         <div class="main">
             <board-item-name :item.sync="item"></board-item-name>
             <ul class="list-unstyled list-inline list-item-actions">
@@ -16,6 +16,7 @@
             :data-parent-id="item.id"
         >
             <single-board-item v-for="nestedItem in item.items" :item.sync="nestedItem"></single-board-item>
+            <li class="drag-space" v-if="! hasNestedItems"></li>
             <new-board-item :parent.sync="item"></new-board-item>
         </ul>
     </li>

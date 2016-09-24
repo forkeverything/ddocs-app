@@ -61,9 +61,15 @@ function array_unique_nested($array)
     return array_map("unserialize", array_unique(array_map("serialize", $array)));
 }
 
+/**
+ * Returns the direct items for a Project Item (Project, Category or File)
+ *
+ * @param $type
+ * @param $id
+ * @return mixed
+ */
 function getProjectItems($type, $id)
 {
-
     /**
      * 1. We can't use Laravel collections because you can't merge 2 different collections.
      * 2. To do a UNION, have to select same number of columns - select AS NULL.
@@ -106,12 +112,21 @@ function getProjectItems($type, $id)
                             parent_id
                     ');
 
-    $directItems = $categories->union($files)->orderBy('position', 'asc')->get();
+    return $categories->union($files)->orderBy('position', 'asc')->get();
+}
 
-    foreach ($directItems as $directItem) {
-        $directItem->items = getProjectItems($directItem->type, $directItem->id);
+/**
+ * Returns project Items as well as recursively returning all nested items.
+ *
+ * @param $type
+ * @param $id
+ * @return mixed
+ */
+function getProjectItemsWithNested($type, $id)
+{
+    $items = getProjectItems($type, $id);
+    foreach ($items as $item) {
+        $item->items = getProjectItemsWithNested($item->type, $item->id);
     }
-
-    return $directItems;
-
+    return $items;
 }

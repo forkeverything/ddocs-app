@@ -17,6 +17,6 @@ trait HasProjectItems
     public function items()
     {
         $type = get_class($this);
-        return getProjectItems($type, $this->id);
+        return getProjectItemsWithNested($type, $this->id);
     }
 }

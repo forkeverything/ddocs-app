@@ -142,17 +142,33 @@ class ProjectsController extends Controller
     public function putUpdatePositions(Project $project, Request $request)
     {
         // track down item
-        $item = $this->findProjectItem($request->type, $request->id, $project->id);
+        $targetItem = $this->findProjectItem($request->type, $request->id, $project->id);
 
-        $item->update($request->all());
+        // Move previous siblings positions up
+        $currentSiblings = getProjectItems($targetItem->parent_type, $targetItem->parent_id);
+        foreach ($currentSiblings as $siblingItem) {
+            if($targetItem->position < $siblingItem->position) $this->findProjectItem($siblingItem->type, $siblingItem->id, $project->id)->update(['position' => ($siblingItem->position - 1)]);
+        }
 
-        return $item;
+        // Move new siblings positions down
+        $positionToInsert = $request->position;
+        $parentItems = getProjectItems($request->parent_type, $request->parent_id);
+        // For each direct child item
+        foreach ($parentItems as $item) {
+            // Move everything down to make way for new item
+            if ($item->position >= $positionToInsert) $this->findProjectItem($item->type, $item->id, $project->id)->update(['position' => ($item->position + 1)]);
+        }
+
+        // update / insert our new item
+        $targetItem->update($request->all());
+
+        return $project->withItems();
     }
 
     protected function findProjectItem($type, $id, $project_id)
     {
         $item = call_user_func($type . '::find', $id);
-        if($item->project_id !== $project_id) abort(403, "Board item does not belong to project");
+        if($item->project_id && $item->project_id !== $project_id) abort(403, "Board item does not belong to project");
         return $item;
     }
 }
