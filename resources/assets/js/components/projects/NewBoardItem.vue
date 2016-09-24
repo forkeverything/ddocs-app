@@ -29,7 +29,7 @@
         },
         computed: {
             dataPosition () {
-                return (this.parent.items.length > 0) ? this.parent.items.length - 1 : 0;
+                return (this.parent.items.length > 0) ? this.parent.items.length : 0;
             }
         },
         methods: {

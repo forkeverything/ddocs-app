@@ -57,8 +57,7 @@
                 });
                 // Handle drop
                 this.drake.on('drop', (el, target, source, sibling) => {
-                    this.drake.cancel(true);
-                    this.updateItemPosition(el, target, sibling);
+                    this.updateItemPosition(el, target, source, sibling);
                 });
 
                 this.updatingPosition = false;
@@ -71,50 +70,28 @@
                 a != b && a.contains(b) :
                         !!(a.compareDocumentPosition(b) & 16);
             },
-            updateItemPosition(el, target, sibling) {
-
+            updateItemPosition(el, target, source, sibling) {
                 this.updatingPosition = true;
-
-                console.log(sibling);
-
+                let currentPosition = el.dataset.position;
+                let siblingPosition = sibling.dataset.position;
+                let differentParent = source.dataset.parentType !== target.dataset.parentType || source.dataset.parentId !== target.dataset.parentId;
+                // if we moved up or came from different parent
+                let newPosition = (currentPosition > siblingPosition || differentParent ) ? siblingPosition : siblingPosition - 1;
                 let data = {
                     'parent_type': target.dataset.parentType,
                     'parent_id': target.dataset.parentId,
-                    'position': sibling.dataset.position,
+                    'position': newPosition,
                     'type': el.dataset.type,
                     'id': el.dataset.id
                 };
-
-                console.log(data);
-
                 this.$http.put('/projects/' + this.project.id + '/positions', data)
                         .then((response) => {
-
                             this.project = response.json();
-
-                            let itemsContainer = [];
-
-                            function pushItems(container, items) {
-
-                                for(let i = 0; i < items.length; i ++) {
-
-                                    let itemObject = {
-                                        name: items[i].name,
-                                        position: items[i].position,
-                                        items: []
-                                    };
-
-                                    if(items[i].items.length > 0) pushItems(itemObject.items, items[i].items);
-
-                                    container.push(itemObject);
-                                }
-                            }
-
-                            pushItems(itemsContainer, response.json().items);
-
-                            console.log(itemsContainer);
-
-                            this.$nextTick(() => this.initDrag());
+                            this.$nextTick(() => {
+                                // Remove the element that dragula made so our DOM doesn't conflict.
+                                el.remove();
+                                this.initDrag();
+                            });
                         }, (response) => {
                             console.log("Couldn't update item positions");
                             console.log(response);
