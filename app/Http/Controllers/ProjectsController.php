@@ -28,7 +28,9 @@ class ProjectsController extends Controller
                 'delete',
                 'postNewCategory',
                 'postNewFile',
-                'putUpdateItem'
+                'putUpdateItem',
+                'putUpdatePositions',
+                'deleteItem'
             ]
         ]);
     }
@@ -131,6 +133,13 @@ class ProjectsController extends Controller
         return ProjectFile::create($request->all());
     }
 
+    /**
+     * Update Single Item fields.
+     *
+     * @param Project $project
+     * @param Request $request
+     * @return mixed
+     */
     public function putUpdateItem(Project $project, Request $request)
     {
         $item = $this->findProjectItem($request->type, $request->id, $project->id);
@@ -139,6 +148,13 @@ class ProjectsController extends Controller
         return $item;
     }
 
+    /**
+     * Update Positions and item heirarchy within Project.
+     *
+     * @param Project $project
+     * @param Request $request
+     * @return Project
+     */
     public function putUpdatePositions(Project $project, Request $request)
     {
         // track down item
@@ -172,6 +188,37 @@ class ProjectsController extends Controller
         return $project->withItems();
     }
 
+    /**
+     * Delete a Project's Item
+     *
+     * @param Project $project
+     * @param $type
+     * @param $id
+     * @return string
+     */
+    public function deleteItem(Project $project, $type, $id)
+    {
+        if($type === 'category') $type = 'App\ProjectCategory';
+        if($type === 'file') $type = 'App\ProjectFile';
+        $targetItem = $this->findProjectItem($type, $id, $project->id);
+
+        // Move lower siblings up
+        $parentItems = getProjectItems($targetItem->parent_type, $targetItem->parent_id);
+        foreach ($parentItems as $item) if ($item->position > $targetItem->position) $this->findProjectItem($item->type, $item->id, $project->id)->update(['position' => ($item->position - 1)]);
+
+        $targetItem->deleteAllIncludingChildren();
+
+        return $project->withItems();
+    }
+
+    /**
+     * Track down the Model for a Project Item.
+     *
+     * @param $type
+     * @param $id
+     * @param $project_id
+     * @return mixed
+     */
     protected function findProjectItem($type, $id, $project_id)
     {
         $item = call_user_func($type . '::find', $id);

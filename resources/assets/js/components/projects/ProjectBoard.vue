@@ -4,6 +4,7 @@
             'dragging': dragging
          }"
     >
+        <delete-item-modal></delete-item-modal>
         <div id="updating-position-overlay" v-show="updatingPosition">
             <div class="loader">
                 <cube-loader></cube-loader>
@@ -101,7 +102,19 @@
         ready(){
             this.initDrag();
 
-            vueGlobalEventBus.$on('init-drag', this.initDrag);
+            vueGlobalEventBus.$on('init-drag', () => {
+                this.updatingPosition = true;
+                this.initDrag();
+            });
+
+            vueGlobalEventBus.$on('set-project', (project) => {
+                this.updatingPosition = true;
+                this.project = project;
+                this.$nextTick(() => {
+                    this.initDrag();
+                    this.updatingPosition = false;
+                });
+            });
         }
     }
 </script>               

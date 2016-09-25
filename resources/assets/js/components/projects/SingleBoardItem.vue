@@ -4,7 +4,7 @@
             <board-item-name :item.sync="item"></board-item-name>
             <ul class="list-unstyled list-inline list-item-actions">
                 <li><button type="button" class="btn btn-add-sub-item" @click="showNewSubItemField"><i class="fa fa-level-down"></i></button></li>
-                <li><button type="button" class="btn btn-delete"><i class="fa fa-close"></i></button></li>
+                <li><button type="button" class="btn btn-delete" @click="showDeleteProjectItemModal(item)"><i class="fa fa-close"></i></button></li>
                 <li><button type="button" class="btn btn-link"><i class="fa fa-link"></i></button></li>
             </ul>
         </div>
@@ -55,6 +55,9 @@
                     console.log('update item error');
                     console.log(res);
                 });
+            },
+            showDeleteProjectItemModal(item) {
+                vueGlobalEventBus.$emit('delete-project-item', item);
             }
         },
         ready() {
