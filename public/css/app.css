@@ -9551,12 +9551,13 @@ label {
         margin-bottom: 0; }
       #projects-single #project-board .list-board-items .single-board-item .btn-collapse-item {
         position: absolute;
-        top: 8px;
-        left: -20px;
-        width: 20px;
+        top: 0;
+        left: 0;
+        width: 30px;
         height: 40px;
         text-align: right;
-        padding-right: 5px;
+        padding-top: 8px;
+        padding-right: 9px;
         cursor: pointer;
         color: #D2D2D2;
         display: none; }
@@ -9576,11 +9577,11 @@ label {
         -webkit-box-pack: justify;
         justify-content: space-between;
         height: 40px;
-        padding: 4px 0 4px 8px; }
+        padding: 4px 0 4px 30px;
+        background: #F7F7F7;
+        border-radius: 3px; }
         #projects-single #project-board .list-board-items .single-board-item .main:hover {
-          background: #F7F7F7;
-          border-top: 1px solid #e6e6e6;
-          border-bottom: 1px solid #e6e6e6; }
+          background: #ebeef0; }
         #projects-single #project-board .list-board-items .single-board-item .main .name {
           display: -webkit-box;
           display: flex;
@@ -9684,15 +9685,15 @@ label {
       display: block; }
 
 .gu-mirror {
-  background: #fff;
-  border: 1px solid #353535;
-  opacity: 0.85;
-  list-style: none;
-  padding: 4px 0 4px 8px; }
-  .gu-mirror .collapse-button, .gu-mirror .btn-edit-name, .gu-mirror .list-item-actions {
+  opacity: 0.6;
+  list-style: none; }
+  .gu-mirror .btn-collapse-item, .gu-mirror .btn-edit-name, .gu-mirror .list-item-actions {
     display: none; }
   .gu-mirror .main {
-    height: 40px; }
+    height: 40px;
+    padding: 7px 0 4px 30px;
+    background: #ebeef0;
+    border-radius: 3px; }
   .gu-mirror ul {
     padding-left: 45px; }
     .gu-mirror ul li {

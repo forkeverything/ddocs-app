@@ -107,12 +107,13 @@
 
         .btn-collapse-item {
           position: absolute;
-          top: 8px;
-          left: -20px;
-          width: 20px;
+          top: 0;
+          left: 0;
+          width: 30px;
           height: 40px;
           text-align: right;
-          padding-right: 5px;
+          padding-top: 8px;
+          padding-right: 9px;
           cursor: pointer;
           color: $grey;
           display: none;
@@ -141,12 +142,12 @@
           align-items: center;
           justify-content: space-between;
           height: 40px;
-          padding: 4px 0 4px 8px;
+          padding: 4px 0 4px 30px;
+          background: $extra-light-grey;
+          border-radius: $border-radius-small;
 
           &:hover {
-            background: $extra-light-grey;
-            border-top: 1px solid $laravel-border-color;
-            border-bottom: 1px solid $laravel-border-color;
+            background: #ebeef0;
           }
 
           .name {
@@ -314,19 +315,20 @@
 }
 
 .gu-mirror {
-  background: #fff;
-  border: 1px solid $black;
-  opacity: 0.85;
+  opacity: 0.6;
   list-style: none;
-  padding: 4px 0 4px 8px;
 
-  .collapse-button, .btn-edit-name, .list-item-actions {
+  .btn-collapse-item, .btn-edit-name, .list-item-actions {
     display: none;
   }
 
   .main {
     height: 40px;
+    padding: 7px 0 4px 30px;
+    background: #ebeef0;
+    border-radius: $border-radius-small;
   }
+
 
   ul {
     padding-left: 45px;
