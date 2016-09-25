@@ -34,9 +34,17 @@
         },
         props: ['project'],
         methods: {
+            setProject(project) {
+                this.updatingPosition = true;
+                this.project = project;
+                this.$nextTick(() => {
+                    this.dragging = false;
+                    this.initDrag();
+                });
+            },
             initDrag(){
                 // if we're re-initializing
-                if(this.drake) this.drake.destroy();
+                if (this.drake) this.drake.destroy();
                 // create our drake instance
                 this.drake = dragula(Array.prototype.slice.call(document.querySelectorAll('.list-board-items')), {
                     moves: (el, source, handle, sibling) => {
@@ -46,7 +54,7 @@
                     accepts: (el, target, source, sibling) => {
                         // prevent dragged containers from trying to drop inside itself and
                         // prevent dropping as last item (needs sibling)
-                        return !this.contains(el, target) && sibling && ! sibling.classList.contains('drag-space');
+                        return !this.contains(el, target) && sibling && !sibling.classList.contains('drag-space');
                     }
                 });
                 // 'dragging' class
@@ -71,6 +79,20 @@
                 a != b && a.contains(b) :
                         !!(a.compareDocumentPosition(b) & 16);
             },
+            refreshProject() {
+                this.updatingPosition = true;
+                this.$http.get(`/projects/${this.project.id}/data`).then((response) => this.setProject(response.json()));
+            },
+            hasNullValues(data) {
+                let hasNull = false;
+                for (let prop in data) {
+                    if (data.hasOwnProperty(prop) && data[prop] == null) {
+                        hasNull = true;
+                        break;
+                    }
+                }
+                return hasNull;
+            },
             updateItemPosition(el, target, source, sibling) {
                 this.updatingPosition = true;
                 let currentPosition = el.dataset.position;
@@ -85,14 +107,14 @@
                     'type': el.dataset.type,
                     'id': el.dataset.id
                 };
+
+                if(hasNullValues(data)) return this.refreshProject();
+
                 this.$http.put('/projects/' + this.project.id + '/positions', data)
                         .then((response) => {
-                            this.project = response.json();
-                            this.$nextTick(() => {
-                                // Remove the element that dragula made so our DOM doesn't conflict.
-                                el.remove();
-                                this.initDrag();
-                            });
+                            this.setProject(response.json());
+                            // Remove the element that dragula made so our DOM doesn't conflict.
+                            el.remove();
                         }, (response) => {
                             console.log("Couldn't update item positions");
                             console.log(response);
@@ -109,11 +131,7 @@
 
             vueGlobalEventBus.$on('set-project', (project) => {
                 this.updatingPosition = true;
-                this.project = project;
-                this.$nextTick(() => {
-                    this.initDrag();
-                    this.updatingPosition = false;
-                });
+                this.setProject(project);
             });
         }
     }

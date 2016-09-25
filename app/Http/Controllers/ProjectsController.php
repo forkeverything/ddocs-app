@@ -19,7 +19,10 @@ class ProjectsController extends Controller
         $this->middleware('auth');
 
         $this->middleware('can:view,project', [
-            'only' => ['getSingle']
+            'only' => [
+                'getSingle',
+                'getProjectData'
+            ]
         ]);
 
         $this->middleware('can:update,project', [
@@ -224,5 +227,16 @@ class ProjectsController extends Controller
         $item = call_user_func($type . '::find', $id);
         if($item->project_id && $item->project_id !== $project_id) abort(403, "Board item does not belong to project");
         return $item;
+    }
+
+    /**
+     * Returns Project in data (JSON) format.
+     *
+     * @param Project $project
+     * @return $this
+     */
+    public function getProjectData(Project $project)
+    {
+        return $project->withItems();
     }
 }

@@ -60,6 +60,7 @@ Route::delete('/projects/{project}', 'ProjectsController@delete');
     Route::put('/projects/{project}/item', 'ProjectsController@putUpdateItem');
     Route::put('/projects/{project}/positions', 'ProjectsController@putUpdatePositions');
     Route::delete('/projects/{project}/item/{type}/{id}', 'ProjectsController@deleteItem');
+    Route::get('/projects/{project}/data', 'ProjectsController@getProjectData');
 
 // Account
 Route::get('/account', 'AccountController@getAccountOverview');

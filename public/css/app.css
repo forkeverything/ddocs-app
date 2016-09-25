@@ -9540,8 +9540,6 @@ label {
         margin-top: 0; }
     #projects-single #project-board .list-board-items .single-board-item {
       margin: 10px 0; }
-      #projects-single #project-board .list-board-items .single-board-item .main {
-        border: 1px solid #353535; }
       #projects-single #project-board .list-board-items .single-board-item.gu-transit {
         opacity: 1; }
         #projects-single #project-board .list-board-items .single-board-item.gu-transit .main {
