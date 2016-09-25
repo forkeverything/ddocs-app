@@ -1,5 +1,9 @@
 <template>
     <li class="single-board-item" :data-position="item.position" :data-type="item.type" :data-id="item.id" :class="{'without-nested': ! hasNestedItems}">
+            <a class="btn-collapse-item" @click="toggleItemCollapse" v-if="hasNestedItems" :class="{ 'collapsed': collapseItems }">
+                <i class="fa fa-caret-down" v-show="! collapseItems"></i>
+                <i class="fa fa-caret-right" v-else></i>
+            </a>
         <div class="main">
             <board-item-name :item.sync="item"></board-item-name>
             <ul class="list-unstyled list-inline list-item-actions">
@@ -10,7 +14,8 @@
         </div>
         <ul class="list-unstyled list-board-items nested"
             :class="{
-                'has-items': hasNestedItems
+                'has-items': hasNestedItems,
+                'collapsed': collapseItems
             }"
             :data-parent-type="item.type"
             :data-parent-id="item.id"
@@ -24,7 +29,9 @@
 <script>
     export default {
         data: function () {
-            return {}
+            return {
+                collapseItems: false
+            }
         },
         computed: {
             hasNestedItems(){
@@ -33,6 +40,9 @@
         },
         props: ['item'],
         methods: {
+            toggleItemCollapse() {
+                this.collapseItems = ! this.collapseItems;
+            },
             showNewSubItemField() {
                 this.$set('item.newItemField', true);
             },

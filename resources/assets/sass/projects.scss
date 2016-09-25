@@ -74,7 +74,7 @@
     .list-board-items {
 
       &.nested {
-        margin-left: 45px;
+        padding-left: 45px;
       }
 
       .drag-space {
@@ -88,6 +88,7 @@
 
       .single-board-item {
         margin: 10px 0;
+        position: relative;
 
         &.gu-transit {
           opacity: 1;
@@ -102,6 +103,37 @@
 
         &.without-nested {
           margin-bottom: 0;
+        }
+
+        .btn-collapse-item {
+          position: absolute;
+          top: 8px;
+          left: -20px;
+          width: 20px;
+          height: 40px;
+          text-align: right;
+          padding-right: 5px;
+          cursor: pointer;
+          color: $grey;
+          display: none;
+
+          &:hover {
+            color: $black;
+          }
+
+          i {
+            font-size: 1.2em;
+          }
+
+          &.collapsed {
+            display: block !important;
+          }
+        }
+
+        &:hover {
+          > .btn-collapse-item {
+            display: block;
+          }
         }
 
         .main {
@@ -119,6 +151,7 @@
 
           .name {
             display: flex;
+            width: 100%;
             align-items: center;
 
             .current_name {
@@ -157,6 +190,7 @@
             }
 
             .input-name {
+              width: 100%;
               outline: 0;
               border: 1px dashed $black;
             }
@@ -165,6 +199,7 @@
           .list-item-actions {
             display: none;
             margin-left: 10px;
+            min-width: 81px;
 
             li {
               padding: 0 2px;
@@ -207,6 +242,7 @@
           }
 
           &:hover {
+
             .list-item-actions {
               display: inline-block;
             }
@@ -249,6 +285,12 @@
             }
           }
         }
+
+        .list-board-items {
+          &.collapsed {
+            display: none;
+          }
+        }
       }
     }
 
@@ -273,11 +315,12 @@
 
 .gu-mirror {
   background: #fff;
+  border: 1px solid $black;
   opacity: 0.85;
   list-style: none;
   padding: 4px 0 4px 8px;
 
-  .btn-edit-name, .list-item-actions {
+  .collapse-button, .btn-edit-name, .list-item-actions {
     display: none;
   }
 
@@ -286,7 +329,7 @@
   }
 
   ul {
-    margin-left: 45px;
+    padding-left: 45px;
 
     li {
       margin: 10px 0;
