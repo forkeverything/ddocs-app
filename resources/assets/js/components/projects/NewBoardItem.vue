@@ -58,7 +58,7 @@
                     this.ajaxReady = true;
                     this.$nextTick(() => {
                         $(this.$els.input).focus();
-                        this.$emit('init-drag');
+                    vueGlobalEventBus.$emit('init-drag');
                     });
                 }, (response) => {
                     // error

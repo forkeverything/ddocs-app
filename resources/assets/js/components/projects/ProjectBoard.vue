@@ -108,7 +108,7 @@
                     'id': el.dataset.id
                 };
 
-                if(hasNullValues(data)) return this.refreshProject();
+                if(this.hasNullValues(data)) return this.refreshProject();
 
                 this.$http.put('/projects/' + this.project.id + '/positions', data)
                         .then((response) => {
