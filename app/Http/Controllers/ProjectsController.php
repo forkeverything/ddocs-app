@@ -145,19 +145,26 @@ class ProjectsController extends Controller
         $targetItem = $this->findProjectItem($request->type, $request->id, $project->id);
 
         // Move previous siblings positions up
-        $currentSiblings = getProjectItems($targetItem->parent_type, $targetItem->parent_id);
-        foreach ($currentSiblings as $siblingItem) {
-            if($targetItem->position < $siblingItem->position) $this->findProjectItem($siblingItem->type, $siblingItem->id, $project->id)->update(['position' => ($siblingItem->position - 1)]);
-        }
+
+            $currentSiblings = getProjectItems($targetItem->parent_type, $targetItem->parent_id);
+            foreach ($currentSiblings as $siblingItem) {
+                if($targetItem->position < $siblingItem->position) $this->findProjectItem($siblingItem->type, $siblingItem->id, $project->id)->update(['position' => ($siblingItem->position - 1)]);
+            }
 
         // Move new siblings positions down
-        $positionToInsert = $request->position;
-        $parentItems = getProjectItems($request->parent_type, $request->parent_id);
-        // For each direct child item
-        foreach ($parentItems as $item) {
-            // Move everything down to make way for new item
-            if ($item->position >= $positionToInsert) $this->findProjectItem($item->type, $item->id, $project->id)->update(['position' => ($item->position + 1)]);
-        }
+
+            $positionToInsert = $request->position;
+            $parentItems = getProjectItems($request->parent_type, $request->parent_id);
+
+            // Make sure our new position is within min(0) and max(number of siblings)
+            if($positionToInsert > count($parentItems)) $positionToInsert = count($parentItems);    // insert at end
+            if($positionToInsert < 0) $positionToInsert = 0;    // insert at beginning
+
+            // For each direct child item
+            foreach ($parentItems as $item) {
+                // Move everything down to make way for new item
+                if ($item->position >= $positionToInsert) $this->findProjectItem($item->type, $item->id, $project->id)->update(['position' => ($item->position + 1)]);
+            }
 
         // update / insert our new item
         $targetItem->update($request->all());
