@@ -53,7 +53,7 @@
                 this.drake.on('drag', () => {
                     this.dragging = true;
                 });
-                this.drake.on('dragend', () => {
+                this.drake.on('cancel', () => {
                     this.dragging = false;
                 });
                 // Handle drop

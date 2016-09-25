@@ -80,6 +80,10 @@
       .drag-space {
         height: 10px;
         display: none;
+
+        & + li {
+          margin-top: 0;
+        }
       }
 
       .single-board-item {

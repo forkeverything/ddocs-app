@@ -57,6 +57,7 @@
                 });
             },
             showDeleteProjectItemModal(item) {
+
                 vueGlobalEventBus.$emit('delete-project-item', item);
             }
         },
