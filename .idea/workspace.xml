@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css.map" afterPath="$PROJECT_DIR$/public/css/app.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/landing.js" afterPath="$PROJECT_DIR$/public/js/landing.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/checklist/all.blade.php" afterPath="$PROJECT_DIR$/resources/views/checklist/all.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <ignored path="files-collector.iws" />
@@ -29,14 +26,14 @@
     <favorites_list name="files-collector" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.43320313">
       <split-first>
         <leaf>
           <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/routes/web.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="918">
-                  <caret line="43" column="31" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+                <state relative-caret-position="450">
+                  <caret line="36" column="10" lean-forward="false" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
                   <folding />
                 </state>
               </provider>
@@ -49,9 +46,11 @@
           <file leaf-file-name="ProjectsController.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-                  <folding />
+                <state relative-caret-position="405">
+                  <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+                  <folding>
+                    <element signature="e#40#81#0#PHP" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -70,11 +69,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/assets/js/filters.js" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/components/_text.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/All.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/Collection.vue" />
         <option value="$PROJECT_DIR$/database/seeds/DevSeeder.php" />
@@ -105,7 +105,6 @@
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
         <option value="$PROJECT_DIR$/app/Policies/FileRequestPolicy.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php" />
-        <option value="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/single/FileView.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/single/WeightingSelectedFile.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/single/DateSelectedFile.vue" />
@@ -123,7 +122,10 @@
         <option value="$PROJECT_DIR$/app/ProjectFolder.php" />
         <option value="$PROJECT_DIR$/app/ProjectFile.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/SaveProjectRequest.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" />
+        <option value="$PROJECT_DIR$/app/Policies/ProjectPolicy.php" />
+        <option value="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" />
       </list>
     </option>
   </component>
@@ -471,11 +473,12 @@
       <workItem from="1474423686510" duration="25391000" />
       <workItem from="1474507547980" duration="3174000" />
       <workItem from="1474874694111" duration="2698000" />
+      <workItem from="1474932159354" duration="310000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="545877000" />
+    <option name="totallyTimeSpent" value="546187000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -487,7 +490,6 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26037735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981133" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -500,6 +502,7 @@
       <window_info id="Command Line Tools Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32981133" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981133" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26037735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -522,20 +525,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Maker.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="39" column="61" lean-forward="false" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="67" column="24" lean-forward="true" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/single/Recipients.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -683,13 +672,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
           <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Providers/AuthServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="25" column="47" lean-forward="false" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -922,7 +904,6 @@
           <caret line="57" column="13" lean-forward="false" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
           <folding>
             <marker date="1473524417000" expanded="false" signature="39:105" ph="..." />
-            <marker date="1473524417000" expanded="true" signature="126:3232" ph="{...}" />
             <marker date="1473524417000" expanded="true" signature="137:193" ph=" Where to store the File ..." />
             <marker date="1473524417000" expanded="true" signature="230:294" ph=" UploadedFile Class ..." />
             <marker date="1473524417000" expanded="true" signature="334:396" ph=" FileRequest Model ..." />
@@ -954,7 +935,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="656">
           <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -976,7 +956,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="23" column="56" lean-forward="true" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -984,16 +963,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <marker date="1474877127000" expanded="false" signature="11:133" ph="..." />
-            <marker date="1474877127000" expanded="true" signature="188:904" ph="{...}" />
-            <marker date="1474877127000" expanded="true" signature="198:258" ph=" Run the migrations. ..." />
-            <marker date="1474877127000" expanded="true" signature="285:742" ph="{...}" />
-            <marker date="1474877127000" expanded="true" signature="315:734" ph="..." />
-            <marker date="1474877127000" expanded="true" signature="368:733" ph="..." />
-            <marker date="1474877127000" expanded="true" signature="751:815" ph=" Reverse the migrations. ..." />
-            <marker date="1474877127000" expanded="true" signature="844:902" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1013,37 +983,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_09_26_072648_create_projects_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <marker date="1474931623000" expanded="false" signature="11:133" ph="..." />
-            <marker date="1474931623000" expanded="true" signature="178:822" ph="{...}" />
-            <marker date="1474931623000" expanded="true" signature="188:248" ph=" Run the migrations. ..." />
-            <marker date="1474931623000" expanded="true" signature="275:672" ph="{...}" />
-            <marker date="1474931623000" expanded="true" signature="305:664" ph="..." />
-            <marker date="1474931623000" expanded="true" signature="346:663" ph="..." />
-            <marker date="1474931623000" expanded="true" signature="681:745" ph=" Reverse the migrations. ..." />
-            <marker date="1474931623000" expanded="true" signature="774:820" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_09_26_072724_create_project_folders_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding>
-            <marker date="1474875096000" expanded="false" signature="11:133" ph="..." />
-            <marker date="1474875096000" expanded="true" signature="184:797" ph="{...}" />
-            <marker date="1474875096000" expanded="true" signature="194:254" ph=" Run the migrations. ..." />
-            <marker date="1474875096000" expanded="true" signature="281:640" ph="{...}" />
-            <marker date="1474875096000" expanded="true" signature="311:632" ph="..." />
-            <marker date="1474875096000" expanded="true" signature="359:631" ph="..." />
-            <marker date="1474875096000" expanded="true" signature="649:713" ph=" Reverse the migrations. ..." />
-            <marker date="1474875096000" expanded="true" signature="742:795" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1051,12 +995,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="15" column="44" lean-forward="false" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-          <folding>
-            <marker date="1474931711000" expanded="true" signature="91:431" ph="{...}" />
-            <marker date="1474931711000" expanded="true" signature="121:183" ph="..." />
-            <marker date="1474931711000" expanded="true" signature="194:318" ph=" Project can have many different folders. ..." />
-            <marker date="1474931711000" expanded="true" signature="350:429" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1072,14 +1011,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="918">
           <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <marker date="1474931992000" expanded="true" signature="95:722" ph="{...}" />
-            <marker date="1474931992000" expanded="true" signature="125:224" ph="..." />
-            <marker date="1474931992000" expanded="true" signature="235:352" ph=" The folder that the file is in. ..." />
-            <marker date="1474931992000" expanded="true" signature="383:471" ph="{...}" />
-            <marker date="1474931992000" expanded="true" signature="480:598" ph=" Potentially linked File Request. ..." />
-            <marker date="1474931992000" expanded="true" signature="634:718" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,12 +1019,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
           <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <marker date="1474931827000" expanded="true" signature="97:411" ph="{...}" />
-            <marker date="1474931827000" expanded="true" signature="128:170" ph="..." />
-            <marker date="1474931827000" expanded="true" signature="181:294" ph=" Folder can contain many files ..." />
-            <marker date="1474931827000" expanded="true" signature="324:408" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1100,25 +1027,73 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_09_26_072648_create_projects_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/SaveProjectRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
           <folding>
-            <marker date="1474877055000" expanded="true" signature="101:112" ph="{...}" />
+            <marker date="1474932260000" expanded="true" signature="126:508" ph="{...}" />
+            <marker date="1474932260000" expanded="true" signature="136:234" ph=" Determine if the user is authorized to make this request. ..." />
+            <marker date="1474932260000" expanded="true" signature="268:301" ph="{...}" />
+            <marker date="1474932260000" expanded="true" signature="310:403" ph=" Get the validation rules that apply to the request. ..." />
+            <marker date="1474932260000" expanded="true" signature="433:506" ph="{...}" />
+            <marker date="1474932260000" expanded="true" signature="456:498" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="43" column="31" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+        <state relative-caret-position="450">
+          <caret line="36" column="10" lean-forward="false" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Policies/ProjectPolicy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <marker date="1474932439000" expanded="true" signature="36:111" ph="..." />
+            <marker date="1474932439000" expanded="true" signature="132:990" ph="{...}" />
+            <marker date="1474932439000" expanded="true" signature="173:243" ph=" Create a new policy instance. ..." />
+            <marker date="1474932439000" expanded="true" signature="279:302" ph="{...}" />
+            <marker date="1474932439000" expanded="true" signature="311:458" ph=" Determine whether a User can view a given Project. ..." />
+            <marker date="1474932439000" expanded="true" signature="515:716" ph="{...}" />
+            <marker date="1474932439000" expanded="true" signature="725:869" ph=" User can update if the project belongs to them. ..." />
+            <marker date="1474932439000" expanded="true" signature="928:988" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/AuthServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="29" column="46" lean-forward="false" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-          <folding />
+        <state relative-caret-position="405">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="e#40#81#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

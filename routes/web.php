@@ -49,6 +49,10 @@ Route::get('/files', 'FilesController@getForUser');
 
 // Project
 Route::get('/projects', 'ProjectsController@getAll');
+Route::post('/projects', 'ProjectsController@postSaveNew');
+Route::get('/projects/{project}', 'ProjectsController@getProject');
+Route::put('/projects/{project}', 'ProjectsController@putUpdate');
+Route::delete('/projects/{project}', 'ProjectsController@delete');
 
 
 // Account

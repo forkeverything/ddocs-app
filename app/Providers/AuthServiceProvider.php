@@ -10,6 +10,8 @@ use App\Policies\ChecklistPolicy;
 use App\Policies\FileRequestPolicy;
 use App\Policies\FileUploadPolicy;
 use App\Policies\NotePolicy;
+use App\Policies\ProjectPolicy;
+use App\Project;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -24,7 +26,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Model' => 'App\Policies\ModelPolicy',
         Checklist::class => ChecklistPolicy::class,
         File::class => FileUploadPolicy::class,
-        FileRequest::class => FileRequestPolicy::class
+        FileRequest::class => FileRequestPolicy::class,
+        Project::class => ProjectPolicy::class
     ];
 
     /**
