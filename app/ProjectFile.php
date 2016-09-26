@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProjectFile extends Model
 {
-    use HasProjectItems;
 
     protected $fillable = [
         'name',
@@ -18,10 +17,6 @@ class ProjectFile extends Model
         'file_request_id',
         'parent_type',
         'parent_id'
-    ];
-
-    protected $appends = [
-        'items'
     ];
 
     protected $attributes = [
@@ -47,35 +42,5 @@ class ProjectFile extends Model
     public function parent()
     {
         return $this->morphTo();
-    }
-
-    /**
-     * Project Files can have nested Categories.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
-    public function categories()
-    {
-        return $this->morphMany(ProjectCategory::class, 'parent');
-    }
-
-    /**
-     * Files directly under this File.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
-    public function files()
-    {
-        return $this->morphMany(ProjectFile::class, 'parent');
-    }
-
-    /**
-     * Grab items that belong directly.
-     *
-     * @return mixed
-     */
-    public function getItemsAttribute()
-    {
-        return $this->items();
     }
 }

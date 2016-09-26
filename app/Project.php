@@ -20,6 +20,11 @@ class Project extends Model
         'type' => 'App\\Project'
     ];
 
+    protected $appends = [
+        'project_id'
+    ];
+
+
     /**
      * Project can have many Categories.
      *
@@ -59,5 +64,10 @@ class Project extends Model
     {
         $this->setAttribute('items', $this->items());
         return $this;
+    }
+
+    public function getProjectIdAttribute()
+    {
+        return $this->id;
     }
 }

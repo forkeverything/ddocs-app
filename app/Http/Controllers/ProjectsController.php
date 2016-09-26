@@ -20,8 +20,8 @@ class ProjectsController extends Controller
 
         $this->middleware('can:view,project', [
             'only' => [
-                'getSingle',
-                'getProjectData'
+                'getProject',
+                'getCategory'
             ]
         ]);
 
@@ -32,7 +32,6 @@ class ProjectsController extends Controller
                 'postNewCategory',
                 'postNewFile',
                 'putUpdateItem',
-                'putUpdatePositions',
                 'deleteItem'
             ]
         ]);
@@ -66,10 +65,30 @@ class ProjectsController extends Controller
      * @param Project $project
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getSingle(Project $project)
+    public function getProject(Project $project)
     {
         $project->withItems();
         return view('projects.single', compact('project'));
+    }
+
+    /**
+     * Show view for Project Category and nested Files.
+     *
+     * @param Project $project
+     * @param ProjectCategory $projectCategory
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getCategory(Project $project, ProjectCategory $projectCategory)
+    {
+        $parentCategories = [];
+
+        $currentCateogry = $projectCategory;
+        while ($parent = $currentCateogry->parentCategory()) {
+            array_unshift($parentCategories, $parent->id);
+            $currentCateogry = $parent;
+        }
+
+        return view('projects.category', compact('project', 'parentCategories', 'projectCategory'));
     }
 
     /**
@@ -151,45 +170,6 @@ class ProjectsController extends Controller
         return $item;
     }
 
-    /**
-     * Update Positions and item heirarchy within Project.
-     *
-     * @param Project $project
-     * @param Request $request
-     * @return Project
-     */
-    public function putUpdatePositions(Project $project, Request $request)
-    {
-        // track down item
-        $targetItem = $this->findProjectItem($request->type, $request->id, $project->id);
-
-        // Move previous siblings positions up
-
-            $currentSiblings = getProjectItems($targetItem->parent_type, $targetItem->parent_id);
-            foreach ($currentSiblings as $siblingItem) {
-                if($targetItem->position < $siblingItem->position) $this->findProjectItem($siblingItem->type, $siblingItem->id, $project->id)->update(['position' => ($siblingItem->position - 1)]);
-            }
-
-        // Move new siblings positions down
-
-            $positionToInsert = $request->position;
-            $parentItems = getProjectItems($request->parent_type, $request->parent_id);
-
-            // Make sure our new position is within min(0) and max(number of siblings)
-            if($positionToInsert > count($parentItems)) $positionToInsert = count($parentItems);    // insert at end
-            if($positionToInsert < 0) $positionToInsert = 0;    // insert at beginning
-
-            // For each direct child item
-            foreach ($parentItems as $item) {
-                // Move everything down to make way for new item
-                if ($item->position >= $positionToInsert) $this->findProjectItem($item->type, $item->id, $project->id)->update(['position' => ($item->position + 1)]);
-            }
-
-        // update / insert our new item
-        $targetItem->update($request->all());
-
-        return $project->withItems();
-    }
 
     /**
      * Delete a Project's Item
@@ -227,16 +207,5 @@ class ProjectsController extends Controller
         $item = call_user_func($type . '::find', $id);
         if($item->project_id && $item->project_id !== $project_id) abort(403, "Board item does not belong to project");
         return $item;
-    }
-
-    /**
-     * Returns Project in data (JSON) format.
-     *
-     * @param Project $project
-     * @return $this
-     */
-    public function getProjectData(Project $project)
-    {
-        return $project->withItems();
     }
 }

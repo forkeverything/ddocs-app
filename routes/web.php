@@ -51,16 +51,15 @@ Route::get('/files', 'FilesController@getForUser');
 Route::get('/projects', 'ProjectsController@getAll');
 Route::get('/projects/start', 'ProjectsController@getStartForm');
 Route::post('/projects', 'ProjectsController@postSaveNew');
-Route::get('/projects/{project}', 'ProjectsController@getSingle');
+Route::get('/projects/{project}', 'ProjectsController@getProject');
 Route::put('/projects/{project}', 'ProjectsController@putUpdate');
 Route::delete('/projects/{project}', 'ProjectsController@delete');
-    // Cat & Files
-    Route::post('/projects/{project}/categories', 'ProjectsController@postNewCategory');
-    Route::post('/projects/{project}/files', 'ProjectsController@postNewFile');
-    Route::put('/projects/{project}/item', 'ProjectsController@putUpdateItem');
-    Route::put('/projects/{project}/positions', 'ProjectsController@putUpdatePositions');
-    Route::delete('/projects/{project}/item/{type}/{id}', 'ProjectsController@deleteItem');
-    Route::get('/projects/{project}/data', 'ProjectsController@getProjectData');
+// Project Categories & Files
+Route::get('/projects/{project}/categories/{projectCategory}', 'ProjectsController@getCategory');
+Route::post('/projects/{project}/categories', 'ProjectsController@postNewCategory');
+Route::post('/projects/{project}/files', 'ProjectsController@postNewFile');
+Route::put('/projects/{project}/item', 'ProjectsController@putUpdateItem');
+Route::delete('/projects/{project}/item/{type}/{id}', 'ProjectsController@deleteItem');
 
 // Account
 Route::get('/account', 'AccountController@getAccountOverview');

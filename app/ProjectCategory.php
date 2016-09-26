@@ -32,7 +32,12 @@ class ProjectCategory extends Model
      */
     public function parent()
     {
-        return $this->morphTo;
+        return $this->morphTo();
+    }
+
+    public function parentCategory()
+    {
+        return $this->parent()->where('type', 'App\\ProjectCategory')->first();
     }
 
     /**

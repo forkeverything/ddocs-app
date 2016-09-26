@@ -1,7 +1,6 @@
 <template>
     <span class="name">
-        <span class="current_name"
-              :class="typeClassName"
+        <span class="current"
               v-show="! editing"
         >
             {{ item.name }}
@@ -18,7 +17,7 @@
                class="input-name"
                v-el:input
                v-show="editing"
-               @blur="sendUpdateItemEvent"
+               @blur="updateName"
                @keydown.enter.prevent="blurInput"
         >
     </span>
@@ -27,20 +26,16 @@
 export default {
     data: function(){
         return {
+            originalName: '',
             editing: false
         }
     },
     computed: {
-        typeClassName() {
-            switch(this.item.type) {
-                case 'App\\ProjectCategory':
-                    return 'category';
-                case 'App\\ProjectFile':
-                    return 'file';
-            }
+        validName() {
+            return this.item.name;
         }
     },
-    props: ['item'],
+    props: ['item', 'update-function'],
     methods: {
         blurInput() {
             $(this.$els.input).blur();
@@ -51,10 +46,15 @@ export default {
                 $(this.$els.input).focus();
             });
         },
-        sendUpdateItemEvent() {
+        updateName() {
+            if(! this.validName) this.item.name = this.originalName;
             this.editing = false;
-            vueGlobalEventBus.$emit('update-board-item', this.item);
+            this.updateFunction();
+            this.originalName = this.item.name;
         }
+    },
+    ready() {
+        this.originalName = this.item.name;
     }
 }
 </script>
