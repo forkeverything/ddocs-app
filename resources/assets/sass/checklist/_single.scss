@@ -6,7 +6,6 @@
 
   #checklist-body {
     flex: 1;
-    max-width: 1400px;
     padding: 0 15px;
     margin: 0 auto;
     display: flex;
@@ -183,7 +182,7 @@
         flex: 4500 1 359px;
         @include transition(margin-left 0.2s);
         margin-left: 15px;
-        max-width: 475px;
+        max-width: 650px;
         position: relative;
         z-index: 0;
         border: 1px solid $laravel-border-color;

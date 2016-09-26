@@ -47,6 +47,9 @@ Route::delete('/note/{note_hash}', 'NotesController@delete');
 // Files
 Route::get('/files', 'FilesController@getForUser');
 
+// Project
+Route::get('/projects', 'ProjectsController@getAll');
+
 
 // Account
 Route::get('/account', 'AccountController@getAccountOverview');
