@@ -1,6 +1,7 @@
 .gu-transit {
-  border: 1px dashed $black;
+  border: 1px dashed $black !important;
   opacity: 1;
+  background: #fff !important;
 
   * {
     opacity: 0;

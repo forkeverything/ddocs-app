@@ -13,8 +13,8 @@
                 </div>
             </div>
         </div>
-        <div class="files-list">
-            <project-file v-for="file in folder.files" :file.sync="file"></project-file>
+        <div class="files-list" :class="{ empty: noFiles }" :data-id="folder.id">
+            <project-file v-for="(index, file) in folder.files" :project-id="folder.project_id" :index="index" :file.sync="file"></project-file>
         </div>
         <add-project-file :folder.sync="folder"></add-project-file>
     </div>
@@ -23,6 +23,11 @@
     export default {
         data: function () {
             return {}
+        },
+        computed: {
+            noFiles() {
+                return this.folder.files.length === 0;
+            }
         },
         watch: {
             index(newIndex){
@@ -60,10 +65,43 @@
                 }, (res) => {
                     console.log('error deleting project folder');
                 });
+            },
+            handleDroppingFile(el, target, source, sibling){
+                if (parseInt(source.dataset.id) !== this.folder.id) return;
+                let targetFile = _.find(this.folder.files, {id: parseInt(el.dataset.id)});
+                let targetFileIndex = _.indexOf(this.folder.files, targetFile);
+                this.folder.files.splice(targetFileIndex, 1);
+                // TODO :: Find better way to do this. v-for isn't reactive after calling drake.cancel() on
+                // element. Refreshing data means re-initializing all drag objects, not fun.
+                this.$nextTick(() => {
+                    el.remove();
+                    vueGlobalEventBus.$emit('insert-file', el, target, source, sibling, targetFile, targetFileIndex);
+                });
+            },
+            handleInsertingFile(el, target, source, sibling, targetFile, targetFileIndex) {
+                // If we're in the right folder
+                if (parseInt(target.dataset.id) !== this.folder.id) return;
+                let siblingIndex = this.folder.files.length;
+                if (sibling) {
+                    let siblingFile = _.find(this.folder.files, {id: parseInt(sibling.dataset.id)});
+                    siblingIndex = _.indexOf(this.folder.files, siblingFile);
+                }
+                let differentParent = source.dataset.id === target.dataset.id;
+                let newIndex = (targetFileIndex >= siblingIndex || differentParent) ? siblingIndex : siblingIndex - 1;
+                this.folder.files.splice(newIndex, 0, targetFile);
+                this.$nextTick(() => {
+                    vueGlobalEventBus.$emit('update-file-folder', targetFile, parseInt(target.dataset.id));
+                });
             }
         },
         ready(){
             this.folder.requests_queue = [];
+            vueGlobalEventBus.$on('dropped-file', (el, target, source, sibling) => {
+                this.handleDroppingFile(el, target, source, sibling);
+            });
+            vueGlobalEventBus.$on('insert-file', (el, target, source, sibling, targetFile, targetFileIndex) => {
+                this.handleInsertingFile(el, target, source, sibling, targetFile, targetFileIndex);
+            });
         }
     }
 </script>

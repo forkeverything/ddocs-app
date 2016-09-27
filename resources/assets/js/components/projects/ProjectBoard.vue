@@ -1,5 +1,5 @@
 <template>
-<div id="project-board">
+<div id="project-board" :class="{ dragging: dragging }">
     <template v-for="(index, folder) in project.folders">
         <div class="project-folder folder-wrap" :data-id="folder.id">
             <project-folder :index="index" :folder.sync="folder"></project-folder>
@@ -14,27 +14,41 @@
 export default {
     data: function(){
         return {
-            drake: '',
-            scroll: ''
+            dragging: false,
+            folderDrake: '',
+            autoScroll: '',
+            fileDrake: ''
         }
     },
     props: ['project'],
     methods: {
-        updateIndexes(el, target, source, sibling){
+        updateFolderIndexes(el, target, source, sibling){
             let targetFolder = _.find(this.project.folders, {id: parseInt(el.dataset.id)});
             let siblingFolder = _.find(this.project.folders, {id: parseInt(sibling.dataset.id)});
             let currentIndex = _.indexOf(this.project.folders, targetFolder);
-            let siblingIndex = _.indexOf(this.project.folders, siblingFolder);
+            let siblingIndex = siblingFolder ? _.indexOf(this.project.folders, siblingFolder) : this.project.folders.length;
             this.project.folders.splice(currentIndex, 1);
             let newIndex = currentIndex > siblingIndex ? siblingIndex : siblingIndex - 1;
             this.project.folders.splice(newIndex, 0, targetFolder);
         },
         initFolderDrag(){
             // if we're re-initializing
-            if (this.drake) this.drake.destroy();
-            this.drake = dragula([document.querySelector('#project-board')], {
+            if (this.folderDrake) this.folderDrake.destroy();
+            this.folderDrake = dragula([document.querySelector('#project-board')], {
                 moves: (el, source, handle, sibling) => {
-                    return !el.classList.contains('add-folder');
+
+                    let draggingProjectFile = false;
+
+                    if(handle.classList.contains('project-file')) draggingProjectFile = true;
+
+                    while(handle = handle.parentNode) {
+                        if(handle.classList && handle.classList.contains('project-file')) {
+                            draggingProjectFile = true;
+                            break;
+                        }
+                    }
+
+                    return ! el.classList.contains('add-folder') && ! draggingProjectFile;
                 },
                 accepts: (el, target, source, sibling) => {
                     return sibling;
@@ -42,25 +56,69 @@ export default {
                 direction: 'horizontal'
             });
 
-            this.drake.on('drop', (el, target, source, sibling) => {
-                this.updateIndexes(el, target, source,sibling);
-                this.drake.cancel(true);
+            this.folderDrake.on('drop', (el, target, source, sibling) => {
+                this.folderDrake.cancel(true);
+                this.updateFolderIndexes(el, target, source,sibling);
             });
 
-            if (this.scroll) this.scroll.destroy();
-            this.scroll = autoScroll([document.querySelector('.board-wrap')], {
+            // 'dragging' class
+            this.folderDrake.on('drag', () => {
+                this.dragging = true;
+            });
+            this.folderDrake.on('cancel', () => {
+                this.dragging = false;
+            });
+            this.folderDrake.on('dragend', () => {
+                this.dragging = false;
+            });
+
+            if (this.autoScroll) this.autoScroll.destroy();
+            this.autoScroll = autoScroll([document.querySelector('.board-wrap')], {
                 margin: 30,
                 pixels: 100,
                 scrollWhenOutside: true,
                 autoScroll: () => {
                     //Only scroll when the pointer is down, and there is a child being dragged.
-                    return this.scroll.down && this.drake.dragging;
+                    return this.autoScroll.down && (this.folderDrake.dragging || this.fileDrake.dragging);
                 }
             });
+        },
+        initFileDrag(){
+            // if we're re-initializing
+            if (this.fileDrake) this.fileDrake.destroy();
+
+            this.fileDrake = dragula([].slice.call(document.querySelectorAll('.files-list')), {
+                direction: 'vertical',
+                moves: (el, source, handle, sibling) => {
+                    return true;
+                }
+            });
+
+
+            this.fileDrake.on('drop', (el, target, source, sibling) => {
+                vueGlobalEventBus.$emit('dropped-file', el, target, source, sibling);
+                // Force refresh
+                this.fileDrake.cancel(true);
+            });
+
+
+            // 'dragging' class
+            this.fileDrake.on('drag', () => {
+                this.dragging = true;
+            });
+            this.fileDrake.on('cancel', (el) => {
+                this.dragging = false;
+            });
+            this.fileDrake.on('dragend', (el) => {
+                this.dragging = false;
+            });
+
         }
     },
     ready() {
         this.initFolderDrag();
+
+        this.initFileDrag();
 
         vueGlobalEventBus.$on('deleted-folder', (folder) => {
             this.project.folders.splice(_.indexOf(this.project.folders, folder), 1);

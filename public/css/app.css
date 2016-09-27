@@ -8699,8 +8699,9 @@ label {
     opacity: 0; } }
 
 .gu-transit {
-  border: 1px dashed #353535;
-  opacity: 1; }
+  border: 1px dashed #353535 !important;
+  opacity: 1;
+  background: #fff !important; }
   .gu-transit * {
     opacity: 0;
     visibility: hidden; }
@@ -9599,15 +9600,6 @@ label {
             vertical-align: top;
             line-height: 1.6;
             width: 15px; }
-  .project-folder-body .project-file {
-    padding: 5px 10px;
-    margin: 5px 5px;
-    border: 1px solid #e6e6e6;
-    background: #F7F7F7; }
-    .project-folder-body .project-file:hover {
-      background: #eaeaea; }
-    .project-folder-body .project-file:first-child {
-      margin-top: 0; }
   .project-folder-body .add-project-file {
     margin-top: 5px; }
     .project-folder-body .add-project-file .placeholder {
@@ -9634,8 +9626,24 @@ label {
         border-radius: 0;
         line-height: 1; }
 
-.gu-mirror .project-folder-body {
+.project-file {
+  display: block;
+  position: relative;
+  z-index: 2;
+  padding: 5px 10px;
+  margin: 5px 5px;
+  border: 1px solid #e6e6e6;
+  background: #F7F7F7; }
+  .project-file:hover {
+    background: #eaeaea; }
+
+.gu-mirror {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175); }
+  .gu-mirror .project-folder-body {
+    border: 0; }
+
+#project-board.dragging .files-list {
+  min-height: 30px; }
 
 #account-overview #page-fixed-top {
   border-bottom: 1px solid #e6e6e6; }

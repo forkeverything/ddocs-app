@@ -7,7 +7,7 @@
     width: 100%;
   }
 
-  .board-wrap  {
+  .board-wrap {
     height: 100%;
     width: 100%;
     position: relative;
@@ -97,11 +97,11 @@
           border-color: $black;
         }
 
-         i {
-           vertical-align: top;
-           margin-top: -2px;
-           font-size: 14px;
-         }
+        i {
+          vertical-align: top;
+          margin-top: -2px;
+          font-size: 14px;
+        }
       }
 
       .dropdown-menu {
@@ -120,21 +120,6 @@
           }
         }
       }
-    }
-  }
-
-  .project-file {
-    padding: 5px 10px;
-    margin: 5px 5px;
-    border: 1px solid $laravel-border-color;
-    background: $extra-light-grey;
-
-    &:hover {
-      background: darken($extra-light-grey, 5%);
-    }
-
-    &:first-child {
-      margin-top: 0;
     }
   }
 
@@ -174,8 +159,31 @@
   }
 }
 
+// Outside so drag mirror is styled too
+.project-file {
+  display: block;
+  position: relative;
+  z-index: 2;
+  padding: 5px 10px;
+  margin: 5px 5px;
+  border: 1px solid $laravel-border-color;
+  background: $extra-light-grey;
+
+  &:hover {
+    background: darken($extra-light-grey, 5%);
+  }
+}
+
 .gu-mirror {
+  @include box-shadow(0 3px 6px rgba(0, 0, 0, .175));
+
   .project-folder-body {
-    @include box-shadow(0 3px 6px rgba(0,0,0,.175));
+    border: 0;
+  }
+}
+
+#project-board.dragging {
+  .files-list {
+    min-height: 30px;
   }
 }

@@ -8683,8 +8683,9 @@ label {
     opacity: 0; } }
 
 .gu-transit {
-  border: 1px dashed #353535;
-  opacity: 1; }
+  border: 1px dashed #353535 !important;
+  opacity: 1;
+  background: #fff !important; }
   .gu-transit * {
     opacity: 0;
     visibility: hidden; }
