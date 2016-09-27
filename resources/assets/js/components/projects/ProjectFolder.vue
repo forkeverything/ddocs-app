@@ -1,5 +1,5 @@
 <template>
-<div class="single-folder folder-body">
+<div class="folder-body">
     <div class="folder-header">
         <h5>{{ folder.name }}</h5>
     </div>
@@ -16,7 +16,12 @@ export default {
 
         }
     },
-    props: ['folder'],
+    watch: {
+        index(newIndex){
+            console.log('update position: ' + newIndex);
+        }
+    },
+    props: ['folder', 'index'],
     methods: {
 
     }

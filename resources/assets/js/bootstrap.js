@@ -81,3 +81,6 @@ window.ResizeSensor = require('css-element-queries/src/ResizeSensor');
 
 // Scroll monitor
 window.scrollMonitor = require("scrollmonitor");
+
+// Dragula
+window.dragula = require('dragula');

@@ -9519,18 +9519,18 @@ label {
           border-color: #41B883; }
       #project-single .board-wrap #project-board .add-folder .btn {
         border-radius: 0; }
-      #project-single .board-wrap #project-board .single-folder .folder-header h5 {
+      #project-single .board-wrap #project-board .folder-body .folder-header h5 {
         font-size: 18px;
         margin-top: 0;
         padding: 8px 10px 5px 10px; }
-      #project-single .board-wrap #project-board .single-folder .project-file {
+      #project-single .board-wrap #project-board .folder-body .project-file {
         padding: 5px 10px; }
-      #project-single .board-wrap #project-board .single-folder .add-project-file {
+      #project-single .board-wrap #project-board .folder-body .add-project-file {
         padding: 0 10px;
         margin-bottom: 10px; }
-        #project-single .board-wrap #project-board .single-folder .add-project-file .placeholder {
+        #project-single .board-wrap #project-board .folder-body .add-project-file .placeholder {
           cursor: pointer; }
-        #project-single .board-wrap #project-board .single-folder .add-project-file input {
+        #project-single .board-wrap #project-board .folder-body .add-project-file input {
           padding: 5px;
           height: 30px;
           border-radius: 0; }
