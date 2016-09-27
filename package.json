@@ -20,6 +20,7 @@
     "animate.css": "^3.5.1",
     "autosize": "^3.0.17",
     "css-element-queries": "^0.3.2",
+    "dom-autoscroller": "^1.4.0",
     "dragula": "^3.7.2",
     "font-awesome": "^4.6.3",
     "jquery-ui": "^1.12.0",

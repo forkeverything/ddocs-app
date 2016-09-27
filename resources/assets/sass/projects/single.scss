@@ -34,10 +34,6 @@
         &:last-child {
           margin-right: 15px;
         }
-
-        .folder-body {
-          border: 1px solid $laravel-border-color;
-        }
       }
 
       .add-folder {
@@ -57,35 +53,129 @@
           border-radius: 0;
         }
       }
+    }
+  }
+}
 
-      .folder-body {
-        .folder-header {
-          h5 {
-            font-size: 18px;
-            margin-top: 0;
-            padding: 8px 10px 5px 10px;
-          }
+// Outside so styles apply to drag-mirror too
+.project-folder-body {
+  border: 1px solid $laravel-border-color;
+  cursor: pointer;
+
+  .folder-header {
+    display: flex;
+
+    .folder-name {
+      flex: 1;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 0;
+      padding: 8px 10px 5px 5px;
+    }
+
+    .folder-menu {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      margin-bottom: 5px;
+
+      .btn {
+        height: 16px;
+        width: 16px;
+        line-height: 1;
+        padding: 3px;
+        outline: 0;
+        box-shadow: none;
+        background: #fff;
+        color: $grey;
+        border: 1px solid $laravel-border-color;
+        border-radius: 50%;
+
+        &:hover, &:focus, &:focus:active {
+          color: $black;
+          border-color: $black;
         }
 
-        .project-file {
-          padding: 5px 10px;
-        }
+         i {
+           vertical-align: top;
+           margin-top: -2px;
+           font-size: 14px;
+         }
+      }
 
-        .add-project-file {
-          padding: 0 10px;
-          margin-bottom: 10px;
+      .dropdown-menu {
+        margin-top: -10px;
+        padding: 0;
 
-          .placeholder {
-            cursor: pointer;
-          }
-
-          input {
-            padding: 5px;
-            height: 30px;
-            border-radius: 0;
+        li {
+          a {
+            padding: 5px 10px;
+            font-size: 0.9em;
+            i {
+              vertical-align: top;
+              line-height: 1.6;
+              width: 15px;
+            }
           }
         }
       }
     }
+  }
+
+  .project-file {
+    padding: 5px 10px;
+    margin: 5px 5px;
+    border: 1px solid $laravel-border-color;
+    background: $extra-light-grey;
+
+    &:hover {
+      background: darken($extra-light-grey, 5%);
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .add-project-file {
+    margin-top: 5px;
+
+    .placeholder {
+      cursor: pointer;
+      padding: 5px;
+      height: 35px;
+      width: 100%;
+      display: inline-block;
+
+      &:hover {
+        background: $extra-light-grey;
+      }
+    }
+
+    form {
+      display: flex;
+      padding: 5px;
+      input {
+        padding: 5px;
+        height: 30px;
+        border-radius: 0;
+        margin-right: 5px;
+        &:focus {
+          border-color: $light-blue;
+        }
+      }
+      .btn {
+        height: 30px;
+        border-radius: 0;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+.gu-mirror {
+  .project-folder-body {
+    @include box-shadow(0 3px 6px rgba(0,0,0,.175));
   }
 }

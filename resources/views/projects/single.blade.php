@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div id="project-single">
+
         <div id="project-info" class="container-fluid">
             <h3>
                 <small>Project Files</small>

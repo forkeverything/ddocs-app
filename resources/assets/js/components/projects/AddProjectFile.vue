@@ -5,6 +5,7 @@
         </a>
         <form @submit.prevent="addFile" v-show="visible">
             <input type="text" v-el:input class="form-control" @blur="clearInput" v-model="name">
+            <button type="submit" class="btn btn-info">Add</button>
         </form>
     </div>
 </template>
@@ -37,7 +38,8 @@
                 this.ajaxReady = false;
 
                 this.$http.post(`/projects/${ this.folder.project_id }/folders/${ this.folder.id }/files`, {
-                    name: this.name
+                    name: this.name,
+                    position: this.folder.files.length
                 }).then((res) => {
                     this.folder.files.push(res.json());
                     this.ajaxReady = true;

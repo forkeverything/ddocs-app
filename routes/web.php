@@ -54,6 +54,8 @@ Route::get('/projects/{project}', 'ProjectsController@getProject');
 Route::put('/projects/{project}', 'ProjectsController@putUpdate');
 Route::delete('/projects/{project}', 'ProjectsController@delete');
 Route::post('/projects/{project}/folders', 'ProjectsController@postCreateFolder');
+Route::put('/projects/{project}/folders/{projectFolder}', 'ProjectsController@putUpdateFolder');
+Route::delete('/projects/{project}/folders/{projectFolder}', 'ProjectsController@deleteFolder');
 Route::post('/projects/{project}/folders/{projectFolder}/files', 'ProjectsController@postAddFile');
 
 

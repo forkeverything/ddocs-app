@@ -8037,15 +8037,20 @@ body {
 .caret {
   color: #999999; }
 
-.dropdown-menu li a.active {
-  color: #3498DB; }
-
-.dropdown-menu li a:hover, .dropdown-menu li a:focus {
-  color: #fff !important;
-  background: #3498DB !important;
-  text-decoration: none !important; }
-  .dropdown-menu li a:hover i, .dropdown-menu li a:focus i {
-    color: #fff !important; }
+.dropdown-menu ul {
+  margin: 0; }
+  .dropdown-menu ul li a {
+    display: inline-block;
+    width: 100%;
+    color: #1B2432; }
+    .dropdown-menu ul li a.active {
+      color: #3498DB; }
+    .dropdown-menu ul li a:hover, .dropdown-menu ul li a:focus {
+      color: #fff !important;
+      background: #3498DB !important;
+      text-decoration: none !important; }
+      .dropdown-menu ul li a:hover i, .dropdown-menu ul li a:focus i {
+        color: #fff !important; }
 
 .ui-datepicker-trigger {
   width: 20px;
@@ -8692,6 +8697,33 @@ label {
     -webkit-transform: perspective(140px) rotateY(180deg);
     transform: perspective(140px) rotateY(180deg);
     opacity: 0; } }
+
+.gu-transit {
+  border: 1px dashed #353535;
+  opacity: 1; }
+  .gu-transit * {
+    opacity: 0;
+    visibility: hidden; }
+
+.gu-mirror {
+  opacity: 1;
+  -webkit-transform: rotate(4deg);
+  transform: rotate(4deg);
+  background: #fff; }
+
+.editable-text-field .placeholder {
+  height: 35px;
+  display: inline-block;
+  border: 1px solid transparent;
+  padding: 2px 1px 0 1px; }
+  .editable-text-field .placeholder:hover {
+    border: 1px dashed #cccccc; }
+
+.editable-text-field input {
+  height: 35px;
+  outline: 0;
+  border: 1px dashed #757575;
+  width: 100%; }
 
 #form-checklist-make {
   margin: 0 0 15px;
@@ -9506,8 +9538,6 @@ label {
           margin-left: 15px; }
         #project-single .board-wrap #project-board .folder-wrap:last-child {
           margin-right: 15px; }
-        #project-single .board-wrap #project-board .folder-wrap .folder-body {
-          border: 1px solid #e6e6e6; }
       #project-single .board-wrap #project-board .add-folder .input-name {
         margin-bottom: 5px;
         border-radius: 0;
@@ -9519,21 +9549,93 @@ label {
           border-color: #41B883; }
       #project-single .board-wrap #project-board .add-folder .btn {
         border-radius: 0; }
-      #project-single .board-wrap #project-board .folder-body .folder-header h5 {
-        font-size: 18px;
-        margin-top: 0;
-        padding: 8px 10px 5px 10px; }
-      #project-single .board-wrap #project-board .folder-body .project-file {
-        padding: 5px 10px; }
-      #project-single .board-wrap #project-board .folder-body .add-project-file {
-        padding: 0 10px;
-        margin-bottom: 10px; }
-        #project-single .board-wrap #project-board .folder-body .add-project-file .placeholder {
-          cursor: pointer; }
-        #project-single .board-wrap #project-board .folder-body .add-project-file input {
-          padding: 5px;
-          height: 30px;
-          border-radius: 0; }
+
+.project-folder-body {
+  border: 1px solid #e6e6e6;
+  cursor: pointer; }
+  .project-folder-body .folder-header {
+    display: -webkit-box;
+    display: flex; }
+    .project-folder-body .folder-header .folder-name {
+      -webkit-box-flex: 1;
+      flex: 1;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 0;
+      padding: 8px 10px 5px 5px; }
+    .project-folder-body .folder-header .folder-menu {
+      position: relative;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      margin-right: 10px;
+      margin-bottom: 5px; }
+      .project-folder-body .folder-header .folder-menu .btn {
+        height: 16px;
+        width: 16px;
+        line-height: 1;
+        padding: 3px;
+        outline: 0;
+        box-shadow: none;
+        background: #fff;
+        color: #D2D2D2;
+        border: 1px solid #e6e6e6;
+        border-radius: 50%; }
+        .project-folder-body .folder-header .folder-menu .btn:hover, .project-folder-body .folder-header .folder-menu .btn:focus, .project-folder-body .folder-header .folder-menu .btn:focus:active {
+          color: #353535;
+          border-color: #353535; }
+        .project-folder-body .folder-header .folder-menu .btn i {
+          vertical-align: top;
+          margin-top: -2px;
+          font-size: 14px; }
+      .project-folder-body .folder-header .folder-menu .dropdown-menu {
+        margin-top: -10px;
+        padding: 0; }
+        .project-folder-body .folder-header .folder-menu .dropdown-menu li a {
+          padding: 5px 10px;
+          font-size: 0.9em; }
+          .project-folder-body .folder-header .folder-menu .dropdown-menu li a i {
+            vertical-align: top;
+            line-height: 1.6;
+            width: 15px; }
+  .project-folder-body .project-file {
+    padding: 5px 10px;
+    margin: 5px 5px;
+    border: 1px solid #e6e6e6;
+    background: #F7F7F7; }
+    .project-folder-body .project-file:hover {
+      background: #eaeaea; }
+    .project-folder-body .project-file:first-child {
+      margin-top: 0; }
+  .project-folder-body .add-project-file {
+    margin-top: 5px; }
+    .project-folder-body .add-project-file .placeholder {
+      cursor: pointer;
+      padding: 5px;
+      height: 35px;
+      width: 100%;
+      display: inline-block; }
+      .project-folder-body .add-project-file .placeholder:hover {
+        background: #F7F7F7; }
+    .project-folder-body .add-project-file form {
+      display: -webkit-box;
+      display: flex;
+      padding: 5px; }
+      .project-folder-body .add-project-file form input {
+        padding: 5px;
+        height: 30px;
+        border-radius: 0;
+        margin-right: 5px; }
+        .project-folder-body .add-project-file form input:focus {
+          border-color: #66ccf5; }
+      .project-folder-body .add-project-file form .btn {
+        height: 30px;
+        border-radius: 0;
+        line-height: 1; }
+
+.gu-mirror .project-folder-body {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175); }
 
 #account-overview #page-fixed-top {
   border-bottom: 1px solid #e6e6e6; }

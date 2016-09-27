@@ -84,3 +84,4 @@ window.scrollMonitor = require("scrollmonitor");
 
 // Dragula
 window.dragula = require('dragula');
+window.autoScroll = require('dom-autoscroller');

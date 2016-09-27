@@ -8021,15 +8021,20 @@ button.close {
 .caret {
   color: #999999; }
 
-.dropdown-menu li a.active {
-  color: #3498DB; }
-
-.dropdown-menu li a:hover, .dropdown-menu li a:focus {
-  color: #fff !important;
-  background: #3498DB !important;
-  text-decoration: none !important; }
-  .dropdown-menu li a:hover i, .dropdown-menu li a:focus i {
-    color: #fff !important; }
+.dropdown-menu ul {
+  margin: 0; }
+  .dropdown-menu ul li a {
+    display: inline-block;
+    width: 100%;
+    color: #1B2432; }
+    .dropdown-menu ul li a.active {
+      color: #3498DB; }
+    .dropdown-menu ul li a:hover, .dropdown-menu ul li a:focus {
+      color: #fff !important;
+      background: #3498DB !important;
+      text-decoration: none !important; }
+      .dropdown-menu ul li a:hover i, .dropdown-menu ul li a:focus i {
+        color: #fff !important; }
 
 .ui-datepicker-trigger {
   width: 20px;
@@ -8676,6 +8681,33 @@ label {
     -webkit-transform: perspective(140px) rotateY(180deg);
     transform: perspective(140px) rotateY(180deg);
     opacity: 0; } }
+
+.gu-transit {
+  border: 1px dashed #353535;
+  opacity: 1; }
+  .gu-transit * {
+    opacity: 0;
+    visibility: hidden; }
+
+.gu-mirror {
+  opacity: 1;
+  -webkit-transform: rotate(4deg);
+  transform: rotate(4deg);
+  background: #fff; }
+
+.editable-text-field .placeholder {
+  height: 35px;
+  display: inline-block;
+  border: 1px solid transparent;
+  padding: 2px 1px 0 1px; }
+  .editable-text-field .placeholder:hover {
+    border: 1px dashed #cccccc; }
+
+.editable-text-field input {
+  height: 35px;
+  outline: 0;
+  border: 1px dashed #757575;
+  width: 100%; }
 
 #form-checklist-make {
   margin: 0 0 15px;

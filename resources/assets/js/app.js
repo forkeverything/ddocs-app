@@ -19,6 +19,7 @@ Vue.component('tagger', require('./components/utilities/Tagger.vue'));
 Vue.component('toggle-switch', require('./components/utilities/ToggleSwitch.vue'));
 Vue.component('smart-date', require('./components/utilities/SmartDate.vue'));
 Vue.component('cube-loader', require('./components/utilities/CubeLoader.vue'));
+Vue.component('editable-text-field', require('./components/utilities/EditableTextField.vue'));
 
 // Checklist
 Vue.component('checklist-collection', require('./components/checklist/Collection.vue'));

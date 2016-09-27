@@ -14,7 +14,8 @@
 export default {
     data: function(){
         return {
-            drake: ''
+            drake: '',
+            scroll: ''
         }
     },
     props: ['project'],
@@ -45,10 +46,25 @@ export default {
                 this.updateIndexes(el, target, source,sibling);
                 this.drake.cancel(true);
             });
+
+            if (this.scroll) this.scroll.destroy();
+            this.scroll = autoScroll([document.querySelector('.board-wrap')], {
+                margin: 30,
+                pixels: 100,
+                scrollWhenOutside: true,
+                autoScroll: () => {
+                    //Only scroll when the pointer is down, and there is a child being dragged.
+                    return this.scroll.down && this.drake.dragging;
+                }
+            });
         }
     },
     ready() {
         this.initFolderDrag();
+
+        vueGlobalEventBus.$on('deleted-folder', (folder) => {
+            this.project.folders.splice(_.indexOf(this.project.folders, folder), 1);
+        });
     }
 }
 </script>

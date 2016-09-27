@@ -32,6 +32,8 @@ class ProjectsController extends Controller
                 'putUpdate',
                 'delete',
                 'postCreateFolder',
+                'putUpdateFolder',
+                'deleteFolder',
                 'postAddFile'
             ]
         ]);
@@ -71,7 +73,16 @@ class ProjectsController extends Controller
      */
     public function getProject(Project $project)
     {
-        $project->load('folders.files');
+
+        $project->load([
+            'folders' => function ($query) {
+                $query->orderBy('position', 'asc');
+            },
+            'folders.files' => function ($query) {
+                $query->orderBy('position', 'asc');
+            }
+        ]);
+
         return view('projects.single', compact('project'));
     }
 
@@ -112,6 +123,36 @@ class ProjectsController extends Controller
         return $project->folders()->create($request->all());
     }
 
+
+    /**
+     * Updates Project Folder
+     *
+     * @param Project $project
+     * @param ProjectFolder $projectFolder
+     * @param Request $request
+     * @return Model
+     */
+    public function putUpdateFolder(Project $project, ProjectFolder $projectFolder, Request $request)
+    {
+        if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
+        $projectFolder->update($request->all());
+        return $projectFolder;
+    }
+
+    /**
+     * Delete Project Folder
+     *
+     * @param Project $project
+     * @param ProjectFolder $projectFolder
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteFolder(Project $project, ProjectFolder $projectFolder)
+    {
+        if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
+        $projectFolder->delete();
+        return response("Deleted project folder");
+    }
+
     /**
      * Create a new File within Project Folder.
      *
@@ -122,7 +163,7 @@ class ProjectsController extends Controller
      */
     public function postAddFile(Project $project, ProjectFolder $projectFolder, AddProjectFileRequest $request)
     {
-        if($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
+        if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
         return $projectFolder->files()->create($request->all());
     }
 }
