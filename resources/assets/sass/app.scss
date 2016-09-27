@@ -29,5 +29,9 @@
 @import "file";
 @import "file/history";
 
+// Projects
+@import "projects/all";
+@import "projects/single";
+
 // Account
 @import "account/overview";

@@ -9472,6 +9472,69 @@ label {
 #file-history .btn-download {
   min-width: 120px; }
 
+#projects-all #form-create-project {
+  width: 300px;
+  padding: 10px; }
+
+#project-single {
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column; }
+  #project-single #project-info {
+    width: 100%; }
+  #project-single .board-wrap {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow-x: scroll;
+    overflow-y: hidden; }
+    #project-single .board-wrap #project-board {
+      position: absolute;
+      top: 0;
+      left: 0;
+      white-space: nowrap; }
+      #project-single .board-wrap #project-board .folder-wrap {
+        width: 300px;
+        margin: 0 5px;
+        height: 100%;
+        display: inline-block;
+        vertical-align: top; }
+        #project-single .board-wrap #project-board .folder-wrap:first-child {
+          margin-left: 15px; }
+        #project-single .board-wrap #project-board .folder-wrap:last-child {
+          margin-right: 15px; }
+        #project-single .board-wrap #project-board .folder-wrap .folder-body {
+          border: 1px solid #e6e6e6; }
+      #project-single .board-wrap #project-board .add-folder .input-name {
+        margin-bottom: 5px;
+        border-radius: 0;
+        border-color: #e6e6e6;
+        padding: 5px 10px;
+        font-weight: bold;
+        font-size: 18px; }
+        #project-single .board-wrap #project-board .add-folder .input-name.filled, #project-single .board-wrap #project-board .add-folder .input-name:focus {
+          border-color: #41B883; }
+      #project-single .board-wrap #project-board .add-folder .btn {
+        border-radius: 0; }
+      #project-single .board-wrap #project-board .single-folder .folder-header h5 {
+        font-size: 18px;
+        margin-top: 0;
+        padding: 8px 10px 5px 10px; }
+      #project-single .board-wrap #project-board .single-folder .project-file {
+        padding: 5px 10px; }
+      #project-single .board-wrap #project-board .single-folder .add-project-file {
+        padding: 0 10px;
+        margin-bottom: 10px; }
+        #project-single .board-wrap #project-board .single-folder .add-project-file .placeholder {
+          cursor: pointer; }
+        #project-single .board-wrap #project-board .single-folder .add-project-file input {
+          padding: 5px;
+          height: 30px;
+          border-radius: 0; }
+
 #account-overview #page-fixed-top {
   border-bottom: 1px solid #e6e6e6; }
 

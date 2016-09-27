@@ -56,6 +56,16 @@ class User extends Authenticatable
         return $this->hasMany(File::class);
     }
 
+    /**
+     * User can have many Project(s)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
 
     /**
      * Minus a User's credit
@@ -122,3 +132,4 @@ class User extends Authenticatable
         return $user;
     }
 }
+

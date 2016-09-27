@@ -53,6 +53,8 @@ Route::post('/projects', 'ProjectsController@postSaveNew');
 Route::get('/projects/{project}', 'ProjectsController@getProject');
 Route::put('/projects/{project}', 'ProjectsController@putUpdate');
 Route::delete('/projects/{project}', 'ProjectsController@delete');
+Route::post('/projects/{project}/folders', 'ProjectsController@postCreateFolder');
+Route::post('/projects/{project}/folders/{projectFolder}/files', 'ProjectsController@postAddFile');
 
 
 // Account

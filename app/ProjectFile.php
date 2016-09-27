@@ -8,6 +8,7 @@ class ProjectFile extends Model
 {
     protected $fillable = [
         'name',
+        'position',
         'description',
         'project_folder_id',
         'file_request_id'

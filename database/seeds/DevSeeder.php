@@ -26,7 +26,8 @@ class DevSeeder extends Seeder
         $this->truncateTables()
              ->seedMikeAccount()
              ->seedChecklists()
-             ->seedFiles();
+             ->seedFiles()
+        ->createProject();
     }
 
     /**
@@ -102,6 +103,21 @@ class DevSeeder extends Seeder
                 ]);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Create Project
+     *
+     * @return $this
+     */
+    protected function createProject()
+    {
+        $this->user->projects()->create([
+            'name' => 'Palu',
+            'description' => 'First IPP outside of Java.'
+        ]);
 
         return $this;
     }

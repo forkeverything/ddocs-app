@@ -9,7 +9,8 @@ class ProjectFolder extends Model
 
     protected $fillable = [
         'name',
-        'project_id'
+        'project_id',
+        'position'
     ];
 
     /**

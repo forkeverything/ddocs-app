@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddProjectFileRequest;
+use App\Http\Requests\CreateProjectFolderRequest;
 use App\Http\Requests\SaveProjectRequest;
 use App\Project;
 use App\ProjectFile;
+use App\ProjectFolder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -26,7 +30,9 @@ class ProjectsController extends Controller
         $this->middleware('can:update,project', [
             'only' => [
                 'putUpdate',
-                'delete'
+                'delete',
+                'postCreateFolder',
+                'postAddFile'
             ]
         ]);
     }
@@ -65,6 +71,7 @@ class ProjectsController extends Controller
      */
     public function getProject(Project $project)
     {
+        $project->load('folders.files');
         return view('projects.single', compact('project'));
     }
 
@@ -91,5 +98,31 @@ class ProjectsController extends Controller
     {
         $project->delete();
         return response('Deleted project');
+    }
+
+    /**
+     * Handle request to create a Project Folder.
+     *
+     * @param Project $project
+     * @param Request $request
+     * @return Model
+     */
+    public function postCreateFolder(Project $project, CreateProjectFolderRequest $request)
+    {
+        return $project->folders()->create($request->all());
+    }
+
+    /**
+     * Create a new File within Project Folder.
+     *
+     * @param Project $project
+     * @param ProjectFolder $projectFolder
+     * @param Request $request
+     * @return Model
+     */
+    public function postAddFile(Project $project, ProjectFolder $projectFolder, AddProjectFileRequest $request)
+    {
+        if($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
+        return $projectFolder->files()->create($request->all());
     }
 }

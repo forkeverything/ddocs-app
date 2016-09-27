@@ -1,0 +1,91 @@
+#project-single {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  #project-info {
+    width: 100%;
+  }
+
+  .board-wrap  {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    #project-board {
+      position: absolute;
+      top: 0;
+      left: 0;
+      white-space: nowrap;
+
+      .folder-wrap {
+        width: 300px;
+        margin: 0 5px;
+        height: 100%;
+        display: inline-block;
+        vertical-align: top;
+
+        &:first-child {
+          margin-left: 15px;
+        }
+
+        &:last-child {
+          margin-right: 15px;
+        }
+
+        .folder-body {
+          border: 1px solid $laravel-border-color;
+        }
+      }
+
+      .add-folder {
+        .input-name {
+          margin-bottom: 5px;
+          border-radius: 0;
+          border-color: $laravel-border-color;
+          padding: 5px 10px;
+          font-weight: bold;
+          font-size: 18px;
+
+          &.filled, &:focus {
+            border-color: $green;
+          }
+        }
+        .btn {
+          border-radius: 0;
+        }
+      }
+
+      .single-folder {
+        .folder-header {
+          h5 {
+            font-size: 18px;
+            margin-top: 0;
+            padding: 8px 10px 5px 10px;
+          }
+        }
+
+        .project-file {
+          padding: 5px 10px;
+        }
+
+        .add-project-file {
+          padding: 0 10px;
+          margin-bottom: 10px;
+
+          .placeholder {
+            cursor: pointer;
+          }
+
+          input {
+            padding: 5px;
+            height: 30px;
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}
