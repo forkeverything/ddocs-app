@@ -8370,14 +8370,13 @@ h5 {
 
 .active-filters {
   font-size: 0.9em;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  flex-wrap: wrap; }
+  display: inline-block;
+  margin: 0 0 5px;
+  padding: 0 5px; }
   .active-filters .list-active-filters {
-    margin: 0 0 15px; }
+    margin: 0 0 0 -5px; }
     .active-filters .list-active-filters .single-filter {
+      margin-bottom: 5px;
       background: #5b5b5b;
       color: #fff;
       border-radius: 6px;

@@ -40,31 +40,31 @@ return [
         'main' => [
             'salt' => 'file collecting made easy',
             'length' => '12',
-            'alphabet' => '0123456789abcdef',
+            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         ],
 
         'recipient' => [
             'salt' => 'keeping our recipients private',
             'length' => '12',
-            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
+            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         ],
 
         'checklist' => [
             'salt' => 'super secret checklists are the best',
             'length' => '8',
-            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
+            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         ],
 
         'file-request' => [
             'salt' => 'hope nobody finds this file',
             'length' => '12',
-            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
+            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         ],
 
         'note' => [
             'salt' => 'notes keep everybody on the same page',
             'length' => '12',
-            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
+            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         ]
 
     ],

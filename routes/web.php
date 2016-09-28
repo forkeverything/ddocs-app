@@ -22,9 +22,10 @@ Route::get('/c', 'ChecklistsController@getListsView');
 Route::get('/c/get', 'ChecklistsController@getForAuthenticatedUser');
 Route::get('/c/make', 'ChecklistsController@getMakeForm');
 Route::post('/c/make', 'ChecklistsController@postNewChecklist');
-Route::get('/c/{checklist_hash}', 'ChecklistsController@getSingleChecklist');
+
 Route::get('/c/{checklist_hash}/weightings', 'ChecklistsController@getWeightings');
 Route::get('/c/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
+Route::get('/c/{checklist_hash}/{checklist_name?}', 'ChecklistsController@getSingleChecklist');
 
 // Recipients
 Route::get('/r/{recipient_hash}/turn_off_notifications', 'RecipientsController@getTurnOffNotifications');

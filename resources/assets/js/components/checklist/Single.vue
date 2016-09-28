@@ -283,9 +283,22 @@
             scrollList: _.throttle(function (event) {
                 let el = document.getElementById('files-list');
                 if ($(el).innerHeight() + $(el).scrollTop() >= (el.scrollHeight - 100)) this.fetchNextPage();
-            }, 100)
+            }, 100),
+            addChecklistNameToUrl(){
+                let checklistName = this.checklist.name.replace(/\s+/g, '-').toLowerCase();
+                let urlWithoutQuery = window.location.href.match(/[^\?]*[^\/^\?]/i)[0];
+                let query = window.location.href.match(/\?.*/i);
+                let queryString = query ? query[0] : '';
+                if(! urlWithoutQuery.match(checklistName)) {
+                    let appendedUrl = urlWithoutQuery + '/' + checklistName + queryString;
+                    window.history.replaceState({}, null, appendedUrl);
+                }
+            }
         },
         ready: function () {
+
+            this.addChecklistNameToUrl();
+
 
             var self = this;
 
