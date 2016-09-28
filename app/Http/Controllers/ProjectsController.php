@@ -121,7 +121,7 @@ class ProjectsController extends Controller
      */
     public function postCreateFolder(Project $project, CreateProjectFolderRequest $request)
     {
-        return $project->folders()->create($request->all());
+        return $project->folders()->create($request->all())->load('files');
     }
 
 
@@ -138,22 +138,6 @@ class ProjectsController extends Controller
         if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
         $projectFolder->update($request->all());
         return $projectFolder;
-    }
-
-    /**
-     * Update Project File.
-     *
-     * @param Project $project
-     * @param ProjectFile $projectFile
-     * @param Request $request
-     * @return ProjectFile
-     */
-    public function putUpdateFile(Project $project, ProjectFile $projectFile, Request $request)
-    {
-        if($projectFile->folder->project_id !== $project->id) abort(403, "File does not belong to project");
-        if(ProjectFolder::findOrFail($request->project_folder_id)->project_id !== $project->id) abort(403, "Trying to put file into folder that doesn't belong to this project.");
-        $projectFile->update($request->all());
-        return $projectFile;
     }
 
     /**
@@ -183,4 +167,21 @@ class ProjectsController extends Controller
         if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
         return $projectFolder->files()->create($request->all());
     }
+
+    /**
+     * Update Project File.
+     *
+     * @param Project $project
+     * @param ProjectFile $projectFile
+     * @param Request $request
+     * @return ProjectFile
+     */
+    public function putUpdateFile(Project $project, ProjectFile $projectFile, AddProjectFileRequest $request)
+    {
+        if($projectFile->folder->project_id !== $project->id) abort(403, "File does not belong to project");
+        if(ProjectFolder::findOrFail($request->project_folder_id)->project_id !== $project->id) abort(403, "Trying to put file into folder that doesn't belong to this project.");
+        $projectFile->update($request->all());
+        return $projectFile;
+    }
+
 }

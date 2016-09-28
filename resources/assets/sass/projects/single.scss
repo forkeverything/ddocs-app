@@ -62,24 +62,16 @@
   cursor: pointer;
   background: $extra-light-grey;
 
-
   .folder-header {
     display: flex;
 
     .folder-name {
       flex: 1;
+      max-width: calc(100% - 30px);
       font-size: 18px;
       font-weight: bold;
       margin-top: 0;
       padding: 8px 10px 5px 5px;
-
-      .placeholder, input {
-        height: 30px;
-      }
-
-      .placeholder {
-        line-height: 1.4;
-      }
     }
 
     .folder-menu {
@@ -133,7 +125,6 @@
   }
 
   .add-project-file {
-
 
     .placeholder {
       cursor: pointer;
@@ -194,5 +185,32 @@
 #project-board.dragging {
   .files-list {
     min-height: 30px;
+  }
+}
+
+#project-modal {
+
+  .modal-body {
+    min-height: 650px;
+  }
+
+  .file-name {
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+
+    i {
+      font-size: 1em;
+      margin-right: 8px;
+      color: #999999;
+      float: left;
+    }
+
+    .name-wrap {
+      flex: 1;
+      max-width: calc(100% - 45px);
+      margin-right: 30px;
+      display: inline-block;
+    }
   }
 }

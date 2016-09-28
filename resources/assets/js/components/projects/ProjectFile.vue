@@ -1,7 +1,7 @@
 <template>
-    <div class="project-file" :data-id="file.id">
+    <div class="project-file" :data-id="file.id" @click.prevent="viewFile">
         <div class="file-name">
-            <editable-text-field :value.sync="file.name" :update-fn="update"></editable-text-field>
+                {{ file.name }}
         </div>
     </div>
 </template>
@@ -40,14 +40,24 @@
                     console.log('error updating file');
                     console.log(res);
                 });
+            },
+            viewFile(){
+                vueGlobalEventBus.$emit('view-project-file', this.file);
             }
         },
         ready() {
             this.file.requests_queue = [];
             vueGlobalEventBus.$on('update-file-folder', (file, folderId) => {
-                if(file.id !== this.file.id) return;
+                if (file.id !== this.file.id) return;
                 this.$set('file.project_folder_id', folderId);
             });
+
+            vueGlobalEventBus.$on(`update-file-${ this.file.id }`, this.update);
+
+            if(this.file.position !== this.index) {
+                this.file.position = this.index;
+                this.update();
+            }
         }
     };
 </script>

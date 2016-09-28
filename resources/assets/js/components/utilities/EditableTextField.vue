@@ -1,45 +1,15 @@
 <template>
-<div class="editable-text-field">
-    <span class="placeholder clickable" v-show="! editing" @click="enterEditMode">
-        {{ value }}
-    </span>
-    <form v-show="editing" @submit.prevent="processNewValue">
-        <input type="text" v-model="newValue" v-el:input @blur="processNewValue">
-    </form>
-</div>
+    <div class="editable-text-field">
+        <span v-el:placeholder v-if="value" v-show="! editing" class="placeholder clickable" @click.stop="enterEditMode">{{ value }}</span>
+        <span v-el:placeholder v-if="! value && placeholder" v-show="! editing" class="text-muted placeholder clickable" @click.stop="enterEditMode">{{ placeholder }}</span>
+        <form v-show="editing" @submit.prevent="processNewValue">
+            <input type="text" v-model="newValue" v-el:input @blur="processNewValue">
+        </form>
+    </div>
 </template>
 <script>
-export default {
-    data: function(){
-        return {
-            editing: false,
-            newValue: ''
-        }
-    },
-    props: ['value', 'allow-null', 'update-fn'],
-    methods: {
-        enterEditMode(){
-            this.editing = true;
-            this.$nextTick(() => {
-                $(this.$els.input).focus();
-            });
-        },
-        exitEditMode(){
-            this.editing = false;
-            this.newValue = this.value;
-        },
-        processNewValue() {
-            if(! this.allowNull && ! this.newValue || (this.newValue === this.value) ) return this.exitEditMode();
-            this.value = this.newValue;
-            this.$nextTick(() => {
-                this.updateFn();
-                this.exitEditMode();
-            });
-        }
-    },
-    ready() {
-        // Create a copy of the value so we can reset it if necessary
-        this.newValue = this.value;
-    }
-}
+    const editableField = require("../../mixins/EditableField");
+    export default {
+        mixins: [editableField]
+    };
 </script>

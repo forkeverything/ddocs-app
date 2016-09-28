@@ -5122,8 +5122,8 @@ button.close {
     opacity: 0;
     filter: alpha(opacity=0); }
   .modal-backdrop.in {
-    opacity: 0.5;
-    filter: alpha(opacity=50); }
+    opacity: 0.65;
+    filter: alpha(opacity=65); }
 
 .modal-header {
   padding: 15px;
@@ -5171,7 +5171,7 @@ button.close {
 
 @media (min-width: 768px) {
   .modal-dialog {
-    width: 600px;
+    width: 738px;
     margin: 30px auto; }
   .modal-content {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
@@ -8699,20 +8699,57 @@ label {
   transform: rotate(4deg);
   background: #fff; }
 
-.editable-text-field .placeholder {
-  height: 24px;
-  display: inline-block;
-  border: 1px solid transparent;
-  padding: 2px 1px 0 1px;
-  line-height: 1; }
-  .editable-text-field .placeholder:hover {
-    border: 1px dashed #cccccc; }
+.editable-text-field {
+  margin-bottom: -7px; }
+  .editable-text-field .placeholder {
+    display: inline-block;
+    border: 1px solid transparent;
+    padding: 1px 0;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden; }
+    .editable-text-field .placeholder:hover {
+      border: 1px dashed #cccccc;
+      padding: 1px;
+      margin: 0 -1px; }
+  .editable-text-field input {
+    outline: 0;
+    border: 1px dashed #757575;
+    width: 100%;
+    margin: 0 -1px 7px; }
 
-.editable-text-field input {
-  height: 25px;
-  outline: 0;
-  border: 1px dashed #757575;
-  width: 100%; }
+.editable-text-area .placeholder {
+  min-height: 80px;
+  border: 1px solid transparent;
+  display: inline-block;
+  width: 100%;
+  white-space: normal;
+  word-break: break-all;
+  padding: 2px 0; }
+  .editable-text-area .placeholder:hover {
+    border: 1px dashed #D2D2D2;
+    padding: 2px;
+    margin: 0 -2px; }
+
+.editable-text-area form {
+  line-height: 0; }
+  .editable-text-area form textarea {
+    line-height: 1.6;
+    min-height: 80px;
+    width: 100%;
+    outline: 0;
+    border: 1px dashed #353535;
+    margin: 0 -2px; }
+
+.modal-content {
+  border-radius: 3px;
+  box-shadow: none; }
+  .modal-content .modal-header {
+    padding: 10px; }
+
+.close {
+  line-height: 0.4;
+  outline: 0; }
 
 #form-checklist-make {
   margin: 0 0 15px;

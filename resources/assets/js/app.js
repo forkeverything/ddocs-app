@@ -20,6 +20,7 @@ Vue.component('toggle-switch', require('./components/utilities/ToggleSwitch.vue'
 Vue.component('smart-date', require('./components/utilities/SmartDate.vue'));
 Vue.component('cube-loader', require('./components/utilities/CubeLoader.vue'));
 Vue.component('editable-text-field', require('./components/utilities/EditableTextField.vue'));
+Vue.component('editable-text-area', require('./components/utilities/EditableTextArea.vue'));
 
 // Checklist
 Vue.component('checklist-collection', require('./components/checklist/Collection.vue'));
@@ -52,6 +53,7 @@ Vue.component('form-add-project-folder', require('./components/projects/AddProje
 Vue.component('project-folder', require('./components/projects/ProjectFolder.vue'));
 Vue.component('add-project-file', require('./components/projects/AddProjectFile.vue'));
 Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
+Vue.component('project-file-modal', require('./components/projects/ProjectFileModal.vue'));
 
 // Account
 Vue.component('add-credit-card', require('./components/account/AddCreditCard.vue'));

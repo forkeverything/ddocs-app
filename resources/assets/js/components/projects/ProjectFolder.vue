@@ -71,10 +71,10 @@
                 let targetFile = _.find(this.folder.files, {id: parseInt(el.dataset.id)});
                 let targetFileIndex = _.indexOf(this.folder.files, targetFile);
                 this.folder.files.splice(targetFileIndex, 1);
+                el.remove();
                 // TODO :: Find better way to do this. v-for isn't reactive after calling drake.cancel() on
                 // element. Refreshing data means re-initializing all drag objects, not fun.
                 this.$nextTick(() => {
-                    el.remove();
                     vueGlobalEventBus.$emit('insert-file', el, target, source, sibling, targetFile, targetFileIndex);
                 });
             },
@@ -102,6 +102,11 @@
             vueGlobalEventBus.$on('insert-file', (el, target, source, sibling, targetFile, targetFileIndex) => {
                 this.handleInsertingFile(el, target, source, sibling, targetFile, targetFileIndex);
             });
+
+            if(this.folder.position !== this.index) {
+                this.folder.position = this.index;
+                this.update();
+            }
         }
     }
 </script>

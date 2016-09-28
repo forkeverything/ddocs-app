@@ -17,6 +17,7 @@
         </div>
         <div class="board-wrap">
             <project-board :project="{{ $project }}"></project-board>
+            <project-file-modal></project-file-modal>
         </div>
     </div>
 @endsection
