@@ -29,7 +29,7 @@ export default {
             this.newValue = this.value;
         },
         processNewValue() {
-            if(! this.allowNull && ! this.newValue) return this.exitEditMode();
+            if(! this.allowNull && ! this.newValue || (this.newValue === this.value) ) return this.exitEditMode();
             this.value = this.newValue;
             this.$nextTick(() => {
                 this.updateFn();

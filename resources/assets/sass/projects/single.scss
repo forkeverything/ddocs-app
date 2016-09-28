@@ -59,8 +59,9 @@
 
 // Outside so styles apply to drag-mirror too
 .project-folder-body {
-  border: 1px solid $laravel-border-color;
   cursor: pointer;
+  background: $extra-light-grey;
+
 
   .folder-header {
     display: flex;
@@ -71,6 +72,14 @@
       font-weight: bold;
       margin-top: 0;
       padding: 8px 10px 5px 5px;
+
+      .placeholder, input {
+        height: 30px;
+      }
+
+      .placeholder {
+        line-height: 1.4;
+      }
     }
 
     .folder-menu {
@@ -88,13 +97,13 @@
         outline: 0;
         box-shadow: none;
         background: #fff;
-        color: $grey;
-        border: 1px solid $laravel-border-color;
+        color: $dark-grey;
+        border: 1px solid $dark-grey;
         border-radius: 50%;
 
         &:hover, &:focus, &:focus:active {
-          color: $black;
-          border-color: $black;
+          color: $blue;
+          border-color: $blue;
         }
 
         i {
@@ -124,11 +133,11 @@
   }
 
   .add-project-file {
-    margin-top: 5px;
+
 
     .placeholder {
       cursor: pointer;
-      padding: 5px;
+      padding: 2px 5px 5px 10px;
       height: 35px;
       width: 100%;
       display: inline-block;
@@ -162,15 +171,15 @@
 // Outside so drag mirror is styled too
 .project-file {
   display: block;
+  background: #fff;
   position: relative;
   z-index: 2;
   padding: 5px 10px;
   margin: 5px 5px;
   border: 1px solid $laravel-border-color;
-  background: $extra-light-grey;
 
   &:hover {
-    background: darken($extra-light-grey, 5%);
+    background: $extra-light-blue;
   }
 }
 

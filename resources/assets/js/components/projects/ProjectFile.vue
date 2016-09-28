@@ -1,7 +1,7 @@
 <template>
     <div class="project-file" :data-id="file.id">
         <div class="file-name">
-            {{ file.name }}
+            <editable-text-field :value.sync="file.name" :update-fn="update"></editable-text-field>
         </div>
     </div>
 </template>
@@ -35,9 +35,9 @@
                         this.flushAndAddToRequestsQueue(xhr);
                     }
                 }).then((res) => {
-                    console.log('updated folder');
+                    console.log('updated file');
                 }, (res) => {
-                    console.log('error updating folder');
+                    console.log('error updating file');
                     console.log(res);
                 });
             }

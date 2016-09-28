@@ -71,7 +71,7 @@
     `,
         data: function () {
             return {
-                inputWidth: '0px'
+                inputWidth: '20px'
             }
         },
         methods: {
@@ -96,8 +96,8 @@
         ready: function () {
             this.$watch('newTag', () => {
                 this.$nextTick(() => {
-                    // 1px for rounding
-                    this.inputWidth = $(this.$els.sizer).width() + 2 + 'px';
+                    // 20px runway for calculating width time, needed to kill the flicker.
+                    this.inputWidth = Math.round($(this.$els.sizer).width()) + 20 + 'px';
                 });
             });
         }

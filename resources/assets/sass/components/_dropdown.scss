@@ -1,26 +1,30 @@
 //.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus
 
 .dropdown-menu {
+  padding: 0;
+
   ul {
     margin: 0;
-    li {
-      a {
-        display: inline-block;
-        width: 100%;
+  }
 
-        color: $text-color;
+  li {
+    a {
+      display: inline-block;
+      width: 100%;
 
-        &.active {
-          color: $blue;
-        }
+      color: $text-color;
 
-        &:hover, &:focus {
+      &.active {
+        color: $blue;
+      }
+
+      &:hover, &:focus {
+        color: #fff!important;
+        background: $blue!important;
+        display: block;
+        text-decoration: none!important;
+        i {
           color: #fff!important;
-          background: $blue!important;
-          text-decoration: none!important;
-          i {
-            color: #fff!important;
-          }
         }
       }
     }

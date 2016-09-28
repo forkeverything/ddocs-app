@@ -8037,19 +8037,22 @@ body {
 .caret {
   color: #999999; }
 
-.dropdown-menu ul {
-  margin: 0; }
-  .dropdown-menu ul li a {
+.dropdown-menu {
+  padding: 0; }
+  .dropdown-menu ul {
+    margin: 0; }
+  .dropdown-menu li a {
     display: inline-block;
     width: 100%;
     color: #1B2432; }
-    .dropdown-menu ul li a.active {
+    .dropdown-menu li a.active {
       color: #3498DB; }
-    .dropdown-menu ul li a:hover, .dropdown-menu ul li a:focus {
+    .dropdown-menu li a:hover, .dropdown-menu li a:focus {
       color: #fff !important;
       background: #3498DB !important;
+      display: block;
       text-decoration: none !important; }
-      .dropdown-menu ul li a:hover i, .dropdown-menu ul li a:focus i {
+      .dropdown-menu li a:hover i, .dropdown-menu li a:focus i {
         color: #fff !important; }
 
 .ui-datepicker-trigger {
@@ -8513,7 +8516,8 @@ label {
           border: 0;
           display: inline-block;
           height: 30px;
-          padding: 1px 0; }
+          padding: 1px 0;
+          margin-right: -15px; }
           .tagger .tagger-container .tag-input-container .tag-input input:focus {
             outline: 0; }
     .tagger .tagger-container .btn-tag {
@@ -8713,15 +8717,16 @@ label {
   background: #fff; }
 
 .editable-text-field .placeholder {
-  height: 35px;
+  height: 24px;
   display: inline-block;
   border: 1px solid transparent;
-  padding: 2px 1px 0 1px; }
+  padding: 2px 1px 0 1px;
+  line-height: 1; }
   .editable-text-field .placeholder:hover {
     border: 1px dashed #cccccc; }
 
 .editable-text-field input {
-  height: 35px;
+  height: 25px;
   outline: 0;
   border: 1px dashed #757575;
   width: 100%; }
@@ -9552,8 +9557,8 @@ label {
         border-radius: 0; }
 
 .project-folder-body {
-  border: 1px solid #e6e6e6;
-  cursor: pointer; }
+  cursor: pointer;
+  background: #F7F7F7; }
   .project-folder-body .folder-header {
     display: -webkit-box;
     display: flex; }
@@ -9564,6 +9569,10 @@ label {
       font-weight: bold;
       margin-top: 0;
       padding: 8px 10px 5px 5px; }
+      .project-folder-body .folder-header .folder-name .placeholder, .project-folder-body .folder-header .folder-name input {
+        height: 30px; }
+      .project-folder-body .folder-header .folder-name .placeholder {
+        line-height: 1.4; }
     .project-folder-body .folder-header .folder-menu {
       position: relative;
       display: -webkit-box;
@@ -9580,12 +9589,12 @@ label {
         outline: 0;
         box-shadow: none;
         background: #fff;
-        color: #D2D2D2;
-        border: 1px solid #e6e6e6;
+        color: #999999;
+        border: 1px solid #999999;
         border-radius: 50%; }
         .project-folder-body .folder-header .folder-menu .btn:hover, .project-folder-body .folder-header .folder-menu .btn:focus, .project-folder-body .folder-header .folder-menu .btn:focus:active {
-          color: #353535;
-          border-color: #353535; }
+          color: #3498DB;
+          border-color: #3498DB; }
         .project-folder-body .folder-header .folder-menu .btn i {
           vertical-align: top;
           margin-top: -2px;
@@ -9600,42 +9609,40 @@ label {
             vertical-align: top;
             line-height: 1.6;
             width: 15px; }
-  .project-folder-body .add-project-file {
-    margin-top: 5px; }
-    .project-folder-body .add-project-file .placeholder {
-      cursor: pointer;
+  .project-folder-body .add-project-file .placeholder {
+    cursor: pointer;
+    padding: 2px 5px 5px 10px;
+    height: 35px;
+    width: 100%;
+    display: inline-block; }
+    .project-folder-body .add-project-file .placeholder:hover {
+      background: #F7F7F7; }
+  .project-folder-body .add-project-file form {
+    display: -webkit-box;
+    display: flex;
+    padding: 5px; }
+    .project-folder-body .add-project-file form input {
       padding: 5px;
-      height: 35px;
-      width: 100%;
-      display: inline-block; }
-      .project-folder-body .add-project-file .placeholder:hover {
-        background: #F7F7F7; }
-    .project-folder-body .add-project-file form {
-      display: -webkit-box;
-      display: flex;
-      padding: 5px; }
-      .project-folder-body .add-project-file form input {
-        padding: 5px;
-        height: 30px;
-        border-radius: 0;
-        margin-right: 5px; }
-        .project-folder-body .add-project-file form input:focus {
-          border-color: #66ccf5; }
-      .project-folder-body .add-project-file form .btn {
-        height: 30px;
-        border-radius: 0;
-        line-height: 1; }
+      height: 30px;
+      border-radius: 0;
+      margin-right: 5px; }
+      .project-folder-body .add-project-file form input:focus {
+        border-color: #66ccf5; }
+    .project-folder-body .add-project-file form .btn {
+      height: 30px;
+      border-radius: 0;
+      line-height: 1; }
 
 .project-file {
   display: block;
+  background: #fff;
   position: relative;
   z-index: 2;
   padding: 5px 10px;
   margin: 5px 5px;
-  border: 1px solid #e6e6e6;
-  background: #F7F7F7; }
+  border: 1px solid #e6e6e6; }
   .project-file:hover {
-    background: #eaeaea; }
+    background: #eff9fd; }
 
 .gu-mirror {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175); }

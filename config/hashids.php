@@ -51,7 +51,7 @@ return [
 
         'checklist' => [
             'salt' => 'super secret checklists are the best',
-            'length' => '12',
+            'length' => '8',
             'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
         ],
 
@@ -63,7 +63,7 @@ return [
 
         'note' => [
             'salt' => 'notes keep everybody on the same page',
-            'length' => '8',
+            'length' => '12',
             'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
         ]
 

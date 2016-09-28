@@ -49,6 +49,7 @@
           display: inline-block;
           height: 30px;
           padding: 1px 0;
+          margin-right: -15px;  // Because we added 20px extra width
 
           &:focus {
             outline: 0;

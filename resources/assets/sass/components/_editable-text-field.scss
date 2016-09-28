@@ -1,16 +1,17 @@
 .editable-text-field {
   .placeholder {
-    height: 35px;
+    height: 24px;
     display: inline-block;
     border: 1px solid transparent;
     padding: 2px 1px 0 1px;
+    line-height: 1;
 
     &:hover {
       border: 1px dashed $input-border;
     }
   }
   input {
-    height: 35px;
+    height: 25px;
     outline: 0;
     border: 1px dashed $input-border-focus;
     width: 100%;
