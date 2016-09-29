@@ -36,13 +36,16 @@ class FileRequestsController extends Controller
         // Only accept the File if we're waiting on one
         if ($fileRequest->hasStatus('received')) abort(409, "File already received");
 
-        $fileRequest = UploadFactory::store($fileRequest, $request->file('file'));
+        UploadFactory::store($fileRequest, $request->file('file'));
 
+        $fileRequest->update([
+            'status' => 'received'
+        ]);
 
         // Check if the Checklist the FileRequest belongs to is complete
         dispatch(new CheckIfChecklistComplete($fileRequest->checklist));
 
-        // Re-load a fresh FileRequest without the checklist baggage.
+        // Re-load a fresh FileRequest without the checklist baggage attached from event.
         return $fileRequest->fresh();
 
     }

@@ -44,5 +44,15 @@ class ProjectFile extends Model
         return $this->morphMany(Comment::class, 'subject');
     }
 
+    /**
+     * Could potentially have many uploads.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function uploads()
+    {
+        return $this->morphMany(Upload::class, 'target')->orderBy('created_at', 'asc');
+    }
+
 
 }

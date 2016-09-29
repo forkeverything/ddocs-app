@@ -17,16 +17,17 @@ class Upload extends Model
         'size',
         'rejected',
         'rejected_reason',
-        'file_request_id'
+        'target_id',
+        'target_type'
     ];
 
     /**
-     * An Upload is for a specific File Request.
+     * An Upload could be for a FileRequest or ProjectFile
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function fileRequest()
+    public function target()
     {
-        return $this->belongsTo(FileRequest::class, 'file_request_id');
+        return $this->morphTo();
     }
 }

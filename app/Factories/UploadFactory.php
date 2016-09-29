@@ -5,8 +5,11 @@ namespace App\Factories;
 
 
 use App\FileRequest;
+use App\ProjectFile;
 use App\Upload;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
+use League\Flysystem\Exception;
 
 class UploadFactory
 {
@@ -26,13 +29,6 @@ class UploadFactory
     protected $uploadedFile;
 
     /**
-     * FileRequest Model
-     *
-     * @var FileRequest
-     */
-    protected $fileRequest;
-
-    /**
      * Generated new File name
      *
      * @var
@@ -47,15 +43,37 @@ class UploadFactory
     protected $path;
 
     /**
+     * The Model we're attaching this Upload to.
+     *
+     * @var Model
+     */
+    protected $target;
+
+    /**
      * UploadFactory constructor.
      *
-     * @param FileRequest $fileRequest
+     * @param Model $target
      * @param UploadedFile $uploadedFile
      */
-    public function __construct(FileRequest $fileRequest, UploadedFile $uploadedFile)
+    public function __construct(Model $target, UploadedFile $uploadedFile)
     {
         $this->uploadedFile = $uploadedFile;
-        $this->fileRequest = $fileRequest;
+        $this->target = $target;
+    }
+
+    /**
+     * Util method to check if the target has a certain
+     * type shortname.
+     *
+     * @param $type
+     * @return bool
+     */
+    protected function targetType($type)
+    {
+        $className = '';
+        if($type === 'project') $className = 'App\\ProjectFile';
+        if($type === 'request') $className = 'App\\FileRequest';
+        return get_class($this->target) === $className;
     }
 
     /**
@@ -65,9 +83,12 @@ class UploadFactory
      */
     protected function makeFileName()
     {
-
         // Convert uploaded file to lower case and join with '_'
-        $this->name = str_replace(" ", "_", strtolower($this->fileRequest->file->name)). '_v' . $this->fileRequest->version;
+        if($this->targetType('request')) {
+            $this->name = str_replace(" ", "_", strtolower($this->target->file->name)). '_v' . $this->target->version;
+        } elseif ($this->targetType('project')) {
+            $this->name = str_replace(" ", "_", strtolower($this->target->file->name));
+        }
 
         $extension = $this->uploadedFile->getClientOriginalExtension();
 
@@ -77,20 +98,18 @@ class UploadFactory
     /**
      * Static wrapper - store a File after upload...
      *
-     * @param FileRequest $fileRequest
+     * @param Model $model
      * @param UploadedFile $uploadedFile
-     * @return FileRequest
+     * @return Upload
+     * @throws Exception
      */
-    public static function store(FileRequest $fileRequest, UploadedFile $uploadedFile)
+    public static function store(Model $target, UploadedFile $uploadedFile)
     {
-        $factory = new static($fileRequest, $uploadedFile);
-        $factory->setDirectory()
-                ->moveFile()
-                ->createModel()
-                ->updateDB();
-
-        // fetch a fresh copy - without eager-loaded baggage.
-        return $factory->fileRequest;
+        if(! $target instanceof FileRequest && ! $target instanceof ProjectFile) throw new Exception("Expected either a FileRequest or ProjectFile to attach Upload to.");
+        $factory = new static($target, $uploadedFile);
+        return $factory->setDirectory()
+                       ->moveFile()
+                       ->createModel();
     }
 
     /**
@@ -100,7 +119,12 @@ class UploadFactory
      */
     protected function setDirectory()
     {
-        $this->directory = env('APP_ENV', 'local') . '/user/' . $this->fileRequest->checklist->user_id . '/checklists/' . hashId('checklist', $this->fileRequest->checklist);
+        if($this->targetType('request')) {
+            $this->directory = env('APP_ENV', 'local') . '/user/' . $this->target->checklist->user_id . '/checklists/' . hashId('checklist', $this->target->checklist);
+        } elseif ($this->targetType('project')) {
+            $this->directory = env('APP_ENV', 'local') . '/user/' . $this->target->folder->project->user_id . '/projects/' . $this->target->folder->project_id;
+        }
+
         return $this;
     }
 
@@ -123,27 +147,10 @@ class UploadFactory
      */
     protected function createModel()
     {
-        Upload::create([
+        return $this->target->uploads()->create([
             'file_name' => $this->name,
             'path' => $this->path,
-            'file_request_id' => $this->fileRequest->id,
             'size' => $this->uploadedFile->getClientSize()
         ]);
-
-        return $this;
-    }
-
-    /**
-     * Update the FileRequest to received.
-     *
-     * @return $this
-     */
-    protected function updateDB()
-    {
-        $this->fileRequest->update([
-            'status' => 'received'
-        ]);
-
-        return $this;
     }
 }
