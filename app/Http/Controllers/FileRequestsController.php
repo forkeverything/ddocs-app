@@ -115,4 +115,25 @@ class FileRequestsController extends Controller
         return $fileRequest;
     }
 
+    /**
+     * Add a comment to a File Request.
+     *
+     * @param $fileRequestHash
+     * @param Requests\AddCommentRequest $request
+     * @return mixed
+     */
+    public function postAddComment($fileRequestHash, Requests\AddCommentRequest $request)
+    {
+        // TODO ::: Currently, anybody who is logged-in can post comments to a file request. Need to change this
+        // when we implement protected checklists.
+
+        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
+        return $fileRequest->comments()->create([
+            'subject_id' => $fileRequest->id,
+            'subject_type' => 'App\\FileRequest',
+            'body' => $request->body,
+            'user_id' => Auth::id()
+        ])->load('sender');
+    }
+
 }

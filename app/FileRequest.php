@@ -172,4 +172,14 @@ class FileRequest extends Model
 
         return $this;
     }
+
+    /**
+     * A File Request could have lots of comments.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'subject');
+    }
 }

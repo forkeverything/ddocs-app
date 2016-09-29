@@ -34,5 +34,15 @@ class ProjectFile extends Model
         return $this->belongsTo(FileRequest::class, 'file_request_id');
     }
 
+    /**
+     * A Project File could have lots of comments.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'subject');
+    }
+
 
 }

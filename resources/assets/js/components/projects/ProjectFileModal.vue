@@ -1,5 +1,5 @@
 <template>
-<div id="project-modal">
+<div id="project-file-modal">
     <div class="modal" tabindex="-1" role="dialog" v-el:modal>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -13,6 +13,7 @@
                     </div>
                     <div class="comments">
                         <h5>Comments</h5>
+                        <comments-thread :project-id="projectId" :comments.sync="file.comments" :subject-type="'App\\ProjectFile'" :subject-id="file.id"></comments-thread>
                     </div>
                 </div>
             </div>
@@ -27,6 +28,7 @@ export default {
             file: ''
         }
     },
+    props: ['project-id'],
     methods: {
         hide(){
             $(this.$els.modal).modal('hide');
@@ -36,7 +38,8 @@ export default {
         vueGlobalEventBus.$on('view-project-file', (file) => {
             this.file = file;
             this.$nextTick(() => {
-                $(this.$els.modal).modal('show')
+                $(this.$els.modal).modal('show');
+            vueGlobalEventBus.$emit('showing-comments');
             });
         })
     }

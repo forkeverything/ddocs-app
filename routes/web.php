@@ -38,12 +38,12 @@ Route::post('/fr/{file_request_hash}/reject', 'FileRequestsController@postReject
 Route::get('/fr/{file_request_hash}/history', 'FileRequestsController@getHistory');
 Route::get('/fr/{file_request_hash}/notes', 'FileRequestsController@getNotes');
 Route::delete('/fr/{file_request_hash}', 'FileRequestsController@deleteFiles');
+Route::post('/fr/{file_request_hash}/comments', 'FileRequestsController@postAddComment');
 
 // Notes
 Route::post('/note', 'NotesController@postNew');
 Route::put('/note/{note_hash}', 'NotesController@putUpdate');
 Route::delete('/note/{note_hash}', 'NotesController@delete');
-
 
 // Files
 Route::get('/files', 'FilesController@getForUser');
@@ -56,9 +56,11 @@ Route::put('/projects/{project}', 'ProjectsController@putUpdate');
 Route::delete('/projects/{project}', 'ProjectsController@delete');
 Route::post('/projects/{project}/folders', 'ProjectsController@postCreateFolder');
 Route::put('/projects/{project}/folders/{projectFolder}', 'ProjectsController@putUpdateFolder');
-Route::put('/projects/{project}/files/{projectFile}', 'ProjectsController@putUpdateFile');
 Route::delete('/projects/{project}/folders/{projectFolder}', 'ProjectsController@deleteFolder');
 Route::post('/projects/{project}/folders/{projectFolder}/files', 'ProjectsController@postAddFile');
+Route::put('/projects/{project}/files/{projectFile}', 'ProjectsController@putUpdateFile');
+Route::post('/projects/{project}/files/{projectFile}', 'ProjectsController@postAddComment');
+
 
 
 // Account

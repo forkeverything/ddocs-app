@@ -1,0 +1,32 @@
+.comments-thread {
+  padding: 10px;
+  border: 1px solid $laravel-border-color;
+
+  .list-comments {
+    min-height: 75px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .single-comment {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .new-comment-field {
+    textarea {
+
+    }
+  }
+}
+
+#project-file-modal {
+  .comments-thread {
+    margin-top: 12.5px;
+
+    .list-comments {
+      max-height: 350px;
+    }
+  }
+}

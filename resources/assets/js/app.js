@@ -55,6 +55,10 @@ Vue.component('add-project-file', require('./components/projects/AddProjectFile.
 Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
 Vue.component('project-file-modal', require('./components/projects/ProjectFileModal.vue'));
 
+// Comments
+Vue.component('comments-thread', require('./components/comments/CommentsThread.vue'));
+Vue.component('new-comment-field', require('./components/comments/NewCommentField.vue'));
+
 // Account
 Vue.component('add-credit-card', require('./components/account/AddCreditCard.vue'));
 

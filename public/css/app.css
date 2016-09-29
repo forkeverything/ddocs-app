@@ -9685,26 +9685,41 @@ label {
 #project-board.dragging .files-list {
   min-height: 30px; }
 
-#project-modal .modal-body {
+#project-file-modal .modal-body {
   min-height: 650px; }
 
-#project-modal .file-name {
+#project-file-modal .file-name {
   margin: 0 0 10px;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
   align-items: center; }
-  #project-modal .file-name i {
+  #project-file-modal .file-name i {
     font-size: 1em;
     margin-right: 8px;
     color: #999999;
     float: left; }
-  #project-modal .file-name .name-wrap {
+  #project-file-modal .file-name .name-wrap {
     -webkit-box-flex: 1;
     flex: 1;
     max-width: calc(100% - 45px);
     margin-right: 30px;
     display: inline-block; }
+
+.comments-thread {
+  padding: 10px;
+  border: 1px solid #e6e6e6; }
+  .comments-thread .list-comments {
+    min-height: 75px;
+    overflow-x: hidden;
+    overflow-y: auto; }
+    .comments-thread .list-comments .single-comment:first-child {
+      margin-top: 0; }
+
+#project-file-modal .comments-thread {
+  margin-top: 12.5px; }
+  #project-file-modal .comments-thread .list-comments {
+    max-height: 350px; }
 
 #account-overview #page-fixed-top {
   border-bottom: 1px solid #e6e6e6; }

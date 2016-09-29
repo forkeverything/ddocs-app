@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddCommentRequest;
 use App\Http\Requests\AddProjectFileRequest;
 use App\Http\Requests\CreateProjectFolderRequest;
 use App\Http\Requests\SaveProjectRequest;
@@ -35,7 +36,8 @@ class ProjectsController extends Controller
                 'putUpdateFolder',
                 'putUpdateFile',
                 'deleteFolder',
-                'postAddFile'
+                'postAddFile',
+                'postAddComment'
             ]
         ]);
     }
@@ -80,7 +82,8 @@ class ProjectsController extends Controller
                 $query->orderBy('position', 'asc');
             },
             'folders.files' => function ($query) {
-                $query->orderBy('position', 'asc');
+                $query->orderBy('position', 'asc')
+                      ->with('comments');
             }
         ]);
 
@@ -178,10 +181,31 @@ class ProjectsController extends Controller
      */
     public function putUpdateFile(Project $project, ProjectFile $projectFile, AddProjectFileRequest $request)
     {
-        if($projectFile->folder->project_id !== $project->id) abort(403, "File does not belong to project");
-        if(ProjectFolder::findOrFail($request->project_folder_id)->project_id !== $project->id) abort(403, "Trying to put file into folder that doesn't belong to this project.");
+        // Does the file belong to the project?
+        if ($projectFile->folder->project_id !== $project->id) abort(403, "File does not belong to project");
+        // Are we trying to move it into a valid folder?
+        if (ProjectFolder::findOrFail($request->project_folder_id)->project_id !== $project->id) abort(403, "Trying to put file into folder that doesn't belong to this project.");
         $projectFile->update($request->all());
         return $projectFile;
+    }
+
+    /**
+     * Add Comment to a ProjectFile.
+     *
+     * @param Project $project
+     * @param ProjectFile $projectFile
+     * @param AddCommentRequest $request
+     * @return Model
+     */
+    public function postAddComment(Project $project, ProjectFile $projectFile, AddCommentRequest $request)
+    {
+        if ($projectFile->folder->project_id !== $project->id) abort(403, "File does not belong to project");
+        return $projectFile->comments()->create([
+            'subject_id' => $projectFile->id,
+            'subject_type' => 'App\\ProjectFile',
+            'body' => $request->body,
+            'user_id' => Auth::id()
+        ])->load('sender');
     }
 
 }
