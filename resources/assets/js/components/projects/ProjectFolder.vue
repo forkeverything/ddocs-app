@@ -70,8 +70,8 @@
                 if (parseInt(source.dataset.id) !== this.folder.id) return;
                 let targetFile = _.find(this.folder.files, {id: parseInt(el.dataset.id)});
                 let targetFileIndex = _.indexOf(this.folder.files, targetFile);
+                el.remove(); // because Vue loses track of this el - we need to manually delete
                 this.folder.files.splice(targetFileIndex, 1);
-                el.remove();
                 // TODO :: Find better way to do this. v-for isn't reactive after calling drake.cancel() on
                 // element. Refreshing data means re-initializing all drag objects, not fun.
                 this.$nextTick(() => {

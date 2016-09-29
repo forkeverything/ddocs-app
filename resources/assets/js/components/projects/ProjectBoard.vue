@@ -58,7 +58,6 @@ export default {
 
             this.folderDrake.on('drop', (el, target, source, sibling) => {
                 this.updateFolderIndexes(el, target, source,sibling);
-//                this.folderDrake.cancel(true);
             });
 
             // 'dragging' class
@@ -97,8 +96,6 @@ export default {
 
             this.fileDrake.on('drop', (el, target, source, sibling) => {
                 vueGlobalEventBus.$emit('dropped-file', el, target, source, sibling);
-                // Force refresh
-//                this.fileDrake.cancel(true);
             });
 
 
