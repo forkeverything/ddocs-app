@@ -61,6 +61,7 @@ class FileRequestsController extends Controller
     {
         $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash))
                                   ->reject($request->reason);
+        if(! Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
         Event::fire(new FileWasRejected($fileRequest));
         return $fileRequest;
     }
@@ -113,6 +114,7 @@ class FileRequestsController extends Controller
     public function deleteFiles($fileRequestHash)
     {
         $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
+        if(! Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
         $uploadPaths = $fileRequest->uploads->pluck('path')->toArray();
         if(Storage::delete($uploadPaths)) $fileRequest->delete();
         return $fileRequest;

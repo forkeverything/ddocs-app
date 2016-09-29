@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Factories/UploadFactory.php" afterPath="$PROJECT_DIR$/app/Factories/UploadFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/FileRequest.php" afterPath="$PROJECT_DIR$/app/FileRequest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ProjectFile.php" afterPath="$PROJECT_DIR$/app/ProjectFile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Upload.php" afterPath="$PROJECT_DIR$/app/Upload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_09_10_070528_create_uploads_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_09_10_070528_create_uploads_table.php" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,14 +24,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ChecklistsController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
+      <file leaf-file-name="FileRequestsController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="35" column="7" lean-forward="true" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
-              <folding>
-                <element signature="e#40#58#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="-1051">
+              <caret line="63" column="118" lean-forward="false" selection-start-line="63" selection-start-column="118" selection-end-line="63" selection-end-column="118" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -52,7 +45,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self</find>
       <find>filemodal</find>
       <find>modal</find>
       <find>o`</find>
@@ -82,6 +74,7 @@
       <find>reject</find>
       <find>versioon</find>
       <find>version</find>
+      <find>delete</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -136,11 +129,11 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_09_05_073252_create_recipients_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_09_10_070528_create_uploads_table.php" />
         <option value="$PROJECT_DIR$/app/Upload.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php" />
         <option value="$PROJECT_DIR$/app/FileRequest.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_09_26_072731_create_project_files_table.php" />
         <option value="$PROJECT_DIR$/app/ProjectFile.php" />
         <option value="$PROJECT_DIR$/app/Factories/UploadFactory.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php" />
       </list>
     </option>
   </component>
@@ -522,12 +515,12 @@
       <workItem from="1475055640741" duration="598000" />
       <workItem from="1475131753330" duration="2000" />
       <workItem from="1475178718934" duration="4573000" />
-      <workItem from="1475183665693" duration="2504000" />
+      <workItem from="1475183665693" duration="2728000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="601702000" />
+    <option name="totallyTimeSpent" value="601926000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -572,18 +565,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="25" />
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/components/editables/text-field.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/components/projects/AddProjectFolderForm.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="677">
@@ -1714,37 +1700,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="62" column="40" lean-forward="true" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
-          <folding>
-            <marker date="1475185688000" expanded="false" signature="44:460" ph="..." />
-            <marker date="1475185688000" expanded="true" signature="509:4813" ph="{...}" />
-            <marker date="1475185688000" expanded="true" signature="520:709" ph=" Handle POST request to upload a file for a File Request within a Checklist. ..." />
-            <marker date="1475185688000" expanded="true" signature="792:1594" ph="{...}" />
-            <marker date="1475185688000" expanded="true" signature="1263:1309" ph="..." />
-            <marker date="1475185688000" expanded="true" signature="1264:1308" ph="..." />
-            <marker date="1475185688000" expanded="true" signature="1603:1799" ph=" POST request to mark a File (File Request's most recent upload) as rejected. ..." />
-            <marker date="1475185688000" expanded="true" signature="1890:2140" ph="{...}" />
-            <marker date="1475185688000" expanded="true" signature="2031:2047" ph="..." />
-            <marker date="1475185688000" expanded="true" signature="2149:2332" ph=" The history view with different versions of a File Request. ..." />
-            <marker date="1475185688000" expanded="true" signature="2383:2578" ph="{...}" />
-            <marker date="1475185688000" expanded="true" signature="2587:2687" ph=" Get notes for file request. ..." />
-            <marker date="1475185688000" expanded="true" signature="2736:2943" ph="{...}" />
-            <marker date="1475185688000" expanded="true" signature="2952:3157" ph=" Modify FileRequest ..." />
-            <marker date="1475185688000" expanded="true" signature="3232:3531" ph="{...}" />
-            <marker date="1475185688000" expanded="true" signature="3540:3714" ph=" Delete FileRequest ..." />
-            <marker date="1475185688000" expanded="true" signature="3766:4037" ph="{...}" />
-            <marker date="1475185688000" expanded="true" signature="4046:4201" ph=" Add a comment to a File Request. ..." />
-            <marker date="1475185688000" expanded="true" signature="4293:4810" ph="{...}" />
-            <marker date="1475185688000" expanded="true" signature="4605:4786" ph="..." />
-            <marker date="1475185688000" expanded="true" signature="4606:4785" ph="..." />
-            <marker date="1475185688000" expanded="true" signature="4794:4802" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_07_31_060512_create_file_requests_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
@@ -1807,11 +1762,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="35" column="7" lean-forward="true" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+        <state relative-caret-position="918">
+          <caret line="49" column="30" lean-forward="true" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
           <folding>
-            <element signature="e#40#58#0#PHP" expanded="true" />
+            <marker date="1474449119000" expanded="true" signature="44:366" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="413:4921" ph="{...}" />
+            <marker date="1474449119000" expanded="true" signature="424:478" ph=" ChecklistsController constructor. ..." />
+            <marker date="1474449119000" expanded="true" signature="514:753" ph="{...}" />
+            <marker date="1474449119000" expanded="true" signature="547:745" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="556:744" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="580:734" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="762:911" ph=" Show the view for viewing all Checklist(s) made by User. ..." />
+            <marker date="1474449119000" expanded="true" signature="948:998" ph="{...}" />
+            <marker date="1474449119000" expanded="true" signature="1007:1174" ph=" Return the Authenticated User's checklists as JSON from ..." />
+            <marker date="1474449119000" expanded="true" signature="1238:1633" ph="{...}" />
+            <marker date="1474449119000" expanded="true" signature="1501:1508" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="1555:1568" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="1617:1625" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="1642:1775" ph=" Return the view to make a new Checklist. ..." />
+            <marker date="1474449119000" expanded="true" signature="1811:1862" ph="{...}" />
+            <marker date="1474449119000" expanded="true" signature="1871:2000" ph=" Handle POST request to make a new Checklist. ..." />
+            <marker date="1474449119000" expanded="true" signature="2069:2198" ph="{...}" />
+            <marker date="1474449119000" expanded="true" signature="2207:2373" ph=" POST Email Webhook (via Postmark) to create a Checklist ..." />
+            <marker date="1474449119000" expanded="true" signature="2446:3018" ph="{...}" />
+            <marker date="1474449119000" expanded="true" signature="2777:2889" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="3028:3186" ph=" Get the view for a single Checklist. ..." />
+            <marker date="1474449119000" expanded="true" signature="3243:3551" ph="{...}" />
+            <marker date="1474449119000" expanded="true" signature="3560:3660" ph=" Get weightings for Checklist. ..." />
+            <marker date="1474449119000" expanded="true" signature="3712:3871" ph="{...}" />
+            <marker date="1474449119000" expanded="true" signature="3881:4033" ph=" Retrieve the files for checklist. ..." />
+            <marker date="1474449119000" expanded="true" signature="4110:4917" ph="{...}" />
+            <marker date="1474449119000" expanded="true" signature="4469:4497" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="4554:4574" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="4626:4642" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="4693:4700" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="4754:4789" ph="..." />
+            <marker date="1474449119000" expanded="true" signature="4901:4909" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Policies/FileRequestPolicy.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1051">
+          <caret line="63" column="118" lean-forward="false" selection-start-line="63" selection-start-column="118" selection-end-line="63" selection-end-column="118" />
+          <folding />
         </state>
       </provider>
     </entry>
