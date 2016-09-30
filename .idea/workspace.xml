@@ -3,17 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css.map" afterPath="$PROJECT_DIR$/public/css/app.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/landing.css" afterPath="$PROJECT_DIR$/public/css/landing.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/landing.css.map" afterPath="$PROJECT_DIR$/public/css/landing.css.map" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFile.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFile.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFolder.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFolder.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/utilities/EditableTextField.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/utilities/EditableTextField.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/components/editables/text-field.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/components/editables/text-field.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/utilities.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/utilities.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFileModal.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFileModal.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/projects/single.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/projects/single.scss" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,18 +28,38 @@
     <favorites_list name="files-collector" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="text-field.scss" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/assets/sass/components/editables/text-field.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="ProjectFileModal.vue" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFileModal.vue">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="783">
+                  <caret line="29" column="45" lean-forward="true" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="single.scss" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/assets/sass/projects/single.scss">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="812">
+                  <caret line="272" column="0" lean-forward="true" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#3698#4098#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -56,11 +70,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>o`</find>
-      <find>recipients</find>
-      <find>recipient</find>
-      <find>-&gt;load('sender');</find>
-      <find>-&gt;fileRequest</find>
       <find>throw</find>
       <find>new static</find>
       <find>setDirect</find>
@@ -86,6 +95,11 @@
       <find>delete</find>
       <find>postadd</find>
       <find>project-folder</find>
+      <find>modal</find>
+      <find>btn-text</find>
+      <find>file-name</find>
+      <find>margin-right</find>
+      <find>.content</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,10 +140,7 @@
         <option value="$PROJECT_DIR$/resources/assets/js/components/comments/NewCommentField.vue" />
         <option value="$PROJECT_DIR$/app/Comment.php" />
         <option value="$PROJECT_DIR$/resources/assets/sass/app.scss" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/projects/single.scss" />
-        <option value="$PROJECT_DIR$/resources/assets/sass/comments.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/comments/CommentsThread.vue" />
-        <option value="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFileModal.vue" />
         <option value="$PROJECT_DIR$/database/migrations/2016_09_29_195322_create_comments_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_09_05_073252_create_recipients_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_09_10_070528_create_uploads_table.php" />
@@ -145,6 +156,9 @@
         <option value="$PROJECT_DIR$/resources/assets/sass/components/editables/text-field.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFile.vue" />
         <option value="$PROJECT_DIR$/resources/assets/sass/utilities.scss" />
+        <option value="$PROJECT_DIR$/resources/assets/sass/comments.scss" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFileModal.vue" />
+        <option value="$PROJECT_DIR$/resources/assets/sass/projects/single.scss" />
       </list>
     </option>
   </component>
@@ -526,12 +540,12 @@
       <workItem from="1475055640741" duration="598000" />
       <workItem from="1475131753330" duration="2000" />
       <workItem from="1475178718934" duration="4573000" />
-      <workItem from="1475183665693" duration="3551000" />
+      <workItem from="1475183665693" duration="6125000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="602749000" />
+    <option name="totallyTimeSpent" value="605323000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -676,51 +690,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
           <caret line="35" column="12" lean-forward="true" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/projects/single.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="198" column="18" lean-forward="true" selection-start-line="198" selection-start-column="18" selection-end-line="198" selection-end-column="18" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/sass/comments.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFileModal.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="29" column="6" lean-forward="true" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
-          <folding>
-            <marker date="1475183732000" expanded="true" signature="9:1234" ph="..." />
-            <marker date="1475183732000" expanded="true" signature="39:1222" ph="..." />
-            <marker date="1475183732000" expanded="true" signature="102:1215" ph="..." />
-            <marker date="1475183732000" expanded="true" signature="153:1204" ph="..." />
-            <marker date="1475183732000" expanded="true" signature="193:1189" ph="..." />
-            <marker date="1475183732000" expanded="true" signature="234:1170" ph="..." />
-            <marker date="1475183732000" expanded="true" signature="331:407" ph="..." />
-            <marker date="1475183732000" expanded="true" signature="337:398" ph="..." />
-            <marker date="1475183732000" expanded="false" signature="385:392" ph="×" />
-            <marker date="1475183732000" expanded="true" signature="632:863" ph="..." />
-            <marker date="1475183732000" expanded="true" signature="906:1147" ph="..." />
-            <marker date="1475183732000" expanded="true" signature="1243:1752" ph="..." />
-            <marker date="1475183732000" expanded="true" signature="1260:1743" ph="{...}" />
-            <marker date="1475183732000" expanded="true" signature="1282:1337" ph="{...}" />
-            <marker date="1475183732000" expanded="true" signature="1299:1331" ph="{&quot;file&quot;: ''...}" />
-            <marker date="1475183732000" expanded="true" signature="1379:1458" ph="{...}" />
-            <marker date="1475183732000" expanded="true" signature="1395:1452" ph="{...}" />
-            <marker date="1475183732000" expanded="true" signature="1472:1741" ph="{...}" />
-            <marker date="1475183732000" expanded="true" signature="1535:1553" ph="{...}" />
-            <marker date="1475183732000" expanded="true" signature="1600:1624" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1363,6 +1333,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
           <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <marker date="1475212595000" expanded="true" signature="21:653" ph="{...}" />
+            <marker date="1475212595000" expanded="true" signature="39:250" ph="{...}" />
+            <marker date="1475212595000" expanded="true" signature="157:246" ph="{...}" />
+            <marker date="1475212595000" expanded="true" signature="260:362" ph="{...}" />
+            <marker date="1475212595000" expanded="true" signature="425:651" ph="{...}" />
+            <marker date="1475212595000" expanded="true" signature="540:602" ph="{...}" />
+            <marker date="1475212595000" expanded="true" signature="614:647" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/comments.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/sass/projects/single.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="812">
+          <caret line="272" column="0" lean-forward="true" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+          <folding>
+            <element signature="e#3698#4098#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFileModal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="783">
+          <caret line="29" column="45" lean-forward="true" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
           <folding />
         </state>
       </provider>

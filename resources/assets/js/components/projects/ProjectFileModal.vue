@@ -6,14 +6,37 @@
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
-                        <h4 class="file-name"><i class="fa fa-file-o"></i> <span class="name-wrap"><editable-text-field :value.sync="file.name"></editable-text-field></span></h4>
-                    <div class="description">
-                        <h5>Description</h5>
-                        <editable-text-area :value.sync="file.description" :allow-null="true" :placeholder="'Details about the file...'"></editable-text-area>
-                    </div>
-                    <div class="comments">
-                        <h5>Comments</h5>
-                        <comments-thread :project-id="projectId" :comments.sync="file.comments" :subject-type="'App\\ProjectFile'" :subject-id="file.id"></comments-thread>
+                    <div class="main">
+                        <div class="content">
+                            <h3 class="file-name"><i class="fa fa-file-o"></i> <span class="name-wrap"><editable-text-field :value.sync="file.name"></editable-text-field></span></h3>
+                            <ul class="list-unstyled list-inline file-modal-nav">
+                                <li><a class="clickable active"><h4>Project</h4></a></li>
+                                <li><a class="clickable"><h4>Request</h4></a></li>
+                            </ul>
+                            <div class="project">
+                                <span class="small text-muted">Only team members in the project can see this section.</span>
+                                <div class="description">
+                                    <h5>Description</h5>
+                                    <editable-text-area :value.sync="file.description" :allow-null="true" :placeholder="'Details about the file...'"></editable-text-area>
+                                </div>
+                                <div class="comments">
+                                    <h5>Team Comments</h5>
+                                    <comments-thread :project-id="projectId" :comments.sync="file.comments" :subject-type="'App\\ProjectFile'" :subject-id="file.id"></comments-thread>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <ul class="list-unstyled">
+                                <li><h5>Request</h5></li>
+                                <li><a class="btn btn-primary btn-sm"><i class="fa fa-link"></i>Attach</a></li>
+                                <li><a class="btn btn-primary btn-sm"><i class="fa fa-list"></i>Checklist</a></li>
+                                <li><h5>Project</h5></li>
+                                <li><a class="btn btn-primary btn-sm"><i class="fa fa-upload"></i>Upload</a></li>
+                                <li><a class="btn btn-primary btn-sm"><i class="fa fa-trash"></i>Delete</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

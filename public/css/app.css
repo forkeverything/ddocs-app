@@ -9696,25 +9696,72 @@ label {
   min-height: 30px; }
 
 #project-file-modal .modal-body {
-  min-height: 650px; }
-
-#project-file-modal .file-name {
-  margin: 0 0 10px;
+  min-height: 650px;
   display: -webkit-box;
   display: flex;
-  -webkit-box-align: center;
-  align-items: center; }
-  #project-file-modal .file-name i {
-    font-size: 1em;
-    margin-right: 8px;
-    color: #999999;
-    float: left; }
-  #project-file-modal .file-name .name-wrap {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  padding: 0; }
+  #project-file-modal .modal-body .close {
+    position: absolute;
+    right: 15px;
+    top: 15px; }
+  #project-file-modal .modal-body .main {
+    display: -webkit-box;
+    display: flex;
     -webkit-box-flex: 1;
-    flex: 1;
-    max-width: calc(100% - 45px);
-    margin-right: 30px;
-    display: inline-block; }
+    flex: 1; }
+    #project-file-modal .modal-body .main .content {
+      -webkit-box-flex: 100%;
+      flex: 100%;
+      padding: 15px; }
+      #project-file-modal .modal-body .main .content .file-name {
+        margin: 0 0 10px;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center; }
+        #project-file-modal .modal-body .main .content .file-name i {
+          font-size: 1em;
+          margin-right: 8px;
+          color: #999999;
+          float: left; }
+        #project-file-modal .modal-body .main .content .file-name .name-wrap {
+          -webkit-box-flex: 1;
+          flex: 1;
+          max-width: calc(100% - 45px);
+          margin-right: 30px;
+          display: inline-block; }
+      #project-file-modal .modal-body .main .content .file-modal-nav {
+        margin: 10px 0 0 0; }
+        #project-file-modal .modal-body .main .content .file-modal-nav li:first-child {
+          padding-left: 0; }
+        #project-file-modal .modal-body .main .content .file-modal-nav li a {
+          color: #1B2432; }
+          #project-file-modal .modal-body .main .content .file-modal-nav li a:hover {
+            color: #3498DB;
+            text-decoration: none; }
+          #project-file-modal .modal-body .main .content .file-modal-nav li a.active {
+            color: #3498DB; }
+          #project-file-modal .modal-body .main .content .file-modal-nav li a h4 {
+            margin: 0; }
+    #project-file-modal .modal-body .main .actions {
+      padding: 15px 10px;
+      -webkit-box-flex: 0;
+      flex: 0 0 180px;
+      background: #F7F7F7;
+      display: none; }
+      @media screen and (min-width: 768px) {
+        #project-file-modal .modal-body .main .actions {
+          display: block; } }
+      #project-file-modal .modal-body .main .actions ul li:not(:last-child) {
+        margin-bottom: 5px; }
+      #project-file-modal .modal-body .main .actions ul li .btn {
+        text-align: left;
+        width: 100%; }
+        #project-file-modal .modal-body .main .actions ul li .btn i {
+          width: 20px; }
 
 .comments-thread {
   padding: 10px;
