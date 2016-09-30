@@ -8,9 +8,23 @@
   }
 
   li {
+
+    &.heading {
+      padding: 0 10px;
+
+      h5 {
+        margin: 5px 0 0 0;
+      }
+    }
+
     a {
       display: inline-block;
       width: 100%;
+
+      i {
+        width: 20px;
+        margin-right: 3px;
+      }
 
       color: $text-color;
 

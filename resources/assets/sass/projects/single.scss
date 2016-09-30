@@ -233,7 +233,7 @@
         .file-modal-nav {
           margin: 10px 0 0 0;
 
-          li {
+          > li {
             &:first-child {
               padding-left: 0;
             }
@@ -253,6 +253,33 @@
               h4 {
                 margin: 0;
               }
+            }
+          }
+
+          .mobile-actions {
+            display: none;
+            float: right;
+            line-height: 0;
+
+            @media screen and (max-width: $screen-sm-max) {
+              display: inline-block;
+            }
+
+            .btn-dropdown {
+              font-size: 2em;
+              line-height: 0;
+              position: absolute;
+              top: 10px;
+              right: 5px;
+              color: $grey;
+
+              &:hover {
+                color: $dark-grey;
+              }
+            }
+
+            .dropdown-menu {
+              margin-top: 20px;
             }
           }
         }
@@ -281,6 +308,7 @@
 
               i {
                 width: 20px;
+                margin-right: 3px;
               }
             }
           }

@@ -8030,10 +8030,17 @@ button.close {
   padding: 0; }
   .dropdown-menu ul {
     margin: 0; }
+  .dropdown-menu li.heading {
+    padding: 0 10px; }
+    .dropdown-menu li.heading h5 {
+      margin: 5px 0 0 0; }
   .dropdown-menu li a {
     display: inline-block;
     width: 100%;
     color: #1B2432; }
+    .dropdown-menu li a i {
+      width: 20px;
+      margin-right: 3px; }
     .dropdown-menu li a.active {
       color: #3498DB; }
     .dropdown-menu li a:hover, .dropdown-menu li a:focus {
@@ -8296,6 +8303,10 @@ h5 {
   font-weight: bold;
   margin-bottom: 0;
   line-height: 1.6; }
+
+a.disabled, a[disabled=disabled] {
+  color: #D2D2D2 !important;
+  cursor: not-allowed; }
 
 .page-controls {
   display: -webkit-box;
