@@ -168,7 +168,7 @@ class ProjectsController extends Controller
     public function postAddFile(Project $project, ProjectFolder $projectFolder, AddProjectFileRequest $request)
     {
         if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
-        return $projectFolder->files()->create($request->all());
+        return $projectFolder->files()->create($request->all())->load('comments');
     }
 
     /**

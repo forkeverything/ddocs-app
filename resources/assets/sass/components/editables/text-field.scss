@@ -1,13 +1,10 @@
 .editable-text-field {
-  margin-bottom: -7px;  // because overflow:hidden (from editable input) adds phantom pixels
 
   .placeholder {
     display: inline-block;
     border: 1px solid transparent;
     padding: 1px 0;
     max-width: 100%;
-    text-overflow: ellipsis;
-    overflow: hidden;
 
     &:hover {
       border: 1px dashed $input-border;
@@ -20,6 +17,20 @@
     outline: 0;
     border: 1px dashed $input-border-focus;
     width: 100%;
-    margin: 0 -1px 7px;
+    margin: 0 -1px;
+  }
+
+  // When we want to truncated overflow text ...
+  &.clipped {
+    margin-bottom: -7px;  // because overflow:hidden (from editable input) adds phantom pixels
+
+    .placeholder {
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    input {
+      margin: 0 -1px 7px;
+    }
   }
 }

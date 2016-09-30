@@ -12,6 +12,11 @@
   padding-left: 0px;
   padding-right: 0px; }
 
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 .container-no-gutter {
   width: 100%;
   padding-right: 30px; }
@@ -8699,23 +8704,28 @@ label {
   transform: rotate(4deg);
   background: #fff; }
 
-.editable-text-field {
+.editable-text-field .placeholder {
+  display: inline-block;
+  border: 1px solid transparent;
+  padding: 1px 0;
+  max-width: 100%; }
+  .editable-text-field .placeholder:hover {
+    border: 1px dashed #cccccc;
+    padding: 1px;
+    margin: 0 -1px; }
+
+.editable-text-field input {
+  outline: 0;
+  border: 1px dashed #757575;
+  width: 100%;
+  margin: 0 -1px; }
+
+.editable-text-field.clipped {
   margin-bottom: -7px; }
-  .editable-text-field .placeholder {
-    display: inline-block;
-    border: 1px solid transparent;
-    padding: 1px 0;
-    max-width: 100%;
+  .editable-text-field.clipped .placeholder {
     text-overflow: ellipsis;
     overflow: hidden; }
-    .editable-text-field .placeholder:hover {
-      border: 1px dashed #cccccc;
-      padding: 1px;
-      margin: 0 -1px; }
-  .editable-text-field input {
-    outline: 0;
-    border: 1px dashed #757575;
-    width: 100%;
+  .editable-text-field.clipped input {
     margin: 0 -1px 7px; }
 
 .editable-text-area .placeholder {

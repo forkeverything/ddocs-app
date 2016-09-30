@@ -1,6 +1,6 @@
 <template>
     <div class="project-file" :data-id="file.id" @click.prevent="viewFile">
-        <div class="file-name">
+        <div class="file-name truncate">
                 {{ file.name }}
         </div>
     </div>

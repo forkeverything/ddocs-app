@@ -17,6 +17,12 @@
   padding-right: 0px;
 }
 
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
 
 .container-no-gutter {
