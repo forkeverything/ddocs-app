@@ -28,7 +28,8 @@ class ChecklistsController extends Controller
                 'getListsView',
                 'getForAuthenticatedUser',
                 'getMakeForm',
-                'postNewChecklist'
+                'postNewChecklist',
+                'getAllRequestsForUser'
             ]
         ]);
     }
@@ -159,6 +160,25 @@ class ChecklistsController extends Controller
                                      ->sortWithNull($sort, $order, ['due', 'weighting'])
                                      ->withNumReceivedFiles()
                                      ->paginate($perPage);
+    }
+
+    /**
+     * Find FileRequest(s) that belongs to any Checklist that was created by the
+     * authenticated User.
+     *
+     * @param User $user
+     * @param Request $request
+     */
+    public function getFileRequestsForUser(User $user, Request $request)
+    {
+        if(! Auth::id() === $user->id) abort(403, "Trying to get file requests for user that is not authenticated");
+        $searchTerm = $request->search;
+        FileRequestsRepository::forUser($user)
+            ->searchChecklistNames($searchTerm)
+            ->searchRecipientEmails($searchTerm)
+            ->searchFor($searchTerm)            // Searches get performed in reverse of method call - so our original WHERE has to come first
+            ->with('checklist.recipients')      // Include checklist as well as list of recipients.
+            ->getWithoutQueryProperties();
     }
 
 

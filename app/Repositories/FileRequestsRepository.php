@@ -7,6 +7,8 @@ namespace App\Repositories;
 use App\Checklist;
 use App\File;
 use App\FileRequest;
+use App\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 class FileRequestsRepository extends EloquentRepository
@@ -36,21 +38,28 @@ class FileRequestsRepository extends EloquentRepository
     /**
      * FileRequestsRepository constructor. Set up our query builder here.
      *
-     * @param Checklist $checklist
+     * @param Model $model
+     * @internal param Checklist $checklist
      */
-    public function __construct(Checklist $checklist)
+    public function __construct(Model $model)
     {
         $this->query = FileRequest::join('files', 'file_requests.file_id', '=', 'files.id')
-                                  ->where('checklist_id', $checklist->id)
                                   ->selectRaw('
-                                  file_requests.*, 
-                                  files.name, 
-                                  files.description
-                                  ');
+                                      file_requests.*, 
+                                      files.name, 
+                                      files.description
+                                    ');
+
+        // If we're looking for requests for a specific Checklist or User
+        if ($model instanceof Checklist) {
+            $this->query->where('checklist_id', $model->id);
+        } elseif ($model instanceof User) {
+            $this->query->whereIn('checklist_id', $model->checklists->pluck('id'));
+        }
     }
 
     /**
-     * Static wrapper to build our Repo.
+     * Getting requests belonging to single Checklist.
      *
      * @param Checklist $checklist
      * @return static
@@ -58,6 +67,18 @@ class FileRequestsRepository extends EloquentRepository
     public static function forChecklist(Checklist $checklist)
     {
         return new static($checklist);
+    }
+
+    /**
+     * Checklists belonging to any Checklist that belongs to single User.
+     *
+     * @param User $user
+     * @return static
+     * @internal param Checklist $checklist
+     */
+    public static function forUser(User $user)
+    {
+        return new static($user);
     }
 
 
@@ -98,5 +119,35 @@ class FileRequestsRepository extends EloquentRepository
         return $this;
     }
 
+    /**
+     * Search Checklist Names.
+     *
+     * @param $searchTerm
+     * @return $this
+     */
+    public function searchChecklistNames($searchTerm)
+    {
+        $this->query->orWhereExists(function ($q) use ($searchTerm) {
+            $q->select(DB::raw(1))
+              ->from('checklists')
+              ->whereRaw('file_requests.checklist_id = checklists.id')
+              ->where('name', 'LIKE', "%{$searchTerm}%");
+        });
+
+        return $this;
+    }
+
+    public function searchRecipientEmails($searchTerm)
+    {
+        $this->query->orWhereExists(function ($q) use ($searchTerm) {
+            $q->select(DB::raw(1))
+              ->from('checklists')
+              ->join('recipients', 'recipients.checklist_id', '=', 'checklists.id')
+              ->whereRaw('file_requests.checklist_id = checklists.id')
+              ->where('email', 'LIKE', "%{$searchTerm}%");
+        });
+
+        return $this;
+    }
 
 }

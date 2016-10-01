@@ -39,6 +39,7 @@ Route::get('/fr/{file_request_hash}/history', 'FileRequestsController@getHistory
 Route::get('/fr/{file_request_hash}/notes', 'FileRequestsController@getNotes');
 Route::delete('/fr/{file_request_hash}', 'FileRequestsController@deleteFiles');
 Route::post('/fr/{file_request_hash}/comments', 'FileRequestsController@postAddComment');
+Route::get('/fr/user/{user}', 'FileRequestsController@getFileRequestsForUser');
 
 // Notes
 Route::post('/note', 'NotesController@postNew');

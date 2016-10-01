@@ -28,7 +28,6 @@
         methods: {
             scrollToBottom(){
                 this.$els.list.scrollTop = this.$els.list.scrollHeight;
-                console.log(this.$els.list.scrollHeight);
             }
         },
         ready(){
