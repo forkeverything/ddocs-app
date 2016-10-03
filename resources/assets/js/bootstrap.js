@@ -50,6 +50,7 @@ Vue.http.interceptors.push((request, next) => {
 
 window.VueRouter = require('vue-router');
 window.router = new VueRouter({
+    mode: 'history',
     routes: require('./routes.js')
 });
 
