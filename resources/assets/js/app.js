@@ -74,5 +74,6 @@ Vue.component('date-range-field', require('./components/filters/DateRange.vue'))
 window.vueGlobalEventBus = new Vue();
 
 const app = new Vue({
-    el: 'body'
+    el: '#app',
+    router
 });

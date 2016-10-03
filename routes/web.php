@@ -15,7 +15,10 @@
 Auth::routes();
 
 // Static Pages
-Route::get('/', 'PagesController@getLandingMain');
+Route::get('/', function () {
+    return view('main');
+});
+
 
 // Checklists
 Route::get('/c', 'ChecklistsController@getListsView');

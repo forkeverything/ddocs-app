@@ -18,6 +18,7 @@ require('bootstrap-sass');
 window.Vue = require('vue/dist/vue.js');
 require('vue-resource');
 
+
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
  * the outgoing requests issued by this application. The CSRF middleware
@@ -42,6 +43,15 @@ Vue.http.interceptors.push((request, next) => {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+/**
+ * Vue Router
+ */
+
+window.VueRouter = require('vue-router');
+window.router = new VueRouter({
+    routes: require('./routes.js')
+});
 
 // Setup jQuery AJAX to use CSRF Token too.
 $.ajaxSetup({
