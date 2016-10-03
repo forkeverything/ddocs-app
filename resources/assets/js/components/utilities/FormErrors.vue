@@ -16,24 +16,25 @@ export default {
     methods: {
       registerEvents: function(eventBus = vueGlobalEventBus) {
 
-          var self = this;
-          eventBus.$on('new-errors', function (errors) {
-              var newErrors = [];
+          eventBus.$on('new-errors', (errors) => {
+              let newErrors = [];
               _.forIn(errors, (value, key) => {
                   // We only care about the first error for each field if there are multiple
                   // errors present.
                   newErrors.push(value[0]);
               });
-              self.errors = newErrors;
+              this.errors = newErrors;
           });
 
-          eventBus.$on('clear-errors', function(errors) {
-              self.errors = [];
-          });
+          eventBus.$on('clear-errors', (errors) => this.errors = []);
       }
     },
-    ready: function() {
+    created(){
         this.registerEvents(this.eventBus);
+    },
+    beforeDestroy(){
+        this.eventBus.$off('new-errors');
+        this.eventBus.$off('clear-errors');
     }
 }
 </script>

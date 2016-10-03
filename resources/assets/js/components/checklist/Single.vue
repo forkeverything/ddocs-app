@@ -38,10 +38,8 @@
                                     </button>
 
                                     <file-filters :filter-options="filterOptions"
-                                                  :min-filter-value.sync="minFilterValue"
-                                                  :max-filter-value.sync="maxFilterValue" :filter.sync="filter"
-                                                  :filter-value.sync="filterValue"
-                                                  :add-filter="addFilter"></file-filters>
+                                                  :add-filter="addFilter">
+                                    </file-filters>
 
                                 </div>
                                 <input class="form-control input-search"
@@ -56,7 +54,7 @@
                             </div>
                         </form>
 
-                        <file-active-filters :params.sync="params" :remove-filter="removeFilter"></file-active-filters>
+                        <file-active-filters :params="params" :remove-filter="removeFilter"></file-active-filters>
 
                         <mobile-file-menu v-if="selectedFileRequest" :selected-file-request="selectedFileRequest" :show-delete-modal="showDeleteModal" :upload-selected="uploadSelected" :show-reject-modal="showRejectModal"></mobile-file-menu>
 
@@ -113,7 +111,7 @@
 
                         <ul id="files-list" class="list-unstyled" @scroll="scrollList">
                             <li class="single-file-request"
-                                v-for="(index, fileRequest) in fileRequests"
+                                v-for="(fileRequest, index) in fileRequests"
                                 @focus="selectFileRequest(index)"
                                 tabindex="1"
                                 :class="{ 'is-selected': fileRequest === selectedFileRequest }"
@@ -148,7 +146,7 @@
                                     </button>
                                 </div>
                                 <div class="column col-upload content-column">
-                                    <file-uploader :file-request.sync="fileRequest"></file-uploader>
+                                    <file-uploader :index="index" :file-request="fileRequest" @update-file-request="updateFileRequest"></file-uploader>
                                 </div>
                             </li>
                         </ul>
@@ -173,15 +171,15 @@
                     </div>
 
                     <div class="pane-container">
-                        <file-view :user="user" v-if="selectedFileRequest" :file-requests.sync="fileRequests" :selected-file-request-index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
-                        <summary-view v-else :checklist.sync="checklist"></summary-view>
+                        <file-view :user="user" v-if="selectedFileRequest" :selected-file-request-index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
+                        <summary-view v-else :checklist="checklist" @update-weightings="updateWeightings"></summary-view>
                     </div>
                 </div>
             </div>
         </div>
 
-        <file-reject-modal :file-requests.sync="fileRequests" :selected-file-request="selectedFileRequest"></file-reject-modal>
-        <file-delete-modal :file-requests.sync="fileRequests" :selected-file-request="selectedFileRequest" :selected-file-request-index.sync="selectedFileRequestIndex"></file-delete-modal>
+        <file-reject-modal :index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" @update-file-request="updateFileRequest"></file-reject-modal>
+        <file-delete-modal :selected-file-request="selectedFileRequest" :index="selectedFileRequestIndex" @remove-file-request="removeFileRequest"></file-delete-modal>
     </div>
 </template>
 <script>
@@ -215,7 +213,7 @@
         },
         computed: {
             fileRequests() {
-                return this.response.data;
+                    return this.response.data;
             },
             numReceived(){
                 return this.response.query_parameters.num_received_files;
@@ -243,6 +241,16 @@
         props: ['aws-url', 'user', 'checklist', 'checklist-hash'],
         mixins: [fetchesFromEloquentRepository],
         methods: {
+            updateWeightings(newWeightings){
+                this.checklist.weightings = newWeightings;
+            },
+            updateFileRequest(newFileRequestObject, index) {
+                this.fileRequests[index] = newFileRequestObject;
+            },
+            removeFileRequest(index){
+                this.fileRequests.splice(index, 1);
+                this.selectedFileRequestIndex = '';
+            },
             unselectFileRequest() {
                 this.selectedFileRequestIndex = '';
             },
@@ -295,25 +303,21 @@
                 }
             }
         },
-        ready: function () {
+        mounted() {
 
             this.addChecklistNameToUrl();
 
-
-            var self = this;
-
-            $(window).on('load', () => {
-
+            this.$nextTick(() => {
                 // Sensor for split view
                 let element = document.getElementById('checklist-body');
-                self.setSplitView(element);
-                let sensor = new ResizeSensor(element, function () {
-                    self.setSplitView(element)
+                this.setSplitView(element);
+                let sensor = new ResizeSensor(element, () => {
+                    this.setSplitView(element)
                 });
-
                 // Check if we need to fetch more data for inf. load
                 this.scrollList();
             });
+
         }
     };
 </script>

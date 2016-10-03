@@ -82,8 +82,7 @@ class ProjectsController extends Controller
                 $query->orderBy('position', 'asc');
             },
             'folders.files' => function ($query) {
-                $query->orderBy('position', 'asc')
-                      ->with('comments');
+                $query->orderBy('position', 'asc');
             }
         ]);
 
@@ -168,7 +167,7 @@ class ProjectsController extends Controller
     public function postAddFile(Project $project, ProjectFolder $projectFolder, AddProjectFileRequest $request)
     {
         if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
-        return $projectFolder->files()->create($request->all())->load('comments');
+        return $projectFolder->files()->create($request->all());
     }
 
     /**

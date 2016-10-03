@@ -10,9 +10,18 @@
             <!-- Notes Table -->
             <table class="table table-notes">
                 <tbody>
-                <template v-for="(index, note) in notes">
-                    <single-note :note.sync="note" :file-request-hash="fileRequest.hash" :index="index"
-                                 :focused-index.sync="focusedIndex"></single-note>
+                <template v-for="(note, index) in notes">
+                    <single-note :note="note"
+                                 :focused-index="focusedIndex"
+                                 :file-request-hash="fileRequest.hash"
+                                 :index="index"
+                                 @focus-note="focusNote"
+                                 @toggle-check-note="toggleCheckNote"
+                                 @update-note-body="updateNoteBody"
+                                 @update-note-position="updateNotePosition"
+                    >
+                    </single-note>
+
                 </template>
                 </tbody>
             </table>
@@ -37,12 +46,26 @@
             }
         },
         methods: {
+            updateNotePosition(index){
+                this.saveChangesForNoteAtIndex(index);
+            },
+            updateNoteBody(body, index){
+                this.notes[index].body = body;
+                this.saveChangesForNoteAtIndex(index);
+            },
+            toggleCheckNote(index) {
+                this.notes[index].checked = !this.notes[index].checked;
+                this.saveChangesForNoteAtIndex(index);
+            },
+            focusNote(index) {
+                this.focusIndex = index || '';
+            },
             getNotes(){
                 this.loading = true;
                 this.notes = [];
                 this.$http.get('/fr/' + this.fileRequest.hash + '/notes', {
                     before(xhr) {
-                        for (var i = 0; i < this.fetchRequests.length; i++) {
+                        for (let i = 0; i < this.fetchRequests.length; i++) {
                             this.fetchRequests.shift().abort();
                         }
                         this.fetchRequests.push(xhr);
@@ -80,7 +103,7 @@
                     this.focusNote(position);
                 });
             },
-            saveChanges(index) {
+            saveChangesForNoteAtIndex(index) {
                 let note = this.notes[index];
                 if (!note.hash && !note.saving) {
                     this.saveNewNote(note, index)
@@ -164,12 +187,18 @@
                 })
             }
         },
-        ready() {
-            this.getNotes();
+        created() {
             vueGlobalEventBus.$on('add-new-note', (index) => this.addNewNote(index + 1));
             vueGlobalEventBus.$on('remove-note', (args) => this.removeNote(args.index, args.event));
             vueGlobalEventBus.$on('focus-note', (position) => this.focusNote(position));
-            vueGlobalEventBus.$on('save-changes-note', (index) => this.saveChanges(index));
+        },
+        mounted() {
+            this.getNotes();
+        },
+        beforeDestroy(){
+            vueGlobalEventBus.$off('add-new-note');
+            vueGlobalEventBus.$off('remove-note');
+            vueGlobalEventBus.$off('focus-note');
         }
     }
 </script>

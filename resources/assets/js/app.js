@@ -16,6 +16,8 @@ require('./bootstrap');
 // Utilities
 Vue.component('form-errors', require('./components/utilities/FormErrors.vue'));
 Vue.component('tagger', require('./components/utilities/Tagger.vue'));
+Vue.component('tag-input', require('./components/utilities/TagInput.vue'));
+
 Vue.component('toggle-switch', require('./components/utilities/ToggleSwitch.vue'));
 Vue.component('smart-date', require('./components/utilities/SmartDate.vue'));
 Vue.component('cube-loader', require('./components/utilities/CubeLoader.vue'));
@@ -45,7 +47,6 @@ Vue.component('file-active-filters', require('./components/file/ActiveFilters.vu
 Vue.component('file-uploader', require('./components/file/Uploader.vue'));
 Vue.component('file-date-input', require('./components/file/DateInput.vue'));
 
-// Vue.component('file-renamer', require('./components/file/Renamer.vue'));
 
 // Projects
 Vue.component('project-board', require('./components/projects/ProjectBoard.vue'));

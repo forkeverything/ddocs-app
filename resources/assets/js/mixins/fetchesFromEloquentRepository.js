@@ -5,11 +5,7 @@ module.exports = {
             ajaxReady: true,
             request: {},
             response: {},
-            showFiltersDropdown: false,
-            filter: '',
-            filterValue: '',
-            minFilterValue: '',
-            maxFilterValue: ''
+            showFiltersDropdown: false
         };
     },
     computed: {
@@ -18,6 +14,7 @@ module.exports = {
         }
     },
     methods: {
+
         checkSetup: function() {
             if(!this.requestUrl) throw new Error("No Request URL set as 'requestUrl' ");
             if(this.hasFilter && _.isEmpty(this.filterOptions)) throw new Error("Need filterOptions[] defined to use filters");
@@ -88,19 +85,12 @@ module.exports = {
             this.params.search = '';
             this.searchTerm();
         },
-        resetFilterInput: function() {
-            this.filter = '';
-            this.filterValue = '';
-            this.minFilterValue = '';
-            this.maxFilterValue = '';
-        },
-        addFilter: function () {
-            var queryObj = {
+        addFilter: function (filter) {
+            let queryObj = {
                 page: 1
             };
-            queryObj[this.filter] = this.filterValue || [this.minFilterValue, this.maxFilterValue];
+            queryObj[filter.name] = fiter.value || [filter.minValue, filter.maxValue];
             this.fetchResults(updateQueryString(queryObj));
-            this.resetFilterInput();
             this.showFiltersDropdown = false;
         },
         removeFilter: function(filter) {
@@ -140,8 +130,10 @@ module.exports = {
         infLoadNextPage() {
         }
     },
-    ready: function() {
+    created(){
         this.checkSetup();
+    },
+    mounted() {
         this.fetchResults();
         onPopCallFunction(this.fetchResults);
     }

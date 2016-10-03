@@ -5,15 +5,16 @@
 
         <form-errors></form-errors>
 
-        <div class="weighting-switch">
-            <label>Weightings</label>
-            <toggle-switch :model.sync="weightings"></toggle-switch>
-        </div>
+
         <form id="form-checklist-make" action="/c/make" method="POST">
             <div class="inline-label">
                 <label class="text-muted">To: </label>
-                <tagger :tags.sync="checklistRecipients" :validate-function="validateRecipient"
-                        :placeholder="'Emails'"></tagger>
+                <tagger v-model="checklistRecipients"
+                        :validate-function="validateRecipient"
+                        :placeholder="'Emails'"
+                        @updated-tags="setRecipients"
+                >
+                </tagger>
             </div>
             <h2 id="title-checklist-name"
                 v-show="! editingName"
@@ -34,7 +35,7 @@
                 <li class="num_files">Count {{ fileCount }}</li>
                 <li class="weightings" v-show="weightings">Total Weightings {{ totalWeights }}%</li>
             </ul>
-            <maker-files :files.sync="files" :weightings="weightings"></maker-files>
+            <maker-files v-model="files" :weightings="weightings"></maker-files>
         </form>
         <div class="text-right">
             <button type="button" id="btn-create-list" class="btn btn-primary" @click="sendChecklist" :disabled="
@@ -102,6 +103,9 @@
             }
         },
         methods: {
+            setRecipients(recipients) {
+                this.checklistRecipients = recipients;
+            },
             validateRecipient: function (tagger, recipient) {
                 if (!validateEmail(recipient)) {
                     tagger.validateError = 'Please enter a valid email.';
@@ -129,31 +133,24 @@
                     return;
                 }
 
-                var self = this;
                 vueClearValidationErrors();
-                if (!self.ajaxReady) return;
-                self.ajaxReady = false;
+                if (!this.ajaxReady) return;
+                this.ajaxReady = false;
 
 
-                self.$http.post('/c/make', {
-                    recipients: self.checklistRecipients,
-                    name: self.checklistName,
-                    description: self.checklistDescription,
-                    requested_files: self.validFiles
+                this.$http.post('/c/make', {
+                    recipients: this.checklistRecipients,
+                    name: this.checklistName,
+                    description: this.checklistDescription,
+                    requested_files: this.validFiles
                 }).then((response) => {
                     location.href = "/c/" + response.data;
                 }, (response) => {
                     console.log(response);
                     vueValidation(response);
-                    self.ajaxReady = true;
+                    this.ajaxReady = true;
                 });
             }
-        },
-        ready: function () {
-            vueGlobalEventBus.$on('created-account', function (user) {
-                this.user = user;
-                this.sendChecklist();
-            }.bind(this));
         }
     };
 </script>

@@ -4,7 +4,7 @@
             Add file...
         </a>
         <form @submit.prevent="addFile" v-show="visible">
-            <input type="text" v-el:input class="form-control" @blur="clearInput" v-model="name">
+            <input type="text" ref="input" class="form-control" @blur="clearInput" v-model="name">
             <button type="submit" class="btn btn-info">Add</button>
         </form>
     </div>
@@ -24,7 +24,7 @@
                 this.visible = !this.visible;
                 if(this.visible) {
                     this.$nextTick(() => {
-                        $(this.$els.input).focus();
+                        $(this.$refs.input).focus();
                     })
                 }
             },
@@ -41,11 +41,13 @@
                     name: this.name,
                     position: this.folder.files.length
                 }).then((res) => {
-                    this.folder.files.push(res.json());
+
+                    this.$emit('add-file', res.json());
+
                     this.ajaxReady = true;
                     this.name = '';
                     this.$nextTick(() => {
-                        $(this.$els.input).focus();
+                        $(this.$refs.input).focus();
                     });
                 }, (res) => {
                     console.log(res);

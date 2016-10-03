@@ -1,6 +1,6 @@
 <template>
     <ul id="maker-files" class="list-files list-unstyled">
-        <li v-for="(index, file) in files" class="single-file" :class="{ 'is-focused': focusedFileIndex === index }">
+        <li v-for="(file, index) in files" class="single-file" :class="{ 'is-focused': focusedFileIndex === index }">
 
                     <span class="icon-file line-el">
                     <i class="fa fa-file"></i>
@@ -17,14 +17,13 @@
                    @keydown.up.prevent.stop="pressedArrow('prev')"
                    @keydown.down.prevent.stop="pressedArrow('next')"
                    @focus="focusNameInput(index, file)"
-                   v-el:name-input
             >
 
             <ul class="list-name-options list-unstyled"
                 v-show="focusedFileIndex === index && fileNameOptions.length > 0">
-                <li v-for="(index, name) in fileNameOptions"
-                    track-by="$index"
-                    tabIndex="-1"
+                <li v-for="(name, index) in fileNameOptions"
+                    :key="index"
+                    tab-index="-1"
                     class="single-name"
                     @mouseover="selectOption(index)"
                     @click="addFile"
@@ -36,7 +35,7 @@
                 </li>
             </ul>
 
-            <file-date-input :date.sync="file.due"></file-date-input>
+            <file-date-input v-model="file.due"></file-date-input>
 
             <div class="file-weighting line-el" v-show="weightings">
                 <input type="number"
@@ -62,7 +61,7 @@
                 fileNameOptions: []
             }
         },
-        props: ['files', 'weightings'],
+        props: ['value', 'weightings'],
         methods: {
             selectOption: function (index) {
                 this.selectedOptionIndex = index;
@@ -112,11 +111,11 @@
             }, 50),
             addFile: function () {
                 let selectedOption = this.fileNameOptions[this.selectedOptionIndex];
-                let currentFileName = this.files[this.focusedFileIndex].name;
+                let currentFileName = this.value[this.focusedFileIndex].name;
 
                 if (!selectedOption && !currentFileName) return;
 
-                if (selectedOption) this.files[this.focusedFileIndex].name = selectedOption;
+                if (selectedOption) this.value[this.focusedFileIndex].name = selectedOption;
 
                 var newFile = {
                     name: '',
@@ -125,14 +124,14 @@
                     weighting: ''
                 };
 
-                this.files.splice(this.focusedFileIndex + 1, 0, newFile);
+                this.value.splice(this.focusedFileIndex + 1, 0, newFile);
                 this.$nextTick(function () {
                     this.goTo('next');
                 });
             },
             removeFile: function (event) {
-                if (!this.files[this.focusedFileIndex].name && this.focusedFileIndex !== 0) {
-                    this.files.splice(this.focusedFileIndex, 1);
+                if (!this.value[this.focusedFileIndex].name && this.focusedFileIndex !== 0) {
+                    this.value.splice(this.focusedFileIndex, 1);
                     this.$nextTick(function () {
                         event.preventDefault();
                         $($('.single-file')[this.focusedFileIndex - 1]).find('.input-file-name').focus();
@@ -171,7 +170,7 @@
                 }
             }
         },
-        ready: function () {
+        mounted() {
 
             // If we click outside the list of files, blur our input
             $(document).on('click', (e) => {

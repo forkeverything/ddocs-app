@@ -26,6 +26,11 @@
                 return this.response.last_page > 1;
             }
         },
+        watch: {
+            currentItemsPerPage(numItems) {
+                this.newItemsPerPage = numItems;
+            }
+        },
         methods: {
             changeItemsPerPage: function () {
                 var self = this;
@@ -36,11 +41,6 @@
                     }));
                 }
             }
-        },
-        ready: function () {
-            this.$watch('currentItemsPerPage', function (numItems) {
-                this.newItemsPerPage = numItems;
-            });
         }
     }
 </script>

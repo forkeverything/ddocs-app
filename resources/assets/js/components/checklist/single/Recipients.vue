@@ -39,15 +39,15 @@ export default {
             }
         }
     },
-    ready() {
+    mounted() {
         // Sensor for recipients
-        $(window).on('load', () => {
+        this.$nextTick(() => {
             let element = document.getElementById('checklist-recipients');
             this.setRecipientsCollapsability(element);
             new ResizeSensor(element, () => {
                 this.setRecipientsCollapsability(element);
             });
-        });
+        })
     }
 }
 </script>

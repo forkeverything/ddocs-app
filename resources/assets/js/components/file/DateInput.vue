@@ -11,17 +11,16 @@
         <input type="text"
                class="input-due line-el"
                v-model="datePicker"
-               v-datepicker
                @keydown.delete.prevent="removeDate"
                placeholder="Due date"
                tabindex="-1"
-               v-el:input
+               ref="input"
         >
     </div>
 </template>
 <script>
     export default {
-        props: ['date'],
+        props: ['value'],
         computed: {
             datePicker: {
                 get() {
@@ -29,8 +28,7 @@
                 },
                 set(newDate) {
                     newDate = newDate || null;
-                    if(newDate !== this.date) vueGlobalEventBus.$emit('updated-date', newDate);
-                    this.date = newDate;
+                    this.$emit('input', newDate);
                 }
             },
             formattedDate() {
@@ -40,14 +38,18 @@
         },
         methods: {
             pickDate() {
-                $(this.$els.input).datepicker('show');
+                $(this.$refs.input).datepicker('show');
             },
             removeDate () {
                 this.datePicker = '';
-                $(this.$els.input).datepicker('hide');
+                $(this.$refs.input).datepicker('hide');
             }
         },
         watch: {},
-        ready: function () {}
+        mounted() {
+            $(this.$refs.input).datepicker({
+                dateFormat: "dd/mm/yy",
+            });
+        }
     }
 </script>

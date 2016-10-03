@@ -6,9 +6,12 @@
     </div>
 </template>
 <script>
+    const Vue = require('vue');
     export default {
         data: function () {
-            return {}
+            return {
+                requestsQueue: []
+            }
         },
         watch: {
             file: {
@@ -23,11 +26,12 @@
         },
         props: ['index', 'file', 'projectId'],
         methods: {
+
             flushAndAddToRequestsQueue(xhr){
-                for (var i = 0; i < this.file.requests_queue.length; i++) {
-                    this.file.requests_queue.shift().abort();
+                for (let i = 0; i < this.requestsQueue.length; i++) {
+                    this.requestsQueue.shift().abort();
                 }
-                this.file.requests_queue.push(xhr);
+                this.requestsQueue.push(xhr);
             },
             update(){
                 this.$http.put(`/projects/${ this.projectId }/files/${ this.file.id }`, this.file, {
@@ -45,19 +49,23 @@
                 vueGlobalEventBus.$emit('view-project-file', this.file);
             }
         },
-        ready() {
-            this.file.requests_queue = [];
+        created(){
             vueGlobalEventBus.$on('update-file-folder', (file, folderId) => {
                 if (file.id !== this.file.id) return;
-                this.$set('file.project_folder_id', folderId);
+                this.$emit('update-file', this.index, {project_folder_id: folderId});
             });
 
             vueGlobalEventBus.$on(`update-file-${ this.file.id }`, this.update);
-
+        },
+        mounted() {
             if(this.file.position !== this.index) {
-                this.file.position = this.index;
-                this.update();
+                this.$emit('update-file', this.index, {position: this.index});
+                this.$nextTick(this.update);
             }
+        },
+        beforeDestroy(){
+            vueGlobalEventBus.$off('update-file-folder');
+            vueGlobalEventBus.$off(`update-file-${ this.file.id }`);
         }
     };
 </script>

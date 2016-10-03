@@ -15,7 +15,7 @@ module.exports = {
         enterEditMode(){
             this.editing = true;
             this.$nextTick(() => {
-                $(this.$els.input).focus();
+                $(this.$refs.input).focus();
             });
         },
         exitEditMode(){
@@ -24,14 +24,14 @@ module.exports = {
         },
         processNewValue() {
             if(! this.allowNull && ! this.newValue || (this.newValue === this.value) ) return this.exitEditMode();
-            this.value = this.newValue;
+            this.emit('input', this.newValue);
             this.$nextTick(() => {
                 if(this.updateFn) this.updateFn();
                 this.exitEditMode();
             });
         }
     },
-    ready() {
+    mounted() {
         // Create a copy of the value so we can reset it if necessary
         this.newValue = this.value;
     }

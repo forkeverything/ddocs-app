@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="createFolder">
-        <input v-el:input-name
+        <input ref="input-name"
                type="text"
                placeholder="Create folder..."
                class="input-name form-control"
@@ -39,11 +39,11 @@
                     position: this.folders.length
                 }).then((response) => {
                     // success
-                    this.folders.push(response.json());
+                this.$emit('add-folder', response.json());
                     this.name = '';
                     this.ajaxReady = true;
                     this.$nextTick(() => {
-                        $(this.$els.inputName).focus();
+                        $(this.$refs.inputName).focus();
                         this.adjustScroll();
                     });
 

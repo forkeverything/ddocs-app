@@ -16,7 +16,7 @@
             </span>
             <input v-else
                    type="number"
-                   v-el:input
+                   ref="input"
                    step="0.01"
                    v-model="input"
                    @blur="blurInput"
@@ -41,11 +41,11 @@
                 input: ''
             }
         },
-        props: ['user', 'file-request'],
+        props: ['user', 'file-request', 'index'],
         methods: {
             showInput() {
                 this.inputVisible = true;
-                this.$nextTick(() => $(this.$els.input).focus());
+                this.$nextTick(() => $(this.$refs.input).focus());
             },
             hideInput() {
                 this.inputVisible = false;
@@ -66,7 +66,7 @@
                 this.$http.put('/fr/' + this.fileRequest.hash, {
                     weighting: this.input
                 }).then((response) => {
-                    this.fileRequest = JSON.parse(response.data);
+                    this.$emit('update-file-request', response.json(), this.index);
                     this.hideInput();
                     this.ajaxReady = true;
                     vueGlobalEventBus.$emit('updated-weighting');
@@ -82,7 +82,7 @@
                 this.input = val.weighting;
             }
         },
-        ready() {
+        mounted(){
             this.input = this.fileRequest.weighting;
         }
     }

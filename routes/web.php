@@ -62,6 +62,10 @@ Route::post('/projects/{project}/folders/{projectFolder}/files', 'ProjectsContro
 Route::put('/projects/{project}/files/{projectFile}', 'ProjectsController@putUpdateFile');
 Route::post('/projects/{project}/files/{projectFile}', 'ProjectsController@postAddComment');
 
+// Comments
+Route::get('/comments/project_file/{projectFile}', 'CommentsController@getForProjectFile');
+Route::get('/comments/file_request/{file_request_hash}', 'CommentsController@getForFileRequest');
+
 
 
 // Account

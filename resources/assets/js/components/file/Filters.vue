@@ -2,8 +2,10 @@
     <ul class="dropdown-menu filters-menu">
         <li @click.stop="">
             <p class="text-muted">Show where</p>
-            <select class="form-control select-filter" v-model="filter"
-                    placeholder="Select one...">
+            <select class="form-control select-filter"
+                    v-model="name"
+                    placeholder="Select one..."
+            >
                 <option value="" selected disabled>Select filter</option>
                 <option v-for="option in filterOptions" :value="option.value">{{ option.label }}
                 </option>
@@ -13,15 +15,13 @@
             <!-- Filter: Version -->
             <p class="text-muted" v-show="filter === 'version'">is between</p>
             <div class="filter-fields version" v-show="filter === 'version'">
-                <integer-range-field :min.sync="minFilterValue"
-                                     :max.sync="maxFilterValue"></integer-range-field>
+                <integer-range-field v-model="range"></integer-range-field>
             </div>
 
             <!-- Filter: Due (Date) -->
             <p class="text-muted" v-show="filter === 'due'">is between</p>
             <div class="filter-fields due" v-show="filter === 'due'">
-                <date-range-field :min.sync="minFilterValue"
-                                  :max.sync="maxFilterValue"></date-range-field>
+                <date-range-field v-model="range"></date-range-field>
             </div>
 
             <!-- Filter: Status -->
@@ -44,7 +44,24 @@
     </ul>
 </template>
 <script>
-export default {
-   props: ['filter-options', 'min-filter-value', 'max-filter-value', 'filter', 'filter-value', 'add-filter']
-}
+    export default {
+        data: function () {
+            return {
+                name: '',
+                value: '',
+                range: ''
+            }
+        },
+        props: ['filter-options', 'add-filter'],
+        methods: {
+            processFilter(){
+                this.addFilter({
+                    name: this.name,
+                    value: this.value,
+                    minValue: this.range.minValue,
+                    maxValue: this.range.maxValue
+                });
+            }
+        }
+    }
 </script>

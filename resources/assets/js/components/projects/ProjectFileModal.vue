@@ -1,6 +1,6 @@
 <template>
 <div id="project-file-modal">
-    <div class="modal" tabindex="-1" role="dialog" v-el:modal>
+    <div class="modal" tabindex="-1" role="dialog" ref="modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -8,7 +8,7 @@
                             aria-hidden="true">&times;</span></button>
                     <div class="main">
                         <div class="content">
-                            <h3 class="file-name"><i class="fa fa-file-o"></i> <span class="name-wrap"><editable-text-field :value.sync="file.name"></editable-text-field></span></h3>
+                            <h3 class="file-name"><i class="fa fa-file-o"></i> <span class="name-wrap"><editable-text-field v-model="file.name"></editable-text-field></span></h3>
                             <ul class="list-unstyled list-inline file-modal-nav">
                                 <li><a class="clickable active"><h4>Project</h4></a></li>
                                 <li><a class="clickable" :class="{ disabled: ! attached }" :disabled="! attached" data-toggle="tooltip" data-placement="bottom" title="File request info"><h4>Request</h4></a></li>
@@ -28,11 +28,11 @@
                                 <span class="small text-muted">Only team members in the project can see this section.</span>
                                 <div class="description">
                                     <h5>Description</h5>
-                                    <editable-text-area :value.sync="file.description" :allow-null="true" :placeholder="'Details about the file...'"></editable-text-area>
+                                    <editable-text-area v-model="file.description" :allow-null="true" :placeholder="'Details about the file...'"></editable-text-area>
                                 </div>
                                 <div class="comments">
                                     <h5>Team Comments</h5>
-                                    <comments-thread :project-id="projectId" :comments.sync="file.comments" :subject-type="'App\\ProjectFile'" :subject-id="file.id"></comments-thread>
+                                    <comments-thread :project-id="projectId" :subject-type="'App\\ProjectFile'" :subject-id="file.id"></comments-thread>
                                 </div>
                             </div>
                         </div>
@@ -68,14 +68,14 @@ export default {
     props: ['project-id'],
     methods: {
         hide(){
-            $(this.$els.modal).modal('hide');
+            $(this.$refs.modal).modal('hide');
         }
     },
-    ready() {
+    mounted() {
         vueGlobalEventBus.$on('view-project-file', (file) => {
             this.file = file;
             this.$nextTick(() => {
-                $(this.$els.modal).modal('show');
+                $(this.$refs.modal).modal('show');
             vueGlobalEventBus.$emit('showing-comments');
             });
         })

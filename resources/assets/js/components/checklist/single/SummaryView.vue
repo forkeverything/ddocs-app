@@ -25,19 +25,25 @@
         },
         props: ['checklist'],
         methods: {},
-        ready() {
+        created() {
             // Update checklist weightings
             vueGlobalEventBus.$on('updated-weighting', () => {
                 this.$http.get('/c/' + this.checklist.hash + '/weightings')
                         .then((response) => {
                             // Success
-                            this.checklist.weightings = JSON.parse(response.data);
+                            this.$emit('update-weightings', response.json());
                         }, (response) => {
                             // error
                             console.log('GET REQ Error!');
                             console.log(response);
                         })
             });
+        },
+        mounted() {
+
+        },
+        beforeDestroy(){
+            vueGlobalEventBus.$off('updated-weighting');
         }
     }
 </script>

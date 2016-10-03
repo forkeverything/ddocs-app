@@ -4,7 +4,7 @@
         <span v-if="value">{{ value }}</span><span v-if="! value && placeholder" class="text-muted">{{ placeholder }}</span>
     </span>
         <form v-show="editing" @submit.prevent="processNewValue">
-            <textarea v-model="newValue" v-el:input @blur="processNewValue"></textarea>
+            <textarea v-model="newValue" ref="input" @blur="processNewValue"></textarea>
         </form>
     </div>
 </template>

@@ -27,7 +27,7 @@
             >
                 <textarea class="form-control input-note-body"
                           rows="1"
-                          v-model="note.body"
+                          v-model="body"
                           :style="{ height: textAreaHeight }"
                           @focus="setFocus"
                           @blur="blurInput"
@@ -35,8 +35,9 @@
                           @keydown.delete="removeThisNote($event)"
                           @keydown.up.prevent.stop="pressedArrow('prev')"
                           @keydown.down.prevent.stop="pressedArrow('next')"
-                ></textarea>
-                <div class="sizer" v-el:sizer>{{ note.body }}</div>
+                >
+                </textarea>
+                <div class="sizer" ref="sizer">{{ body }}</div>
             </div>
         </td>
     </tr>
@@ -45,6 +46,7 @@
 export default {
     data: function(){
         return {
+            body: '',
             ajaxReady: true,
             textAreaHeight: '25px'
         }
@@ -56,29 +58,26 @@ export default {
     },
     watch: {
         index() {
-            this.updateExistingNote();
+            this.$emit('update-note-position', this.index);
         },
-        'note.body'() {
+        body() {
             this.setTextAreaHeight();
         },
-        'note.checked'() {
-            this.updateExistingNote();
-        }
     },
     props: ['index', 'focused-index', 'note', 'file-request-hash'],
     methods: {
         toggleChecked() {
-            this.note.checked = !this.note.checked;
+            this.$emit('toggle-check-note', index);
         },
         setTextAreaHeight() {
-            this.textAreaHeight = $(this.$els.sizer).height() + 'px';
+            this.textAreaHeight = $(this.$refs.sizer).height() + 'px';
         },
         setFocus() {
-            this.focusedIndex = this.index;
+            this.$emit('focus-note', this.index);
         },
         blurInput() {
-            this.focusedIndex = '';
-            this.updateExistingNote();
+            this.$emit('focus-note');
+            this.$emit('update-note-body', this.body, this.index);
         },
         addNoteAfterThisOne() {
             vueGlobalEventBus.$emit('add-new-note', this.index);
@@ -90,16 +89,14 @@ export default {
                 event: event
             });
         },
-        updateExistingNote(){
-            vueGlobalEventBus.$emit('save-changes-note', this.index);
-        },
         pressedArrow: function (direction) {
             let indexToFocus = (direction === 'prev') ? this.index - 1 : this.index + 1;
             vueGlobalEventBus.$emit('focus-note', indexToFocus);
         }
     },
-    ready() {
-        this.setTextAreaHeight();
+    mounted() {
+        this.body = this.note.body;
+        this.$nextTick(this.setTextAreaHeight);
     }
 }
 </script>

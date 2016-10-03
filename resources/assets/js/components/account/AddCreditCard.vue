@@ -2,7 +2,7 @@
     <button type="button" class="btn btn-solid-green" @click="toggleCreditCardForm" v-show="
                     ! showCreditCardForm">Sure, I can do 15 bucks</button>
 
-    <form id="form-credit-card" @submit.prevent="processCard" v-el:stripe-form
+    <form id="form-credit-card" @submit.prevent="processCard" ref="stripe-form"
           v-show="showCreditCardForm">
         <hr>
         <h3>Add Credit Card</h3>
@@ -80,7 +80,7 @@ export default {
             if(self.waitingStripeResponse) return;
             self.waitingStripeResponse = true;
 
-            var $form = $(self.$els.stripeForm);
+            var $form = $(self.$refs.stripeForm);
             self.cardError = '';
 
             // Make request to stripe
@@ -106,7 +106,7 @@ export default {
     events: {
 
     },
-    ready: function() {
+    mounted() {
         Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
     }
 }

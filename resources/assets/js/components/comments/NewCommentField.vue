@@ -13,7 +13,7 @@ export default {
             body: ''
         }
     },
-    props: ['file-request-hash', 'project-id', 'comments', 'subject-id', 'subject-type'],
+    props: ['subject-hash', 'project-id', 'subject-id', 'subject-type'],
     methods: {
         hitEnter(e){
             if(! e.shiftKey) {
@@ -27,7 +27,7 @@ export default {
             if(this.subjectType === 'App\\\\ProjectFile') {
                 return `/projects/${ this.projectId }/files/${ this.subjectId }`;
             } else if(this.subjectType === 'App\\\\FileRequest') {
-                return `/fr/${ this.fileRequestHash }/comments`;
+                return `/fr/${ this.subjectHash }/comments`;
             }
         },
         addComment(){
@@ -38,7 +38,7 @@ export default {
                 body: this.body
             }).then((response) => {
                 // success
-                this.comments.push(response.json());
+                this.$emit('add-new-comment', response.json());
                 this.ajaxReady = true;
                 this.$nextTick(() => {
                     this.body = '';

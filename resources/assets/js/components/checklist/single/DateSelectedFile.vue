@@ -11,10 +11,9 @@
             <span v-else class="date">Due Date</span>
             <input type="text"
                    v-model="newDate"
-                   v-datepicker
                    @keydown.delete.prevent="removeDate"
                    tabindex="-1"
-                   v-el:input
+                   ref="input"
             >
         </button>
 
@@ -34,7 +33,7 @@
                 newDate: ''
             }
         },
-        props: ['user', 'file-request'],
+        props: ['user', 'file-request', 'index'],
         computed: {
             formattedDate() {
                 if (!this.fileRequest.due) return;
@@ -48,11 +47,11 @@
         },
         methods: {
             pickDate() {
-                $(this.$els.input).datepicker('show');
+                $(this.$refs.input).datepicker('show');
             },
             removeDate () {
                 this.updateDueDate('');
-                $(this.$els.input).datepicker('hide');
+                $(this.$refs.input).datepicker('hide');
             },
             updateDueDate(date) {
                 var self = this;
@@ -63,7 +62,7 @@
                     due: date
                 }).then((response) => {
                     // success
-                    self.fileRequest = JSON.parse(response.data);
+                    this.$emit('update-file-request', response.json(), this.index);
                     self.ajaxReady = true;
                 }, (response) => {
                     // error
@@ -74,8 +73,10 @@
                 })
             }
         },
-        ready() {
-
+        mounted() {
+            $(this.$refs.input).datepicker({
+                dateFormat: "dd/mm/yy",
+            });
         }
     }
 </script>

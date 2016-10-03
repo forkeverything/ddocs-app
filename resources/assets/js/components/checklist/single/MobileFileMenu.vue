@@ -26,7 +26,7 @@
                         More
                         <span class="caret"></span>
                     </a>
-                    <ul v-el:dropdown-menu class="dropdown-menu dropdown-menu-right" aria-labelledby="select-menu-more">
+                    <ul ref="dropdown-menu" class="dropdown-menu dropdown-menu-right" aria-labelledby="select-menu-more">
                         <li class="menu-item">
                             <a :href="'/fr/' + selectedFileRequest.hash + '/history'"
                                :class="{'disabled': ! selectedFileRequest.latest_upload }">
@@ -61,14 +61,14 @@ export default {
     props: ['selected-file-request', 'show-delete-modal', 'upload-selected', 'show-reject-modal'],
     methods: {
         toggleDropdownMenu() {
-            $(this.$els.dropdownMenu).toggle();
+            $(this.$refs.dropdownMenu).toggle();
         },
         hideDropdownMenu() {
-            $(this.$els.dropdownMenu).hide();
+            $(this.$refs.dropdownMenu).hide();
         }
     },
-    ready() {
-        let $el = $(this.$els.dropdownMenu);
+    mounted() {
+        let $el = $(this.$refs.dropdownMenu);
         $(document).on('click', (e) => {
             if(! $el.is(e.target) && $el.has(e.target).length === 0) {
                 this.hideDropdownMenu();

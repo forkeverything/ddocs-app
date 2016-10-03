@@ -23,4 +23,14 @@ class ProjectFolder extends Model
         return $this->hasMany(ProjectFile::class, 'project_folder_id');
     }
 
+    /**
+     * Folders all live within a single Project.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
 }

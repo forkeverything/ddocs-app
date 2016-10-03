@@ -2,7 +2,7 @@
     <div class="project-folder-body">
         <div class="folder-header">
             <div class="folder-name">
-                <editable-text-field :value.sync="folder.name" :update-fn="update" :clipped="true"></editable-text-field>
+                <editable-text-field v-model="folder.name" :update-fn="update" :clipped="true"></editable-text-field>
             </div>
             <div class="folder-menu">
                 <button type="button" class="btn" data-toggle="dropdown"><i class="fa fa-caret-down"></i></button>
@@ -14,15 +14,17 @@
             </div>
         </div>
         <div class="files-list" :class="{ empty: noFiles }" :data-id="folder.id">
-            <project-file v-for="(index, file) in folder.files" :project-id="folder.project_id" :index="index" :file.sync="file"></project-file>
+            <project-file v-for="(file, index) in folder.files" :project-id="folder.project_id" :index="index" :file="file" @update-file="updateFile"></project-file>
         </div>
-        <add-project-file :folder.sync="folder"></add-project-file>
+        <add-project-file :folder="folder" @add-file="addFile"></add-project-file>
     </div>
 </template>
 <script>
     export default {
         data: function () {
-            return {}
+            return {
+                requestsQueue: []
+            }
         },
         computed: {
             noFiles() {
@@ -31,17 +33,23 @@
         },
         watch: {
             index(newIndex){
-                this.folder.position = newIndex;
-                this.update();
+                this.$emit('update-folder-position', newIndex);
+                this.$nextTick(this.update);
             }
         },
         props: ['folder', 'index'],
         methods: {
+            addFile(fileModel) {
+                this.$emit('insert-file', this.index, this.folder.files.length, fileModel);
+            },
+            updateFile(fileIndex, fileObj){
+                this.$emit('update-file', this.index, fileIndex, fileObj);
+            },
             flushAndAddToRequestsQueue(xhr){
-                for (var i = 0; i < this.folder.requests_queue.length; i++) {
-                    this.folder.requests_queue.shift().abort();
+                for (let i = 0; i < this.requestsQueue.length; i++) {
+                    this.requestsQueue.shift().abort();
                 }
-                this.folder.requests_queue.push(xhr);
+                this.requestsQueue.push(xhr);
             },
             update(){
                 this.$http.put(`/projects/${ this.folder.project_id }/folders/${ this.folder.id }`, this.folder, {
@@ -71,11 +79,11 @@
                 let targetFile = _.find(this.folder.files, {id: parseInt(el.dataset.id)});
                 let targetFileIndex = _.indexOf(this.folder.files, targetFile);
                 el.remove(); // because Vue loses track of this el - we need to manually delete
-                this.folder.files.splice(targetFileIndex, 1);
+                this.$emit('remove-file', this.index, targetFileIndex);
                 // TODO :: Find better way to do this. v-for isn't reactive after calling drake.cancel() on
                 // element. Refreshing data means re-initializing all drag objects, not fun.
                 this.$nextTick(() => {
-                    vueGlobalEventBus.$emit('insert-file', el, target, source, sibling, targetFile, targetFileIndex);
+                    this.handleInsertingFile(el, target, source, sibling, targetFile, targetFileIndex);
                 });
             },
             handleInsertingFile(el, target, source, sibling, targetFile, targetFileIndex) {
@@ -88,25 +96,25 @@
                 }
                 let differentParent = source.dataset.id === target.dataset.id;
                 let newIndex = (targetFileIndex >= siblingIndex || differentParent) ? siblingIndex : siblingIndex - 1;
-                this.folder.files.splice(newIndex, 0, targetFile);
+                this.$emit('insert-file', this.index, newIndex, targetFile);
                 this.$nextTick(() => {
                     vueGlobalEventBus.$emit('update-file-folder', targetFile, parseInt(target.dataset.id));
                 });
             }
         },
-        ready(){
-            this.folder.requests_queue = [];
+        created(){
             vueGlobalEventBus.$on('dropped-file', (el, target, source, sibling) => {
                 this.handleDroppingFile(el, target, source, sibling);
             });
-            vueGlobalEventBus.$on('insert-file', (el, target, source, sibling, targetFile, targetFileIndex) => {
-                this.handleInsertingFile(el, target, source, sibling, targetFile, targetFileIndex);
-            });
-
+        },
+        mounted() {
             if(this.folder.position !== this.index) {
-                this.folder.position = this.index;
-                this.update();
+                this.$emit('update-folder-position', this.index);
+                this.$nextTick(this.update);
             }
+        },
+        beforeDestroy(){
+            vueGlobalEventBus.$off('dropped-file');
         }
     }
 </script>

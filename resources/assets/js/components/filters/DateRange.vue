@@ -2,12 +2,12 @@
    <div class="date-range-field" @click.stop="">
    <div class="starting">
        <label>starting</label>
-       <input type="text" class="filter-datepicker" v-model="startDate" placeholder="date" v-datepicker>
+       <input type="text" class="filter-datepicker" v-model="startDate" placeholder="date" ref="min-date">
        </div>
    <span class="dash">-</span>
    <div class="ending">
        <label>Ending</label>
-       <input type="text" class="filter-datepicker" v-model="endDate" placeholder="date" v-datepicker>
+       <input type="text" class="filter-datepicker" v-model="endDate" placeholder="date" ref="max-date">
        </div>
    </div>
 </template>
@@ -17,29 +17,37 @@ export default {
     computed: {
         startDate: {
             get: function() {
-                if (this.min.replace(/\s/g, "").length > 0) {
-                    return moment(this.min, "YYYY-MM-DD").format('DD/MM/YYYY');
+                if (this.value.minValue.replace(/\s/g, "").length > 0) {
+                    return moment(this.value.minValue, "YYYY-MM-DD").format('DD/MM/YYYY');
                 }
             },
             set: function(newVal) {
                 if(newVal.replace(/\s/g, "").length > 0) {
-                    this.min = moment(newVal, "DD/MM/YYYY").format("YYYY-MM-DD");
+                    this.value.minValue = moment(newVal, "DD/MM/YYYY").format("YYYY-MM-DD");
                 }
             }
         },
         endDate: {
             get: function() {
-                if (this.max.replace(/\s/g, "").length > 0) {
-                    return moment(this.max, "YYYY-MM-DD").format('DD/MM/YYYY');
+                if (this.value.maxValue.replace(/\s/g, "").length > 0) {
+                    return moment(this.value.maxValue, "YYYY-MM-DD").format('DD/MM/YYYY');
                 }
             },
             set: function(newVal) {
                 if(newVal.replace(/\s/g, "").length > 0) {
-                    this.max = moment(newVal, "DD/MM/YYYY").format("YYYY-MM-DD");
+                    this.value.maxValue = moment(newVal, "DD/MM/YYYY").format("YYYY-MM-DD");
                 }
             }
         }
     },
-    props: ['min', 'max']
+    props: ['value'],
+    mounted() {
+        $(this.$refs.minDate).datepicker({
+            dateFormat: "dd/mm/yy",
+        });
+        $(this.$refs.maxDate).datepicker({
+            dateFormat: "dd/mm/yy",
+        });
+    }
 }
 </script>

@@ -78,14 +78,8 @@
             }, 100)
         },
         mixins: [fetchesFromEloquentRepository],
-        ready: function () {
-            var self = this;
-
-
-            $(window).on('load', () => {
-                // Check if we need to fetch more data for inf. load
-                this.scrollList();
-            });
+        mounted() {
+            this.$nextTick(this.scrollList);
         }
     };
 </script>

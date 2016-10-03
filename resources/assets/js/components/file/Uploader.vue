@@ -1,21 +1,20 @@
 <template>
     <div class="file-uploader">
         <button type="button"
-                v-show="! uploading"
+                v-show="! fileRequestClone.uploading"
                 class="btn btn-primary"
-                v-el:upload-button
                 :disabled="alreadyReceivedFile"
                 @click="selectFile"
         >
             <i class="fa fa-upload"></i>
         </button>
-        <input v-el:input
+        <input ref="input"
                type="file"
                name="file"
                class="input-file-upload hide"
                @change="uploadFile(file, $event)"
         >
-        <div class="loader" v-show="uploading">
+        <div class="loader" v-show="fileRequestClone.uploading">
             <i class="fa fa-spinner fa-pulse fa-fw"></i>
             <span class="sr-only">Loading...</span>
         </div>
@@ -25,7 +24,7 @@
     export default {
         data: function () {
             return {
-                uploading: false
+                fileRequestClone: ''
             }
         },
         computed: {
@@ -33,44 +32,51 @@
                 return this.fileRequest.status === 'received';
             }
         },
-        props: ['file-request'],
+        props: ['file-request', 'index'],
         methods: {
             selectFile: function () {
-                $(this.$els.input).click();
+                $(this.$refs.input).click();
             },
             uploadFile: function (file, $event) {
 
-                var self = this;
-
-                self.uploading = true;
-
-                var fd = new FormData();
-                var uploadedFile = $event.srcElement.files[0];
+                let fd = new FormData();
+                let uploadedFile = $event.srcElement.files[0];
 
                 fd.append('file', uploadedFile);
 
-                self.$http.post('/fr/' + self.fileRequest.hash + '/upload', fd, {
+                this.$http.post('/fr/' + this.fileRequest.hash + '/upload', fd, {
                     before() {
-                        self.$set('fileRequest.uploading', self.uploading);
-                        self.$set('fileRequest.uploadProgress', 0);
+                        this.fileRequestClone.uploading = true;
+                        this.fileRequestClone.uploadProgress = 0;
+                        this.$emit('update-file-request', this.fileRequestClone, this.index);
                     },
                     progress(event) {
-                        self.$set('fileRequest.uploadProgress', Math.round(100 * event.loaded / event.total));
+
+                        this.fileRequestClone.uploadProgress = Math.round(100 * event.loaded / event.total);
+                        this.$emit('update-file-request', this.fileRequestClone, this.index);
                     }
                 }).then((response) => {
-                    self.fileRequest = JSON.parse(response.data);
-                    self.uploading = false;
-                    self.$set('fileRequest.uploading', self.uploading);
+                    let updatedFileRequest = response.json();
+                    this.fileRequestClone.uploading = false;
+                    this.$emit('update-file-request', updatedFileRequest, this.index);
                     vueGlobalEventBus.$emit('updated-weighting');
                 }, (response) => {
                     console.log('Upload file error.');
                     console.log(response);
-                    self.uploading = false;
+                    this.uploading = false;
                 });
             }
         },
-        ready: function() {
+        created() {
             vueGlobalEventBus.$on('upload-selected-file-' + this.fileRequest.id, this.selectFile);
+        },
+        mounted() {
+            this.fileRequestClone = this.fileRequest;
+            Vue.set(this.fileRequestClone, 'uploading', false);
+            Vue.set(this.fileRequestClone, 'uploadProgress', 0);
+        },
+        beforeDestroy(){
+            vueGlobalEventBus.$off('upload-selected-file-' + this.fileRequest.id, this.selectFile);
         }
     }
 </script>
