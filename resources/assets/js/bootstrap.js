@@ -31,6 +31,18 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 window.store = new Vuex.Store(require('./store.js'));
 
+/**
+ * Vue Router
+ */
+
+window.router = require('./router.js');
+
+/**
+ * Auth Cookie Helper. Makes handling the authentication cookie
+ * a little more semantic.
+ */
+window.auth = require('./auth.js');
+if(auth.getCookie()) auth.setHeaders(auth.getCookie());
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
@@ -39,9 +51,19 @@ window.store = new Vuex.Store(require('./store.js'));
  */
 
 Vue.http.interceptors.push((request, next) => {
+
     request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
-    request.headers['Authorization'] = 'Bearer ' + Cookies.get('ddocs_auth');
-    next();
+
+    // As a precaution we'll set our token header here too. it
+    // should have already been set above.
+    request.headers['Authorization'] = auth.getCookie();
+
+    // Intercept the response too so we can control our JWT
+    next((response) => {
+        auth.refreshToken(response);
+        auth.checkResponseTokenInvalid(response);
+        return response;
+    });
 });
 
 /**
@@ -60,22 +82,10 @@ Vue.http.interceptors.push((request, next) => {
 // Setup jQuery AJAX to use CSRF Token too.
 $.ajaxSetup({
     headers: {
-        'X-CSRF-TOKEN': Laravel.csrfToken,
-        'Authorization': 'Bearer ' + Cookies.get('ddocs_auth')
+        'X-CSRF-TOKEN': Laravel.csrfToken
     }
 });
 
-/**
- * Auth Cookie Helper. Makes handling the authentication cookie
- * a little more semantic.
- */
-window.AuthCookie = require('./auth-cookie.js');
-if(AuthCookie.get()) store.dispatch('fetchAuthenticatedUser');
-
-/**
- * Vue Router
- */
-window.router = require('./router.js');
 
 // Initialize autosize() for textareas.
 let autosize = require('autosize');

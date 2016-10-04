@@ -15,7 +15,7 @@ module.exports = {
                     context.commit('setUser', user);
                 })
                 .fail(() => {
-                    AuthCookie.remove();
+                    auth.removeCookie();
                 });
         }
     }

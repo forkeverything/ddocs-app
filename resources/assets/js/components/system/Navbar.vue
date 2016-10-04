@@ -66,8 +66,8 @@
         },
         methods: {
             logout(){
-                AuthCookie.remove();
-                location.href = "/login";
+                auth.removeCookie();
+                this.$router.push('/login');
             }
         }
     }

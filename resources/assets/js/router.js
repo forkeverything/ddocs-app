@@ -13,10 +13,9 @@ module.exports = (function () {
 
         // requiresAuth
         if (to.matched.some(record => record.meta.requiresAuth)) {
-            if (!AuthCookie.get()) {
+            if (! auth.getCookie()) {
                 next({
-                    path: '/login',
-                    query: {redirect: to.fullPath}
+                    path: '/login'
                 })
             } else {
                 next()
@@ -27,7 +26,7 @@ module.exports = (function () {
 
         // guestOnly
         if (to.matched.some(record => record.meta.guestOnly)) {
-            if (AuthCookie.get()) {
+            if (auth.getCookie()) {
                 next('/');
             } else {
                 next();

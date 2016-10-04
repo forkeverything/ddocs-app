@@ -36,6 +36,11 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        'jwt' => [
+            \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+            \Tymon\JWTAuth\Middleware\RefreshToken::class,
+        ]
     ];
 
     /**
