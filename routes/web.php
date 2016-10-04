@@ -12,7 +12,11 @@
 */
 
 
-Auth::routes();
+//Auth::routes();
+
+Route::post('/auth/login', 'JWTAuthController@postAttemptLogin');
+Route::get('/auth/user', 'JWTAuthController@getAuthenticatedUser');
+
 
 
 // Static Pages
@@ -28,8 +32,6 @@ Route::get('/c', 'ChecklistsController@getListsView');
 Route::get('/c/make', 'ChecklistsController@getMakeForm');
 //Route::post('/c/make', 'ChecklistsController@postNewChecklist');
 
-//Route::get('/c/{checklist_hash}/weightings', 'ChecklistsController@getWeightings');
-//Route::get('/c/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
 Route::get('/c/{checklist_hash}/{checklist_name?}', 'ChecklistsController@getSingleChecklist');
 
 // Recipients

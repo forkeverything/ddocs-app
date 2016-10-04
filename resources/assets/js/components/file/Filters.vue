@@ -6,29 +6,29 @@
                     v-model="name"
                     placeholder="Select one..."
             >
-                <option value="" selected disabled>Select filter</option>
+                <option value="" disabled>Select filter</option>
                 <option v-for="option in filterOptions" :value="option.value">{{ option.label }}
                 </option>
             </select>
 
 
             <!-- Filter: Version -->
-            <p class="text-muted" v-show="filter === 'version'">is between</p>
-            <div class="filter-fields version" v-show="filter === 'version'">
+            <span class="text-muted" v-show="name === 'version'">is between</span>
+            <div class="filter-fields version" v-show="name === 'version'">
                 <integer-range-field v-model="range"></integer-range-field>
             </div>
 
             <!-- Filter: Due (Date) -->
-            <p class="text-muted" v-show="filter === 'due'">is between</p>
-            <div class="filter-fields due" v-show="filter === 'due'">
+            <span class="text-muted" v-show="name === 'due'">is between</span>
+            <div class="filter-fields due" v-show="name === 'due'">
                 <date-range-field v-model="range"></date-range-field>
             </div>
 
             <!-- Filter: Status -->
-            <div class="filter-fields status" v-show="filter === 'status'">
+            <div class="filter-fields status" v-show="name === 'status'">
                 <p class="text-muted">is</p>
-                <select v-model="filterValue" class="form-control">
-                    <option value="" selected disabled>Pick one</option>
+                <select v-model="value" class="form-control">
+                    <option value="" disabled>Pick one</option>
                     <option value="received">Received</option>
                     <option value="waiting">Waiting</option>
                     <option value="rejected">Rejected</option>
@@ -37,7 +37,7 @@
 
             <!-- Filter Button -->
             <button class="button-add-filter btn btn-primary"
-                    v-show="filter && (filterValue || minFilterValue || maxFiltervalue)"
+                    v-show="name && (value || range)"
                     @click.stop.prevent="addFilter">Add Filter
             </button>
         </li>

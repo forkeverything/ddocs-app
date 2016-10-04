@@ -14,7 +14,6 @@ class FileRequest extends Model
      */
     protected $fillable = [
         'due',
-        'weighting',
         'version',
         'status',
         'checklist_id',
@@ -81,19 +80,6 @@ class FileRequest extends Model
         }
     }
 
-    /**
-     * Mutator for weighting property.
-     *
-     * @param $value
-     */
-    public function setWeightingAttribute($value)
-    {
-        if ($value) {
-            $this->attributes['weighting'] = $value;
-        } else {
-            $this->attributes['weighting'] = null;
-        }
-    }
 
     /**
      * All File(s) belong to a single Checklist that has required them.

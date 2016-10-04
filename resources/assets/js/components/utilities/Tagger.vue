@@ -21,7 +21,6 @@
                 </tag-input>
             </div>
             <template v-for="(tag, index) in tags"
-                      :key="index"
                       v-if="! emptyContainer"
             >
                 <button type="button"
@@ -30,6 +29,7 @@
                         @keydown.left.prevent.stop="leftTag(index)"
                         @keydown.delete.prevent.stop="removeTag(index)"
                         @keydown.right.prevent.stop="rightTag(index)"
+                        :key="index"
                 >
                     {{ tag }}
                 </button>
@@ -54,6 +54,7 @@
     export default {
         data: function () {
             return {
+                tags: '',
                 newTag: '',
                 showPlaceholder: true,
                 inputPosition: 0,
@@ -83,7 +84,13 @@
                 // No empty tag with spaces
                 if (!this.newTag.trim()) return;
                 // insert it to where the input is
-                this.value.splice(this.inputPosition, 0, this.newTag);
+
+
+                this.tags.splice(this.inputPosition, 0, this.newTag);
+
+                this.$emit('input', this.tags);
+
+
                 // clear input
                 this.newTag = '';
                 // move input up 1
@@ -93,7 +100,8 @@
             },
             removeTag: function (index) {
                 // delete tag at index
-                this.value.splice(index, 1);
+                this.tags.splice(index, 1);
+                this.$emit('input', this.tags);
                 // move input position up to where removed tag was
                 this.inputPosition = index;
                 // re-focus
@@ -124,6 +132,9 @@
                     this.focusTag(index + 1);
                 }
             }
+        },
+        mounted(){
+            this.tags = this.value;
         }
     }
 </script>

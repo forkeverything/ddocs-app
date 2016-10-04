@@ -8051,6 +8051,48 @@ button.close {
       .dropdown-menu li a:hover i, .dropdown-menu li a:focus i {
         color: #fff !important; }
 
+.datepicker {
+  position: relative;
+  border: 1px solid #353535;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center; }
+  .datepicker button {
+    background: #353535;
+    color: #fff;
+    padding: 6px 12px;
+    outline: 0 !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    border-radius: 0;
+    font-size: 0.9em;
+    font-weight: normal; }
+    .datepicker button:hover {
+      color: #fff; }
+  .datepicker input {
+    border: 0;
+    outline: 0;
+    width: 100px;
+    text-align: center; }
+    .datepicker input:focus {
+      border: 0 !important; }
+  .datepicker.button-only {
+    border: 0;
+    border-radius: 0; }
+    .datepicker.button-only button {
+      background: transparent;
+      color: #999999; }
+      .datepicker.button-only button.filled {
+        color: #555555; }
+    .datepicker.button-only input {
+      opacity: 0;
+      position: absolute;
+      top: 5px;
+      left: 0;
+      z-index: -1; }
+
 .ui-datepicker-trigger {
   width: 20px;
   cursor: pointer; }
@@ -8331,7 +8373,7 @@ a.disabled, a[disabled=disabled] {
 
 .filters-menu {
   padding: 10px 15px !important;
-  width: 300px;
+  width: 350px;
   margin-top: 10px; }
   .filters-menu .form-control {
     float: none;
@@ -8341,7 +8383,7 @@ a.disabled, a[disabled=disabled] {
     font-size: 0.8em;
     font-weight: normal;
     display: block; }
-  .filters-menu .select-filter, .filters-menu .filter-fields {
+  .filters-menu .select-filter {
     margin: 0 0 10px; }
   .filters-menu .filter-fields {
     display: -webkit-box;
@@ -8353,6 +8395,7 @@ a.disabled, a[disabled=disabled] {
     .filters-menu .filter-fields p {
       margin: 0 5px 0 0; }
   .filters-menu .integer-range-field, .filters-menu .date-range-field {
+    margin: 0 0 15px;
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: justify;
@@ -8379,8 +8422,9 @@ a.disabled, a[disabled=disabled] {
       color: #9CA1A8;
       margin: 0 5px; }
   .filters-menu .date-range-field .dash {
-    margin: 10px 5px 0 5px; }
+    margin: 20px 5px 0 5px; }
   .filters-menu .button-add-filter {
+    margin: 2px 0 10px;
     width: 100%;
     border-radius: 4px !important; }
 
@@ -8856,19 +8900,6 @@ label {
         #form-checklist-make .single-file .list-name-options .single-name.is-selected {
           background: #64c89b;
           color: #fff; }
-    #form-checklist-make .single-file .file-weighting {
-      border-left: 1px solid #e6e6e6;
-      -webkit-box-flex: 0;
-      flex: 0 0 80px;
-      display: -webkit-box;
-      display: flex;
-      -webkit-box-align: center;
-      align-items: center; }
-      #form-checklist-make .single-file .file-weighting input {
-        border-radius: 0;
-        height: 30px;
-        width: 100%;
-        border: 0; }
 
 #btn-create-list {
   background: #49D699;

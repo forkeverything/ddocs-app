@@ -31,10 +31,6 @@ export default {
     },
     created(){
         this.registerEvents(this.eventBus);
-    },
-    beforeDestroy(){
-        this.eventBus.$off('new-errors');
-        this.eventBus.$off('clear-errors');
     }
 }
 </script>

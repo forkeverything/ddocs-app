@@ -13,16 +13,22 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
+// System (App-wide)
+Vue.component('navbar', require('./components/system/Navbar.vue'));
+
+// Auth
+Vue.component('login', require('./components/auth/Login.vue'));
+
 // Utilities
 Vue.component('form-errors', require('./components/utilities/FormErrors.vue'));
 Vue.component('tagger', require('./components/utilities/Tagger.vue'));
 Vue.component('tag-input', require('./components/utilities/TagInput.vue'));
-
 Vue.component('toggle-switch', require('./components/utilities/ToggleSwitch.vue'));
 Vue.component('smart-date', require('./components/utilities/SmartDate.vue'));
 Vue.component('cube-loader', require('./components/utilities/CubeLoader.vue'));
 Vue.component('editable-text-field', require('./components/utilities/EditableTextField.vue'));
 Vue.component('editable-text-area', require('./components/utilities/EditableTextArea.vue'));
+Vue.component('date-picker', require('./components/utilities/DatePicker.vue'));
 
 // Checklist
 Vue.component('checklist-collection', require('./components/checklist/Collection.vue'));
@@ -32,11 +38,10 @@ Vue.component('mobile-file-menu', require('./components/checklist/single/MobileF
 Vue.component('summary-view', require('./components/checklist/single/SummaryView.vue'));
 Vue.component('file-view', require('./components/checklist/single/FileView.vue'));
 Vue.component('selected-file-date', require('./components/checklist/single/DateSelectedFile.vue'));
-Vue.component('selected-file-weighting', require('./components/checklist/single/WeightingSelectedFile.vue'));
 Vue.component('file-request-notes', require('./components/checklist/single/FileRequestNotes.vue'));
 Vue.component('single-note', require('./components/checklist/single/SingleNote.vue'));
 Vue.component('checklist-maker', require('./components/checklist/Maker.vue'));
-Vue.component('maker-files', require('./components/checklist/maker/SelectFiles.vue'));
+Vue.component('files-selecter', require('./components/checklist/maker/FilesSelecter.vue'));
 Vue.component('checklist-offer-join', require('./components/checklist/single/Offer.vue'));
 
 // File Requests
@@ -75,5 +80,6 @@ window.vueGlobalEventBus = new Vue();
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    store
 });

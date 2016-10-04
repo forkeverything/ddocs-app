@@ -8005,6 +8005,8 @@ button.close {
 body {
   padding-top: 42px;
   height: 100vh; }
+  body #app {
+    height: 100%; }
 
 #page-fixed-top {
   position: fixed;
@@ -8066,6 +8068,48 @@ body {
       text-decoration: none !important; }
       .dropdown-menu li a:hover i, .dropdown-menu li a:focus i {
         color: #fff !important; }
+
+.datepicker {
+  position: relative;
+  border: 1px solid #353535;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center; }
+  .datepicker button {
+    background: #353535;
+    color: #fff;
+    padding: 6px 12px;
+    outline: 0 !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    border-radius: 0;
+    font-size: 0.9em;
+    font-weight: normal; }
+    .datepicker button:hover {
+      color: #fff; }
+  .datepicker input {
+    border: 0;
+    outline: 0;
+    width: 100px;
+    text-align: center; }
+    .datepicker input:focus {
+      border: 0 !important; }
+  .datepicker.button-only {
+    border: 0;
+    border-radius: 0; }
+    .datepicker.button-only button {
+      background: transparent;
+      color: #999999; }
+      .datepicker.button-only button.filled {
+        color: #555555; }
+    .datepicker.button-only input {
+      opacity: 0;
+      position: absolute;
+      top: 5px;
+      left: 0;
+      z-index: -1; }
 
 .ui-datepicker-trigger {
   width: 20px;
@@ -8347,7 +8391,7 @@ a.disabled, a[disabled=disabled] {
 
 .filters-menu {
   padding: 10px 15px !important;
-  width: 300px;
+  width: 350px;
   margin-top: 10px; }
   .filters-menu .form-control {
     float: none;
@@ -8357,7 +8401,7 @@ a.disabled, a[disabled=disabled] {
     font-size: 0.8em;
     font-weight: normal;
     display: block; }
-  .filters-menu .select-filter, .filters-menu .filter-fields {
+  .filters-menu .select-filter {
     margin: 0 0 10px; }
   .filters-menu .filter-fields {
     display: -webkit-box;
@@ -8369,6 +8413,7 @@ a.disabled, a[disabled=disabled] {
     .filters-menu .filter-fields p {
       margin: 0 5px 0 0; }
   .filters-menu .integer-range-field, .filters-menu .date-range-field {
+    margin: 0 0 15px;
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: justify;
@@ -8395,8 +8440,9 @@ a.disabled, a[disabled=disabled] {
       color: #9CA1A8;
       margin: 0 5px; }
   .filters-menu .date-range-field .dash {
-    margin: 10px 5px 0 5px; }
+    margin: 20px 5px 0 5px; }
   .filters-menu .button-add-filter {
+    margin: 2px 0 10px;
     width: 100%;
     border-radius: 4px !important; }
 
@@ -8872,40 +8918,11 @@ label {
         #form-checklist-make .single-file .list-name-options .single-name.is-selected {
           background: #64c89b;
           color: #fff; }
-    #form-checklist-make .single-file .file-weighting {
-      border-left: 1px solid #e6e6e6;
-      -webkit-box-flex: 0;
-      flex: 0 0 80px;
-      display: -webkit-box;
-      display: flex;
-      -webkit-box-align: center;
-      align-items: center; }
-      #form-checklist-make .single-file .file-weighting input {
-        border-radius: 0;
-        height: 30px;
-        width: 100%;
-        border: 0; }
 
 #btn-create-list {
   background: #49D699;
   border: 0;
   border-bottom: 2px solid #229764; }
-
-#checklist-make .weighting-switch {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  padding: 10px 0;
-  -webkit-box-pack: start;
-  justify-content: flex-start;
-  flex-wrap: nowrap; }
-  #checklist-make .weighting-switch > label {
-    margin: 0 10px 0 0; }
-  #checklist-make .weighting-switch .onoffswitch {
-    display: inline-block; }
-    #checklist-make .weighting-switch .onoffswitch label {
-      margin-bottom: 0; }
 
 #checklist-all {
   height: 100%;
@@ -9217,35 +9234,6 @@ label {
               top: 5px;
               left: 0;
               z-index: -1; }
-        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting .btn-weighting {
-          height: 30px;
-          background: transparent; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting .btn-weighting.filled {
-            color: #555555; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting .btn-weighting .icon {
-            width: 30px;
-            font-size: 0.9em;
-            text-align: center;
-            display: inline-block;
-            height: 100%;
-            float: left;
-            color: #353535;
-            border-right: 1px solid #353535;
-            padding-top: 4px; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting .btn-weighting .weighting {
-            float: left;
-            padding: 2px 10px 0 10px;
-            text-align: left; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting .btn-weighting input {
-            border: 0;
-            width: 100px;
-            padding: 2px 10px 0 10px;
-            float: left;
-            border-radius: 4px;
-            outline: 0;
-            color: #555555; }
-        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-weighting .uneditable .icon {
-          padding-top: 1px; }
       #checklist-single #checklist-body #split-view #file-view h4 {
         margin: 0 0 10px; }
       #checklist-single #checklist-body #split-view #file-view #single-file-request-menu {
@@ -9371,10 +9359,6 @@ label {
         flex: 0 0 41px; } }
     #checklist-single .col-file:after {
       margin-left: 20px !important; }
-  #checklist-single .col-weighting {
-    -webkit-box-flex: 0;
-    flex: 0 0 60px;
-    font-size: 0.9em; }
   #checklist-single .col-name {
     -webkit-box-flex: 1;
     flex: 1;
@@ -9537,24 +9521,6 @@ label {
     font-size: 1.2em;
     text-align: center;
     color: #353535; }
-
-.file-date-input {
-  position: relative; }
-  .file-date-input button {
-    background: transparent;
-    color: #999999;
-    padding: 6px 12px;
-    outline: 0 !important;
-    box-shadow: none !important;
-    border: 0 !important; }
-    .file-date-input button.filled {
-      color: #555555; }
-  .file-date-input input {
-    opacity: 0;
-    position: absolute;
-    top: 5px;
-    left: 0;
-    z-index: -1; }
 
 .file-renamer {
   width: 100%; }

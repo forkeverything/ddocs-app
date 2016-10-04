@@ -11,9 +11,8 @@
 </head>
 <body>
 
-@include('layouts.partials.nav')
-
-<div id="app">
+<div id="app" v-cloak>
+    <navbar></navbar>
     <router-view></router-view>
 </div>
 

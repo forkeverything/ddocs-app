@@ -1,6 +1,11 @@
 window._ = require('lodash');
 
 /**
+ * Cookies
+ */
+window.Cookies = require('js-cookie');
+
+/**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
@@ -18,6 +23,14 @@ require('bootstrap-sass');
 window.Vue = require('vue/dist/vue.js');
 require('vue-resource');
 
+/**
+ * Use Vuex
+ */
+
+import Vuex from 'vuex';
+Vue.use(Vuex);
+window.store = new Vuex.Store(require('./store.js'));
+
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
@@ -27,7 +40,7 @@ require('vue-resource');
 
 Vue.http.interceptors.push((request, next) => {
     request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
-
+    request.headers['Authorization'] = 'Bearer ' + Cookies.get('ddocs_auth');
     next();
 });
 
@@ -44,23 +57,25 @@ Vue.http.interceptors.push((request, next) => {
 //     key: 'your-pusher-key'
 // });
 
-/**
- * Vue Router
- */
-
-window.VueRouter = require('vue-router');
-window.router = new VueRouter({
-    mode: 'history',
-    routes: require('./routes.js')
-});
-
 // Setup jQuery AJAX to use CSRF Token too.
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': Laravel.csrfToken,
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
+        'Authorization': 'Bearer ' + Cookies.get('ddocs_auth')
     }
 });
+
+/**
+ * Auth Cookie Helper. Makes handling the authentication cookie
+ * a little more semantic.
+ */
+window.AuthCookie = require('./auth-cookie.js');
+if(AuthCookie.get()) store.dispatch('fetchAuthenticatedUser');
+
+/**
+ * Vue Router
+ */
+window.router = require('./router.js');
 
 // Initialize autosize() for textareas.
 let autosize = require('autosize');

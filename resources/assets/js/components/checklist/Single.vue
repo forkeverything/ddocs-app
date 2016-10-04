@@ -73,16 +73,6 @@
                             >
                                 <i class="fa fa-file-o"></i>
                             </li>
-                            <li v-if="checklist.weightings.set"
-                                class="column col-weighting header-column"
-                                :class="{
-                            'current_asc': params.sort === 'weighting' && params.order === 'asc',
-                            'current_desc': params.sort === 'weighting' && params.order === 'desc',
-                            }"
-                                @click="changeSort('weighting')"
-                            >
-                                %
-                            </li>
                             <li class="column col-name header-column"
                                 :class="{
                             'current_asc': params.sort === 'name' && params.order === 'asc',
@@ -120,10 +110,6 @@
                             >
                                 <div class="column col-file content-column file-status" :class="fileRequest.status">
                                     <i class="fa fa-file-o"></i>
-                                </div>
-                                <div class="column col-weighting content-column" v-if="checklist.weightings.set">
-                                    <span v-if="fileRequest.weighting">{{ fileRequest.weighting }}</span>
-                                    <span v-else>--</span>
                                 </div>
                                 <div class="column col-name content-column">
                                     <!-- Download -->
@@ -172,7 +158,7 @@
 
                     <div class="pane-container">
                         <file-view :user="user" v-if="selectedFileRequest" :selected-file-request-index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
-                        <summary-view v-else :checklist="checklist" @update-weightings="updateWeightings"></summary-view>
+                        <summary-view v-if="! selectedFileRequest" :checklist="checklist"></summary-view>
                     </div>
                 </div>
             </div>
@@ -190,6 +176,7 @@
         data: function () {
             return {
                 ajaxReady: true,
+                checklist: '',
                 hasFilters: true,
                 container: 'files-list',
                 filterOptions: [
@@ -227,7 +214,7 @@
                 return this.user.id === this.checklist.user_id;
             },
             requestUrl() {
-                return '/c/' + this.checklistHash + '/files';
+                return '/api/c/' + this.$route.params.checklist_hash + '/files';
             },
             canRejectFile() {
                 if (!this.selectedFileRequest) return false;
@@ -238,12 +225,9 @@
                 return (100 * this.numReceived / this.response.total).toFixed(2);
             }
         },
-        props: ['aws-url', 'user', 'checklist', 'checklist-hash'],
+        props: ['aws-url', 'user', 'checklist-hash'],
         mixins: [fetchesFromEloquentRepository],
         methods: {
-            updateWeightings(newWeightings){
-                this.checklist.weightings = newWeightings;
-            },
             updateFileRequest(newFileRequestObject, index) {
                 this.fileRequests[index] = newFileRequestObject;
             },
@@ -294,18 +278,26 @@
             }, 100),
             addChecklistNameToUrl(){
                 let checklistName = this.checklist.name.replace(/\s+/g, '-').toLowerCase();
-                let urlWithoutQuery = window.location.href.match(/[^\?]*[^\/^\?]/i)[0];
-                let query = window.location.href.match(/\?.*/i);
-                let queryString = query ? query[0] : '';
-                if(! urlWithoutQuery.match(checklistName)) {
-                    let appendedUrl = urlWithoutQuery + '/' + checklistName + queryString;
-                    window.history.replaceState({}, null, appendedUrl);
+                let currentPath = this.$route.path;
+                if(! currentPath.match(checklistName)) {
+                    router.replace({
+                        // re-build url in case somebody mucks it up up when copy-pasting
+                        path: `/c/${ this.$route.params.checklist_hash }/${ checklistName }`,
+                        query: this.$route.query
+                    });
                 }
+            },
+            fetchChecklist(){
+                this.$http.get(`/api/c/${ this.$route.params.checklist_hash }`).then((res) => {
+                    this.checklist = res.json();
+                    this.addChecklistNameToUrl();
+                }, (res) => {
+                    console.log("error fetching checklist");
+                });
             }
         },
         mounted() {
-
-            this.addChecklistNameToUrl();
+            this.fetchChecklist();
 
             this.$nextTick(() => {
                 // Sensor for split view

@@ -44,7 +44,7 @@
 
                 fd.append('file', uploadedFile);
 
-                this.$http.post('/fr/' + this.fileRequest.hash + '/upload', fd, {
+                this.$http.post(`/api/file_requests/${this.fileRequest.hash}/upload`, fd, {
                     before() {
                         this.fileRequestClone.uploading = true;
                         this.fileRequestClone.uploadProgress = 0;
@@ -59,7 +59,6 @@
                     let updatedFileRequest = response.json();
                     this.fileRequestClone.uploading = false;
                     this.$emit('update-file-request', updatedFileRequest, this.index);
-                    vueGlobalEventBus.$emit('updated-weighting');
                 }, (response) => {
                     console.log('Upload file error.');
                     console.log(response);

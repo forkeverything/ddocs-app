@@ -22,7 +22,6 @@ class FileRequestsRepository extends EloquentRepository
         'name',
         'version',
         'due',
-        'weighting',
         'status'
     ];
 

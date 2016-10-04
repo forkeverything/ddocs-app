@@ -48,7 +48,6 @@
                 this.$http.delete('/fr/' + this.selectedFileRequest.hash)
                         .then((response) => {
                             this.$emit('remove-file-request', this.index);
-                            vueGlobalEventBus.$emit('updated-weighting');
                             $(this.$refs.modal).modal('hide');
                             this.ajaxReady = true;
                         }, (response) => {

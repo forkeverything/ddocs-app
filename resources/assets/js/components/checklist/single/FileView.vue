@@ -3,7 +3,6 @@
 
         <div id="selected-file-requirements">
             <selected-file-date :user="user" :file-request="selectedFileRequest" :index="selectedFileRequestIndex"></selected-file-date>
-            <selected-file-weighting :user="user" :file-request="selectedFileRequest" :index="selectedFileRequestIndex"></selected-file-weighting>
         </div>
         <h4>{{ selectedFileRequest.name }}</h4>
         <div id="progress-status"

@@ -62,7 +62,6 @@
                     // success
                     this.reason = '';
                     this.$emit('update-file-request', response.json(), this.index);
-                    vueGlobalEventBus.$emit('updated-weighting');
                     $(this.$refs.modal).modal('hide');
                     this.ajaxReady = true;
                 }, (response) => {

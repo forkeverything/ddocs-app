@@ -1,46 +1,47 @@
 <template>
-    <div class="maker">
+    <div id="checklist-make" class="container">
+        <div class="maker">
 
             <h3>New Checklist</h3>
 
-        <form-errors></form-errors>
+            <form-errors></form-errors>
 
 
-        <form id="form-checklist-make" action="/c/make" method="POST">
-            <div class="inline-label">
-                <label class="text-muted">To: </label>
-                <tagger v-model="checklistRecipients"
-                        :validate-function="validateRecipient"
-                        :placeholder="'Emails'"
-                        @updated-tags="setRecipients"
-                >
-                </tagger>
-            </div>
-            <h2 id="title-checklist-name"
-                v-show="! editingName"
-                @click="toggleEditingName"
-                @focus="toggleEditingName"
-                :class="{
+            <form id="form-checklist-make" action="/c/make" method="POST">
+                <div class="inline-label">
+                    <label class="text-muted">To: </label>
+                    <tagger v-model="checklistRecipients"
+                            :validate-function="validateRecipient"
+                            :placeholder="'Emails'"
+                            @updated-tags="setRecipients"
+                    >
+                    </tagger>
+                </div>
+                <h2 id="title-checklist-name"
+                    v-show="! editingName"
+                    @click="toggleEditingName"
+                    @focus="toggleEditingName"
+                    :class="{
                                     'filled': checklistName
                                 }"
-                tabindex="0"
-            >{{ checklistNameText }}</h2>
-            <input id="input-checklist-name" type="text" class="form-control" v-show="editingName"
-                   @blur="toggleEditingName" v-model="checklistName" name="name">
-            <textarea id="textarea-new-checklist-description" rows="2" class="autosize form-control borderless"
-                      placeholder="description" v-model="checklistDescription" name="description"></textarea>
-            <hr>
-            <h4 class="title-files">Files</h4>
-            <ul class="files-summary text-muted list-unstyled list-inline">
-                <li class="num_files">Count {{ fileCount }}</li>
-                <li class="weightings" v-show="weightings">Total Weightings {{ totalWeights }}%</li>
-            </ul>
-            <maker-files v-model="files" :weightings="weightings"></maker-files>
-        </form>
-        <div class="text-right">
-            <button type="button" id="btn-create-list" class="btn btn-primary" @click="sendChecklist" :disabled="
+                    tabindex="0"
+                >{{ checklistNameText }}</h2>
+                <input id="input-checklist-name" type="text" class="form-control" v-show="editingName"
+                       @blur="toggleEditingName" v-model="checklistName" name="name">
+                <textarea id="textarea-new-checklist-description" rows="2" class="autosize form-control borderless"
+                          placeholder="description" v-model="checklistDescription" name="description"></textarea>
+                <hr>
+                <h4 class="title-files">Files</h4>
+                <ul class="files-summary text-muted list-unstyled list-inline">
+                    <li class="num_files">Count {{ fileCount }}</li>
+                </ul>
+                <files-selecter v-model="files"></files-selecter>
+            </form>
+            <div class="text-right">
+                <button type="button" id="btn-create-list" class="btn btn-primary" @click="sendChecklist" :disabled="
                     ! canSendChecklist">{{ submitButtonText }}
-            </button>
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -57,14 +58,11 @@
                     {
                         name: '',
                         description: '',
-                        due: '',
-                        weighting: ''
+                        due: ''
                     }
-                ],
-                weightings: true
+                ]
             }
         },
-        props: ['user'],
         computed: {
             checklistNameText: function () {
                 // Used to display a default when a name isn't given
@@ -72,26 +70,13 @@
                 return 'List Name';
             },
             validFiles: function () {
-                var self = this;
                 // Only deal with files that have names
-                let filesWithNames = _.filter(this.files, function (file) {
+                return _.filter(this.files, function (file) {
                     return file.name;
-                });
-                // Map through and include weightings based on our settings
-                return _.map(filesWithNames, (file) => {
-                    if (!self.weightings) file.weighting = '';
-                    return file
                 });
             },
             fileCount: function () {
                 return this.validFiles.length;
-            },
-            totalWeights: function () {
-                let totalWeightings = 0;
-                _.map(this.files, (file) => {
-                    if (file.weighting) totalWeightings += parseFloat(file.weighting);
-                });
-                return totalWeightings.toFixed(2);
             },
             canSendChecklist: function () {
                 // Required fields...
@@ -128,22 +113,18 @@
             },
             sendChecklist: function () {
 
-                if (!this.user) {
-                    vueGlobalEventBus.$emit('show-registration-modal');
-                    return;
-                }
-
                 vueClearValidationErrors();
                 if (!this.ajaxReady) return;
                 this.ajaxReady = false;
 
 
-                this.$http.post('/c/make', {
+                this.$http.post('/api/checklists', {
                     recipients: this.checklistRecipients,
                     name: this.checklistName,
                     description: this.checklistDescription,
                     requested_files: this.validFiles
                 }).then((response) => {
+                    router.push('/c/' + response.data);
                     location.href = "/c/" + response.data;
                 }, (response) => {
                     console.log(response);

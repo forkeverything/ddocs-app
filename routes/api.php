@@ -18,31 +18,32 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-
-
 Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
 
 // NEW ROUTES THAT HAVEN'T BEEN RENAMED YET
 
-// Checklist
+// Checklist - Auth Route
 Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser');
 Route::post('/checklists', 'ChecklistsController@postNewChecklist');
-Route::get('/checklists/{checklist_hash}/weightings', 'ChecklistsController@getWeightings');
-Route::get('/checklists/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
+
+
+// Checklist - Public Route
+Route::get('/c/{checklist_hash}', 'ChecklistsController@getSingle');
+Route::get('/c/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
 
 // Recipients
-Route::get('/recipients/{recipient_hash}/turn_off_notifications', 'RecipientsController@getTurnOffNotifications');
+//Route::get('/recipients/{recipient_hash}/turn_off_notifications', 'RecipientsController@getTurnOffNotifications');
 
 // File Requests
 Route::post('/file_requests/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
-Route::put('/file_requests/{file_request_hash}', 'FileRequestsController@putModifyRequest');
-Route::post('/file_requests/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
-Route::post('/file_requests/{file_request_hash}/reject', 'FileRequestsController@postRejectUploadedFile');
-Route::get('/file_requests/{file_request_hash}/history', 'FileRequestsController@getHistory');
-Route::get('/file_requests/{file_request_hash}/notes', 'FileRequestsController@getNotes');
-Route::delete('/file_requests/{file_request_hash}', 'FileRequestsController@deleteFiles');
-Route::post('/file_requests/{file_request_hash}/comments', 'FileRequestsController@postAddComment');
-Route::get('/file_requests/user/{user}', 'FileRequestsController@getFileRequestsForUser');
+//Route::put('/file_requests/{file_request_hash}', 'FileRequestsController@putModifyRequest');
+//Route::post('/file_requests/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
+//Route::post('/file_requests/{file_request_hash}/reject', 'FileRequestsController@postRejectUploadedFile');
+//Route::get('/file_requests/{file_request_hash}/history', 'FileRequestsController@getHistory');
+//Route::get('/file_requests/{file_request_hash}/notes', 'FileRequestsController@getNotes');
+//Route::delete('/file_requests/{file_request_hash}', 'FileRequestsController@deleteFiles');
+//Route::post('/file_requests/{file_request_hash}/comments', 'FileRequestsController@postAddComment');
+//Route::get('/file_requests/user/{user}', 'FileRequestsController@getFileRequestsForUser');
 
 // Notes
 Route::post('/note', 'NotesController@postNew');

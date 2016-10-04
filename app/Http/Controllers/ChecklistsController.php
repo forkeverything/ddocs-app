@@ -23,7 +23,7 @@ class ChecklistsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', [
+        $this->middleware('jwt.auth', [
             'only' => [
                 'getListsView',
                 'getForAuthenticatedUser',
@@ -116,27 +116,13 @@ class ChecklistsController extends Controller
      * @param $checklistHash
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getSingleChecklist($checklistHash)
+    public function getSingle($checklistHash)
     {
         $checklist = Checklist::findOrFail(unhashId('checklist', $checklistHash));
-        $checklist->load('user', 'recipients')->withWeightings();
+        $checklist->load('user', 'recipients');
 
-//        if(Auth::check()) $this->authorize('view', $checklist);
-        return view('checklist.single', compact('checklist', 'checklistHash'));
+        return $checklist;
     }
-
-    /**
-     * Get weightings for Checklist.
-     *
-     * @param $checklistHash
-     * @return mixed
-     */
-    public function getWeightings($checklistHash)
-    {
-        $checklist = Checklist::findOrFail(unhashId('checklist', $checklistHash));
-        return (array)$checklist->withWeightings()->weightings;
-    }
-
 
     /**
      * Retrieve the files for checklist.
@@ -157,7 +143,7 @@ class ChecklistsController extends Controller
                                      ->filterDateField('due', $request->due)
                                      ->withStatus($request->status)
                                      ->searchFor($search)
-                                     ->sortWithNull($sort, $order, ['due', 'weighting'])
+                                     ->sortWithNull($sort, $order, ['due'])
                                      ->withNumReceivedFiles()
                                      ->paginate($perPage);
     }
