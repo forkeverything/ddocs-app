@@ -1,9 +1,6 @@
 <template>
     <div id="file-view" class="content">
-
-        <div id="selected-file-requirements">
-            <selected-file-date :user="user" :file-request="selectedFileRequest" :index="selectedFileRequestIndex"></selected-file-date>
-        </div>
+        
         <h4>{{ selectedFileRequest.name }}</h4>
         <div id="progress-status"
              :class="{
@@ -51,6 +48,6 @@ export default {
 
         }
     },
-    props: ['user', 'selected-file-request-index', 'selected-file-request', 'show-reject-modal', 'can-reject-file', 'show-delete-modal']
+    props: ['is-owner', 'selected-file-request-index', 'selected-file-request', 'show-reject-modal', 'can-reject-file', 'show-delete-modal']
 }
 </script>

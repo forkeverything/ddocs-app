@@ -56,7 +56,7 @@
 
                         <file-active-filters :params="params" :remove-filter="removeFilter"></file-active-filters>
 
-                        <mobile-file-menu v-if="selectedFileRequest" :selected-file-request="selectedFileRequest" :show-delete-modal="showDeleteModal" :upload-selected="uploadSelected" :show-reject-modal="showRejectModal"></mobile-file-menu>
+                        <mobile-file-menu v-if="selectedFileRequest" :selected-file-request="selectedFileRequest" :show-delete-modal="showDeleteModal" :upload-selected="uploadSelected" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile"></mobile-file-menu>
 
 
 
@@ -157,7 +157,7 @@
                     </div>
 
                     <div class="pane-container">
-                        <file-view :user="user" v-if="selectedFileRequest" :selected-file-request-index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
+                        <file-view :is-owner="checklistBelongsToUser" v-if="selectedFileRequest" :selected-file-request-index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
                         <summary-view v-if="! selectedFileRequest" :checklist="checklist"></summary-view>
                     </div>
                 </div>
@@ -176,6 +176,7 @@
         data: function () {
             return {
                 ajaxReady: true,
+                awsUrl: awsURL,
                 checklist: '',
                 hasFilters: true,
                 container: 'files-list',
@@ -199,6 +200,9 @@
             }
         },
         computed: {
+            authenticatedUser(){
+                return this.$store.state.authenticatedUser;
+            },
             fileRequests() {
                     return this.response.data;
             },
@@ -210,8 +214,8 @@
                 return this.fileRequests[this.selectedFileRequestIndex];
             },
             checklistBelongsToUser() {
-                if (!this.user) return false;
-                return this.user.id === this.checklist.user_id;
+                if (!this.authenticatedUser) return false;
+                return this.authenticatedUser.id === this.checklist.user_id;
             },
             requestUrl() {
                 return '/api/c/' + this.$route.params.checklist_hash + '/files';
@@ -225,7 +229,6 @@
                 return (100 * this.numReceived / this.response.total).toFixed(2);
             }
         },
-        props: ['aws-url', 'user', 'checklist-hash'],
         mixins: [fetchesFromEloquentRepository],
         methods: {
             updateFileRequest(newFileRequestObject, index) {

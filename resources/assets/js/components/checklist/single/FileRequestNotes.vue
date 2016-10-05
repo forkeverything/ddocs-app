@@ -15,7 +15,7 @@
                                  :focused-index="focusedIndex"
                                  :file-request-hash="fileRequest.hash"
                                  :index="index"
-                                 @focus-note="focusNote"
+                                 @focus-note="setFocusIndex"
                                  @toggle-check-note="toggleCheckNote"
                                  @update-note-body="updateNoteBody"
                                  @update-note-position="updateNotePosition"
@@ -50,20 +50,26 @@
                 this.saveChangesForNoteAtIndex(index);
             },
             updateNoteBody(body, index){
-                this.notes[index].body = body;
+                let note = this.notes[index];
+                if(! note) return;  // notes been deleted
+                note.body = body;
                 this.saveChangesForNoteAtIndex(index);
             },
             toggleCheckNote(index) {
                 this.notes[index].checked = !this.notes[index].checked;
                 this.saveChangesForNoteAtIndex(index);
             },
-            focusNote(index) {
-                this.focusIndex = index || '';
+            setFocusIndex(index) {
+                if(index === undefined) {
+                    this.focusedIndex = '';
+                } else {
+                    this.focusedIndex = index;
+                }
             },
             getNotes(){
                 this.loading = true;
                 this.notes = [];
-                this.$http.get('/fr/' + this.fileRequest.hash + '/notes', {
+                this.$http.get('/api/file_requests/' + this.fileRequest.hash + '/notes', {
                     before(xhr) {
                         for (let i = 0; i < this.fetchRequests.length; i++) {
                             this.fetchRequests.shift().abort();
@@ -117,7 +123,7 @@
             },
             saveNewNote(note, index){
                 note.saving = true;
-                this.$http.post('/note', note).then((response) => {
+                this.$http.post('/api/note', note).then((response) => {
                     // success
                     note.hash = response.json().hash;
                     note.saving = false;
@@ -141,7 +147,7 @@
             },
             updateNote(note, index) {
                 if (note.deleting) return;
-                this.$http.put('/note/' + note.hash, {
+                this.$http.put('/api/note/' + note.hash, {
                     'position': index,
                     'body': note.body,
                     'checked': note.checked
@@ -174,7 +180,7 @@
             },
             deleteNote(note) {
                 note.deleting = true;
-                this.$http.delete('/note/' + note.hash, {
+                this.$http.delete('/api/note/' + note.hash, {
                     before(xhr) {
                         this.clearQueue(note, 'updating');
                         this.clearQueue(note, 'deleting');

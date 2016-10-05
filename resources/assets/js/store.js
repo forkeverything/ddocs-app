@@ -9,14 +9,14 @@ module.exports = {
     },
     actions: {
         fetchAuthenticatedUser(context) {
-
-            $.get('/auth/user')
-                .done((user) => {
-                    context.commit('setUser', user);
-                })
-                .fail(() => {
-                    auth.removeCookie();
-                });
+            Vue.http.get('/auth/user').then((res) => {
+                // Got user, token was good.
+                context.commit('setUser', res.json());
+            }, (res) => {
+                // Before we get here our interceptor will catch a bad token and
+                // redirect to login
+                console.log("Couldn't get authenticated user");
+            });
         }
     }
 };

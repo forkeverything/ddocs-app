@@ -23,7 +23,7 @@ class ChecklistsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('jwt', [
+        $this->middleware('jwt.auth', [
             'only' => [
                 'getListsView',
                 'getForAuthenticatedUser',

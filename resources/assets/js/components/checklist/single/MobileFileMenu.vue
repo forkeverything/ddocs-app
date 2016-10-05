@@ -14,7 +14,8 @@
                 <li class="menu-item">
                     <a href="#"
                        @click.prevent="showRejectModal"
-                       :class="{ 'disabled': ! canRejectFile }">
+                       :class="{ 'disabled': ! canRejectFile }"
+                    >
                         <i class="icon reject fa fa-close"></i>Reject
                     </a>
                 </li>
@@ -58,7 +59,7 @@ export default {
 
         }
     },
-    props: ['selected-file-request', 'show-delete-modal', 'upload-selected', 'show-reject-modal'],
+    props: ['selected-file-request', 'show-delete-modal', 'upload-selected', 'show-reject-modal', 'can-reject-file'],
     methods: {
         toggleDropdownMenu() {
             $(this.$refs.dropdownMenu).toggle();

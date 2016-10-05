@@ -83,7 +83,7 @@ export default {
             vueGlobalEventBus.$emit('add-new-note', this.index);
         },
         removeThisNote(event) {
-            if(this.note.body) return;
+            if(this.body) return;
             vueGlobalEventBus.$emit('remove-note', {
                 index: this.index,
                 event: event
@@ -96,6 +96,9 @@ export default {
     },
     mounted() {
         this.body = this.note.body;
+        if(this.note.position !== this.index) {
+            this.$emit('update-note-position', this.index);
+        }
         this.$nextTick(this.setTextAreaHeight);
     }
 }

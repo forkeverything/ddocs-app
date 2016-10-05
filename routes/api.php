@@ -40,7 +40,7 @@ Route::post('/file_requests/{file_request_hash}/upload', 'FileRequestsController
 //Route::post('/file_requests/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
 //Route::post('/file_requests/{file_request_hash}/reject', 'FileRequestsController@postRejectUploadedFile');
 //Route::get('/file_requests/{file_request_hash}/history', 'FileRequestsController@getHistory');
-//Route::get('/file_requests/{file_request_hash}/notes', 'FileRequestsController@getNotes');
+Route::get('/file_requests/{file_request_hash}/notes', 'FileRequestsController@getNotes');
 //Route::delete('/file_requests/{file_request_hash}', 'FileRequestsController@deleteFiles');
 //Route::post('/file_requests/{file_request_hash}/comments', 'FileRequestsController@postAddComment');
 //Route::get('/file_requests/user/{user}', 'FileRequestsController@getFileRequestsForUser');
