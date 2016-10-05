@@ -181,7 +181,7 @@ return [
         // Package Providers
         Vinkla\Hashids\HashidsServiceProvider::class,
         Laravel\Cashier\CashierServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         // Custom Providers
         \App\Providers\ChecklistServiceProvider::class

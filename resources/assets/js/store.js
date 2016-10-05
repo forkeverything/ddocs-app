@@ -9,7 +9,7 @@ module.exports = {
     },
     actions: {
         fetchAuthenticatedUser(context) {
-            Vue.http.get('/auth/user').then((res) => {
+            Vue.http.get('/api/user').then((res) => {
                 // Got user, token was good.
                 context.commit('setUser', res.json());
             }, (res) => {

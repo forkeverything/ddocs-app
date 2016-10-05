@@ -60,7 +60,7 @@
                 if (!this.ajaxReady) return;
                 this.ajaxReady = false;
 
-                this.$http.post('/auth/login', {
+                this.$http.post('/login', {
                     email: this.email,
                     password: this.password
                 }).then((response) => {

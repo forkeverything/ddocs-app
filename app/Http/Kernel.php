@@ -38,8 +38,8 @@ class Kernel extends HttpKernel
         ],
 
         'jwt' => [
-            \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
-            \Tymon\JWTAuth\Middleware\RefreshToken::class,
+            \Tymon\JWTAuth\Http\Middleware\AuthenticateAndRenew::class,
+            \Tymon\JWTAuth\Http\Middleware\RefreshToken::class
         ]
     ];
 
@@ -55,9 +55,11 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+//        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \App\Http\Middleware\GuestsOnly::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'jwt.auth' => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
-        'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class,
+        'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+        'jwt.auth-renew' => \Tymon\JWTAuth\Http\Middleware\AuthenticateAndRenew::class,
+        'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
     ];
 }

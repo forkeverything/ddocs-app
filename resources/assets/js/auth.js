@@ -28,8 +28,14 @@ module.exports = {
      * @param response
      */
 
-    checkResponseTokenInvalid(response) {
-        if(response.status === 401 && (response.json().error === 'token_invalid' || response.json().error === 'token_expired')) {
+    checkForAuthError(response) {
+        let errors = [
+            'token_invalid',
+            'token_expired',
+            'token_revoked',
+            'unauthenticated'
+        ];
+        if(response.status === 401 && errors.indexOf(response.json().error) !== -1) {
             auth.removeCookie();
             // save where the user is currently at
             this.redirectPath = router.currentRoute.fullPath;
@@ -108,7 +114,7 @@ module.exports = {
         Vue.http.interceptors.push((request, next) => {
             next((response) => {
                 this.refreshToken(response);
-                this.checkResponseTokenInvalid(response);
+                this.checkForAuthError(response);
                 return response;
             });
         });

@@ -6,11 +6,10 @@ use App\Events\CreatedUserFromEmailWebhook;
 use App\Exceptions\NotEnoughCredits;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Event;
 use Laravel\Cashier\Billable;
 
-class User extends Authenticatable
+class User extends AuthenticatableUser
 {
     use Notifiable, Billable;
 

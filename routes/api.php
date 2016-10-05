@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Log;
 |
 */
 
+
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:api');
+})->middleware('auth');
 
 Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
 
