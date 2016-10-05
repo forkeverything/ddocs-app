@@ -67,31 +67,32 @@ export default {
     props: ['index', 'focused-index', 'note', 'file-request-hash'],
     methods: {
         toggleChecked() {
-            this.$emit('toggle-check-note', index);
+            this.$emit('toggle-check-note', this.index);
         },
         setTextAreaHeight() {
             this.textAreaHeight = $(this.$refs.sizer).height() + 'px';
         },
         setFocus() {
-            this.$emit('focus-note', this.index);
+            this.$emit('set-focused-index', this.index);
         },
         blurInput() {
-            this.$emit('focus-note');
-            this.$emit('update-note-body', this.body, this.index);
+            this.$emit('set-focused-index');
+            let savingNewNote = this.note.saved === false;
+            let updatedExistingNote = this.body !== this.note.body;
+            if( savingNewNote || updatedExistingNote ) {
+                this.$emit('update-note-body', this.body, this.index);
+            }
         },
         addNoteAfterThisOne() {
-            vueGlobalEventBus.$emit('add-new-note', this.index);
+            this.$emit('add-new-note', this.index + 1);
         },
         removeThisNote(event) {
             if(this.body) return;
-            vueGlobalEventBus.$emit('remove-note', {
-                index: this.index,
-                event: event
-            });
+            this.$emit('remove-note', this.index, event);
         },
         pressedArrow: function (direction) {
             let indexToFocus = (direction === 'prev') ? this.index - 1 : this.index + 1;
-            vueGlobalEventBus.$emit('focus-note', indexToFocus);
+            this.$emit('focus-note', indexToFocus);
         }
     },
     mounted() {

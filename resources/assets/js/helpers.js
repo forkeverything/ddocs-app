@@ -14,7 +14,7 @@ window.strCapitalize = function (str) {
  *
  * @type {{&: string, <: string, >: string, ": string, ': string, /: string}}
  */
-var entityMap = {
+let entityMap = {
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
@@ -218,4 +218,20 @@ window.formatNumber = function (val) {
  */
 window.isNumeric = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+/**
+ * Generates a random string [a-zA-Z0-9]
+ *
+ * @param length
+ * @returns {string}
+ */
+window.randomString = function (length = 8) {
+    let text = "";
+    let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (let i = 0; i < length; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
 };

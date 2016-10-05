@@ -12,13 +12,17 @@
                 <tbody>
                 <template v-for="(note, index) in notes">
                     <single-note :note="note"
+                                 :key="note.hash"
                                  :focused-index="focusedIndex"
                                  :file-request-hash="fileRequest.hash"
                                  :index="index"
-                                 @focus-note="setFocusIndex"
+                                 @set-focused-index="setFocusIndex"
                                  @toggle-check-note="toggleCheckNote"
                                  @update-note-body="updateNoteBody"
                                  @update-note-position="updateNotePosition"
+                                 @add-new-note="addNewNote"
+                                 @remove-note="removeNote"
+                                 @focus-note="focusNote"
                     >
                     </single-note>
 
@@ -95,7 +99,9 @@
             },
             addNewNote(position = this.notes.length) {
                 let newNote = {
+                    hash: randomString(12), // we create a fake-hash first so vue can keep track of v-for
                     body: '',
+                    saved: false,
                     checked: false,
                     position: position,
                     file_request_hash: this.fileRequest.hash,
@@ -111,7 +117,7 @@
             },
             saveChangesForNoteAtIndex(index) {
                 let note = this.notes[index];
-                if (!note.hash && !note.saving) {
+                if (note.saved === false && ! note.saving) {
                     this.saveNewNote(note, index)
                 } else {
                     if (note.saving) {
@@ -126,6 +132,7 @@
                 this.$http.post('/api/note', note).then((response) => {
                     // success
                     note.hash = response.json().hash;
+                    note.saved = true;
                     note.saving = false;
                     if (note.needs_delete) {
                         this.deleteNote(note);
@@ -172,7 +179,7 @@
                     this.focusNote(index - 1);
                 });
                 // If we're removing an unsaved note
-                if (!note.hash) {
+                if (note.saved === false) {
                     note.needs_delete = true;
                 } else {
                     this.deleteNote(note);
@@ -194,16 +201,12 @@
             }
         },
         created() {
-            vueGlobalEventBus.$on('add-new-note', (index) => this.addNewNote(index + 1));
-            vueGlobalEventBus.$on('remove-note', (args) => this.removeNote(args.index, args.event));
             vueGlobalEventBus.$on('focus-note', (position) => this.focusNote(position));
         },
         mounted() {
             this.getNotes();
         },
         beforeDestroy(){
-            vueGlobalEventBus.$off('add-new-note');
-            vueGlobalEventBus.$off('remove-note');
             vueGlobalEventBus.$off('focus-note');
         }
     }
