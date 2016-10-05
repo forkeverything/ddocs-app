@@ -19,12 +19,13 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth');
 
+
 Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
 
 // NEW ROUTES THAT HAVEN'T BEEN RENAMED YET
 
 // Checklist - Auth Route
-Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser');
+Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser')->middleware('jwt.refresh');
 Route::post('/checklists', 'ChecklistsController@postNewChecklist');
 
 

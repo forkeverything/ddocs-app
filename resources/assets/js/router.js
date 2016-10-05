@@ -27,7 +27,9 @@ module.exports = (function () {
         // guestOnly
         if (to.matched.some(record => record.meta.guestOnly)) {
             if (auth.getCookie()) {
-                next('/');
+                next({
+                    path: '/'
+                });
             } else {
                 next();
             }

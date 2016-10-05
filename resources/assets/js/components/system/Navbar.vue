@@ -66,9 +66,7 @@
         },
         methods: {
             logout(){
-                auth.removeCookie();
-                this.$store.commit('setUser', '');
-                this.$router.push('/login');
+                auth.logout();
             }
         }
     }

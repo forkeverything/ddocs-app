@@ -293,7 +293,7 @@
             fetchChecklist(){
                 this.$http.get(`/api/c/${ this.$route.params.checklist_hash }`).then((res) => {
                     this.checklist = res.json();
-                    this.addChecklistNameToUrl();
+//                    this.addChecklistNameToUrl();
                 }, (res) => {
                     console.log("error fetching checklist");
                 });

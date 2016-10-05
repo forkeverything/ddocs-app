@@ -29,17 +29,23 @@ module.exports = {
      */
 
     checkForAuthError(response) {
+
         let errors = [
+            'unauthenticated',
             'token_invalid',
             'token_expired',
-            'token_revoked',
-            'unauthenticated'
+            'token_revoked'
         ];
+
         if(response.status === 401 && errors.indexOf(response.json().error) !== -1) {
-            auth.removeCookie();
+            this.removeCookie();
             // save where the user is currently at
             this.redirectPath = router.currentRoute.fullPath;
             router.push('/login');
+        }
+
+        if(response.status === 403 && response.json().error === 'guests_only') {
+            router.push('/l');
         }
     },
 
@@ -113,9 +119,9 @@ module.exports = {
     pushResourceInterceptor(){
         Vue.http.interceptors.push((request, next) => {
             next((response) => {
-                this.refreshToken(response);
+                // this.refreshToken(response);
                 this.checkForAuthError(response);
-                return response;
+                // return response;
             });
         });
     },
@@ -126,11 +132,30 @@ module.exports = {
      */
 
     setup(){
+
+        // set our interceptor - this has to happen first!
+        this.pushResourceInterceptor();
+
         // If we found a cookie (logged-in)
         if(this.getCookie()) {
             // Set our request headers
             this.setHeaders(this.getCookie());
         }
-        this.pushResourceInterceptor();
+    },
+
+    /**
+     * Logout authenticated user
+     */
+
+    logout(){
+        Vue.http.post('/logout').then((res) => {
+            this.removeCookie();
+            delete Vue.http.headers.common["Authorization"];
+            delete $.ajaxSettings.headers["Authorization"];
+            store.commit('setUser', '');
+            router.push('/login');
+        }, (res) => {
+            console.log("couldn't log out user");
+        });
     }
 };
