@@ -42,7 +42,8 @@
 
             <ul id="list-checklists" v-show="checklists" class="list-unstyled" @scroll="scrollList">
                 <li class="single-checklist" v-for="checklist in checklists">
-                    <a :href="'/c/' + checklist.hash" class="checklist-link">
+
+                    <router-link :to="'/c/' + checklist.hash" class="checklist-link">
                         <div class="header">
                             <h4>{{ checklist.name }}</h4>
                             <span class="date-made">{{ checklist.created_at | easyDate }}</span>
@@ -53,11 +54,11 @@
                             <i class="fa fa-file-o"></i> {{ checklist.received }} / {{ checklist.requested_files.length }}
                         </span>
                         </div>
-                    </a>
+                    </router-link>
                 </li>
                 <li v-if="checklists && checklists.length < 1" class="text-muted text-center">
                     <br>
-                    Sorry we couldn't find any lists for you. <a href="/c/make">Make</a> a new one or
+                    Sorry we couldn't find any lists for you. <router-link to="/checklists/make">Make</router-link> a new one or
                     <a href="#" @click.prevent="clearSearch">clear</a> your search to see more.
                 </li>
             </ul>

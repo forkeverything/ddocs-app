@@ -2,30 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/AuthenticatableUser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Exceptions/Handlers/JWTHandler.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Http/Controllers/JWTAuthController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/config/jwt.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Exceptions/Handlers/JWTHandlers.php" afterPath="$PROJECT_DIR$/app/Exceptions/Handlers/AuthenticationHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Kernel.php" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/app.php" afterPath="$PROJECT_DIR$/config/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/auth.php" afterPath="$PROJECT_DIR$/config/auth.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/landing.js" afterPath="$PROJECT_DIR$/public/js/landing.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/auth.js" afterPath="$PROJECT_DIR$/resources/assets/js/auth.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/auth/Login.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/auth/Login.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/store.js" afterPath="$PROJECT_DIR$/resources/assets/js/store.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/api.php" afterPath="$PROJECT_DIR$/routes/api.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/Collection.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/Collection.vue" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,38 +25,18 @@
     <favorites_list name="files-collector" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="store.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/assets/js/store.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="351">
-                  <caret line="13" column="54" lean-forward="true" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
-                  <folding>
-                    <marker date="1475657396000" expanded="true" signature="612:622" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="api.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/routes/api.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="324">
-                  <caret line="17" column="49" lean-forward="true" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="Collection.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Collection.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="68" column="83" lean-forward="false" selection-start-line="68" selection-start-column="83" selection-end-line="68" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -88,12 +47,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>note</find>
-      <find>focus</find>
-      <find>is-focused</find>
-      <find>focusedIndex</find>
-      <find>focus-note</find>
-      <find>focusNote</find>
       <find>this.focusedIn</find>
       <find>add-new-note</find>
       <find>queue</find>
@@ -118,6 +71,12 @@
       <find>checkResponseTokenInvalid</find>
       <find>intercept</find>
       <find>interceptro</find>
+      <find>encode</find>
+      <find>parseToken</find>
+      <find>a</find>
+      <find>&gt;a?</find>
+      <find>/c/make</find>
+      <find>&lt;a</find>
     </findStrings>
     <replaceStrings>
       <replace>auth</replace>
@@ -134,7 +93,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Checklist.php" />
         <option value="$PROJECT_DIR$/app/FileRequest.php" />
         <option value="$PROJECT_DIR$/resources/assets/sass/checklist/_list-maker.scss" />
         <option value="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
@@ -185,6 +143,7 @@
         <option value="$PROJECT_DIR$/app/Exceptions/Handlers/JWTHandler.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/auth.js" />
         <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/resources/assets/js/components/checklist/Collection.vue" />
       </list>
     </option>
   </component>
@@ -590,12 +549,12 @@
       <workItem from="1475512100970" duration="13006000" />
       <workItem from="1475550255089" duration="22820000" />
       <workItem from="1475594633494" duration="2406000" />
-      <workItem from="1475646880042" duration="8081000" />
+      <workItem from="1475646880042" duration="9289000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="673465000" />
+    <option name="totallyTimeSpent" value="674673000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -645,333 +604,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/Reflection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="1342" column="20" lean-forward="false" selection-start-line="1342" selection-start-column="20" selection-end-line="1342" selection-end-column="20" />
-          <folding>
-            <marker date="1474449478000" expanded="true" signature="56:156" ph=" The ReflectionException class. ..." />
-            <marker date="1474449478000" expanded="true" signature="205:207" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="213:295" ph=" The reflection class. ..." />
-            <marker date="1474449478000" expanded="true" signature="317:1226" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="323:574" ph=" Gets modifier names ..." />
-            <marker date="1474449478000" expanded="true" signature="639:1148" ph=" Exports ..." />
-            <marker date="1474449478000" expanded="true" signature="1232:1377" ph=" &lt;b&gt;Reflector&lt;/b&gt; is an interface implemented by all ..." />
-            <marker date="1474449478000" expanded="true" signature="1402:1688" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="1408:1513" ph=" Exports ..." />
-            <marker date="1474449478000" expanded="true" signature="1549:1659" ph=" To string ..." />
-            <marker date="1474449478000" expanded="true" signature="1694:1852" ph=" A parent class to &lt;b&gt;ReflectionFunction&lt;/b&gt;, read its ..." />
-            <marker date="1474449478000" expanded="true" signature="1919:8132" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="1941:2068" ph=" Clones function ..." />
-            <marker date="1474449478000" expanded="true" signature="2114:2241" ph=" To string ..." />
-            <marker date="1474449478000" expanded="true" signature="2290:2500" ph=" Checks if function in namespace ..." />
-            <marker date="1474449478000" expanded="true" signature="2543:2732" ph=" Checks if closure ..." />
-            <marker date="1474449478000" expanded="true" signature="2773:2967" ph=" Checks if deprecated ..." />
-            <marker date="1474449478000" expanded="true" signature="3011:3202" ph=" Checks if is internal ..." />
-            <marker date="1474449478000" expanded="true" signature="3244:3437" ph=" Checks if user defined ..." />
-            <marker date="1474449478000" expanded="true" signature="3482:3702" ph=" Returns this pointer bound to closure ..." />
-            <marker date="1474449478000" expanded="true" signature="3748:3997" ph=" Returns the scope associated to the closure ..." />
-            <marker date="1474449478000" expanded="true" signature="4049:4242" ph=" Gets doc comment ..." />
-            <marker date="1474449478000" expanded="true" signature="4287:4504" ph=" Gets end line number ..." />
-            <marker date="1474449478000" expanded="true" signature="4546:4766" ph=" Gets extension info ..." />
-            <marker date="1474449478000" expanded="true" signature="4810:4975" ph=" Gets extension name ..." />
-            <marker date="1474449478000" expanded="true" signature="5023:5172" ph=" Gets file name ..." />
-            <marker date="1474449478000" expanded="true" signature="5215:5375" ph=" Gets function name ..." />
-            <marker date="1474449478000" expanded="true" signature="5414:5580" ph=" Gets namespace name ..." />
-            <marker date="1474449478000" expanded="true" signature="5628:5808" ph=" Gets number of parameters ..." />
-            <marker date="1474449478000" expanded="true" signature="5861:6067" ph=" Gets number of required parameters ..." />
-            <marker date="1474449478000" expanded="true" signature="6128:6330" ph=" Gets parameters ..." />
-            <marker date="1474449478000" expanded="true" signature="6375:6633" ph=" Gets the specified return type of a function ..." />
-            <marker date="1474449478000" expanded="true" signature="6678:6857" ph=" Gets function short name ..." />
-            <marker date="1474449478000" expanded="true" signature="6901:7070" ph=" Gets starting line number ..." />
-            <marker date="1474449478000" expanded="true" signature="7114:7291" ph=" Gets static variables ..." />
-            <marker date="1474449478000" expanded="true" signature="7341:7553" ph=" Checks if returns reference ..." />
-            <marker date="1474449478000" expanded="true" signature="7601:7830" ph=" Returns whether this function is a generator ..." />
-            <marker date="1474449478000" expanded="true" signature="7872:8096" ph=" Returns whether this function is variadic ..." />
-            <marker date="1474449478000" expanded="true" signature="8138:8283" ph=" The &lt;b&gt;ReflectionFunction&lt;/b&gt; class reports ..." />
-            <marker date="1474449478000" expanded="true" signature="8368:10727" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="8422:8641" ph=" Constructs a ReflectionFunction object ..." />
-            <marker date="1474449478000" expanded="true" signature="8689:8875" ph=" To string ..." />
-            <marker date="1474449478000" expanded="true" signature="8917:9437" ph=" Exports function ..." />
-            <marker date="1474449478000" expanded="true" signature="9503:9694" ph=" Checks if function is disabled ..." />
-            <marker date="1474449478000" expanded="true" signature="9736:10052" ph=" Invokes function ..." />
-            <marker date="1474449478000" expanded="true" signature="10102:10409" ph=" Invokes function args ..." />
-            <marker date="1474449478000" expanded="true" signature="10462:10689" ph=" Returns a dynamically created closure for the function ..." />
-            <marker date="1474449478000" expanded="true" signature="10733:10905" ph=" The &lt;b&gt;ReflectionParameter&lt;/b&gt; class retrieves ..." />
-            <marker date="1474449478000" expanded="true" signature="10956:16572" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="10978:11088" ph=" Clone ..." />
-            <marker date="1474449478000" expanded="true" signature="11134:11594" ph=" Exports ..." />
-            <marker date="1474449478000" expanded="true" signature="11676:11924" ph=" Construct ..." />
-            <marker date="1474449478000" expanded="true" signature="11988:12107" ph=" To string ..." />
-            <marker date="1474449478000" expanded="true" signature="12149:12314" ph=" Gets parameter name ..." />
-            <marker date="1474449478000" expanded="true" signature="12353:12580" ph=" Gets a parameter's type ..." />
-            <marker date="1474449478000" expanded="true" signature="12618:12825" ph=" Checks if the parameter has a type associated with it. ..." />
-            <marker date="1474449478000" expanded="true" signature="12865:13092" ph=" Checks if passed by reference ..." />
-            <marker date="1474449478000" expanded="true" signature="13143:13438" ph=" Returns whether this parameter can be passed by value ..." />
-            <marker date="1474449478000" expanded="true" signature="13488:13699" ph=" Gets declaring function ..." />
-            <marker date="1474449478000" expanded="true" signature="13751:13932" ph=" Gets declaring class ..." />
-            <marker date="1474449478000" expanded="true" signature="13981:14142" ph=" Get class ..." />
-            <marker date="1474449478000" expanded="true" signature="14182:14388" ph=" Checks if parameter expects an array ..." />
-            <marker date="1474449478000" expanded="true" signature="14430:14678" ph=" Returns whether parameter MUST be callable ..." />
-            <marker date="1474449478000" expanded="true" signature="14723:14920" ph=" Checks if null is allowed ..." />
-            <marker date="1474449478000" expanded="true" signature="14962:15168" ph=" Gets parameter position ..." />
-            <marker date="1474449478000" expanded="true" signature="15211:15406" ph=" Checks if optional ..." />
-            <marker date="1474449478000" expanded="true" signature="15448:15679" ph=" Checks if a default value is available ..." />
-            <marker date="1474449478000" expanded="true" signature="15734:15910" ph=" Gets default parameter value ..." />
-            <marker date="1474449478000" expanded="true" signature="15960:16071" ph=" Returns whether the default value of this parameter is constant ..." />
-            <marker date="1474449478000" expanded="true" signature="16131:16259" ph=" Returns the default value's constant name if default value is constant or null ..." />
-            <marker date="1474449478000" expanded="true" signature="16318:16535" ph=" Returns whether this function is variadic ..." />
-            <marker date="1474449478000" expanded="true" signature="16578:16717" ph=" The &lt;b&gt;ReflectionMethod&lt;/b&gt; class reports ..." />
-            <marker date="1474449478000" expanded="true" signature="16800:23584" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="16983:17566" ph=" Export a reflection method. ..." />
-            <marker date="1474449478000" expanded="true" signature="17641:18010" ph=" Constructs a ReflectionMethod ..." />
-            <marker date="1474449478000" expanded="true" signature="18066:18305" ph=" Returns the string representation of the Reflection method object. ..." />
-            <marker date="1474449478000" expanded="true" signature="18347:18538" ph=" Checks if method is public ..." />
-            <marker date="1474449478000" expanded="true" signature="18578:18772" ph=" Checks if method is private ..." />
-            <marker date="1474449478000" expanded="true" signature="18813:19013" ph=" Checks if method is protected ..." />
-            <marker date="1474449478000" expanded="true" signature="19056:19253" ph=" Checks if method is abstract ..." />
-            <marker date="1474449478000" expanded="true" signature="19295:19483" ph=" Checks if method is final ..." />
-            <marker date="1474449478000" expanded="true" signature="19522:19713" ph=" Checks if method is static ..." />
-            <marker date="1474449478000" expanded="true" signature="19753:19963" ph=" Checks if method is a constructor ..." />
-            <marker date="1474449478000" expanded="true" signature="20008:20215" ph=" Checks if method is a destructor ..." />
-            <marker date="1474449478000" expanded="true" signature="20259:20579" ph=" Returns a dynamically created closure for the method ..." />
-            <marker date="1474449478000" expanded="true" signature="20628:21655" ph=" Gets the method modifiers ..." />
-            <marker date="1474449478000" expanded="true" signature="21699:22178" ph=" Invoke ..." />
-            <marker date="1474449478000" expanded="true" signature="22253:22638" ph=" Invoke args ..." />
-            <marker date="1474449478000" expanded="true" signature="22700:22958" ph=" Gets declaring class for the reflected method. ..." />
-            <marker date="1474449478000" expanded="true" signature="23007:23232" ph=" Gets the method prototype (if there is one). ..." />
-            <marker date="1474449478000" expanded="true" signature="23276:23532" ph=" Set method accessibility ..." />
-            <marker date="1474449478000" expanded="true" signature="23590:23726" ph=" The &lt;b&gt;ReflectionClass&lt;/b&gt; class reports ..." />
-            <marker date="1474449478000" expanded="true" signature="23773:39002" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="23886:24001" ph=" Clones object ..." />
-            <marker date="1474449478000" expanded="true" signature="24047:24564" ph=" Exports a class ..." />
-            <marker date="1474449478000" expanded="true" signature="24635:24874" ph=" Constructs a ReflectionClass ..." />
-            <marker date="1474449478000" expanded="true" signature="24926:25161" ph=" Returns the string representation of the ReflectionClass object. ..." />
-            <marker date="1474449478000" expanded="true" signature="25203:25339" ph=" Gets class name ..." />
-            <marker date="1474449478000" expanded="true" signature="25378:25601" ph=" Checks if class is defined internally by an extension, or the core ..." />
-            <marker date="1474449478000" expanded="true" signature="25643:25825" ph=" Checks if user defined ..." />
-            <marker date="1474449478000" expanded="true" signature="25870:26066" ph=" Checks if the class is instantiable ..." />
-            <marker date="1474449478000" expanded="true" signature="26112:26323" ph=" Returns whether this class is cloneable ..." />
-            <marker date="1474449478000" expanded="true" signature="26366:26699" ph=" Gets the filename of the file in which the class has been defined ..." />
-            <marker date="1474449478000" expanded="true" signature="26742:26915" ph=" Gets starting line number ..." />
-            <marker date="1474449478000" expanded="true" signature="26959:27155" ph=" Gets end line ..." />
-            <marker date="1474449478000" expanded="true" signature="27197:27380" ph=" Gets doc comments ..." />
-            <marker date="1474449478000" expanded="true" signature="27425:27700" ph=" Gets the constructor of the class ..." />
-            <marker date="1474449478000" expanded="true" signature="27746:28016" ph=" Checks if method is defined ..." />
-            <marker date="1474449478000" expanded="true" signature="28062:28325" ph=" Gets a &lt;b&gt;ReflectionMethod&lt;/b&gt; for a class method. ..." />
-            <marker date="1474449478000" expanded="true" signature="28371:28976" ph=" Gets an array of methods ..." />
-            <marker date="1474449478000" expanded="true" signature="29032:29310" ph=" Checks if property is defined ..." />
-            <marker date="1474449478000" expanded="true" signature="29358:29623" ph=" Gets a &lt;b&gt;ReflectionProperty&lt;/b&gt; for a class's property ..." />
-            <marker date="1474449478000" expanded="true" signature="29671:30021" ph=" Gets properties ..." />
-            <marker date="1474449478000" expanded="true" signature="30080:30367" ph=" Checks if constant is defined ..." />
-            <marker date="1474449478000" expanded="true" signature="30415:30612" ph=" Gets constants ..." />
-            <marker date="1474449478000" expanded="true" signature="30656:30871" ph=" Gets defined constant ..." />
-            <marker date="1474449478000" expanded="true" signature="30919:31192" ph=" Gets the interfaces ..." />
-            <marker date="1474449478000" expanded="true" signature="31237:31431" ph=" Gets the interface names ..." />
-            <marker date="1474449478000" expanded="true" signature="31480:31603" ph=" Checks if the class is anonymous ..." />
-            <marker date="1474449478000" expanded="true" signature="31646:31839" ph=" Checks if the class is an interface ..." />
-            <marker date="1474449478000" expanded="true" signature="31882:32189" ph=" Returns an array of traits used by this class ..." />
-            <marker date="1474449478000" expanded="true" signature="32230:32478" ph=" Returns an array of names of traits used by this class ..." />
-            <marker date="1474449478000" expanded="true" signature="32523:32826" ph=" Returns an array of trait aliases ..." />
-            <marker date="1474449478000" expanded="true" signature="32873:33110" ph=" Returns whether this is a trait ..." />
-            <marker date="1474449478000" expanded="true" signature="33149:33333" ph=" Checks if class is abstract ..." />
-            <marker date="1474449478000" expanded="true" signature="33375:33553" ph=" Checks if class is final ..." />
-            <marker date="1474449478000" expanded="true" signature="33592:33748" ph=" Gets modifiers ..." />
-            <marker date="1474449478000" expanded="true" signature="33792:34047" ph=" Checks class for instance ..." />
-            <marker date="1474449478000" expanded="true" signature="34096:34455" ph=" Creates a new class instance from given arguments. ..." />
-            <marker date="1474449478000" expanded="true" signature="34520:34711" ph=" Creates a new class instance without invoking the constructor. ..." />
-            <marker date="1474449478000" expanded="true" signature="34771:35082" ph=" Creates a new class instance from given arguments. ..." />
-            <marker date="1474449478000" expanded="true" signature="35147:35285" ph=" Gets parent class ..." />
-            <marker date="1474449478000" expanded="true" signature="35331:35590" ph=" Checks if a subclass ..." />
-            <marker date="1474449478000" expanded="true" signature="35640:35814" ph=" Gets static properties ..." />
-            <marker date="1474449478000" expanded="true" signature="35865:36199" ph=" Gets static property value ..." />
-            <marker date="1474449478000" expanded="true" signature="36275:36561" ph=" Sets static property value ..." />
-            <marker date="1474449478000" expanded="true" signature="36628:37103" ph=" Gets default properties ..." />
-            <marker date="1474449478000" expanded="true" signature="37155:37336" ph=" Checks if iterateable ..." />
-            <marker date="1474449478000" expanded="true" signature="37381:37633" ph=" Implements interface ..." />
-            <marker date="1474449478000" expanded="true" signature="37694:38032" ph=" Gets a &lt;b&gt;ReflectionExtension&lt;/b&gt; object for the extension which defined the class ..." />
-            <marker date="1474449478000" expanded="true" signature="38076:38337" ph=" Gets the name of the extension which defined the class ..." />
-            <marker date="1474449478000" expanded="true" signature="38385:38567" ph=" Checks if in namespace ..." />
-            <marker date="1474449478000" expanded="true" signature="38610:38765" ph=" Gets namespace name ..." />
-            <marker date="1474449478000" expanded="true" signature="38813:38962" ph=" Gets short name ..." />
-            <marker date="1474449478000" expanded="true" signature="39008:39148" ph=" The &lt;b&gt;ReflectionObject&lt;/b&gt; class reports ..." />
-            <marker date="1474449478000" expanded="true" signature="39220:40037" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="39226:39736" ph=" Export ..." />
-            <marker date="1474449478000" expanded="true" signature="39806:39989" ph=" Constructs a ReflectionObject ..." />
-            <marker date="1474449478000" expanded="true" signature="40043:40198" ph=" The &lt;b&gt;ReflectionProperty&lt;/b&gt; class reports ..." />
-            <marker date="1474449478000" expanded="true" signature="40248:45129" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="40386:40496" ph=" Clone ..." />
-            <marker date="1474449478000" expanded="true" signature="40542:40930" ph=" Export ..." />
-            <marker date="1474449478000" expanded="true" signature="41004:41300" ph=" Construct a ReflectionProperty object ..." />
-            <marker date="1474449478000" expanded="true" signature="41356:41474" ph=" To string ..." />
-            <marker date="1474449478000" expanded="true" signature="41516:41678" ph=" Gets property name ..." />
-            <marker date="1474449478000" expanded="true" signature="41717:42148" ph=" Gets value ..." />
-            <marker date="1474449478000" expanded="true" signature="42195:42640" ph=" Set property value ..." />
-            <marker date="1474449478000" expanded="true" signature="42695:42888" ph=" Set static property value ..." />
-            <marker date="1474449478000" expanded="true" signature="42934:43132" ph=" Checks if property is public ..." />
-            <marker date="1474449478000" expanded="true" signature="43172:43373" ph=" Checks if property is private ..." />
-            <marker date="1474449478000" expanded="true" signature="43414:43621" ph=" Checks if property is protected ..." />
-            <marker date="1474449478000" expanded="true" signature="43664:43862" ph=" Checks if property is static ..." />
-            <marker date="1474449478000" expanded="true" signature="43902:44142" ph=" Checks if default value ..." />
-            <marker date="1474449478000" expanded="true" signature="44183:44350" ph=" Gets modifiers ..." />
-            <marker date="1474449478000" expanded="true" signature="44394:44574" ph=" Gets declaring class ..." />
-            <marker date="1474449478000" expanded="true" signature="44623:44772" ph=" Gets doc comment ..." />
-            <marker date="1474449478000" expanded="true" signature="44817:45077" ph=" Set property accessibility ..." />
-            <marker date="1474449478000" expanded="true" signature="45135:45284" ph=" The &lt;b&gt;ReflectionExtension&lt;/b&gt; class reports ..." />
-            <marker date="1474449478000" expanded="true" signature="45335:49604" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="45357:45526" ph=" Clones ..." />
-            <marker date="1474449478000" expanded="true" signature="45572:46083" ph=" Export ..." />
-            <marker date="1474449478000" expanded="true" signature="46150:46338" ph=" Constructs a ReflectionExtension ..." />
-            <marker date="1474449478000" expanded="true" signature="46386:46604" ph=" To string ..." />
-            <marker date="1474449478000" expanded="true" signature="46646:46795" ph=" Gets extension name ..." />
-            <marker date="1474449478000" expanded="true" signature="46834:46998" ph=" Gets extension version ..." />
-            <marker date="1474449478000" expanded="true" signature="47040:47405" ph=" Gets extension functions ..." />
-            <marker date="1474449478000" expanded="true" signature="47449:47626" ph=" Gets constants ..." />
-            <marker date="1474449478000" expanded="true" signature="47670:47902" ph=" Gets extension ini entries ..." />
-            <marker date="1474449478000" expanded="true" signature="47947:48237" ph=" Gets classes ..." />
-            <marker date="1474449478000" expanded="true" signature="48279:48522" ph=" Gets class names ..." />
-            <marker date="1474449478000" expanded="true" signature="48567:48813" ph=" Gets dependencies ..." />
-            <marker date="1474449478000" expanded="true" signature="48860:49018" ph=" Gets extension info ..." />
-            <marker date="1474449478000" expanded="true" signature="49054:49288" ph=" Returns whether this extension is persistent ..." />
-            <marker date="1474449478000" expanded="true" signature="49332:49564" ph=" Returns whether this extension is temporary ..." />
-            <marker date="1474449478000" expanded="true" signature="49610:49700" ph=" @link http://www.php.net/manual/en/class.reflectionzendextension.php ..." />
-            <marker date="1474449478000" expanded="true" signature="49755:51427" ph="..." />
-            <marker date="1474449478000" expanded="true" signature="49777:49901" ph=" Clone handler ..." />
-            <marker date="1474449478000" expanded="true" signature="49947:50154" ph=" Export ..." />
-            <marker date="1474449478000" expanded="true" signature="50220:50366" ph=" Constructor ..." />
-            <marker date="1474449478000" expanded="true" signature="50414:50547" ph=" To string handler ..." />
-            <marker date="1474449478000" expanded="true" signature="50589:50713" ph=" Gets name ..." />
-            <marker date="1474449478000" expanded="true" signature="50752:50882" ph=" Gets version ..." />
-            <marker date="1474449478000" expanded="true" signature="50924:51052" ph=" Gets author ..." />
-            <marker date="1474449478000" expanded="true" signature="51093:51215" ph=" Gets URL ..." />
-            <marker date="1474449478000" expanded="true" signature="51253:51387" ph=" Gets copyright ..." />
-            <marker date="1474449478000" expanded="true" signature="51433:51521" ph=" The ReflectionGenerator class reports information about a generator. ..." />
-            <marker date="1474449478000" expanded="true" signature="51549:54209" ph="{...}" />
-            <marker date="1474449478000" expanded="true" signature="51571:51754" ph=" Constructs a ReflectionGenerator object ..." />
-            <marker date="1474449478000" expanded="true" signature="51807:51813" ph="{...}" />
-            <marker date="1474449478000" expanded="true" signature="51819:52071" ph="  Gets the file name of the currently executing generator ..." />
-            <marker date="1474449478000" expanded="true" signature="52109:52115" ph="{...}" />
-            <marker date="1474449478000" expanded="true" signature="52121:52324" ph=" Gets the executing Generator object ..." />
-            <marker date="1474449478000" expanded="true" signature="52367:52373" ph="{...}" />
-            <marker date="1474449478000" expanded="true" signature="52379:52623" ph=" Gets the currently executing line of the generator ..." />
-            <marker date="1474449478000" expanded="true" signature="52661:52667" ph="{...}" />
-            <marker date="1474449478000" expanded="true" signature="52673:52969" ph=" Gets the function name of the generator ..." />
-            <marker date="1474449478000" expanded="true" signature="53002:53008" ph="{...}" />
-            <marker date="1474449478000" expanded="true" signature="53014:53253" ph=" Gets the function name of the generator ..." />
-            <marker date="1474449478000" expanded="true" signature="53282:53288" ph="{...}" />
-            <marker date="1474449478000" expanded="true" signature="53294:54130" ph=" Gets the trace of the executing generator ..." />
-            <marker date="1474449478000" expanded="true" signature="54201:54207" ph="{...}" />
-            <marker date="1474449478000" expanded="true" signature="54214:54309" ph=" The ReflectionType class reports information about a function's parameters. ..." />
-            <marker date="1474449478000" expanded="true" signature="54332:54982" ph="{...}" />
-            <marker date="1474449478000" expanded="true" signature="54354:54525" ph=" Checks if null is allowed ..." />
-            <marker date="1474449478000" expanded="true" signature="54557:54563" ph="{...}" />
-            <marker date="1474449478000" expanded="true" signature="54569:54750" ph=" Checks if it is a built-in type ..." />
-            <marker date="1474449478000" expanded="true" signature="54781:54787" ph="{...}" />
-            <marker date="1474449478000" expanded="true" signature="54793:54942" ph=" To string ..." />
-            <marker date="1474449478000" expanded="true" signature="54974:54980" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1109">
-          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1473774464000" expanded="true" signature="44:2536" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="86:2534" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="116:2519" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="187:2500" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="340:2477" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="480:942" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="798:876" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="1042:1498" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="1351:1432" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="1548:1667" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="1717:1949" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="1805:1918" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="2010:2449" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="2061:2265" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="2101:2230" ph="..." />
-            <marker date="1473774464000" expanded="true" signature="2327:2418" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="38" column="3" lean-forward="true" selection-start-line="38" selection-start-column="3" selection-end-line="38" selection-end-column="3" />
-          <folding>
-            <marker date="1475648151000" expanded="true" signature="0:30" ph="/** Loooooooooooooodash ...*/" />
-            <marker date="1475648151000" expanded="true" signature="62:98" ph="/** Handling cookies using JS ...*/" />
-            <marker date="1475648151000" expanded="true" signature="140:367" ph="/** We'll load jQuery and the Bootstrap jQuery plugin which provides support ...*/" />
-            <marker date="1475648151000" expanded="true" signature="443:676" ph="/** Vue is a modern JavaScript library for building interactive web interfaces ...*/" />
-            <marker date="1475648151000" expanded="true" signature="745:760" ph="/** Vuex ...*/" />
-            <marker date="1475648151000" expanded="true" signature="847:868" ph="/** Vue Router ...*/" />
-            <marker date="1475648151000" expanded="true" signature="911:1009" ph="/** Auth Helper - Contains properties and methods for handling ...*/" />
-            <marker date="1475648151000" expanded="true" signature="1062:1289" ph="/** Echo exposes an expressive API for subscribing to channels and listening ...*/" />
-            <marker date="1475648151000" expanded="true" signature="1327:1421" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/system/Navbar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="50" column="31" lean-forward="true" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
-          <folding>
-            <marker date="1475648309000" expanded="true" signature="9:2627" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="66:2615" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="104:2578" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="220:874" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="314:650" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="710:854" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="761:840" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="1042:2537" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="1099:2518" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="1167:2008" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="1281:1410" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="1461:1982" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="1760:1952" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="1838:1918" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="2067:2496" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="2096:2263" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="2162:2233" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="2292:2464" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="2361:2434" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="2636:3070" ph="..." />
-            <marker date="1475648309000" expanded="true" signature="2657:3061" ph="{...}" />
-            <marker date="1475648309000" expanded="true" signature="2685:2718" ph="{...}" />
-            <marker date="1475648309000" expanded="true" signature="2738:2856" ph="{...}" />
-            <marker date="1475648309000" expanded="true" signature="2771:2846" ph="{...}" />
-            <marker date="1475648309000" expanded="true" signature="2875:3055" ph="{...}" />
-            <marker date="1475648309000" expanded="true" signature="2897:3045" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding>
-            <marker date="1475551763000" expanded="true" signature="0:819" ph="{&quot;private&quot;: true...}" />
-            <marker date="1475551763000" expanded="true" signature="34:96" ph="{&quot;prod&quot;: &quot;gulp --production&quot;...}" />
-            <marker date="1475551763000" expanded="true" signature="119:449" ph="{&quot;bootstrap-sass&quot;: &quot;^3.3.7&quot;...}" />
-            <marker date="1475551763000" expanded="true" signature="469:817" ph="{&quot;animate.css&quot;: &quot;^3.5.1&quot;...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -1005,19 +637,6 @@
             <marker date="1475087716000" expanded="true" signature="323:516" ph="{...}" />
             <marker date="1475087716000" expanded="true" signature="333:417" ph=" Get the registered name of the component. ..." />
             <marker date="1475087716000" expanded="true" signature="469:514" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/tymon/jwt-auth/src/Facades/JWTFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-          <folding>
-            <marker date="1475087716000" expanded="false" signature="9:217" ph="..." />
-            <marker date="1475087716000" expanded="true" signature="326:530" ph="{...}" />
-            <marker date="1475087716000" expanded="true" signature="336:420" ph=" Get the registered name of the component. ..." />
-            <marker date="1475087716000" expanded="true" signature="472:528" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1917,20 +1536,155 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="41" column="28" lean-forward="true" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/store.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="54" lean-forward="true" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
+        <state relative-caret-position="567">
+          <caret line="21" column="2" lean-forward="true" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
           <folding>
+            <marker date="1475657396000" expanded="true" signature="17:630" ph="{...}" />
+            <marker date="1475657396000" expanded="true" signature="30:67" ph="{&quot;authenticatedUser&quot;: ''...}" />
+            <marker date="1475657396000" expanded="true" signature="84:176" ph="{...}" />
+            <marker date="1475657396000" expanded="true" signature="115:170" ph="{...}" />
+            <marker date="1475657396000" expanded="true" signature="191:628" ph="{...}" />
+            <marker date="1475657396000" expanded="true" signature="233:622" ph="{...}" />
+            <marker date="1475657396000" expanded="true" signature="287:402" ph="{...}" />
+            <marker date="1475657396000" expanded="true" signature="413:610" ph="{...}" />
+            <marker date="1475657396000" expanded="true" signature="431:532" ph="//..." />
             <marker date="1475657396000" expanded="true" signature="612:622" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
+    <entry file="file://$PROJECT_DIR$/vendor/tymon/jwt-auth/src/Facades/JWTFactory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="17" column="49" lean-forward="true" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+        <state relative-caret-position="216">
+          <caret line="15" column="6" lean-forward="false" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding>
+            <marker date="1475087716000" expanded="false" signature="9:217" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="326:530" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="336:420" ph=" Get the registered name of the component. ..." />
+            <marker date="1475087716000" expanded="true" signature="472:528" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/tymon/jwt-auth/src/Token.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <folding>
+            <marker date="1475087716000" expanded="false" signature="9:217" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="304:918" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="314:339" ph=" @var string ..." />
+            <marker date="1475087716000" expanded="true" signature="370:476" ph=" Create a new JSON Web Token. ..." />
+            <marker date="1475087716000" expanded="true" signature="518:616" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="625:682" ph=" Get the token. ..." />
+            <marker date="1475087716000" expanded="true" signature="710:751" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="760:840" ph=" Get the token when casting to string. ..." />
+            <marker date="1475087716000" expanded="true" signature="875:916" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/tymon/jwt-auth/src/Claims/Expiration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1475087716000" expanded="false" signature="9:217" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="284:406" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="318:373" ph=" The claim name. ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/tymon/jwt-auth/src/Payload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="273" column="32" lean-forward="false" selection-start-line="273" selection-start-column="32" selection-end-line="273" selection-end-column="32" />
+          <folding>
+            <marker date="1475087716000" expanded="false" signature="9:217" ph="..." />
+            <marker date="1475087716000" expanded="false" signature="251:632" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="720:6264" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="730:819" ph=" The collection of claims. ..." />
+            <marker date="1475087716000" expanded="true" signature="851:1076" ph=" Build the Payload. ..." />
+            <marker date="1475087716000" expanded="true" signature="1181:1302" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="1311:1411" ph=" Get the array of claim instances. ..." />
+            <marker date="1475087716000" expanded="true" signature="1445:1487" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="1496:1652" ph=" Checks if a payload matches some expected values. ..." />
+            <marker date="1475087716000" expanded="true" signature="1714:2044" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="1750:1785" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="1872:2015" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="1962:2005" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="2053:2189" ph=" Checks if a payload strictly matches some expected values. ..." />
+            <marker date="1475087716000" expanded="true" signature="2240:2298" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="2307:2401" ph=" Get the payload. ..." />
+            <marker date="1475087716000" expanded="true" signature="2442:2726" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="2512:2685" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="2548:2619" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="2735:2892" ph=" Determine whether the payload has the claim (by instance). ..." />
+            <marker date="1475087716000" expanded="true" signature="2932:2998" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="3007:3138" ph=" Determine whether the payload has the claim (by key). ..." />
+            <marker date="1475087716000" expanded="true" signature="3175:3231" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="3240:3306" ph=" Get the array of claims. ..." />
+            <marker date="1475087716000" expanded="true" signature="3338:3508" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="3386:3460" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="3411:3459" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="3517:3611" ph=" Convert the object into something JSON serializable. ..." />
+            <marker date="1475087716000" expanded="true" signature="3649:3694" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="3703:3806" ph=" Get the payload as JSON. ..." />
+            <marker date="1475087716000" expanded="true" signature="3870:3938" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="3947:4018" ph=" Get the payload as a string. ..." />
+            <marker date="1475087716000" expanded="true" signature="4053:4097" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="4106:4222" ph=" Determine if an item exists at an offset. ..." />
+            <marker date="1475087716000" expanded="true" signature="4263:4324" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="4333:4439" ph=" Get an item at a given offset. ..." />
+            <marker date="1475087716000" expanded="true" signature="4477:4538" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="4547:4748" ph=" Don't allow changing the payload as it should be immutable. ..." />
+            <marker date="1475087716000" expanded="true" signature="4794:4870" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="4879:5079" ph=" Don't allow changing the payload as it should be immutable. ..." />
+            <marker date="1475087716000" expanded="true" signature="5119:5195" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="5204:5271" ph=" Count the number of claims. ..." />
+            <marker date="1475087716000" expanded="true" signature="5301:5353" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="5362:5482" ph=" Invoke the Payload as a callable function. ..." />
+            <marker date="1475087716000" expanded="true" signature="5528:5575" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="5584:5772" ph=" Magically get a claim value. ..." />
+            <marker date="1475087716000" expanded="true" signature="5823:6262" ph="{...}" />
+            <marker date="1475087716000" expanded="true" signature="5876:6145" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="6005:6135" ph="..." />
+            <marker date="1475087716000" expanded="true" signature="6057:6121" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="1070" column="43" lean-forward="true" selection-start-line="1070" selection-start-column="43" selection-end-line="1070" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/components/checklist/Collection.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="68" column="83" lean-forward="false" selection-start-line="68" selection-start-column="83" selection-end-line="68" selection-end-column="83" />
           <folding />
         </state>
       </provider>
