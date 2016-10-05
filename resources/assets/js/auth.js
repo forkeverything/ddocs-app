@@ -45,7 +45,7 @@ module.exports = {
         }
 
         if(response.status === 403 && response.json().error === 'guests_only') {
-            router.push('/l');
+            router.push('/');
         }
     },
 
