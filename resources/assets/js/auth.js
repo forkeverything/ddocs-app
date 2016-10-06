@@ -31,7 +31,7 @@ module.exports = {
     checkForAuthError(response) {
 
         let errors = [
-            'unauthenticated',
+            'unauthenticated',      // either default 'auth' middleware or didn't get a token
             'token_invalid',
             'token_expired',
             'token_revoked'
@@ -45,7 +45,6 @@ module.exports = {
             }
         }
 
-        // TODO ::: return specific token errors instead of generic unauthenticated
     },
 
     /**
@@ -134,9 +133,8 @@ module.exports = {
                 // Request is complete here. Remove from global queue
                 RequestsMonitor.removeFromQueue(request);
 
-                // this.refreshToken(response);
+                this.refreshToken(response);
                 this.checkForAuthError(response);
-                // return response;
             });
         });
     },

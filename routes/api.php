@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Log;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth');
+})->middleware('jwt.auth');
 
 
 Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
@@ -25,7 +25,7 @@ Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebh
 // NEW ROUTES THAT HAVEN'T BEEN RENAMED YET
 
 // Checklist - Auth Route
-Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser');
+Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser')->middleware('jwt.auth-renew');
 Route::post('/checklists', 'ChecklistsController@postNewChecklist');
 
 
