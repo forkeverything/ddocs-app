@@ -309,34 +309,6 @@
           font-size: 0.9em;
           margin-bottom: 20px;
         }
-
-        #progress-status {
-          background: $light-grey;
-          display: block;
-          height: 2px;
-          margin-bottom: 12.5px;
-
-          .progress-bar {
-            display: inline-block;
-            width: 0px;
-            background: $green;
-          }
-
-          &.rejected {
-            .progress-bar {
-              width: 100%;
-              background: $red;
-            }
-          }
-
-          &.received {
-            .progress-bar {
-              width: 100%;
-              background: $green;
-            }
-          }
-
-        }
       }
     }
   }

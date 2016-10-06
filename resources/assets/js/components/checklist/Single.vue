@@ -232,7 +232,7 @@
         mixins: [fetchesFromEloquentRepository],
         methods: {
             updateFileRequest(newFileRequestObject, index) {
-                this.fileRequests[index] = newFileRequestObject;
+                Vue.set(this.fileRequests, index, newFileRequestObject);
             },
             removeFileRequest(index){
                 this.fileRequests.splice(index, 1);

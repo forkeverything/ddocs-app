@@ -1,19 +1,6 @@
 <template>
     <div id="file-view" class="content">
-        
         <h4>{{ selectedFileRequest.name }}</h4>
-        <div id="progress-status"
-             :class="{
-                                 received: ! selectedFileRequest.uploading && selectedFileRequest.status === 'received',
-                                 rejected: ! selectedFileRequest.uploading && selectedFileRequest.status === 'rejected',
-                                 }"
-        >
-            <div class="progress-bar"
-                 :style="{
-                                        width: selectedFileRequest.uploadProgress + '%'
-                                     }"
-            ></div>
-        </div>
         <ul id="single-file-request-menu" class="list-inline list-unstyled">
             <li class="menu-item">
                 <a href="#"

@@ -9239,21 +9239,6 @@ label {
       #checklist-single #checklist-body #split-view #file-view #single-file-request-menu {
         font-size: 0.9em;
         margin-bottom: 20px; }
-      #checklist-single #checklist-body #split-view #file-view #progress-status {
-        background: #E9E9E9;
-        display: block;
-        height: 2px;
-        margin-bottom: 12.5px; }
-        #checklist-single #checklist-body #split-view #file-view #progress-status .progress-bar {
-          display: inline-block;
-          width: 0px;
-          background: #41B883; }
-        #checklist-single #checklist-body #split-view #file-view #progress-status.rejected .progress-bar {
-          width: 100%;
-          background: #ff6a6a; }
-        #checklist-single #checklist-body #split-view #file-view #progress-status.received .progress-bar {
-          width: 100%;
-          background: #41B883; }
   #checklist-single #form-checklist-search {
     margin: 0 0 10px; }
     #checklist-single #form-checklist-search .dropdown-toggle {

@@ -1,7 +1,7 @@
 <template>
     <div class="file-uploader">
         <button type="button"
-                v-show="! fileRequestClone.uploading"
+                v-show="! uploading"
                 class="btn btn-primary"
                 :disabled="alreadyReceivedFile"
                 @click="selectFile"
@@ -12,9 +12,9 @@
                type="file"
                name="file"
                class="input-file-upload hide"
-               @change="uploadFile(file, $event)"
+               @change="uploadFile($event)"
         >
-        <div class="loader" v-show="fileRequestClone.uploading">
+        <div class="loader" v-show="uploading">
             <i class="fa fa-spinner fa-pulse fa-fw"></i>
             <span class="sr-only">Loading...</span>
         </div>
@@ -24,7 +24,7 @@
     export default {
         data: function () {
             return {
-                fileRequestClone: ''
+                uploading: false
             }
         },
         computed: {
@@ -37,29 +37,25 @@
             selectFile: function () {
                 $(this.$refs.input).click();
             },
-            uploadFile: function (file, $event) {
+            uploadFile: function ($event) {
 
                 let fd = new FormData();
                 let uploadedFile = $event.srcElement.files[0];
-
                 fd.append('file', uploadedFile);
+
+                this.uploading = true;
 
                 this.$http.post(`/api/file_requests/${this.fileRequest.hash}/upload`, fd, {
                     before(xhr) {
-                        this.fileRequestClone.uploading = true;
-                        this.fileRequestClone.uploadProgress = 0;
-                        this.$emit('update-file-request', this.fileRequestClone, this.index);
                         RequestsMonitor.pushOntoQueue(xhr);
                     },
                     progress(event) {
-
-                        this.fileRequestClone.uploadProgress = Math.round(100 * event.loaded / event.total);
-                        this.$emit('update-file-request', this.fileRequestClone, this.index);
+                        //  let progress = Math.round(100 * event.loaded / event.total);
                     }
                 }).then((response) => {
                     let updatedFileRequest = response.json();
-                    this.fileRequestClone.uploading = false;
                     this.$emit('update-file-request', updatedFileRequest, this.index);
+                    this.uploading = false;
                 }, (response) => {
                     console.log('Upload file error.');
                     console.log(response);
@@ -71,9 +67,7 @@
             vueGlobalEventBus.$on('upload-selected-file-' + this.fileRequest.id, this.selectFile);
         },
         mounted() {
-            this.fileRequestClone = this.fileRequest;
-            Vue.set(this.fileRequestClone, 'uploading', false);
-            Vue.set(this.fileRequestClone, 'uploadProgress', 0);
+
         },
         beforeDestroy(){
             vueGlobalEventBus.$off('upload-selected-file-' + this.fileRequest.id, this.selectFile);
