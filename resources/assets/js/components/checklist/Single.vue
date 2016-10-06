@@ -283,11 +283,18 @@
                 let checklistName = this.checklist.name.replace(/\s+/g, '-').toLowerCase();
                 let currentPath = this.$route.path;
                 if(! currentPath.match(checklistName)) {
-                    router.replace({
-                        // re-build url in case somebody mucks it up up when copy-pasting
-                        path: `/c/${ this.$route.params.checklist_hash }/${ checklistName }`,
-                        query: this.$route.query
-                    });
+
+                    // build query string from router prop
+                    let queryString = '';
+                    if(Object.keys(this.$route.query).length > 0) {
+                        queryString += '?';
+                        for(let prop in this.$route.query) {
+                                queryString += prop + '=' + this.$route.query[prop] + '&';
+                        }
+                        queryString = queryString.substr(0, queryString.length - 1);
+                    }
+                    // use history api instead of router.replace so we don't trigger the beforeEach hook
+                    window.history.replaceState({}, '', `/c/${ this.$route.params.checklist_hash }/${ checklistName }${ queryString }`);
                 }
             },
             fetchChecklist(){
