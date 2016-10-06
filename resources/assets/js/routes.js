@@ -51,6 +51,10 @@ module.exports = [
         path: '/account',
         component: { template: '<h1>Account Overview</h1>' },
         meta: { requiresAuth: true }
-    }
+    },
+    {
+        path: '*',
+        redirect: '/'
+    },
 ];
 

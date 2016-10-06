@@ -9,7 +9,7 @@ module.exports = (function () {
     // Global guards to check for meta properties on our routes
     router.beforeEach((to, from, next) => {
 
-        // Clear all pending fetch requests 
+        // Clear all pending fetch requests
         RequestsMonitor.flushQueue('fetch');
 
         // requiresAuth

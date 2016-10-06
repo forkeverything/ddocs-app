@@ -19,41 +19,56 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('jwt.auth');
 
+// Auth & Renew Routes - Main routes
+Route::group(['middleware' => 'jwt.auth-renew'], function () {
 
-Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
+    // Checklist
+    Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser');
+    Route::post('/checklists', 'ChecklistsController@postNewChecklist');
+
+});
+
+// Auth Only - Routes that get hit often / in succession.
+Route::group(['middleware' => 'jwt.auth'], function () {
+
+    // Files
+    Route::get('/files', 'FilesController@getForUser');
+
+});
+
+// Public Routes
+
+    // Checklist
+    Route::get('/c/{checklist_hash}', 'ChecklistsController@getSingle');
+    Route::get('/c/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
+
+    // FileRequests
+    Route::post('/file_requests/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
+    Route::get('/file_requests/{file_request_hash}/notes', 'FileRequestsController@getNotes');
+
+    // Notes
+    Route::post('/note', 'NotesController@postNew');
+    Route::put('/note/{note_hash}', 'NotesController@putUpdate');
+    Route::delete('/note/{note_hash}', 'NotesController@delete');
+
 
 // NEW ROUTES THAT HAVEN'T BEEN RENAMED YET
 
-// Checklist - Auth Route
-Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser')->middleware('jwt.auth-renew');
-Route::post('/checklists', 'ChecklistsController@postNewChecklist');
+Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
 
-
-// Checklist - Public Route
-Route::get('/c/{checklist_hash}', 'ChecklistsController@getSingle');
-Route::get('/c/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
 
 // Recipients
 //Route::get('/recipients/{recipient_hash}/turn_off_notifications', 'RecipientsController@getTurnOffNotifications');
 
 // File Requests
-Route::post('/file_requests/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
 //Route::put('/file_requests/{file_request_hash}', 'FileRequestsController@putModifyRequest');
 //Route::post('/file_requests/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
 //Route::post('/file_requests/{file_request_hash}/reject', 'FileRequestsController@postRejectUploadedFile');
 //Route::get('/file_requests/{file_request_hash}/history', 'FileRequestsController@getHistory');
-Route::get('/file_requests/{file_request_hash}/notes', 'FileRequestsController@getNotes');
 //Route::delete('/file_requests/{file_request_hash}', 'FileRequestsController@deleteFiles');
 //Route::post('/file_requests/{file_request_hash}/comments', 'FileRequestsController@postAddComment');
 //Route::get('/file_requests/user/{user}', 'FileRequestsController@getFileRequestsForUser');
 
-// Notes
-Route::post('/note', 'NotesController@postNew');
-Route::put('/note/{note_hash}', 'NotesController@putUpdate');
-Route::delete('/note/{note_hash}', 'NotesController@delete');
-
-// Files
-Route::get('/files', 'FilesController@getForUser');
 
 // Projects
 Route::post('/projects', 'ProjectsController@postSaveNew');

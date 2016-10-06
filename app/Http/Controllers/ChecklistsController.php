@@ -26,9 +26,7 @@ class ChecklistsController extends Controller
         $this->middleware('auth', [
             'only' => [
                 'getListsView',
-                'getForAuthenticatedUser',
                 'getMakeForm',
-                'postNewChecklist',
                 'getAllRequestsForUser'
             ]
         ]);

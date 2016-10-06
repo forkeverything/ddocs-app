@@ -281,9 +281,6 @@
             }, 100),
             addChecklistNameToUrl(){
                 let checklistName = this.checklist.name.replace(/\s+/g, '-').toLowerCase();
-                let currentPath = this.$route.path;
-                if(! currentPath.match(checklistName)) {
-
                     // build query string from router prop
                     let queryString = '';
                     if(Object.keys(this.$route.query).length > 0) {
@@ -295,7 +292,6 @@
                     }
                     // use history api instead of router.replace so we don't trigger the beforeEach hook
                     window.history.replaceState({}, '', `/c/${ this.$route.params.checklist_hash }/${ checklistName }${ queryString }`);
-                }
             },
             fetchChecklist(){
                 this.$http.get(`/api/c/${ this.$route.params.checklist_hash }`, {
