@@ -25,7 +25,7 @@ Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebh
 // NEW ROUTES THAT HAVEN'T BEEN RENAMED YET
 
 // Checklist - Auth Route
-Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser')->middleware('jwt.refresh');
+Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser');
 Route::post('/checklists', 'ChecklistsController@postNewChecklist');
 
 

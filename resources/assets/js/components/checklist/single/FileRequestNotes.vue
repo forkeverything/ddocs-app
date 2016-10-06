@@ -152,12 +152,12 @@
             },
             abortRequest(note, action) {
                 if(action) {
-                    note.pending_requests[action].abort();
+                    if(note.pending_requests[action]) note.pending_requests[action].abort();
                 } else {
                     // No action specified, abort all actions
                     for(let action in note.pending_requests) {
                         if(note.pending_requests.hasOwnProperty(action)) {
-                            note.pending_requests[action].abort();
+                            if(note.pending_requests[action]) note.pending_requests[action].abort();
                         }
                     }
                 }

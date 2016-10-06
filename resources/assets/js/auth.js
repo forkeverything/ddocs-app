@@ -39,8 +39,13 @@ module.exports = {
 
         if(response.status === 401 && errors.indexOf(response.json().error) !== -1) {
             this.removeCookie();
-            this.redirectToLogin();
+            this.unsetAuthenticatedUser();
+            if(router.currentRoute.meta.requiresAuth) {
+                this.redirectToLogin();
+            }
         }
+
+        // TODO ::: return specific token errors instead of generic unauthenticated
     },
 
     /**
@@ -80,7 +85,7 @@ module.exports = {
 
     setHeaders(token) {
         Vue.http.headers.common['Authorization'] = token;
-        store.dispatch('fetchAuthenticatedUser');
+        this.fetchAuthenticatedUser();
     },
 
     /**
@@ -121,9 +126,14 @@ module.exports = {
     pushResourceInterceptor(){
         Vue.http.interceptors.push((request, next) => {
 
-            // modify request here
+            // add unique id for client-side look-up
+            request._uid = randomString(10);
 
             next((response) => {
+
+                // Request is complete here. Remove from global queue
+                RequestsMonitor.removeFromQueue(request);
+
                 // this.refreshToken(response);
                 this.checkForAuthError(response);
                 // return response;
@@ -156,10 +166,27 @@ module.exports = {
         Vue.http.post('/logout').then((res) => {
             this.removeCookie();
             delete Vue.http.headers.common["Authorization"];
-            store.commit('setUser', '');
+            this.unsetAuthenticatedUser();
             router.push('/login');
         }, (res) => {
             console.log("couldn't log out user");
         });
+    },
+
+    /**
+     * Tell Vuex to fetch and set the authenticated user.
+     */
+
+    fetchAuthenticatedUser(){
+        store.dispatch('fetchAuthenticatedUser');
+    },
+
+    /**
+     * Unset the user from our Vuex store so
+     * we'll go back to being a guest.
+     */
+
+    unsetAuthenticatedUser(){
+        store.commit('setUser', '');
     }
 };

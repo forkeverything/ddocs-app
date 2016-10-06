@@ -3,6 +3,9 @@
  */
 window._ = require('lodash');
 
+// JS Helpers (utility functions)
+require('./helpers.js');
+
 /**
  * Handling cookies using JS
  */
@@ -21,6 +24,7 @@ require('bootstrap-sass');
  */
 
 window.RequestsMonitor = require('./requests-monitor.js');
+RequestsMonitor.addUnloadEventListener();
 
 
 /**
@@ -86,9 +90,6 @@ require('./directives.js');
 
 // Vue Animations
 require('./animations.js');
-
-// JS Helpers (utility functions)
-require('./helpers.js');
 
 // Page Fixed/Scroll Height adjustments
 window.ResizeSensor = require('css-element-queries/src/ResizeSensor');
