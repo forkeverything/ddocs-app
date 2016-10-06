@@ -17,6 +17,7 @@
 Route::post('/login', 'Auth\LoginController@login');
 Route::post('/logout', 'Auth\LoginController@logout');
 Route::post('/register', 'Auth\RegisterController@register');
+Route::post('/refresh_token', 'JWTController@refresh');
 
 // Static Pages
 Route::get('{slug}', function () {

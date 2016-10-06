@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Auth\HandleRefreshToken;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -21,7 +22,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers, HandleRefreshToken;
 
     /**
      * Where to redirect users after login / registration.
@@ -84,7 +85,8 @@ class RegisterController extends Controller
         $token = $this->guard()->login($user = $this->create($request->all()));
 
         return response()->json([
-            'token' => $token
+            'token' => $token,
+            'refresh_token' => $this->setRefreshToken($user)
         ]);
 
     }

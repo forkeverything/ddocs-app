@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Auth\AuthenticatableUser;
 use App\Events\CreatedUserFromEmailWebhook;
 use App\Exceptions\NotEnoughCredits;
 use Illuminate\Http\Request;
@@ -22,7 +23,9 @@ class User extends AuthenticatableUser
         'name',
         'email',
         'password',
-        'credits'
+        'credits',
+        'refresh_token',
+        'refresh_token_expiry'
     ];
 
     /**

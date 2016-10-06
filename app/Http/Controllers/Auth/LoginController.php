@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Auth\HandleRefreshToken;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use AuthenticatesUsers, HandleRefreshToken;
 
     /**
      * Where to redirect users after login / registration.
@@ -94,7 +95,8 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user, $token)
     {
         return response()->json([
-            'token' => $token
+            'token' => $token,
+            'refresh_token' => $this->setRefreshToken($user)
         ]);
     }
 

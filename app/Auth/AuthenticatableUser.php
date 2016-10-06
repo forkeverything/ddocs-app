@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Auth;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;

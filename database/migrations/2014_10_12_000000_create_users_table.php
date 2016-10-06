@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
+            $table->string('refresh_token', 100)->nullable();
+            $table->integer('refresh_token_expiry')->nullable();
+
             $table->integer('credits')->default('5')->unsigned();
 
             $table->string('stripe_id')->nullable();
