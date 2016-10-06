@@ -36,6 +36,10 @@ export default {
 
             this.$http.post(this.makeUrl(), {
                 body: this.body
+            }, {
+                before(xhr) {
+                    RequestsMonitor.pushOntoQueue(xhr);
+                }
             }).then((response) => {
                 // success
                 this.$emit('add-new-comment', response.json());

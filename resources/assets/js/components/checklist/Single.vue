@@ -291,9 +291,13 @@
                 }
             },
             fetchChecklist(){
-                this.$http.get(`/api/c/${ this.$route.params.checklist_hash }`).then((res) => {
+                this.$http.get(`/api/c/${ this.$route.params.checklist_hash }`, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
+                }).then((res) => {
                     this.checklist = res.json();
-//                    this.addChecklistNameToUrl();
+                    this.addChecklistNameToUrl();
                 }, (res) => {
                     console.log("error fetching checklist");
                 });

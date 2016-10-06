@@ -45,10 +45,11 @@
                 fd.append('file', uploadedFile);
 
                 this.$http.post(`/api/file_requests/${this.fileRequest.hash}/upload`, fd, {
-                    before() {
+                    before(xhr) {
                         this.fileRequestClone.uploading = true;
                         this.fileRequestClone.uploadProgress = 0;
                         this.$emit('update-file-request', this.fileRequestClone, this.index);
+                        RequestsMonitor.pushOntoQueue(xhr);
                     },
                     progress(event) {
 

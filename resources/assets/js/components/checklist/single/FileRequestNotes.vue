@@ -37,7 +37,7 @@
         data: function () {
             return {
                 loading: true,
-                fetchRequests: [],
+                fetchNotesRequest: '',
                 notes: [],
                 focusedIndex: ''
             }
@@ -75,16 +75,15 @@
                 this.notes = [];
                 this.$http.get('/api/file_requests/' + this.fileRequest.hash + '/notes', {
                     before(xhr) {
-                        for (let i = 0; i < this.fetchRequests.length; i++) {
-                            this.fetchRequests.shift().abort();
-                        }
-                        this.fetchRequests.push(xhr);
+                        if(this.fetchNotesRequest) this.fetchNotesRequest.abort();
+                        this.fetchNotesRequest = xhr;
+                        RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((response) => {
                     this.notes = _.map(response.json(), (note) => {
-                        note.queue = {
-                            updating: [],
-                            deleting: []
+                        note.pending_requests = {
+                            updating: '',
+                            deleting: ''
                         };
                         return note;
                     });
@@ -105,9 +104,9 @@
                     checked: false,
                     position: position,
                     file_request_hash: this.fileRequest.hash,
-                    queue: {
-                        updating: [],
-                        deleting: []
+                    pending_requests: {
+                        updating: '',
+                        deleting: ''
                     }
                 };
                 this.notes.splice(position, 0, newNote);
@@ -129,7 +128,11 @@
             },
             saveNewNote(note, index){
                 note.saving = true;
-                this.$http.post('/api/note', note).then((response) => {
+                this.$http.post('/api/note', note, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
+                }).then((response) => {
                     // success
                     note.hash = response.json().hash;
                     note.saved = true;
@@ -147,10 +150,18 @@
                     note.saving = false;
                 });
             },
-            clearQueue(note, action) {
-                for (var i = 0; i < note.queue[action].length; i++) {
-                    note.queue[action].shift().abort();
+            abortRequest(note, action) {
+                if(action) {
+                    note.pending_requests[action].abort();
+                } else {
+                    // No action specified, abort all actions
+                    for(let action in note.pending_requests) {
+                        if(note.pending_requests.hasOwnProperty(action)) {
+                            note.pending_requests[action].abort();
+                        }
+                    }
                 }
+
             },
             updateNote(note, index) {
                 if (note.deleting) return;
@@ -160,8 +171,9 @@
                     'checked': note.checked
                 }, {
                     before(xhr){
-                        this.clearQueue(note, 'updating');
-                        note.queue.updating.push(xhr);
+                        this.abortRequest(note, 'updating');
+                        note.pending_requests.updating = xhr;
+                        RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((response) => {
                     // success
@@ -189,9 +201,9 @@
                 note.deleting = true;
                 this.$http.delete('/api/note/' + note.hash, {
                     before(xhr) {
-                        this.clearQueue(note, 'updating');
-                        this.clearQueue(note, 'deleting');
-                        note.queue.deleting.push(xhr);
+                        this.abortRequest(note);
+                        note.pending_requests.deleting = xhr;
+                        RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((response) => {
 

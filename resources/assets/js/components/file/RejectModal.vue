@@ -58,6 +58,10 @@
 
                 this.$http.post('/fr/' + this.selectedFileRequest.hash + '/reject', {
                     reason: this.reason
+                }, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
                 }).then((response) => {
                     // success
                     this.reason = '';

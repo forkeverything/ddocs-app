@@ -40,6 +40,10 @@
                 this.$http.post(`/projects/${ this.folder.project_id }/folders/${ this.folder.id }/files`, {
                     name: this.name,
                     position: this.folder.files.length
+                }, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
                 }).then((res) => {
 
                     this.$emit('add-file', res.json());

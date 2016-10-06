@@ -36,6 +36,7 @@ module.exports = {
             self.$http.get(url, {
                 before: function(xhr) {
                     this.request = xhr;
+                    RequestsMonitor.pushOntoQueue(xhr);
                 }
             }).then((response) => {
                 // update data
@@ -57,7 +58,7 @@ module.exports = {
         },
         changeSort: function (sort) {
             if (this.params.sort === sort) {
-                var order = (this.params.order === 'asc') ? 'desc' : 'asc';
+                let order = (this.params.order === 'asc') ? 'desc' : 'asc';
                 this.fetchResults(updateQueryString({
                     order: order,
                     page: 1
@@ -115,7 +116,11 @@ module.exports = {
             let url = this.requestUrl + '?' + query;
             if (!this.ajaxReady) return;
             this.ajaxReady = false;
-            this.$http.get(url).then((response) => {
+            this.$http.get(url, {
+                before(xhr) {
+                    RequestsMonitor.pushOntoQueue(xhr);
+                }
+            }).then((response) => {
                 this.response.current_page = response.json().current_page;
                 let data = response.json().data;
                 for(let i = 0; i < data.length; i++) {

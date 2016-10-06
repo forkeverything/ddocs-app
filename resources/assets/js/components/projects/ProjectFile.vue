@@ -10,6 +10,7 @@
     export default {
         data: function () {
             return {
+                request: '',
                 requestsQueue: []
             }
         },
@@ -26,17 +27,15 @@
         },
         props: ['index', 'file', 'projectId'],
         methods: {
-
-            flushAndAddToRequestsQueue(xhr){
-                for (let i = 0; i < this.requestsQueue.length; i++) {
-                    this.requestsQueue.shift().abort();
-                }
-                this.requestsQueue.push(xhr);
+            setNewRequest(xhr){
+                if(this.request) this.request.abort();
+                this.request = xhr;
             },
             update(){
                 this.$http.put(`/projects/${ this.projectId }/files/${ this.file.id }`, this.file, {
                     before(xhr) {
-                        this.flushAndAddToRequestsQueue(xhr);
+                        this.setNewRequest(xhr);
+                        RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((res) => {
                     console.log('updated file');

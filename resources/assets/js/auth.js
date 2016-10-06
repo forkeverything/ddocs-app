@@ -39,14 +39,22 @@ module.exports = {
 
         if(response.status === 401 && errors.indexOf(response.json().error) !== -1) {
             this.removeCookie();
-            // save where the user is currently at
-            this.redirectPath = router.currentRoute.fullPath;
-            router.push('/login');
+            this.redirectToLogin();
         }
+    },
 
-        if(response.status === 403 && response.json().error === 'guests_only') {
-            router.push('/');
-        }
+    /**
+     * Need user to re-login.
+     */
+
+    redirectToLogin(){
+
+        // Clear all pending requests
+        RequestsMonitor.flushQueue();
+
+        // save where the user is currently at
+        this.redirectPath = router.currentRoute.fullPath;
+        router.push('/login');
     },
 
     /**
@@ -72,12 +80,6 @@ module.exports = {
 
     setHeaders(token) {
         Vue.http.headers.common['Authorization'] = token;
-        $.ajaxSetup({
-            headers: {
-                'Authorization': token,
-//              'X-CSRF-TOKEN': Laravel.csrfToken
-            }
-        });
         store.dispatch('fetchAuthenticatedUser');
     },
 
@@ -118,6 +120,9 @@ module.exports = {
 
     pushResourceInterceptor(){
         Vue.http.interceptors.push((request, next) => {
+
+            // modify request here
+
             next((response) => {
                 // this.refreshToken(response);
                 this.checkForAuthError(response);
@@ -151,7 +156,6 @@ module.exports = {
         Vue.http.post('/logout').then((res) => {
             this.removeCookie();
             delete Vue.http.headers.common["Authorization"];
-            delete $.ajaxSettings.headers["Authorization"];
             store.commit('setUser', '');
             router.push('/login');
         }, (res) => {

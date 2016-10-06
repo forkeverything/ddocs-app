@@ -46,7 +46,11 @@
                     url += `file_request/${ this.subjectHash }`;
                 }
 
-                this.$http.get(url).then((res) => {
+                this.$http.get(url, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
+                }).then((res) => {
                     this.comments = res.json();
                 }, (res) => {
                     console.log('error fetching comments');

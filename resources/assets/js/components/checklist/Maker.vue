@@ -123,6 +123,10 @@
                     name: this.checklistName,
                     description: this.checklistDescription,
                     requested_files: this.validFiles
+                }, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
                 }).then((response) => {
                     router.push('/c/' + response.data);
                     location.href = "/c/" + response.data;

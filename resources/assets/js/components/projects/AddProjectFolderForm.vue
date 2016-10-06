@@ -37,6 +37,10 @@
                 this.$http.post(`/projects/${ this.projectId }/folders`, {
                     name: this.name,
                     position: this.folders.length
+                }, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
                 }).then((response) => {
                     // success
                 this.$emit('add-folder', response.json());

@@ -23,6 +23,7 @@
     export default {
         data: function () {
             return {
+                request: '',
                 requestsQueue: []
             }
         },
@@ -45,16 +46,15 @@
             updateFile(fileIndex, fileObj){
                 this.$emit('update-file', this.index, fileIndex, fileObj);
             },
-            flushAndAddToRequestsQueue(xhr){
-                for (let i = 0; i < this.requestsQueue.length; i++) {
-                    this.requestsQueue.shift().abort();
-                }
-                this.requestsQueue.push(xhr);
+            setNewRequest(xhr){
+                if(this.request) this.request.abort();
+                this.request = xhr;
             },
             update(){
                 this.$http.put(`/projects/${ this.folder.project_id }/folders/${ this.folder.id }`, this.folder, {
                     before(xhr) {
-                        this.flushAndAddToRequestsQueue(xhr);
+                        this.setNewRequest(xhr);
+                        RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((res) => {
                     console.log('updated folder');
@@ -66,7 +66,8 @@
             deleteFolder(){
                 this.$http.delete(`/projects/${ this.folder.project_id }/folders/${ this.folder.id }`, {
                     before(xhr) {
-                        this.flushAndAddToRequestsQueue(xhr);
+                        this.setNewRequest(xhr);
+                        RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((res) => {
                     vueGlobalEventBus.$emit('deleted-folder', this.folder);

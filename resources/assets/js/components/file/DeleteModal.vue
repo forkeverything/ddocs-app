@@ -45,7 +45,11 @@
 
                 if (!this.ajaxReady) return;
 
-                this.$http.delete('/fr/' + this.selectedFileRequest.hash)
+                this.$http.delete('/fr/' + this.selectedFileRequest.hash, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
+                })
                         .then((response) => {
                             this.$emit('remove-file-request', this.index);
                             $(this.$refs.modal).modal('hide');

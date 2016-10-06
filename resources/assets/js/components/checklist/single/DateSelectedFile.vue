@@ -34,6 +34,10 @@
 
                 this.$http.put('/fr/' + this.fileRequest.hash, {
                     due: this.date
+                }, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
                 }).then((response) => {
                     // success
                     this.$emit('update-file-request', response.json(), this.index);

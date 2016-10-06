@@ -49,11 +49,10 @@
     </ul>
 </template>
 <script>
-    let xhr_requests = [];
-
     export default {
         data: function () {
             return {
+                request: '',
                 files: [],
                 ajaxReady: true,
                 focusedFileIndex: '',
@@ -67,33 +66,32 @@
                 this.selectedOptionIndex = index;
             },
             focusNameInput: function (index, file) {
-                this.clearSearchRequests();
+                this.clearRequest();
                 this.focusedFileIndex = index;
             },
             blurInput: function () {
-                this.clearSearchRequests();
+                this.clearRequest();
                 this.focusedFileIndex = '';
             },
             searchForFileName: function (event, file, index) {
                 if (event.key.length === 1 || event.key === "Backspace") {
                     // Abort old unfinished requests
-                    this.clearSearchRequests();
+                    this.clearRequest();
                     // input a character or backspaced
                     this.fetchFileNames(file.name, index);
                 }
             },
-            clearSearchRequests: function () {
+            clearRequest: function () {
                 this.fileNameOptions = [];
-                for (var i = 0; i < xhr_requests.length; i++) {
-                    xhr_requests.shift().abort();
-                }
+                if(this.request) this.request.abort();
             },
             fetchFileNames: _.debounce(function (searchString, index) {
                 if (!searchString) return;
                 this.$http.get('/api/files?name_only=1&limit=5&search=' + searchString, {
                     before: (xhr) => {
-                        // Add current request to the queue
-                        xhr_requests.push(xhr);
+                        // Set current request
+                        this.request = xhr;
+                        RequestsMonitor.pushOntoQueue(xhr);
                     }
                 })
                         .then((response) => {
