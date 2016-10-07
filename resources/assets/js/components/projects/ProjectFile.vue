@@ -21,16 +21,21 @@
                 },
                 deep: true
             },
-            index(newIndex) {
-                this.file.position = newIndex;
+            index() {
+                this.updateFileModel({ position: this.index });
             }
         },
-        props: ['index', 'file', 'projectId'],
+        props: ['index', 'file', 'projectId', 'folder-index'],
         methods: {
+            updateFileModel(file){
+                this.$store.commit('updateProjectFile', {
+                    folderIndex: this.folderIndex,
+                    fileIndex: this.index,
+                    file
+                });
+            },
             setNewRequest(xhr){
-                if(this.request) {
-                    RequestsMonitor.abortRequest(this.request);
-                }
+                if(this.request) RequestsMonitor.abortRequest(this.request);
                 this.request = xhr;
             },
             update(){
@@ -51,19 +56,12 @@
             }
         },
         created(){
-            // Update the folder id for this file
-            vueGlobalEventBus.$on('update-file-folder', (file, folderId) => {
-                if (file.id !== this.file.id) return;
-                this.$emit('update-file', this.index, {project_folder_id: folderId});
-            });
+
         },
         mounted() {
-            if(this.file.position !== this.index) {
-                this.$emit('update-file', this.index, {position: this.index});
-            }
+            if(this.file.position !== this.index) this.updateFileModel({ position: this.index });
         },
         beforeDestroy(){
-            vueGlobalEventBus.$off('update-file-folder');
         }
     };
 </script>

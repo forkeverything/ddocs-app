@@ -17,17 +17,14 @@
                     <div class="project-folder folder-wrap" :data-id="folder.id" :key="folder.id">
                         <project-folder :index="index"
                                         :folder="folder"
-                                        @update-folder-position="updateFolderPosition"
-                                        @remove-file="removeFile"
-                                        @insert-file="insertFile"
-                                        @update-file="updateFile"
                         >
                         </project-folder>
                     </div>
                 </template>
                 <div class="add-folder folder-wrap">
-                    <form-add-project-folder :project-id="project.id" :folders="project.folders"
-                                             @add-folder="addFolder"></form-add-project-folder>
+                    <form-add-project-folder :project-id="project.id"
+                                             :folders="project.folders"
+                    ></form-add-project-folder>
                 </div>
             </div>
         </div>
@@ -38,7 +35,6 @@
     export default {
         data: function () {
             return {
-                project: '',
                 dragging: false,
                 folderDrake: '',
                 autoScroll: '',
@@ -46,6 +42,11 @@
             }
         },
         props: [],
+        computed: {
+            project(){
+                return this.$store.state.project;
+            }
+        },
         methods: {
             fetchProject(){
                 this.$http.get(`/api/projects/${ this.$route.params.project_id }`, {
@@ -54,7 +55,7 @@
                     }
                 }).then((response) => {
                     // success
-                    this.project = response.json();
+                    this.$store.commit('setProject', response.json());
                     this.$nextTick(() => {
                         this.initFolderDrag();
                         this.initFileDrag();
@@ -64,33 +65,17 @@
                     console.log('Error fetching from: /projects/');
                 });
             },
-            updateFile(folderIndex, fileIndex, fileObj) {
-                for (let prop in fileObj) {
-                    if (fileObj.hasOwnProperty(prop)) {
-                        this.project.folders[folderIndex].files[fileIndex][prop] = fileObj[prop];
-                    }
-                }
-            },
-            addFolder(folder){
-                this.project.folders.push(folder);
-            },
-            insertFile(folderIndex, fileIndex, fileModel) {
-                this.project.folders[folderIndex].files.splice(fileIndex, 0, fileModel);
-            },
-            removeFile(folderIndex, fileIndex) {
-                this.project.folders[folderIndex].files.splice(fileIndex, 1);
-            },
-            updateFolderPosition(index){
-                this.project.folders[index].position = index;
-            },
             updateFolderIndexes(el, target, source, sibling){
                 let targetFolder = _.find(this.project.folders, {id: parseInt(el.dataset.id)});
                 let siblingFolder = _.find(this.project.folders, {id: parseInt(sibling.dataset.id)});
                 let currentIndex = _.indexOf(this.project.folders, targetFolder);
                 let siblingIndex = siblingFolder ? _.indexOf(this.project.folders, siblingFolder) : this.project.folders.length;
-                this.project.folders.splice(currentIndex, 1);
+                this.$store.commit('removeProjectFolder', currentIndex);
                 let newIndex = currentIndex > siblingIndex ? siblingIndex : siblingIndex - 1;
-                this.project.folders.splice(newIndex, 0, targetFolder);
+                this.$store.commit('insertProjectFolder', {
+                    index: newIndex,
+                    folder: targetFolder
+                });
             },
             initFolderDrag(){
                 // if we're re-initializing
@@ -178,15 +163,13 @@
             }
         },
         created() {
-            vueGlobalEventBus.$on('deleted-folder', (folder) => {
-                this.project.folders.splice(_.indexOf(this.project.folders, folder), 1);
-            });
+
         },
         mounted() {
             this.fetchProject();
         },
         beforeDestroy(){
-            vueGlobalEventBus.$off('deleted-folder');
+            this.$store.commit('setProject', '');
         }
     }
 </script>

@@ -18,7 +18,7 @@
                 name: ''
             }
         },
-        props: ['folder'],
+        props: ['folder', 'folder-index'],
         methods: {
             toggleVisible() {
                 this.visible = !this.visible;
@@ -31,6 +31,13 @@
             clearInput() {
                 this.name = '';
                 this.visible = false;
+            },
+            insertFileIntoFolder(file) {
+                this.$store.commit('insertProjectFile', {
+                    folderIndex: this.folderIndex,
+                    fileIndex: this.folder.files.length,
+                    file: file
+                });
             },
             addFile(){
                 if(! this.name) return this.toggleVisible();
@@ -45,14 +52,10 @@
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((res) => {
-
-                    this.$emit('add-file', res.json());
-
+                    this.insertFileIntoFolder(res.json());
                     this.ajaxReady = true;
                     this.name = '';
-                    this.$nextTick(() => {
-                        $(this.$refs.input).focus();
-                    });
+                    this.$nextTick(() => $(this.$refs.input).focus());
                 }, (res) => {
                     console.log(res);
                     console.log('error adding file');

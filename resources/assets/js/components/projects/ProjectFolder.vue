@@ -14,9 +14,16 @@
             </div>
         </div>
         <div class="files-list" :class="{ empty: noFiles }" :data-id="folder.id">
-            <project-file v-for="(file, index) in folder.files" :key="file.id" :project-id="folder.project_id" :index="index" :file="file" @update-file="updateFile"></project-file>
+            <project-file v-for="(file, fileIndex) in folder.files"
+                          :key="file.id"
+                          :project-id="folder.project_id"
+                          :index="fileIndex"
+                          :file="file"
+                          :folder-index="index"
+            >
+            </project-file>
         </div>
-        <add-project-file :folder="folder" @add-file="addFile"></add-project-file>
+        <add-project-file :folder="folder" :folder-index="index"></add-project-file>
     </div>
 </template>
 <script>
@@ -28,6 +35,9 @@
             }
         },
         computed: {
+            project() {
+                return this.$store.state.project;
+            },
             noFiles() {
                 return this.folder.files.length === 0;
             }
@@ -41,15 +51,15 @@
                 deep: true
             },
             index(newIndex){
-                this.$emit('update-folder-position', newIndex);
+                this.updateFolderModel({position: this.index});
             }
         },
         methods: {
-            addFile(fileModel) {
-                this.$emit('insert-file', this.index, this.folder.files.length, fileModel);
-            },
-            updateFile(fileIndex, fileObj){
-                this.$emit('update-file', this.index, fileIndex, fileObj);
+            updateFolderModel(folder){
+                this.$store.commit('updateProjectFolder', {
+                    index: this.index,
+                    folder
+                });
             },
             setNewRequest(xhr){
                 if(this.request) RequestsMonitor.abortRequest(this.request);
@@ -69,13 +79,13 @@
                 });
             },
             deleteFolder(){
-                this.$http.delete(`/projects/${ this.folder.project_id }/folders/${ this.folder.id }`, {
+                this.$http.delete(`/api/projects/${ this.folder.project_id }/folders/${ this.folder.id }`, {
                     before(xhr) {
                         this.setNewRequest(xhr);
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((res) => {
-                    vueGlobalEventBus.$emit('deleted-folder', this.folder);
+                    this.$store.commit('removeProjectFolder', this.index);
                 }, (res) => {
                     console.log('error deleting project folder');
                 });
@@ -84,34 +94,41 @@
                 if (parseInt(source.dataset.id) !== this.folder.id) return;
                 let targetFile = _.find(this.folder.files, {id: parseInt(el.dataset.id)});
                 let targetFileIndex = _.indexOf(this.folder.files, targetFile);
-                this.$emit('remove-file', this.index, targetFileIndex);
-                this.$nextTick(() => vueGlobalEventBus.$emit('insert-file', el, target, source, sibling, targetFile, targetFileIndex));
-            },
-            handleInsertingFile(el, target, source, sibling, targetFile, targetFileIndex) {
-                if (parseInt(target.dataset.id) !== this.folder.id) return;     // Make sure we're in the right folder
-                let siblingIndex = this.folder.files.length;
-                if (sibling) {
-                    let siblingFile = _.find(this.folder.files, {id: parseInt(sibling.dataset.id)});
-                    siblingIndex = _.indexOf(this.folder.files, siblingFile);
-                }
-                let differentParent = source.dataset.id === target.dataset.id;
-                let newIndex = (targetFileIndex >= siblingIndex || differentParent) ? siblingIndex : siblingIndex - 1;
-                this.$emit('insert-file', this.index, newIndex, targetFile);
-                this.$nextTick(() => vueGlobalEventBus.$emit('update-file-folder', targetFile, parseInt(target.dataset.id)));
+                this.$store.commit('removeProjectFile', {
+                    folderIndex: this.index,
+                    fileIndex: targetFileIndex
+                });
+                this.$nextTick(() => {
+                    let targetFolderIndex = _.indexOf(this.project.folders, _.find(this.project.folders, {id: parseInt(target.dataset.id)}));
+                    let siblingIndex = this.project.folders[targetFolderIndex].files.length;
+                    if (sibling) {
+                        let siblingFile = _.find(this.project.folders[targetFolderIndex].files, {id: parseInt(sibling.dataset.id)});
+                        siblingIndex = _.indexOf(this.project.folders[targetFolderIndex].files, siblingFile);
+                    }
+                    let differentParent = source.dataset.id !== target.dataset.id;
+                    let newIndex = (targetFileIndex >= siblingIndex || differentParent) ? siblingIndex : siblingIndex - 1;
+                    this.$store.commit('insertProjectFile', {
+                        folderIndex: targetFolderIndex,
+                        fileIndex: newIndex,
+                        file: targetFile
+                    });
+                    this.$nextTick(() => {
+                        targetFile.project_folder_id = parseInt(target.dataset.id);
+                    });
+                });
             }
         },
         created(){
             vueGlobalEventBus.$on('dropped-file', this.handleDroppingFile);
-            vueGlobalEventBus.$on('insert-file', this.handleInsertingFile)
         },
         mounted() {
             if(this.folder.position !== this.index) {
-                this.$emit('update-folder-position', this.index);
+                this.updateFolderModel({position: this.index});
+                this.$nextTick(this.update);
             }
         },
         beforeDestroy(){
             vueGlobalEventBus.$off('dropped-file');
-            vueGlobalEventBus.$off('insert-file');
         }
     }
 </script>

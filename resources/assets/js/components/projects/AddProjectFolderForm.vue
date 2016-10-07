@@ -43,7 +43,10 @@
                     }
                 }).then((response) => {
                     // success
-                this.$emit('add-folder', response.json());
+                    this.$store.commit('insertProjectFolder', {
+                        index: this.folders.length,
+                        folder: response.json()
+                    });
                     this.name = '';
                     this.ajaxReady = true;
                     this.$nextTick(() => {
