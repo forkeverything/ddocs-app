@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/jwt.php" afterPath="$PROJECT_DIR$/config/jwt.php" />
     </list>
     <ignored path="files-collector.iws" />
@@ -27,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="jwt.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/jwt.php">
+      <file leaf-file-name="LoginController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="102" column="30" lean-forward="false" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="30" />
+            <state relative-caret-position="639">
+              <caret line="137" column="27" lean-forward="true" selection-start-line="137" selection-start-column="27" selection-end-line="137" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -141,10 +143,10 @@
         <option value="$PROJECT_DIR$/resources/assets/js/mixins/catch-form-errors.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/utilities/FormErrors.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/auth/Register.vue" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/auth/Login.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/system/Navbar.vue" />
         <option value="$PROJECT_DIR$/config/jwt.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
       </list>
     </option>
   </component>
@@ -517,7 +519,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="723394000" />
+    <option name="totallyTimeSpent" value="724089000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -567,35 +569,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RedirectsUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-          <folding>
-            <marker date="1475597147000" expanded="true" signature="66:297" ph="{...}" />
-            <marker date="1475597147000" expanded="true" signature="76:163" ph=" Get the post register / login redirect path. ..." />
-            <marker date="1475597147000" expanded="true" signature="200:295" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="10" column="17" lean-forward="true" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding>
-            <marker date="1475597147000" expanded="false" signature="50:150" ph="..." />
-            <marker date="1475597147000" expanded="true" signature="172:1058" ph="{...}" />
-            <marker date="1475597147000" expanded="true" signature="207:308" ph=" Show the application registration form. ..." />
-            <marker date="1475597147000" expanded="true" signature="353:403" ph="{...}" />
-            <marker date="1475597147000" expanded="true" signature="412:574" ph=" Handle a registration request for the application. ..." />
-            <marker date="1475597147000" expanded="true" signature="623:850" ph="{...}" />
-            <marker date="1475597147000" expanded="true" signature="859:981" ph=" Get the guard to be used during registration. ..." />
-            <marker date="1475597147000" expanded="true" signature="1014:1056" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Exceptions/NotEnoughCredits.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1997,23 +1970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Contracts/Auth/StatefulGuard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1109">
-          <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
-          <folding>
-            <marker date="1475597147000" expanded="true" signature="82:1533" ph="{...}" />
-            <marker date="1475597147000" expanded="true" signature="92:288" ph=" Attempt to authenticate a user using the given credentials. ..." />
-            <marker date="1475597147000" expanded="true" signature="387:523" ph=" Log a user into the application without sessions or cookies. ..." />
-            <marker date="1475597147000" expanded="true" signature="585:754" ph=" Log a user into the application. ..." />
-            <marker date="1475597147000" expanded="true" signature="834:1014" ph=" Log the given user ID into the application. ..." />
-            <marker date="1475597147000" expanded="true" signature="1083:1221" ph=" Log the given user ID into the application without sessions or cookies. ..." />
-            <marker date="1475597147000" expanded="true" signature="1270:1376" ph=" Determine if the user was authenticated via &quot;remember me&quot; cookie. ..." />
-            <marker date="1475597147000" expanded="true" signature="1422:1499" ph=" Log the user out of the application. ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/View/Compilers/BladeCompiler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5805">
@@ -2579,33 +2535,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Auth/HandleRefreshToken.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="92" column="53" lean-forward="true" selection-start-line="92" selection-start-column="53" selection-end-line="92" selection-end-column="53" />
-          <folding>
-            <marker date="1475822173000" expanded="false" signature="32:189" ph="..." />
-            <marker date="1475822173000" expanded="true" signature="215:3001" ph="{...}" />
-            <marker date="1475822173000" expanded="true" signature="226:287" ph=" Generate our token ..." />
-            <marker date="1475822173000" expanded="true" signature="328:372" ph="{...}" />
-            <marker date="1475822173000" expanded="true" signature="381:486" ph=" Extend user's refresh token by 14 days. ..." />
-            <marker date="1475822173000" expanded="true" signature="549:666" ph="{...}" />
-            <marker date="1475822173000" expanded="true" signature="675:887" ph=" Check if given token is valid for given User. ..." />
-            <marker date="1475822173000" expanded="true" signature="948:1355" ph="{...}" />
-            <marker date="1475822173000" expanded="true" signature="1364:1603" ph=" Fetches a User from a refresh token. If user has re-logged-in or ..." />
-            <marker date="1475822173000" expanded="true" signature="1658:1732" ph="{...}" />
-            <marker date="1475822173000" expanded="true" signature="1741:1900" ph=" Set a new refresh token for User. Only called after ..." />
-            <marker date="1475822173000" expanded="true" signature="1953:2151" ph="{...}" />
-            <marker date="1475822173000" expanded="true" signature="2160:2319" ph=" Set a new refresh token for User. Only called after ..." />
-            <marker date="1475822173000" expanded="true" signature="2375:2498" ph="{...}" />
-            <marker date="1475822173000" expanded="true" signature="2507:2785" ph=" Make a response that has both auth token and the refresh ..." />
-            <marker date="1475822173000" expanded="true" signature="2848:2998" ph="{...}" />
-            <marker date="1475822173000" expanded="true" signature="2887:2990" ph="..." />
-            <marker date="1475822173000" expanded="true" signature="2888:2989" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/authenticator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
@@ -2990,14 +2919,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="140" column="5" lean-forward="true" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
@@ -3011,10 +2932,113 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Auth/HandleRefreshToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="45" column="23" lean-forward="false" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+          <folding>
+            <marker date="1475822173000" expanded="false" signature="32:189" ph="..." />
+            <marker date="1475822173000" expanded="true" signature="215:3001" ph="{...}" />
+            <marker date="1475822173000" expanded="true" signature="226:287" ph=" Generate our token ..." />
+            <marker date="1475822173000" expanded="true" signature="328:372" ph="{...}" />
+            <marker date="1475822173000" expanded="true" signature="381:486" ph=" Extend user's refresh token by 14 days. ..." />
+            <marker date="1475822173000" expanded="true" signature="549:666" ph="{...}" />
+            <marker date="1475822173000" expanded="true" signature="675:887" ph=" Check if given token is valid for given User. ..." />
+            <marker date="1475822173000" expanded="true" signature="948:1355" ph="{...}" />
+            <marker date="1475822173000" expanded="true" signature="1364:1603" ph=" Fetches a User from a refresh token. If user has re-logged-in or ..." />
+            <marker date="1475822173000" expanded="true" signature="1658:1732" ph="{...}" />
+            <marker date="1475822173000" expanded="true" signature="1741:1900" ph=" Set a new refresh token for User. Only called after ..." />
+            <marker date="1475822173000" expanded="true" signature="1953:2151" ph="{...}" />
+            <marker date="1475822173000" expanded="true" signature="2160:2319" ph=" Set a new refresh token for User. Only called after ..." />
+            <marker date="1475822173000" expanded="true" signature="2375:2498" ph="{...}" />
+            <marker date="1475822173000" expanded="true" signature="2507:2785" ph=" Make a response that has both auth token and the refresh ..." />
+            <marker date="1475822173000" expanded="true" signature="2848:2998" ph="{...}" />
+            <marker date="1475822173000" expanded="true" signature="2887:2990" ph="..." />
+            <marker date="1475822173000" expanded="true" signature="2888:2989" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1298">
+          <caret line="154" column="23" lean-forward="false" selection-start-line="154" selection-start-column="23" selection-end-line="154" selection-end-column="23" />
+          <folding>
+            <marker date="1475597147000" expanded="false" signature="50:148" ph="..." />
+            <marker date="1475597147000" expanded="true" signature="174:4176" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="226:322" ph=" Show the application's login form. ..." />
+            <marker date="1475597147000" expanded="true" signature="360:407" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="416:570" ph=" Handle a login request to the application. ..." />
+            <marker date="1475597147000" expanded="true" signature="616:1672" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="981:1095" ph="..." />
+            <marker date="1475597147000" expanded="true" signature="1231:1295" ph="..." />
+            <marker date="1475597147000" expanded="true" signature="1681:1804" ph=" Validate the user login request. ..." />
+            <marker date="1475597147000" expanded="true" signature="1861:1992" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="1892:1984" ph="..." />
+            <marker date="1475597147000" expanded="true" signature="1903:1983" ph="..." />
+            <marker date="1475597147000" expanded="true" signature="2001:2151" ph=" Get the needed authorization credentials from the request. ..." />
+            <marker date="1475597147000" expanded="true" signature="2206:2280" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="2289:2452" ph=" Send the response after the user was authenticated. ..." />
+            <marker date="1475597147000" expanded="true" signature="2513:2749" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="2758:2910" ph=" The user has been authenticated. ..." />
+            <marker date="1475597147000" expanded="true" signature="2974:2997" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="3006:3156" ph=" Get the failed login response instance. ..." />
+            <marker date="1475597147000" expanded="true" signature="3223:3446" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="3288:3333" ph="..." />
+            <marker date="1475597147000" expanded="true" signature="3360:3438" ph="..." />
+            <marker date="1475597147000" expanded="true" signature="3361:3437" ph="..." />
+            <marker date="1475597147000" expanded="true" signature="3455:3550" ph=" Get the login username to be used by the controller. ..." />
+            <marker date="1475597147000" expanded="true" signature="3583:3619" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="3628:3759" ph=" Log the user out of the application. ..." />
+            <marker date="1475597147000" expanded="true" signature="3806:3966" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="3975:4099" ph=" Get the guard to be used during authentication. ..." />
+            <marker date="1475597147000" expanded="true" signature="4132:4174" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Contracts/Auth/StatefulGuard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1109">
+          <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+          <folding>
+            <marker date="1475597147000" expanded="true" signature="82:1533" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="92:288" ph=" Attempt to authenticate a user using the given credentials. ..." />
+            <marker date="1475597147000" expanded="true" signature="387:523" ph=" Log a user into the application without sessions or cookies. ..." />
+            <marker date="1475597147000" expanded="true" signature="585:754" ph=" Log a user into the application. ..." />
+            <marker date="1475597147000" expanded="true" signature="834:1014" ph=" Log the given user ID into the application. ..." />
+            <marker date="1475597147000" expanded="true" signature="1083:1221" ph=" Log the given user ID into the application without sessions or cookies. ..." />
+            <marker date="1475597147000" expanded="true" signature="1270:1376" ph=" Determine if the user was authenticated via &quot;remember me&quot; cookie. ..." />
+            <marker date="1475597147000" expanded="true" signature="1422:1499" ph=" Log the user out of the application. ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Auth/Events/Logout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+          <folding>
+            <marker date="1475597147000" expanded="true" signature="94:477" ph="{...}" />
+            <marker date="1475597147000" expanded="true" signature="131:230" ph=" The authenticated user. ..." />
+            <marker date="1475597147000" expanded="true" signature="259:393" ph=" Create a new event instance. ..." />
+            <marker date="1475597147000" expanded="true" signature="434:475" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/jwt.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
-          <caret line="102" column="30" lean-forward="false" selection-start-line="102" selection-start-column="30" selection-end-line="102" selection-end-column="30" />
+          <caret line="102" column="28" lean-forward="false" selection-start-line="102" selection-start-column="28" selection-end-line="102" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="137" column="27" lean-forward="true" selection-start-line="137" selection-start-column="27" selection-end-line="137" selection-end-column="27" />
           <folding />
         </state>
       </provider>

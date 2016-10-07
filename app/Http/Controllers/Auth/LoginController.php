@@ -136,7 +136,12 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         if ($user = $this->validateRefreshToken($request->refresh_token)) ($this->removeRefreshToken($user));
-        $this->guard()->logout();
+        try {
+            if(JWTAuth::parseToken()->authenticate()) $this->guard()->logout();
+        } catch (\Exception $e) {
+            // Don't do anything! No need to let client know the auth token is invalid because
+            // they're trying to log out.
+        }
         return response()->json(['logged out!']);
     }
 
