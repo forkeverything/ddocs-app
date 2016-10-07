@@ -14,7 +14,7 @@ module.exports = (function () {
 
         // requiresAuth
         if (to.matched.some(record => record.meta.requiresAuth)) {
-            if (! auth.getCookie()) {
+            if (! Authenticator.check()) {
                 next({
                     path: '/login'
                 })
@@ -27,7 +27,7 @@ module.exports = (function () {
 
         // guestOnly
         if (to.matched.some(record => record.meta.guestOnly)) {
-            if (auth.getCookie()) {
+            if (Authenticator.check()) {
                 next({
                     path: '/'
                 });

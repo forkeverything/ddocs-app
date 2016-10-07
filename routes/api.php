@@ -20,7 +20,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('jwt.auth');
 
 // Auth & Renew Routes - Main routes
-Route::group(['middleware' => 'jwt.auth-renew'], function () {
+Route::group(['middleware' => 'jwt.auth'], function () {
 
     // Checklist
     Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser');

@@ -52,8 +52,8 @@ window.router = require('./router.js');
  * front-end authentication.
  */
 
-window.auth = require('./auth.js');
-auth.setup();
+window.Authenticator = require('./authenticator.js');
+Authenticator.setup();
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

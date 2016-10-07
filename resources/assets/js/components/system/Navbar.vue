@@ -66,7 +66,7 @@
         },
         methods: {
             logout(){
-                auth.logout();
+                Authenticator.logout();
             }
         }
     }

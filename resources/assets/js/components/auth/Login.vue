@@ -64,8 +64,7 @@
                     email: this.email,
                     password: this.password
                 }).then((response) => {
-                    auth.storeCookie('Bearer ' + response.json().token);
-                    auth.goRedirectPath();
+                    Authenticator.login(response.json());
                     // success
                     this.ajaxReady = true;
                 }, (response) => {
