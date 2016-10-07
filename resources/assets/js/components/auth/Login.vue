@@ -82,8 +82,6 @@
                     this.ajaxReady = true;
                 }, (response) => {
                     // error
-                    console.log('GET REQ Error!');
-                    console.log(response);
                     this.ajaxReady = true;
                     vueValidation(response);
                 })

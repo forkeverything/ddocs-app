@@ -39,14 +39,10 @@
 
                     <template v-if="! authenticatedUser">
                         <li>
-                            <a href="/login" class="navbar-link">
-                                Login
-                            </a>
+                            <router-link to="/login" class="navbar-link">Login</router-link>
                         </li>
                         <li>
-                            <a href="/register" class="navbar-link">
-                                Sign Up
-                            </a>
+                            <router-link to="/register" class="navbar-link">Sign Up</router-link>
                         </li>
                     </template>
                 </ul>
