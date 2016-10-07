@@ -180,14 +180,9 @@ module.exports = {
         Vue.http.interceptors.push((request, next) => {
 
             next((response) => {
-
-                // Request is complete, remove from our queue
-                RequestsMonitor.removeFromQueue(request);
-
                 return this._checkAuthentication(request, response).then((response) => {
                     return response;
                 });
-
             });
         });
     },

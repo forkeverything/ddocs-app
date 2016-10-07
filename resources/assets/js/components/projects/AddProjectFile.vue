@@ -37,7 +37,7 @@
                 if(! this.ajaxReady) return;
                 this.ajaxReady = false;
 
-                this.$http.post(`/projects/${ this.folder.project_id }/folders/${ this.folder.id }/files`, {
+                this.$http.post(`/api/projects/${ this.folder.project_id }/folders/${ this.folder.id }/files`, {
                     name: this.name,
                     position: this.folder.files.length
                 }, {

@@ -75,7 +75,7 @@
                 this.notes = [];
                 this.$http.get('/api/file_requests/' + this.fileRequest.hash + '/notes', {
                     before(xhr) {
-                        if(this.fetchNotesRequest) this.fetchNotesRequest.abort();
+                        if(this.fetchNotesRequest) RequestsMonitor.abortRequest(this.fetchNotesRequest)
                         this.fetchNotesRequest = xhr;
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
@@ -152,12 +152,12 @@
             },
             abortRequest(note, action) {
                 if(action) {
-                    if(note.pending_requests[action]) note.pending_requests[action].abort();
+                    if(note.pending_requests[action]) RequestsMonitor.abortRequest(note.pending_requests[action]);
                 } else {
                     // No action specified, abort all actions
                     for(let action in note.pending_requests) {
                         if(note.pending_requests.hasOwnProperty(action)) {
-                            if(note.pending_requests[action]) note.pending_requests[action].abort();
+                            if(note.pending_requests[action]) RequestsMonitor.abortRequest(note.pending_requests[action]);
                         }
                     }
                 }

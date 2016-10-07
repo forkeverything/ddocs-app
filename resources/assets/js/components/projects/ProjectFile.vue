@@ -1,5 +1,5 @@
 <template>
-    <div class="project-file" :data-id="file.id" @click.prevent="viewFile">
+    <div class="project-file" :data-id="file.id" @click="viewFile">
         <div class="file-name truncate">
                 {{ file.name }}
         </div>
@@ -28,11 +28,13 @@
         props: ['index', 'file', 'projectId'],
         methods: {
             setNewRequest(xhr){
-                if(this.request) this.request.abort();
+                if(this.request) {
+                    RequestsMonitor.abortRequest(this.request);
+                }
                 this.request = xhr;
             },
             update(){
-                this.$http.put(`/projects/${ this.projectId }/files/${ this.file.id }`, this.file, {
+                this.$http.put(`/api/projects/${ this.projectId }/files/${ this.file.id }`, this.file, {
                     before(xhr) {
                         this.setNewRequest(xhr);
                         RequestsMonitor.pushOntoQueue(xhr);
@@ -49,22 +51,19 @@
             }
         },
         created(){
+            // Update the folder id for this file
             vueGlobalEventBus.$on('update-file-folder', (file, folderId) => {
                 if (file.id !== this.file.id) return;
                 this.$emit('update-file', this.index, {project_folder_id: folderId});
             });
-
-            vueGlobalEventBus.$on(`update-file-${ this.file.id }`, this.update);
         },
         mounted() {
             if(this.file.position !== this.index) {
                 this.$emit('update-file', this.index, {position: this.index});
-                this.$nextTick(this.update);
             }
         },
         beforeDestroy(){
             vueGlobalEventBus.$off('update-file-folder');
-            vueGlobalEventBus.$off(`update-file-${ this.file.id }`);
         }
     };
 </script>

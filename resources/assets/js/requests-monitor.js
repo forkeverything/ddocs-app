@@ -13,7 +13,10 @@ module.exports = {
     _pushRequestIdInterceptor() {
         Vue.http.interceptors.push((request, next) => {
             request._uid = randomString(10);
-            next();
+            next((response) => {
+                // Request is complete, remove from our queue
+                this.removeFromQueue(request);
+            });
         });
     },
 
@@ -26,7 +29,7 @@ module.exports = {
 
     _abortRequests(queueContainer) {
         for (let i = 0; i < queueContainer.length; i) {
-            queueContainer.shift().abort();
+            this.abortRequest(queueContainer.shift());
         }
     },
 
@@ -69,6 +72,35 @@ module.exports = {
     },
 
     /**
+     * Ask user to confirm if they are about to leave page
+     * with pending requests.
+     *
+     * @private
+     */
+
+    _addUnloadEventListener(){
+        window.addEventListener("beforeunload", (e) => {
+            let confirmationMessage = "\o/";
+            if(this._hasPendingRequests('update')) {
+                (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+                return confirmationMessage;                            //Webkit, Safari, Chrome
+            }
+        });
+    },
+
+    /**
+     * Abort request and remove from queue. Aborting using thie
+     * method is queue aware.
+     *
+     * @param xhr
+     */
+
+    abortRequest(xhr) {
+        xhr.abort();
+        this.removeFromQueue(xhr);
+    },
+
+    /**
      * Push request onto queue.
      *
      * @param xhr
@@ -89,23 +121,6 @@ module.exports = {
         let container = this._getContainer(xhr);
         let index = _.indexOf(this.queue[container], xhr);
         if (index !== -1) this.queue[container].splice(index, 1);
-    },
-
-    /**
-     * Ask user to confirm if they are about to leave page
-     * with pending requests.
-     *
-     * @private
-     */
-
-    _addUnloadEventListener(){
-        window.addEventListener("beforeunload", (e) => {
-            let confirmationMessage = "\o/";
-            if(this._hasPendingRequests('update')) {
-                (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-                return confirmationMessage;                            //Webkit, Safari, Chrome
-            }
-        });
     },
 
     /**

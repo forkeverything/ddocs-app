@@ -83,7 +83,7 @@
             },
             clearRequest: function () {
                 this.fileNameOptions = [];
-                if(this.request) this.request.abort();
+                if(this.request) RequestsMonitor.abortRequest(this.request);
             },
             fetchFileNames: _.debounce(function (searchString, index) {
                 if (!searchString) return;

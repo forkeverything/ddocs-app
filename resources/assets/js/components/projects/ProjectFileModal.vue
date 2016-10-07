@@ -1,6 +1,6 @@
 <template>
 <div id="project-file-modal">
-    <div class="modal" tabindex="-1" role="dialog" ref="modal">
+    <div class="modal" tabindex="-1" role="dialog" ref="modal" v-if="file">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">

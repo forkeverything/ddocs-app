@@ -19,12 +19,10 @@ class ProjectsController extends Controller
 {
     public function __construct()
     {
-        // Only authenticated users can access projects
-        $this->middleware('auth');
 
         $this->middleware('can:view,project', [
             'only' => [
-                'getProject'
+                'getSingleProject'
             ]
         ]);
 
@@ -43,29 +41,39 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Get List of all User's projects.
+     * Return projects for authenticated User.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return mixed
      */
-    public function getAll()
+    public function getUserProjects()
     {
-        // TODO ::: allow to view project's shared by other team members
-        $projects = Auth::user()->projects;
-        return view('projects.all', compact('projects'));
+        return Auth::user()->projects;
     }
+
 
     /**
      * Handle request to save a new Project.
      *
      * @param SaveProjectRequest $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return Project
      */
     public function postSaveNew(SaveProjectRequest $request)
     {
         $attributes = $request->all();
         $attributes['user_id'] = Auth::id();
-        $project = Project::create($attributes);
-        return redirect('/projects/' . $project->id);
+        return Project::create($attributes);
+    }
+
+    public function getSingleProject(Project $project)
+    {
+        return $project->load([
+            'folders' => function ($query) {
+                $query->orderBy('position', 'asc');
+            },
+            'folders.files' => function ($query) {
+                $query->orderBy('position', 'asc');
+            }
+        ]);
     }
 
     /**

@@ -73,7 +73,7 @@ module.exports = {
         },
         searchTerm: _.debounce(function () {
             if (this.request && this.request.readyState != 4) {
-                this.request.abort();
+                RequestsMonitor.abortRequest(this.request);
                 this.ajaxReady = true;
             }
             var term = this.params.search || null;

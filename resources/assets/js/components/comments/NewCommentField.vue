@@ -23,11 +23,10 @@ export default {
             }
         },
         makeUrl(){
-            console.log('bar');
             if(this.subjectType === 'App\\\\ProjectFile') {
-                return `/projects/${ this.projectId }/files/${ this.subjectId }`;
+                return `/api/projects/${ this.projectId }/files/${ this.subjectId }`;
             } else if(this.subjectType === 'App\\\\FileRequest') {
-                return `/fr/${ this.subjectHash }/comments`;
+                return `/api/fr/${ this.subjectHash }/comments`;
             }
         },
         addComment(){

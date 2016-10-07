@@ -39,12 +39,12 @@ module.exports = [
     },
     {
         path: '/projects',
-        component: { template: '<h1>All Projects</h1>' },
+        component: require('./components/projects/ProjectsList.vue'),
         meta: { requiresAuth: true }
     },
     {
         path: '/projects/:project_id',
-        component: require('./components/checklist/Single.vue'),
+        component: require('./components/projects/ProjectBoard.vue'),
         meta: { requiresAuth: true }
     },
     {
