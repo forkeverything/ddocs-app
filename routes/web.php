@@ -15,9 +15,9 @@
 //Auth::routes();
 
 Route::post('/login', 'Auth\LoginController@login');
+Route::post('/refresh_token', 'Auth\Logincontroller@refreshToken');
 Route::post('/logout', 'Auth\LoginController@logout');
 Route::post('/register', 'Auth\RegisterController@register');
-Route::post('/refresh_token', 'JWTController@refresh');
 
 // Static Pages
 Route::get('{slug}', function () {
@@ -25,14 +25,14 @@ Route::get('{slug}', function () {
 })->where('slug', '^(?!api/?).*');
 
 // Checklists
-Route::get('/c', 'ChecklistsController@getListsView');
+//Route::get('/c', 'ChecklistsController@getListsView');
 
 
 //Route::get('/c/get', 'ChecklistsController@getForAuthenticatedUser');
-Route::get('/c/make', 'ChecklistsController@getMakeForm');
+//Route::get('/c/make', 'ChecklistsController@getMakeForm');
 //Route::post('/c/make', 'ChecklistsController@postNewChecklist');
 
-Route::get('/c/{checklist_hash}/{checklist_name?}', 'ChecklistsController@getSingleChecklist');
+//Route::get('/c/{checklist_hash}/{checklist_name?}', 'ChecklistsController@getSingleChecklist');
 
 // Recipients
 //Route::get('/r/{recipient_hash}/turn_off_notifications', 'RecipientsController@getTurnOffNotifications');
@@ -57,9 +57,9 @@ Route::get('/c/{checklist_hash}/{checklist_name?}', 'ChecklistsController@getSin
 //Route::get('/files', 'FilesController@getForUser');
 
 // Project
-Route::get('/projects', 'ProjectsController@getAll');
+//Route::get('/projects', 'ProjectsController@getAll');
 //Route::post('/projects', 'ProjectsController@postSaveNew');
-Route::get('/projects/{project}', 'ProjectsController@getProject');
+//Route::get('/projects/{project}', 'ProjectsController@getProject');
 //Route::put('/projects/{project}', 'ProjectsController@putUpdate');
 //Route::delete('/projects/{project}', 'ProjectsController@delete');
 //Route::post('/projects/{project}/folders', 'ProjectsController@postCreateFolder');
@@ -76,7 +76,7 @@ Route::get('/projects/{project}', 'ProjectsController@getProject');
 
 
 // Account
-Route::get('/account', 'AccountController@getAccountOverview');
+//Route::get('/account', 'AccountController@getAccountOverview');
 //Route::post('/account/subscription', 'AccountController@postSubscribe');
 //Route::delete('/account/subscription', 'AccountController@deleteCancelSubscription');
 //Route::post('/account/subscription/resume', 'AccountController@postResumeSubscription');

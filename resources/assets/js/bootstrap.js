@@ -20,14 +20,6 @@ window.$ = window.jQuery = require('jquery');
 require('bootstrap-sass');
 
 /**
- * Requests Monitor
- */
-
-window.RequestsMonitor = require('./requests-monitor.js');
-RequestsMonitor.addUnloadEventListener();
-
-
-/**
  * Vue instance and Vue Resource
  */
 
@@ -40,6 +32,14 @@ require('vue-resource');
 
 const Vuex = require('vuex');
 window.store = new Vuex.Store(require('./store.js'));
+
+/**
+ * Requests Monitor
+ */
+
+window.RequestsMonitor = require('./requests-monitor.js');
+RequestsMonitor.setup();
+
 
 /**
  * Vue Router

@@ -10,7 +10,7 @@ module.exports = [
     },
     {
         path: '/register',
-        component: { template: '<h1>Show Register Form</h1>' },
+        component: require('./components/auth/Register.vue'),
         meta: { guestOnly: true }
     },
     {

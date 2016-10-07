@@ -1,3 +1,7 @@
+/**
+ * Client Side Authenticator
+ */
+
 module.exports = {
 
     /**
@@ -6,45 +10,61 @@ module.exports = {
 
     _redirectPath: '',
 
-    /**
-     * Checks response for a token in the header. Implies a token has been
-     * refreshed and we'll need to save the new one for subsequent
-     * reqeusts.
-     *
-     * @param response
-     */
 
-    _refreshToken(response) {
-        let newToken = response.headers.authorization;
-        if(newToken) {
-            this._storeCookie(newToken);
-        }
+    _refreshAuthToken(){
+        return Vue.http.post('/refresh_token', {
+            refresh_token: this._getRefreshToken()
+        });
     },
 
     /**
      * Checks to see if our response is for an invalid or expired token. This is where
      * the user gets redirected.
      *
+     * @param request
      * @param response
      */
 
-    _checkForAuthError(response) {
+    _checkAuthentication(request, response) {
 
-        let errors = [
-            'unauthenticated',      // either default 'auth' middleware or didn't get a token
-            'token_invalid',
-            'token_expired',
-            'token_revoked'
-        ];
+        return new Promise((resolve, reject) => {
 
-        if(response.status === 401 && errors.indexOf(response.json().error) !== -1) {
-            this._removeCookie();
-            this._unsetAuthenticatedUser();
-            if(router.currentRoute.meta.requiresAuth) {
-                this._redirectToLogin();
+            let authTokenErrors = [
+                'unauthenticated',      // either default 'auth' middleware or didn't get a token
+                'token_invalid',
+                'token_expired',
+                'token_revoked'
+            ];
+
+            if (response.status === 401 && authTokenErrors.indexOf(response.json().error) !== -1) {
+
+                // token is bad - lets try to renew it!
+                return this._refreshAuthToken().then((refreshTokenResponse) => {
+
+                    let newToken = 'Bearer ' + refreshTokenResponse.json().token;
+                    this._storeAuthToken(newToken);
+                    request.headers['Authorization'] = newToken;
+
+                    return Vue.http(request).then((newResponse) => {
+                        resolve(newResponse);
+                    });
+
+                }, (refreshTokenResponse) => {
+                    // Failed to refresh our auth token - assume logged out.
+                    this._removeRefreshToken();
+                    this._removeAuthToken();
+                    this._unsetAuthenticatedUser();
+                    if (router.currentRoute.meta.requiresAuth) {
+                        this._redirectToLogin();
+                    }
+                    // reject(refreshTokenResponse);
+                })
+
             }
-        }
 
+            // if we didn't get any token errors, just pass our response back
+            resolve(response);
+        });
     },
 
     /**
@@ -61,15 +81,58 @@ module.exports = {
         router.push('/login');
     },
 
+    _getRefreshToken(){
+        let refreshToken = localStorage.getItem('ddocs_refresh_token');
+        return refreshToken !== 'undefined' ? refreshToken : null;
+    },
+
     /**
-     * Store our token in a cookie
+     * Store our long-life refresh token used to refresh our auth tokens.
+     *
+     * @param token
+     * @private
+     */
+
+    _storeRefreshToken(token) {
+        localStorage.setItem('ddocs_refresh_token', token);
+    },
+
+    /**
+     * Remove refresh token.
+     *
+     * @private
+     */
+
+    _removeRefreshToken(){
+        localStorage.removeItem('ddocs_refresh_token');
+    },
+
+    /**
+     * Fetch auth auth token
+     */
+
+    _getAuthToken() {
+        let authToken = localStorage.getItem('ddocs_auth_token');
+        return authToken !== 'undefined' ? authToken : null;
+    },
+
+    /**
+     * Store our token in a auth token
      *
      * @param token
      */
 
-    _storeCookie(token){
-        // store a cookie so it'll be read on refresh
-        Cookies.set('ddocs_auth', token);
+    _storeAuthToken(token){
+        // store a auth token so it'll be read on refresh
+        localStorage.setItem('ddocs_auth_token', token);
+    },
+
+    /**
+     * Remove our auth auth token
+     */
+
+    _removeAuthToken(){
+        localStorage.removeItem('ddocs_auth_token');
     },
 
     /**
@@ -82,23 +145,16 @@ module.exports = {
 
     _setHeaders(token) {
         Vue.http.headers.common['Authorization'] = token;
-        this._fetchAuthenticatedUser();
     },
 
     /**
-     * Fetch auth cookie
+     * Unset token in header so all subsequent requests are
+     * made as a guest.
+     *
+     * @private
      */
-
-    _getCookie() {
-        return Cookies.get('ddocs_auth');
-    },
-
-    /**
-     * Remove our auth cookie
-     */
-
-    _removeCookie(){
-        return Cookies.remove('ddocs_auth');
+    _unsetHeaders() {
+        delete Vue.http.headers.common["Authorization"];
     },
 
     /**
@@ -107,7 +163,7 @@ module.exports = {
      */
 
     _goRedirectPath(){
-        if(this._redirectPath) {
+        if (this._redirectPath) {
             router.push(this._redirectPath);
             this._redirectPath = '';
         } else {
@@ -123,16 +179,15 @@ module.exports = {
     _pushResourceInterceptor(){
         Vue.http.interceptors.push((request, next) => {
 
-            // add unique id for client-side look-up
-            request._uid = randomString(10);
-
             next((response) => {
 
-                // Request is complete here. Remove from global queue
+                // Request is complete, remove from our queue
                 RequestsMonitor.removeFromQueue(request);
 
-                this._refreshToken(response);
-                this._checkForAuthError(response);
+                return this._checkAuthentication(request, response).then((response) => {
+                    return response;
+                });
+
             });
         });
     },
@@ -146,8 +201,7 @@ module.exports = {
     },
 
     /**
-     * Unset the user from our Vuex store so
-     * we'll go back to being a guest.
+     * Unset the user from our Vuex store.
      */
 
     _unsetAuthenticatedUser(){
@@ -155,19 +209,33 @@ module.exports = {
     },
 
     /**
+     * Turn client back into a Guest.
+     *
+     * @private
+     */
+    _revertToGuest(){
+        this._removeAuthToken();
+        this._removeRefreshToken();
+        this._unsetHeaders();
+        this._unsetAuthenticatedUser();
+        router.push('/login');
+    },
+
+    /**
      * Setup everything up on page-load. This only gets fired once
      * and is called within bootstrap.js
      */
 
-    setup(){
+    setup() {
 
-        // set our interceptor - this has to happen first!
+        // Set Interceptor. This must occur first for all subsequent
+        // requests to have the interceptor applied.
         this._pushResourceInterceptor();
 
-        // If we found a cookie (logged-in)
-        if(this._getCookie()) {
-            // Set our request headers
-            this._setHeaders(this._getCookie());
+        // User is logged in on page load.
+        if (this._getAuthToken()) {
+            this._setHeaders(this._getAuthToken());     // Set our request headers
+            this._fetchAuthenticatedUser();             // fetch User
         }
     },
 
@@ -177,18 +245,25 @@ module.exports = {
      * @returns {boolean}
      */
 
-    check(){
-        return !! this._getCookie();
+    check() {
+        return !! this._getAuthToken();
     },
 
     /**
-     * Login user after receiving token
+     * Login the user client-side. The resposne is what we get back
+     * from either '/login' or '/register'.
      */
 
-    login(loginResponse){
-        let token = 'Bearer ' + loginResponse.token;
-        this._storeCookie(token);
-        this._setHeaders(token);
+    login(response){
+
+        let authToken = 'Bearer ' + response.token;
+        this._storeAuthToken(authToken);
+        let refreshToken = response.refresh_token;
+        this._storeRefreshToken(refreshToken);
+
+        this._setHeaders(authToken);
+        this._fetchAuthenticatedUser();
+
         this._goRedirectPath();
     },
 
@@ -197,13 +272,12 @@ module.exports = {
      */
 
     logout(){
-        Vue.http.post('/logout').then((res) => {
-            this._removeCookie();
-            delete Vue.http.headers.common["Authorization"];
-            this._unsetAuthenticatedUser();
-            router.push('/login');
+        Vue.http.post('/logout', {
+            refresh_token: this._getRefreshToken()
+        }).then((res) => {
+            this._revertToGuest();
         }, (res) => {
-            console.log("couldn't log out user");
+            this._revertToGuest();
         });
     }
 };

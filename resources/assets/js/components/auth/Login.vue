@@ -4,32 +4,40 @@
             <div id="login-body" class="col-sm-6 col-sm-offset-3">
                 <h2 class="text-center">Login</h2>
 
-                <form-errors></form-errors>
+                <form-errors @got-error="gotError" stealth="true"></form-errors>
 
                 <form id="form-login" role="form" @submit.prevent="submitLogin">
 
-                    <div class="form-group" :class="{ 'has-error': false }">
+                    <div class="form-group"
+                         :class="{ 'has-error': formErrors.email }"
+                    >
                         <label for="email" class="control-label">Email</label>
                         <input id="email"
                                type="email"
                                class="form-control"
                                v-model="email"
                         >
-
-
+                        <span class="help-block" v-if="formErrors.email">
+                            {{ formErrors.email[0] }}
+                        </span>
                     </div>
 
-                    <div class="form-group" :class="{ 'has-error': false }">
+                    <div class="form-group"
+                         :class="{ 'has-error': formErrors.password }"
+                    >
                         <label for="password" class="control-label">Password</label>
                         <input id="password" type="password" class="form-control" v-model="password">
+                        <span class="help-block" v-if="formErrors.password">
+                            {{ formErrors.password[0] }}
+                        </span>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group text-right">
                         <router-link to="/password/reset">Forgot password?</router-link>
                     </div>
 
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary form-control">
+                    <div class="form-group text-right">
+                        <button type="submit" class="btn btn-primary" :disabled="! canSubmit">
                             <i class="fa fa-btn fa-sign-in"></i> Login
                         </button>
                     </div>
@@ -51,6 +59,11 @@
                 ajaxReady: true,
                 email: '',
                 password: ''
+            }
+        },
+        computed: {
+            canSubmit(){
+                return this.email && this.password;
             }
         },
         methods: {
@@ -77,6 +90,9 @@
 
 
             }
-        }
+        },
+        mixins: [
+            require('../../mixins/catch-form-errors')
+        ]
     }
 </script>

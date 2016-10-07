@@ -22,6 +22,19 @@ trait HandleRefreshToken
     }
 
     /**
+     * Extend user's refresh token by 14 days.
+     *
+     * @param User $user
+     * @return User
+     */
+    protected function extendRefreshTokenForUser(User $user)
+    {
+        $user->refresh_token_expiry = strtotime("+14 day");
+        $user->save();
+        return $user;
+    }
+
+    /**
      * Check if given token is valid for given User.
      *
      * @param $token
@@ -36,9 +49,9 @@ trait HandleRefreshToken
         if(! $user = $this->getUserByRefreshToken($token)) throw new RefreshTokenRevoked;
         if ($user->refresh_token_expiry < strtotime('now')) throw new RefreshTokenExpired;
 
-        // the refresh token is still good, let's give back the user we found so we
-        // can issue a new JWT.
-        return $user;
+        // The refresh token is still good! Let's extend the expiry and
+        // return the User back.
+        return $this->extendRefreshTokenForUser($user);
     }
 
     /**
@@ -68,6 +81,37 @@ trait HandleRefreshToken
         $user->refresh_token_expiry = strtotime("+14 day");
         $user->save();
         return $token;
+    }
+
+    /**
+     * Set a new refresh token for User. Only called after
+     * successful login or registration.
+     *
+     * @param User $user
+     * @return mixed
+     */
+    protected function removeRefreshToken(User $user)
+    {
+        $user->refresh_token = null;
+        $user->refresh_token_expiry = null;
+        return $user->save();
+    }
+
+    /**
+     * Make a response that has both auth token and the refresh
+     * token for given User. This is the response that is
+     * sent after successful login / registration.
+     * 
+     * @param $token
+     * @param User $user
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function makeTokenResponse($token, User $user)
+    {
+        return response()->json([
+            'token' => $token,
+            'refresh_token' => $this->setRefreshToken($user)
+        ]);
     }
 
 }
