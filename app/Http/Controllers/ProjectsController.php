@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ProjectsController extends Controller
 {
@@ -28,11 +29,9 @@ class ProjectsController extends Controller
 
         $this->middleware('can:update,project', [
             'only' => [
-                'putUpdate',
+                'putUpdateItems',
                 'delete',
                 'postCreateFolder',
-                'putUpdateFolder',
-                'putUpdateFile',
                 'deleteFolder',
                 'postAddFile',
                 'postAddComment'
@@ -98,16 +97,41 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Update a given Project.
+     * Single update request to update a Project, ProjectFolder(s) and ProjectFile(s).
+     * We batch put updates to increase efficiency and reduce redundant updates as
+     * User is most likely performing multiple requests per second.
      *
      * @param Project $project
      * @param Request $request
      * @return Project
      */
-    public function putUpdate(Project $project, Request $request)
+    public function putUpdateItems(Project $project, Request $request)
     {
-        $project->update($request->all());
-        return $project;
+        $updatedModels = $request->all();
+
+        if ($updatedProject = $updatedModels['project']) {
+            $project->update($updatedProject);
+        }
+
+        if ($updatedFolders = $updatedModels['folders']) {
+            foreach ($updatedFolders as $id => $updatedFolder) {
+                if ($id !== $updatedFolder['id']) abort(403, "Tried to update a different folder");
+                $projectFolder = ProjectFolder::find($id);
+                if(! Gate::allows('updateFolder', [$project, $projectFolder])) abort(403, "Folder doesn't belong to Project");
+                $projectFolder->update($updatedFolder);
+            }
+        }
+
+        if ($updatedFiles = $updatedModels['files']) {
+            foreach ($updatedFiles as $id => $updatedFile) {
+                if ($id !== $updatedFile['id']) abort(403, "Tried to update a different file");
+                $projectFile = ProjectFile::find($id);
+                if(! Gate::allows('updateFile', [$project, $projectFile])) abort(403, "File doesn't belong to Project");
+                $projectFile->update($updatedFile);
+            }
+        }
+
+        return response('Updated project items.');
     }
 
     /**
@@ -134,21 +158,6 @@ class ProjectsController extends Controller
         return $project->folders()->create($request->all())->load('files');
     }
 
-
-    /**
-     * Updates Project Folder
-     *
-     * @param Project $project
-     * @param ProjectFolder $projectFolder
-     * @param Request $request
-     * @return Model
-     */
-    public function putUpdateFolder(Project $project, ProjectFolder $projectFolder, Request $request)
-    {
-        if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
-        $projectFolder->update($request->all());
-        return $projectFolder;
-    }
 
     /**
      * Delete Project Folder
@@ -178,23 +187,6 @@ class ProjectsController extends Controller
         return $projectFolder->files()->create($request->all());
     }
 
-    /**
-     * Update Project File.
-     *
-     * @param Project $project
-     * @param ProjectFile $projectFile
-     * @param Request $request
-     * @return ProjectFile
-     */
-    public function putUpdateFile(Project $project, ProjectFile $projectFile, AddProjectFileRequest $request)
-    {
-        // Does the file belong to the project?
-        if ($projectFile->folder->project_id !== $project->id) abort(403, "File does not belong to project");
-        // Are we trying to move it into a valid folder?
-        if (ProjectFolder::findOrFail($request->project_folder_id)->project_id !== $project->id) abort(403, "Trying to put file into folder that doesn't belong to this project.");
-        $projectFile->update($request->all());
-        return $projectFile;
-    }
 
     /**
      * Add Comment to a ProjectFile.

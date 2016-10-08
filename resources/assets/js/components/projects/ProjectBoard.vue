@@ -44,7 +44,7 @@
         props: [],
         computed: {
             project(){
-                return this.$store.state.project;
+                return this.$store.state.project.data;
             }
         },
         methods: {
@@ -55,7 +55,7 @@
                     }
                 }).then((response) => {
                     // success
-                    this.$store.commit('setProject', response.json());
+                    this.$store.commit('project/SET', response.json());
                     this.$nextTick(() => {
                         this.initFolderDrag();
                         this.initFileDrag();
@@ -70,9 +70,9 @@
                 let siblingFolder = _.find(this.project.folders, {id: parseInt(sibling.dataset.id)});
                 let currentIndex = _.indexOf(this.project.folders, targetFolder);
                 let siblingIndex = siblingFolder ? _.indexOf(this.project.folders, siblingFolder) : this.project.folders.length;
-                this.$store.commit('removeProjectFolder', currentIndex);
+                this.$store.commit('project/REMOVE_FOLDER', currentIndex);
                 let newIndex = currentIndex > siblingIndex ? siblingIndex : siblingIndex - 1;
-                this.$store.commit('insertProjectFolder', {
+                this.$store.commit('project/INSERT_FOLDER', {
                     index: newIndex,
                     folder: targetFolder
                 });
@@ -169,7 +169,7 @@
             this.fetchProject();
         },
         beforeDestroy(){
-            this.$store.commit('setProject', '');
+            this.$store.commit('project/SET', '');
         }
     }
 </script>

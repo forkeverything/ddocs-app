@@ -33,7 +33,7 @@
                 this.visible = false;
             },
             insertFileIntoFolder(file) {
-                this.$store.commit('insertProjectFile', {
+                this.$store.commit('project/INSERT_FILE', {
                     folderIndex: this.folderIndex,
                     fileIndex: this.folder.files.length,
                     file: file

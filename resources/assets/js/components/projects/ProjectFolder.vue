@@ -30,13 +30,12 @@
     export default {
         data: function () {
             return {
-                request: '',
-                requestsQueue: []
+                request: ''
             }
         },
         computed: {
             project() {
-                return this.$store.state.project;
+                return this.$store.state.project.data;
             },
             noFiles() {
                 return this.folder.files.length === 0;
@@ -44,11 +43,8 @@
         },
         props: ['folder', 'index'],
         watch: {
-            folder: {
-                handler(newVal) {
-                    this.update();
-                },
-                deep: true
+            'folder.position'(newPosition) {
+                this.update({position: newPosition})
             },
             index(newIndex){
                 this.updateFolderModel({position: this.index});
@@ -56,7 +52,7 @@
         },
         methods: {
             updateFolderModel(folder){
-                this.$store.commit('updateProjectFolder', {
+                this.$store.commit('project/UPDATE_FOLDER', {
                     index: this.index,
                     folder
                 });
@@ -65,17 +61,11 @@
                 if(this.request) RequestsMonitor.abortRequest(this.request);
                 this.request = xhr;
             },
-            update(){
-                this.$http.put(`/api/projects/${ this.folder.project_id }/folders/${ this.folder.id }`, this.folder, {
-                    before(xhr) {
-                        this.setNewRequest(xhr);
-                        RequestsMonitor.pushOntoQueue(xhr);
-                    }
-                }).then((res) => {
-                    console.log('updated folder');
-                }, (res) => {
-                    console.log('error updating folder');
-                    console.log(res);
+            update(updatedProperties){
+                updatedProperties['id'] = this.folder.id;
+                this.$store.commit('project/SAVE_CHANGES', {
+                    type: 'folders',
+                    model: updatedProperties
                 });
             },
             deleteFolder(){
@@ -85,7 +75,7 @@
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((res) => {
-                    this.$store.commit('removeProjectFolder', this.index);
+                    this.$store.commit('project/REMOVE_FOLDER', this.index);
                 }, (res) => {
                     console.log('error deleting project folder');
                 });
@@ -94,7 +84,7 @@
                 if (parseInt(source.dataset.id) !== this.folder.id) return;
                 let targetFile = _.find(this.folder.files, {id: parseInt(el.dataset.id)});
                 let targetFileIndex = _.indexOf(this.folder.files, targetFile);
-                this.$store.commit('removeProjectFile', {
+                this.$store.commit('project/REMOVE_FILE', {
                     folderIndex: this.index,
                     fileIndex: targetFileIndex
                 });
@@ -107,7 +97,7 @@
                     }
                     let differentParent = source.dataset.id !== target.dataset.id;
                     let newIndex = (targetFileIndex >= siblingIndex || differentParent) ? siblingIndex : siblingIndex - 1;
-                    this.$store.commit('insertProjectFile', {
+                    this.$store.commit('project/INSERT_FILE', {
                         folderIndex: targetFolderIndex,
                         fileIndex: newIndex,
                         file: targetFile

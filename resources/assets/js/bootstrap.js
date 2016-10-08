@@ -30,8 +30,8 @@ require('vue-resource');
  * Vuex
  */
 
-const Vuex = require('vuex');
-window.store = new Vuex.Store(require('./store.js'));
+import store from './store';
+window.store = store;
 
 /**
  * Requests Monitor

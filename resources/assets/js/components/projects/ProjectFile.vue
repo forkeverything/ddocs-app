@@ -10,8 +10,7 @@
     export default {
         data: function () {
             return {
-                request: '',
-                requestsQueue: []
+                request: ''
             }
         },
         watch: {
@@ -28,7 +27,7 @@
         props: ['index', 'file', 'projectId', 'folder-index'],
         methods: {
             updateFileModel(file){
-                this.$store.commit('updateProjectFile', {
+                this.$store.commit('project/UPDATE_FILE', {
                     folderIndex: this.folderIndex,
                     fileIndex: this.index,
                     file
@@ -39,16 +38,9 @@
                 this.request = xhr;
             },
             update(){
-                this.$http.put(`/api/projects/${ this.projectId }/files/${ this.file.id }`, this.file, {
-                    before(xhr) {
-                        this.setNewRequest(xhr);
-                        RequestsMonitor.pushOntoQueue(xhr);
-                    }
-                }).then((res) => {
-                    console.log('updated file');
-                }, (res) => {
-                    console.log('error updating file');
-                    console.log(res);
+                this.$store.commit('project/SAVE_CHANGES', {
+                    type: 'files',
+                    model: this.file
                 });
             },
             viewFile(){

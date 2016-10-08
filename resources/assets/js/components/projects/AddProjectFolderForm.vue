@@ -43,7 +43,7 @@
                     }
                 }).then((response) => {
                     // success
-                    this.$store.commit('insertProjectFolder', {
+                    this.$store.commit('project/INSERT_FOLDER', {
                         index: this.folders.length,
                         folder: response.json()
                     });
