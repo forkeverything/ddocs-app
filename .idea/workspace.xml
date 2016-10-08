@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFile.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFile.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/landing.js" afterPath="$PROJECT_DIR$/public/js/landing.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/store/modules/project.js" afterPath="$PROJECT_DIR$/resources/assets/js/store/modules/project.js" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,12 +29,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ProjectFile.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFile.vue">
+      <file leaf-file-name="project.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/assets/js/store/modules/project.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-              <folding />
+            <state relative-caret-position="596">
+              <caret line="130" column="21" lean-forward="false" selection-start-line="130" selection-start-column="21" selection-end-line="130" selection-end-column="21" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,8 +161,8 @@
         <option value="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectBoard.vue" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFolder.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" />
-        <option value="$PROJECT_DIR$/resources/assets/js/store/modules/project.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFile.vue" />
+        <option value="$PROJECT_DIR$/resources/assets/js/store/modules/project.js" />
       </list>
     </option>
   </component>
@@ -608,12 +611,12 @@
       <workItem from="1475682829951" duration="16145000" />
       <workItem from="1475857969413" duration="586000" />
       <workItem from="1475901343530" duration="12871000" />
-      <workItem from="1475951649791" duration="164000" />
+      <workItem from="1475951649791" duration="311000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="753376000" />
+    <option name="totallyTimeSpent" value="753523000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1347" extended-state="6" />
@@ -869,6 +872,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="666">
           <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,13 +1027,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/assets/js/store/modules/project.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1134">
-          <caret line="138" column="26" lean-forward="true" selection-start-line="138" selection-start-column="26" selection-end-line="138" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -1048,9 +1045,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFile.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="30" column="50" lean-forward="true" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-          <folding />
+        <state relative-caret-position="783">
+          <caret line="29" column="59" lean-forward="false" selection-start-line="29" selection-start-column="59" selection-end-line="30" selection-end-column="50" />
+          <folding>
+            <marker date="1475951748000" expanded="true" signature="9:188" ph="..." />
+            <marker date="1475951748000" expanded="true" signature="77:176" ph="..." />
+            <marker date="1475951748000" expanded="true" signature="118:165" ph="..." />
+            <marker date="1475951748000" expanded="true" signature="197:1818" ph="..." />
+            <marker date="1475951748000" expanded="true" signature="250:1808" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="278:352" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="299:342" ph="{&quot;request&quot;: ''...}" />
+            <marker date="1475951748000" expanded="true" signature="369:722" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="421:499" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="542:611" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="633:712" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="804:1606" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="839:1053" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="899:1037" ph="{&quot;file&quot;: file...}" />
+            <marker date="1475951748000" expanded="true" signature="1085:1213" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="1252:1484" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="1369:1468" ph="{&quot;type&quot;: 'files'...}" />
+            <marker date="1475951748000" expanded="true" signature="1508:1596" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="1625:1637" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="1657:1766" ph="{...}" />
+            <marker date="1475951748000" expanded="true" signature="1791:1802" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/assets/js/store/modules/project.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="596">
+          <caret line="130" column="21" lean-forward="false" selection-start-line="130" selection-start-column="21" selection-end-line="130" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

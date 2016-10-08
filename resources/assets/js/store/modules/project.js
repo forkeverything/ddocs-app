@@ -128,7 +128,7 @@ const actions = {
         context.commit(types.CLEAR_TIMEOUT);
         context.commit(types.SET_TIMEOUT, {
             func: fire,
-            delay: 1000     // Time since last update before sending request
+            delay: 1500     // Time since last update before sending request
         });
     },
     [types.SEND_REQUEST](context) {
