@@ -14,11 +14,11 @@
             }
         },
         watch: {
-            file: {
-                handler(newVal) {
-                    this.update();
-                },
-                deep: true
+            'file.project_folder_id'(newFolderId) {
+                this.update({project_folder_id: newFolderId});
+            },
+            'file.position'(newPosition) {
+                this.update({position: newPosition});
             },
             index() {
                 this.updateFileModel({ position: this.index });
@@ -37,10 +37,11 @@
                 if(this.request) RequestsMonitor.abortRequest(this.request);
                 this.request = xhr;
             },
-            update(){
+            update(updatedProperties){
+                updatedProperties['id'] = this.file.id;
                 this.$store.commit('project/SAVE_CHANGES', {
                     type: 'files',
-                    model: this.file
+                    model: updatedProperties
                 });
             },
             viewFile(){
