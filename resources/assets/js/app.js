@@ -60,6 +60,7 @@ Vue.component('project-folder', require('./components/projects/ProjectFolder.vue
 Vue.component('add-project-file', require('./components/projects/AddProjectFile.vue'));
 Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
 Vue.component('project-file-modal', require('./components/projects/ProjectFileModal.vue'));
+Vue.component('pfm-project-view', require('./components/projects/ProjectFileModalProjectView.vue'));
 
 // Comments
 Vue.component('comments-thread', require('./components/comments/CommentsThread.vue'));

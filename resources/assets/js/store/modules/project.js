@@ -31,16 +31,14 @@ const types = {
  */
 const state = {
     data: '',
-
     // Update Project items request
     request: {
         project: {},
         folders: {},
         files: {}
     },
+    // setTimeout object to fire update request
     timeout: ''
-
-
 };
 
 /**

@@ -18,6 +18,25 @@ class Comment extends Model
     ];
 
     /**
+     * Create wrapper to add a new comment.
+     *
+     * @param $subjectId
+     * @param $subjectType
+     * @param $body
+     * @param $userId
+     * @return static
+     */
+    public static function addComment($subjectId, $subjectType, $body, $userId)
+    {
+        return static::create([
+            'subject_id' => $subjectId,
+            'subject_type' => $subjectType,
+            'body' => $body,
+            'user_id' => $userId
+        ]);
+    }
+
+    /**
      * The subject that this Comment belongs to (FileRequest / ProjectFile)
      *
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo

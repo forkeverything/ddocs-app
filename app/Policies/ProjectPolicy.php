@@ -50,8 +50,8 @@ class ProjectPolicy
     }
 
     /**
-     * Only allowed to modify ProjectFolder's that belong
-     * to the actual Project.
+     * Only allowed to modify ProjectFolder's that belong to
+     * the actual Project that User is allowed to update.
      *
      * @param User $user
      * @param Project $project
@@ -60,11 +60,12 @@ class ProjectPolicy
      */
     public function updateFolder(User $user, Project $project, ProjectFolder $projectFolder)
     {
-        return $projectFolder->project_id === $project->id;
+        return $this->update($user, $project) &&  $projectFolder->project_id === $project->id;
     }
 
     /**
-     * ProjectFile's have to be inside a folder that belongs to the Project.
+     * ProjectFile's have to be inside a folder that belongs to the Project that
+     * the User is allowed to update.
      *
      * @param User $user
      * @param Project $project
@@ -73,6 +74,6 @@ class ProjectPolicy
      */
     public function updateFile(User $user, Project $project, ProjectFile $projectFile)
     {
-        return $projectFile->folder->project_id === $project->id;
+        return $this->update($user, $project) && $projectFile->folder->project_id === $project->id;
     }
 }

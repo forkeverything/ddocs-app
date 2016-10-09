@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AddCommentRequest;
 use App\Http\Requests\AddProjectFileRequest;
 use App\Http\Requests\CreateProjectFolderRequest;
 use App\Http\Requests\SaveProjectRequest;
@@ -186,25 +185,4 @@ class ProjectsController extends Controller
         if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
         return $projectFolder->files()->create($request->all());
     }
-
-
-    /**
-     * Add Comment to a ProjectFile.
-     *
-     * @param Project $project
-     * @param ProjectFile $projectFile
-     * @param AddCommentRequest $request
-     * @return Model
-     */
-    public function postAddComment(Project $project, ProjectFile $projectFile, AddCommentRequest $request)
-    {
-        if ($projectFile->folder->project_id !== $project->id) abort(403, "File does not belong to project");
-        return $projectFile->comments()->create([
-            'subject_id' => $projectFile->id,
-            'subject_type' => 'App\\ProjectFile',
-            'body' => $request->body,
-            'user_id' => Auth::id()
-        ])->load('sender');
-    }
-
 }

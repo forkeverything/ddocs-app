@@ -15,6 +15,7 @@
   }
 
   .new-comment-field {
+    margin: 0 0 12.5px;
     textarea {
 
     }
@@ -27,6 +28,15 @@
 
     .list-comments {
       max-height: 350px;
+
+      .loader {
+        margin-top: 35px;
+
+        .loader-cube {
+          width: 20px;
+          height: 20px;
+        }
+      }
     }
   }
 }

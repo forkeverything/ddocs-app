@@ -40,7 +40,12 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::put('/projects/{project}', 'ProjectsController@putUpdateItems');
     Route::put('/projects/{project}/folders/{projectFolder}', 'ProjectsController@putUpdateFolder');
     Route::put('/projects/{project}/files/{projectFile}', 'ProjectsController@putUpdateFile');
-    Route::post('/projects/{project}/files/{projectFile}', 'ProjectsController@postAddComment');
+
+    // Comments
+    Route::get('/comments/project_file/{projectFile}', 'CommentsController@getProjectFile');
+    Route::post('/comments/project_file/{projectFile}', 'CommentsController@postNewProjectFile');
+    Route::get('/comments/file_request/{file_request_hash}', 'CommentsController@getFileRequest');
+    Route::post('/comments/file_request/{file_request_hash}', 'CommentsController@postNewFileRequest');
 });
 
 // Public Routes
@@ -69,18 +74,12 @@ Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebh
 
 // File Requests
 //Route::put('/file_requests/{file_request_hash}', 'FileRequestsController@putModifyRequest');
-//Route::post('/file_requests/{file_request_hash}/upload', 'FileRequestsController@postUploadFile');
 //Route::post('/file_requests/{file_request_hash}/reject', 'FileRequestsController@postRejectUploadedFile');
 //Route::get('/file_requests/{file_request_hash}/history', 'FileRequestsController@getHistory');
 //Route::delete('/file_requests/{file_request_hash}', 'FileRequestsController@deleteFiles');
-//Route::post('/file_requests/{file_request_hash}/comments', 'FileRequestsController@postAddComment');
 //Route::get('/file_requests/user/{user}', 'FileRequestsController@getFileRequestsForUser');
 
 
-
-// Comments
-Route::get('/comments/project_file/{projectFile}', 'CommentsController@getForProjectFile');
-Route::get('/comments/file_request/{file_request_hash}', 'CommentsController@getForFileRequest');
 
 // Account
 Route::post('/account/subscription', 'AccountController@postSubscribe');

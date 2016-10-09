@@ -1,6 +1,6 @@
 <template>
 <div id="project-file-modal">
-    <div class="modal" tabindex="-1" role="dialog" ref="modal" v-if="file">
+    <div class="modal" tabindex="-1" role="dialog" ref="modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -24,17 +24,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <div class="project">
-                                <span class="small text-muted">Only team members in the project can see this section.</span>
-                                <div class="description">
-                                    <h5>Description</h5>
-                                    <editable-text-area v-model="file.description" :allow-null="true" :placeholder="'Details about the file...'"></editable-text-area>
-                                </div>
-                                <div class="comments">
-                                    <h5>Team Comments</h5>
-                                    <comments-thread :project-id="projectId" :subject-type="'App\\ProjectFile'" :subject-id="file.id"></comments-thread>
-                                </div>
-                            </div>
+                            <pfm-project-view :file="file"></pfm-project-view>
                         </div>
                         <div class="actions">
                             <ul class="list-unstyled">
@@ -62,7 +52,7 @@ export default {
     },
     computed: {
        attached(){
-           return this.file_request_id
+           return this.file.file_request_id
        }
     },
     props: ['project-id'],
@@ -76,7 +66,6 @@ export default {
             this.file = file;
             this.$nextTick(() => {
                 $(this.$refs.modal).modal('show');
-            vueGlobalEventBus.$emit('showing-comments');
             });
         })
     }

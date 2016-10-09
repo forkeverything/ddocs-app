@@ -9753,11 +9753,18 @@ label {
     overflow-y: auto; }
     .comments-thread .list-comments .single-comment:first-child {
       margin-top: 0; }
+  .comments-thread .new-comment-field {
+    margin: 0 0 12.5px; }
 
 #project-file-modal .comments-thread {
   margin-top: 12.5px; }
   #project-file-modal .comments-thread .list-comments {
     max-height: 350px; }
+    #project-file-modal .comments-thread .list-comments .loader {
+      margin-top: 35px; }
+      #project-file-modal .comments-thread .list-comments .loader .loader-cube {
+        width: 20px;
+        height: 20px; }
 
 #account-overview #page-fixed-top {
   border-bottom: 1px solid #e6e6e6; }

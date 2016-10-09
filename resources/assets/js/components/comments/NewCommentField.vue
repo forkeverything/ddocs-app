@@ -9,11 +9,9 @@
 export default {
     data: function(){
         return {
-            ajaxReady: true,
             body: ''
         }
     },
-    props: ['subject-hash', 'project-id', 'subject-id', 'subject-type'],
     methods: {
         hitEnter(e){
             if(! e.shiftKey) {
@@ -22,37 +20,10 @@ export default {
                 e.stopPropagation();
             }
         },
-        makeUrl(){
-            if(this.subjectType === 'App\\\\ProjectFile') {
-                return `/api/projects/${ this.projectId }/files/${ this.subjectId }`;
-            } else if(this.subjectType === 'App\\\\FileRequest') {
-                return `/api/fr/${ this.subjectHash }/comments`;
-            }
-        },
-        addComment(){
-            if(!this.ajaxReady) return;
-            this.ajaxReady = false;
-
-            this.$http.post(this.makeUrl(), {
-                body: this.body
-            }, {
-                before(xhr) {
-                    RequestsMonitor.pushOntoQueue(xhr);
-                }
-            }).then((response) => {
-                // success
-                this.$emit('add-new-comment', response.json());
-                this.ajaxReady = true;
-                this.$nextTick(() => {
-                    this.body = '';
-                });
-            }, (response) => {
-                // error
-                console.log('error adding comment.');
-                console.log(response);
-                this.ajaxReady = true;
-            });
-        }
+        addComment: _.throttle(function() {
+            this.$emit('add-comment', this.body);
+            this.body = '';
+        }, 500)
     }
 }
 </script>
