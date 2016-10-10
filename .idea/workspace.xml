@@ -6,7 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/auth/Login.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/auth/Login.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,20 +26,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="files-collector" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Login.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/assets/js/components/auth/Login.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1068">
-              <caret line="61" column="13" lean-forward="true" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -110,7 +97,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/JWTController.php" />
         <option value="$PROJECT_DIR$/resources/assets/js/router.js" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/app/Exceptions/Handlers/JWTHandler.php" />
@@ -161,6 +147,7 @@
         <option value="$PROJECT_DIR$/resources/assets/js/components/comments/CommentsThread.vue" />
         <option value="$PROJECT_DIR$/resources/assets/sass/comments.scss" />
         <option value="$PROJECT_DIR$/resources/assets/js/components/auth/Login.vue" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -221,8 +208,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
+    <option name="x" value="1280" />
     <option name="y" value="23" />
-    <option name="width" value="2560" />
+    <option name="width" value="1280" />
     <option name="height" value="1417" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -268,8 +256,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -392,8 +378,24 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -611,20 +613,20 @@
       <workItem from="1475901343530" duration="12871000" />
       <workItem from="1475951649791" duration="367000" />
       <workItem from="1475981786941" duration="8791000" />
-      <workItem from="1476078775075" duration="237000" />
+      <workItem from="1476078775075" duration="792000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="762607000" />
+    <option name="totallyTimeSpent" value="763162000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="2560" height="1417" extended-state="6" />
-    <editor active="true" />
+    <frame x="1280" y="23" width="1280" height="1417" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10429688" sideWeight="0.53584903" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34097221" sideWeight="0.46415094" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47890624" sideWeight="0.46415094" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -666,13 +668,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Support/Manager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="54" column="20" lean-forward="false" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="783">
@@ -1027,8 +1022,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/assets/js/components/auth/Login.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1068">
-          <caret line="61" column="13" lean-forward="true" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+        <state relative-caret-position="1095">
+          <caret line="62" column="10" lean-forward="true" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
+          <folding>
+            <marker date="1476079012000" expanded="true" signature="9:2275" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="48:2263" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="74:2252" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="141:2237" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="356:2218" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="402:968" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="613:781" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="855:941" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="1014:1486" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="1370:1459" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="1543:1659" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="1716:1919" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="1787:1892" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="1976:2194" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="2034:2167" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="2284:3272" ph="..." />
+            <marker date="1476079012000" expanded="true" signature="2305:3263" ph="{...}" />
+            <marker date="1476079012000" expanded="true" signature="2333:2468" ph="{...}" />
+            <marker date="1476079012000" expanded="true" signature="2354:2458" ph="{&quot;email&quot;: ''...}" />
+            <marker date="1476079012000" expanded="true" signature="2488:2500" ph="{...}" />
+            <marker date="1476079012000" expanded="true" signature="2519:3174" ph="{...}" />
+            <marker date="1476079012000" expanded="true" signature="2546:3164" ph="{...}" />
+            <marker date="1476079012000" expanded="true" signature="2721:2823" ph="{...}" />
+            <marker date="1476079012000" expanded="true" signature="2844:2995" ph="{...}" />
+            <marker date="1476079012000" expanded="true" signature="3011:3147" ph="{...}" />
+            <marker date="1476079012000" expanded="true" signature="3192:3257" ph="[...]" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
           <folding />
         </state>
       </provider>
