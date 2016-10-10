@@ -3,7 +3,9 @@
 namespace App;
 
 use App\Events\RecipientClaimedInvitation;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 
 class Checklist extends Model
@@ -25,9 +27,61 @@ class Checklist extends Model
      * @var array
      */
     protected $appends = [
-        'hash',
-        'received'
+        'meta',
+        'hash'
     ];
+
+    /**
+     * Meta properties that tell us a little more about the Checklist.
+     *
+     * @return array
+     */
+    public function getMetaAttribute()
+    {
+
+        $meta = [];
+
+        // Recipients
+        $recipients = $this->fetchRecipients();
+        $meta['num_receipients'] = $recipients->count();
+        $meta['recipients'] = $recipients->pluck('email');
+
+        // File Requests
+        $files = $this->fetchFileRequests();
+        $meta['num_total'] = $files->count();
+        $meta['num_received'] = $files->where('status', 'received')->count();
+        $meta['percentage_received'] = $meta['num_total'] ? round(100 * $meta['num_received'] / $meta['num_total'], 0) : 0;
+
+        // Manually fetch using DB so our relation data isn't automatically appended to
+        // our results and manually calling unset will break eager-loading. Separate
+        // queries void messy joins and keeps our payload slim.
+
+        return $meta;
+    }
+
+    /**
+     * Recipient(s) that belong to this Checklist.
+     *
+     * @return Collection
+     */
+    protected function fetchRecipients()
+    {
+       return DB::table('recipients')
+           ->where('checklist_id', '=', $this->id)
+           ->get();
+    }
+
+    /**
+     * FileRequest(s) that belong to this Checklist.
+     *
+     * @return Collection
+     */
+    protected function fetchFileRequests()
+    {
+        return DB::table('file_requests')
+                         ->where('checklist_id', '=', $this->id)
+                         ->get();
+    }
 
 
     /**
@@ -70,32 +124,6 @@ class Checklist extends Model
     public function getHashAttribute()
     {
         return hashId('checklist',  $this);
-    }
-
-    /**
-     * Calculate the percentage completion of Checklist using
-     * the number of File(s) received.
-     *
-     * @return float|null
-     */
-    public function getPercentageReceivedAttribute()
-    {
-        $files = $this->requestedFiles;
-        // Count only required files that are received....
-        $received = $this->received;
-        $total = $files->count();
-        if(! $total) return 0;
-        return round(100 * $received / $total, 0);
-    }
-
-    /**
-     * The number of received files.
-     *
-     * @return mixed
-     */
-    public function getReceivedAttribute()
-    {
-        return $received = $this->requestedFiles->where('status', 'received')->count();
     }
 
     /**
@@ -142,7 +170,5 @@ class Checklist extends Model
 
         return $this;
     }
-
-
 
 }

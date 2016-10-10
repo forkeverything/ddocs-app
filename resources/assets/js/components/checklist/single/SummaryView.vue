@@ -7,7 +7,7 @@
         </div>
         <div id="files-count" v-if="checklist">
             <h5>Files Recevied</h5>
-            <p>{{ checklist.received }} / {{ checklist.requested_files.length }}</p>
+            <p>{{ checklist.meta.num_received }} / {{ checklist.meta.num_total }}</p>
         </div>
     </div>
 </template>

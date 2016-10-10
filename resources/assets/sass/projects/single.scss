@@ -315,10 +315,14 @@
         }
       }
 
-      .fr-search-dropdown {
+      .attach-fr-dropdown {
         .dropdown-menu {
           padding: 10px 15px;
           width: 300px;
+
+          @media screen and (min-width: $screen-sm-min) {
+            width: 450px;
+          }
         }
       }
     }

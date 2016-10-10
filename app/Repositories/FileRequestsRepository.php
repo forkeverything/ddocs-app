@@ -119,31 +119,20 @@ class FileRequestsRepository extends EloquentRepository
     }
 
     /**
-     * Search Checklist Names.
+     * Search Checklist Names as well as Recipient Emails.
      *
      * @param $searchTerm
      * @return $this
      */
-    public function searchChecklistNames($searchTerm)
-    {
-        $this->query->orWhereExists(function ($q) use ($searchTerm) {
-            $q->select(DB::raw(1))
-              ->from('checklists')
-              ->whereRaw('file_requests.checklist_id = checklists.id')
-              ->where('name', 'LIKE', "%{$searchTerm}%");
-        });
-
-        return $this;
-    }
-
-    public function searchRecipientEmails($searchTerm)
+    public function searchChecklistNamesAndRecipientEmails($searchTerm)
     {
         $this->query->orWhereExists(function ($q) use ($searchTerm) {
             $q->select(DB::raw(1))
               ->from('checklists')
               ->join('recipients', 'recipients.checklist_id', '=', 'checklists.id')
-              ->whereRaw('file_requests.checklist_id = checklists.id')
-              ->where('email', 'LIKE', "%{$searchTerm}%");
+              ->whereRaw('file_requests.checklist_id = checklists.id')              // Only interested in checklists that our current set of FileRequests belong to
+              ->where('checklists.name', 'LIKE', "%{$searchTerm}%")
+              ->orWhere('recipients.email', 'LIKE', "%{$searchTerm}%");
         });
 
         return $this;

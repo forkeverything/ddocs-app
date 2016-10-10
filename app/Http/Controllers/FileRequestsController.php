@@ -10,6 +10,7 @@ use App\FileRequest;
 use App\Http\Requests\RejectFileRequest;
 use App\Http\Requests\UploadFileRequest;
 use App\Jobs\CheckIfChecklistComplete;
+use App\Repositories\FileRequestsRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -61,7 +62,7 @@ class FileRequestsController extends Controller
     {
         $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash))
                                   ->reject($request->reason);
-        if(! Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
+        if (!Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
         Event::fire(new FileWasRejected($fileRequest));
         return $fileRequest;
     }
@@ -101,7 +102,7 @@ class FileRequestsController extends Controller
     public function putModifyRequest($fileRequestHash, Request $request)
     {
         $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
-        if(! Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
+        if (!Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
         $fileRequest->update($request->all());
         return $fileRequest;
     }
@@ -115,10 +116,27 @@ class FileRequestsController extends Controller
     public function deleteFiles($fileRequestHash)
     {
         $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
-        if(! Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
+        if (!Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
         $uploadPaths = $fileRequest->uploads->pluck('path')->toArray();
-        if(Storage::delete($uploadPaths)) $fileRequest->delete();
+        if (Storage::delete($uploadPaths)) $fileRequest->delete();
         return $fileRequest;
+    }
+
+    /**
+     * Find FileRequest(s) that belong to a Checklist
+     * made by the Authenticated User.
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function getForUser(Request $request)
+    {
+        $search = $request->search;
+        return FileRequestsRepository::forUser(Auth::user())
+                                     ->searchFor($search)
+                                     ->searchChecklistNamesAndRecipientEmails($search)
+                                     ->with('checklist.recipients')
+                                     ->get();
     }
 
 

@@ -51,7 +51,7 @@
                         <p class="recipient">{{ checklist.recipient }}</p>
                         <div class="stats">
                         <span class="file_count small">
-                            <i class="fa fa-file-o"></i> {{ checklist.received }} / {{ checklist.requested_files.length }}
+                            <i class="fa fa-file-o"></i> {{ checklist.meta.num_received }} / {{ checklist.meta.num_total }}
                         </span>
                         </div>
                     </router-link>
@@ -69,7 +69,7 @@
     const fetchesFromEloquentRepository = require('../../mixins/fetchesFromEloquentRepository');
 
     export default {
-        name: 'myChecklists',
+        name: 'ChecklistsCollection',
         data: function () {
             return {
                 ajaxReady: true,

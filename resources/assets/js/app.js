@@ -60,6 +60,7 @@ Vue.component('add-project-file', require('./components/projects/AddProjectFile.
 Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
 Vue.component('project-file-modal', require('./components/projects/ProjectFileModal.vue'));
 Vue.component('pfm-project-view', require('./components/projects/ProjectFileModalProjectView.vue'));
+Vue.component('attach-fr-dropdown', require('./components/projects/AttachFileRequestDropdown.vue'));
 
 // Comments
 Vue.component('comments-thread', require('./components/comments/CommentsThread.vue'));

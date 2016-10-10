@@ -8,7 +8,7 @@
                 {{ checklist.name }}
             </h3>
 
-            <checklist-recipients :checklist="checklist"></checklist-recipients>
+            <checklist-recipients :recipients="checklist.recipients"></checklist-recipients>
 
             <div id="split-view">
                 <div id="main-pane"

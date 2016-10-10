@@ -109,16 +109,15 @@ class ChecklistsController extends Controller
 
 
     /**
-     * Get the view for a single Checklist.
+     * Checklist at given Hash
      *
      * @param $checklistHash
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getSingle($checklistHash)
     {
-        $checklist = Checklist::findOrFail(unhashId('checklist', $checklistHash));
-        $checklist->load('user', 'recipients');
-
+        $checklist = Checklist::with('user', 'recipients')
+                              ->findOrFail(unhashId('checklist', $checklistHash));
         return $checklist;
     }
 
@@ -155,14 +154,14 @@ class ChecklistsController extends Controller
      */
     public function getFileRequestsForUser(User $user, Request $request)
     {
-        if(! Auth::id() === $user->id) abort(403, "Trying to get file requests for user that is not authenticated");
+        if (!Auth::id() === $user->id) abort(403, "Trying to get file requests for user that is not authenticated");
         $searchTerm = $request->search;
         FileRequestsRepository::forUser($user)
-            ->searchChecklistNames($searchTerm)
-            ->searchRecipientEmails($searchTerm)
-            ->searchFor($searchTerm)            // Searches get performed in reverse of method call - so our original WHERE has to come first
-            ->with('checklist.recipients')      // Include checklist as well as list of recipients.
-            ->getWithoutQueryProperties();
+                              ->searchChecklistNames($searchTerm)
+                              ->searchRecipientEmails($searchTerm)
+                              ->searchFor($searchTerm)// Searches get performed in reverse of method call - so our original WHERE has to come first
+                              ->with('checklist.recipients')// Include checklist as well as list of recipients.
+                              ->getWithoutQueryProperties();
     }
 
 

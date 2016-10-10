@@ -85,7 +85,7 @@
                 this.fileNameOptions = [];
                 if(this.request) RequestsMonitor.abortRequest(this.request);
             },
-            fetchFileNames: _.debounce(function (searchString, index) {
+            fetchFileNames: _.throttle(function (searchString, index) {
                 if (!searchString) return;
                 this.$http.get('/api/files?name_only=1&limit=5&search=' + searchString, {
                     before: (xhr) => {
@@ -93,20 +93,19 @@
                         this.request = xhr;
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
-                })
-                        .then((response) => {
-                            // If we've moved on to a diff file, results useless
-                            if (index !== this.focusedFileIndex) return;
-                            // Success
-                            let results = JSON.parse(response.data);
-                            // If our search string isn't in results, we'll make it the first option
-                            if (results.map((name) => name.toLowerCase()).indexOf(searchString.toLowerCase()) === -1) results.unshift(searchString);
-                            // select first option
-                            this.selectedOptionIndex = 0;
-                            // append results
-                            this.fileNameOptions = results;
-                        });
-            }, 50),
+                }).then((response) => {
+                    // If we've moved on to a diff file, results useless
+                    if (index !== this.focusedFileIndex) return;
+                    // Success
+                    let results = JSON.parse(response.data);
+                    // If our search string isn't in results, we'll make it the first option
+                    if (results.map(name => name.toLowerCase()).indexOf(searchString.toLowerCase()) === -1) results.unshift(searchString);
+                    // select first option
+                    this.selectedOptionIndex = 0;
+                    // append results
+                    this.fileNameOptions = results;
+                });
+            }, 250),
             addFile: function () {
                 let selectedOption = this.fileNameOptions[this.selectedOptionIndex];
                 let currentFileName = this.files[this.focusedFileIndex].name;

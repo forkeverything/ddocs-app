@@ -3,13 +3,13 @@
         <div class="recipients" :class="{ expanded: expandRecipients }">
             <span class="span-to"><i class="fa fa-users"></i></span>
             <ul class="recipients-list list-unstyled list-inline">
-                <li v-for="recipient in checklist.recipients">{{ recipient.email }}</li>
+                <li v-for="recipient in recipients">{{ recipient.email }}</li>
             </ul>
         </div>
         <div class="recipients recipients-sizer" :class="{ expanded: expandRecipients }">
             <span class="span-to"><i class="fa fa-users"></i></span>
             <ul class="recipients-list list-unstyled list-inline">
-                <li v-for="recipient in checklist.recipients">{{ recipient.email }}</li>
+                <li v-for="recipient in recipients">{{ recipient.email }}</li>
             </ul>
         </div>
         <div class="expander">
@@ -27,7 +27,7 @@
                 expandRecipients: false
             }
         },
-        props: ['checklist'],
+        props: ['recipients'],
         methods: {
             toggleRecipientsCollapse() {
                 this.expandRecipients = !this.expandRecipients;
