@@ -4,7 +4,7 @@
             <cube-loader></cube-loader>
         </div>
         <div v-else>
-            <button type="button" class="btn btn-primary btn-add-note btn-small" @click="addNewNote()"><i
+            <button type="button" class="btn btn-default btn-sm btn-add-note" @click="addNewNote()"><i
                     class="fa fa-sticky-note-o"></i> Add Note
             </button>
             <!-- Notes Table -->
