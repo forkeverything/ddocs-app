@@ -1,24 +1,10 @@
 <template>
     <div id="selected-file-date">
 
-        <button type="button" class="btn btn-due-date" @click="pickDate" :class="{ filled: fileRequest.due }"
-                v-if="user">
-            <span class="icon">
-                <i class="fa fa-calendar" v-if="ajaxReady"></i>
-                <i class="fa fa-spinner fa-pulse fa-fw" v-else></i>
-            </span>
-            <span class="date" v-show="fileRequest.due">{{ formattedDate }}</span>
-            <span v-else class="date">Due Date</span>
-            <input type="text"
-                   v-model="newDate"
-                   v-datepicker
-                   @keydown.delete.prevent="removeDate"
-                   tabindex="-1"
-                   v-el:input
-            >
-        </button>
+        <date-picker v-if="isOwner" v-model="date" :formatted="true" :placeholder="'Due date'"></date-picker>
 
-        <div class="uneditable" v-else>
+
+        <div class="uneditable" v-if="! isOwner">
             <i class="fa fa-calendar icon"></i>
             <smart-date v-show="fileRequest.due" :date="fileRequest.due"></smart-date>
             <span v-show="! fileRequest.due">--</span>
@@ -31,51 +17,42 @@
         data: function () {
             return {
                 ajaxReady: true,
-                newDate: ''
+                date: ''
             }
         },
-        props: ['user', 'file-request'],
-        computed: {
-            formattedDate() {
-                if (!this.fileRequest.due) return;
-                return Vue.filter('smartDate')(this.fileRequest.due);
-            }
-        },
+        props: ['is-owner', 'file-request', 'index'],
+        computed: {},
         watch: {
-            newDate(date) {
-                this.updateDueDate(date);
+            date() {
+                if(this.date !== this.fileRequest.due) this.updateDueDate();
             }
         },
         methods: {
-            pickDate() {
-                $(this.$els.input).datepicker('show');
-            },
-            removeDate () {
-                this.updateDueDate('');
-                $(this.$els.input).datepicker('hide');
-            },
-            updateDueDate(date) {
-                var self = this;
-                if (!self.ajaxReady) return;
-                self.ajaxReady = false;
+            updateDueDate() {
+                if (!this.ajaxReady) return;
+                this.ajaxReady = false;
 
-                self.$http.put('/fr/' + this.fileRequest.hash, {
-                    due: date
+                this.$http.put('/fr/' + this.fileRequest.hash, {
+                    due: this.date
+                }, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
                 }).then((response) => {
                     // success
-                    self.fileRequest = JSON.parse(response.data);
-                    self.ajaxReady = true;
+                    this.$emit('update-file-request', response.json(), this.index);
+                    this.ajaxReady = true;
                 }, (response) => {
                     // error
                     console.log('GET REQ Error!');
                     console.log(response);
-                    self.ajaxReady = true;
+                    this.ajaxReady = true;
 
                 })
             }
         },
-        ready() {
-
+        mounted() {
+            this.date = this.fileRequest.due;
         }
     }
 </script>

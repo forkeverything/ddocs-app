@@ -36,13 +36,16 @@ class FileRequestsController extends Controller
         // Only accept the File if we're waiting on one
         if ($fileRequest->hasStatus('received')) abort(409, "File already received");
 
-        $fileRequest = UploadFactory::store($fileRequest, $request->file('file'));
+        UploadFactory::store($fileRequest, $request->file('file'));
 
+        $fileRequest->update([
+            'status' => 'received'
+        ]);
 
         // Check if the Checklist the FileRequest belongs to is complete
         dispatch(new CheckIfChecklistComplete($fileRequest->checklist));
 
-        // Re-load a fresh FileRequest without the checklist baggage.
+        // Re-load a fresh FileRequest without the checklist baggage attached from event.
         return $fileRequest->fresh();
 
     }
@@ -58,6 +61,7 @@ class FileRequestsController extends Controller
     {
         $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash))
                                   ->reject($request->reason);
+        if(! Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
         Event::fire(new FileWasRejected($fileRequest));
         return $fileRequest;
     }
@@ -78,6 +82,7 @@ class FileRequestsController extends Controller
      * Get notes for file request.
      *
      * @param $fileRequestHash
+     *
      * @return mixed
      */
     public function getNotes($fileRequestHash)
@@ -110,9 +115,11 @@ class FileRequestsController extends Controller
     public function deleteFiles($fileRequestHash)
     {
         $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
+        if(! Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
         $uploadPaths = $fileRequest->uploads->pluck('path')->toArray();
         if(Storage::delete($uploadPaths)) $fileRequest->delete();
         return $fileRequest;
     }
+
 
 }

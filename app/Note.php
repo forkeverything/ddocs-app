@@ -18,6 +18,10 @@ class Note extends Model
         'file_request_id'
     ];
 
+    protected  $hidden = [
+        'id'
+    ];
+
     protected $appends = [
         'hash'
     ];

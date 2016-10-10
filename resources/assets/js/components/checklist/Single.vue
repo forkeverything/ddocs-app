@@ -38,10 +38,8 @@
                                     </button>
 
                                     <file-filters :filter-options="filterOptions"
-                                                  :min-filter-value.sync="minFilterValue"
-                                                  :max-filter-value.sync="maxFilterValue" :filter.sync="filter"
-                                                  :filter-value.sync="filterValue"
-                                                  :add-filter="addFilter"></file-filters>
+                                                  :add-filter="addFilter">
+                                    </file-filters>
 
                                 </div>
                                 <input class="form-control input-search"
@@ -56,9 +54,9 @@
                             </div>
                         </form>
 
-                        <file-active-filters :params.sync="params" :remove-filter="removeFilter"></file-active-filters>
+                        <file-active-filters :params="params" :remove-filter="removeFilter"></file-active-filters>
 
-                        <mobile-file-menu v-if="selectedFileRequest" :selected-file-request="selectedFileRequest" :show-delete-modal="showDeleteModal" :upload-selected="uploadSelected" :show-reject-modal="showRejectModal"></mobile-file-menu>
+                        <mobile-file-menu v-if="selectedFileRequest" :selected-file-request="selectedFileRequest" :show-delete-modal="showDeleteModal" :upload-selected="uploadSelected" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile"></mobile-file-menu>
 
 
 
@@ -74,16 +72,6 @@
                                 @click="changeSort('status')"
                             >
                                 <i class="fa fa-file-o"></i>
-                            </li>
-                            <li v-if="checklist.weightings.set"
-                                class="column col-weighting header-column"
-                                :class="{
-                            'current_asc': params.sort === 'weighting' && params.order === 'asc',
-                            'current_desc': params.sort === 'weighting' && params.order === 'desc',
-                            }"
-                                @click="changeSort('weighting')"
-                            >
-                                %
                             </li>
                             <li class="column col-name header-column"
                                 :class="{
@@ -113,7 +101,7 @@
 
                         <ul id="files-list" class="list-unstyled" @scroll="scrollList">
                             <li class="single-file-request"
-                                v-for="(index, fileRequest) in fileRequests"
+                                v-for="(fileRequest, index) in fileRequests"
                                 @focus="selectFileRequest(index)"
                                 tabindex="1"
                                 :class="{ 'is-selected': fileRequest === selectedFileRequest }"
@@ -122,10 +110,6 @@
                             >
                                 <div class="column col-file content-column file-status" :class="fileRequest.status">
                                     <i class="fa fa-file-o"></i>
-                                </div>
-                                <div class="column col-weighting content-column" v-if="checklist.weightings.set">
-                                    <span v-if="fileRequest.weighting">{{ fileRequest.weighting }}</span>
-                                    <span v-else>--</span>
                                 </div>
                                 <div class="column col-name content-column">
                                     <!-- Download -->
@@ -148,7 +132,7 @@
                                     </button>
                                 </div>
                                 <div class="column col-upload content-column">
-                                    <file-uploader :file-request.sync="fileRequest"></file-uploader>
+                                    <file-uploader :index="index" :file-request="fileRequest" @update-file-request="updateFileRequest"></file-uploader>
                                 </div>
                             </li>
                         </ul>
@@ -173,15 +157,15 @@
                     </div>
 
                     <div class="pane-container">
-                        <file-view :user="user" v-if="selectedFileRequest" :file-requests.sync="fileRequests" :selected-file-request-index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
-                        <summary-view v-else :checklist.sync="checklist"></summary-view>
+                        <file-view :is-owner="checklistBelongsToUser" v-if="selectedFileRequest" :selected-file-request-index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
+                        <summary-view v-if="! selectedFileRequest" :checklist="checklist"></summary-view>
                     </div>
                 </div>
             </div>
         </div>
 
-        <file-reject-modal :file-requests.sync="fileRequests" :selected-file-request="selectedFileRequest"></file-reject-modal>
-        <file-delete-modal :file-requests.sync="fileRequests" :selected-file-request="selectedFileRequest" :selected-file-request-index.sync="selectedFileRequestIndex"></file-delete-modal>
+        <file-reject-modal :index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" @update-file-request="updateFileRequest"></file-reject-modal>
+        <file-delete-modal :selected-file-request="selectedFileRequest" :index="selectedFileRequestIndex" @remove-file-request="removeFileRequest"></file-delete-modal>
     </div>
 </template>
 <script>
@@ -192,6 +176,8 @@
         data: function () {
             return {
                 ajaxReady: true,
+                awsUrl: awsURL,
+                checklist: '',
                 hasFilters: true,
                 container: 'files-list',
                 filterOptions: [
@@ -214,8 +200,11 @@
             }
         },
         computed: {
+            authenticatedUser(){
+                return this.$store.state.authenticatedUser;
+            },
             fileRequests() {
-                return this.response.data;
+                    return this.response.data;
             },
             numReceived(){
                 return this.response.query_parameters.num_received_files;
@@ -225,11 +214,11 @@
                 return this.fileRequests[this.selectedFileRequestIndex];
             },
             checklistBelongsToUser() {
-                if (!this.user) return false;
-                return this.user.id === this.checklist.user_id;
+                if (!this.authenticatedUser) return false;
+                return this.authenticatedUser.id === this.checklist.user_id;
             },
             requestUrl() {
-                return '/c/' + this.checklistHash + '/files';
+                return '/api/c/' + this.$route.params.checklist_hash + '/files';
             },
             canRejectFile() {
                 if (!this.selectedFileRequest) return false;
@@ -240,9 +229,15 @@
                 return (100 * this.numReceived / this.response.total).toFixed(2);
             }
         },
-        props: ['aws-url', 'user', 'checklist', 'checklist-hash'],
         mixins: [fetchesFromEloquentRepository],
         methods: {
+            updateFileRequest(newFileRequestObject, index) {
+                Vue.set(this.fileRequests, index, newFileRequestObject);
+            },
+            removeFileRequest(index){
+                this.fileRequests.splice(index, 1);
+                this.selectedFileRequestIndex = '';
+            },
             unselectFileRequest() {
                 this.selectedFileRequestIndex = '';
             },
@@ -283,24 +278,48 @@
             scrollList: _.throttle(function (event) {
                 let el = document.getElementById('files-list');
                 if ($(el).innerHeight() + $(el).scrollTop() >= (el.scrollHeight - 100)) this.fetchNextPage();
-            }, 100)
+            }, 100),
+            addChecklistNameToUrl(){
+                let checklistName = this.checklist.name.replace(/\s+/g, '-').toLowerCase();
+                    // build query string from router prop
+                    let queryString = '';
+                    if(Object.keys(this.$route.query).length > 0) {
+                        queryString += '?';
+                        for(let prop in this.$route.query) {
+                                queryString += prop + '=' + this.$route.query[prop] + '&';
+                        }
+                        queryString = queryString.substr(0, queryString.length - 1);
+                    }
+                    // use history api instead of router.replace so we don't trigger the beforeEach hook
+                    window.history.replaceState({}, '', `/c/${ this.$route.params.checklist_hash }/${ checklistName }${ queryString }`);
+            },
+            fetchChecklist(){
+                this.$http.get(`/api/c/${ this.$route.params.checklist_hash }`, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
+                }).then((res) => {
+                    this.checklist = res.json();
+                    this.addChecklistNameToUrl();
+                }, (res) => {
+                    console.log("error fetching checklist");
+                });
+            }
         },
-        ready: function () {
+        mounted() {
+            this.fetchChecklist();
 
-            var self = this;
-
-            $(window).on('load', () => {
-
+            this.$nextTick(() => {
                 // Sensor for split view
                 let element = document.getElementById('checklist-body');
-                self.setSplitView(element);
-                let sensor = new ResizeSensor(element, function () {
-                    self.setSplitView(element)
+                this.setSplitView(element);
+                let sensor = new ResizeSensor(element, () => {
+                    this.setSplitView(element)
                 });
-
                 // Check if we need to fetch more data for inf. load
                 this.scrollList();
             });
+
         }
     };
 </script>

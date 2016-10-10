@@ -5,34 +5,28 @@
                 :class="{'filled': date}"
                 @click="pickDate"
         >
+            <span v-show="date">{{ formattedDate }}</span>
             <i class="fa fa-calendar" v-show="! date"></i>
-            <span v-else>{{ formattedDate }}</span>
         </button>
         <input type="text"
                class="input-due line-el"
-               v-model="datePicker"
-               v-datepicker
+               @input.prevent.stop="onInput(event)"
                @keydown.delete.prevent="removeDate"
                placeholder="Due date"
                tabindex="-1"
-               v-el:input
+               ref="input"
         >
     </div>
 </template>
 <script>
     export default {
-        props: ['date'],
+        data: function() {
+            return {
+                date: ''
+            }
+        },
+        props: ['value'],
         computed: {
-            datePicker: {
-                get() {
-                    return this.date;
-                },
-                set(newDate) {
-                    newDate = newDate || null;
-                    if(newDate !== this.date) vueGlobalEventBus.$emit('updated-date', newDate);
-                    this.date = newDate;
-                }
-            },
             formattedDate() {
                 if (!this.date) return;
                 return Vue.filter('smartDate')(this.date);
@@ -40,14 +34,27 @@
         },
         methods: {
             pickDate() {
-                $(this.$els.input).datepicker('show');
+                $(this.$refs.input).datepicker('show');
             },
             removeDate () {
-                this.datePicker = '';
-                $(this.$els.input).datepicker('hide');
+                this.date = '';
+                $(this.$refs.input).datepicker('hide');
             }
         },
-        watch: {},
-        ready: function () {}
+        watch: {
+            date() {
+                this.$emit('input', this.date);
+            }
+        },
+        mounted() {
+            this.date = this.value;
+
+            $(this.$refs.input).datepicker({
+                onSelect: (date) => {
+                    this.date = date;
+                },
+                dateFormat: "dd/mm/yy",
+            });
+        }
     }
 </script>

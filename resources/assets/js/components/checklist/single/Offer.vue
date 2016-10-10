@@ -7,7 +7,7 @@
             <br>
             Think of it as our way of saying thanks for trying us out!
         </p>
-        <a href="/register?invite_key={{ $checklistHash }}"><p class="text-center">Sign Me Up</p></a>
+        <a :href="'/register?invite_key=' + checklistHash"><p class="text-center">Sign Me Up</p></a>
     </div>
 </template>
 <script>

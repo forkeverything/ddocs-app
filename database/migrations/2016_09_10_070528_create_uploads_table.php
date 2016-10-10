@@ -23,8 +23,8 @@ class CreateUploadsTable extends Migration
             $table->boolean('rejected')->default(0);
             $table->text('rejected_reason')->nullable();
 
-            $table->integer('file_request_id')->unsigned();
-            $table->foreign('file_request_id')->references('id')->on('file_requests')->onDelete('cascade');
+            $table->integer('target_id')->unsigned();
+            $table->string('target_type');
         });
     }
 

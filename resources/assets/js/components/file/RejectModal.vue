@@ -1,6 +1,6 @@
 <template>
     <div class="reject-modal keep-selected-file">
-        <div class="modal fade" tabindex="-1" role="dialog" v-el:modal>
+        <div class="modal fade" tabindex="-1" role="dialog" ref="modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -10,8 +10,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                                                <textarea rows="3" class="form-control autosize" v-el:text-area
-                                                          v-model="reason"></textarea>
+                            <textarea rows="3"
+                                      class="form-control autosize"
+                                      ref="text-area"
+                                      v-model="reason"
+                            >
+                            </textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -36,7 +40,7 @@
                 reason: ''
             }
         },
-        props: ['file-requests', 'selected-file-request'],
+        props: ['index', 'selected-file-request'],
         computed: {
             submitText: function () {
                 if (!this.ajaxReady) return 'Saving...';
@@ -44,43 +48,42 @@
             }
         },
         methods: {
-            hideModal: function() {
+            hideModal: function () {
                 this.reason = '';
             },
-            getFileRequestIndex(file) {
-                return _.indexOf(this.fileRequests, _.find(this.fileRequests, {id: file.id}));
-            },
             rejectFile: function () {
-                var self = this;
-                if (!self.ajaxReady) return;
-                self.ajaxReady = false;
 
-                self.$http.post('/fr/' + this.selectedFileRequest.hash + '/reject', {
-                    reason: self.reason
+                if (!this.ajaxReady) return;
+                this.ajaxReady = false;
+
+                this.$http.post('/fr/' + this.selectedFileRequest.hash + '/reject', {
+                    reason: this.reason
+                }, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
                 }).then((response) => {
                     // success
-                    self.reason = '';
-
-                    let updatedFileRequest = response.json();
-                    let index = this.getFileRequestIndex(updatedFileRequest);
-                    this.$set('fileRequests[' + index + ']', updatedFileRequest);
-
-                    vueGlobalEventBus.$emit('updated-weighting');
-                    
-                    $(this.$els.modal).modal('hide');
-                    self.ajaxReady = true;
+                    this.reason = '';
+                    this.$emit('update-file-request', response.json(), this.index);
+                    $(this.$refs.modal).modal('hide');
+                    this.ajaxReady = true;
                 }, (response) => {
                     // error
                     console.log(response);
-                    self.ajaxReady = true;
-                    $(this.$els.modal).modal('hide');
+                    this.ajaxReady = true;
+                    $(this.$refs.modal).modal('hide');
                 });
             }
         },
-        ready: function () {
-            $(this.$els.modal).on('shown.bs.modal', () => $(this.$els.textArea).focus());
-
-            vueGlobalEventBus.$on('show-reject-modal', () => $(this.$els.modal).modal('show'));
+        created() {
+            vueGlobalEventBus.$on('show-reject-modal', () => $(this.$refs.modal).modal('show'));
+        },
+        mounted() {
+            $(this.$refs.modal).on('shown.bs.modal', () => $(this.$refs.textArea).focus());
+        },
+        beforeDestroy(){
+            vueGlobalEventBus.$off('show-reject-modal');
         }
     }
 </script>

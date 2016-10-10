@@ -26,9 +26,8 @@ class ChecklistsController extends Controller
         $this->middleware('auth', [
             'only' => [
                 'getListsView',
-                'getForAuthenticatedUser',
                 'getMakeForm',
-                'postNewChecklist'
+                'getAllRequestsForUser'
             ]
         ]);
     }
@@ -115,27 +114,13 @@ class ChecklistsController extends Controller
      * @param $checklistHash
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getSingleChecklist($checklistHash)
+    public function getSingle($checklistHash)
     {
         $checklist = Checklist::findOrFail(unhashId('checklist', $checklistHash));
-        $checklist->load('user', 'recipients')->withWeightings();
+        $checklist->load('user', 'recipients');
 
-//        if(Auth::check()) $this->authorize('view', $checklist);
-        return view('checklist.single', compact('checklist', 'checklistHash'));
+        return $checklist;
     }
-
-    /**
-     * Get weightings for Checklist.
-     *
-     * @param $checklistHash
-     * @return mixed
-     */
-    public function getWeightings($checklistHash)
-    {
-        $checklist = Checklist::findOrFail(unhashId('checklist', $checklistHash));
-        return (array)$checklist->withWeightings()->weightings;
-    }
-
 
     /**
      * Retrieve the files for checklist.
@@ -156,9 +141,28 @@ class ChecklistsController extends Controller
                                      ->filterDateField('due', $request->due)
                                      ->withStatus($request->status)
                                      ->searchFor($search)
-                                     ->sortWithNull($sort, $order, ['due', 'weighting'])
+                                     ->sortWithNull($sort, $order, ['due'])
                                      ->withNumReceivedFiles()
                                      ->paginate($perPage);
+    }
+
+    /**
+     * Find FileRequest(s) that belongs to any Checklist that was created by the
+     * authenticated User.
+     *
+     * @param User $user
+     * @param Request $request
+     */
+    public function getFileRequestsForUser(User $user, Request $request)
+    {
+        if(! Auth::id() === $user->id) abort(403, "Trying to get file requests for user that is not authenticated");
+        $searchTerm = $request->search;
+        FileRequestsRepository::forUser($user)
+            ->searchChecklistNames($searchTerm)
+            ->searchRecipientEmails($searchTerm)
+            ->searchFor($searchTerm)            // Searches get performed in reverse of method call - so our original WHERE has to come first
+            ->with('checklist.recipients')      // Include checklist as well as list of recipients.
+            ->getWithoutQueryProperties();
     }
 
 

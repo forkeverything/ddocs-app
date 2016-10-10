@@ -2,13 +2,10 @@
 
 namespace App;
 
-use App\Utilities\Traits\HasProjectItems;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-
-    use HasProjectItems;
 
     protected $fillable = [
         'name',
@@ -16,58 +13,13 @@ class Project extends Model
         'user_id'
     ];
 
-    protected $attributes = [
-        'type' => 'App\\Project'
-    ];
-
-    protected $appends = [
-        'project_id'
-    ];
-
-
     /**
-     * Project can have many Categories.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
-    public function categories()
-    {
-        return $this->morphMany(ProjectCategory::class, 'parent');
-    }
-
-    /**
-     * Direct File(s) that aren't nested.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
-     */
-    public function files()
-    {
-        return $this->morphMany(ProjectFile::class, 'parent');
-    }
-
-    /**
-     * Retrieve all the File(s) even the nested ones.
+     * Project can have many different folders.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function allFiles()
+    public function folders()
     {
-        return $this->hasMany(ProjectFile::class, 'project_id');
-    }
-
-    /**
-     * Append items property to Project Category.
-     *
-     * @return $this
-     */
-    public function withItems()
-    {
-        $this->setAttribute('items', $this->items());
-        return $this;
-    }
-
-    public function getProjectIdAttribute()
-    {
-        return $this->id;
+        return $this->hasMany(ProjectFolder::class, 'project_id');
     }
 }

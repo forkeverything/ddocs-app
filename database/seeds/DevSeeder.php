@@ -27,7 +27,7 @@ class DevSeeder extends Seeder
              ->seedMikeAccount()
              ->seedChecklists()
              ->seedFiles()
-        ->seedProject();
+        ->createProject();
     }
 
     /**
@@ -108,6 +108,7 @@ class DevSeeder extends Seeder
     }
 
     /**
+<<<<<<< HEAD
      * Seed Dev project.
      *
      * @return $this
@@ -117,6 +118,19 @@ class DevSeeder extends Seeder
         $this->user->projects()->create([
             'name' => 'Palu'
         ]);
+=======
+     * Create Project
+     *
+     * @return $this
+     */
+    protected function createProject()
+    {
+        $this->user->projects()->create([
+            'name' => 'Palu',
+            'description' => 'First IPP outside of Java.'
+        ]);
+
+>>>>>>> new-project
         return $this;
     }
 }

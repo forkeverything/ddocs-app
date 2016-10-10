@@ -5,11 +5,7 @@ module.exports = {
             ajaxReady: true,
             request: {},
             response: {},
-            showFiltersDropdown: false,
-            filter: '',
-            filterValue: '',
-            minFilterValue: '',
-            maxFilterValue: ''
+            showFiltersDropdown: false
         };
     },
     computed: {
@@ -18,6 +14,7 @@ module.exports = {
         }
     },
     methods: {
+
         checkSetup: function() {
             if(!this.requestUrl) throw new Error("No Request URL set as 'requestUrl' ");
             if(this.hasFilter && _.isEmpty(this.filterOptions)) throw new Error("Need filterOptions[] defined to use filters");
@@ -39,6 +36,7 @@ module.exports = {
             self.$http.get(url, {
                 before: function(xhr) {
                     this.request = xhr;
+                    RequestsMonitor.pushOntoQueue(xhr);
                 }
             }).then((response) => {
                 // update data
@@ -60,7 +58,7 @@ module.exports = {
         },
         changeSort: function (sort) {
             if (this.params.sort === sort) {
-                var order = (this.params.order === 'asc') ? 'desc' : 'asc';
+                let order = (this.params.order === 'asc') ? 'desc' : 'asc';
                 this.fetchResults(updateQueryString({
                     order: order,
                     page: 1
@@ -75,7 +73,7 @@ module.exports = {
         },
         searchTerm: _.debounce(function () {
             if (this.request && this.request.readyState != 4) {
-                this.request.abort();
+                RequestsMonitor.abortRequest(this.request);
                 this.ajaxReady = true;
             }
             var term = this.params.search || null;
@@ -88,19 +86,12 @@ module.exports = {
             this.params.search = '';
             this.searchTerm();
         },
-        resetFilterInput: function() {
-            this.filter = '';
-            this.filterValue = '';
-            this.minFilterValue = '';
-            this.maxFilterValue = '';
-        },
-        addFilter: function () {
-            var queryObj = {
+        addFilter: function (filter) {
+            let queryObj = {
                 page: 1
             };
-            queryObj[this.filter] = this.filterValue || [this.minFilterValue, this.maxFilterValue];
+            queryObj[filter.name] = fiter.value || [filter.minValue, filter.maxValue];
             this.fetchResults(updateQueryString(queryObj));
-            this.resetFilterInput();
             this.showFiltersDropdown = false;
         },
         removeFilter: function(filter) {
@@ -125,7 +116,11 @@ module.exports = {
             let url = this.requestUrl + '?' + query;
             if (!this.ajaxReady) return;
             this.ajaxReady = false;
-            this.$http.get(url).then((response) => {
+            this.$http.get(url, {
+                before(xhr) {
+                    RequestsMonitor.pushOntoQueue(xhr);
+                }
+            }).then((response) => {
                 this.response.current_page = response.json().current_page;
                 let data = response.json().data;
                 for(let i = 0; i < data.length; i++) {
@@ -140,8 +135,10 @@ module.exports = {
         infLoadNextPage() {
         }
     },
-    ready: function() {
+    created(){
         this.checkSetup();
+    },
+    mounted() {
         this.fetchResults();
         onPopCallFunction(this.fetchResults);
     }

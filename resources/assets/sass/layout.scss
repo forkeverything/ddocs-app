@@ -1,6 +1,10 @@
 body {
   padding-top: $navbar-height;
   height: 100vh;
+
+  #app {
+    height: 100%;
+  }
 }
 
 #page-fixed-top {

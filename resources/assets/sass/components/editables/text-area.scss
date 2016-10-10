@@ -1,0 +1,33 @@
+.editable-text-area {
+
+  $min-height: 80px;
+
+  .placeholder {
+    min-height: $min-height;
+    border: 1px solid transparent;
+    display: inline-block;
+    width: 100%;
+    white-space: normal;
+    word-break: break-all;
+    padding: 2px 0;
+
+    &:hover {
+      border: 1px dashed $grey;
+      padding: 2px;
+      margin: 0 -2px;
+    }
+  }
+
+  form {
+    line-height: 0;
+
+    textarea {
+      line-height: 1.6;
+      min-height: $min-height;
+      width: 100%;
+      outline: 0;
+      border: 1px dashed $black;
+      margin: 0 -2px;
+    }
+  }
+}

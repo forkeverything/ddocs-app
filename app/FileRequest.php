@@ -14,7 +14,6 @@ class FileRequest extends Model
      */
     protected $fillable = [
         'due',
-        'weighting',
         'version',
         'status',
         'checklist_id',
@@ -53,7 +52,8 @@ class FileRequest extends Model
 
     public function getLatestUploadAttribute()
     {
-        return Upload::where('file_request_id', $this->id)->orderBy('created_at', 'desc')->first();
+        return $this->uploads()->orderBy('created_at', 'desc')->get()->first();
+
     }
 
     /**
@@ -63,7 +63,7 @@ class FileRequest extends Model
      */
     public function getHashAttribute()
     {
-        return hashId('file-request',  $this);
+        return hashId('file-request', $this);
     }
 
     /**
@@ -73,26 +73,13 @@ class FileRequest extends Model
      */
     public function setDueAttribute($value)
     {
-        if($value) {
+        if ($value) {
             $this->attributes['due'] = Carbon::createFromFormat('d/m/Y', $value);
         } else {
             $this->attributes['due'] = null;
         }
     }
 
-    /**
-     * Mutator for weighting property.
-     *
-     * @param $value
-     */
-    public function setWeightingAttribute($value)
-    {
-        if($value) {
-            $this->attributes['weighting'] = $value;
-        } else {
-            $this->attributes['weighting'] = null;
-        }
-    }
 
     /**
      * All File(s) belong to a single Checklist that has required them.
@@ -111,7 +98,7 @@ class FileRequest extends Model
      */
     public function uploads()
     {
-        return $this->hasMany(Upload::class)->orderBy('created_at', 'asc');
+        return $this->morphMany(Upload::class, 'target')->orderBy('created_at', 'asc');
     }
 
     /**
@@ -144,7 +131,7 @@ class FileRequest extends Model
     public function hasStatus($status)
     {
         $allowedStatuses = ['waiting', 'received', 'rejected'];
-        if(! in_array($status, $allowedStatuses)) abort(500, "Can't whether a File has an invalid status: " . $status);
+        if (!in_array($status, $allowedStatuses)) abort(500, "Can't whether a File has an invalid status: " . $status);
         return $this->status === $status;
     }
 
@@ -156,7 +143,7 @@ class FileRequest extends Model
      */
     public function reject($reason)
     {
-        if(! $this->hasStatus('received')) abort(403, "Can't reject a file we haven't received or already marked rejected.");
+        if (!$this->hasStatus('received')) abort(403, "Can't reject a file we haven't received or already marked rejected.");
 
         // Mark this request as rejected and we'll also increment version
         $this->update([
@@ -171,5 +158,15 @@ class FileRequest extends Model
         ]);
 
         return $this;
+    }
+
+    /**
+     * A File Request could have lots of comments.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'subject');
     }
 }

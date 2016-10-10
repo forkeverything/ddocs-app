@@ -1,0 +1,16 @@
+.gu-transit {
+  border: 1px dashed $black !important;
+  opacity: 1;
+  background: #fff !important;
+
+  * {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.gu-mirror {
+  opacity: 1;
+  transform: rotate(4deg);
+  background: #fff;
+}

@@ -1,34 +1,59 @@
+/**
+ * Loooooooooooooodash
+ */
 window._ = require('lodash');
 
+// JS Helpers (utility functions)
+require('./helpers.js');
+
 /**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
+ * Handling cookies using JS
+ */
+
+window.Cookies = require('js-cookie');
+
+/**
+ * jQuery and Bootstrap.js
  */
 
 window.$ = window.jQuery = require('jquery');
 require('bootstrap-sass');
 
 /**
- * Vue is a modern JavaScript library for building interactive web interfaces
- * using reactive data binding and reusable components. Vue's API is clean
- * and simple, leaving you to focus on building your next great project.
+ * Vue instance and Vue Resource
  */
 
-window.Vue = require('vue');
+window.Vue = require('vue/dist/vue.js');
 require('vue-resource');
 
 /**
- * We'll register a HTTP interceptor to attach the "CSRF" header to each of
- * the outgoing requests issued by this application. The CSRF middleware
- * included with Laravel will automatically verify the header's value.
+ * Vuex
  */
 
-Vue.http.interceptors.push((request, next) => {
-    request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
+import store from './store';
+window.store = store;
 
-    next();
-});
+/**
+ * Requests Monitor
+ */
+
+window.RequestsMonitor = require('./requests-monitor.js');
+RequestsMonitor.setup();
+
+
+/**
+ * Vue Router
+ */
+
+window.router = require('./router.js');
+
+/**
+ * Auth Helper - Contains properties and methods for handling
+ * front-end authentication.
+ */
+
+window.Authenticator = require('./authenticator.js');
+Authenticator.setup();
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -43,13 +68,6 @@ Vue.http.interceptors.push((request, next) => {
 //     key: 'your-pusher-key'
 // });
 
-// Setup jQuery AJAX to use CSRF Token too.
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': Laravel.csrfToken,
-        'Authorization': 'Bearer ' + localStorage.getItem('token')
-    }
-});
 
 // Initialize autosize() for textareas.
 let autosize = require('autosize');
@@ -73,9 +91,6 @@ require('./directives.js');
 // Vue Animations
 require('./animations.js');
 
-// JS Helpers (utility functions)
-require('./helpers.js');
-
 // Page Fixed/Scroll Height adjustments
 window.ResizeSensor = require('css-element-queries/src/ResizeSensor');
 
@@ -84,4 +99,7 @@ window.scrollMonitor = require("scrollmonitor");
 
 // Dragula
 window.dragula = require('dragula');
+
+// autoscroller for dragula
+window.autoScroll = require('dom-autoscroller');
 

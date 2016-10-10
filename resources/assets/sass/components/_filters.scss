@@ -1,6 +1,6 @@
 .filters-menu {
   padding: 10px 15px!important;
-  width: 300px;
+  width: 350px;
   margin-top: 10px;
 
   .form-control {
@@ -15,7 +15,7 @@
     display: block;
   }
 
-  .select-filter, .filter-fields {
+  .select-filter {
     margin: 0 0 10px;
   }
 
@@ -30,6 +30,7 @@
   }
 
   .integer-range-field, .date-range-field {
+    margin: 0 0 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,11 +67,12 @@
 
   .date-range-field {
     .dash {
-      margin: 10px 5px 0 5px;
+      margin: 20px 5px 0 5px;
     }
   }
 
   .button-add-filter {
+    margin: 2px 0 10px;
     width: 100%;
     @include border-radius($border-radius-base!important);
   }
@@ -78,14 +80,15 @@
 
 .active-filters {
   font-size: 0.9em;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  display: inline-block;
+  margin: 0 0 5px;
+  padding: 0 5px;
 
   .list-active-filters {
-    margin: 0 0 15px;
+    margin: 0 0 0 -5px;
 
     .single-filter {
+      margin-bottom: 5px;
       background: lighten($brand-primary, 15%);
       color: #fff;
       @include border-radius($border-radius-large);

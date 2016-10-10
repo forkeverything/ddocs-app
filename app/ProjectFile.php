@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Utilities\Traits\HasProjectItems;
 use Illuminate\Database\Eloquent\Model;
 
 class ProjectFile extends Model
@@ -12,35 +11,48 @@ class ProjectFile extends Model
         'name',
         'position',
         'description',
-        'weighting',
-        'project_id',
-        'file_request_id',
-        'parent_type',
-        'parent_id'
-    ];
-
-    protected $attributes = [
-        'type' => 'App\\ProjectFile'
+        'project_folder_id',
+        'file_request_id'
     ];
 
     /**
-     * Set which Project this File belongs to. It will save us from hunting
-     * through nested relationships when we just want all the files.
+     * The folder that the file is in.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function project()
+    public function folder()
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(ProjectFolder::class, 'project_folder_id');
     }
 
     /**
-     * The parent of the file: Project, Categeory or even a parent File.
+     * Potentially linked File Request.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function parent()
+    public function fileRequest()
     {
-        return $this->morphTo();
+        return $this->belongsTo(FileRequest::class, 'file_request_id');
     }
+
+    /**
+     * A Project File could have lots of comments.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'subject');
+    }
+
+    /**
+     * Could potentially have many uploads.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function uploads()
+    {
+        return $this->morphMany(Upload::class, 'target')->orderBy('created_at', 'asc');
+    }
+
 }

@@ -10,10 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class FilesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Retrieve all File(s) for the authenticated User.

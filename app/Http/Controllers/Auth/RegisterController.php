@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Auth\HandleRefreshToken;
 use App\User;
 use Illuminate\Http\Request;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -21,14 +22,14 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers, HandleRefreshToken;
 
     /**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
-    protected $redirectTo = '/c';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -70,28 +71,9 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Override show registration form method to get invite key (checklist hash)
-     * from url
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function showRegistrationForm(Request $request)
-    {
-
-        $inviteKey = $request->invite_key;
-
-        if (property_exists($this, 'registerView')) {
-            return view($this->registerView, compact('inviteKey'));
-        }
-
-        return view('auth.register', compact('inviteKey'));
-    }
 
     /**
-     * Override register method. If request is AJAX, we'll just
-     * return the User model.
+     * Return a token instead of redirect.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return User|\Illuminate\Http\Response
@@ -100,10 +82,9 @@ class RegisterController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        $this->guard()->login($user = $this->create($request->all()));
+        $token = $this->guard()->login($user = $this->create($request->all()));
 
-        if($request->ajax()) return $user;
+        return $this->makeTokenResponse($token, $user);
 
-        return redirect($this->redirectPath());
     }
 }

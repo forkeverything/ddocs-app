@@ -1,26 +1,34 @@
 <template>
-    <div id="project-board"
-         :class="{
-            'dragging': dragging
-         }"
-    >
-        <delete-item-modal></delete-item-modal>
-        <div id="updating-position-overlay" v-show="updatingPosition">
-            <div class="loader">
-                <cube-loader></cube-loader>
+    <div id="project-single">
+        <div id="project-info" class="container-fluid">
+            <h3>
+                <small>Project Files</small>
+                <br>
+                {{ project.name }}
+            </h3>
+            <p class="small text-muted" v-if="project.description">
+                {{ project.description }}
+            </p>
+            <br>
+        </div>
+        <div class="board-wrap">
+            <div id="project-board" :class="{ dragging: dragging }">
+                <template v-for="(folder, index) in project.folders">
+                    <div class="project-folder folder-wrap" :data-id="folder.id" :key="folder.id">
+                        <project-folder :index="index"
+                                        :folder="folder"
+                        >
+                        </project-folder>
+                    </div>
+                </template>
+                <div class="add-folder folder-wrap">
+                    <form-add-project-folder :project-id="project.id"
+                                             :folders="project.folders"
+                    ></form-add-project-folder>
+                </div>
             </div>
         </div>
-        <button id="btn-new-item"
-                type="button"
-                class="btn btn-sm"
-                @click="showNewRootItemField"
-        >
-            New Item
-        </button>
-        <ul class="list-board-items list-unstyled" data-parent-type="App\Project" :data-parent-id="project.id">
-            <single-board-item v-for="item in project.items" :item="item"></single-board-item>
-            <new-board-item :parent.sync="project"></new-board-item>
-        </ul>
+        <project-file-modal :project-id="project.id"></project-file-modal>
     </div>
 </template>
 <script>
@@ -28,111 +36,140 @@
         data: function () {
             return {
                 dragging: false,
-                drake: '',
-                updatingPosition: true
+                folderDrake: '',
+                autoScroll: '',
+                fileDrake: ''
             }
         },
-        props: ['project'],
+        props: [],
+        computed: {
+            project(){
+                return this.$store.state.project.data;
+            }
+        },
         methods: {
-            setProject(project) {
-                this.updatingPosition = true;
-                this.project = project;
-                this.$nextTick(() => {
-                    this.dragging = false;
-                    this.initDrag();
+            fetchProject(){
+                this.$http.get(`/api/projects/${ this.$route.params.project_id }`, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
+                }).then((response) => {
+                    // success
+                    this.$store.commit('project/SET', response.json());
+                    this.$nextTick(() => {
+                        this.initFolderDrag();
+                        this.initFileDrag();
+                    });
+                }, (response) => {
+                    // error
+                    console.log('Error fetching from: /projects/');
                 });
             },
-            initDrag(){
+            updateFolderIndexes(el, target, source, sibling){
+                let targetFolder = _.find(this.project.folders, {id: parseInt(el.dataset.id)});
+                let siblingFolder = _.find(this.project.folders, {id: parseInt(sibling.dataset.id)});
+                let currentIndex = _.indexOf(this.project.folders, targetFolder);
+                let siblingIndex = siblingFolder ? _.indexOf(this.project.folders, siblingFolder) : this.project.folders.length;
+                this.$store.commit('project/REMOVE_FOLDER', currentIndex);
+                let newIndex = currentIndex > siblingIndex ? siblingIndex : siblingIndex - 1;
+                this.$store.commit('project/INSERT_FOLDER', {
+                    index: newIndex,
+                    folder: targetFolder
+                });
+            },
+            initFolderDrag(){
                 // if we're re-initializing
-                if (this.drake) this.drake.destroy();
-                // create our drake instance
-                this.drake = dragula(Array.prototype.slice.call(document.querySelectorAll('.list-board-items')), {
+                if (this.folderDrake) this.folderDrake.destroy();
+                this.folderDrake = dragula([document.querySelector('#project-board')], {
                     moves: (el, source, handle, sibling) => {
-                        // Don't want to make the new board item field draggable
-                        return !el.classList.contains('field-new-item');
+
+                        let draggingProjectFile = false;
+
+                        if (handle.classList.contains('project-file')) draggingProjectFile = true;
+
+                        while (handle = handle.parentNode) {
+                            if (handle.classList && handle.classList.contains('project-file')) {
+                                draggingProjectFile = true;
+                                break;
+                            }
+                        }
+
+                        return !el.classList.contains('add-folder') && !draggingProjectFile;
                     },
                     accepts: (el, target, source, sibling) => {
-                        // prevent dragged containers from trying to drop inside itself and
-                        // prevent dropping as last item (needs sibling)
-                        return !this.contains(el, target) && sibling && !sibling.classList.contains('drag-space');
-                    }
+                        return sibling;
+                    },
+                    direction: 'horizontal'
                 });
+
+                this.folderDrake.on('drop', (el, target, source, sibling) => {
+                    this.folderDrake.cancel(true);
+                    this.updateFolderIndexes(el, target, source, sibling);
+                });
+
                 // 'dragging' class
-                this.drake.on('drag', () => {
+                this.folderDrake.on('drag', () => {
                     this.dragging = true;
                 });
-                this.drake.on('cancel', () => {
+
+                this.folderDrake.on('cancel', () => {
                     this.dragging = false;
                 });
-                // Handle drop
-                this.drake.on('drop', (el, target, source, sibling) => {
-                    this.updateItemPosition(el, target, source, sibling);
+
+                this.folderDrake.on('dragend', () => {
+                    this.dragging = false;
                 });
 
-                this.updatingPosition = false;
-            },
-            showNewRootItemField(){
-                this.$set('project.newItemField', true);
-            },
-            contains(a, b) {
-                return a.contains ?
-                a != b && a.contains(b) :
-                        !!(a.compareDocumentPosition(b) & 16);
-            },
-            refreshProject() {
-                this.updatingPosition = true;
-                this.$http.get(`/projects/${this.project.id}/data`).then((response) => this.setProject(response.json()));
-            },
-            hasNullValues(data) {
-                let hasNull = false;
-                for (let prop in data) {
-                    if (data.hasOwnProperty(prop) && data[prop] == null) {
-                        hasNull = true;
-                        break;
+                if (this.autoScroll) this.autoScroll.destroy();
+                this.autoScroll = autoScroll([document.querySelector('.board-wrap')], {
+                    margin: 30,
+                    pixels: 100,
+                    scrollWhenOutside: true,
+                    autoScroll: () => {
+                        //Only scroll when the pointer is down, and there is a child being dragged.
+                        return this.autoScroll.down && (this.folderDrake.dragging || this.fileDrake.dragging);
                     }
-                }
-                return hasNull;
+                });
             },
-            updateItemPosition(el, target, source, sibling) {
-                this.updatingPosition = true;
-                let currentPosition = el.dataset.position;
-                let siblingPosition = sibling.dataset.position;
-                let differentParent = source.dataset.parentType !== target.dataset.parentType || source.dataset.parentId !== target.dataset.parentId;
-                // if we moved up or came from different parent
-                let newPosition = (currentPosition > siblingPosition || differentParent ) ? siblingPosition : siblingPosition - 1;
-                let data = {
-                    'parent_type': target.dataset.parentType,
-                    'parent_id': target.dataset.parentId,
-                    'position': newPosition,
-                    'type': el.dataset.type,
-                    'id': el.dataset.id
-                };
+            initFileDrag(){
+                // if we're re-initializing
+                if (this.fileDrake) this.fileDrake.destroy();
 
-                if(this.hasNullValues(data)) return this.refreshProject();
+                this.fileDrake = dragula([].slice.call(document.querySelectorAll('.files-list')), {
+                    direction: 'vertical',
+                    moves: (el, source, handle, sibling) => {
+                        return true;
+                    }
+                });
 
-                this.$http.put('/projects/' + this.project.id + '/positions', data)
-                        .then((response) => {
-                            this.setProject(response.json());
-                            // Remove the element that dragula made so our DOM doesn't conflict.
-                            el.remove();
-                        }, (response) => {
-                            console.log("Couldn't update item positions");
-                            console.log(response);
-                        });
+                this.fileDrake.on('drop', (el, target, source, sibling) => {
+                    this.fileDrake.cancel(true);
+                    vueGlobalEventBus.$emit('dropped-file', el, target, source, sibling);
+                });
+
+                // 'dragging' class
+                this.fileDrake.on('drag', () => {
+                    this.dragging = true;
+                });
+
+                this.fileDrake.on('cancel', (el) => {
+                    this.dragging = false;
+                });
+
+                this.fileDrake.on('dragend', (el) => {
+                    this.dragging = false;
+                });
+
             }
         },
-        ready(){
-            this.initDrag();
+        created() {
 
-            vueGlobalEventBus.$on('init-drag', () => {
-                this.updatingPosition = true;
-                this.initDrag();
-            });
-
-            vueGlobalEventBus.$on('set-project', (project) => {
-                this.updatingPosition = true;
-                this.setProject(project);
-            });
+        },
+        mounted() {
+            this.fetchProject();
+        },
+        beforeDestroy(){
+            this.$store.commit('project/SET', '');
         }
     }
-</script>               
+</script>

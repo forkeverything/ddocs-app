@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div id="checklist-all" class="container">
+    <div id="checklist-all" class="container-fluid">
         <div class="header">
             <h3>
                 Your Checklists

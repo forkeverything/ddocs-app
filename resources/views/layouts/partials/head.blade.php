@@ -13,10 +13,9 @@
 
 <!-- Scripts -->
 <script>
-    window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-    ]); ?>
+    window.awsURL = "{{awsURL()}}";
 </script>
+
 
 <!-- External Scripts -->
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>

@@ -2,61 +2,80 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddProjectFileRequest;
+use App\Http\Requests\CreateProjectFolderRequest;
 use App\Http\Requests\SaveProjectRequest;
 use App\Project;
-use App\ProjectCategory;
 use App\ProjectFile;
+use App\ProjectFolder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+
 
 class ProjectsController extends Controller
 {
     public function __construct()
     {
-        // Only authenticated users can make projects
-        $this->middleware('auth');
-
         $this->middleware('can:view,project', [
             'only' => [
-                'getProject',
-                'getCategory'
+                'getSingleProject'
             ]
         ]);
 
         $this->middleware('can:update,project', [
             'only' => [
-                'putUpdate',
+                'putUpdateItems',
                 'delete',
-                'postNewCategory',
-                'postNewFile',
-                'putUpdateItem',
-                'deleteItem'
+                'postCreateFolder',
+                'deleteFolder',
+                'postAddFile',
+                'postAddComment'
             ]
         ]);
     }
 
     /**
-     * Get List of all User's projects.
+     * Return projects for authenticated User.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return mixed
      */
-    public function getAll()
+    public function getUserProjects()
     {
-        // TODO ::: allow to view project's shared by other team members
-        $projects = Auth::user()->projects;
-        return view('projects.all', compact('projects'));
+        return Auth::user()->projects;
     }
 
     /**
-     * Show form to start a Project.
+     * Handle request to save a new Project.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param SaveProjectRequest $request
+     * @return Project
      */
-    public function getStartForm()
+    public function postSaveNew(SaveProjectRequest $request)
     {
-        return view('projects.start');
+        $attributes = $request->all();
+        $attributes['user_id'] = Auth::id();
+        return Project::create($attributes);
+    }
+
+    /**
+     * Single Project in JSON
+     *
+     * @param Project $project
+     * @return Model
+     */
+    public function getSingleProject(Project $project)
+    {
+        return $project->load([
+            'folders' => function ($query) {
+                $query->orderBy('position', 'asc');
+            },
+            'folders.files' => function ($query) {
+                $query->orderBy('position', 'asc');
+            }
+        ]);
     }
 
     /**
@@ -67,56 +86,54 @@ class ProjectsController extends Controller
      */
     public function getProject(Project $project)
     {
-        $project->withItems();
+        $project->load([
+            'folders' => function ($query) {
+                $query->orderBy('position', 'asc');
+            },
+            'folders.files' => function ($query) {
+                $query->orderBy('position', 'asc');
+            }
+        ]);
+
         return view('projects.single', compact('project'));
     }
 
     /**
-     * Show view for Project Category and nested Files.
-     *
-     * @param Project $project
-     * @param ProjectCategory $projectCategory
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getCategory(Project $project, ProjectCategory $projectCategory)
-    {
-        $parentCategories = [];
-
-        $currentCateogry = $projectCategory;
-        while ($parent = $currentCateogry->parentCategory()) {
-            array_unshift($parentCategories, $parent->id);
-            $currentCateogry = $parent;
-        }
-
-        return view('projects.category', compact('project', 'parentCategories', 'projectCategory'));
-    }
-
-    /**
-     * Handle request to save a new Project.
-     *
-     * @param SaveProjectRequest $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function postSaveNew(SaveProjectRequest $request)
-    {
-        $attributes = $request->all();
-        $attributes['user_id'] = Auth::id();
-        $project = Project::create($attributes);
-        return redirect('/projects/' . $project->id);
-    }
-
-
-    /**
-     * Update a given Project.
+     * Single update request to update a Project, ProjectFolder(s) and ProjectFile(s).
+     * We batch put updates to increase efficiency and reduce redundant updates as
+     * User is most likely performing multiple requests per second.
      *
      * @param Project $project
      * @param Request $request
      * @return Project
      */
-    public function putUpdate(Project $project, Request $request)
+    public function putUpdateItems(Project $project, Request $request)
     {
-        $project->update($request->all());
-        return $project;
+        $updatedModels = $request->all();
+
+        if ($updatedProject = $updatedModels['project']) {
+            $project->update($updatedProject);
+        }
+
+        if ($updatedFolders = $updatedModels['folders']) {
+            foreach ($updatedFolders as $id => $updatedFolder) {
+                if ($id !== $updatedFolder['id']) abort(403, "Tried to update a different folder");
+                $projectFolder = ProjectFolder::find($id);
+                if(! Gate::allows('updateFolder', [$project, $projectFolder])) abort(403, "Folder doesn't belong to Project");
+                $projectFolder->update($updatedFolder);
+            }
+        }
+
+        if ($updatedFiles = $updatedModels['files']) {
+            foreach ($updatedFiles as $id => $updatedFile) {
+                if ($id !== $updatedFile['id']) abort(403, "Tried to update a different file");
+                $projectFile = ProjectFile::find($id);
+                if(! Gate::allows('updateFile', [$project, $projectFile])) abort(403, "File doesn't belong to Project");
+                $projectFile->update($updatedFile);
+            }
+        }
+
+        return response('Updated project items.');
     }
 
     /**
@@ -132,80 +149,43 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Add a new Project Category within a Project.
+     * Handle request to create a Project Folder.
      *
      * @param Project $project
      * @param Request $request
-     * @return ProjectCategory
+     * @return Model
      */
-    public function postNewCategory(Project $project, Request $request)
+    public function postCreateFolder(Project $project, CreateProjectFolderRequest $request)
     {
-        return ProjectCategory::create($request->all());
+        return $project->folders()->create($request->all())->load('files');
+    }
+
+
+    /**
+     * Delete Project Folder
+     *
+     * @param Project $project
+     * @param ProjectFolder $projectFolder
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteFolder(Project $project, ProjectFolder $projectFolder)
+    {
+        if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
+        $projectFolder->delete();
+        return response("Deleted project folder");
     }
 
     /**
-     * Add a new Project File within a Project.
+     * Create a new File within Project Folder.
      *
      * @param Project $project
+     * @param ProjectFolder $projectFolder
      * @param Request $request
-     * @return ProjectFile
+     * @return Model
      */
-    public function postNewFile(Project $project, Request $request)
+    public function postAddFile(Project $project, ProjectFolder $projectFolder, AddProjectFileRequest $request)
     {
-        return ProjectFile::create($request->all());
-    }
-
-    /**
-     * Update Single Item fields.
-     *
-     * @param Project $project
-     * @param Request $request
-     * @return mixed
-     */
-    public function putUpdateItem(Project $project, Request $request)
-    {
-        $item = $this->findProjectItem($request->type, $request->id, $project->id);
-
-        $item->update($request->all());
-        return $item;
-    }
-
-
-    /**
-     * Delete a Project's Item
-     *
-     * @param Project $project
-     * @param $type
-     * @param $id
-     * @return string
-     */
-    public function deleteItem(Project $project, $type, $id)
-    {
-        if($type === 'category') $type = 'App\ProjectCategory';
-        if($type === 'file') $type = 'App\ProjectFile';
-        $targetItem = $this->findProjectItem($type, $id, $project->id);
-
-        // Move lower siblings up
-        $parentItems = getProjectItems($targetItem->parent_type, $targetItem->parent_id);
-        foreach ($parentItems as $item) if ($item->position > $targetItem->position) $this->findProjectItem($item->type, $item->id, $project->id)->update(['position' => ($item->position - 1)]);
-
-        $targetItem->deleteAllIncludingChildren();
-
-        return $project->withItems();
-    }
-
-    /**
-     * Track down the Model for a Project Item.
-     *
-     * @param $type
-     * @param $id
-     * @param $project_id
-     * @return mixed
-     */
-    protected function findProjectItem($type, $id, $project_id)
-    {
-        $item = call_user_func($type . '::find', $id);
-        if($item->project_id && $item->project_id !== $project_id) abort(403, "Board item does not belong to project");
-        return $item;
+        if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
+        return $projectFolder->files()->create($request->all());
     }
 }

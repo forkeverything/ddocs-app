@@ -181,6 +181,7 @@ return [
         // Package Providers
         Vinkla\Hashids\HashidsServiceProvider::class,
         Laravel\Cashier\CashierServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         // Custom Providers
         \App\Providers\ChecklistServiceProvider::class
@@ -234,6 +235,8 @@ return [
 
         // Custom Aliases...
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
 
     ],
 

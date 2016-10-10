@@ -34,7 +34,7 @@ abstract class EloquentRepository
     /**
      * Model fields that we can perform searches on, Accepts
      *  a string to search relationship table fields:
-     * 'parent_table_name.child_table_name.child_table_column'
+     * 'target_table_name.target_table_foreign_key.related_table_name.related_table_search_column'
      * @var array
      */
     protected $searchableFields = [];

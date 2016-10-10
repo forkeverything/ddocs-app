@@ -1,6 +1,6 @@
 <template>
     <div class="delete-modal keep-selected-file">
-        <div class="modal fade" tabindex="-1" role="dialog" v-el:modal>
+        <div class="modal fade" tabindex="-1" role="dialog" ref="modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -33,7 +33,7 @@
                 ajaxReady: true,
             }
         },
-        props: ['file-requests', 'selected-file-request'],
+        props: ['selected-file-request', 'index'],
         computed: {
             submitText: function () {
                 if (!this.ajaxReady) return 'Processing...';
@@ -41,32 +41,32 @@
             }
         },
         methods: {
-            getFileRequestIndex(file) {
-                return _.indexOf(this.fileRequests, _.find(this.fileRequests, {id: file.id}));
-            },
             deleteFile: function () {
-                var self = this;
-                if (!self.ajaxReady) return;
 
-                self.$http.delete('/fr/' + this.selectedFileRequest.hash)
+                if (!this.ajaxReady) return;
+
+                this.$http.delete('/fr/' + this.selectedFileRequest.hash, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
+                })
                         .then((response) => {
-                            let updatedFileRequest = response.json();
-                            let index = this.getFileRequestIndex(updatedFileRequest);
-                            this.fileRequests.splice(index, 1);
-                            this.selectedFileRequestIndex = '';
-                            vueGlobalEventBus.$emit('updated-weighting');
-                            $(this.$els.modal).modal('hide');
-                            self.ajaxReady = true;
-                        },(response) => {
+                            this.$emit('remove-file-request', this.index);
+                            $(this.$refs.modal).modal('hide');
+                            this.ajaxReady = true;
+                        }, (response) => {
                             // error
                             console.log(response);
-                            $(this.$els.modal).modal('hide');
-                            self.ajaxReady = true;
+                            $(this.$refs.modal).modal('hide');
+                            this.ajaxReady = true;
                         });
-                }
-            },
-            ready: function () {
-                vueGlobalEventBus.$on('show-delete-modal', () => $(this.$els.modal).modal('show'));
             }
+        },
+        created() {
+            vueGlobalEventBus.$on('show-delete-modal', () => $(this.$refs.modal).modal('show'));
+        },
+        beforeDestroy(){
+            vueGlobalEventBus.$off('show-delete-modal');
         }
+    }
 </script>

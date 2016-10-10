@@ -35,3 +35,8 @@ h5 {
   margin-bottom: 0;
   line-height: 1.6;
 }
+
+a.disabled, a[disabled=disabled] {
+  color: $grey!important;
+  cursor: not-allowed;
+}

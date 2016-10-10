@@ -2,15 +2,15 @@
 
 namespace App;
 
+use App\Auth\AuthenticatableUser;
 use App\Events\CreatedUserFromEmailWebhook;
 use App\Exceptions\NotEnoughCredits;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Event;
 use Laravel\Cashier\Billable;
 
-class User extends Authenticatable
+class User extends AuthenticatableUser
 {
     use Notifiable, Billable;
 
@@ -23,7 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'credits'
+        'credits',
+        'refresh_token',
+        'refresh_token_expiry'
     ];
 
     /**
@@ -57,7 +59,7 @@ class User extends Authenticatable
     }
 
     /**
-     * User can have many Project(s).
+     * User can have many Project(s)
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -132,3 +134,4 @@ class User extends Authenticatable
         return $user;
     }
 }
+

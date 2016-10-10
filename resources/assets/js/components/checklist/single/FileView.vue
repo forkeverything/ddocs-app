@@ -1,23 +1,6 @@
 <template>
     <div id="file-view" class="content">
-
-        <div id="selected-file-requirements">
-            <selected-file-date :user="user" :file-request.sync="fileRequests[selectedFileRequestIndex]"></selected-file-date>
-            <selected-file-weighting :user="user" :file-request.sync="fileRequests[selectedFileRequestIndex]"></selected-file-weighting>
-        </div>
         <h4>{{ selectedFileRequest.name }}</h4>
-        <div id="progress-status"
-             :class="{
-                                 received: ! selectedFileRequest.uploading && selectedFileRequest.status === 'received',
-                                 rejected: ! selectedFileRequest.uploading && selectedFileRequest.status === 'rejected',
-                                 }"
-        >
-            <div class="progress-bar"
-                 :style="{
-                                        width: selectedFileRequest.uploadProgress + '%'
-                                     }"
-            ></div>
-        </div>
         <ul id="single-file-request-menu" class="list-inline list-unstyled">
             <li class="menu-item">
                 <a href="#"
@@ -41,7 +24,7 @@
             </li>
         </ul>
 
-        <file-request-notes :file-request.sync="fileRequests[selectedFileRequestIndex]"></file-request-notes>
+        <file-request-notes :file-request="selectedFileRequest"></file-request-notes>
 
     </div>
 </template>
@@ -52,9 +35,6 @@ export default {
 
         }
     },
-    props: ['user', 'file-requests', 'selected-file-request-index', 'selected-file-request', 'show-reject-modal', 'can-reject-file', 'show-delete-modal'],
-    methods: {
-
-    }
+    props: ['is-owner', 'selected-file-request-index', 'selected-file-request', 'show-reject-modal', 'can-reject-file', 'show-delete-modal']
 }
 </script>

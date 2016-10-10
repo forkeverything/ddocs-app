@@ -187,7 +187,6 @@ class ChecklistFactory
             // Create a request for the file
             $this->checklist->requestedFiles()->create([
                 'due' => $file['due'],
-                'weighting' => $file['weighting'],
                 'file_id' => $fileModel->id
             ]);
         }

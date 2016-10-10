@@ -3,17 +3,16 @@
         <button type="button"
                 v-show="! uploading"
                 class="btn btn-primary"
-                v-el:upload-button
                 :disabled="alreadyReceivedFile"
                 @click="selectFile"
         >
             <i class="fa fa-upload"></i>
         </button>
-        <input v-el:input
+        <input ref="input"
                type="file"
                name="file"
                class="input-file-upload hide"
-               @change="uploadFile(file, $event)"
+               @change="uploadFile($event)"
         >
         <div class="loader" v-show="uploading">
             <i class="fa fa-spinner fa-pulse fa-fw"></i>
@@ -33,44 +32,45 @@
                 return this.fileRequest.status === 'received';
             }
         },
-        props: ['file-request'],
+        props: ['file-request', 'index'],
         methods: {
             selectFile: function () {
-                $(this.$els.input).click();
+                $(this.$refs.input).click();
             },
-            uploadFile: function (file, $event) {
+            uploadFile: function ($event) {
 
-                var self = this;
-
-                self.uploading = true;
-
-                var fd = new FormData();
-                var uploadedFile = $event.srcElement.files[0];
-
+                let fd = new FormData();
+                let uploadedFile = $event.srcElement.files[0];
                 fd.append('file', uploadedFile);
 
-                self.$http.post('/fr/' + self.fileRequest.hash + '/upload', fd, {
-                    before() {
-                        self.$set('fileRequest.uploading', self.uploading);
-                        self.$set('fileRequest.uploadProgress', 0);
+                this.uploading = true;
+
+                this.$http.post(`/api/file_requests/${this.fileRequest.hash}/upload`, fd, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
                     },
                     progress(event) {
-                        self.$set('fileRequest.uploadProgress', Math.round(100 * event.loaded / event.total));
+                        //  let progress = Math.round(100 * event.loaded / event.total);
                     }
                 }).then((response) => {
-                    self.fileRequest = JSON.parse(response.data);
-                    self.uploading = false;
-                    self.$set('fileRequest.uploading', self.uploading);
-                    vueGlobalEventBus.$emit('updated-weighting');
+                    let updatedFileRequest = response.json();
+                    this.$emit('update-file-request', updatedFileRequest, this.index);
+                    this.uploading = false;
                 }, (response) => {
                     console.log('Upload file error.');
                     console.log(response);
-                    self.uploading = false;
+                    this.uploading = false;
                 });
             }
         },
-        ready: function() {
+        created() {
             vueGlobalEventBus.$on('upload-selected-file-' + this.fileRequest.id, this.selectFile);
+        },
+        mounted() {
+
+        },
+        beforeDestroy(){
+            vueGlobalEventBus.$off('upload-selected-file-' + this.fileRequest.id, this.selectFile);
         }
     }
 </script>
