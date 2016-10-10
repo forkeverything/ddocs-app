@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="form-group text-right">
-                        <button type="submit" class="btn btn-primary" :disabled="! canSubmit">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fa fa-btn fa-sign-in"></i> Login
                         </button>
                     </div>
@@ -62,9 +62,7 @@
             }
         },
         computed: {
-            canSubmit(){
-                return this.email && this.password;
-            }
+
         },
         methods: {
             submitLogin(){
