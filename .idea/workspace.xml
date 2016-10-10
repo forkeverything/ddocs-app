@@ -2,177 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a82737-5349-4303-a9f8-dff9a2997dc3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Auth/AuthenticatableUser.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Auth/HandleRefreshToken.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Comment.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Exceptions/Handlers/AuthenticationHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Exceptions/Handlers/JWTHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Exceptions/Handlers/RefreshTokenHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Exceptions/RefreshTokenExpired.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Exceptions/RefreshTokenInvalid.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Exceptions/RefreshTokenRevoked.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/CommentsController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Middleware/GuestsOnly.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Requests/AddCommentRequest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Requests/AddProjectFileRequest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Requests/CreateProjectFolderRequest.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/ProjectFileUpload.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/ProjectFolder.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/jwt.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/2016_09_26_072648_create_projects_table.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/2016_09_26_072724_create_project_folders_table.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/2016_09_26_072731_create_project_files_table.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/2016_09_26_080415_create_project_file_uploads_table.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/migrations/2016_09_29_195322_create_comments_table.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/authenticator.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/auth/Login.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/auth/Register.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/comments/CommentsThread.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/comments/NewCommentField.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/AddProjectFile.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/AddProjectFolderForm.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFileModal.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFileModalProjectView.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFolder.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectsList.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/system/Navbar.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/utilities/DatePicker.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/utilities/EditableTextArea.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/utilities/EditableTextField.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/components/utilities/TagInput.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/mixins/EditableField.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/mixins/HasComments.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/mixins/catch-form-errors.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/requests-monitor.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/router.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/routes.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/store/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/store/modules/project.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/js/store_old.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/sass/comments.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/sass/components/_close.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/sass/components/_dragula.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/sass/components/_editables.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/sass/components/editables/text-area.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/sass/components/editables/text-field.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/sass/projects/all.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/assets/sass/projects/single.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/main.blade.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/blade.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/files-collector.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace (Michael’s MacBook Pro's conflicted copy 2016-08-13).xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/css/app.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/css/landing.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/css/landing.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/css/vendor.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/css/vendor.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/landing.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/assets/js/components/auth/RegistrationModal.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/WeightingSelectedFile.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/assets/js/components/file/Renamer.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/assets/js/components/landing/EmailForm.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/assets/js/components/landing/ListMaker.vue" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/landing/main.blade.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/assets/js/components/account/utilities" afterPath="$PROJECT_DIR$/resources/assets/js/animations.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/maker/SelectFiles.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/maker/FilesSelecter.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Checklist.php" afterPath="$PROJECT_DIR$/app/Checklist.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Factories/ChecklistFactory.php" afterPath="$PROJECT_DIR$/app/Factories/ChecklistFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Factories/UploadFactory.php" afterPath="$PROJECT_DIR$/app/Factories/UploadFactory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/File.php" afterPath="$PROJECT_DIR$/app/File.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/FileRequest.php" afterPath="$PROJECT_DIR$/app/FileRequest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChecklistsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FileRequestsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FilesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Kernel.php" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Note.php" afterPath="$PROJECT_DIR$/app/Note.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Policies/ProjectPolicy.php" afterPath="$PROJECT_DIR$/app/Policies/ProjectPolicy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Project.php" afterPath="$PROJECT_DIR$/app/Project.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ProjectFile.php" afterPath="$PROJECT_DIR$/app/ProjectFile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Repositories/EloquentRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/EloquentRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Repositories/FileRequestsRepository.php" afterPath="$PROJECT_DIR$/app/Repositories/FileRequestsRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Upload.php" afterPath="$PROJECT_DIR$/app/Upload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/app.php" afterPath="$PROJECT_DIR$/config/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/auth.php" afterPath="$PROJECT_DIR$/config/auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/hashids.php" afterPath="$PROJECT_DIR$/config/hashids.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_07_31_060512_create_file_requests_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_07_31_060512_create_file_requests_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_09_10_070528_create_uploads_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_09_10_070528_create_uploads_table.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/seeds/DevSeeder.php" afterPath="$PROJECT_DIR$/database/seeds/DevSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/app.js" afterPath="$PROJECT_DIR$/resources/assets/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/bootstrap.js" afterPath="$PROJECT_DIR$/resources/assets/js/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/account/AddCreditCard.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/account/AddCreditCard.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/Collection.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/Collection.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/Maker.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/Maker.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/Single.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/DateSelectedFile.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/DateSelectedFile.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/FileRequestNotes.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/FileRequestNotes.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/FileView.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/FileView.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/MobileFileMenu.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/MobileFileMenu.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/Offer.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/Offer.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/Recipients.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/Recipients.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/SingleNote.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/SingleNote.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/SummaryView.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/checklist/single/SummaryView.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/file/DateInput.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/file/DateInput.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/file/DeleteModal.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/file/DeleteModal.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/file/Filters.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/file/Filters.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/file/RejectModal.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/file/RejectModal.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/file/Uploader.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/filters/DateRange.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/filters/DateRange.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/filters/IntegerRange.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/filters/IntegerRange.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/pagination/Paginator.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/pagination/Paginator.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/pagination/PerPagePicker.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/pagination/PerPagePicker.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectBoard.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectBoard.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFile.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/projects/ProjectFile.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/utilities/FormErrors.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/utilities/FormErrors.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/components/utilities/Tagger.vue" afterPath="$PROJECT_DIR$/resources/assets/js/components/utilities/Tagger.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/directives.js" afterPath="$PROJECT_DIR$/resources/assets/js/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/helpers.js" afterPath="$PROJECT_DIR$/resources/assets/js/helpers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/landing.js" afterPath="$PROJECT_DIR$/resources/assets/js/landing.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/js/mixins/fetchesFromEloquentRepository.js" afterPath="$PROJECT_DIR$/resources/assets/js/mixins/fetchesFromEloquentRepository.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/app.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/app.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/_list-maker.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/_list-maker.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/_single.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/make.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/make.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/checklist/single/_notes.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/checklist/single/_notes.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/components.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/components.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/components/_datepicker.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/components/_datepicker.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/components/_dropdown.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/components/_dropdown.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/components/_filters.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/components/_filters.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/components/_modal.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/components/_modal.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/components/_text.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/components/_text.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/components/tagger.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/components/tagger.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/file.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/file.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/layout.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/layout.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/utilities.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/utilities.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/assets/sass/variables.scss" afterPath="$PROJECT_DIR$/resources/assets/sass/variables.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/checklist/all.blade.php" afterPath="$PROJECT_DIR$/resources/views/checklist/all.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/landing.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/landing.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/partials/head.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/head.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/partials/nav.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/projects/all.blade.php" afterPath="$PROJECT_DIR$/resources/views/projects/all.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/projects/single.blade.php" afterPath="$PROJECT_DIR$/resources/views/projects/single.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/api.php" afterPath="$PROJECT_DIR$/routes/api.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <ignored path="files-collector.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -194,14 +24,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ProjectsController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php">
+      <file leaf-file-name="DevSeeder.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database/seeds/DevSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1084">
-              <caret line="188" column="64" lean-forward="false" selection-start-line="188" selection-start-column="64" selection-end-line="188" selection-end-column="64" />
-              <folding>
-                <element signature="e#40#84#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="571">
+              <caret line="102" column="19" lean-forward="true" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -266,12 +94,12 @@
         <option value="$PROJECT_DIR$/resources/assets/js/app.js" />
         <option value="$PROJECT_DIR$/resources/assets/js/landing.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/database/seeds/DevSeeder.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/ProjectFile.php" />
         <option value="$PROJECT_DIR$/app/Project.php" />
         <option value="$PROJECT_DIR$/app/Policies/ProjectPolicy.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" />
+        <option value="$PROJECT_DIR$/database/seeds/DevSeeder.php" />
       </list>
     </option>
   </component>
@@ -403,7 +231,25 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files-collector" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="seeds" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -609,12 +455,12 @@
       <workItem from="1474773182224" duration="20372000" />
       <workItem from="1476083442817" duration="66000" />
       <workItem from="1476083531158" duration="148000" />
-      <workItem from="1476083690555" duration="609000" />
+      <workItem from="1476083690555" duration="652000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="614314000" />
+    <option name="totallyTimeSpent" value="614357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="1376" extended-state="0" />
@@ -1139,49 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/DevSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-          <folding>
-            <marker date="1476085084000" expanded="false" signature="11:87" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="129:206" ph=" List of table names that we'll be seeding to. ..." />
-            <marker date="1476085084000" expanded="true" signature="234:294" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="305:369" ph=" Run the database seeds. ..." />
-            <marker date="1476085084000" expanded="true" signature="397:560" ph="{...}" />
-            <marker date="1476085084000" expanded="true" signature="569:649" ph=" Clear all tables ready to start fresh. ..." />
-            <marker date="1476085084000" expanded="true" signature="691:822" ph="{...}" />
-            <marker date="1476085084000" expanded="true" signature="741:793" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="831:912" ph=" Create Mike's account for dev purposes. ..." />
-            <marker date="1476085084000" expanded="true" signature="955:1156" ph="{...}" />
-            <marker date="1476085084000" expanded="true" signature="997:1125" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="998:1124" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="1165:1232" ph=" Make checklists for Mike. ..." />
-            <marker date="1476085084000" expanded="true" signature="1274:1905" ph="{...}" />
-            <marker date="1476085084000" expanded="true" signature="1422:1520" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="1423:1519" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="1733:1875" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="1800:1864" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="1801:1863" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="1914:1980" ph=" Seed files per Checklist ..." />
-            <marker date="1476085084000" expanded="true" signature="2017:2484" ph="{...}" />
-            <marker date="1476085084000" expanded="true" signature="2081:2454" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="2153:2213" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="2154:2212" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="2255:2444" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="2313:2429" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="2314:2428" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="2493:2565" ph="&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD ..." />
-            <marker date="1476085084000" expanded="true" signature="2604:2997" ph="{...}" />
-            <marker date="1476085084000" expanded="true" signature="2651:2691" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="2652:2690" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="2798:2995" ph="{...}" />
-            <marker date="1476085084000" expanded="true" signature="2845:2944" ph="..." />
-            <marker date="1476085084000" expanded="true" signature="2846:2943" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="976">
@@ -1275,8 +1078,55 @@
         <state relative-caret-position="1084">
           <caret line="188" column="64" lean-forward="false" selection-start-line="188" selection-start-column="64" selection-end-line="188" selection-end-column="64" />
           <folding>
-            <element signature="e#40#84#0#PHP" expanded="true" />
+            <marker date="1476085303000" expanded="true" signature="44:403" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="449:5712" ph="{...}" />
+            <marker date="1476085303000" expanded="true" signature="485:923" ph="{...}" />
+            <marker date="1476085303000" expanded="true" signature="518:622" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="539:621" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="563:611" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="652:915" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="675:914" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="699:904" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="932:1013" ph=" Return projects for authenticated User. ..." />
+            <marker date="1476085303000" expanded="true" signature="1053:1104" ph="{...}" />
+            <marker date="1476085303000" expanded="true" signature="1113:1236" ph=" Handle request to save a new Project. ..." />
+            <marker date="1476085303000" expanded="true" signature="1299:1440" ph="{...}" />
+            <marker date="1476085303000" expanded="true" signature="1449:1544" ph=" Single Project in JSON ..." />
+            <marker date="1476085303000" expanded="true" signature="1601:1886" ph="{...}" />
+            <marker date="1476085303000" expanded="true" signature="1638:1878" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="1639:1877" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="1684:1749" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="1802:1867" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="1895:2054" ph=" Show the view for a single Project. ..." />
+            <marker date="1476085303000" expanded="true" signature="2105:2444" ph="{...}" />
+            <marker date="1476085303000" expanded="true" signature="2135:2375" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="2136:2374" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="2181:2246" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="2299:2364" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="2453:2789" ph=" Single update request to update a Project, ProjectFolder(s) and ProjectFile(s). ..." />
+            <marker date="1476085303000" expanded="true" signature="2862:4041" ph="{...}" />
+            <marker date="1476085303000" expanded="true" signature="2970:3026" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="3087:3517" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="3152:3507" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="3574:3982" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="3635:3972" ph="..." />
+            <marker date="1476085303000" expanded="true" signature="4050:4221" ph=" Delete Project. ..." />
+            <marker date="1476085303000" expanded="true" signature="4268:4352" ph="{...}" />
+            <marker date="1476085303000" expanded="true" signature="4361:4507" ph=" Handle request to create a Project Folder. ..." />
+            <marker date="1476085303000" expanded="true" signature="4601:4689" ph="{...}" />
+            <marker date="1476085303000" expanded="true" signature="4699:4919" ph=" Delete Project Folder ..." />
+            <marker date="1476085303000" expanded="true" signature="5002:5211" ph="{...}" />
+            <marker date="1476085303000" expanded="true" signature="5220:5407" ph=" Create a new File within Project Folder. ..." />
+            <marker date="1476085303000" expanded="true" signature="5521:5710" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/DevSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="102" column="19" lean-forward="true" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>

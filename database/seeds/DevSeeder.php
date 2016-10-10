@@ -108,17 +108,6 @@ class DevSeeder extends Seeder
     }
 
     /**
-<<<<<<< HEAD
-     * Seed Dev project.
-     *
-     * @return $this
-     */
-    protected function seedProject()
-    {
-        $this->user->projects()->create([
-            'name' => 'Palu'
-        ]);
-=======
      * Create Project
      *
      * @return $this
@@ -130,7 +119,6 @@ class DevSeeder extends Seeder
             'description' => 'First IPP outside of Java.'
         ]);
 
->>>>>>> new-project
         return $this;
     }
 }
