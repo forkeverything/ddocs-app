@@ -29,7 +29,21 @@
                         <div class="actions">
                             <ul class="list-unstyled">
                                 <li><h5>Request</h5></li>
-                                <li><a class="btn btn-primary btn-sm" :disabled="attached" data-toggle="tooltip" data-placement="right" title="link file request"><i class="fa fa-link"></i>Attach</a></li>
+                                <li class="dropdown fr-search-dropdown">
+                                    <a class="btn btn-primary btn-sm"
+                                       :disabled="attached"
+                                       data-toggle="dropdown"
+                                       aria-haspopup="true"
+                                       aria-expanded="false"
+                                    >
+                                        <i class="fa fa-link"></i>Attach
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <h4>File Request Search</h4>
+                                        <p class="text-muted small">Find by file name, recipient email or checklist name.</p>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </li>
                                 <li><a class="btn btn-primary btn-sm" :disabled="! attached"><i class="fa fa-list"></i>Checklist</a></li>
                                 <li><h5>Project</h5></li>
                                 <li><a class="btn btn-primary btn-sm"><i class="fa fa-upload" data-toggle="tooltip" data-placement="right" title="Add internal file"></i>Upload</a></li>
