@@ -130,9 +130,11 @@ class FileRequestsRepository extends EloquentRepository
             $q->select(DB::raw(1))
               ->from('checklists')
               ->join('recipients', 'recipients.checklist_id', '=', 'checklists.id')
-              ->whereRaw('file_requests.checklist_id = checklists.id')              // Only interested in checklists that our current set of FileRequests belong to
-              ->where('checklists.name', 'LIKE', "%{$searchTerm}%")
-              ->orWhere('recipients.email', 'LIKE', "%{$searchTerm}%");
+              ->whereRaw('file_requests.checklist_id = checklists.id')// Only interested in checklists that our current set of FileRequests belong to
+              ->where(function ($sq) use ($searchTerm) {
+                    $sq->where('checklists.name', 'LIKE', "%{$searchTerm}%")
+                       ->orWhere('recipients.email', 'LIKE', "%{$searchTerm}%");
+                });
         });
 
         return $this;

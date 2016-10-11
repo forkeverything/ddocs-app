@@ -22,7 +22,7 @@
                    @keyup="searchFileRequest($event)"
                    v-model="search"
             >
-            <div class="file_requests">
+            <div class="file-requests">
                 <ul v-if="fileRequests"
                     id="list-attach-fr"
                     class="list-unstyled"
@@ -95,6 +95,7 @@
             fetchFileRequests: _.throttle(function (search) {
                 this.$http.get(`/api/file_requests/user?search=${search}`, {
                     before(xhr) {
+                        if(! this) return;
                         if (this.request) RequestsMonitor.abortRequest(this.request);
                         this.request = xhr;
                         RequestsMonitor.pushOntoQueue(xhr);

@@ -9737,6 +9737,8 @@ label {
       @media screen and (min-width: 768px) {
         #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu {
           width: 450px; } }
+      #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests {
+        padding: 15px; }
 
 .comments-thread {
   padding: 0 10px;

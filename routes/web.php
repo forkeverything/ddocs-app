@@ -11,6 +11,7 @@
 |
 */
 
+
 // Authentication
 Route::post('/login', 'Auth\LoginController@login');
 Route::post('/refresh_token', 'Auth\Logincontroller@refreshToken');
