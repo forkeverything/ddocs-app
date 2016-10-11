@@ -1,9 +1,8 @@
 /**
  * Client Side Authenticator
  * Handles all authentication methods and properties.
- *
- * @type {{_redirectPath: string, _refreshAuthToken: (()), _checkAuthentication: ((request?, response?)), _redirectToLogin: (()), _getRefreshToken: (()), _storeRefreshToken: ((token?)), _removeRefreshToken: (()), _getAuthToken: (()), _storeAuthToken: ((token?)), _removeAuthToken: (()), _setHeaders: ((token)), _unsetHeaders: (()), _goRedirectPath: (()), _pushResourceInterceptor: (()), _fetchAuthenticatedUser: (()), _unsetAuthenticatedUser: (()), _revertToGuest: (()), setup: (()), check: (()), login: ((response)), logout: (())}}
  */
+
 
 module.exports = {
 
