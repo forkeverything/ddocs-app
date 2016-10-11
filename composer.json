@@ -54,8 +54,6 @@
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan ide-helper:generate",
             "php artisan ide-helper:meta",
-            "echo 'hi'",
-            "php artisan ide-helper:models -W",
             "php artisan optimize"
         ]
     },
