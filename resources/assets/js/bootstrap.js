@@ -1,57 +1,36 @@
-/**
- * Loooooooooooooodash
- */
+// Loooooooooooooodash
 window._ = require('lodash');
 
 // JS Helpers (utility functions)
 require('./helpers.js');
 
-/**
- * Handling cookies using JS
- */
-
+// Handling cookies using JS
 window.Cookies = require('js-cookie');
 
-/**
- * jQuery and Bootstrap.js
- */
-
+// jQuery and Bootstrap.js
 window.$ = window.jQuery = require('jquery');
 require('bootstrap-sass');
 
-/**
- * Vue instance and Vue Resource
- */
-
+// Vue instance and Vue Resource
 window.Vue = require('vue/dist/vue.js');
 require('vue-resource');
 
-/**
- * Vuex
- */
-
+// Vuex
 import store from './store';
 window.store = store;
 
-/**
- * Requests Monitor
- */
-
+// Requests Monitor
 window.RequestsMonitor = require('./requests-monitor.js');
 RequestsMonitor.setup();
 
 
-/**
- * Vue Router
- */
-
+// Vue router
 window.router = require('./router.js');
 
 /**
  * Auth Helper - Contains properties and methods for handling
  * front-end authentication.
  */
-
 window.Authenticator = require('./authenticator.js');
 Authenticator.setup();
 

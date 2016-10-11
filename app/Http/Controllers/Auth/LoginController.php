@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Auth\HandleRefreshToken;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use JWTAuth;
 
 class LoginController extends Controller
 {
@@ -108,7 +109,7 @@ class LoginController extends Controller
     {
         $errorBag = [];
 
-        $validEmail = !!\App\User::where('email', $request->email)->first();
+        $validEmail = !!User::where('email', $request->email)->first();
 
         if (!$validEmail) {
             $errorBag = [

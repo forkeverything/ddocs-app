@@ -182,6 +182,7 @@ return [
         Vinkla\Hashids\HashidsServiceProvider::class,
         Laravel\Cashier\CashierServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         // Custom Providers
         \App\Providers\ChecklistServiceProvider::class

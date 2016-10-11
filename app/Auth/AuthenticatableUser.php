@@ -17,6 +17,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject as JWTAuthContract;
  * a JWTSubject Contract and methods to handle authentication using JWT.
  *
  * @package App
+ * @mixin \Eloquent
  */
 
 class AuthenticatableUser extends Model implements

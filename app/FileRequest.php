@@ -5,6 +5,35 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\FileRequest
+ *
+ * @property integer $id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon $due
+ * @property string $version
+ * @property string $status
+ * @property integer $checklist_id
+ * @property integer $file_id
+ * @property-read mixed $name
+ * @property-read mixed $latest_upload
+ * @property-read mixed $hash
+ * @property-read \App\Checklist $checklist
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
+ * @property-read \App\File $file
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Note[] $notes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
+ * @method static \Illuminate\Database\Query\Builder|\App\FileRequest whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\FileRequest whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\FileRequest whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\FileRequest whereDue($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\FileRequest whereVersion($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\FileRequest whereStatus($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\FileRequest whereChecklistId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\FileRequest whereFileId($value)
+ * @mixin \Eloquent
+ */
 class FileRequest extends Model
 {
     /**

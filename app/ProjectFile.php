@@ -4,6 +4,31 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\ProjectFile
+ *
+ * @property integer $id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $name
+ * @property string $description
+ * @property integer $position
+ * @property integer $project_folder_id
+ * @property integer $file_request_id
+ * @property-read \App\ProjectFolder $folder
+ * @property-read \App\FileRequest $fileRequest
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Comment[] $comments
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Upload[] $uploads
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile wherePosition($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereProjectFolderId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereFileRequestId($value)
+ * @mixin \Eloquent
+ */
 class ProjectFile extends Model
 {
 

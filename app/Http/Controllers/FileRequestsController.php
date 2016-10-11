@@ -11,12 +11,13 @@ use App\Http\Requests\RejectFileRequest;
 use App\Http\Requests\UploadFileRequest;
 use App\Jobs\CheckIfChecklistComplete;
 use App\Repositories\FileRequestsRepository;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Storage;
+use Auth;
+use Event;
+use Storage;
+
 
 class FileRequestsController extends Controller
 {
@@ -111,7 +112,7 @@ class FileRequestsController extends Controller
      * Delete FileRequest
      *
      * @param $fileRequestHash
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     * @return Model
      */
     public function deleteFiles($fileRequestHash)
     {
@@ -135,7 +136,7 @@ class FileRequestsController extends Controller
         return FileRequestsRepository::forUser(Auth::user())
                                      ->searchFor($search)
                                      ->searchChecklistNamesAndRecipientEmails($search)
-                                     ->with('checklist.recipients')
+                                     ->with('checklist')
                                      ->get();
     }
 

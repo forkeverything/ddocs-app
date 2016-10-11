@@ -5,9 +5,31 @@ namespace App;
 use App\Events\RecipientClaimedInvitation;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Event;
+use DB;
+use Event;
 
+/**
+ * App\Checklist
+ *
+ * @property integer $id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $name
+ * @property string $description
+ * @property integer $user_id
+ * @property-read mixed $meta
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\FileRequest[] $requestedFiles
+ * @property-read \App\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Recipient[] $recipients
+ * @property-read mixed $hash
+ * @method static \Illuminate\Database\Query\Builder|\App\Checklist whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Checklist whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Checklist whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Checklist whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Checklist whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Checklist whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Checklist extends Model
 {
     /**

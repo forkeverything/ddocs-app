@@ -4,6 +4,26 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\File
+ *
+ * @property integer $id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $name
+ * @property string $description
+ * @property integer $user_id
+ * @property-read mixed $file_name
+ * @property-read \App\FileRequest $fileRequest
+ * @property-read \App\User $user
+ * @method static \Illuminate\Database\Query\Builder|\App\File whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\File whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\File whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\File whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\File whereDescription($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\File whereUserId($value)
+ * @mixin \Eloquent
+ */
 class File extends Model
 {
 

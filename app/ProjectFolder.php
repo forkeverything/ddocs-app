@@ -4,6 +4,25 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\ProjectFolder
+ *
+ * @property integer $id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $name
+ * @property integer $position
+ * @property integer $project_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\ProjectFile[] $files
+ * @property-read \App\Project $project
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFolder whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFolder whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFolder whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFolder whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFolder wherePosition($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFolder whereProjectId($value)
+ * @mixin \Eloquent
+ */
 class ProjectFolder extends Model
 {
 

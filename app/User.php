@@ -10,6 +10,45 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Event;
 use Laravel\Cashier\Billable;
 
+/**
+ * App\User
+ *
+ * @property integer $id
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ * @property string $remember_token
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $refresh_token
+ * @property integer $refresh_token_expiry
+ * @property integer $credits
+ * @property string $stripe_id
+ * @property string $card_brand
+ * @property string $card_last_four
+ * @property string $trial_ends_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Checklist[] $checklists
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\File[] $files
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Project[] $projects
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $unreadNotifications
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Cashier\Subscription[] $subscriptions
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereEmail($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User wherePassword($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereRefreshToken($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereRefreshTokenExpiry($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereCredits($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereStripeId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereCardBrand($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereCardLastFour($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereTrialEndsAt($value)
+ * @mixin \Eloquent
+ */
 class User extends AuthenticatableUser
 {
     use Notifiable, Billable;

@@ -7,6 +7,24 @@ use App\Exceptions\InvalidCouponCode;
 use App\Exceptions\RanOutOfCoupon;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Coupon
+ *
+ * @property integer $id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property string $code
+ * @property integer $credits
+ * @property integer $quantity
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $claimers
+ * @method static \Illuminate\Database\Query\Builder|\App\Coupon whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Coupon whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Coupon whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Coupon whereCode($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Coupon whereCredits($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Coupon whereQuantity($value)
+ * @mixin \Eloquent
+ */
 class Coupon extends Model
 {
     /**
