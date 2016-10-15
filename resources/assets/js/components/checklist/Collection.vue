@@ -20,9 +20,9 @@
                            type="text"
                            placeholder="Search..."
                            @keyup="searchTerm"
-                           v-model="params.search"
+                           v-model="repoSearch"
                            :class="{
-                                    'active': params.search && params.search.length > 0
+                                    'active': repoSearch && repoSearch.length > 0
                                }"
                     >
                 </div>
@@ -76,7 +76,7 @@
                 hasFilters: false,
                 requestUrl: "api/checklists",
                 sortField: '',
-                container: 'list-checklists',
+                container: 'list-checklists'
             }
         },
         computed: {
@@ -85,14 +85,11 @@
             }
         },
         methods: {
-            scrollList: _.throttle(function (event) {
-                let el = document.getElementById('list-checklists');
-                if ($(el).innerHeight() + $(el).scrollTop() >= (el.scrollHeight - 100)) this.fetchNextPage();
-            }, 100)
+
         },
         mixins: [fetchesFromEloquentRepository],
         mounted() {
-            this.$nextTick(this.scrollList);
+
         }
     };
 </script>

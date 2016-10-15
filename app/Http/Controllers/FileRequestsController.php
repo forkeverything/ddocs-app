@@ -137,7 +137,7 @@ class FileRequestsController extends Controller
                                      ->searchFor($search)
                                      ->searchChecklistNamesAndRecipientEmails($search)
                                      ->with('checklist')
-                                     ->get();
+            ->paginate(6);
     }
 
 

@@ -17,17 +17,26 @@
         <div class="dropdown-menu dropdown-menu-right">
             <h4>Attach File Request</h4>
             <p>Link an existing file request from a checklist to share with team members.</p>
-            <input type="text" class="form-control"
+            <input id="input-search-attach-fr"
+                   class="form-control input-search"
+                   type="text"
                    placeholder="Search..."
-                   @keyup="searchFileRequest($event)"
-                   v-model="search"
+                   @keyup="searchTerm"
+                   v-model="repoSearch"
+                   :class="{
+                                    'active': repoSearch && repoSearch.length > 0
+                               }"
             >
-            <div class="file-requests">
+            <div class="file-requests"
+                 id="attachable-file-requests"
+                 ref="results-container"
+                 @scroll="scrollList"
+            >
                 <ul v-if="fileRequests"
                     id="list-attach-fr"
                     class="list-unstyled"
                 >
-                    <li v-for="fileRequest in fileRequests">
+                    <li class="single-file-request" v-for="fileRequest in fileRequests">
                         <div class="file-name">
                             {{ fileRequest.name }}
                         </div>
@@ -41,28 +50,26 @@
                         </div>
                     </li>
                 </ul>
-                <div v-if="! fileRequests"
-                     class="empty"
-                >
-                    <p class="text-center">
-                        <i class="fa fa-search"></i> No file requests found.
-                        <br>
-                        Search by file name, recipient email or checklist name.
-                    </p>
-                </div>
+                <p v-if="! fileRequests"
+                   class="empty-placeholder text-center">
+                    <i class="fa fa-search"></i> No file requests found.
+                    <br>
+                    <span class="description">Search by file name, recipient email or checklist name.</span>
+                </p>
             </div>
         </div>
     </li>
 </template>
 <script>
-    import RequestsMonitor from "../../requests-monitor";
+    import FetchesFromEloquentRepository from "../../mixins/fetchesFromEloquentRepository";
     export default {
         data: function () {
             return {
+                hasFilters: false,
+                requestUrl: '/api/file_requests/user',
                 show: false,
-                request: '',
-                response: '',
-                search: ''
+                container: 'attachable-file-requests',
+                urlHistory: false,
             }
         },
         computed: {
@@ -79,38 +86,22 @@
         watch: {
             file(newFile) {
                 // Find FileRequest(s) with the same name...
-                if (newFile) this.fetchFileRequests(newFile.name);
+                if (newFile) {
+                    this.show = false;
+                    this.repoSearch = newFile.name;
+                    this.searchTerm();
+                }
             }
         },
         methods: {
             toggleDropdown(){
                 if (this.attached) return;
                 this.show = !this.show;
-            },
-            searchFileRequest(event) {
-                // If no character and not backspace - do nothing...
-                if (event.key.length !== 1 && event.key !== "Backspace") return;
-                this.fetchFileRequests(this.search);
-            },
-            fetchFileRequests: _.throttle(function (search) {
-                this.$http.get(`/api/file_requests/user?search=${search}`, {
-                    before(xhr) {
-                        if(! this) return;
-                        if (this.request) RequestsMonitor.abortRequest(this.request);
-                        this.request = xhr;
-                        RequestsMonitor.pushOntoQueue(xhr);
-                    }
-                }).then((response) => {
-                    // success
-                    this.response = response.json();
-                }, (response) => {
-                    // error
-                    console.log('Error fetching from: /api/file_requests/user');
-                });
-            }, 250)
+            }
         },
         mounted(){
 
-        }
+        },
+        mixins: [FetchesFromEloquentRepository]
     }
 </script>

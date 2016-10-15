@@ -9723,12 +9723,12 @@ label {
       @media screen and (min-width: 768px) {
         #project-file-modal .modal-body .main .actions {
           display: block; } }
-      #project-file-modal .modal-body .main .actions ul li:not(:last-child) {
+      #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li:not(:last-child) {
         margin-bottom: 5px; }
-      #project-file-modal .modal-body .main .actions ul li .btn {
+      #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn {
         text-align: left;
         width: 100%; }
-        #project-file-modal .modal-body .main .actions ul li .btn i {
+        #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn i {
           width: 20px;
           margin-right: 3px; }
     #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu {
@@ -9737,8 +9737,30 @@ label {
       @media screen and (min-width: 768px) {
         #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu {
           width: 450px; } }
+      #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu #input-search-attach-fr {
+        margin: 0 0 10px; }
       #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests {
-        padding: 15px; }
+        border: 1px solid #e6e6e6;
+        max-height: 223px;
+        overflow-y: scroll;
+        overflow-x: hidden; }
+        #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests .single-file-request {
+          padding: 5px 10px;
+          border-bottom: 1px solid #e6e6e6; }
+          #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests .single-file-request:hover {
+            background: #F7F7F7; }
+          #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests .single-file-request .file-name {
+            margin: 0 0 5px; }
+          #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests .single-file-request .checklist {
+            font-size: 0.8em; }
+            #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests .single-file-request .checklist .recipients {
+              margin-right: 5px; }
+      #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .empty-placeholder {
+        margin: 0;
+        padding: 15px 10px;
+        color: #9CA1A8; }
+        #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .empty-placeholder .description {
+          font-size: 0.8em; }
 
 .comments-thread {
   padding: 0 10px;

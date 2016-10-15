@@ -39,7 +39,12 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest', [
+            'except' => [
+                'refreshToken',
+                'logout'
+            ]
+        ]);
     }
 
 
@@ -138,7 +143,7 @@ class LoginController extends Controller
     {
         if ($user = $this->validateRefreshToken($request->refresh_token)) ($this->removeRefreshToken($user));
         try {
-            if(JWTAuth::parseToken()->authenticate()) $this->guard()->logout();
+            if (JWTAuth::parseToken()->authenticate()) $this->guard()->logout();
         } catch (\Exception $e) {
             // Don't do anything! No need to let client know the auth token is invalid because
             // they're trying to log out.

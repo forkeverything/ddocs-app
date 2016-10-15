@@ -46,9 +46,9 @@
                                        type="text"
                                        placeholder="Search"
                                        @keyup="searchTerm"
-                                       v-model="params.search"
+                                       v-model="repoSearch"
                                        :class="{
-                                            'active': params.search && params.search.length > 0
+                                            'active': repoSearch && repoSearch.length > 0
                                        }"
                                 >
                             </div>
@@ -275,10 +275,6 @@
                 $(element).css('opacity', 1);
                 this.singleView = (element.clientWidth <= 767);
             },
-            scrollList: _.throttle(function (event) {
-                let el = document.getElementById('files-list');
-                if ($(el).innerHeight() + $(el).scrollTop() >= (el.scrollHeight - 100)) this.fetchNextPage();
-            }, 100),
             addChecklistNameToUrl(){
                 let checklistName = this.checklist.name.replace(/\s+/g, '-').toLowerCase();
                     // build query string from router prop
@@ -316,8 +312,6 @@
                 let sensor = new ResizeSensor(element, () => {
                     this.setSplitView(element)
                 });
-                // Check if we need to fetch more data for inf. load
-                this.scrollList();
             });
 
         }

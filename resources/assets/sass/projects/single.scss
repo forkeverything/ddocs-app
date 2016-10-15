@@ -295,9 +295,8 @@
           display: block;
         }
 
-        ul {
-          li {
-
+        #list-pf-modal-actions {
+          > li {
             &:not(:last-child) {
               margin-bottom: 5px;
             }
@@ -324,8 +323,44 @@
             width: 450px;
           }
 
+          #input-search-attach-fr {
+            margin: 0 0 10px;
+          }
+
           .file-requests {
-            padding: 15px;
+            border: 1px solid $laravel-border-color;
+            max-height: 223px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+
+            .single-file-request {
+              padding: 5px 10px;
+              border-bottom: 1px solid $laravel-border-color;
+
+              &:hover {
+                background: $extra-light-grey;
+              }
+
+              .file-name {
+                margin: 0 0 5px;
+              }
+              .checklist {
+                font-size: 0.8em;
+                .recipients {
+                  margin-right: 5px;
+                }
+              }
+            }
+          }
+
+          .empty-placeholder {
+            margin: 0;
+            padding: 15px 10px;
+            color: $text-muted;
+
+            .description {
+              font-size: 0.8em;
+            }
           }
         }
       }

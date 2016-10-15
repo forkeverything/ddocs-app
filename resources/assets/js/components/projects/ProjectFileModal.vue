@@ -27,7 +27,7 @@
                             <pfm-project-view :file="file"></pfm-project-view>
                         </div>
                         <div class="actions">
-                            <ul class="list-unstyled">
+                            <ul id="list-pf-modal-actions" class="list-unstyled">
                                 <li><h5>Request</h5></li>
                                 <attach-fr-dropdown :file="file"></attach-fr-dropdown>
                                 <li><a class="btn btn-primary btn-sm" :disabled="! attached"><i class="fa fa-list"></i>Checklist</a></li>

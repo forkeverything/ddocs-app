@@ -3,9 +3,12 @@ module.exports = {
     data: function () {
         return {
             ajaxReady: true,
+            repoSearch: '',
             request: '',
             response: {},
-            showFiltersDropdown: false
+            showFiltersDropdown: false,
+            urlHistory: true,
+            infScroll: true
         };
     },
     computed: {
@@ -40,7 +43,7 @@ module.exports = {
                 // update data
                 this.response = response.json();
                 // push state (if query is different from url)
-                pushStateIfDiffQuery(query);
+                if(this.urlHistory) pushStateIfDiffQuery(query);
                 // scroll top
                 if (this.container) {
                     document.getElementById(this.container).scrollTop = 0;
@@ -68,7 +71,7 @@ module.exports = {
             }
         },
         searchTerm: _.throttle(function () {
-            let term = this.params.search || null;
+            let term = this.repoSearch || null;
             this.fetchResults(updateQueryString({
                 search: term,
                 page: 1
@@ -124,14 +127,17 @@ module.exports = {
                 console.log(response);
             })
         },
-        infLoadNextPage() {
-        }
+        scrollList: _.throttle(function (event) {
+            let el = document.getElementById(this.container);
+            if ($(el).innerHeight() + $(el).scrollTop() >= (el.scrollHeight - 100)) this.fetchNextPage();
+        }, 1000)
     },
     created(){
         this.checkSetup();
     },
     mounted() {
         this.fetchResults();
-        onPopCallFunction(this.fetchResults);
+        if(this.urlHistory) onPopCallFunction(this.fetchResults);
+        if(this.infScroll) this.$nextTick(this.scrollList);
     }
 };
