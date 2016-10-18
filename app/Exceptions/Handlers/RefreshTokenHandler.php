@@ -3,7 +3,6 @@
 
 namespace App\Exceptions\Handlers;
 
-
 trait RefreshTokenHandler
 {
     protected function handleRefreshTokenInvalid()

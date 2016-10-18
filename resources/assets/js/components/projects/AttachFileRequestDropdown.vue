@@ -36,7 +36,10 @@
                     id="list-attach-fr"
                     class="list-unstyled"
                 >
-                    <li class="single-file-request" v-for="fileRequest in fileRequests">
+                    <li v-for="fileRequest in fileRequests"
+                        class="single-file-request clickable"
+                        @click="attachFileRequest(fileRequest.hash)"
+                    >
                         <div class="file-name">
                             {{ fileRequest.name }}
                         </div>
@@ -65,6 +68,7 @@
     export default {
         data: function () {
             return {
+                ajaxReady: true,
                 hasFilters: false,
                 requestUrl: '/api/file_requests/user',
                 show: false,
@@ -74,7 +78,7 @@
         },
         computed: {
             attached(){
-                return this.file.file_request_id
+                return this.file.file_request;
             },
             fileRequests() {
                 let data = this.response.data;
@@ -82,7 +86,7 @@
                 return data;
             }
         },
-        props: ['file'],
+        props: ['project-id', 'file'],
         watch: {
             file(newFile) {
                 // Find FileRequest(s) with the same name...
@@ -97,6 +101,26 @@
             toggleDropdown(){
                 if (this.attached) return;
                 this.show = !this.show;
+            },
+            attachFileRequest(fileRequestHash){
+                if(!this.ajaxReady) return;
+                this.ajaxReady = false;
+
+                this.$http.post(`/api/projects/${ this.projectId }/attach_fr`, {
+                    'project_file_id': this.file.id,
+                    'file_request_hash': fileRequestHash
+                }, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
+                }).then((response) => {
+                    // success
+                    this.ajaxReady = true;
+                },(response) => {
+                    // error
+                    console.log("error posting to: `/projects/${ this.file.project_id }/attach`");
+                    this.ajaxReady = true;
+                });
             }
         },
         mounted(){

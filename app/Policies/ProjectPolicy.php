@@ -46,6 +46,8 @@ class ProjectPolicy
      */
     public function update(User $user, Project $project)
     {
+        // TODO ::: Make updateable by team.
+
         return $project->user_id === $user->id;
     }
 
@@ -75,6 +77,20 @@ class ProjectPolicy
     public function updateFile(User $user, Project $project, ProjectFile $projectFile)
     {
         return $this->update($user, $project) && $projectFile->folder->project_id === $project->id;
+    }
+
+    /**
+     * Allowed to add a ProjectFile if we're allowed to make updates to the ProjectFolder
+     * and parent Project.
+     *
+     * @param User $user
+     * @param Project $project
+     * @param ProjectFolder $projectFolder
+     * @return bool
+     */
+    public function addFile(User $user, Project $project, ProjectFolder $projectFolder)
+    {
+        return $this->updateFolder($user, $project, $projectFolder);
     }
 
 }

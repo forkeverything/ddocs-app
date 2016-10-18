@@ -37,6 +37,15 @@ use Illuminate\Database\Eloquent\Model;
 class FileRequest extends Model
 {
     /**
+     * Hidden attributes.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'id'
+    ];
+
+    /**
      * Assignable fields.
      *
      * @var array
@@ -70,6 +79,16 @@ class FileRequest extends Model
     ];
 
     /**
+     * Try to find a FileRequest by hash.
+     *
+     * @param $hash
+     * @return \Illuminate\Database\Eloquent\Collection|Model
+     */
+    public static function findByHash($hash) {
+        return static::findOrFail(unhashId('file-request', $hash));
+    }
+
+    /**
      * Get the name from the File.
      *
      * @return mixed
@@ -79,10 +98,14 @@ class FileRequest extends Model
         return $this->file->name;
     }
 
+    /**
+     * The last uploaded file.
+     *
+     * @return mixed
+     */
     public function getLatestUploadAttribute()
     {
         return $this->uploads()->orderBy('created_at', 'desc')->get()->first();
-
     }
 
     /**

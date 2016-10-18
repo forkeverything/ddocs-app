@@ -41,6 +41,24 @@ class ProjectFile extends Model
     ];
 
     /**
+     * Hidden attributes.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'file_request_id'       // Since we're using the hash val to attach
+    ];
+
+    /**
+     * Always eager-loaded relations.
+     *
+     * @var array
+     */
+    protected $with = [
+        'fileRequest'       // If one's attached we'll want to include it
+    ];
+
+    /**
      * The folder that the file is in.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

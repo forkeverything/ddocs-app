@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use App\Coupon;
 use App\Events\UserHasRunOutOfCredits;
 use App\Exceptions\Handlers\AuthenticationHandler;
+use App\Exceptions\Handlers\AuthorizationHandler;
 use App\Exceptions\Handlers\CouponHandlers;
 use App\Exceptions\Handlers\JWTHandler;
 use App\Exceptions\Handlers\RefreshTokenHandler;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Event;
 class Handler extends ExceptionHandler
 {
     // Traits that hold our handle methods.
-    use CouponHandlers, UserHandlers, AuthenticationHandler, JWTHandler, RefreshTokenHandler;
+    use CouponHandlers, UserHandlers, AuthenticationHandler, JWTHandler, RefreshTokenHandler, AuthorizationHandler;
 
     /**
      * A list of the exception types that should not be reported.

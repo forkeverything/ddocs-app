@@ -31,7 +31,7 @@ class FileRequestsController extends Controller
      */
     public function postUploadFile($fileRequestHash, UploadFileRequest $request)
     {
-        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
+        $fileRequest = FileRequest::findByHash($fileRequestHash);
         // If user is logged in - make sure they are the recipient
 //        if(Auth::check()) $this->authorize('upload', $file);
 
@@ -57,13 +57,13 @@ class FileRequestsController extends Controller
      *
      * @param $fileRequestHash
      * @param RejectFileRequest $request
-     * @return FileRequest
+     * @return Model
      */
     public function postRejectUploadedFile($fileRequestHash, RejectFileRequest $request)
     {
-        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash))
+        $fileRequest = FileRequest::findByHash($fileRequestHash)
                                   ->reject($request->reason);
-        if (!Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
+        $this->authorize('update', $fileRequest);
         Event::fire(new FileWasRejected($fileRequest));
         return $fileRequest;
     }
@@ -76,7 +76,7 @@ class FileRequestsController extends Controller
      */
     public function getHistory($fileRequestHash)
     {
-        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash))->load('checklist', 'uploads');
+        $fileRequest = FileRequest::findByHash($fileRequestHash)->load('checklist', 'uploads');
         return view('file.history', compact('fileRequest'));
     }
 
@@ -89,7 +89,7 @@ class FileRequestsController extends Controller
      */
     public function getNotes($fileRequestHash)
     {
-        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash))->load('checklist', 'uploads');
+        $fileRequest = FileRequest::findByHash($fileRequestHash)->load('checklist', 'uploads');
         return $fileRequest->notes()->orderBy('position', 'ASC')->get();
     }
 
@@ -102,8 +102,8 @@ class FileRequestsController extends Controller
      */
     public function putModifyRequest($fileRequestHash, Request $request)
     {
-        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
-        if (!Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
+        $fileRequest = FileRequest::findByHash($fileRequestHash);
+        $this->authorize('update', $fileRequest);
         $fileRequest->update($request->all());
         return $fileRequest;
     }
@@ -116,8 +116,8 @@ class FileRequestsController extends Controller
      */
     public function deleteFiles($fileRequestHash)
     {
-        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
-        if (!Auth::user()->can('update', $fileRequest)) return response("File Request does not belong to user.", 403);
+        $fileRequest = FileRequest::findByHash($fileRequestHash);
+        $this->authorize('update', $fileRequest);
         $uploadPaths = $fileRequest->uploads->pluck('path')->toArray();
         if (Storage::delete($uploadPaths)) $fileRequest->delete();
         return $fileRequest;
@@ -137,7 +137,7 @@ class FileRequestsController extends Controller
                                      ->searchFor($search)
                                      ->searchChecklistNamesAndRecipientEmails($search)
                                      ->with('checklist')
-            ->paginate(6);
+                                     ->paginate(6);
     }
 
 

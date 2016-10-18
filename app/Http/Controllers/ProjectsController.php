@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FileRequest;
 use App\Http\Requests\AddProjectFileRequest;
 use App\Http\Requests\CreateProjectFolderRequest;
 use App\Http\Requests\SaveProjectRequest;
@@ -27,12 +28,12 @@ class ProjectsController extends Controller
 
         $this->middleware('can:update,project', [
             'only' => [
+                'postCreateFolder',
+                'postAddFile',
                 'putUpdateItems',
                 'delete',
-                'postCreateFolder',
                 'deleteFolder',
-                'postAddFile',
-                'postAddComment'
+                'postAttachFileRequest',
             ]
         ]);
     }
@@ -117,18 +118,16 @@ class ProjectsController extends Controller
 
         if ($updatedFolders = $updatedModels['folders']) {
             foreach ($updatedFolders as $id => $updatedFolder) {
-                if ($id !== $updatedFolder['id']) abort(403, "Tried to update a different folder");
                 $projectFolder = ProjectFolder::find($id);
-                if(! Gate::allows('updateFolder', [$project, $projectFolder])) abort(403, "Folder doesn't belong to Project");
+                $this->authorize('updateFolder', [$project, $projectFolder]);
                 $projectFolder->update($updatedFolder);
             }
         }
 
         if ($updatedFiles = $updatedModels['files']) {
             foreach ($updatedFiles as $id => $updatedFile) {
-                if ($id !== $updatedFile['id']) abort(403, "Tried to update a different file");
                 $projectFile = ProjectFile::find($id);
-                if(! Gate::allows('updateFile', [$project, $projectFile])) abort(403, "File doesn't belong to Project");
+                $this->authorize('updateFile', [$project, $projectFile]);
                 $projectFile->update($updatedFile);
             }
         }
@@ -170,7 +169,7 @@ class ProjectsController extends Controller
      */
     public function deleteFolder(Project $project, ProjectFolder $projectFolder)
     {
-        if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
+        $this->authorize('updateFolder', [$project, $projectFolder]);
         $projectFolder->delete();
         return response("Deleted project folder");
     }
@@ -185,7 +184,28 @@ class ProjectsController extends Controller
      */
     public function postAddFile(Project $project, ProjectFolder $projectFolder, AddProjectFileRequest $request)
     {
-        if ($projectFolder->project_id !== $project->id) abort(403, "Folder does not belong to right project");
+        $this->authorize('addFile', [$project, $projectFolder]);
         return $projectFolder->files()->create($request->all());
+    }
+
+    /**
+     * Attaches a FileRequest to a ProjectFile.
+     *
+     * @param Project $project
+     * @param Request $request
+     * @return Model
+     */
+    public function postAttachFileRequest(Project $project, Request $request)
+    {
+        $projectFile = ProjectFile::find($request->project_file_id);
+        $this->authorize('updateFile', [$project, $projectFile]);
+        $fileRequest = FileRequest::findByHash($request->file_request_hash);
+        $this->authorize('update', $fileRequest);
+
+        $projectFile->update([
+            'file_request_id' => $fileRequest->id
+        ]);
+
+        return $projectFile->load('fileRequest');
     }
 }

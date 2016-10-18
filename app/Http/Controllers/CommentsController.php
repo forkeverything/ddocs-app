@@ -24,7 +24,7 @@ class CommentsController extends Controller
      */
     public function getProjectFile(ProjectFile $projectFile)
     {
-        if (!Auth::user()->can('view', $projectFile->folder->project)) abort("Not authorized to view that project file");
+        $this->authorize('view', $projectFile->folder->project);
         return $projectFile->comments;
     }
 
@@ -49,8 +49,7 @@ class CommentsController extends Controller
      */
     public function postNewProjectFile(ProjectFile $projectFile, AddCommentRequest $request)
     {
-        if (!Gate::allows('updateFile', [$projectFile->folder->project, $projectFile])) abort(403, "Not authorized to add comment to that project file.");
-
+        $this->authorize('updateFile', [$projectFile->folder->project, $projectFile]);
         return Comment::addComment($projectFile->id, 'App\\ProjectFile', $request->body, Auth::id())
                            ->load('sender');
     }

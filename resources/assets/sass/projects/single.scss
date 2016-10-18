@@ -330,8 +330,7 @@
           .file-requests {
             border: 1px solid $laravel-border-color;
             max-height: 223px;
-            overflow-y: scroll;
-            overflow-x: hidden;
+            overflow: auto;
 
             .single-file-request {
               padding: 5px 10px;

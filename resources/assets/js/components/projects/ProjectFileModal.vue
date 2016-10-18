@@ -29,7 +29,7 @@
                         <div class="actions">
                             <ul id="list-pf-modal-actions" class="list-unstyled">
                                 <li><h5>Request</h5></li>
-                                <attach-fr-dropdown :file="file"></attach-fr-dropdown>
+                                <attach-fr-dropdown :project-id="projectId" :file="file"></attach-fr-dropdown>
                                 <li><a class="btn btn-primary btn-sm" :disabled="! attached"><i class="fa fa-list"></i>Checklist</a></li>
                                 <li><h5>Project</h5></li>
                                 <li><a class="btn btn-primary btn-sm"><i class="fa fa-upload" data-toggle="tooltip" data-placement="right" title="Add internal file"></i>Upload</a></li>
