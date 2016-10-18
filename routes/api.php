@@ -42,6 +42,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('/projects/{project}/folders/{projectFolder}/files', 'ProjectsController@postAddFile');
     Route::put('/projects/{project}', 'ProjectsController@putUpdateItems');
     Route::post('/projects/{project}/attach_fr', 'ProjectsController@postAttachFileRequest');
+    Route::get('/projects/{project}/files/{projectFile}', 'ProjectsController@getProjectFile');
 
     // Comments
     Route::get('/comments/project_file/{projectFile}', 'CommentsController@getProjectFile');

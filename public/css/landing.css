@@ -8051,6 +8051,11 @@ button.close {
       text-decoration: none !important; }
       .dropdown-menu li a:hover i, .dropdown-menu li a:focus i {
         color: #fff !important; }
+      .dropdown-menu li a:hover[disabled=disabled], .dropdown-menu li a:hover.disabled, .dropdown-menu li a:focus[disabled=disabled], .dropdown-menu li a:focus.disabled {
+        color: #D2D2D2 !important;
+        background: #fff !important; }
+        .dropdown-menu li a:hover[disabled=disabled] i, .dropdown-menu li a:hover.disabled i, .dropdown-menu li a:focus[disabled=disabled] i, .dropdown-menu li a:focus.disabled i {
+          color: #D2D2D2 !important; }
 
 .datepicker {
   position: relative;
@@ -8516,6 +8521,18 @@ label {
     font-weight: normal; }
   .btn .caret {
     color: #fff; }
+  .btn.btn-text {
+    padding: 0;
+    font-weight: inherit !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    background: transparent !important;
+    outline: 0 !important;
+    box-shadow: none !important; }
+    .btn.btn-text:hover, .btn.btn-text.active {
+      color: #3498DB; }
+    .btn.btn-text.disabled, .btn.btn-text[disabled=disabled] {
+      color: inherit !important; }
 
 .panel-floating {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }

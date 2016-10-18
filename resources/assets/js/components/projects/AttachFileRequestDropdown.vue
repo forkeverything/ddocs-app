@@ -115,6 +115,7 @@
                     }
                 }).then((response) => {
                     // success
+                    this.$emit('attached-request', response.json());
                     this.ajaxReady = true;
                 },(response) => {
                     // error

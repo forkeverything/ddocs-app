@@ -41,6 +41,14 @@
         i {
           color: #fff!important;
         }
+
+        &[disabled=disabled], &.disabled {
+          color: $grey!important;
+          background: #fff!important;
+          i {
+            color: $grey!important;
+          }
+        }
       }
     }
   }

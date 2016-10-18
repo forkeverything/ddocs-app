@@ -10,9 +10,11 @@ use Vinkla\Hashids\Facades\Hashids;
  * @param Model $model
  * @return mixed
  */
-function hashId($connection, Model $model)
+function hashId($connection, $subject)
 {
-    return Hashids::connection($connection)->encode($model->id);
+    $id = $subject;
+    if($subject instanceof Model) $id = $subject->id;
+    return Hashids::connection($connection)->encode($id);
 }
 
 /**

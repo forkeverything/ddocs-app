@@ -76,7 +76,7 @@ class ProjectPolicy
      */
     public function updateFile(User $user, Project $project, ProjectFile $projectFile)
     {
-        return $this->update($user, $project) && $projectFile->folder->project_id === $project->id;
+        return $this->update($user, $project) && $this->projectFileBelongsToProject($projectFile, $project);
     }
 
     /**
@@ -93,4 +93,28 @@ class ProjectPolicy
         return $this->updateFolder($user, $project, $projectFolder);
     }
 
+    /**
+     * View a ProjectFile.
+     *
+     * @param User $user
+     * @param Project $project
+     * @param ProjectFile $projectFile
+     * @return bool
+     */
+    public function viewFile(User $user, Project $project, ProjectFile $projectFile)
+    {
+        return $this->view($user, $project) && $this->projectFileBelongsToProject($projectFile, $project);
+    }
+
+    /**
+     * Checks if ProjectFile belongs to a folder within a Project.
+     *
+     * @param ProjectFile $projectFile
+     * @param Project $project
+     * @return bool
+     */
+    protected function projectFileBelongsToProject(ProjectFile $projectFile, Project $project)
+    {
+        return $projectFile->folder->project_id === $project->id;
+    }
 }

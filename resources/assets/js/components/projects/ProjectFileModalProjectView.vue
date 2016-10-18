@@ -1,6 +1,6 @@
 <template>
-    <div class="project">
-        <span class="small text-muted">Only team members in the project can see this section.</span>
+    <div class="project-view">
+        <p class="text-muted small"><i class="fa fa-eye"></i> Team members in project</p>
         <div class="description">
             <h5>Description</h5>
             <editable-text-area v-model="file.description"

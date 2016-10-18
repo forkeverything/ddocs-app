@@ -34,6 +34,7 @@ module.exports = [
         meta: { requiresAuth: true }
     },
     {
+        name: 'checklistSingle',
         path: '/c/:checklist_hash/:checklist_name?',
         component: require('./components/checklist/Single.vue')
     },

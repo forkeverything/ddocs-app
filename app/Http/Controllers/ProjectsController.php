@@ -22,7 +22,7 @@ class ProjectsController extends Controller
     {
         $this->middleware('can:view,project', [
             'only' => [
-                'getSingleProject'
+                'getProjectFile'
             ]
         ]);
 
@@ -33,7 +33,7 @@ class ProjectsController extends Controller
                 'putUpdateItems',
                 'delete',
                 'deleteFolder',
-                'postAttachFileRequest',
+                'postAttachFileRequest'
             ]
         ]);
     }
@@ -69,6 +69,8 @@ class ProjectsController extends Controller
      */
     public function getSingleProject(Project $project)
     {
+        $this->authorize('view', $project);
+
         return $project->load([
             'folders' => function ($query) {
                 $query->orderBy('position', 'asc');
@@ -199,13 +201,27 @@ class ProjectsController extends Controller
     {
         $projectFile = ProjectFile::find($request->project_file_id);
         $this->authorize('updateFile', [$project, $projectFile]);
-        $fileRequest = FileRequest::findByHash($request->file_request_hash);
-        $this->authorize('update', $fileRequest);
 
-        $projectFile->update([
-            'file_request_id' => $fileRequest->id
-        ]);
+        if($fileRequestHash = $request->file_request_hash) {
+            // Attaching to a FileRequest
+            $fileRequest = FileRequest::findByHash($request->file_request_hash);
+            $this->authorize('update', $fileRequest);
+            $projectFile->update([
+                'file_request_id' => $fileRequest->id
+            ]);
+        } else {
+            // Detaching File Request
+            $projectFile->update([
+                'file_request_id' => null
+            ]);
+        }
 
-        return $projectFile->load('fileRequest');
+        return ProjectFile::find($projectFile->id)->loadAllRelations();
+    }
+
+    public function getProjectFile(Project $project, ProjectFile $projectFile)
+    {
+        $this->authorize('viewFile', [$project, $projectFile]);
+        return $projectFile->loadAllRelations();
     }
 }

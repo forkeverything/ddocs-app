@@ -42,7 +42,8 @@ class FileRequest extends Model
      * @var array
      */
     protected $hidden = [
-        'id'
+        'id',
+        'checklist_id'
     ];
 
     /**
@@ -75,7 +76,8 @@ class FileRequest extends Model
     protected $appends = [
         'name',
         'hash',
-        'latest_upload'
+        'latest_upload',
+        'checklist_hash'
     ];
 
     /**
@@ -106,6 +108,16 @@ class FileRequest extends Model
     public function getLatestUploadAttribute()
     {
         return $this->uploads()->orderBy('created_at', 'desc')->get()->first();
+    }
+
+    /**
+     * The hash'd checklist id.
+     *
+     * @return mixed
+     */
+    public function getChecklistHashAttribute()
+    {
+        return hashId('checklist', $this->checklist_id);
     }
 
     /**

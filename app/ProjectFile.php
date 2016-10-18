@@ -50,13 +50,16 @@ class ProjectFile extends Model
     ];
 
     /**
-     * Always eager-loaded relations.
-     *
-     * @var array
+     * Eager-loads all the relevant relationships for a ProjectFile
+     * @return $this
      */
-    protected $with = [
-        'fileRequest'       // If one's attached we'll want to include it
-    ];
+    public function loadAllRelations()
+    {
+        return $this->load(
+            'fileRequest',
+            'fileRequest.checklist.recipients'
+        );
+    }
 
     /**
      * The folder that the file is in.

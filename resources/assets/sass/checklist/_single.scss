@@ -16,72 +16,6 @@
       margin: 0;
     }
 
-    #checklist-recipients {
-      margin: 0 0 10px;
-
-      &.expandable {
-        display: flex;
-        .recipients {
-          flex: 1;
-          max-height: 43px;
-          overflow: hidden;
-          &.expanded {
-            max-height: initial;
-          }
-        }
-        .expander {
-          display: inline-block;
-        }
-      }
-
-      .recipients {
-        position: relative;
-        padding: 6px 6px 6px 0;
-
-        .span-to {
-          color: $dark-yellow;
-          position: absolute;
-          left: 0;
-          top: 0;
-          padding: 8px 6px 6px 0px;
-          font-size: 1.2em;
-        }
-
-        .recipients-list {
-          border-left: 2px solid #F0A830;
-          padding-left: 10px;
-          margin-left: 32px;
-          display: inline-block;
-          padding-top: 5px;
-          margin-bottom: 0;
-
-          li {
-            border: 1px solid $dark-yellow;
-            @include border-radius($border-radius-base);
-            padding: 0 8px;
-            margin: 0 3px 5px 3px;
-          }
-        }
-
-        &.recipients-sizer {
-          position: absolute;
-          opacity: 0;
-          z-index: -1;
-        }
-      }
-
-      .expander {
-        flex: 0 0 10px;
-        padding-top: 10px;
-        text-align: center;
-        display: none;
-        i {
-          color: $dark-yellow;
-          cursor: pointer;
-        }
-      }
-    }
-
     .menu-item {
 
       a {
@@ -186,7 +120,7 @@
         position: relative;
         z-index: 0;
         border: 1px solid $laravel-border-color;
-        overflow-y: scroll;
+        overflow-y: auto;
         padding-bottom: 15px;
 
         &.is-main {

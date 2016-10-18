@@ -24,7 +24,7 @@ module.exports = {
         },
         processNewValue() {
             if(! this.allowNull && ! this.newValue || (this.newValue === this.value) ) return this.exitEditMode();
-            this.emit('input', this.newValue);
+            this.$emit('input', this.newValue);
             this.$nextTick(() => {
                 if(this.updateFn) this.updateFn();
                 this.exitEditMode();

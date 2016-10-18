@@ -211,7 +211,7 @@
         padding: 15px;
 
         .file-name {
-          margin: 0 0 10px;
+          margin: 0 0 15px;
           display: flex;
           align-items: center;
 
@@ -224,64 +224,47 @@
 
           .name-wrap {
             flex: 1;
-            max-width: calc(100% - 45px);
-            margin-right: 30px;
+            width: 100%;
             display: inline-block;
+            margin-right: 70px;
+
+            @media screen and (min-width: $screen-sm-min) {
+              margin-right: 0;
+            }
           }
         }
 
-        .file-modal-nav {
-          margin: 10px 0 0 0;
+        .mobile-actions {
+          position: absolute;
+          top: 13px;
+          right: 40px;
+          line-height: 0;
 
-          > li {
-            &:first-child {
-              padding-left: 0;
-            }
-
-            a {
-              color: $text-color;
-
-              &:hover {
-                color: $blue;
-                text-decoration: none;
-              }
-
-              &.active {
-                color: $blue;
-              }
-
-              h4 {
-                margin: 0;
-              }
-            }
-          }
-
-          .mobile-actions {
+          @media screen and (min-width: $screen-sm-min) {
             display: none;
-            float: right;
+          }
+
+          .btn-dropdown {
+            font-size: 1.6em;
             line-height: 0;
+            position: absolute;
+            top: 10px;
+            right: 5px;
+            color: $grey;
+            text-decoration: none;
 
-            @media screen and (max-width: $screen-sm-max) {
-              display: inline-block;
-            }
-
-            .btn-dropdown {
-              font-size: 2em;
-              line-height: 0;
-              position: absolute;
-              top: 10px;
-              right: 5px;
-              color: $grey;
-
-              &:hover {
-                color: $dark-grey;
-              }
-            }
-
-            .dropdown-menu {
-              margin-top: 20px;
+            &:hover {
+              color: $dark-grey;
             }
           }
+
+          .dropdown-menu {
+            margin-top: 20px;
+          }
+        }
+
+        .nav-tabs {
+          margin: 0 0 10px;
         }
       }
 
