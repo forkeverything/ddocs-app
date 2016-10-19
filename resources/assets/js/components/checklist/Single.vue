@@ -245,6 +245,11 @@
                 return (100 * this.numReceived / this.response.total).toFixed(2);
             }
         },
+        watch: {
+          response() {
+              this.$nextTick(this.setFilesHeaderScrollbarPadding);
+          }
+        },
         mixins: [fetchesFromEloquentRepository],
         methods: {
             updateFileRequest(newFileRequestObject, index) {
@@ -312,16 +317,22 @@
                 }, (res) => {
                     console.log("error fetching checklist");
                 });
+            },
+            setFilesHeaderScrollbarPadding() {
+                let header = document.getElementById('files-header');
+                let list = document.getElementById('files-list');
+                if(header && list) header.style.paddingRight = list.offsetWidth - list.clientWidth + 'px';
             }
         },
         created() {
-
+            window.addEventListener('resize', this.setFilesHeaderScrollbarPadding)
         },
         mounted() {
             this.fetchChecklist();
+            this.$nextTick(this.setFilesHeaderScrollbarPadding);
         },
         beforeDestroy() {
-
+            window.removeEventListener('resize', this.setFilesHeaderScrollbarPadding)
         }
     };
 </script>

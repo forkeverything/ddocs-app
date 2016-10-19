@@ -492,7 +492,7 @@
   // Body / List Specific
   #files-list {
     padding-top: 1px;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin-bottom: 0;
 
     .single-file-request {

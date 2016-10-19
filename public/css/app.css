@@ -9383,7 +9383,7 @@ label {
     margin-bottom: -1px; }
   #checklist-single #files-list {
     padding-top: 1px;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin-bottom: 0; }
     #checklist-single #files-list .single-file-request {
       border-top: 1px solid #e6e6e6;
