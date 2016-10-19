@@ -25,7 +25,7 @@ Vue.component('tagger', require('./components/utilities/Tagger.vue'));
 Vue.component('tag-input', require('./components/utilities/TagInput.vue'));
 Vue.component('toggle-switch', require('./components/utilities/ToggleSwitch.vue'));
 Vue.component('smart-date', require('./components/utilities/SmartDate.vue'));
-Vue.component('cube-loader', require('./components/utilities/CubeLoader.vue'));
+Vue.component('rectangle-loader', require('./components/utilities/RectangleLoader.vue'));
 Vue.component('editable-text-field', require('./components/utilities/EditableTextField.vue'));
 Vue.component('editable-text-area', require('./components/utilities/EditableTextArea.vue'));
 Vue.component('date-picker', require('./components/utilities/DatePicker.vue'));

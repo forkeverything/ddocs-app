@@ -1,8 +1,9 @@
 <template>
     <div class="comments-thread">
+        <rectangle-loader :loading="loading"></rectangle-loader>
         <ul class="list-comments list-unstyled" ref="list">
             <li class="single-comment loader" v-if="loading">
-                <cube-loader></cube-loader>
+
             </li>
             <li class="single-comment" v-for="comment in comments">
                 <h5 class="sender">{{ comment.sender.name }}</h5>
@@ -17,7 +18,9 @@
 <script>
     export default {
         data: function () {
-            return {}
+            return {
+
+            }
         },
         watch: {
             comments() {

@@ -1,11 +1,9 @@
 <template>
     <div class="notes">
-        <div class="loader" v-if="loading">
-            <cube-loader></cube-loader>
-        </div>
-        <div v-else>
-            <button type="button" class="btn btn-default btn-sm btn-add-note" @click="addNewNote()"><i
-                    class="fa fa-sticky-note-o"></i> Add Note
+        <rectangle-loader :loading="loading"></rectangle-loader>
+        <div v-if="! loading">
+            <button type="button" class="btn btn-default btn-sm btn-add-note" @click="addNewNote">
+                <i class="fa fa-sticky-note-o"></i> Add Note
             </button>
             <!-- Notes Table -->
             <table class="table table-notes">
@@ -55,7 +53,7 @@
             },
             updateNoteBody(body, index){
                 let note = this.notes[index];
-                if(! note) return;  // notes been deleted
+                if (!note) return;  // notes been deleted
                 note.body = body;
                 this.saveChangesForNoteAtIndex(index);
             },
@@ -64,7 +62,7 @@
                 this.saveChangesForNoteAtIndex(index);
             },
             setFocusIndex(index) {
-                if(index === undefined) {
+                if (index === undefined) {
                     this.focusedIndex = '';
                 } else {
                     this.focusedIndex = index;
@@ -75,7 +73,7 @@
                 this.notes = [];
                 this.$http.get('/api/file_requests/' + this.fileRequest.hash + '/notes', {
                     before(xhr) {
-                        if(this.fetchNotesRequest) RequestsMonitor.abortRequest(this.fetchNotesRequest)
+                        if (this.fetchNotesRequest) RequestsMonitor.abortRequest(this.fetchNotesRequest);
                         this.fetchNotesRequest = xhr;
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
@@ -116,7 +114,7 @@
             },
             saveChangesForNoteAtIndex(index) {
                 let note = this.notes[index];
-                if (note.saved === false && ! note.saving) {
+                if (note.saved === false && !note.saving) {
                     this.saveNewNote(note, index)
                 } else {
                     if (note.saving) {
@@ -151,13 +149,13 @@
                 });
             },
             abortRequest(note, action) {
-                if(action) {
-                    if(note.pending_requests[action]) RequestsMonitor.abortRequest(note.pending_requests[action]);
+                if (action) {
+                    if (note.pending_requests[action]) RequestsMonitor.abortRequest(note.pending_requests[action]);
                 } else {
                     // No action specified, abort all actions
-                    for(let action in note.pending_requests) {
-                        if(note.pending_requests.hasOwnProperty(action)) {
-                            if(note.pending_requests[action]) RequestsMonitor.abortRequest(note.pending_requests[action]);
+                    for (let action in note.pending_requests) {
+                        if (note.pending_requests.hasOwnProperty(action)) {
+                            if (note.pending_requests[action]) RequestsMonitor.abortRequest(note.pending_requests[action]);
                         }
                     }
                 }

@@ -4,6 +4,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
+                        <rectangle-loader :loading="loading"></rectangle-loader>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                         <div class="main">
@@ -65,14 +66,14 @@
                                         <li class="heading"><h5>Project</h5></li>
                                         <li>
                                             <a class="clickable">
-                                            <i class="fa fa-upload"
-                                               data-toggle="tooltip"
-                                               data-placement="left"
-                                               title="Add internal file"
-                                               :disabled="! canUpload"
-                                            >
-                                            </i>Upload
-                                        </a>
+                                                <i class="fa fa-upload"
+                                                   data-toggle="tooltip"
+                                                   data-placement="left"
+                                                   title="Add internal file"
+                                                   :disabled="! canUpload"
+                                                >
+                                                </i>Upload
+                                            </a>
                                         </li>
                                         <li><a class="clickable"><i class="fa fa-trash"></i>Delete</a></li>
                                     </ul>
@@ -122,6 +123,7 @@
     export default {
         data: function () {
             return {
+                loading: true,
                 ajaxReady: true,
                 currentView: 'pfm-project-view',
                 file: ''
@@ -132,7 +134,7 @@
                 return this.file.file_request
             },
             canUpload() {
-                return ! this.attached;
+                return !this.attached;
             }
         },
         props: ['project-id'],
@@ -183,6 +185,7 @@
                     }
                 }).then((response) => {
                     // success
+                    this.loading = false;
                     this.file = response.json();
                 }, (response) => {
                     // error
@@ -192,6 +195,7 @@
         },
         mounted() {
             vueGlobalEventBus.$on('view-project-file', (file) => {
+                this.loading = true;
                 this.file = '';
                 this.fetchProjectFile(file.id);
                 this.switchView('pfm-project-view');

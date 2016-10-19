@@ -25,18 +25,22 @@
 #project-file-modal {
   .comments-thread {
     margin-top: 12.5px;
+    position: relative;
+
+    > .loading-overlay {
+      background: #fff;
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+    }
 
     .list-comments {
-      max-height: 350px;
-
-      .loader {
-        margin-top: 35px;
-
-        .loader-cube {
-          width: 20px;
-          height: 20px;
-        }
-      }
+      max-height: 300px;
     }
   }
 }
