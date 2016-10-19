@@ -1,6 +1,6 @@
 <template>
     <div id="checklist-single">
-
+        <rectangle-loader :loading="loadingRepoResults"></rectangle-loader>
         <div id="checklist-body">
             <h3 class="text-capitalize">
                 <span class="small text-muted">Checklist</span>
@@ -56,8 +56,10 @@
 
                         <file-active-filters :params="params" :remove-filter="removeFilter"></file-active-filters>
 
-                        <mobile-file-menu v-if="selectedFileRequest" :selected-file-request="selectedFileRequest" :show-delete-modal="showDeleteModal" :upload-selected="uploadSelected" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile"></mobile-file-menu>
-
+                        <mobile-file-menu v-if="selectedFileRequest" :selected-file-request="selectedFileRequest"
+                                          :show-delete-modal="showDeleteModal" :upload-selected="uploadSelected"
+                                          :show-reject-modal="showRejectModal"
+                                          :can-reject-file="canRejectFile"></mobile-file-menu>
 
 
                         <ul id="files-header"
@@ -132,7 +134,8 @@
                                     </button>
                                 </div>
                                 <div class="column col-upload content-column">
-                                    <file-uploader :index="index" :file-request="fileRequest" @update-file-request="updateFileRequest"></file-uploader>
+                                    <file-uploader :index="index" :file-request="fileRequest"
+                                                   @update-file-request="updateFileRequest"></file-uploader>
                                 </div>
                             </li>
                         </ul>
@@ -157,15 +160,20 @@
                     </div>
 
                     <div class="pane-container">
-                        <file-view :is-owner="checklistBelongsToUser" v-if="selectedFileRequest" :selected-file-request-index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal" :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
+                        <file-view :is-owner="checklistBelongsToUser" v-if="selectedFileRequest"
+                                   :selected-file-request-index="selectedFileRequestIndex"
+                                   :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal"
+                                   :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
                         <summary-view v-if="! selectedFileRequest" :checklist="checklist"></summary-view>
                     </div>
                 </div>
             </div>
         </div>
 
-        <file-reject-modal :index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest" @update-file-request="updateFileRequest"></file-reject-modal>
-        <file-delete-modal :selected-file-request="selectedFileRequest" :index="selectedFileRequestIndex" @remove-file-request="removeFileRequest"></file-delete-modal>
+        <file-reject-modal :index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest"
+                           @update-file-request="updateFileRequest"></file-reject-modal>
+        <file-delete-modal :selected-file-request="selectedFileRequest" :index="selectedFileRequestIndex"
+                           @remove-file-request="removeFileRequest"></file-delete-modal>
     </div>
 </template>
 <script>
@@ -204,7 +212,7 @@
                 return this.$store.state.authenticatedUser;
             },
             fileRequests() {
-                    return this.response.data;
+                return this.response.data;
             },
             numReceived(){
                 return this.response.query_parameters.num_received_files;
@@ -277,17 +285,17 @@
             },
             addChecklistNameToUrl(){
                 let checklistName = this.checklist.name.replace(/\s+/g, '-').toLowerCase();
-                    // build query string from router prop
-                    let queryString = '';
-                    if(Object.keys(this.$route.query).length > 0) {
-                        queryString += '?';
-                        for(let prop in this.$route.query) {
-                                queryString += prop + '=' + this.$route.query[prop] + '&';
-                        }
-                        queryString = queryString.substr(0, queryString.length - 1);
+                // build query string from router prop
+                let queryString = '';
+                if (Object.keys(this.$route.query).length > 0) {
+                    queryString += '?';
+                    for (let prop in this.$route.query) {
+                        queryString += prop + '=' + this.$route.query[prop] + '&';
                     }
-                    // use history api instead of router.replace so we don't trigger the beforeEach hook
-                    window.history.replaceState({}, '', `/c/${ this.$route.params.checklist_hash }/${ checklistName }${ queryString }`);
+                    queryString = queryString.substr(0, queryString.length - 1);
+                }
+                // use history api instead of router.replace so we don't trigger the beforeEach hook
+                window.history.replaceState({}, '', `/c/${ this.$route.params.checklist_hash }/${ checklistName }${ queryString }`);
             },
             fetchChecklist(){
                 this.$http.get(`/api/c/${ this.$route.params.checklist_hash }`, {

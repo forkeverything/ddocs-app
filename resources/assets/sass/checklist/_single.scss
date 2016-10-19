@@ -2,7 +2,11 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
 
+  > .loading-overlay {
+    z-index: $z-checklist-loading;
+  }
 
   #checklist-body {
     flex: 1;

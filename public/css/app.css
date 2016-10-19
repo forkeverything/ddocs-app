@@ -8700,22 +8700,34 @@ label {
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px; }
 
-.rectangle-loader svg {
+.loading-overlay {
   position: absolute;
   left: 0;
-  right: 0;
   top: 0;
-  bottom: 0;
-  margin: auto; }
-
-.rectangle-loader .rect {
-  fill: none;
-  stroke-width: 6px;
-  stroke: #D2D2D2;
-  stroke-dasharray: 30;
-  stroke-dashoffset: 50%;
-  -webkit-animation: movedash 1.5s forwards 0s infinite;
-  animation: movedash 1.5s forwards 0s infinite; }
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background: #fff; }
+  .loading-overlay .rectangle-loader svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto; }
+  .loading-overlay .rectangle-loader .rect {
+    fill: none;
+    stroke-width: 6px;
+    stroke: #D2D2D2;
+    stroke-dasharray: 30;
+    stroke-dashoffset: 50%;
+    -webkit-animation: movedash 1.5s forwards 0s infinite;
+    animation: movedash 1.5s forwards 0s infinite; }
 
 @-webkit-keyframes movedash {
   to {
@@ -9039,7 +9051,10 @@ label {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
-  height: 100%; }
+  height: 100%;
+  position: relative; }
+  #checklist-single > .loading-overlay {
+    z-index: 3; }
   #checklist-single #checklist-body {
     -webkit-box-flex: 1;
     flex: 1;
@@ -9610,18 +9625,6 @@ label {
   flex-direction: column;
   padding: 0; }
   #project-file-modal .modal-body > .loading-overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    background: #fff;
     z-index: 2; }
   #project-file-modal .modal-body .close {
     position: absolute;
@@ -9740,19 +9743,6 @@ label {
 #project-file-modal .comments-thread {
   margin-top: 12.5px;
   position: relative; }
-  #project-file-modal .comments-thread > .loading-overlay {
-    background: #fff;
-    position: absolute;
-    left: 0;
-    right: 0;
-    display: -webkit-box;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center; }
   #project-file-modal .comments-thread .list-comments {
     max-height: 300px; }
 

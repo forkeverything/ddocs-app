@@ -8,7 +8,8 @@ module.exports = {
             response: {},
             showFiltersDropdown: false,
             urlHistory: true,
-            infScroll: true
+            infScroll: true,
+            loadingRepoResults: true
         };
     },
     computed: {
@@ -22,6 +23,7 @@ module.exports = {
             if (this.hasFilter && _.isEmpty(this.filterOptions)) throw new Error("Need filterOptions[] defined to use filters");
         },
         fetchResults(query) {
+            this.loadingRepoResults = true;
             let url = this.requestUrl;
 
             // If we're making a new query parameter, use it. Otherwise, if we're on page-load and have
@@ -40,6 +42,7 @@ module.exports = {
                     RequestsMonitor.pushOntoQueue(xhr);
                 }
             }).then((response) => {
+                this.loadingRepoResults = false;
                 // update data
                 this.response = response.json();
                 // push state (if query is different from url)
@@ -107,6 +110,7 @@ module.exports = {
         fetchNextPage() {
             // If we are at last page - return
             if (this.response.current_page === this.response.last_page) return;
+            this.loadingRepoResults = true;
             let query = updateQueryString('page', this.response.current_page + 1);
             let url = this.requestUrl + '?' + query;
             if (!this.ajaxReady) return;
@@ -116,6 +120,7 @@ module.exports = {
                     RequestsMonitor.pushOntoQueue(xhr);
                 }
             }).then((response) => {
+                this.loadingRepoResults = false;
                 this.response.current_page = response.json().current_page;
                 let data = response.json().data;
                 for (let i = 0; i < data.length; i++) {

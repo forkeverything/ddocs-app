@@ -8682,22 +8682,34 @@ label {
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px; }
 
-.rectangle-loader svg {
+.loading-overlay {
   position: absolute;
   left: 0;
-  right: 0;
   top: 0;
-  bottom: 0;
-  margin: auto; }
-
-.rectangle-loader .rect {
-  fill: none;
-  stroke-width: 6px;
-  stroke: #D2D2D2;
-  stroke-dasharray: 30;
-  stroke-dashoffset: 50%;
-  -webkit-animation: movedash 1.5s forwards 0s infinite;
-  animation: movedash 1.5s forwards 0s infinite; }
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  background: #fff; }
+  .loading-overlay .rectangle-loader svg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto; }
+  .loading-overlay .rectangle-loader .rect {
+    fill: none;
+    stroke-width: 6px;
+    stroke: #D2D2D2;
+    stroke-dasharray: 30;
+    stroke-dashoffset: 50%;
+    -webkit-animation: movedash 1.5s forwards 0s infinite;
+    animation: movedash 1.5s forwards 0s infinite; }
 
 @-webkit-keyframes movedash {
   to {
