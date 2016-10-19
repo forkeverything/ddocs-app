@@ -9064,8 +9064,7 @@ label {
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    flex-direction: column;
-    opacity: 0; }
+    flex-direction: column; }
     #checklist-single #checklist-body h5 {
       margin: 0; }
     #checklist-single #checklist-body .menu-item a:hover .icon {
@@ -9132,22 +9131,43 @@ label {
         flex-direction: column; }
         #checklist-single #checklist-body #split-view #main-pane.collapsed {
           margin-left: calc(-100% - 15px); }
+          @media screen and (min-width: 768px) {
+            #checklist-single #checklist-body #split-view #main-pane.collapsed {
+              margin-left: 0; } }
+        #checklist-single #checklist-body #split-view #main-pane .pane-nav {
+          display: inline-block; }
+          @media screen and (min-width: 768px) {
+            #checklist-single #checklist-body #split-view #main-pane .pane-nav {
+              display: none; } }
       #checklist-single #checklist-body #split-view #right-pane {
         -webkit-box-flex: 4500;
         flex: 4500 1 359px;
         -webkit-transition: margin-left 0.2s;
         transition: margin-left 0.2s;
         margin-left: 15px;
-        max-width: 650px;
         position: relative;
         z-index: 0;
         border: 1px solid #e6e6e6;
         overflow-y: auto;
         padding-bottom: 15px; }
-        #checklist-single #checklist-body #split-view #right-pane.is-main {
-          max-width: initial; }
+        @media screen and (min-width: 768px) {
+          #checklist-single #checklist-body #split-view #right-pane {
+            max-width: 650px; } }
         #checklist-single #checklist-body #split-view #right-pane.collapsed {
           margin-left: -475px; }
+          @media screen and (min-width: 768px) {
+            #checklist-single #checklist-body #split-view #right-pane.collapsed {
+              margin-left: 15px; } }
+        #checklist-single #checklist-body #split-view #right-pane .pane-nav {
+          display: inline-block; }
+          @media screen and (min-width: 768px) {
+            #checklist-single #checklist-body #split-view #right-pane .pane-nav {
+              display: none; } }
+          #checklist-single #checklist-body #split-view #right-pane .pane-nav.selected-fr {
+            display: inline-block !important; }
+          @media screen and (min-width: 768px) {
+            #checklist-single #checklist-body #split-view #right-pane .pane-nav .link-files-list {
+              display: none; } }
       #checklist-single #checklist-body #split-view #summary-view h4 {
         margin-top: 0; }
         #checklist-single #checklist-body #split-view #summary-view h4.title-list-overview {
@@ -9403,6 +9423,9 @@ label {
         #checklist-single #files-list .single-file-request .col-upload .btn:hover:not(:disabled), #checklist-single #files-list .single-file-request .col-upload .btn:focus {
           border-color: transparent;
           box-shadow: 0 0 0 3px #41B883; }
+    #checklist-single #files-list .fr-loading {
+      position: relative;
+      height: 100px; }
 
 .notes .btn-add-note {
   margin: 0 0 10px; }

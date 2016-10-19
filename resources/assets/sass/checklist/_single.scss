@@ -14,7 +14,7 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    opacity: 0;
+
 
     h5 {
       margin: 0;
@@ -113,6 +113,16 @@
 
         &.collapsed {
           margin-left: calc(-100% - 15px);
+          @media screen and (min-width: $screen-sm-min) {
+            margin-left: 0;
+          }
+        }
+
+        .pane-nav {
+          display: inline-block;
+          @media screen and (min-width: $screen-sm-min) {
+            display: none;
+          }
         }
       }
 
@@ -120,19 +130,38 @@
         flex: 4500 1 359px;
         @include transition(margin-left 0.2s);
         margin-left: 15px;
-        max-width: 650px;
         position: relative;
         z-index: 0;
         border: 1px solid $laravel-border-color;
         overflow-y: auto;
         padding-bottom: 15px;
-
-        &.is-main {
-          max-width: initial;
+        @media screen and (min-width: $screen-sm-min) {
+          max-width: 650px;
         }
 
         &.collapsed {
           margin-left: -475px;
+          @media screen and (min-width: $screen-sm-min) {
+            margin-left: 15px;
+          }
+        }
+
+        .pane-nav {
+          display: inline-block;
+
+          @media screen and (min-width: $screen-sm-min) {
+            display: none;
+          }
+
+          &.selected-fr {
+            display: inline-block !important;
+          }
+
+          .link-files-list {
+            @media screen and (min-width: $screen-sm-min) {
+              display: none;
+            }
+          }
         }
       }
 
@@ -519,6 +548,11 @@
           }
         }
       }
+    }
+
+    .fr-loading {
+      position: relative;
+      height: 100px;
     }
   }
 }

@@ -5,7 +5,7 @@ module.exports = {
             ajaxReady: true,
             repoSearch: '',
             request: '',
-            response: {},
+            response: '',
             showFiltersDropdown: false,
             urlHistory: true,
             infScroll: true,
@@ -15,6 +15,9 @@ module.exports = {
     computed: {
         params() {
             return this.response.query_parameters;
+        },
+        hasNextPage() {
+            return this.response && this.response.last_page > this.response.current_page;
         }
     },
     methods: {

@@ -1,6 +1,6 @@
 <template>
     <div id="checklist-single">
-        <rectangle-loader :loading="loadingRepoResults"></rectangle-loader>
+        <rectangle-loader :loading="initializing"></rectangle-loader>
         <div id="checklist-body">
             <h3 class="text-capitalize">
                 <span class="small text-muted">Checklist</span>
@@ -13,12 +13,12 @@
             <div id="split-view">
                 <div id="main-pane"
                      :class="{
-                        'collapsed': singleView && showRightPanel
+                        'collapsed':  showRightPanel
                      }"
                      class="pane"
                 >
 
-                    <div class="pane-nav" v-show="singleView">
+                    <div class="pane-nav">
                         <a
                                 @click.prevent="showListOverview"
                                 class="btn btn-link"
@@ -138,21 +138,27 @@
                                                    @update-file-request="updateFileRequest"></file-uploader>
                                 </div>
                             </li>
+                            <li class="fr-loading" v-if="hasNextPage">
+                                <rectangle-loader :loading="true"></rectangle-loader>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div id="right-pane"
                      :class="{
-                        'is-main': singleView && showRightPanel,
-                        'collapsed': singleView && !showRightPanel
+                        'collapsed':  ! showRightPanel
                      }"
                      class="pane"
                 >
 
-                    <div class="pane-nav" v-show="singleView || selectedFileRequest">
-                        <a v-if="singleView"
-                           @click.prevent="toggleRightPanel"
-                           class="btn btn-link">
+                    <div class="pane-nav"
+                         :class="{
+                            'selected-fr': selectedFileRequest
+                            }"
+                    >
+                        <a @click.prevent="toggleRightPanel"
+                           class="btn btn-link link-files-list"
+                        >
                             All Files
                         </a>
                         <a class="btn btn-link" v-if="selectedFileRequest" @click.prevent="unselectFileRequest">List
@@ -203,11 +209,13 @@
                     }
                 ],
                 selectedFileRequestIndex: '',
-                singleView: false,
                 showRightPanel: false
             }
         },
         computed: {
+            initializing() {
+                return ! this.response;
+            },
             authenticatedUser(){
                 return this.$store.state.authenticatedUser;
             },
@@ -279,10 +287,6 @@
                 this.unselectFileRequest();
                 this.toggleRightPanel();
             },
-            setSplitView(element) {
-                $(element).css('opacity', 1);
-                this.singleView = (element.clientWidth <= 767);
-            },
             addChecklistNameToUrl(){
                 let checklistName = this.checklist.name.replace(/\s+/g, '-').toLowerCase();
                 // build query string from router prop
@@ -310,17 +314,13 @@
                 });
             }
         },
+        created() {
+
+        },
         mounted() {
             this.fetchChecklist();
-
-            this.$nextTick(() => {
-                // Sensor for split view
-                let element = document.getElementById('checklist-body');
-                this.setSplitView(element);
-                let sensor = new ResizeSensor(element, () => {
-                    this.setSplitView(element)
-                });
-            });
+        },
+        beforeDestroy() {
 
         }
     };
