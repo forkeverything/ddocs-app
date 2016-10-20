@@ -137,7 +137,7 @@ module.exports = {
         },
         scrollList: _.throttle(function (event) {
             let el = document.getElementById(this.container);
-            if ($(el).innerHeight() + $(el).scrollTop() >= (el.scrollHeight - 100)) this.fetchNextPage();
+            if (el && $(el).innerHeight() + $(el).scrollTop() >= (el.scrollHeight - 100)) this.fetchNextPage();
         }, 1000)
     },
     created(){

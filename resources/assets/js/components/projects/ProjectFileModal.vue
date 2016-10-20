@@ -83,12 +83,20 @@
                             <div class="actions">
                                 <ul id="list-pf-modal-actions" class="list-unstyled">
                                     <li><h5>Request</h5></li>
-                                    <attach-fr-dropdown v-if="! attached"
-                                                        :project-id="projectId"
-                                                        :file="file"
-                                                        @attached-request="attachedRequest"
-                                    >
-                                    </attach-fr-dropdown>
+
+                                    <li v-if="! attached" class="attach-wrapper">
+                                        <a class="btn btn-primary btn-sm" @click.prevent.stop="toggleAttachFRMenu">
+                                            <i class="fa fa-link"></i>Attach
+                                        </a>
+                                        <attach-fr-dropdown v-if="attachFileRequestMenu"
+                                                            :project-id="projectId"
+                                                            :file="file"
+                                                            @attached-request="attachedRequest"
+                                                            @toggle-attach-fr-menu="toggleAttachFRMenu"
+                                        >
+                                        </attach-fr-dropdown>
+                                    </li>
+
                                     <li v-if="attached">
                                         <a class="btn btn-primary btn-sm" @click.prevent="detachRequest">
                                             <i class="fa fa-unlink"></i>Detach
@@ -126,7 +134,8 @@
                 loading: true,
                 ajaxReady: true,
                 currentView: 'pfm-project-view',
-                file: ''
+                file: '',
+                attachFileRequestMenu: false
             }
         },
         computed: {
@@ -139,6 +148,9 @@
         },
         props: ['project-id'],
         methods: {
+            toggleAttachFRMenu() {
+                this.attachFileRequestMenu = ! this.attachFileRequestMenu
+            },
             attachedRequest(file) {
                 // update our project file to include the file request
                 this.file = file;

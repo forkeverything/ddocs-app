@@ -15,9 +15,14 @@
             <h5>Notes</h5>
             <file-request-notes :file-request="fileRequest"></file-request-notes>
         </div>
+        <div class="comments">
+            <h5>Request Comments</h5>
+            <comments-thread :comments="comments" @add-comment="addComment" :loading="loadingComments"></comments-thread>
+        </div>
     </div>
 </template>
 <script>
+    const hasComments = require('../../mixins/HasComments');
     export default {
         data: function () {
             return {}
@@ -25,11 +30,19 @@
         computed: {
             fileRequest() {
                 return this.file.file_request
+            },
+            commentsUrl() {
+                return `/api/comments/file_request/${this.fileRequest.hash}`;
             }
         },
         props: ['file'],
         methods: {
 
-        }
+        },
+        mounted() {
+            console.log('fetching comments');
+            this.fetchComments();
+        },
+        mixins: [hasComments]
     }
 </script>

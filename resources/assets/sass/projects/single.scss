@@ -301,15 +301,18 @@
         }
       }
 
-      .attach-fr-dropdown {
-        .dropdown-menu {
+      .attach-wrapper {
+        position: relative;
+
+        #attach-fr-menu {
+          display: block !important;
           padding: 10px 15px;
           width: 300px;
+          border: 1px solid $laravel-border-color;
 
           @media screen and (min-width: $screen-sm-min) {
             width: 450px;
           }
-
           #input-search-attach-fr {
             margin: 0 0 10px;
           }
@@ -318,6 +321,7 @@
             border: 1px solid $laravel-border-color;
             max-height: 223px;
             overflow: auto;
+            position: relative;
 
             .single-file-request {
               padding: 5px 10px;

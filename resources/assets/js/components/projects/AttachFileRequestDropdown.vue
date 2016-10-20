@@ -1,20 +1,5 @@
 <template>
-    <li class="dropdown attach-fr-dropdown"
-        :class="{
-            'open': show
-        }"
-        @click.stop=""
-    >
-        <a class="btn btn-primary btn-sm"
-           data-toggle="dropdown"
-           aria-haspopup="true"
-           aria-expanded="false"
-           @click.prevent.stop="toggleDropdown"
-           :disabled="attached"
-        >
-            <i class="fa fa-link"></i>Attach
-        </a>
-        <div class="dropdown-menu dropdown-menu-right">
+     <div id="attach-fr-menu" class="dropdown-menu dropdown-menu-right">
             <h4>Attach File Request</h4>
             <p>Link an existing file request from a checklist to share with team members.</p>
             <input id="input-search-attach-fr"
@@ -32,6 +17,7 @@
                  ref="results-container"
                  @scroll="scrollList"
             >
+                <rectangle-loader :loading="loadingRepoResults" size="small"></rectangle-loader>
                 <ul v-if="fileRequests"
                     id="list-attach-fr"
                     class="list-unstyled"
@@ -61,7 +47,6 @@
                 </p>
             </div>
         </div>
-    </li>
 </template>
 <script>
     import FetchesFromEloquentRepository from "../../mixins/fetchesFromEloquentRepository";
@@ -71,9 +56,8 @@
                 ajaxReady: true,
                 hasFilters: false,
                 requestUrl: '/api/file_requests/user',
-                show: false,
                 container: 'attachable-file-requests',
-                urlHistory: false,
+                urlHistory: false
             }
         },
         computed: {
@@ -91,17 +75,12 @@
             file(newFile) {
                 // Find FileRequest(s) with the same name...
                 if (newFile) {
-                    this.show = false;
                     this.repoSearch = newFile.name;
                     this.searchTerm();
                 }
             }
         },
         methods: {
-            toggleDropdown(){
-                if (this.attached) return;
-                this.show = !this.show;
-            },
             attachFileRequest(fileRequestHash){
                 if(!this.ajaxReady) return;
                 this.ajaxReady = false;
@@ -124,9 +103,24 @@
                 });
             }
         },
-        mounted(){
-
+        mixins: [FetchesFromEloquentRepository],
+        created() {
+            $(document).on('click.attach-fr', (e) => {
+                let container = $("#attach-fr-menu");
+            if (!container.is(e.target) // if the target of the click isn't the container...
+                && container.has(e.target).length === 0) // ... nor a descendant of the container
+            {
+                this.$emit('toggle-attach-fr-menu');
+            }
+            });
         },
-        mixins: [FetchesFromEloquentRepository]
+        mounted(){
+            this.repoSearch = this.file.name;
+            this.searchTerm();
+        },
+        beforeDestroy() {
+            $(document).off('click.attach-fr');
+            RequestsMonitor.abortRequest(this.request);
+        }
     }
 </script>

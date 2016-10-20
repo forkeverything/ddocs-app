@@ -1,6 +1,6 @@
 <template>
     <div id="checklist-single">
-        <rectangle-loader :loading="initializing"></rectangle-loader>
+        <rectangle-loader :loading="initializing" size="large"></rectangle-loader>
         <div id="checklist-body">
             <h3 class="text-capitalize">
                 <span class="small text-muted">Checklist</span>

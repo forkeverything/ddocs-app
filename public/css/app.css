@@ -8728,6 +8728,12 @@ label {
     stroke-dashoffset: 50%;
     -webkit-animation: movedash 1.5s forwards 0s infinite;
     animation: movedash 1.5s forwards 0s infinite; }
+    .loading-overlay .rectangle-loader .rect.small {
+      stroke-dasharray: 20;
+      stroke-width: 5px; }
+    .loading-overlay .rectangle-loader .rect.large {
+      stroke-width: 8px;
+      stroke-dasharray: 40; }
 
 @-webkit-keyframes movedash {
   to {
@@ -9721,35 +9727,40 @@ label {
         #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn i {
           width: 20px;
           margin-right: 3px; }
-    #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu {
-      padding: 10px 15px;
-      width: 300px; }
-      @media screen and (min-width: 768px) {
-        #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu {
-          width: 450px; } }
-      #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu #input-search-attach-fr {
-        margin: 0 0 10px; }
-      #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests {
-        border: 1px solid #e6e6e6;
-        max-height: 223px;
-        overflow: auto; }
-        #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests .single-file-request {
-          padding: 5px 10px;
-          border-bottom: 1px solid #e6e6e6; }
-          #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests .single-file-request:hover {
-            background: #F7F7F7; }
-          #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests .single-file-request .file-name {
-            margin: 0 0 5px; }
-          #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests .single-file-request .checklist {
+    #project-file-modal .modal-body .main .attach-wrapper {
+      position: relative; }
+      #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu {
+        display: block !important;
+        padding: 10px 15px;
+        width: 300px;
+        border: 1px solid #e6e6e6; }
+        @media screen and (min-width: 768px) {
+          #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu {
+            width: 450px; } }
+        #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu #input-search-attach-fr {
+          margin: 0 0 10px; }
+        #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu .file-requests {
+          border: 1px solid #e6e6e6;
+          max-height: 223px;
+          overflow: auto;
+          position: relative; }
+          #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu .file-requests .single-file-request {
+            padding: 5px 10px;
+            border-bottom: 1px solid #e6e6e6; }
+            #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu .file-requests .single-file-request:hover {
+              background: #F7F7F7; }
+            #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu .file-requests .single-file-request .file-name {
+              margin: 0 0 5px; }
+            #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu .file-requests .single-file-request .checklist {
+              font-size: 0.8em; }
+              #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu .file-requests .single-file-request .checklist .recipients {
+                margin-right: 5px; }
+        #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu .empty-placeholder {
+          margin: 0;
+          padding: 15px 10px;
+          color: #9CA1A8; }
+          #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu .empty-placeholder .description {
             font-size: 0.8em; }
-            #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .file-requests .single-file-request .checklist .recipients {
-              margin-right: 5px; }
-      #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .empty-placeholder {
-        margin: 0;
-        padding: 15px 10px;
-        color: #9CA1A8; }
-        #project-file-modal .modal-body .main .attach-fr-dropdown .dropdown-menu .empty-placeholder .description {
-          font-size: 0.8em; }
 
 .comments-thread {
   padding: 0 10px;

@@ -47,7 +47,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     // Comments
     Route::get('/comments/project_file/{projectFile}', 'CommentsController@getProjectFile');
     Route::post('/comments/project_file/{projectFile}', 'CommentsController@postNewProjectFile');
-    Route::get('/comments/file_request/{file_request_hash}', 'CommentsController@getFileRequest');
     Route::post('/comments/file_request/{file_request_hash}', 'CommentsController@postNewFileRequest');
 });
 
@@ -65,6 +64,9 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::post('/note', 'NotesController@postNew');
     Route::put('/note/{note_hash}', 'NotesController@putUpdate');
     Route::delete('/note/{note_hash}', 'NotesController@delete');
+
+    // Comments
+    Route::get('/comments/file_request/{file_request_hash}', 'CommentsController@getFileRequest');
 
 
 // NEW ROUTES THAT HAVEN'T BEEN RENAMED YET

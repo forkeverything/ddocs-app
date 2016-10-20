@@ -1,6 +1,6 @@
 <template>
     <div class="comments-thread">
-        <rectangle-loader :loading="loading"></rectangle-loader>
+        <rectangle-loader :loading="loading" size="small"></rectangle-loader>
         <ul class="list-comments list-unstyled" ref="list">
             <li class="single-comment loader" v-if="loading">
 
@@ -34,7 +34,7 @@
                 this.$emit('add-comment', body);
             },
             scrollToBottom(){
-                if(this.$refs.list) this.$refs.list.scrollTop = this.$refs.list.scrollHeight;
+                this.$refs.list.scrollTop = this.$refs.list.scrollHeight;
             }
         },
         mounted() {

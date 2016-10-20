@@ -8710,6 +8710,12 @@ label {
     stroke-dashoffset: 50%;
     -webkit-animation: movedash 1.5s forwards 0s infinite;
     animation: movedash 1.5s forwards 0s infinite; }
+    .loading-overlay .rectangle-loader .rect.small {
+      stroke-dasharray: 20;
+      stroke-width: 5px; }
+    .loading-overlay .rectangle-loader .rect.large {
+      stroke-width: 8px;
+      stroke-dasharray: 40; }
 
 @-webkit-keyframes movedash {
   to {
