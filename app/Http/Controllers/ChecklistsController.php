@@ -8,6 +8,7 @@ use App\Http\Requests\NewChecklistRequest;
 use App\Repositories\ChecklistsRespository;
 use App\Repositories\FileRequestsRepository;
 use App\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -112,13 +113,11 @@ class ChecklistsController extends Controller
      * Checklist at given Hash
      *
      * @param $checklistHash
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Model
      */
     public function getSingle($checklistHash)
     {
-        $checklist = Checklist::with('user', 'recipients')
-                              ->findOrFail(unhashId('checklist', $checklistHash));
-        return $checklist;
+        return Checklist::findByHash($checklistHash)->load('user', 'recipients');
     }
 
     /**
@@ -130,7 +129,7 @@ class ChecklistsController extends Controller
      */
     public function getFilesForChecklist(Request $request, $checklistHash)
     {
-        $checklist = Checklist::findOrFail(unhashId('checklist', $checklistHash));
+        $checklist = Checklist::findByHash($checklistHash);
         $sort = $request->sort;
         $order = $request->order;
         $search = $request->search;

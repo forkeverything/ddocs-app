@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Utilities\Traits\Hashable;
 use Illuminate\Database\Eloquent\Model;
 use phpDocumentor\Reflection\Types\Boolean;
 
@@ -27,6 +28,8 @@ use phpDocumentor\Reflection\Types\Boolean;
  */
 class Recipient extends Model
 {
+    use Hashable;
+
     protected $fillable = [
         'email',
         'receive_notifications',

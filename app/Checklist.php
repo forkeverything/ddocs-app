@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Events\RecipientClaimedInvitation;
+use App\Utilities\Traits\Hashable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use DB;
@@ -32,6 +33,8 @@ use Event;
  */
 class Checklist extends Model
 {
+    use Hashable;
+
     /**
      * Mass-assignable fields for a Checklist
      *
@@ -41,6 +44,10 @@ class Checklist extends Model
         'name',
         'description',
         'user_id'
+    ];
+
+    protected $hidden = [
+        'id'
     ];
 
     /**
@@ -136,16 +143,6 @@ class Checklist extends Model
     public function recipients()
     {
         return $this->hasMany(Recipient::class);
-    }
-
-    /**
-     * Get the hash'd id of this model.
-     *
-     * @return mixed
-     */
-    public function getHashAttribute()
-    {
-        return hashId('checklist',  $this);
     }
 
     /**

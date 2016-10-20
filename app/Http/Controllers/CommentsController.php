@@ -36,7 +36,7 @@ class CommentsController extends Controller
      */
     public function getFileRequest($fileRequestHash)
     {
-        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
+        $fileRequest = FileRequest::findByHash($fileRequestHash);
         return $fileRequest->comments;
     }
 
@@ -66,7 +66,7 @@ class CommentsController extends Controller
         // TODO ::: Currently, anybody who is logged-in can post comments to a file request. Need to change this
         // when we implement protected checklists.
 
-        $fileRequest = FileRequest::findOrFail(unhashId('file-request', $fileRequestHash));
+        $fileRequest = FileRequest::findByHash($fileRequestHash);
 
         return Comment::addComment($fileRequest->id, 'App\\FileRequest', $request->body, Auth::id())
                            ->load('sender');

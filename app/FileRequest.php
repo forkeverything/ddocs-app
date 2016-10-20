@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Utilities\Traits\Hashable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,6 +37,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class FileRequest extends Model
 {
+    use Hashable;
+
     /**
      * Hidden attributes.
      *
@@ -81,16 +84,6 @@ class FileRequest extends Model
     ];
 
     /**
-     * Try to find a FileRequest by hash.
-     *
-     * @param $hash
-     * @return \Illuminate\Database\Eloquent\Collection|Model
-     */
-    public static function findByHash($hash) {
-        return static::findOrFail(unhashId('file-request', $hash));
-    }
-
-    /**
      * Get the name from the File.
      *
      * @return mixed
@@ -120,15 +113,6 @@ class FileRequest extends Model
         return hashId('checklist', $this->checklist_id);
     }
 
-    /**
-     * Get the hash'd id of this model.
-     *
-     * @return mixed
-     */
-    public function getHashAttribute()
-    {
-        return hashId('file-request', $this);
-    }
 
     /**
      * Format as Carbon Date only if value given to prevent '0000-00-00 00:00:00'

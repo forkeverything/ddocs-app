@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Utilities\Traits\Hashable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -27,6 +28,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Note extends Model
 {
+
+    use Hashable;
+
     /**
      * Fillable fields.
      *
@@ -55,15 +59,5 @@ class Note extends Model
     public function fileRequest()
     {
         return $this->belongsTo(FileRequest::class);
-    }
-
-    /**
-     * Get the hash'd id of this model.
-     *
-     * @return mixed
-     */
-    public function getHashAttribute()
-    {
-        return hashId('note',  $this);
     }
 }

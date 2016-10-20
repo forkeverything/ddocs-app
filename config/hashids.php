@@ -55,7 +55,7 @@ return [
             'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         ],
 
-        'file-request' => [
+        'file_request' => [
             'salt' => 'hope nobody finds this file',
             'length' => '12',
             'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
