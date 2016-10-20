@@ -8529,14 +8529,11 @@ label {
 .btn {
   -webkit-transition: all 0.15s ease-out;
   transition: all 0.15s ease-out;
-  font-weight: 300;
   border-radius: 3px; }
   .btn.disabled, .btn[disabled],
   fieldset[disabled] .btn {
     opacity: 0.35;
     filter: alpha(opacity=35); }
-  .btn.btn-link {
-    font-weight: normal; }
   .btn .caret {
     color: #fff; }
   .btn.btn-text {
@@ -9433,59 +9430,61 @@ label {
       position: relative;
       height: 100px; }
 
-.notes .btn-add-note {
-  margin: 0 0 10px; }
-
-.notes .table-notes {
-  margin: 0;
-  border-collapse: initial; }
-  .notes .table-notes .row-single-note:hover {
-    background: #F7F7F7; }
-  .notes .table-notes .row-single-note td {
-    border-bottom: 1px solid #e6e6e6;
-    border-color: transparent;
-    padding: 5px; }
-    .notes .table-notes .row-single-note td.is-focused textarea {
-      border-color: #757575 !important; }
-  .notes .table-notes .row-single-note .col-check {
-    padding-top: 4px; }
-    .notes .table-notes .row-single-note .col-check .btn-check {
-      background: transparent;
-      width: 25px;
-      height: 25px;
-      color: #D2D2D2;
-      padding: 0;
-      border: 1px solid #D2D2D2;
-      outline: 0;
-      font-size: 1em;
-      -webkit-transition: all 0.15s ease-out;
-      transition: all 0.15s ease-out;
-      border-radius: 0; }
-      .notes .table-notes .row-single-note .col-check .btn-check:hover, .notes .table-notes .row-single-note .col-check .btn-check.checked {
-        color: #757575;
-        border-color: #757575; }
-  .notes .table-notes .row-single-note .col-body {
-    padding-left: 5px; }
-    .notes .table-notes .row-single-note .col-body .note-body {
-      position: relative; }
-      .notes .table-notes .row-single-note .col-body .note-body textarea, .notes .table-notes .row-single-note .col-body .note-body .sizer {
-        padding: 0 5px; }
-      .notes .table-notes .row-single-note .col-body .note-body textarea {
-        border: 1px dashed #757575;
-        border-color: transparent;
-        overflow: hidden;
-        min-height: 25px;
-        line-height: 25px;
-        -webkit-transition: border-color 0.15s ease-in;
-        transition: border-color 0.15s ease-in;
+.notes {
+  position: relative;
+  min-height: 80px; }
+  .notes .btn-add-note {
+    margin: 0 0 10px; }
+  .notes .table-notes {
+    margin: 0;
+    border-collapse: initial; }
+    .notes .table-notes .row-single-note:hover {
+      background: #F7F7F7; }
+    .notes .table-notes .row-single-note td {
+      border-bottom: 1px solid #e6e6e6;
+      border-color: transparent;
+      padding: 5px; }
+      .notes .table-notes .row-single-note td.is-focused textarea {
+        border-color: #757575 !important; }
+    .notes .table-notes .row-single-note .col-check {
+      padding-top: 4px; }
+      .notes .table-notes .row-single-note .col-check .btn-check {
+        background: transparent;
+        width: 25px;
+        height: 25px;
+        color: #D2D2D2;
+        padding: 0;
+        border: 1px solid #D2D2D2;
+        outline: 0;
+        font-size: 1em;
+        -webkit-transition: all 0.15s ease-out;
+        transition: all 0.15s ease-out;
         border-radius: 0; }
-      .notes .table-notes .row-single-note .col-body .note-body .sizer {
-        word-break: break-all;
-        position: absolute;
-        opacity: 0;
-        visibility: hidden; }
-      .notes .table-notes .row-single-note .col-body .note-body.checked textarea {
-        color: #b2b2b2; }
+        .notes .table-notes .row-single-note .col-check .btn-check:hover, .notes .table-notes .row-single-note .col-check .btn-check.checked {
+          color: #757575;
+          border-color: #757575; }
+    .notes .table-notes .row-single-note .col-body {
+      padding-left: 5px; }
+      .notes .table-notes .row-single-note .col-body .note-body {
+        position: relative; }
+        .notes .table-notes .row-single-note .col-body .note-body textarea, .notes .table-notes .row-single-note .col-body .note-body .sizer {
+          padding: 0 5px; }
+        .notes .table-notes .row-single-note .col-body .note-body textarea {
+          border: 1px dashed #757575;
+          border-color: transparent;
+          overflow: hidden;
+          min-height: 25px;
+          line-height: 25px;
+          -webkit-transition: border-color 0.15s ease-in;
+          transition: border-color 0.15s ease-in;
+          border-radius: 0; }
+        .notes .table-notes .row-single-note .col-body .note-body .sizer {
+          word-break: break-all;
+          position: absolute;
+          opacity: 0;
+          visibility: hidden; }
+        .notes .table-notes .row-single-note .col-body .note-body.checked textarea {
+          color: #b2b2b2; }
 
 .file-uploader {
   display: inline-block; }
@@ -9658,7 +9657,9 @@ label {
   #project-file-modal .modal-body .close {
     position: absolute;
     right: 15px;
-    top: 15px; }
+    top: 15px;
+    width: 15px;
+    height: 15px; }
   #project-file-modal .modal-body .main {
     display: -webkit-box;
     display: flex;
@@ -9711,7 +9712,7 @@ label {
       #project-file-modal .modal-body .main .content .nav-tabs {
         margin: 0 0 10px; }
     #project-file-modal .modal-body .main .actions {
-      padding: 15px 10px;
+      padding: 30px 10px 15px 10px;
       -webkit-box-flex: 0;
       flex: 0 0 180px;
       background: #F7F7F7;

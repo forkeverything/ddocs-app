@@ -8511,14 +8511,11 @@ label {
 .btn {
   -webkit-transition: all 0.15s ease-out;
   transition: all 0.15s ease-out;
-  font-weight: 300;
   border-radius: 3px; }
   .btn.disabled, .btn[disabled],
   fieldset[disabled] .btn {
     opacity: 0.35;
     filter: alpha(opacity=35); }
-  .btn.btn-link {
-    font-weight: normal; }
   .btn .caret {
     color: #fff; }
   .btn.btn-text {

@@ -40,7 +40,6 @@
 
         },
         mounted() {
-            console.log('fetching comments');
             this.fetchComments();
         },
         mixins: [hasComments]
