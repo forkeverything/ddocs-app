@@ -34,7 +34,7 @@
                 this.$emit('add-comment', body);
             },
             scrollToBottom(){
-                this.$refs.list.scrollTop = this.$refs.list.scrollHeight;
+                if(this.$refs.list) this.$refs.list.scrollTop = this.$refs.list.scrollHeight;
             }
         },
         mounted() {

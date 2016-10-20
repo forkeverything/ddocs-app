@@ -2,7 +2,7 @@
     <div class="notes">
         <rectangle-loader :loading="loading"></rectangle-loader>
         <div v-if="! loading">
-            <button type="button" class="btn btn-default btn-sm btn-add-note" @click="addNewNote">
+            <button type="button" class="btn btn-default btn-sm btn-add-note" @click="addNewNote()">
                 <i class="fa fa-sticky-note-o"></i> Add Note
             </button>
             <!-- Notes Table -->

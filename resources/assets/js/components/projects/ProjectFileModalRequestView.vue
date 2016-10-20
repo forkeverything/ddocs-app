@@ -11,6 +11,10 @@
             <h5>Recipients</h5>
             <checklist-recipients :recipients="fileRequest.checklist.recipients"></checklist-recipients>
         </div>
+        <div class="notes">
+            <h5>Notes</h5>
+            <file-request-notes :file-request="fileRequest"></file-request-notes>
+        </div>
     </div>
 </template>
 <script>
