@@ -24,13 +24,16 @@
         },
         watch: {
             'file.project_folder_id'(newFolderId) {
-                this.update({project_folder_id: newFolderId});
+                this.save({project_folder_id: newFolderId});
             },
             'file.position'(newPosition) {
-                this.update({position: newPosition});
+                this.save({position: newPosition});
             },
             index() {
                 this.updateFileModel({ position: this.index });
+            },
+            'file.name'(newName) {
+                this.save({name: newName});
             }
         },
         props: ['index', 'file', 'projectId', 'folder-index'],
@@ -42,11 +45,7 @@
                     file
                 });
             },
-            setNewRequest(xhr){
-                if(this.request) RequestsMonitor.abortRequest(this.request);
-                this.request = xhr;
-            },
-            update(updatedProperties){
+            save(updatedProperties){
                 updatedProperties['id'] = this.file.id;
                 this.$store.commit('project/SAVE_CHANGES', {
                     type: 'files',

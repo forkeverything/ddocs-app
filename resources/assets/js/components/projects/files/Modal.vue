@@ -9,8 +9,12 @@
                                 aria-hidden="true">&times;</span></button>
                         <div class="main">
                             <div class="content">
-                                <h3 class="file-name"><i class="fa fa-file-o"></i> <span class="name-wrap"><editable-text-field
-                                        v-model="file.name"></editable-text-field></span></h3>
+                                <h3 class="file-name">
+                                    <i class="fa fa-file-o"></i>
+                                    <span class="name-wrap">
+                                    <editable-text-field v-model="file.name" :update-fn="updateFileName"></editable-text-field>
+                                </span>
+                                </h3>
                                 <ul class="nav nav-tabs">
                                     <li role="presentation"
                                         :class="{
@@ -151,16 +155,22 @@
             toggleAttachFRMenu() {
                 this.attachFileRequestMenu = ! this.attachFileRequestMenu
             },
-            setProjectFileAttached(attached) {
+            setFileAttached(attached) {
                 vueGlobalEventBus.$emit('update-project-file', {
                     id: this.file.id,
                     attached: attached
                 });
             },
+            updateFileName() {
+                vueGlobalEventBus.$emit('update-project-file', {
+                    id: this.file.id,
+                    name: this.file.name
+                });
+            },
             attachedRequest(file) {
                 // update our project file to include the file request
                 this.file = file;
-                this.setProjectFileAttached(true);
+                this.setFileAttached(true);
                 this.$nextTick(() => {
                     this.switchView('pfm-request-view');
                 });
@@ -174,7 +184,7 @@
                     }
                 }).then((response) => {
                     // success
-                    this.setProjectFileAttached(false);
+                    this.setFileAttached(false);
                     this.file = response.json();
                     this.$nextTick(() => {
                         this.switchView('pfm-project-view');

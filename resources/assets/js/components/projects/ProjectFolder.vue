@@ -2,7 +2,7 @@
     <div class="project-folder-body">
         <div class="folder-header">
             <div class="folder-name">
-                <editable-text-field v-model="folder.name" :update-fn="update" :clipped="true"></editable-text-field>
+                <editable-text-field v-model="folder.name" :update-fn="save" :clipped="true"></editable-text-field>
             </div>
             <div class="folder-menu">
                 <button type="button" class="btn" data-toggle="dropdown"><i class="fa fa-caret-down"></i></button>
@@ -44,7 +44,7 @@
         props: ['folder', 'index'],
         watch: {
             'folder.position'(newPosition) {
-                this.update({position: newPosition})
+                this.save({position: newPosition})
             },
             index(newIndex){
                 this.updateFolderModel({position: this.index});
@@ -61,7 +61,7 @@
                 if(this.request) RequestsMonitor.abortRequest(this.request);
                 this.request = xhr;
             },
-            update(updatedProperties){
+            save(updatedProperties){
                 updatedProperties['id'] = this.folder.id;
                 this.$store.commit('project/SAVE_CHANGES', {
                     type: 'folders',
@@ -112,10 +112,7 @@
             vueGlobalEventBus.$on('dropped-file', this.handleDroppingFile);
         },
         mounted() {
-            if(this.folder.position !== this.index) {
-                this.updateFolderModel({position: this.index});
-                this.$nextTick(this.update);
-            }
+            if(this.folder.position !== this.index) this.updateFolderModel({position: this.index});
         },
         beforeDestroy(){
             vueGlobalEventBus.$off('dropped-file');
