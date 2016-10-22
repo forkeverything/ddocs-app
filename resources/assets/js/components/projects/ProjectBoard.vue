@@ -33,6 +33,7 @@
 </template>
 <script>
     export default {
+        name: 'ProjectBoard',
         data: function () {
             return {
                 dragging: false,

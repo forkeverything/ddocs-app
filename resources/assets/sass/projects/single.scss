@@ -1,3 +1,5 @@
+@import "single/file-modal";
+
 #project-single {
   height: 100%;
   display: flex;
@@ -161,7 +163,7 @@
 
 // Outside so drag mirror is styled too
 .project-file {
-  display: block;
+  display: flex;
   background: #fff;
   position: relative;
   z-index: 2;
@@ -171,6 +173,24 @@
 
   &:hover {
     background: $extra-light-blue;
+  }
+
+  .info-icons {
+    margin: 0 5px 0 0;
+    font-size: 0.8em;
+    .attached {
+      display: inline-block;
+      color: $grey;
+      padding: 4px 0 0 0;
+
+      &.is-attached {
+        color: $brand-info;
+      }
+    }
+  }
+
+  .file-name {
+
   }
 }
 
@@ -188,174 +208,4 @@
   }
 }
 
-#project-file-modal {
 
-  .modal-body {
-    min-height: 650px;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-
-    > .loading-overlay {
-      z-index: $z-modal-loading;
-    }
-
-    .close {
-      position: absolute;
-      right: 15px;
-      top: 15px;
-      width: 15px;
-      height: 15px;
-    }
-
-    .main {
-      display: flex;
-      flex: 1;
-
-      .content {
-        flex: 100%;
-        padding: 15px;
-
-        .file-name {
-          margin: 0 0 15px;
-          display: flex;
-          align-items: center;
-
-          i {
-            font-size: 1em;
-            margin-right: 8px;
-            color: #999999;
-            float: left;
-          }
-
-          .name-wrap {
-            flex: 1;
-            width: 100%;
-            display: inline-block;
-            margin-right: 70px;
-
-            @media screen and (min-width: $screen-sm-min) {
-              margin-right: 0;
-            }
-          }
-        }
-
-        .mobile-actions {
-          position: absolute;
-          top: 13px;
-          right: 40px;
-          line-height: 0;
-
-          @media screen and (min-width: $screen-sm-min) {
-            display: none;
-          }
-
-          .btn-dropdown {
-            font-size: 1.6em;
-            line-height: 0;
-            position: absolute;
-            top: 10px;
-            right: 5px;
-            color: $grey;
-            text-decoration: none;
-
-            &:hover {
-              color: $dark-grey;
-            }
-          }
-
-          .dropdown-menu {
-            margin-top: 20px;
-          }
-        }
-
-        .nav-tabs {
-          margin: 0 0 10px;
-        }
-      }
-
-      .actions {
-        padding: 30px 10px 15px 10px;
-        flex: 0 0 180px;
-        background: $extra-light-grey;
-        display: none;
-
-        @media screen and (min-width: $screen-sm-min) {
-          display: block;
-        }
-
-        #list-pf-modal-actions {
-          > li {
-            &:not(:last-child) {
-              margin-bottom: 5px;
-            }
-
-            .btn {
-              text-align: left;
-              width: 100%;
-
-              i {
-                width: 20px;
-                margin-right: 3px;
-              }
-            }
-          }
-        }
-      }
-
-      .attach-wrapper {
-        position: relative;
-
-        #attach-fr-menu {
-          display: block !important;
-          padding: 10px 15px;
-          width: 300px;
-          border: 1px solid $laravel-border-color;
-
-          @media screen and (min-width: $screen-sm-min) {
-            width: 450px;
-          }
-          #input-search-attach-fr {
-            margin: 0 0 10px;
-          }
-
-          .file-requests {
-            border: 1px solid $laravel-border-color;
-            max-height: 223px;
-            overflow: auto;
-            position: relative;
-
-            .single-file-request {
-              padding: 5px 10px;
-              border-bottom: 1px solid $laravel-border-color;
-
-              &:hover {
-                background: $extra-light-grey;
-              }
-
-              .file-name {
-                margin: 0 0 5px;
-              }
-              .checklist {
-                font-size: 0.8em;
-                .recipients {
-                  margin-right: 5px;
-                }
-              }
-            }
-          }
-
-          .empty-placeholder {
-            margin: 0;
-            padding: 15px 10px;
-            color: $text-muted;
-
-            .description {
-              font-size: 0.8em;
-            }
-          }
-        }
-      }
-    }
-  }
-}

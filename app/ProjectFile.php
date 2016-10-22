@@ -50,6 +50,20 @@ class ProjectFile extends Model
     ];
 
     /**
+     * Automatically appended dynamic attributes.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'attached'
+    ];
+
+    public function getAttachedAttribute()
+    {
+        return !! $this->file_request_id;
+    }
+
+    /**
      * Eager-loads all the relevant relationships for a ProjectFile
      * @return $this
      */
@@ -60,6 +74,7 @@ class ProjectFile extends Model
             'fileRequest.checklist.recipients'
         );
     }
+
 
     /**
      * The folder that the file is in.

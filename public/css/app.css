@@ -9509,141 +9509,6 @@ label {
   width: 300px;
   padding: 10px; }
 
-#project-single {
-  height: 100%;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column; }
-  #project-single #project-info {
-    width: 100%; }
-  #project-single .board-wrap {
-    height: 100%;
-    width: 100%;
-    position: relative;
-    overflow-x: scroll;
-    overflow-y: hidden; }
-    #project-single .board-wrap #project-board {
-      position: absolute;
-      top: 0;
-      left: 0;
-      white-space: nowrap; }
-      #project-single .board-wrap #project-board .folder-wrap {
-        width: 300px;
-        margin: 0 5px;
-        height: 100%;
-        display: inline-block;
-        vertical-align: top; }
-        #project-single .board-wrap #project-board .folder-wrap:first-child {
-          margin-left: 15px; }
-        #project-single .board-wrap #project-board .folder-wrap:last-child {
-          margin-right: 15px; }
-      #project-single .board-wrap #project-board .add-folder .input-name {
-        margin-bottom: 5px;
-        border-radius: 0;
-        border-color: #e6e6e6;
-        padding: 5px 10px;
-        font-weight: bold;
-        font-size: 18px; }
-        #project-single .board-wrap #project-board .add-folder .input-name.filled, #project-single .board-wrap #project-board .add-folder .input-name:focus {
-          border-color: #41B883; }
-      #project-single .board-wrap #project-board .add-folder .btn {
-        border-radius: 0; }
-
-.project-folder-body {
-  cursor: pointer;
-  background: #F7F7F7; }
-  .project-folder-body .folder-header {
-    display: -webkit-box;
-    display: flex; }
-    .project-folder-body .folder-header .folder-name {
-      -webkit-box-flex: 1;
-      flex: 1;
-      max-width: calc(100% - 30px);
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 0;
-      padding: 8px 10px 5px 5px; }
-    .project-folder-body .folder-header .folder-menu {
-      position: relative;
-      display: -webkit-box;
-      display: flex;
-      -webkit-box-align: center;
-      align-items: center;
-      margin-right: 10px;
-      margin-bottom: 5px; }
-      .project-folder-body .folder-header .folder-menu .btn {
-        height: 16px;
-        width: 16px;
-        line-height: 1;
-        padding: 3px;
-        outline: 0;
-        box-shadow: none;
-        background: #fff;
-        color: #999999;
-        border: 1px solid #999999;
-        border-radius: 50%; }
-        .project-folder-body .folder-header .folder-menu .btn:hover, .project-folder-body .folder-header .folder-menu .btn:focus, .project-folder-body .folder-header .folder-menu .btn:focus:active {
-          color: #3498DB;
-          border-color: #3498DB; }
-        .project-folder-body .folder-header .folder-menu .btn i {
-          vertical-align: top;
-          margin-top: -2px;
-          font-size: 14px; }
-      .project-folder-body .folder-header .folder-menu .dropdown-menu {
-        margin-top: -10px;
-        padding: 0; }
-        .project-folder-body .folder-header .folder-menu .dropdown-menu li a {
-          padding: 5px 10px;
-          font-size: 0.9em; }
-          .project-folder-body .folder-header .folder-menu .dropdown-menu li a i {
-            vertical-align: top;
-            line-height: 1.6;
-            width: 15px; }
-  .project-folder-body .add-project-file .placeholder {
-    cursor: pointer;
-    padding: 2px 5px 5px 10px;
-    height: 35px;
-    width: 100%;
-    display: inline-block; }
-    .project-folder-body .add-project-file .placeholder:hover {
-      background: #F7F7F7; }
-  .project-folder-body .add-project-file form {
-    display: -webkit-box;
-    display: flex;
-    padding: 5px; }
-    .project-folder-body .add-project-file form input {
-      padding: 5px;
-      height: 30px;
-      border-radius: 0;
-      margin-right: 5px; }
-      .project-folder-body .add-project-file form input:focus {
-        border-color: #66ccf5; }
-    .project-folder-body .add-project-file form .btn {
-      height: 30px;
-      border-radius: 0;
-      line-height: 1; }
-
-.project-file {
-  display: block;
-  background: #fff;
-  position: relative;
-  z-index: 2;
-  padding: 5px 10px;
-  margin: 5px 5px;
-  border: 1px solid #e6e6e6; }
-  .project-file:hover {
-    background: #eff9fd; }
-
-.gu-mirror {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175); }
-  .gu-mirror .project-folder-body {
-    border: 0; }
-
-#project-board.dragging .files-list {
-  min-height: 30px; }
-
 #project-file-modal .modal-body {
   min-height: 650px;
   display: -webkit-box;
@@ -9762,6 +9627,151 @@ label {
           color: #9CA1A8; }
           #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu .empty-placeholder .description {
             font-size: 0.8em; }
+
+#project-single {
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column; }
+  #project-single #project-info {
+    width: 100%; }
+  #project-single .board-wrap {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow-x: scroll;
+    overflow-y: hidden; }
+    #project-single .board-wrap #project-board {
+      position: absolute;
+      top: 0;
+      left: 0;
+      white-space: nowrap; }
+      #project-single .board-wrap #project-board .folder-wrap {
+        width: 300px;
+        margin: 0 5px;
+        height: 100%;
+        display: inline-block;
+        vertical-align: top; }
+        #project-single .board-wrap #project-board .folder-wrap:first-child {
+          margin-left: 15px; }
+        #project-single .board-wrap #project-board .folder-wrap:last-child {
+          margin-right: 15px; }
+      #project-single .board-wrap #project-board .add-folder .input-name {
+        margin-bottom: 5px;
+        border-radius: 0;
+        border-color: #e6e6e6;
+        padding: 5px 10px;
+        font-weight: bold;
+        font-size: 18px; }
+        #project-single .board-wrap #project-board .add-folder .input-name.filled, #project-single .board-wrap #project-board .add-folder .input-name:focus {
+          border-color: #41B883; }
+      #project-single .board-wrap #project-board .add-folder .btn {
+        border-radius: 0; }
+
+.project-folder-body {
+  cursor: pointer;
+  background: #F7F7F7; }
+  .project-folder-body .folder-header {
+    display: -webkit-box;
+    display: flex; }
+    .project-folder-body .folder-header .folder-name {
+      -webkit-box-flex: 1;
+      flex: 1;
+      max-width: calc(100% - 30px);
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 0;
+      padding: 8px 10px 5px 5px; }
+    .project-folder-body .folder-header .folder-menu {
+      position: relative;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      margin-right: 10px;
+      margin-bottom: 5px; }
+      .project-folder-body .folder-header .folder-menu .btn {
+        height: 16px;
+        width: 16px;
+        line-height: 1;
+        padding: 3px;
+        outline: 0;
+        box-shadow: none;
+        background: #fff;
+        color: #999999;
+        border: 1px solid #999999;
+        border-radius: 50%; }
+        .project-folder-body .folder-header .folder-menu .btn:hover, .project-folder-body .folder-header .folder-menu .btn:focus, .project-folder-body .folder-header .folder-menu .btn:focus:active {
+          color: #3498DB;
+          border-color: #3498DB; }
+        .project-folder-body .folder-header .folder-menu .btn i {
+          vertical-align: top;
+          margin-top: -2px;
+          font-size: 14px; }
+      .project-folder-body .folder-header .folder-menu .dropdown-menu {
+        margin-top: -10px;
+        padding: 0; }
+        .project-folder-body .folder-header .folder-menu .dropdown-menu li a {
+          padding: 5px 10px;
+          font-size: 0.9em; }
+          .project-folder-body .folder-header .folder-menu .dropdown-menu li a i {
+            vertical-align: top;
+            line-height: 1.6;
+            width: 15px; }
+  .project-folder-body .add-project-file .placeholder {
+    cursor: pointer;
+    padding: 2px 5px 5px 10px;
+    height: 35px;
+    width: 100%;
+    display: inline-block; }
+    .project-folder-body .add-project-file .placeholder:hover {
+      background: #F7F7F7; }
+  .project-folder-body .add-project-file form {
+    display: -webkit-box;
+    display: flex;
+    padding: 5px; }
+    .project-folder-body .add-project-file form input {
+      padding: 5px;
+      height: 30px;
+      border-radius: 0;
+      margin-right: 5px; }
+      .project-folder-body .add-project-file form input:focus {
+        border-color: #66ccf5; }
+    .project-folder-body .add-project-file form .btn {
+      height: 30px;
+      border-radius: 0;
+      line-height: 1; }
+
+.project-file {
+  display: -webkit-box;
+  display: flex;
+  background: #fff;
+  position: relative;
+  z-index: 2;
+  padding: 5px 10px;
+  margin: 5px 5px;
+  border: 1px solid #e6e6e6; }
+  .project-file:hover {
+    background: #eff9fd; }
+  .project-file .info-icons {
+    margin: 0 5px 0 0;
+    font-size: 0.8em; }
+    .project-file .info-icons .attached {
+      display: inline-block;
+      color: #D2D2D2;
+      padding: 4px 0 0 0; }
+      .project-file .info-icons .attached.is-attached {
+        color: #3498DB; }
+
+.gu-mirror {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175); }
+  .gu-mirror .project-folder-body {
+    border: 0; }
+
+#project-board.dragging .files-list {
+  min-height: 30px; }
 
 .comments-thread {
   padding: 0 10px;

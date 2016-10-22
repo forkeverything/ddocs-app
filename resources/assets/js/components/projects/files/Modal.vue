@@ -151,9 +151,16 @@
             toggleAttachFRMenu() {
                 this.attachFileRequestMenu = ! this.attachFileRequestMenu
             },
+            setProjectFileAttached(attached) {
+                vueGlobalEventBus.$emit('update-project-file', {
+                    id: this.file.id,
+                    attached: attached
+                });
+            },
             attachedRequest(file) {
                 // update our project file to include the file request
                 this.file = file;
+                this.setProjectFileAttached(true);
                 this.$nextTick(() => {
                     this.switchView('pfm-request-view');
                 });
@@ -167,7 +174,7 @@
                     }
                 }).then((response) => {
                     // success
-                    this.$emit('attached-request', response.json());
+                    this.setProjectFileAttached(false);
                     this.file = response.json();
                     this.$nextTick(() => {
                         this.switchView('pfm-project-view');

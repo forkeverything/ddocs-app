@@ -1,5 +1,14 @@
 <template>
     <div class="project-file" :data-id="file.id" @click="viewFile">
+        <div class="info-icons">
+            <span class="attached"
+                  :class="{
+                    'is-attached': file.attached
+                  }"
+            >
+                <i class="fa fa-link"></i>
+            </span>
+        </div>
         <div class="file-name truncate">
                 {{ file.name }}
         </div>
@@ -49,12 +58,16 @@
             }
         },
         created(){
-
+            vueGlobalEventBus.$on('update-project-file', (file) => {
+                if(file.id !== this.file.id) return;
+                this.updateFileModel(file);
+            });
         },
         mounted() {
             if(this.file.position !== this.index) this.updateFileModel({ position: this.index });
         },
         beforeDestroy(){
+            vueGlobalEventBus.$off('update-project-file');
         }
     };
 </script>
