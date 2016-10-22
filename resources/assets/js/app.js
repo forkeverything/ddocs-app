@@ -53,7 +53,6 @@ Vue.component('file-uploader', require('./components/file/Uploader.vue'));
 Vue.component('file-date-input', require('./components/file/DateInput.vue'));
 
 // Projects
-Vue.component('project-board', require('./components/projects/ProjectBoard.vue'));
 Vue.component('form-add-project-folder', require('./components/projects/AddProjectFolderForm.vue'));
 Vue.component('project-folder', require('./components/projects/ProjectFolder.vue'));
 Vue.component('add-project-file', require('./components/projects/AddProjectFile.vue'));

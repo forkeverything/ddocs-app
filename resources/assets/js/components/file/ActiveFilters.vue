@@ -4,12 +4,12 @@
             <!-- Active Filter: Version -->
             <li v-if="params.version_filter_integer" class="single-filter">
                 <div class="text">
-                    <span class="field">File Version: </span><span
-                        v-if="params.version_filter_integer[0]">{{ params.version_filter_integer[0] }}</span><span
-                        v-else>~ </span><span
-                        v-if="params.version_filter_integer[0] && params.version_filter_integer[1]"> - </span><span
-                        v-if="params.version_filter_integer[1]">{{ params.version_filter_integer[1] }}</span><span
-                        v-else> ~</span>
+                    <span class="field">File Version: </span>
+                    <span v-if="params.version_filter_integer[0]">{{ params.version_filter_integer[0] }}</span>
+                    <span v-if="! params.version_filter_integer[0]">~ </span><span
+                        v-if="params.version_filter_integer[0] && params.version_filter_integer[1]"> - </span>
+                    <span v-if="params.version_filter_integer[1]">{{ params.version_filter_integer[1] }}</span>
+                    <span v-if="! params.version_filter_integer[1]"> ~</span>
                 </div>
                 <button type="button" class="btn close" @click="
                         removeFilter('version')">&times;</button>
@@ -20,10 +20,10 @@
                 <div class="text">
                     <span class="field">Due: </span>
                     <span v-if="params.due_filter_date[0]">{{ params.due_filter_date[0] | date }}</span>
-                    <span v-else>~ </span>
+                    <span v-if="! params.due_filter_date[0]">~ </span>
                     <span v-if="params.due_filter_date[0] && params.due_filter_date[1]"> - </span>
                     <span v-if="params.due_filter_date[1]">{{ params.due_filter_date[1] | date }}</span>
-                    <span v-else> ~</span>
+                    <span v-if="! params.due_filter_date[1]"> ~</span>
                 </div>
                 <button type="button" class="btn close" @click="removeFilter('due')">&times;</button>
             </li>

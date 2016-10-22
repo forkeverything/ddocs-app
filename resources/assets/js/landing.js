@@ -6,8 +6,4 @@
  * It will make our landing page load a little faster.
  */
 
-
-
-
 require('./bootstrap');
-x

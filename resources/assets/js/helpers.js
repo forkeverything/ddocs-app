@@ -45,7 +45,7 @@ window.escapeHtml = function (string) {
  */
 window.vueValidation = function (response, eventBus = vueGlobalEventBus) {
     if (response.status === 422) {
-        eventBus.$emit('new-errors', JSON.parse(response.body));
+        eventBus.$emit('new-errors', response.json());
     }
 };
 

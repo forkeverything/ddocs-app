@@ -97,7 +97,7 @@
                     // If we've moved on to a diff file, results useless
                     if (index !== this.focusedFileIndex) return;
                     // Success
-                    let results = JSON.parse(response.data);
+                    let results = response.json();
                     // If our search string isn't in results, we'll make it the first option
                     if (results.map(name => name.toLowerCase()).indexOf(searchString.toLowerCase()) === -1) results.unshift(searchString);
                     // select first option

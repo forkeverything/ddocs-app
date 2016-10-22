@@ -122,11 +122,11 @@
                                     >
                                         {{ fileRequest.name }}
                                     </a>
-                                    <span v-else class="name">{{ fileRequest.name }}</span>
+                                    <span v-if="! fileRequest.latest_upload" class="name">{{ fileRequest.name }}</span>
                                 </div>
                                 <div class="column col-due content-column">
                                     <smart-date v-if="fileRequest.due" :date="fileRequest.due"></smart-date>
-                                    <span v-else>--</span>
+                                    <span v-if="! fileRequest.due">--</span>
                                 </div>
                                 <div class="column col-file-view content-column">
                                     <button type="button" class="btn btn-primary" @click="showFileView(index)">
