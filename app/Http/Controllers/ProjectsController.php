@@ -18,25 +18,6 @@ use Illuminate\Support\Facades\Gate;
 
 class ProjectsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can:view,project', [
-            'only' => [
-                'getProjectFile'
-            ]
-        ]);
-
-        $this->middleware('can:update,project', [
-            'only' => [
-                'postCreateFolder',
-                'postAddFile',
-                'putUpdateItems',
-                'delete',
-                'deleteFolder',
-                'postAttachFileRequest'
-            ]
-        ]);
-    }
 
     /**
      * Return projects for authenticated User.
@@ -112,6 +93,7 @@ class ProjectsController extends Controller
      */
     public function putUpdateItems(Project $project, Request $request)
     {
+        $this->authorize('update', $project);
         $updatedModels = $request->all();
 
         if ($updatedProject = $updatedModels['project']) {
@@ -145,6 +127,7 @@ class ProjectsController extends Controller
      */
     public function delete(Project $project)
     {
+        $this->authorize('update', $project);
         $project->delete();
         return response('Deleted project');
     }
@@ -158,6 +141,7 @@ class ProjectsController extends Controller
      */
     public function postCreateFolder(Project $project, CreateProjectFolderRequest $request)
     {
+        $this->authorize('update', $project);
         return $project->folders()->create($request->all())->load('files');
     }
 
@@ -190,16 +174,22 @@ class ProjectsController extends Controller
         return $projectFolder->files()->create($request->all());
     }
 
+    public function getProjectFile(Project $project, ProjectFile $projectFile)
+    {
+        $this->authorize('viewFile', [$project, $projectFile]);
+        return $projectFile->loadAllRelations();
+    }
+
     /**
      * Attaches a FileRequest to a ProjectFile.
      *
      * @param Project $project
+     * @param ProjectFile $projectFile
      * @param Request $request
      * @return Model
      */
-    public function postAttachFileRequest(Project $project, Request $request)
+    public function postAttachFileRequest(Project $project, ProjectFile $projectFile, Request $request)
     {
-        $projectFile = ProjectFile::find($request->project_file_id);
         $this->authorize('updateFile', [$project, $projectFile]);
 
         if($fileRequestHash = $request->file_request_hash) {
@@ -219,9 +209,10 @@ class ProjectsController extends Controller
         return ProjectFile::find($projectFile->id)->loadAllRelations();
     }
 
-    public function getProjectFile(Project $project, ProjectFile $projectFile)
+    public function deleteProjectFile(Project $project, ProjectFile $projectFile)
     {
-        $this->authorize('viewFile', [$project, $projectFile]);
-        return $projectFile->loadAllRelations();
+        $this->authorize('updateFile', [$project, $projectFile]);
+        $projectFile->delete();
+        return 'Deleted project file';
     }
 }

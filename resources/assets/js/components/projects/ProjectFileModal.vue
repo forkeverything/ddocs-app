@@ -159,8 +159,8 @@
                 });
             },
             detachRequest() {
-                this.$http.post(`/api/projects/${ this.projectId }/attach_fr`, {
-                    'project_file_id': this.file.id
+                this.$http.post(`/api/projects/${ this.projectId }/files/${ this.file.id }/attach_fr`, {
+                    'file_request_hash': null
                 }, {
                     before(xhr) {
                         RequestsMonitor.pushOntoQueue(xhr);

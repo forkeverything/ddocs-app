@@ -85,8 +85,7 @@
                 if(!this.ajaxReady) return;
                 this.ajaxReady = false;
 
-                this.$http.post(`/api/projects/${ this.projectId }/attach_fr`, {
-                    'project_file_id': this.file.id,
+                this.$http.post(`/api/projects/${ this.projectId }/files/${this.file.id}/attach_fr`, {
                     'file_request_hash': fileRequestHash
                 }, {
                     before(xhr) {
