@@ -15,7 +15,7 @@
     </div>
 </template>
 <script>
-    const hasComments = require('../../mixins/HasComments');
+    const hasComments = require('../../../../mixins/HasComments');
     export default {
         data: function () {
             return {}

@@ -49,7 +49,7 @@
         </div>
 </template>
 <script>
-    import FetchesFromEloquentRepository from "../../mixins/fetchesFromEloquentRepository";
+    const FetchesFromEloquentRepository = require("../../../../mixins/fetchesFromEloquentRepository");
     export default {
         data: function () {
             return {

@@ -45,22 +45,25 @@ Vue.component('files-selecter', require('./components/checklist/maker/FilesSelec
 Vue.component('checklist-offer-join', require('./components/checklist/single/Offer.vue'));
 
 // File Requests
-Vue.component('file-reject-modal', require('./components/file/RejectModal.vue'));
-Vue.component('file-delete-modal', require('./components/file/DeleteModal.vue'));
-Vue.component('file-filters', require('./components/file/Filters.vue'));
-Vue.component('file-active-filters', require('./components/file/ActiveFilters.vue'));
-Vue.component('file-uploader', require('./components/file/Uploader.vue'));
-Vue.component('file-date-input', require('./components/file/DateInput.vue'));
+Vue.component('file-reject-modal', require('./components/file-requests/RejectModal.vue'));
+Vue.component('file-delete-modal', require('./components/file-requests/DeleteModal.vue'));
+Vue.component('file-filters', require('./components/file-requests/Filters.vue'));
+Vue.component('file-active-filters', require('./components/file-requests/ActiveFilters.vue'));
+Vue.component('file-uploader', require('./components/file-requests/Uploader.vue'));
+Vue.component('file-date-input', require('./components/file-requests/DateInput.vue'));
 
 // Projects
-Vue.component('form-add-project-folder', require('./components/projects/AddProjectFolderForm.vue'));
 Vue.component('project-folder', require('./components/projects/ProjectFolder.vue'));
-Vue.component('add-project-file', require('./components/projects/AddProjectFile.vue'));
 Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
-Vue.component('project-file-modal', require('./components/projects/ProjectFileModal.vue'));
-Vue.component('pfm-project-view', require('./components/projects/ProjectFileModalProjectView.vue'));
-Vue.component('pfm-request-view', require('./components/projects/ProjectFileModalRequestView.vue'));
-Vue.component('attach-fr-dropdown', require('./components/projects/AttachFileRequestDropdown.vue'));
+    // Folders
+    Vue.component('form-add-project-folder', require('./components/projects/folders/Add.vue'));
+    // Files
+    Vue.component('add-project-file', require('./components/projects/files/Add.vue'));
+    Vue.component('project-file-modal', require('./components/projects/files/Modal.vue'));
+        // Modal
+        Vue.component('pfm-project-view', require('./components/projects/files/modal/ProjectView.vue'));
+        Vue.component('pfm-request-view', require('./components/projects/files/modal/RequestView.vue'));
+        Vue.component('attach-fr-dropdown', require('./components/projects/files/modal/AttachFileRequestDropdown.vue'));
 
 // Comments
 Vue.component('comments-thread', require('./components/comments/CommentsThread.vue'));
