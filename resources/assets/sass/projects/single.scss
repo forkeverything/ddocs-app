@@ -130,13 +130,13 @@
 
     .placeholder {
       cursor: pointer;
-      padding: 2px 5px 5px 10px;
+      padding: 5px 5px 5px 10px;
       height: 35px;
       width: 100%;
       display: inline-block;
 
       &:hover {
-        background: $extra-light-grey;
+        background: $light-grey;
       }
     }
 
@@ -163,16 +163,15 @@
 
 // Outside so drag mirror is styled too
 .project-file {
-  display: flex;
   background: #fff;
   position: relative;
-  z-index: 2;
+  z-index: $z-project-file;
   padding: 5px 10px;
   margin: 5px 5px;
   border: 1px solid $laravel-border-color;
 
   &:hover {
-    background: $extra-light-blue;
+    background: $light-grey;
   }
 
   .info-icons {
@@ -192,6 +191,18 @@
   .file-name {
 
   }
+
+  .info-badges {
+    .badge {
+      padding: 0;
+      width: 15px;
+      height: 15px;
+      background: transparent;
+      color: $dark-grey;
+      border-radius: 0;
+    }
+  }
+
 }
 
 .gu-mirror {

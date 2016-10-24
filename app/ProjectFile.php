@@ -70,6 +70,7 @@ class ProjectFile extends Model
     public function loadAllRelations()
     {
         return $this->load(
+            'uploads',
             'fileRequest',
             'fileRequest.checklist.recipients'
         );
@@ -113,7 +114,7 @@ class ProjectFile extends Model
      */
     public function uploads()
     {
-        return $this->morphMany(Upload::class, 'target')->orderBy('created_at', 'asc');
+        return $this->morphMany(Upload::class, 'target')->orderBy('created_at', 'desc');
     }
 
 }

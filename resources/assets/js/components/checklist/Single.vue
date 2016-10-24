@@ -37,9 +37,9 @@
                                             class="caret"></span>
                                     </button>
 
-                                    <file-filters :filter-options="filterOptions"
+                                    <fr-filters :filter-options="filterOptions"
                                                   :add-filter="addFilter">
-                                    </file-filters>
+                                    </fr-filters>
 
                                 </div>
                                 <input class="form-control input-search"
@@ -54,7 +54,7 @@
                             </div>
                         </form>
 
-                        <file-active-filters :params="params" :remove-filter="removeFilter"></file-active-filters>
+                        <fr-active-filters :params="params" :remove-filter="removeFilter"></fr-active-filters>
 
                         <mobile-file-menu v-if="selectedFileRequest" :selected-file-request="selectedFileRequest"
                                           :show-delete-modal="showDeleteModal" :upload-selected="uploadSelected"
@@ -134,8 +134,8 @@
                                     </button>
                                 </div>
                                 <div class="column col-upload content-column">
-                                    <file-uploader :index="index" :file-request="fileRequest"
-                                                   @update-file-request="updateFileRequest"></file-uploader>
+                                    <fr-uploader :index="index" :file-request="fileRequest"
+                                                   @update-file-request="updateFileRequest"></fr-uploader>
                                 </div>
                             </li>
                             <li class="fr-loading" v-if="hasNextPage">
@@ -176,10 +176,10 @@
             </div>
         </div>
 
-        <file-reject-modal :index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest"
-                           @update-file-request="updateFileRequest"></file-reject-modal>
-        <file-delete-modal :selected-file-request="selectedFileRequest" :index="selectedFileRequestIndex"
-                           @remove-file-request="removeFileRequest"></file-delete-modal>
+        <fr-reject-modal :index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest"
+                           @update-file-request="updateFileRequest"></fr-reject-modal>
+        <fr-delete-modal :selected-file-request="selectedFileRequest" :index="selectedFileRequestIndex"
+                           @remove-file-request="removeFileRequest"></fr-delete-modal>
     </div>
 </template>
 <script>

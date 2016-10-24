@@ -87,7 +87,7 @@ class UploadFactory
         if($this->targetType('request')) {
             $this->name = str_replace(" ", "_", strtolower($this->target->file->name)). '_v' . $this->target->version;
         } elseif ($this->targetType('project')) {
-            $this->name = str_replace(" ", "_", strtolower($this->target->file->name));
+            $this->name = str_replace(" ", "_", strtolower($this->target->name)) . '_' . str_random(6);
         }
 
         $extension = $this->uploadedFile->getClientOriginalExtension();
@@ -98,10 +98,11 @@ class UploadFactory
     /**
      * Static wrapper - store a File after upload...
      *
-     * @param Model $model
+     * @param Model $target
      * @param UploadedFile $uploadedFile
      * @return Upload
      * @throws Exception
+     * @internal param Model $model
      */
     public static function store(Model $target, UploadedFile $uploadedFile)
     {

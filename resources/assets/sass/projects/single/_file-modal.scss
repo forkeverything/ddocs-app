@@ -168,4 +168,15 @@
       }
     }
   }
+
+  .pf-uploader {
+    position: relative;
+    .loading-overlay {
+      border-radius: 3px;
+      background: $brand-primary;
+      .rectangle-loader .rect {
+        stroke: #fff;
+      }
+    }
+  }
 }

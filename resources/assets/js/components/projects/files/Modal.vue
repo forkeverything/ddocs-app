@@ -12,7 +12,8 @@
                                 <h3 class="file-name">
                                     <i class="fa fa-file-o"></i>
                                     <span class="name-wrap">
-                                    <editable-text-field v-model="file.name" :update-fn="updateFileName"></editable-text-field>
+                                    <editable-text-field v-model="file.name"
+                                                         :update-fn="updateFileName"></editable-text-field>
                                 </span>
                                 </h3>
                                 <ul class="nav nav-tabs">
@@ -69,15 +70,8 @@
                                         </li>
                                         <li class="heading"><h5>Project</h5></li>
                                         <li>
-                                            <a class="clickable">
-                                                <i class="fa fa-upload"
-                                                   data-toggle="tooltip"
-                                                   data-placement="left"
-                                                   title="Add internal file"
-                                                   :disabled="! canUpload"
-                                                >
-                                                </i>Upload
-                                            </a>
+                                            <pf-uploader :project-id="projectId" :project-file="file"
+                                                         :can-upload="canUpload"></pf-uploader>
                                         </li>
                                         <li><a class="clickable"><i class="fa fa-trash"></i>Delete</a></li>
                                     </ul>
@@ -111,15 +105,12 @@
                                                 class="fa fa-list"></i>Checklist</a>
                                     </li>
                                     <li><h5>Project</h5></li>
-                                    <li><a class="btn btn-primary btn-sm"
-                                           :disabled="! canUpload"
-                                    >
-                                        <i class="fa fa-upload"
-                                           data-toggle="tooltip"
-                                           data-placement="right"
-                                           title="Add internal file"
-                                        ></i>Upload
-                                    </a>
+                                    <li>
+                                        <pf-uploader :project-id="projectId"
+                                                     :project-file="file"
+                                                     :can-upload="canUpload"
+                                                     @uploaded-file="updateUploads"
+                                        ></pf-uploader>
                                     </li>
                                     <li><a class="btn btn-primary btn-sm"><i class="fa fa-trash"></i>Delete</a></li>
                                 </ul>
@@ -153,7 +144,7 @@
         props: ['project-id'],
         methods: {
             toggleAttachFRMenu() {
-                this.attachFileRequestMenu = ! this.attachFileRequestMenu
+                this.attachFileRequestMenu = !this.attachFileRequestMenu
             },
             setFileAttached(attached) {
                 vueGlobalEventBus.$emit('update-project-file', {
@@ -166,6 +157,11 @@
                     id: this.file.id,
                     name: this.file.name
                 });
+            },
+            updateUploads(uploads) {
+                // Uploaded a new file directly, update the
+                // uploads relation
+                this.file.uploads = uploads;
             },
             attachedRequest(file) {
                 // update our project file to include the file request

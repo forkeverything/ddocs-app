@@ -20,6 +20,7 @@ class CreateUploadsTable extends Migration
             $table->string('file_name');
             $table->string('path');
             $table->integer('size');
+
             $table->boolean('rejected')->default(0);
             $table->text('rejected_reason')->nullable();
 

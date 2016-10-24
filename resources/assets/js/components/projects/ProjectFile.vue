@@ -1,16 +1,12 @@
 <template>
     <div class="project-file" :data-id="file.id" @click="viewFile">
-        <div class="info-icons">
-            <span class="attached"
-                  :class="{
-                    'is-attached': file.attached
-                  }"
-            >
+        <div class="file-name truncate">
+            {{ file.name }}
+        </div>
+        <div class="info-badges">
+            <span class="attached badge" v-if="file.attached">
                 <i class="fa fa-link"></i>
             </span>
-        </div>
-        <div class="file-name truncate">
-                {{ file.name }}
         </div>
     </div>
 </template>

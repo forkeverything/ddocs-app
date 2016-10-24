@@ -45,11 +45,11 @@ Vue.component('files-selecter', require('./components/checklist/maker/FilesSelec
 Vue.component('checklist-offer-join', require('./components/checklist/single/Offer.vue'));
 
 // File Requests
-Vue.component('file-reject-modal', require('./components/file-requests/RejectModal.vue'));
-Vue.component('file-delete-modal', require('./components/file-requests/DeleteModal.vue'));
-Vue.component('file-filters', require('./components/file-requests/Filters.vue'));
-Vue.component('file-active-filters', require('./components/file-requests/ActiveFilters.vue'));
-Vue.component('file-uploader', require('./components/file-requests/Uploader.vue'));
+Vue.component('fr-reject-modal', require('./components/file-requests/RejectModal.vue'));
+Vue.component('fr-delete-modal', require('./components/file-requests/DeleteModal.vue'));
+Vue.component('fr-filters', require('./components/file-requests/Filters.vue'));
+Vue.component('fr-active-filters', require('./components/file-requests/ActiveFilters.vue'));
+Vue.component('fr-uploader', require('./components/file-requests/Uploader.vue'));
 Vue.component('file-date-input', require('./components/file-requests/DateInput.vue'));
 
 // Projects
@@ -64,6 +64,7 @@ Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
         Vue.component('pfm-project-view', require('./components/projects/files/modal/ProjectView.vue'));
         Vue.component('pfm-request-view', require('./components/projects/files/modal/RequestView.vue'));
         Vue.component('attach-fr-dropdown', require('./components/projects/files/modal/AttachFileRequestDropdown.vue'));
+        Vue.component('pf-uploader', require('./components/projects/files/modal/Uploader.vue'));
 
 // Comments
 Vue.component('comments-thread', require('./components/comments/CommentsThread.vue'));

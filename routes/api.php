@@ -33,17 +33,22 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('/files', 'FilesController@getForUser');
 
     // Projects
-    Route::get('/projects', 'ProjectsController@getUserProjects');
-    Route::post('/projects', 'ProjectsController@postSaveNew');
-    Route::get('/projects/{project}', 'ProjectsController@getSingleProject');
-    Route::delete('/projects/{project}', 'ProjectsController@delete');
-    Route::post('/projects/{project}/folders', 'ProjectsController@postCreateFolder');
-    Route::delete('/projects/{project}/folders/{projectFolder}', 'ProjectsController@deleteFolder');
-    Route::post('/projects/{project}/folders/{projectFolder}/files', 'ProjectsController@postAddFile');
-    Route::put('/projects/{project}', 'ProjectsController@putUpdateItems');
-    Route::get('/projects/{project}/files/{projectFile}', 'ProjectsController@getProjectFile');
-    Route::post('/projects/{project}/files/{projectFile}/attach_fr', 'ProjectsController@postAttachFileRequest');
-    Route::delete('/projects/{project}/files/{projectFile}', 'ProjectsController@deleteProjectFile');
+        // Main
+        Route::get('/projects', 'ProjectsController@getUserProjects');
+        Route::post('/projects', 'ProjectsController@postSaveNew');
+        // Single
+        Route::get('/projects/{project}', 'ProjectsController@getSingleProject');
+        Route::put('/projects/{project}', 'ProjectsController@putUpdateItems');
+        Route::delete('/projects/{project}', 'ProjectsController@delete');
+            // Folders
+            Route::post('/projects/{project}/folders', 'ProjectsController@postCreateFolder');
+            Route::delete('/projects/{project}/folders/{projectFolder}', 'ProjectsController@deleteFolder');
+            // Files
+            Route::post('/projects/{project}/folders/{projectFolder}/files', 'ProjectsController@postAddFile');
+            Route::get('/projects/{project}/files/{projectFile}', 'ProjectsController@getProjectFile');
+            Route::post('/projects/{project}/files/{projectFile}/attach_fr', 'ProjectsController@postAttachFileRequest');
+            Route::delete('/projects/{project}/files/{projectFile}', 'ProjectsController@deleteProjectFile');
+            Route::post('/projects/{project}/files/{projectFile}/upload', 'ProjectsController@postUploadFile');
 
     // Comments
     Route::get('/comments/project_file/{projectFile}', 'CommentsController@getProjectFile');

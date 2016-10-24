@@ -1,5 +1,5 @@
 <template>
-    <div class="file-uploader">
+    <div class="fr-uploader">
         <button type="button"
                 v-show="! uploading"
                 class="btn btn-primary"

@@ -2,7 +2,7 @@
     <div class="project-folder-body">
         <div class="folder-header">
             <div class="folder-name">
-                <editable-text-field v-model="folder.name" :update-fn="save" :clipped="true"></editable-text-field>
+                <editable-text-field :value="folder.name" :update-fn="updateName" :clipped="true"></editable-text-field>
             </div>
             <div class="folder-menu">
                 <button type="button" class="btn" data-toggle="dropdown"><i class="fa fa-caret-down"></i></button>
@@ -47,19 +47,22 @@
                 this.save({position: newPosition})
             },
             index(newIndex){
-                this.updateFolderModel({position: this.index});
+                this.updateModel({position: this.index});
             }
         },
         methods: {
-            updateFolderModel(folder){
+            updateName(newName) {
+                let folder = {
+                    name: newName
+                };
+                this.updateModel(folder);
+                this.save(folder);
+            },
+            updateModel(folder){
                 this.$store.commit('project/UPDATE_FOLDER', {
                     index: this.index,
                     folder
                 });
-            },
-            setNewRequest(xhr){
-                if(this.request) RequestsMonitor.abortRequest(this.request);
-                this.request = xhr;
             },
             save(updatedProperties){
                 updatedProperties['id'] = this.folder.id;
@@ -71,7 +74,8 @@
             deleteFolder(){
                 this.$http.delete(`/api/projects/${ this.folder.project_id }/folders/${ this.folder.id }`, {
                     before(xhr) {
-                        this.setNewRequest(xhr);
+                        if(this.request) RequestsMonitor.abortRequest(this.request);
+                        this.request = xhr;
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((res) => {
@@ -80,7 +84,7 @@
                     console.log('error deleting project folder');
                 });
             },
-            handleDroppingFile(el, target, source, sibling){
+            handleFileDrop(el, target, source, sibling){
                 if (parseInt(source.dataset.id) !== this.folder.id) return;
                 let targetFile = _.find(this.folder.files, {id: parseInt(el.dataset.id)});
                 let targetFileIndex = _.indexOf(this.folder.files, targetFile);
@@ -109,10 +113,10 @@
             }
         },
         created(){
-            vueGlobalEventBus.$on('dropped-file', this.handleDroppingFile);
+            vueGlobalEventBus.$on('dropped-file', this.handleFileDrop);
         },
         mounted() {
-            if(this.folder.position !== this.index) this.updateFolderModel({position: this.index});
+            if(this.folder.position !== this.index) this.updateModel({position: this.index});
         },
         beforeDestroy(){
             vueGlobalEventBus.$off('dropped-file');

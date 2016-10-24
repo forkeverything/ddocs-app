@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Factories\UploadFactory;
 use App\FileRequest;
 use App\Http\Requests\AddProjectFileRequest;
 use App\Http\Requests\CreateProjectFolderRequest;
@@ -206,9 +207,31 @@ class ProjectsController extends Controller
             ]);
         }
 
-        return ProjectFile::find($projectFile->id)->loadAllRelations();
+        return ProjectFile::find($projectFile->id)->fresh(['uploads'])->loadAllRelations();
     }
 
+    /**
+     * Directly upload to a ProjectFile.
+     *
+     * @param Project $project
+     * @param ProjectFile $projectFile
+     * @param Request $request
+     * @return Model
+     */
+    public function postUploadFile(Project $project, ProjectFile $projectFile, Request $request)
+    {
+        $this->authorize('updateFile', [$project, $projectFile]);
+        UploadFactory::store($projectFile, $request->file('file'));
+        return $projectFile->loadAllRelations();
+    }
+
+    /**
+     * Delete Project File.
+     *
+     * @param Project $project
+     * @param ProjectFile $projectFile
+     * @return string
+     */
     public function deleteProjectFile(Project $project, ProjectFile $projectFile)
     {
         $this->authorize('updateFile', [$project, $projectFile]);

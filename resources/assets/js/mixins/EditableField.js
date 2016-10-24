@@ -24,11 +24,9 @@ module.exports = {
         },
         processNewValue() {
             if(! this.allowNull && ! this.newValue || (this.newValue === this.value) ) return this.exitEditMode();
-            this.$emit('input', this.newValue);
-            this.$nextTick(() => {
-                if(this.updateFn) this.updateFn();
-                this.exitEditMode();
-            });
+            this.$emit('input', this.newValue); // If we're using v-model 2 way binding
+            if(this.updateFn) this.updateFn(this.newValue); // ie. manually update or persist changes
+            this.$nextTick(this.exitEditMode);
         }
     },
     mounted() {
