@@ -1,7 +1,7 @@
 <template>
 <div class="new-comment-field">
     <form @submit.prevent="addComment">
-    <textarea class="form-control" v-model="body" rows="1" @keydown.enter="hitEnter($event)"></textarea>
+    <textarea class="form-control" v-model="body" rows="1" @keydown.enter="hitEnter($event)" placeholder="Write a comment..."></textarea>
     </form>
 </div>
 </template>
