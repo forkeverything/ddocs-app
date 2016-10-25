@@ -32,7 +32,7 @@
                 if (!this.ajaxReady) return;
                 this.ajaxReady = false;
 
-                this.$http.put('/fr/' + this.fileRequest.hash, {
+                this.$http.put('/api/file_requests/' + this.fileRequest.hash, {
                     due: this.date
                 }, {
                     before(xhr) {

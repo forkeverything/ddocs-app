@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a :href="'/fr/' + selectedFileRequest.hash + '/history'"
+                <a :href="'/file_requests/' + selectedFileRequest.hash + '/history'"
                    :class="{'disabled': ! selectedFileRequest.latest_upload }">
                     <i class="icon history fa fa-clock-o"></i>History
                 </a>

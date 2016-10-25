@@ -9361,7 +9361,7 @@ label {
       text-overflow: ellipsis; }
   #checklist-single .col-due {
     -webkit-box-flex: 0;
-    flex: 0 0 100px; }
+    flex: 0 0 120px; }
   #checklist-single .col-upload {
     width: 50px; }
   #checklist-single .col-file-view {

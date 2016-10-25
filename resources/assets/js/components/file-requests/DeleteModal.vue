@@ -45,7 +45,7 @@
 
                 if (!this.ajaxReady) return;
 
-                this.$http.delete('/fr/' + this.selectedFileRequest.hash, {
+                this.$http.delete('/api/file_requests/' + this.selectedFileRequest.hash, {
                     before(xhr) {
                         RequestsMonitor.pushOntoQueue(xhr);
                     }

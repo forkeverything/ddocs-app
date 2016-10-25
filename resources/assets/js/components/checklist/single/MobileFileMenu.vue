@@ -29,7 +29,7 @@
                     </a>
                     <ul ref="dropdown-menu" class="dropdown-menu dropdown-menu-right" aria-labelledby="select-menu-more">
                         <li class="menu-item">
-                            <a :href="'/fr/' + selectedFileRequest.hash + '/history'"
+                            <a :href="'/file_requests/' + selectedFileRequest.hash + '/history'"
                                :class="{'disabled': ! selectedFileRequest.latest_upload }">
                                 <i class="icon history fa fa-clock-o"></i>History
                             </a>
@@ -44,7 +44,7 @@
                     </ul>
                 </li>
                 <li class="menu-item hidden-xs"><a
-                        :href="'/fr/' + selectedFileRequest.hash + '/history'"
+                        :href="'/file_requests/' + selectedFileRequest.hash + '/history'"
                         :class="{'disabled': ! selectedFileRequest.latest_upload }"><i
                         class="icon history fa fa-clock-o"></i>History</a></li>
                 <li class="menu-item hidden-xs"><a href="#" @click.prevent="showDeleteModal"><i

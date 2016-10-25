@@ -56,7 +56,7 @@
                 if (!this.ajaxReady) return;
                 this.ajaxReady = false;
 
-                this.$http.post('/fr/' + this.selectedFileRequest.hash + '/reject', {
+                this.$http.post('/api/file_requests/' + this.selectedFileRequest.hash + '/reject', {
                     reason: this.reason
                 }, {
                     before(xhr) {
