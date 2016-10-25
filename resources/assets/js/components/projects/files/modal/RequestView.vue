@@ -2,7 +2,13 @@
     <div class="request-view">
         <p class="text-muted small"><i class="fa fa-eye"></i> Checklist recipients and team members</p>
         <div class="fr-file-name">
-            <h5>Requested File</h5>
+            <div class="title-group">
+                <h5>Requested File</h5>
+                <a class="clickable"
+                   @click.prevent="$emit('detach-request')"
+                ><i class="fa fa-unlink"></i>Detach
+                </a>
+            </div>
             <a class="clickable small" @click.prevent="$emit('go-to-checklist')">{{ fileRequest.checklist.name}}</a>
             <br>
             {{ fileRequest.name }}

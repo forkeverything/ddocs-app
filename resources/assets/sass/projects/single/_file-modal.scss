@@ -50,6 +50,28 @@
           }
         }
 
+        .title-group {
+          display: flex;
+          align-items: center;
+          margin-top: 11px;
+          justify-content: space-between;
+
+          h5 {
+            margin-top: 0;
+          }
+
+          a {
+            color: $dark-grey;
+            font-size: 0.8em;
+            i {
+              margin: 0 3px 0 0;
+            }
+
+            &:hover {
+              color: $link-color;
+            }
+          }
+        }
         .mobile-actions {
           position: absolute;
           top: 13px;

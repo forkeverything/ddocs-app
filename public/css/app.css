@@ -9555,6 +9555,23 @@ label {
           @media screen and (min-width: 768px) {
             #project-file-modal .modal-body .main .content .file-name .name-wrap {
               margin-right: 0; } }
+      #project-file-modal .modal-body .main .content .title-group {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        margin-top: 11px;
+        -webkit-box-pack: justify;
+        justify-content: space-between; }
+        #project-file-modal .modal-body .main .content .title-group h5 {
+          margin-top: 0; }
+        #project-file-modal .modal-body .main .content .title-group a {
+          color: #999999;
+          font-size: 0.8em; }
+          #project-file-modal .modal-body .main .content .title-group a i {
+            margin: 0 3px 0 0; }
+          #project-file-modal .modal-body .main .content .title-group a:hover {
+            color: #3498DB; }
       #project-file-modal .modal-body .main .content .mobile-actions {
         position: absolute;
         top: 13px;

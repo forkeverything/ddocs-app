@@ -43,25 +43,18 @@
                                         </a>
                                     </li>
                                 </ul>
-
-
                                 <div class="dropdown mobile-actions">
                                     <a class="btn-dropdown clickable" data-toggle="dropdown" aria-haspopup="true"
                                        aria-expanded="false">•••</a>
                                     <ul class="dropdown-menu list-unstyled dropdown-menu-right">
                                         <li class="heading"><h5>Request</h5></li>
-                                        <li v-if="! attached">
+                                        <li>
                                             <a class="clickable"
                                                data-toggle="tooltip"
                                                data-placement="left"
                                                title="link file request"
                                             >
                                                 <i class="fa fa-link"></i>Attach
-                                            </a>
-                                        </li>
-                                        <li v-if="attached">
-                                            <a class="clickable" @click.prevent="detachRequest">
-                                                <i class="fa fa-unlink"></i>Detach
                                             </a>
                                         </li>
                                         <li>
@@ -75,16 +68,26 @@
                                         <li><a class="clickable"><i class="fa fa-trash"></i>Delete</a></li>
                                     </ul>
                                 </div>
-                                <component :is="currentView" :file="file" @go-to-checklist="goToChecklist"></component>
+                                <component :is="currentView"
+                                           :file="file"
+                                           @go-to-checklist="goToChecklist"
+                                           @detach-request="detachRequest"
+                                >
+
+                                </component>
                             </div>
                             <div class="actions">
                                 <ul id="list-pf-modal-actions" class="list-unstyled">
                                     <li><h5>Request</h5></li>
 
-                                    <li v-if="! attached" class="attach-wrapper">
-                                        <a class="btn btn-primary btn-sm" @click.prevent.stop="toggleAttachFRMenu">
+                                    <li class="attach-wrapper">
+                                        <button type="button"
+                                                class="btn btn-primary btn-sm"
+                                                @click.stop="toggleAttachFRMenu"
+                                                :disabled="attached"
+                                        >
                                             <i class="fa fa-link"></i>Attach
-                                        </a>
+                                        </button>
                                         <attach-fr-dropdown v-if="attachFileRequestMenu"
                                                             :project-id="projectId"
                                                             :file="file"
@@ -92,12 +95,6 @@
                                                             @toggle-attach-fr-menu="toggleAttachFRMenu"
                                         >
                                         </attach-fr-dropdown>
-                                    </li>
-
-                                    <li v-if="attached">
-                                        <a class="btn btn-primary btn-sm" @click.prevent="detachRequest">
-                                            <i class="fa fa-unlink"></i>Detach
-                                        </a>
                                     </li>
                                     <li>
                                         <a class="btn btn-primary btn-sm" :disabled="! attached" @click="goToChecklist"><i
@@ -221,8 +218,10 @@
                     }
                 }).then((response) => {
                     // success
-                    this.loading = false;
                     this.file = response.json();
+                    this.$nextTick(() => {
+                        this.loading = false;
+                    });
                 }, (response) => {
                     // error
                     console.log('Error fetching from: `/api/projects`');
