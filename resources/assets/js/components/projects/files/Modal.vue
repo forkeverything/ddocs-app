@@ -82,7 +82,7 @@
 
                                     <li class="attach-wrapper">
                                         <button type="button"
-                                                class="btn btn-primary btn-sm"
+                                                class="btn btn-default btn-modal-action btn-sm"
                                                 @click.stop="toggleAttachFRMenu"
                                                 :disabled="attached"
                                         >
@@ -97,7 +97,7 @@
                                         </attach-fr-dropdown>
                                     </li>
                                     <li>
-                                        <a class="btn btn-primary btn-sm" :disabled="! attached" @click="goToChecklist"><i
+                                        <a class="btn btn-default btn-modal-action btn-sm" :disabled="! attached" @click="goToChecklist"><i
                                                 class="fa fa-list"></i>Checklist</a>
                                     </li>
                                     <li><h5>Project</h5></li>
@@ -113,7 +113,7 @@
                                     </li>
                                     <li>
                                         <button type="button"
-                                                class="btn btn-primary btn-sm"
+                                                class="btn btn-default btn-modal-action btn-sm"
                                                 @click="deleteFile"
                                         >
                                             <i class="fa fa-trash"></i>Delete

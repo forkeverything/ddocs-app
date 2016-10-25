@@ -6,12 +6,12 @@
             <div class="btn-group">
 
                 <button type="submit"
-                        class="btn btn-primary btn-sm"
+                        class="btn btn-default btn-modal-action btn-sm"
                 >
                     <i class="fa fa-download"></i>Download
                 </button>
 
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <button type="button" class="btn btn-default btn-modal-action dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -33,7 +33,7 @@
         <button v-if="! canDownload"
                 type="button"
                 disabled
-                class="btn btn-primary btn-sm"
+                class="btn btn-default btn-modal-action btn-sm"
         >
             <i class="fa fa-download"></i>Download
         </button>

@@ -9595,7 +9595,7 @@ label {
       #project-file-modal .modal-body .main .content .nav-tabs {
         margin: 0 0 10px; }
     #project-file-modal .modal-body .main .actions {
-      padding: 30px 10px 15px 10px;
+      padding: 15px 10px 15px 10px;
       -webkit-box-flex: 0;
       flex: 0 0 180px;
       background: #F7F7F7;
@@ -9605,12 +9605,24 @@ label {
           display: block; } }
       #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li:not(:last-child) {
         margin-bottom: 5px; }
-      #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn {
+      #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn-modal-action {
+        border: 0;
         text-align: left;
-        width: 100%; }
-        #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn i {
+        width: 100%;
+        font-weight: bold; }
+        #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn-modal-action i {
           width: 20px;
           margin-right: 3px; }
+        #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn-modal-action .caret {
+          color: #1B2432; }
+        #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn-modal-action:hover:not([disabled]) {
+          background: #353535;
+          color: #fff; }
+          #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn-modal-action:hover:not([disabled]) .caret {
+            color: #fff; }
+      #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn.disabled, #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn[disabled], #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li fieldset[disabled] .btn {
+        opacity: 0.8;
+        filter: alpha(opacity=80); }
       #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn-group {
         display: -webkit-box;
         display: flex; }

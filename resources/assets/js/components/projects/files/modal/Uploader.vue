@@ -1,11 +1,8 @@
 <template>
 <div class="pf-uploader">
     <button type="button"
-            class="btn btn-primary btn-sm"
+            class="btn btn-default btn-modal-action btn-sm"
             :disabled="! canUpload"
-            data-toggle="tooltip"
-            data-placement="left"
-            title="Add internal file"
             @click="selectFile"
     >
         <i class="fa fa-upload"></i>Upload
