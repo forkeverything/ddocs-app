@@ -25,6 +25,7 @@ use phpDocumentor\Reflection\Types\Boolean;
  * @method static \Illuminate\Database\Query\Builder|\App\Recipient whereInvitationClaimed($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Recipient whereChecklistId($value)
  * @mixin \Eloquent
+ * @property-read mixed $hash
  */
 class Recipient extends Model
 {

@@ -114,7 +114,14 @@
                                     <li>
                                         <pf-downloader :uploads="file.uploads"></pf-downloader>
                                     </li>
-                                    <li><a class="btn btn-primary btn-sm"><i class="fa fa-trash"></i>Delete</a></li>
+                                    <li>
+                                        <button type="button"
+                                                class="btn btn-primary btn-sm"
+                                                @click="deleteFile"
+                                        >
+                                            <i class="fa fa-trash"></i>Delete
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -219,6 +226,14 @@
                 }, (response) => {
                     // error
                     console.log('Error fetching from: `/api/projects`');
+                });
+            },
+            deleteFile(){
+                this.$http.delete(`/api/projects/${ this.projectId }/files/${ this.file.id }`).then((res) => {
+                    vueGlobalEventBus.$emit('delete-project-file', this.file.id);
+                    this.$nextTick(this.hide);
+                }, (res) => {
+                    console.log(' error deleting file.')
                 });
             }
         },

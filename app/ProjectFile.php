@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Utilities\Traits\HasUploads;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,10 +30,19 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereProjectFolderId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereFileRequestId($value)
  * @mixin \Eloquent
+ * @property-read mixed $meta
+ * @property-read mixed $attached
  */
 class ProjectFile extends Model
 {
 
+    use HasUploads;
+
+    /**
+     * Assignable fields...
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'position',
@@ -60,6 +70,11 @@ class ProjectFile extends Model
         'meta'
     ];
 
+    /**
+     * Dynamic meta properties.
+     *
+     * @return array
+     */
     public function getMetaAttribute()
     {
         $meta = [];

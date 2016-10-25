@@ -60,6 +60,13 @@
                 if(file.id !== this.file.id) return;
                 this.updateFileModel(file);
             });
+            vueGlobalEventBus.$on('delete-project-file', (id) => {
+                if(id !== this.file.id) return;
+                this.$store.commit('project/REMOVE_FILE', {
+                    folderIndex: this.folderIndex,
+                    fileIndex: this.index
+                });
+            });
         },
         mounted() {
             if(this.file.position !== this.index) this.updateFileModel({ position: this.index });

@@ -40,4 +40,19 @@ class Project extends Model
     {
         return $this->hasMany(ProjectFolder::class, 'project_id');
     }
+
+    /**
+     * Recursively delete each ProjectFolder and subsequent files
+     * within the folders before finally deleting
+     * the project.
+     *
+     * @return bool|null
+     */
+    public function fullDelete()
+    {
+        foreach ($this->folders as $folder) {
+            $folder->fullDelete();
+        }
+        return $this->delete();
+    }
 }

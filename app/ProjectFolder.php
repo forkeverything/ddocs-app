@@ -52,4 +52,17 @@ class ProjectFolder extends Model
         return $this->belongsTo(Project::class);
     }
 
+    /**
+     * Recursively delete each ProjectFile within folder before deleting
+     * the folder.
+     *
+     * @return bool|null
+     */
+    public function fullDelete()
+    {
+        foreach ($this->files as $file) {
+            $file->fullDelete();
+        }
+        return $this->delete();
+    }
 }

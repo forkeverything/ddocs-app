@@ -118,9 +118,7 @@ class FileRequestsController extends Controller
     {
         $fileRequest = FileRequest::findByHash($fileRequestHash);
         $this->authorize('update', $fileRequest);
-        $uploadPaths = $fileRequest->uploads->pluck('path')->toArray();
-        if (Storage::delete($uploadPaths)) $fileRequest->delete();
-        return $fileRequest;
+        return $fileRequest->fullDelete();
     }
 
     /**

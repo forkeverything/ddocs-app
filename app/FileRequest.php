@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Utilities\Traits\Hashable;
+use App\Utilities\Traits\HasUploads;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,10 +35,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\FileRequest whereChecklistId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\FileRequest whereFileId($value)
  * @mixin \Eloquent
+ * @property-read mixed $checklist_hash
  */
 class FileRequest extends Model
 {
-    use Hashable;
+    use Hashable, HasUploads;
 
     /**
      * Hidden attributes.

@@ -129,7 +129,7 @@ class ProjectsController extends Controller
     public function delete(Project $project)
     {
         $this->authorize('update', $project);
-        $project->delete();
+        $project->fullDelete();
         return response('Deleted project');
     }
 
@@ -157,7 +157,7 @@ class ProjectsController extends Controller
     public function deleteFolder(Project $project, ProjectFolder $projectFolder)
     {
         $this->authorize('updateFolder', [$project, $projectFolder]);
-        $projectFolder->delete();
+        $projectFolder->fullDelete();
         return response("Deleted project folder");
     }
 
@@ -235,7 +235,7 @@ class ProjectsController extends Controller
     public function deleteProjectFile(Project $project, ProjectFile $projectFile)
     {
         $this->authorize('updateFile', [$project, $projectFile]);
-        $projectFile->delete();
+        $projectFile->fullDelete();
         return 'Deleted project file';
     }
 }
