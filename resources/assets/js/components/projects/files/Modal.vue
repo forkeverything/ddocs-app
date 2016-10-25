@@ -174,6 +174,7 @@
             attachedRequest(file) {
                 // update our project file to include the file request
                 this.file = file;
+                this.attachFileRequestMenu = false;
                 this.setFileAttached(true);
                 this.$nextTick(() => {
                     this.switchView('pfm-request-view');
@@ -188,10 +189,10 @@
                     }
                 }).then((response) => {
                     // success
-                    this.setFileAttached(false);
-                    this.file = response.json();
+                    this.switchView('pfm-project-view');
                     this.$nextTick(() => {
-                        this.switchView('pfm-project-view');
+                        this.setFileAttached(false);
+                        this.file = response.json();
                     });
                     this.ajaxReady = true;
                 }, (response) => {

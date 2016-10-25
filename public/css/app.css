@@ -9620,9 +9620,6 @@ label {
           color: #fff; }
           #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn-modal-action:hover:not([disabled]) .caret {
             color: #fff; }
-      #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn.disabled, #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn[disabled], #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li fieldset[disabled] .btn {
-        opacity: 0.8;
-        filter: alpha(opacity=80); }
       #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn-group {
         display: -webkit-box;
         display: flex; }
