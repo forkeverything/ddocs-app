@@ -1,0 +1,23 @@
+.project-view {
+    .due-date {
+      p {
+        font-size: 0.9em;
+        margin: 0;
+        display: inline-block;
+      }
+
+      .datepicker {
+        display: inline-block;
+        button {
+          padding: 0;
+          font-size: 1em;
+          
+          .smart-date {
+            span {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+}

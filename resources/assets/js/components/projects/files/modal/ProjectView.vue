@@ -1,6 +1,14 @@
 <template>
     <div class="project-view">
         <p class="text-muted small"><i class="fa fa-eye"></i> Team members in project</p>
+        <div class="due-date">
+            <p class="text-muted">Due Date</p>
+            <br>
+            <date-picker v-model="file.due"
+                         :formatted="true"
+                         :button-only="true"
+            ></date-picker>
+        </div>
         <div class="description">
             <h5>Description</h5>
             <editable-text-area v-model="file.description"

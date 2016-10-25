@@ -9,7 +9,7 @@
             :class="{'filled': date}"
             @click="pickDate"
     >
-        <span v-show="buttonOnly && date">{{ formattedDate }}</span>
+        <smart-date v-show="buttonOnly && date" :date="date"></smart-date>
         <i class="fa fa-calendar" v-show="! buttonOnly || ! date"></i>
     </button>
     <input type="text"
@@ -29,13 +29,7 @@ export default {
         }
     },
     props: ['value', 'formatted', 'placeholder', 'button-only'],
-    computed: {
-        formattedDate() {
-            if (!this.date) return;
-            if(this.formatted) return Vue.filter('smartDate')(this.date);
-            return this.date;
-        }
-    },
+    computed: {},
     methods: {
         pickDate() {
             $(this.$refs.input).datepicker('show');
@@ -49,6 +43,9 @@ export default {
         }
     },
     watch: {
+        value(newVal) {
+          this.date = newVal;
+        },
         date() {
             this.$emit('input', this.date);
         }

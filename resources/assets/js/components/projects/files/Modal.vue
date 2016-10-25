@@ -139,6 +139,7 @@
                 attachFileRequestMenu: false
             }
         },
+        props: ['project-id'],
         computed: {
             attached(){
                 return this.file.file_request
@@ -147,7 +148,14 @@
                 return !this.attached;
             }
         },
-        props: ['project-id'],
+        watch: {
+          'file.due'(dueDate) {
+              vueGlobalEventBus.$emit('update-project-file', {
+                  id: this.file.id,
+                  due: dueDate
+              });
+          }
+        },
         methods: {
             toggleAttachFRMenu() {
                 this.attachFileRequestMenu = !this.attachFileRequestMenu

@@ -196,11 +196,19 @@
     .badge {
       font-weight: normal;
       padding: 0;
-      width: 15px;
+      min-width: 15px;
       height: 15px;
       background: transparent;
       color: $dark-grey;
       border-radius: 0;
+
+      i {
+        margin: 0 3px 0 0;
+      }
+
+      .smart-date {
+        display: inline-block;
+      }
     }
   }
 

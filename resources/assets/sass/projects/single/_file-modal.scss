@@ -72,6 +72,7 @@
             }
           }
         }
+
         .mobile-actions {
           position: absolute;
           top: 13px;
@@ -104,6 +105,9 @@
         .nav-tabs {
           margin: 0 0 10px;
         }
+
+        @import "modal/project-view";
+
       }
 
       .actions {

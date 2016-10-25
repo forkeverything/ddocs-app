@@ -8,7 +8,10 @@
                 <i class="fa fa-link"></i>
             </span>
             <span class="uploads badge" v-if="file.meta.num_uploads">
-                <i class="fa fa-upload"></i> {{ file.meta.num_uploads }}
+                <i class="fa fa-upload"></i>{{ file.meta.num_uploads }}
+            </span>
+            <span class="due-date badge" v-if="file.due">
+                <i class="fa fa-calendar"></i><smart-date :date="file.due"></smart-date>
             </span>
         </div>
     </div>
@@ -22,22 +25,25 @@
             }
         },
         watch: {
-            'file.project_folder_id'(newFolderId) {
-                this.save({project_folder_id: newFolderId});
+            index() {
+                this.updateModel({ position: this.index });
             },
             'file.position'(newPosition) {
                 this.save({position: newPosition});
             },
-            index() {
-                this.updateFileModel({ position: this.index });
+            'file.project_folder_id'(newFolderId) {
+                this.save({project_folder_id: newFolderId});
             },
             'file.name'(newName) {
                 this.save({name: newName});
+            },
+            'file.due'(newDueDate) {
+                this.save({due: newDueDate});
             }
         },
         props: ['index', 'file', 'projectId', 'folder-index'],
         methods: {
-            updateFileModel(file){
+            updateModel(file){
                 this.$store.commit('project/UPDATE_FILE', {
                     folderIndex: this.folderIndex,
                     fileIndex: this.index,
@@ -58,7 +64,7 @@
         created(){
             vueGlobalEventBus.$on('update-project-file', (file) => {
                 if(file.id !== this.file.id) return;
-                this.updateFileModel(file);
+                this.updateModel(file);
             });
             vueGlobalEventBus.$on('delete-project-file', (id) => {
                 if(id !== this.file.id) return;
@@ -69,7 +75,7 @@
             });
         },
         mounted() {
-            if(this.file.position !== this.index) this.updateFileModel({ position: this.index });
+            if(this.file.position !== this.index) this.updateModel({ position: this.index });
         },
         beforeDestroy(){
             vueGlobalEventBus.$off('update-project-file');

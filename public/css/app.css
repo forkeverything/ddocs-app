@@ -8127,7 +8127,8 @@ body {
   background: #fff;
   border: 1px solid #1c1c1c;
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.3);
-  border-radius: 4px; }
+  border-radius: 4px;
+  z-index: 1500 !important; }
   #ui-datepicker-div .ui-datepicker-header {
     margin: -0.5em -.5em 0 -.5em;
     background: #5b5b5b;
@@ -9594,6 +9595,17 @@ label {
           margin-top: 20px; }
       #project-file-modal .modal-body .main .content .nav-tabs {
         margin: 0 0 10px; }
+      #project-file-modal .modal-body .main .content .project-view .due-date p {
+        font-size: 0.9em;
+        margin: 0;
+        display: inline-block; }
+      #project-file-modal .modal-body .main .content .project-view .due-date .datepicker {
+        display: inline-block; }
+        #project-file-modal .modal-body .main .content .project-view .due-date .datepicker button {
+          padding: 0;
+          font-size: 1em; }
+          #project-file-modal .modal-body .main .content .project-view .due-date .datepicker button .smart-date span {
+            text-decoration: underline; }
     #project-file-modal .modal-body .main .actions {
       padding: 15px 10px 15px 10px;
       -webkit-box-flex: 0;
@@ -9823,11 +9835,15 @@ label {
   .project-file .info-badges .badge {
     font-weight: normal;
     padding: 0;
-    width: 15px;
+    min-width: 15px;
     height: 15px;
     background: transparent;
     color: #999999;
     border-radius: 0; }
+    .project-file .info-badges .badge i {
+      margin: 0 3px 0 0; }
+    .project-file .info-badges .badge .smart-date {
+      display: inline-block; }
 
 .gu-mirror {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175); }

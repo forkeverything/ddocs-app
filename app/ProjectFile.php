@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Utilities\Traits\HasUploads;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 
@@ -47,6 +48,7 @@ class ProjectFile extends Model
         'name',
         'position',
         'description',
+        'due',
         'project_folder_id',
         'file_request_id'
     ];
@@ -68,6 +70,15 @@ class ProjectFile extends Model
     protected $appends = [
         'attached',
         'meta'
+    ];
+
+    /**
+     * Date attributes.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'due'
     ];
 
     /**
@@ -96,6 +107,11 @@ class ProjectFile extends Model
                      ->get();
     }
 
+    /**
+     * Attached to a FileRequest.
+     *
+     * @return bool
+     */
     public function getAttachedAttribute()
     {
         return !! $this->file_request_id;
@@ -153,6 +169,20 @@ class ProjectFile extends Model
     public function uploads()
     {
         return $this->morphMany(Upload::class, 'target')->orderBy('created_at', 'desc');
+    }
+
+    /**
+     * Format as Carbon Date only if value given to prevent '0000-00-00 00:00:00'
+     *
+     * @param $value
+     */
+    public function setDueAttribute($value)
+    {
+        if ($value) {
+            $this->attributes['due'] = Carbon::createFromFormat('d/m/Y', $value);
+        } else {
+            $this->attributes['due'] = null;
+        }
     }
 
 }

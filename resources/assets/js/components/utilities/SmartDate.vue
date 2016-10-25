@@ -20,6 +20,9 @@ export default {
         yesterday() {
             return this.today.clone().subtract(1, 'days').startOf('day');
         },
+        threeDaysAgo() {
+            return this.today.clone().subtract(3, 'days').startOf('day');
+        },
         nextSunday() {
           return this.today.clone().day(7).startOf('day');
         },
@@ -45,6 +48,7 @@ export default {
         },
         styleClass() {
             if(! this.parsedDate) return;
+            if(this.parsedDate.isBefore(this.threeDaysAgo, 'day')) return 'text-danger';
             if(this.parsedDate.isBefore(this.today, 'day')) return 'text-warning';
             if(this.parsedDate.isSame(this.today, 'd') || this.parsedDate.isSame(this.tomorrow, 'd')) return 'text-success';
         }
