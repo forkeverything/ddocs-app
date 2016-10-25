@@ -109,6 +109,18 @@
                 margin-right: 3px;
               }
             }
+
+            .btn-group {
+              display: flex;
+
+              .btn {
+                width: initial;
+
+                &:first-child {
+                  flex: 1;
+                }
+              }
+            }
           }
         }
       }
@@ -176,6 +188,31 @@
       background: $brand-primary;
       .rectangle-loader .rect {
         stroke: #fff;
+      }
+    }
+  }
+
+  .pf-downloader {
+    .dropdown-menu {
+      min-width: 280px;
+      padding: 10px 15px;
+
+      form {
+        margin: 0 0 10px;
+
+        select {
+          margin-right: 10px;
+        }
+        .btn {
+          text-align:  center;
+          width: initial;
+          padding: 6px 10px;
+
+          i {
+            text-align: center;
+            margin-right: 0 !important;
+          }
+        }
       }
     }
   }

@@ -65,6 +65,7 @@ Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
         Vue.component('pfm-request-view', require('./components/projects/files/modal/RequestView.vue'));
         Vue.component('attach-fr-dropdown', require('./components/projects/files/modal/AttachFileRequestDropdown.vue'));
         Vue.component('pf-uploader', require('./components/projects/files/modal/Uploader.vue'));
+        Vue.component('pf-downloader', require('./components/projects/files/modal/Downloader.vue'));
 
 // Comments
 Vue.component('comments-thread', require('./components/comments/CommentsThread.vue'));

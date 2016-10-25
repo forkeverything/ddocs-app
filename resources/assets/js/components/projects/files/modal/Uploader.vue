@@ -8,7 +8,7 @@
             title="Add internal file"
             @click="selectFile"
     >
-        <i class="fa fa-upload"></i> Upload
+        <i class="fa fa-upload"></i>Upload
     </button>
     <input type="file"
            class="input-pf-upload hidden"
@@ -27,6 +27,12 @@ export default {
         }
     },
     props: ['project-id', 'project-file', 'can-upload'],
+    watch: {
+        projectFile() {
+            // whenever we get a new file, set uploading to false
+            this.uploading = false;
+        }
+    },
     methods: {
         selectFile: function () {
             $(this.$refs.input).click();
@@ -47,14 +53,18 @@ export default {
                     //  let progress = Math.round(100 * event.loaded / event.total);
                 }
             }).then((response) => {
-                let uploads = response.json().uploads;
+                let projectFile = response.json();
                 // Update ProjectFile in modal
-                this.$emit('uploaded-file', uploads);
+                this.$emit('uploaded-file', {
+                    id: projectFile.id,
+                    uploads: projectFile.uploads,
+                    meta: projectFile.meta
+                });
                 // Update ProjectFile on the board
-//                vueGlobalEventBus.$emit('update-project-file', {
-//                    id: this.projectFile.id,
-//                    uploads: uploads
-//                });
+                vueGlobalEventBus.$emit('update-project-file', {
+                    id: projectFile.id,
+                    meta: projectFile.meta
+                });
                 this.uploading = false;
             }, (response) => {
                 console.log('Error uploading project file.');

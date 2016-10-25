@@ -7,6 +7,9 @@
             <span class="attached badge" v-if="file.attached">
                 <i class="fa fa-link"></i>
             </span>
+            <span class="uploads badge" v-if="file.meta.num_uploads">
+                <i class="fa fa-upload"></i> {{ file.meta.num_uploads }}
+            </span>
         </div>
     </div>
 </template>

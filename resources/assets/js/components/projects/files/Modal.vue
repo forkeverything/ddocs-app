@@ -65,13 +65,12 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="clickable" :disabled="! attached" @click="goToChecklist"><i
-                                                    class="fa fa-list"></i>Checklist</a>
+                                            <a class="clickable" :disabled="! attached" @click="goToChecklist">
+                                                <i class="fa fa-list"></i>Checklist</a>
                                         </li>
                                         <li class="heading"><h5>Project</h5></li>
                                         <li>
-                                            <pf-uploader :project-id="projectId" :project-file="file"
-                                                         :can-upload="canUpload"></pf-uploader>
+                                            <a class="clickable" :disabled="! canUpload"><i class="fa fa-upload"></i>Upload</a>
                                         </li>
                                         <li><a class="clickable"><i class="fa fa-trash"></i>Delete</a></li>
                                     </ul>
@@ -111,6 +110,9 @@
                                                      :can-upload="canUpload"
                                                      @uploaded-file="updateUploads"
                                         ></pf-uploader>
+                                    </li>
+                                    <li>
+                                        <pf-downloader :uploads="file.uploads"></pf-downloader>
                                     </li>
                                     <li><a class="btn btn-primary btn-sm"><i class="fa fa-trash"></i>Delete</a></li>
                                 </ul>
@@ -158,10 +160,12 @@
                     name: this.file.name
                 });
             },
-            updateUploads(uploads) {
+            updateUploads(projectFile) {
+                // If we're viewing a new
+                if(projectFile.id !== this.file.id) return;
                 // Uploaded a new file directly, update the
                 // uploads relation
-                this.file.uploads = uploads;
+                this.file.uploads = projectFile.uploads;
             },
             attachedRequest(file) {
                 // update our project file to include the file request

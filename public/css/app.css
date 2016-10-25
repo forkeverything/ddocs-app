@@ -9594,6 +9594,14 @@ label {
         #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn i {
           width: 20px;
           margin-right: 3px; }
+      #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn-group {
+        display: -webkit-box;
+        display: flex; }
+        #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn-group .btn {
+          width: initial; }
+          #project-file-modal .modal-body .main .actions #list-pf-modal-actions > li .btn-group .btn:first-child {
+            -webkit-box-flex: 1;
+            flex: 1; }
     #project-file-modal .modal-body .main .attach-wrapper {
       position: relative; }
       #project-file-modal .modal-body .main .attach-wrapper #attach-fr-menu {
@@ -9636,6 +9644,21 @@ label {
     background: #353535; }
     #project-file-modal .pf-uploader .loading-overlay .rectangle-loader .rect {
       stroke: #fff; }
+
+#project-file-modal .pf-downloader .dropdown-menu {
+  min-width: 280px;
+  padding: 10px 15px; }
+  #project-file-modal .pf-downloader .dropdown-menu form {
+    margin: 0 0 10px; }
+    #project-file-modal .pf-downloader .dropdown-menu form select {
+      margin-right: 10px; }
+    #project-file-modal .pf-downloader .dropdown-menu form .btn {
+      text-align: center;
+      width: initial;
+      padding: 6px 10px; }
+      #project-file-modal .pf-downloader .dropdown-menu form .btn i {
+        text-align: center;
+        margin-right: 0 !important; }
 
 #project-single {
   height: 100%;
@@ -9772,6 +9795,7 @@ label {
       .project-file .info-icons .attached.is-attached {
         color: #3498DB; }
   .project-file .info-badges .badge {
+    font-weight: normal;
     padding: 0;
     width: 15px;
     height: 15px;

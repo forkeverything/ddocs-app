@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -55,8 +56,30 @@ class ProjectFile extends Model
      * @var array
      */
     protected $appends = [
-        'attached'
+        'attached',
+        'meta'
     ];
+
+    public function getMetaAttribute()
+    {
+        $meta = [];
+        $uploads = $this->fetchUploads();
+        $meta['num_uploads'] = $uploads->count();
+        return $meta;
+    }
+
+    /**
+     * Manual DB query to return file uploads.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    protected function fetchUploads()
+    {
+        return $uploads = DB::table('uploads')
+                     ->where('target_type', 'App\ProjectFile')
+                     ->where('target_id', $this->id)
+                     ->get();
+    }
 
     public function getAttachedAttribute()
     {
