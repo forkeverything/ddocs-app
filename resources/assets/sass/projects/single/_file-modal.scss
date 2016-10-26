@@ -137,6 +137,7 @@
             }
 
             .btn-modal-action {
+              outline: 0;
               border: 0;
               text-align: left;
               width: 100%;
@@ -237,10 +238,6 @@
     position: relative;
     .loading-overlay {
       border-radius: 3px;
-      background: $brand-primary;
-      .rectangle-loader .rect {
-        stroke: #fff;
-      }
     }
   }
 

@@ -16,6 +16,9 @@
                              :on-change="updateDate"
                 ></date-picker>
             </div>
+            <div class="weighting info">
+
+            </div>
         </div>
         <div class="description">
             <h5>Description</h5>
