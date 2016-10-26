@@ -37,8 +37,8 @@
 
             <div class="line-el">
                 <date-picker v-model="file.due"
+                             :carbon="true"
                              :formatted="true"
-                             :placeholder="'Due date'"
                              :button-only="true"
                 >
                 </date-picker>

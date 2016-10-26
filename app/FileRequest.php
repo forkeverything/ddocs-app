@@ -117,21 +117,6 @@ class FileRequest extends Model
 
 
     /**
-     * Format as Carbon Date only if value given to prevent '0000-00-00 00:00:00'
-     *
-     * @param $value
-     */
-    public function setDueAttribute($value)
-    {
-        if ($value) {
-            $this->attributes['due'] = Carbon::createFromFormat('d/m/Y', $value);
-        } else {
-            $this->attributes['due'] = null;
-        }
-    }
-
-
-    /**
      * All File(s) belong to a single Checklist that has required them.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

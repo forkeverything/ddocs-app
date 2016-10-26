@@ -170,19 +170,4 @@ class ProjectFile extends Model
     {
         return $this->morphMany(Upload::class, 'target')->orderBy('created_at', 'desc');
     }
-
-    /**
-     * Format as Carbon Date only if value given to prevent '0000-00-00 00:00:00'
-     *
-     * @param $value
-     */
-    public function setDueAttribute($value)
-    {
-        if ($value) {
-            $this->attributes['due'] = Carbon::createFromFormat('d/m/Y', $value);
-        } else {
-            $this->attributes['due'] = null;
-        }
-    }
-
 }

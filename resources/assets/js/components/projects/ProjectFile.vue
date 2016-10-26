@@ -37,7 +37,7 @@
             'file.name'(newName) {
                 this.save({name: newName});
             },
-            'file.due'(newDueDate) {
+            'file.due'(newDueDate = null) {
                 this.save({due: newDueDate});
             }
         },

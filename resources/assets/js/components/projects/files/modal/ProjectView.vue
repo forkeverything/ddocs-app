@@ -1,13 +1,21 @@
 <template>
     <div class="project-view">
-        <p class="text-muted small"><i class="fa fa-eye"></i> Team members in project</p>
-        <div class="due-date">
-            <p class="text-muted">Due Date</p>
-            <br>
-            <date-picker v-model="file.due"
-                         :formatted="true"
-                         :button-only="true"
-            ></date-picker>
+        <div class="summary">
+            <span class="visibility info">
+                <i class="fa fa-eye"
+                   data-toggle="tooltip" data-placement="bottom" title="Team members in project"
+                ></i>
+            </span>
+            <div class="due-date info">
+                <date-picker v-model="file.due"
+                             :carbon="true"
+                             :formatted="true"
+                             :button-only="true"
+                             :keep-button="true"
+                             :placeholder="'Due date'"
+                             :on-change="updateDate"
+                ></date-picker>
+            </div>
         </div>
         <div class="description">
             <h5>Description</h5>
@@ -39,7 +47,19 @@
                 if (newFile) this.fetchComments();
             }
         },
-        methods: {},
+        methods: {
+            updateDate(dueDate) {
+                vueGlobalEventBus.$emit('update-project-file', {
+                    id: this.file.id,
+                    due: dueDate
+                });
+            }
+        },
+        mounted() {
+            this.$nextTick(() => {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
+        },
         mixins: [hasComments]
     };
 </script>

@@ -8416,7 +8416,7 @@ a.disabled, a[disabled=disabled] {
         margin: 0 0 3px; }
       .filters-menu .integer-range-field .starting input, .filters-menu .integer-range-field .ending input, .filters-menu .date-range-field .starting input, .filters-menu .date-range-field .ending input {
         text-align: center;
-        height: 34px;
+        height: 32px;
         padding: 6px 12px;
         border: 1px solid #e6e6e6;
         border-radius: 4px;
@@ -8469,7 +8469,7 @@ a.disabled, a[disabled=disabled] {
           background: #1c1c1c; }
 
 .progress {
-  background: #E9E9E9;
+  background: #EFEFEF;
   box-shadow: none; }
 
 .form-control {
@@ -8742,7 +8742,7 @@ label {
   border: 1px solid transparent;
   padding: 1px 0;
   max-width: 100%;
-  height: 30px; }
+  height: 34px; }
   .editable-text-field .placeholder:hover {
     border: 1px dashed #cccccc;
     padding: 1px;
@@ -8758,7 +8758,8 @@ label {
   margin-bottom: -7px; }
   .editable-text-field.clipped .placeholder {
     text-overflow: ellipsis;
-    overflow: hidden; }
+    overflow: hidden;
+    height: 30px; }
   .editable-text-field.clipped input {
     margin: 0 -1px 7px; }
 

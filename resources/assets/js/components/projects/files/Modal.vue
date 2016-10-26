@@ -148,14 +148,6 @@
                 return !this.attached;
             }
         },
-        watch: {
-          'file.due'(dueDate) {
-              vueGlobalEventBus.$emit('update-project-file', {
-                  id: this.file.id,
-                  due: dueDate
-              });
-          }
-        },
         methods: {
             toggleAttachFRMenu() {
                 this.attachFileRequestMenu = !this.attachFileRequestMenu

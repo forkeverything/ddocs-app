@@ -91,7 +91,7 @@ module.exports = {
             let queryObj = {
                 page: 1
             };
-            queryObj[filter.name] = fiter.value || [filter.minValue, filter.maxValue];
+            queryObj[filter.name] = filter.value || [filter.minValue, filter.maxValue];
             this.fetchResults(updateQueryString(queryObj));
             this.showFiltersDropdown = false;
         },

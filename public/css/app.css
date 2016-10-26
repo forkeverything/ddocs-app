@@ -8434,7 +8434,7 @@ a.disabled, a[disabled=disabled] {
         margin: 0 0 3px; }
       .filters-menu .integer-range-field .starting input, .filters-menu .integer-range-field .ending input, .filters-menu .date-range-field .starting input, .filters-menu .date-range-field .ending input {
         text-align: center;
-        height: 34px;
+        height: 32px;
         padding: 6px 12px;
         border: 1px solid #e6e6e6;
         border-radius: 4px;
@@ -8487,7 +8487,7 @@ a.disabled, a[disabled=disabled] {
           background: #1c1c1c; }
 
 .progress {
-  background: #E9E9E9;
+  background: #EFEFEF;
   box-shadow: none; }
 
 .form-control {
@@ -8760,7 +8760,7 @@ label {
   border: 1px solid transparent;
   padding: 1px 0;
   max-width: 100%;
-  height: 30px; }
+  height: 34px; }
   .editable-text-field .placeholder:hover {
     border: 1px dashed #cccccc;
     padding: 1px;
@@ -8776,7 +8776,8 @@ label {
   margin-bottom: -7px; }
   .editable-text-field.clipped .placeholder {
     text-overflow: ellipsis;
-    overflow: hidden; }
+    overflow: hidden;
+    height: 30px; }
   .editable-text-field.clipped input {
     margin: 0 -1px 7px; }
 
@@ -9199,7 +9200,7 @@ label {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0; }
           #checklist-single #checklist-body #split-view #file-view #selected-file-requirements .btn:hover .icon {
-            background: #E9E9E9; }
+            background: #EFEFEF; }
         #checklist-single #checklist-body #split-view #file-view #selected-file-requirements .uneditable {
           display: inline-block; }
           #checklist-single #checklist-body #split-view #file-view #selected-file-requirements .uneditable .icon {
@@ -9595,22 +9596,32 @@ label {
           margin-top: 20px; }
       #project-file-modal .modal-body .main .content .nav-tabs {
         margin: 0 0 10px; }
-      #project-file-modal .modal-body .main .content .project-view .due-date p {
-        font-size: 0.9em;
-        margin: 0;
+      #project-file-modal .modal-body .main .content .summary i {
+        color: #9CA1A8; }
+      #project-file-modal .modal-body .main .content .summary .info {
+        margin: 0 5px; }
+      #project-file-modal .modal-body .main .content .project-view .summary .due-date {
         display: inline-block; }
-      #project-file-modal .modal-body .main .content .project-view .due-date .datepicker {
-        display: inline-block; }
-        #project-file-modal .modal-body .main .content .project-view .due-date .datepicker button {
-          padding: 0;
-          font-size: 1em; }
-          #project-file-modal .modal-body .main .content .project-view .due-date .datepicker button .smart-date span {
-            text-decoration: underline; }
+        #project-file-modal .modal-body .main .content .project-view .summary .due-date p {
+          font-size: 0.9em;
+          margin: 0;
+          display: inline-block; }
+        #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker {
+          display: inline-block; }
+          #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker button {
+            padding: 0;
+            font-size: 1em; }
+            #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker button i {
+              float: left;
+              margin: 2px 6px 0 0;
+              font-size: 1em; }
+            #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker button .smart-date {
+              display: inline-block; }
     #project-file-modal .modal-body .main .actions {
       padding: 15px 10px 15px 10px;
       -webkit-box-flex: 0;
       flex: 0 0 180px;
-      background: #F7F7F7;
+      background: #EFEFEF;
       display: none; }
       @media screen and (min-width: 768px) {
         #project-file-modal .modal-body .main .actions {
@@ -9797,7 +9808,7 @@ label {
     width: 100%;
     display: inline-block; }
     .project-folder-body .add-project-file .placeholder:hover {
-      background: #E9E9E9; }
+      background: #EFEFEF; }
   .project-folder-body .add-project-file form {
     display: -webkit-box;
     display: flex;
@@ -9822,7 +9833,7 @@ label {
   margin: 5px 5px;
   border: 1px solid #e6e6e6; }
   .project-file:hover {
-    background: #E9E9E9; }
+    background: #EFEFEF; }
   .project-file .info-icons {
     margin: 0 5px 0 0;
     font-size: 0.8em; }

@@ -38,7 +38,7 @@
                                     </button>
 
                                     <fr-filters :filter-options="filterOptions"
-                                                  :add-filter="addFilter">
+                                                  @add-filter="addFilter">
                                     </fr-filters>
 
                                 </div>

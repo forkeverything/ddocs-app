@@ -25,7 +25,7 @@
             </div>
 
             <!-- Filter: Status -->
-            <div class="filter-fields status" v-show="name === 'status'">
+            <div class="filter-fields status form-group" v-show="name === 'status'">
                 <p class="text-muted">is</p>
                 <select v-model="value" class="form-control">
                     <option value="" disabled>Pick one</option>
@@ -52,10 +52,10 @@
                 range: ''
             }
         },
-        props: ['filter-options', 'add-filter'],
+        props: ['filter-options'],
         methods: {
-            processFilter(){
-                this.addFilter({
+            addFilter(){
+                this.$emit('add-filter', {
                     name: this.name,
                     value: this.value,
                     minValue: this.range.minValue,

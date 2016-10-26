@@ -2,12 +2,12 @@
    <div class="date-range-field" @click.stop="">
    <div class="starting">
        <label>starting</label>
-       <date-picker v-model="range.minValue"></date-picker>
+       <date-picker v-model="range.minValue" :filter-format="true"></date-picker>
        </div>
    <span class="dash">-</span>
    <div class="ending">
        <label>Ending</label>
-       <date-picker v-model="range.maxValue"></date-picker>
+       <date-picker v-model="range.maxValue" :filter-format="true"></date-picker>
        </div>
    </div>
 </template>
@@ -22,9 +22,6 @@ export default {
         range(newVal){
             this.$emit('input', newVal);
         }
-    },
-    computed: {
-
     },
     props: ['value'],
     mounted() {

@@ -1,6 +1,13 @@
 <template>
     <div class="request-view">
-        <p class="text-muted small"><i class="fa fa-eye"></i> Checklist recipients and team members</p>
+        <div class="summary">
+            <span class="visibility info">
+                <i class="fa fa-eye"
+                   data-toggle="tooltip" data-placement="bottom" title="Checklist recipients and team members"
+                ></i>
+            </span>
+        </div>
+
         <div class="fr-file-name">
             <div class="title-group">
                 <h5>Requested File</h5>
@@ -47,6 +54,9 @@
         },
         mounted() {
             this.fetchComments();
+            this.$nextTick(() => {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
         },
         mixins: [hasComments]
     }
