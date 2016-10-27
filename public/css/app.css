@@ -8760,7 +8760,7 @@ label {
   border: 1px solid transparent;
   padding: 1px 0;
   max-width: 100%;
-  height: 34px; }
+  height: 26px; }
   .editable-text-field .placeholder:hover {
     border: 1px dashed #cccccc;
     padding: 1px;
@@ -8780,6 +8780,9 @@ label {
     height: 30px; }
   .editable-text-field.clipped input {
     margin: 0 -1px 7px; }
+
+h3 .editable-text-field .placeholder {
+  height: 34px; }
 
 .editable-text-area .placeholder {
   min-height: 80px;
@@ -8803,6 +8806,23 @@ label {
     outline: 0;
     border: 1px dashed #353535;
     margin: 0 -2px; }
+
+.editable-number-field .placeholder {
+  display: inline-block;
+  border: 1px solid transparent;
+  padding: 1px 0;
+  max-width: 100%;
+  height: 26px; }
+  .editable-number-field .placeholder:hover {
+    border: 1px dashed #cccccc;
+    padding: 1px;
+    margin: 0 -1px; }
+
+.editable-number-field input {
+  outline: 0;
+  border: 1px dashed #757575;
+  width: 100%;
+  margin: 0 -1px; }
 
 .modal-content {
   border-radius: 3px;
@@ -9596,27 +9616,34 @@ label {
           margin-top: 20px; }
       #project-file-modal .modal-body .main .content .nav-tabs {
         margin: 0 0 10px; }
-      #project-file-modal .modal-body .main .content .summary i {
+      #project-file-modal .modal-body .main .content .summary > div {
+        display: inline-block; }
+      #project-file-modal .modal-body .main .content .summary i, #project-file-modal .modal-body .main .content .summary .icon {
         color: #9CA1A8; }
       #project-file-modal .modal-body .main .content .summary .info {
         margin: 0 5px; }
-      #project-file-modal .modal-body .main .content .project-view .summary .due-date {
+      #project-file-modal .modal-body .main .content .project-view .summary .due-date p {
+        font-size: 0.9em;
+        margin: 0;
         display: inline-block; }
-        #project-file-modal .modal-body .main .content .project-view .summary .due-date p {
-          font-size: 0.9em;
-          margin: 0;
-          display: inline-block; }
-        #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker {
-          display: inline-block; }
-          #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker button {
-            padding: 0;
+      #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker {
+        display: inline-block; }
+        #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker button {
+          padding: 0;
+          font-size: 1em; }
+          #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker button i {
+            float: left;
+            margin: 2px 6px 0 0;
             font-size: 1em; }
-            #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker button i {
-              float: left;
-              margin: 2px 6px 0 0;
-              font-size: 1em; }
-            #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker button .smart-date {
-              display: inline-block; }
+          #project-file-modal .modal-body .main .content .project-view .summary .due-date .datepicker button .smart-date {
+            display: inline-block; }
+      #project-file-modal .modal-body .main .content .project-view .summary .weighting {
+        vertical-align: middle; }
+        #project-file-modal .modal-body .main .content .project-view .summary .weighting .icon {
+          margin: 0 3px 0 0; }
+        #project-file-modal .modal-body .main .content .project-view .summary .weighting .editable-number-field {
+          width: 80px;
+          display: inline-block; }
     #project-file-modal .modal-body .main .actions {
       padding: 15px 10px 15px 10px;
       -webkit-box-flex: 0;
@@ -9849,7 +9876,7 @@ label {
     background: transparent;
     color: #999999;
     border-radius: 0; }
-    .project-file .info-badges .badge i {
+    .project-file .info-badges .badge i, .project-file .info-badges .badge .icon {
       margin: 0 3px 0 0; }
     .project-file .info-badges .badge .smart-date {
       display: inline-block; }

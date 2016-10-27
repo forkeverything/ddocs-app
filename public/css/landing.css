@@ -8742,7 +8742,7 @@ label {
   border: 1px solid transparent;
   padding: 1px 0;
   max-width: 100%;
-  height: 34px; }
+  height: 26px; }
   .editable-text-field .placeholder:hover {
     border: 1px dashed #cccccc;
     padding: 1px;
@@ -8762,6 +8762,9 @@ label {
     height: 30px; }
   .editable-text-field.clipped input {
     margin: 0 -1px 7px; }
+
+h3 .editable-text-field .placeholder {
+  height: 34px; }
 
 .editable-text-area .placeholder {
   min-height: 80px;
@@ -8785,6 +8788,23 @@ label {
     outline: 0;
     border: 1px dashed #353535;
     margin: 0 -2px; }
+
+.editable-number-field .placeholder {
+  display: inline-block;
+  border: 1px solid transparent;
+  padding: 1px 0;
+  max-width: 100%;
+  height: 26px; }
+  .editable-number-field .placeholder:hover {
+    border: 1px dashed #cccccc;
+    padding: 1px;
+    margin: 0 -1px; }
+
+.editable-number-field input {
+  outline: 0;
+  border: 1px dashed #757575;
+  width: 100%;
+  margin: 0 -1px; }
 
 .modal-content {
   border-radius: 3px;

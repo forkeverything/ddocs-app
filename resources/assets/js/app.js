@@ -28,6 +28,7 @@ Vue.component('smart-date', require('./components/utilities/SmartDate.vue'));
 Vue.component('rectangle-loader', require('./components/utilities/RectangleLoader.vue'));
 Vue.component('editable-text-field', require('./components/utilities/EditableTextField.vue'));
 Vue.component('editable-text-area', require('./components/utilities/EditableTextArea.vue'));
+Vue.component('editable-number-field', require('./components/utilities/EditableNumberField.vue'));
 Vue.component('date-picker', require('./components/utilities/DatePicker.vue'));
 
 // Checklist

@@ -2,7 +2,7 @@
     <div class="project-folder-body">
         <div class="folder-header">
             <div class="folder-name">
-                <editable-text-field :value="folder.name" :update-fn="updateName" :clipped="true"></editable-text-field>
+                <editable-text-field :value="folder.name" @on-change="updateName" :clipped="true"></editable-text-field>
             </div>
             <div class="folder-menu">
                 <button type="button" class="btn" data-toggle="dropdown"><i class="fa fa-caret-down"></i></button>

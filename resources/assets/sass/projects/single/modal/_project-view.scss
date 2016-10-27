@@ -2,7 +2,6 @@
 
   .summary {
     .due-date {
-      display: inline-block;
       p {
         font-size: 0.9em;
         margin: 0;
@@ -25,6 +24,19 @@
             display: inline-block;
           }
         }
+      }
+    }
+
+    .weighting {
+      vertical-align: middle;
+
+      .icon {
+        margin: 0 3px 0 0;
+      }
+
+      .editable-number-field {
+        width: 80px;
+        display: inline-block;
       }
     }
   }

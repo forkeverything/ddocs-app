@@ -13,6 +13,9 @@
             <span class="due-date badge" v-if="file.due">
                 <i class="fa fa-calendar"></i><smart-date :date="file.due"></smart-date>
             </span>
+            <span class="weighting badge" v-if="file.weighting">
+                <span class="icon">%</span>{{ file.weighting }}
+            </span>
         </div>
     </div>
 </template>
@@ -39,6 +42,9 @@
             },
             'file.due'(newDueDate = null) {
                 this.save({due: newDueDate});
+            },
+            'file.weighting'(weighting = null) {
+                this.save({weighting: weighting});
             }
         },
         props: ['index', 'file', 'projectId', 'folder-index'],

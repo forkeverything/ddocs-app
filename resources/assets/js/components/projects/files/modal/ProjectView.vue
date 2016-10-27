@@ -17,7 +17,7 @@
                 ></date-picker>
             </div>
             <div class="weighting info">
-
+                <span class="icon">%</span><editable-number-field v-model="file.weighting" :allow-null="true" :placeholder="'Weighting'" :step="0.01" @on-change="updateWeighting"></editable-number-field>
             </div>
         </div>
         <div class="description">
@@ -55,6 +55,12 @@
                 vueGlobalEventBus.$emit('update-project-file', {
                     id: this.file.id,
                     due: dueDate
+                });
+            },
+            updateWeighting(weighting) {
+                vueGlobalEventBus.$emit('update-project-file', {
+                    id: this.file.id,
+                    weighting: weighting
                 });
             }
         },

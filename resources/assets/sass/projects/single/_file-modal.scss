@@ -107,7 +107,12 @@
         }
 
         .summary {
-          i {
+
+          > div {
+            display: inline-block;
+          }
+
+          i, .icon {
             color: $text-muted;
           }
 

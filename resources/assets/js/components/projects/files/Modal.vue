@@ -13,7 +13,7 @@
                                     <i class="fa fa-file-o"></i>
                                     <span class="name-wrap">
                                     <editable-text-field v-model="file.name"
-                                                         :update-fn="updateFileName"></editable-text-field>
+                                                         @on-change="updateFileName"></editable-text-field>
                                 </span>
                                 </h3>
                                 <ul class="nav nav-tabs">

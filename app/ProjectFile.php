@@ -49,6 +49,7 @@ class ProjectFile extends Model
         'position',
         'description',
         'due',
+        'weighting',
         'project_folder_id',
         'file_request_id'
     ];

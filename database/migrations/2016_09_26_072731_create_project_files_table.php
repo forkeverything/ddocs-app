@@ -17,11 +17,13 @@ class CreateProjectFilesTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
+            // Manually filled
             $table->string('name');
             $table->text('description')->nullable();
             $table->integer('position')->unsigned();
-            // Manually filled
+
             $table->dateTime('due')->nullable();
+            $table->float('weighting', 5, 2)->nullable();
 
             $table->integer('project_folder_id')->unsigned();
             $table->foreign('project_folder_id')->references('id')->on('project_folders')->onDelete('cascade');

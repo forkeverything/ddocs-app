@@ -50,7 +50,7 @@ $factory->define(File::class, function (Faker\Generator $faker) {
 
 $factory->define(\App\FileRequest::class, function (Faker\Generator $faker) {
     return [
-        'due' => $faker->dateTimeBetween('now', '+1 year')->format('d/m/Y'),
+        'due' => $faker->dateTimeBetween('now', '+1 year'),
         'checklist_id' => factory(Checklist::class)->create()->id,
         'file_id' => factory(File::class)->create()->id
     ];

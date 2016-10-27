@@ -5,7 +5,7 @@ module.exports = {
             newValue: ''
         }
     },
-    props: ['value', 'allow-null', 'update-fn', 'placeholder'],
+    props: ['value', 'allow-null', 'placeholder'],
     watch: {
         value(newVal) {
             if(this.newValue !== newVal) this.newValue = newVal;
@@ -24,8 +24,10 @@ module.exports = {
         },
         processNewValue() {
             if(! this.allowNull && ! this.newValue || (this.newValue === this.value) ) return this.exitEditMode();
-            this.$emit('input', this.newValue); // If we're using v-model 2 way binding
-            if(this.updateFn) this.updateFn(this.newValue); // ie. manually update or persist changes
+            this.$emit('input', this.newValue); // v-model 2 way binding
+            // In case we want to manually update or persist changes without
+            // using a watcher on the bound data.
+            this.$emit('on-change', this.newValue);
             this.$nextTick(this.exitEditMode);
         }
     },
