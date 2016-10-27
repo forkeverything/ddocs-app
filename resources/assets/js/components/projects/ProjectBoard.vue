@@ -49,6 +49,10 @@
             }
         },
         methods: {
+            initDrag() {
+                this.initFolderDrag();
+                this.initFileDrag();
+            },
             fetchProject(){
                 this.$http.get(`/api/projects/${ this.$route.params.project_id }`, {
                     before(xhr) {
@@ -57,10 +61,7 @@
                 }).then((response) => {
                     // success
                     this.$store.commit('project/SET', response.json());
-                    this.$nextTick(() => {
-                        this.initFolderDrag();
-                        this.initFileDrag();
-                    });
+                    this.$nextTick(this.initDrag);
                 }, (response) => {
                     // error
                     console.log('Error fetching from: /projects/');
@@ -164,12 +165,13 @@
             }
         },
         created() {
-
+            vueGlobalEventBus.$on('init-drag', this.initDrag);
         },
         mounted() {
             this.fetchProject();
         },
         beforeDestroy(){
+            vueGlobalEventBus.$off('init-drag');
             this.$store.commit('project/SET', '');
         }
     }

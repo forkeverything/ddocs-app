@@ -55,7 +55,10 @@
                     this.insertFileIntoFolder(res.json());
                     this.ajaxReady = true;
                     this.name = '';
-                    this.$nextTick(() => $(this.$refs.input).focus());
+                    this.$nextTick(() => {
+                        $(this.$refs.input).focus()
+                        vueGlobalEventBus.$emit('init-drag');
+                    });
                 }, (res) => {
                     console.log(res);
                     console.log('error adding file');

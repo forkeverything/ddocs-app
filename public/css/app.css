@@ -9669,6 +9669,15 @@ h3 .editable-text-field .placeholder {
         text-align: center;
         margin-right: 0 !important; }
 
+.pf-status-circle {
+  display: inline-block;
+  margin: 0 3px 0 0; }
+  .pf-status-circle .circle {
+    border: 1px solid #999999;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px; }
+
 #project-single {
   height: 100%;
   display: -webkit-box;
@@ -9786,10 +9795,11 @@ h3 .editable-text-field .placeholder {
       line-height: 1; }
 
 .project-file {
+  line-height: 1;
   background: #fff;
   position: relative;
   z-index: 2;
-  padding: 5px 10px;
+  padding: 8px 12px;
   margin: 5px 5px;
   border: 1px solid #e6e6e6; }
   .project-file:hover {
@@ -9803,7 +9813,10 @@ h3 .editable-text-field .placeholder {
       padding: 4px 0 0 0; }
       .project-file .info-icons .attached.is-attached {
         color: #3498DB; }
+  .project-file .file-name {
+    display: inline-block; }
   .project-file .info-badges .badge {
+    margin: 5px 0 0 0;
     font-weight: normal;
     padding: 0;
     min-width: 15px;

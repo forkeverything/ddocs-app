@@ -52,6 +52,7 @@
                     this.$nextTick(() => {
                         $(this.$refs.inputName).focus();
                         this.adjustScroll();
+                        vueGlobalEventBus.$emit('init-drag');
                     });
 
                 }, (response) => {

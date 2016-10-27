@@ -1,5 +1,6 @@
 <template>
     <div class="project-file" :data-id="file.id" @click="viewFile">
+        <pf-status-circle :project-file="file"></pf-status-circle>
         <div class="file-name truncate">
             {{ file.name }}
         </div>

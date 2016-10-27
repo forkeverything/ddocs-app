@@ -62,6 +62,7 @@ Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
     // Files
     Vue.component('add-project-file', require('./components/projects/files/Add.vue'));
     Vue.component('project-file-modal', require('./components/projects/files/Modal.vue'));
+    Vue.component('pf-status-circle', require('./components/projects/files/StatusCircle.vue'));
         // Modal
         Vue.component('pfm-project-view', require('./components/projects/files/modal/ProjectView.vue'));
         Vue.component('pfm-request-view', require('./components/projects/files/modal/RequestView.vue'));

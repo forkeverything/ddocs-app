@@ -100,7 +100,7 @@
                         siblingIndex = _.indexOf(this.project.folders[targetFolderIndex].files, siblingFile);
                     }
                     let differentParent = source.dataset.id !== target.dataset.id;
-                    let newIndex = (targetFileIndex >= siblingIndex || differentParent) ? siblingIndex : siblingIndex - 1;
+                    let newIndex = (targetFileIndex >= siblingIndex || differentParent || ! sibling) ? siblingIndex : siblingIndex + 1;
                     this.$store.commit('project/INSERT_FILE', {
                         folderIndex: targetFolderIndex,
                         fileIndex: newIndex,
