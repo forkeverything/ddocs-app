@@ -7,20 +7,22 @@
         <ul id="single-file-request-menu" class="list-inline list-unstyled">
             <li class="menu-item">
                 <a href="#"
-                   @click.prevent="showRejectModal"
+                   @click.prevent="$emit('reject')"
                    :class="{ 'disabled': ! canRejectFile }">
                     <i class="icon reject fa fa-close"></i>Reject
                 </a>
             </li>
             <li class="menu-item">
-                <a :href="'/file_requests/' + selectedFileRequest.hash + '/history'"
-                   :class="{'disabled': ! selectedFileRequest.latest_upload }">
+                <a href="#"
+                   :class="{'disabled': ! selectedFileRequest.latest_upload }"
+                   @click.prevent="$emit('history')"
+                >
                     <i class="icon history fa fa-clock-o"></i>History
                 </a>
             </li>
             <li class="menu-item">
                 <a href="#"
-                   @click.prevent="showDeleteModal"
+                   @click.prevent="$emit('delete')"
                 >
                     <i class="icon delete fa fa-trash-o"></i>Delete
                 </a>
@@ -46,7 +48,7 @@
         data: function () {
             return {}
         },
-        props: ['is-owner', 'selected-file-request-index', 'selected-file-request', 'show-reject-modal', 'can-reject-file', 'show-delete-modal'],
+        props: ['is-owner', 'selected-file-request-index', 'selected-file-request', 'can-reject-file', 'show-delete-modal'],
         computed: {
             commentsUrl() {
                 return `/api/comments/file_request/${ this.selectedFileRequest.hash }`;

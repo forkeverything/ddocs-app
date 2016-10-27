@@ -8319,8 +8319,7 @@ table {
   border-bottom: 1px solid #e6e6e6; }
   .table-standard.table-hover tbody > tr:hover {
     z-index: 2;
-    background: #adadad;
-    border-color: #353535; }
+    background: #EFEFEF; }
   .table-standard.table-hover tbody > tr td {
     border: 0; }
 

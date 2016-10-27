@@ -46,6 +46,7 @@ Vue.component('files-selecter', require('./components/checklist/maker/FilesSelec
 Vue.component('checklist-offer-join', require('./components/checklist/single/Offer.vue'));
 
 // File Requests
+Vue.component('fr-history-modal', require('./components/file-requests/HistoryModal.vue'));
 Vue.component('fr-reject-modal', require('./components/file-requests/RejectModal.vue'));
 Vue.component('fr-delete-modal', require('./components/file-requests/DeleteModal.vue'));
 Vue.component('fr-filters', require('./components/file-requests/Filters.vue'));

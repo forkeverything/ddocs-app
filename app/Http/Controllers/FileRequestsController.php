@@ -69,15 +69,15 @@ class FileRequestsController extends Controller
     }
 
     /**
-     * The history view with different versions of a File Request.
+     * Retrieve all uploads for a FileRequest.
      *
      * @param $fileRequestHash
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getHistory($fileRequestHash)
+    public function getUploads($fileRequestHash)
     {
-        $fileRequest = FileRequest::findByHash($fileRequestHash)->load('checklist', 'uploads');
-        return view('file.history', compact('fileRequest'));
+        $fileRequest = FileRequest::findByHash($fileRequestHash);
+        return $fileRequest->uploads;
     }
 
     /**
@@ -89,7 +89,7 @@ class FileRequestsController extends Controller
      */
     public function getNotes($fileRequestHash)
     {
-        $fileRequest = FileRequest::findByHash($fileRequestHash)->load('checklist', 'uploads');
+        $fileRequest = FileRequest::findByHash($fileRequestHash);
         return $fileRequest->notes()->orderBy('position', 'ASC')->get();
     }
 

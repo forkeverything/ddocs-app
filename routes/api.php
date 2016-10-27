@@ -29,6 +29,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     // File Requests
     Route::get('/file_requests/user', 'FileRequestsController@getForUser');
     Route::put('/file_requests/{file_request_hash}', 'FileRequestsController@putModifyRequest');
+    Route::get('/file_requests/{file_request_hash}/uploads', 'FileRequestsController@getUploads');
     Route::post('/file_requests/{file_request_hash}/reject', 'FileRequestsController@postRejectUploadedFile');
     Route::delete('/file_requests/{file_request_hash}', 'FileRequestsController@deleteFiles');
 
@@ -86,8 +87,6 @@ Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebh
 // Recipients
 //Route::get('/recipients/{recipient_hash}/turn_off_notifications', 'RecipientsController@getTurnOffNotifications');
 
-// File Requests
-//Route::get('/file_requests/{file_request_hash}/history', 'FileRequestsController@getHistory');
 
 
 

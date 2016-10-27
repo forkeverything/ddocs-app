@@ -26,7 +26,7 @@
                        'active': selectedFileRequest && showRightPanel
                    }"
                 >
-                File Details
+                    File Details
                 </a>
             </div>
 
@@ -48,7 +48,7 @@
                                     </button>
 
                                     <fr-filters :filter-options="filterOptions"
-                                                  @add-filter="addFilter">
+                                                @add-filter="addFilter">
                                     </fr-filters>
 
                                 </div>
@@ -67,12 +67,14 @@
                         <fr-active-filters :params="params" :remove-filter="removeFilter"></fr-active-filters>
 
                         <mobile-file-menu v-if="selectedFileRequest"
-                                          @file-view="toggleRightPanel"
                                           :selected-file-request="selectedFileRequest"
-                                          :show-delete-modal="showDeleteModal"
-                                          :upload-selected="uploadSelected"
-                                          :show-reject-modal="showRejectModal"
-                                          :can-reject-file="canRejectFile"></mobile-file-menu>
+                                          :can-reject-file="canRejectFile"
+                                          @file-view="toggleRightPanel"
+                                          @history="showHistoryModal"
+                                          @reject="showRejectModal"
+                                          @delete="showDeleteModal"
+                                          @upload="uploadSelected"
+                        ></mobile-file-menu>
 
 
                         <ul id="files-header"
@@ -140,7 +142,7 @@
                                 </div>
                                 <div class="column col-upload content-column">
                                     <fr-uploader :index="index" :file-request="fileRequest"
-                                                   @update-file-request="updateFileRequest"></fr-uploader>
+                                                 @update-file-request="updateFileRequest"></fr-uploader>
                                 </div>
                             </li>
                             <li class="fr-loading" v-if="hasNextPage">
@@ -159,23 +161,24 @@
                     <div class="pane-container">
                         <file-view v-if="selectedFileRequest"
                                    @close="closeFileView"
+                                   @history="showHistoryModal"
+                                   @reject="showRejectModal"
+                                   @delete="showDeleteModal"
                                    :is-owner="checklistBelongsToUser"
                                    :selected-file-request-index="selectedFileRequestIndex"
                                    :selected-file-request="selectedFileRequest"
-                                   :show-reject-modal="showRejectModal"
                                    :can-reject-file="canRejectFile"
-                                   :show-delete-modal="showDeleteModal"
                         ></file-view>
                         <summary-view v-if="! selectedFileRequest" :checklist="checklist"></summary-view>
                     </div>
                 </div>
             </div>
         </div>
-
+        <fr-history-modal :selected-file-request="selectedFileRequest"></fr-history-modal>
         <fr-reject-modal :index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest"
-                           @update-file-request="updateFileRequest"></fr-reject-modal>
+                         @update-file-request="updateFileRequest"></fr-reject-modal>
         <fr-delete-modal :selected-file-request="selectedFileRequest" :index="selectedFileRequestIndex"
-                           @remove-file-request="removeFileRequest"></fr-delete-modal>
+                         @remove-file-request="removeFileRequest"></fr-delete-modal>
     </div>
 </template>
 <script>
@@ -245,9 +248,9 @@
             }
         },
         watch: {
-          response() {
-              this.$nextTick(this.setFilesHeaderScrollbarPadding);
-          }
+            response() {
+                this.$nextTick(this.setFilesHeaderScrollbarPadding);
+            }
         },
         mixins: [fetchesFromEloquentRepository],
         methods: {
@@ -274,6 +277,9 @@
             },
             focusOnFileRequest(index) {
                 $('.single-file-request')[index].focus();
+            },
+            showHistoryModal() {
+                if (this.selectedFileRequest.latest_upload) vueGlobalEventBus.$emit('show-history-modal');
             },
             showRejectModal() {
                 if (this.canRejectFile) vueGlobalEventBus.$emit('show-reject-modal');

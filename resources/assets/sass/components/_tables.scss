@@ -253,8 +253,7 @@ table {
 
         &:hover {
           z-index: $z-table-row-hover;
-          background: lighten($brand-primary, 47%);
-          border-color: $brand-primary;
+          background: $light-grey;
         }
 
         td {

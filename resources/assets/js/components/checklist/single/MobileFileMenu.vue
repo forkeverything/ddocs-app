@@ -12,7 +12,7 @@
                 <li class="menu-item visible-xs-inline">
                     <a href="#"
                        :class="{'disabled': selectedFileRequest.status === 'received'}"
-                       @click.prevent="uploadSelected"
+                       @click.prevent="$emit('upload')"
                     >
                         <i class="icon upload fa fa-upload"></i>Upload
                     </a>
@@ -28,33 +28,29 @@
                     <ul ref="dropdown-menu" class="dropdown-menu dropdown-menu-right" aria-labelledby="select-menu-more">
                         <li class="menu-item">
                             <a href="#"
-                               @click.prevent="showRejectModal"
+                               @click.prevent="$emit('reject')"
                                :class="{ 'disabled': ! canRejectFile }"
                             >
                                 <i class="icon reject fa fa-close"></i>Reject
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a :href="'/file_requests/' + selectedFileRequest.hash + '/history'"
-                               :class="{'disabled': ! selectedFileRequest.latest_upload }">
+                            <a href="#"
+                               :class="{'disabled': ! selectedFileRequest.latest_upload }"
+                               @click.prevent="$emit('history')"
+                            >
                                 <i class="icon history fa fa-clock-o"></i>History
                             </a>
                         </li>
                         <li class="menu-item">
                             <a href="#"
-                               @click.prevent="showDeleteModal"
+                               @click.prevent="$emit('delete')"
                             >
                                 <i class="icon delete fa fa-trash-o"></i>Delete
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="menu-item hidden-xs"><a
-                        :href="'/file_requests/' + selectedFileRequest.hash + '/history'"
-                        :class="{'disabled': ! selectedFileRequest.latest_upload }"><i
-                        class="icon history fa fa-clock-o"></i>History</a></li>
-                <li class="menu-item hidden-xs"><a href="#" @click.prevent="showDeleteModal"><i
-                        class="icon delete fa fa-trash-o"></i>Delete</a></li>
             </ul>
     </div>
 </template>
@@ -65,7 +61,7 @@ export default {
 
         }
     },
-    props: ['selected-file-request', 'show-delete-modal', 'upload-selected', 'show-reject-modal', 'can-reject-file'],
+    props: ['selected-file-request', 'can-reject-file'],
     methods: {
         toggleDropdownMenu() {
             $(this.$refs.dropdownMenu).toggle();
