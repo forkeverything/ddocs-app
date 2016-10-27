@@ -3,6 +3,10 @@
   border: 1px solid $laravel-border-color;
   position: relative;
 
+  .loading-overlay {
+    z-index: $z-comments-loading;
+  }
+
   .list-comments {
     min-height: 75px;
     overflow-x: hidden;

@@ -4,19 +4,17 @@
             <ul class="list-menu-items list-inline list-unstyled">
                 <li class="menu-item visible-xs-inline">
                     <a href="#"
-                       :class="{'disabled': selectedFileRequest.status === 'received'}"
-                       @click="uploadSelected"
-
+                       @click.prevent="$emit('file-view')"
                     >
-                        <i class="icon upload fa fa-upload"></i>Upload
+                        <i class="icon fa fa-info-circle"></i>Details
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item visible-xs-inline">
                     <a href="#"
-                       @click.prevent="showRejectModal"
-                       :class="{ 'disabled': ! canRejectFile }"
+                       :class="{'disabled': selectedFileRequest.status === 'received'}"
+                       @click.prevent="uploadSelected"
                     >
-                        <i class="icon reject fa fa-close"></i>Reject
+                        <i class="icon upload fa fa-upload"></i>Upload
                     </a>
                 </li>
                 <li class="dropdown visible-xs-inline">
@@ -28,6 +26,14 @@
                         <span class="caret"></span>
                     </a>
                     <ul ref="dropdown-menu" class="dropdown-menu dropdown-menu-right" aria-labelledby="select-menu-more">
+                        <li class="menu-item">
+                            <a href="#"
+                               @click.prevent="showRejectModal"
+                               :class="{ 'disabled': ! canRejectFile }"
+                            >
+                                <i class="icon reject fa fa-close"></i>Reject
+                            </a>
+                        </li>
                         <li class="menu-item">
                             <a :href="'/file_requests/' + selectedFileRequest.hash + '/history'"
                                :class="{'disabled': ! selectedFileRequest.latest_upload }">

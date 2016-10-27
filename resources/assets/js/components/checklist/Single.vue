@@ -10,6 +10,26 @@
 
             <checklist-recipients :recipients="checklist.recipients"></checklist-recipients>
 
+            <div id="pane-nav">
+                <a @click.prevent="toggleRightPanel"
+                   :class="{
+                        'active': ! showRightPanel
+                   }"
+                >List</a>
+                <a @click.prevent="showSummary"
+                   :class="{
+                        'active': showingSummary
+                   }"
+                >Summary</a>
+                <a class="unclickable"
+                   :class="{
+                       'active': selectedFileRequest && showRightPanel
+                   }"
+                >
+                File Details
+                </a>
+            </div>
+
             <div id="split-view">
                 <div id="main-pane"
                      :class="{
@@ -17,16 +37,6 @@
                      }"
                      class="pane"
                 >
-
-                    <div class="pane-nav">
-                        <a
-                                @click.prevent="showListOverview"
-                                class="btn btn-link"
-                        >
-                            <span>List Overview</span>
-                        </a>
-                    </div>
-
                     <div class="pane-container">
 
                         <form id="form-checklist-search" @submit.prevent="searchTerm" v-if="params">
@@ -56,8 +66,11 @@
 
                         <fr-active-filters :params="params" :remove-filter="removeFilter"></fr-active-filters>
 
-                        <mobile-file-menu v-if="selectedFileRequest" :selected-file-request="selectedFileRequest"
-                                          :show-delete-modal="showDeleteModal" :upload-selected="uploadSelected"
+                        <mobile-file-menu v-if="selectedFileRequest"
+                                          @file-view="toggleRightPanel"
+                                          :selected-file-request="selectedFileRequest"
+                                          :show-delete-modal="showDeleteModal"
+                                          :upload-selected="uploadSelected"
                                           :show-reject-modal="showRejectModal"
                                           :can-reject-file="canRejectFile"></mobile-file-menu>
 
@@ -93,9 +106,6 @@
                             >
                                 Due
                             </li>
-                            <li class="column col-file-view header-column">
-                                <!-- empty spacer column-->
-                            </li>
                             <li class="column col-upload header-column">
                                 <!-- empty spacer column-->
                             </li>
@@ -128,11 +138,6 @@
                                     <smart-date v-if="fileRequest.due" :date="fileRequest.due"></smart-date>
                                     <span v-if="! fileRequest.due">--</span>
                                 </div>
-                                <div class="column col-file-view content-column">
-                                    <button type="button" class="btn btn-primary" @click="showFileView(index)">
-                                        <i class="fa fa-arrow-right"></i>
-                                    </button>
-                                </div>
                                 <div class="column col-upload content-column">
                                     <fr-uploader :index="index" :file-request="fileRequest"
                                                    @update-file-request="updateFileRequest"></fr-uploader>
@@ -151,25 +156,16 @@
                      class="pane"
                 >
 
-                    <div class="pane-nav"
-                         :class="{
-                            'selected-fr': selectedFileRequest
-                            }"
-                    >
-                        <a @click.prevent="toggleRightPanel"
-                           class="btn btn-link link-files-list"
-                        >
-                            All Files
-                        </a>
-                        <a class="btn btn-link" v-if="selectedFileRequest" @click.prevent="unselectFileRequest">List
-                            Overview</a>
-                    </div>
-
                     <div class="pane-container">
-                        <file-view :is-owner="checklistBelongsToUser" v-if="selectedFileRequest"
+                        <file-view v-if="selectedFileRequest"
+                                   @close="closeFileView"
+                                   :is-owner="checklistBelongsToUser"
                                    :selected-file-request-index="selectedFileRequestIndex"
-                                   :selected-file-request="selectedFileRequest" :show-reject-modal="showRejectModal"
-                                   :can-reject-file="canRejectFile" :show-delete-modal="showDeleteModal"></file-view>
+                                   :selected-file-request="selectedFileRequest"
+                                   :show-reject-modal="showRejectModal"
+                                   :can-reject-file="canRejectFile"
+                                   :show-delete-modal="showDeleteModal"
+                        ></file-view>
                         <summary-view v-if="! selectedFileRequest" :checklist="checklist"></summary-view>
                     </div>
                 </div>
@@ -229,6 +225,9 @@
                 if (!this.fileRequests) return;
                 return this.fileRequests[this.selectedFileRequestIndex];
             },
+            showingSummary() {
+                return this.showRightPanel && ! this.selectedFileRequest;
+            },
             checklistBelongsToUser() {
                 if (!this.authenticatedUser) return false;
                 return this.authenticatedUser.id === this.checklist.user_id;
@@ -262,6 +261,10 @@
             unselectFileRequest() {
                 this.selectedFileRequestIndex = '';
             },
+            closeFileView(){
+                this.unselectFileRequest();
+                this.showRightPanel = false;
+            },
             selectFileRequest(index) {
                 if (!this.fileRequests[index]) return;  // fr doesn't exist
                 this.selectedFileRequestIndex = index;
@@ -284,13 +287,9 @@
             toggleRightPanel() {
                 this.showRightPanel = !this.showRightPanel;
             },
-            showFileView(index) {
-                this.selectFileRequest(index);
-                this.toggleRightPanel();
-            },
-            showListOverview()  {
+            showSummary()  {
                 this.unselectFileRequest();
-                this.toggleRightPanel();
+                this.showRightPanel = true;
             },
             addChecklistNameToUrl(){
                 let checklistName = this.checklist.name.replace(/\s+/g, '-').toLowerCase();

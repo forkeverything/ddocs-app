@@ -1,6 +1,5 @@
 <template>
     <div id="summary-view" class="content">
-        <h4 class="title-list-overview">List Overview</h4>
         <div id="description" v-if="checklist">
             <h5>Description</h5>
             <p v-if="checklist.description">{{ checklist.description }}</p>

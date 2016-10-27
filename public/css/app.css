@@ -9116,6 +9116,30 @@ h3 .editable-text-field .placeholder {
       pointer-events: none; }
       #checklist-single #checklist-body .menu-item a.disabled .icon {
         color: #9CA1A8; }
+    #checklist-single #checklist-body #pane-nav {
+      width: 100%;
+      display: block;
+      margin: 0 0 10px; }
+      @media screen and (min-width: 768px) {
+        #checklist-single #checklist-body #pane-nav {
+          display: none; } }
+      #checklist-single #checklist-body #pane-nav a {
+        margin: 0 10px;
+        cursor: pointer;
+        color: #999999;
+        text-decoration: none; }
+        #checklist-single #checklist-body #pane-nav a i {
+          min-width: 15px;
+          font-size: 0.9em; }
+        #checklist-single #checklist-body #pane-nav a:hover {
+          color: #1B2432; }
+        #checklist-single #checklist-body #pane-nav a.active {
+          color: #1B2432;
+          text-decoration: underline; }
+        #checklist-single #checklist-body #pane-nav a.unclickable {
+          cursor: default; }
+          #checklist-single #checklist-body #pane-nav a.unclickable:hover {
+            color: #999999; }
     #checklist-single #checklist-body #split-view {
       -webkit-box-flex: 1;
       flex: 1;
@@ -9135,12 +9159,6 @@ h3 .editable-text-field .placeholder {
         @media screen and (min-width: 992px) {
           #checklist-single #checklist-body #split-view .pane-container {
             padding: 20px 15px 0 15px; } }
-      #checklist-single #checklist-body #split-view .pane-nav {
-        width: 100%;
-        display: block;
-        border-bottom: 1px solid #e6e6e6; }
-        #checklist-single #checklist-body #split-view .pane-nav a {
-          font-size: 0.9em; }
       #checklist-single #checklist-body #split-view #main-pane {
         -webkit-transition: margin-left 0.25s ease-out, width 0.25s ease-out;
         transition: margin-left 0.25s ease-out, width 0.25s ease-out;
@@ -9160,11 +9178,6 @@ h3 .editable-text-field .placeholder {
           @media screen and (min-width: 768px) {
             #checklist-single #checklist-body #split-view #main-pane.collapsed {
               margin-left: 0; } }
-        #checklist-single #checklist-body #split-view #main-pane .pane-nav {
-          display: inline-block; }
-          @media screen and (min-width: 768px) {
-            #checklist-single #checklist-body #split-view #main-pane .pane-nav {
-              display: none; } }
       #checklist-single #checklist-body #split-view #right-pane {
         -webkit-box-flex: 4500;
         flex: 4500 1 359px;
@@ -9184,85 +9197,13 @@ h3 .editable-text-field .placeholder {
           @media screen and (min-width: 768px) {
             #checklist-single #checklist-body #split-view #right-pane.collapsed {
               margin-left: 15px; } }
-        #checklist-single #checklist-body #split-view #right-pane .pane-nav {
-          display: inline-block; }
-          @media screen and (min-width: 768px) {
-            #checklist-single #checklist-body #split-view #right-pane .pane-nav {
-              display: none; } }
-          #checklist-single #checklist-body #split-view #right-pane .pane-nav.selected-fr {
-            display: inline-block !important; }
-          @media screen and (min-width: 768px) {
-            #checklist-single #checklist-body #split-view #right-pane .pane-nav .link-files-list {
-              display: none; } }
-      #checklist-single #checklist-body #split-view #summary-view h4 {
-        margin-top: 0; }
-        #checklist-single #checklist-body #split-view #summary-view h4.title-list-overview {
-          border-bottom: 1px solid #353535;
-          padding-bottom: 5px; }
-      #checklist-single #checklist-body #split-view #file-view #selected-file-requirements {
-        margin: 0 0 5px; }
-        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements > div {
-          display: inline-block;
-          margin-bottom: 10px; }
-        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements .btn {
-          box-shadow: none;
-          font-size: 0.9em;
-          -webkit-transition: all 0.2s ease-out;
-          transition: all 0.2s ease-out;
-          border: 1px solid #353535;
-          padding: 0;
-          outline: 0;
-          color: #999999;
-          border-radius: 4px;
-          font-weight: normal; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements .btn .icon {
-            border-radius: 4px;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements .btn:hover .icon {
-            background: #EFEFEF; }
-        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements .uneditable {
-          display: inline-block; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements .uneditable .icon {
-            font-size: 0.9em;
-            margin-right: 8px;
-            float: left;
-            padding-top: 5px; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements .uneditable > div {
-            display: inline-block; }
-        #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date {
-          margin-right: 10px; }
-          #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date {
-            background: transparent;
-            position: relative;
-            height: 30px; }
-            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date.filled {
-              color: #555555; }
-            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date span {
-              float: left; }
-            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date .icon {
-              color: #353535;
-              border-right: 1px solid #353535;
-              font-size: 0.9em;
-              height: 28px;
-              width: 30px;
-              display: inline-block;
-              padding-top: 4px; }
-            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date .date {
-              display: inline-block;
-              padding: 2px 10px 0 10px;
-              text-align: center; }
-            #checklist-single #checklist-body #split-view #file-view #selected-file-requirements #selected-file-date .btn-due-date input {
-              opacity: 0;
-              position: absolute;
-              top: 5px;
-              left: 0;
-              z-index: -1; }
-      #checklist-single #checklist-body #split-view #file-view h4 {
+      #checklist-single #checklist-body #split-view #file-view h3 {
         margin: 0 0 10px; }
       #checklist-single #checklist-body #split-view #file-view #single-file-request-menu {
         font-size: 0.9em;
         margin-bottom: 20px; }
+      #checklist-single #checklist-body #split-view #file-view .notes {
+        margin: 0 0 15px; }
   #checklist-single #form-checklist-search {
     margin: 0 0 10px; }
     #checklist-single #form-checklist-search .dropdown-toggle {
@@ -9329,9 +9270,7 @@ h3 .editable-text-field .placeholder {
       display: none; }
     @media screen and (min-width: 768px) {
       #checklist-single .column.col-upload {
-        display: inline-block; }
-      #checklist-single .column.col-file-view {
-        display: none; } }
+        display: inline-block; } }
   #checklist-single .header-column {
     padding: 5px 10px;
     cursor: pointer;
@@ -9386,22 +9325,6 @@ h3 .editable-text-field .placeholder {
     flex: 0 0 120px; }
   #checklist-single .col-upload {
     width: 50px; }
-  #checklist-single .col-file-view {
-    width: 30px;
-    padding: 0 10px 0 0; }
-    #checklist-single .col-file-view .btn {
-      -webkit-transition: all 0.2s ease-out;
-      transition: all 0.2s ease-out;
-      border-radius: 30px;
-      font-size: 1em;
-      padding: 1px 3px;
-      width: 20px;
-      border: 0;
-      background: transparent;
-      color: #D2D2D2;
-      outline: 0; }
-      #checklist-single .col-file-view .btn:hover {
-        color: #3498DB; }
   #checklist-single .table-header {
     margin-left: 0;
     border-bottom: 1px solid #e6e6e6;
@@ -9893,6 +9816,8 @@ h3 .editable-text-field .placeholder {
   padding: 0 10px;
   border: 1px solid #e6e6e6;
   position: relative; }
+  .comments-thread .loading-overlay {
+    z-index: 2; }
   .comments-thread .list-comments {
     min-height: 75px;
     overflow-x: hidden;

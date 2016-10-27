@@ -1,6 +1,9 @@
 <template>
     <div id="file-view" class="content">
-        <h4>{{ selectedFileRequest.name }}</h4>
+        <button type="button" class="close" aria-label="Close" @click="$emit('close')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>{{ selectedFileRequest.name }}</h3>
         <ul id="single-file-request-menu" class="list-inline list-unstyled">
             <li class="menu-item">
                 <a href="#"
@@ -27,6 +30,7 @@
         <file-request-notes :file-request="selectedFileRequest"></file-request-notes>
 
         <div class="comments">
+            <h5>Comments</h5>
             <comments-thread :comments="comments"
                              @add-comment="addComment"
                              :loading="loadingComments"
