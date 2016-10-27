@@ -40,3 +40,10 @@ a.disabled, a[disabled=disabled] {
   color: $grey!important;
   cursor: not-allowed;
 }
+
+a.secondary {
+  color: $dark-grey;
+  &:hover {
+    color: $text-color;
+  }
+}

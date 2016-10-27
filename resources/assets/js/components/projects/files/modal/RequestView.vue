@@ -11,15 +11,26 @@
         <div class="fr-file-name">
             <div class="title-group">
                 <h5>Requested File</h5>
-                <a class="clickable"
+                <a href="#"
+                   class="secondary"
                    @click.prevent="$emit('detach-request')"
                 ><i class="fa fa-unlink"></i>Detach
                 </a>
             </div>
-            <a class="clickable small" @click.prevent="$emit('go-to-checklist')">{{ fileRequest.checklist.name}}</a>
+            <a class="checklist secondary" href="#" @click.prevent="$emit('go-to-checklist')">{{ fileRequest.checklist.name}}</a>
             <br>
-            {{ fileRequest.name }}
+            <h4>
+                <i class="fa fa-file-o" :class="fileRequest.status"></i>
+                <a v-if="fileRequest.latest_upload"
+                   :href=" awsURL + fileRequest.latest_upload.path"
+                   :alt="fileRequest.name + 'download link'"
+                >
+                    {{ fileRequest.name }}
+                </a>
+                <span v-if="! fileRequest.latest_upload">{{ fileRequest.name }}</span>
+            </h4>
         </div>
+
         <div class="recipients" v-if="fileRequest">
             <h5>Recipients</h5>
             <checklist-recipients :recipients="fileRequest.checklist.recipients"></checklist-recipients>
@@ -38,7 +49,9 @@
     const hasComments = require('../../../../mixins/HasComments');
     export default {
         data: function () {
-            return {}
+            return {
+                awsURL: awsURL
+            }
         },
         computed: {
             fileRequest() {
@@ -46,6 +59,9 @@
             },
             commentsUrl() {
                 return `/api/comments/file_request/${this.fileRequest.hash}`;
+            },
+            canRejectFile() {
+                return this.fileRequest.status === 'received';
             }
         },
         props: ['file'],

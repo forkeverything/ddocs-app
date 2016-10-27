@@ -8374,6 +8374,11 @@ a.disabled, a[disabled=disabled] {
   color: #D2D2D2 !important;
   cursor: not-allowed; }
 
+a.secondary {
+  color: #999999; }
+  a.secondary:hover {
+    color: #1B2432; }
+
 .page-controls {
   display: -webkit-box;
   display: flex;
@@ -9510,12 +9515,9 @@ h3 .editable-text-field .placeholder {
         #project-file-modal .modal-body .main .content .title-group h5 {
           margin-top: 0; }
         #project-file-modal .modal-body .main .content .title-group a {
-          color: #999999;
           font-size: 0.8em; }
           #project-file-modal .modal-body .main .content .title-group a i {
             margin: 0 3px 0 0; }
-          #project-file-modal .modal-body .main .content .title-group a:hover {
-            color: #3498DB; }
       #project-file-modal .modal-body .main .content .mobile-actions {
         position: absolute;
         top: 13px;
@@ -9566,6 +9568,17 @@ h3 .editable-text-field .placeholder {
         #project-file-modal .modal-body .main .content .project-view .summary .weighting .editable-number-field {
           width: 80px;
           display: inline-block; }
+      #project-file-modal .modal-body .main .content .request-view .fr-file-name {
+        margin: 0 0 10px; }
+        #project-file-modal .modal-body .main .content .request-view .fr-file-name h4 {
+          margin: 5px 0 0 0; }
+        #project-file-modal .modal-body .main .content .request-view .fr-file-name i {
+          margin: 0 5px 0 0;
+          color: #D2D2D2; }
+          #project-file-modal .modal-body .main .content .request-view .fr-file-name i.received {
+            color: #41B883; }
+          #project-file-modal .modal-body .main .content .request-view .fr-file-name i.rejected {
+            color: #ff6a6a; }
     #project-file-modal .modal-body .main .actions {
       padding: 15px 10px 15px 10px;
       -webkit-box-flex: 0;
