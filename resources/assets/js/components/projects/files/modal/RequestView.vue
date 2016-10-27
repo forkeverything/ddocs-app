@@ -30,7 +30,7 @@
         </div>
         <div class="comments">
             <h5>Request Comments</h5>
-            <comments-thread :comments="comments" @add-comment="addComment" :loading="loadingComments"></comments-thread>
+            <comments-thread :comments="comments" @add-comment="addComment" :loading="loadingComments" :saving="saving"></comments-thread>
         </div>
     </div>
 </template>

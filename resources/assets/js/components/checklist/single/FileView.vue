@@ -26,15 +26,36 @@
 
         <file-request-notes :file-request="selectedFileRequest"></file-request-notes>
 
+        <div class="comments">
+            <comments-thread :comments="comments"
+                             @add-comment="addComment"
+                             :loading="loadingComments"
+                             :saving="saving"
+            >
+            </comments-thread>
+        </div>
     </div>
 </template>
 <script>
-export default {
-    data: function(){
-        return {
-
+    const hasComments = require('../../../mixins/HasComments');
+    export default {
+        data: function () {
+            return {}
+        },
+        props: ['is-owner', 'selected-file-request-index', 'selected-file-request', 'show-reject-modal', 'can-reject-file', 'show-delete-modal'],
+        computed: {
+            commentsUrl() {
+                return `/api/comments/file_request/${ this.selectedFileRequest.hash }`;
+            }
+        },
+        watch: {
+            selectedFileRequest(fileRequest) {
+                if(fileRequest) this.fetchComments();
+            }
+        },
+        mixins: [hasComments],
+        mounted() {
+            this.fetchComments();
         }
-    },
-    props: ['is-owner', 'selected-file-request-index', 'selected-file-request', 'show-reject-modal', 'can-reject-file', 'show-delete-modal']
-}
+    }
 </script>

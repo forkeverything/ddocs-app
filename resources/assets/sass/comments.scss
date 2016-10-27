@@ -1,7 +1,7 @@
 .comments-thread {
   padding: 0 10px;
   border: 1px solid $laravel-border-color;
-
+  position: relative;
 
   .list-comments {
     min-height: 75px;
@@ -16,17 +16,25 @@
   }
 
   .new-comment-field {
+    position: relative;
     margin: 0 0 12.5px;
-    textarea {
-
-    }
   }
 }
 
 #project-file-modal {
   .comments-thread {
     margin-top: 12.5px;
-    position: relative;
+
+    .list-comments {
+      max-height: 300px;
+    }
+  }
+}
+
+#file-view {
+  .comments-thread {
+    margin-top: 12.5px;
+    padding-top: 10px;
 
     .list-comments {
       max-height: 300px;

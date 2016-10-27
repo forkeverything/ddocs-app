@@ -9419,13 +9419,13 @@ h3 .editable-text-field .placeholder {
       #checklist-single #files-list .single-file-request:last-child {
         margin-bottom: 0; }
       #checklist-single #files-list .single-file-request:hover {
-        border-color: #66ccf5;
-        background: #f6fcfe;
+        border-color: #D2D2D2;
+        background: #f8f8f8;
         z-index: 2;
         position: relative; }
       #checklist-single #files-list .single-file-request:focus, #checklist-single #files-list .single-file-request.focus, #checklist-single #files-list .single-file-request.is-selected {
-        background: #e7f7fd;
-        border-color: #36bcf2;
+        background: #f1f1f1;
+        border-color: #b9b9b9;
         z-index: 3;
         position: relative;
         outline: 0; }
@@ -9891,7 +9891,8 @@ h3 .editable-text-field .placeholder {
 
 .comments-thread {
   padding: 0 10px;
-  border: 1px solid #e6e6e6; }
+  border: 1px solid #e6e6e6;
+  position: relative; }
   .comments-thread .list-comments {
     min-height: 75px;
     overflow-x: hidden;
@@ -9899,12 +9900,18 @@ h3 .editable-text-field .placeholder {
     .comments-thread .list-comments .single-comment:first-child {
       margin-top: 0; }
   .comments-thread .new-comment-field {
+    position: relative;
     margin: 0 0 12.5px; }
 
 #project-file-modal .comments-thread {
-  margin-top: 12.5px;
-  position: relative; }
+  margin-top: 12.5px; }
   #project-file-modal .comments-thread .list-comments {
+    max-height: 300px; }
+
+#file-view .comments-thread {
+  margin-top: 12.5px;
+  padding-top: 10px; }
+  #file-view .comments-thread .list-comments {
     max-height: 300px; }
 
 #account-overview #page-fixed-top {

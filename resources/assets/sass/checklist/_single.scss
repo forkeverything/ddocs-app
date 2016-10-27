@@ -506,15 +506,15 @@
       }
 
       &:hover {
-        border-color: $light-blue;
-        background: lighten($light-blue, 30%);
+        border-color: $grey;
+        background: lighten($grey, 15%);
         z-index: $z-file-list-hover;
         position: relative;
       }
 
       &:focus, &.focus, &.is-selected {
-        background: lighten($light-blue, 27%);
-        border-color: darken($light-blue, 10%);
+        background: lighten($grey, 12%);
+        border-color: darken($grey, 10%);
         z-index: $z-file-list-selected;
         position: relative;
         outline: 0;

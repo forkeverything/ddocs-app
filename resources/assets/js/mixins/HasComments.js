@@ -2,12 +2,14 @@ module.exports = {
     data() {
         return {
             comments: [],
-            loadingComments: false
+            loadingComments: false,
+            saving: false
         };
     },
     methods: {
         addComment(body) {
             if (!body) return;       // no empty comments,
+            this.saving = true;
             this.$http.post(this.commentsUrl, {
                 body: body
             }, {
@@ -17,8 +19,12 @@ module.exports = {
             }).then((response) => {
                 // success
                 this.comments.push(response.json());
+                this.$nextTick(() => {
+                    this.saving = false;
+                });
             }, (response) => {
                 // error
+                this.saving = false;
                 console.log('error adding comment.');
                 console.log(response);
             });

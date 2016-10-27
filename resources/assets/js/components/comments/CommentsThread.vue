@@ -12,7 +12,7 @@
                 </p>
             </li>
         </ul>
-        <new-comment-field @add-comment="addComment"></new-comment-field>
+        <new-comment-field @add-comment="addComment" :saving="saving"></new-comment-field>
     </div>
 </template>
 <script>
@@ -24,11 +24,11 @@
         },
         watch: {
             comments() {
-                this.scrollToBottom();
+                this.$nextTick(this.scrollToBottom);
             }
         },
         computed: {},
-        props: ['comments', 'loading'],
+        props: ['comments', 'loading', 'saving'],
         methods: {
             addComment(body){
                 this.$emit('add-comment', body);
