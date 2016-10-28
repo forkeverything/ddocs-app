@@ -69,7 +69,6 @@ class ProjectFile extends Model
      * @var array
      */
     protected $appends = [
-        'attached',
         'meta'
     ];
 
@@ -106,16 +105,6 @@ class ProjectFile extends Model
                      ->where('target_type', 'App\ProjectFile')
                      ->where('target_id', $this->id)
                      ->get();
-    }
-
-    /**
-     * Attached to a FileRequest.
-     *
-     * @return bool
-     */
-    public function getAttachedAttribute()
-    {
-        return !! $this->file_request_id;
     }
 
     /**

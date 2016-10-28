@@ -3,14 +3,14 @@
         <div class="modal" tabindex="-1" role="dialog" ref="modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-body">
+                    <div class="modal-body" v-if="file">
                         <rectangle-loader :loading="loading"></rectangle-loader>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                         <div class="main">
                             <div class="content">
                                 <h3 class="file-name">
-                                    <i class="fa fa-file-o"></i>
+                                    <pf-status-circle :project-file="file"></pf-status-circle>
                                     <span class="name-wrap">
                                     <editable-text-field v-model="file.name"
                                                          @on-change="updateFileName"></editable-text-field>
@@ -152,16 +152,16 @@
             toggleAttachFRMenu() {
                 this.attachFileRequestMenu = !this.attachFileRequestMenu
             },
-            setFileAttached(attached) {
-                vueGlobalEventBus.$emit('update-project-file', {
-                    id: this.file.id,
-                    attached: attached
-                });
-            },
             updateFileName() {
                 vueGlobalEventBus.$emit('update-project-file', {
                     id: this.file.id,
                     name: this.file.name
+                });
+            },
+            updateFileRequest(fileRequest) {
+                vueGlobalEventBus.$emit('update-project-file', {
+                    id: this.file.id,
+                    file_request: fileRequest
                 });
             },
             updateUploads(projectFile) {
@@ -171,11 +171,11 @@
                 // uploads relation
                 this.file.uploads = projectFile.uploads;
             },
-            attachedRequest(file) {
+            attachedRequest(projectFile) {
                 // update our project file to include the file request
-                this.file = file;
+                this.file = projectFile;
                 this.attachFileRequestMenu = false;
-                this.setFileAttached(true);
+                this.updateFileRequest(projectFile.file_request);
                 this.$nextTick(() => {
                     this.switchView('pfm-request-view');
                 });
@@ -191,7 +191,7 @@
                     // success
                     this.switchView('pfm-project-view');
                     this.$nextTick(() => {
-                        this.setFileAttached(false);
+                        this.updateFileRequest(null);
                         this.file = response.json();
                     });
                     this.ajaxReady = true;

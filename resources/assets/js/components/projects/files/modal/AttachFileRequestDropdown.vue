@@ -93,7 +93,8 @@
                     }
                 }).then((response) => {
                     // success
-                    this.$emit('attached-request', response.json());
+                    let updatedProjectFile = response.json();
+                    this.$emit('attached-request', updatedProjectFile);
                     this.ajaxReady = true;
                 },(response) => {
                     // error

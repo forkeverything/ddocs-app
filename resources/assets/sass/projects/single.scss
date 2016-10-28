@@ -9,6 +9,21 @@
     border-radius: 50%;
     width: 14px;
     height: 14px;
+
+    &.success {
+      border-color: $green;
+      background: $green;
+    }
+
+    &.warning {
+      border-color: $dark-yellow;
+      background: $dark-yellow;
+    }
+
+    &.danger {
+      border-color: $red;
+      background: $red;
+    }
   }
 }
 
@@ -175,11 +190,11 @@
 
 // Outside so drag mirror is styled too
 .project-file {
-  line-height: 1;
+  line-height: 1.2;
   background: #fff;
   position: relative;
   z-index: $z-project-file;
-  padding: 8px 12px;
+  padding: 8px 12px 6px 12px;
   margin: 5px 5px;
   border: 1px solid $laravel-border-color;
 
@@ -187,27 +202,19 @@
     background: $light-grey;
   }
 
-  .info-icons {
-    margin: 0 5px 0 0;
-    font-size: 0.8em;
-    .attached {
-      display: inline-block;
-      color: $grey;
-      padding: 4px 0 0 0;
-
-      &.is-attached {
-        color: $brand-info;
-      }
-    }
+  .pf-status-circle {
+    margin: 3px 5px 0 0;
+    float: left;
   }
 
   .file-name {
     display: inline-block;
+    max-width: calc(100% - 17px);
   }
 
   .info-badges {
     .badge {
-      margin: 5px 0 0 0;
+      margin: 0 0 2px;
       font-weight: normal;
       padding: 0;
       min-width: 15px;
@@ -222,6 +229,10 @@
 
       .smart-date {
         display: inline-block;
+
+        span {
+          color: $dark-grey;
+        }
       }
     }
   }

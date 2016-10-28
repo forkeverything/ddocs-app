@@ -58,7 +58,7 @@ class ProjectsController extends Controller
                 $query->orderBy('position', 'asc');
             },
             'folders.files' => function ($query) {
-                $query->orderBy('position', 'asc');
+                $query->with('fileRequest')->orderBy('position', 'asc');
             }
         ]);
     }
@@ -207,7 +207,7 @@ class ProjectsController extends Controller
             ]);
         }
 
-        return ProjectFile::find($projectFile->id)->fresh(['uploads'])->loadAllRelations();
+        return ProjectFile::find($projectFile->id)->fresh()->loadAllRelations();
     }
 
     /**

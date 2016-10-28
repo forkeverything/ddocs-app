@@ -5,7 +5,7 @@
             {{ file.name }}
         </div>
         <div class="info-badges">
-            <span class="attached badge" v-if="file.attached">
+            <span class="attached badge" v-if="file.file_request">
                 <i class="fa fa-link"></i>
             </span>
             <span class="uploads badge" v-if="file.meta.num_uploads">

@@ -9490,6 +9490,11 @@ h3 .editable-text-field .placeholder {
         display: flex;
         -webkit-box-align: center;
         align-items: center; }
+        #project-file-modal .modal-body .main .content .file-name .pf-status-circle {
+          margin: 0 10px 0 0; }
+          #project-file-modal .modal-body .main .content .file-name .pf-status-circle .circle {
+            width: 20px;
+            height: 20px; }
         #project-file-modal .modal-body .main .content .file-name i {
           font-size: 1em;
           margin-right: 8px;
@@ -9500,7 +9505,8 @@ h3 .editable-text-field .placeholder {
           flex: 1;
           width: 100%;
           display: inline-block;
-          margin-right: 70px; }
+          margin-right: 70px;
+          word-break: break-all; }
           @media screen and (min-width: 768px) {
             #project-file-modal .modal-body .main .content .file-name .name-wrap {
               margin-right: 0; } }
@@ -9677,6 +9683,15 @@ h3 .editable-text-field .placeholder {
     border-radius: 50%;
     width: 14px;
     height: 14px; }
+    .pf-status-circle .circle.success {
+      border-color: #41B883;
+      background: #41B883; }
+    .pf-status-circle .circle.warning {
+      border-color: #F0A830;
+      background: #F0A830; }
+    .pf-status-circle .circle.danger {
+      border-color: #ff6a6a;
+      background: #ff6a6a; }
 
 #project-single {
   height: 100%;
@@ -9795,28 +9810,23 @@ h3 .editable-text-field .placeholder {
       line-height: 1; }
 
 .project-file {
-  line-height: 1;
+  line-height: 1.2;
   background: #fff;
   position: relative;
   z-index: 2;
-  padding: 8px 12px;
+  padding: 8px 12px 6px 12px;
   margin: 5px 5px;
   border: 1px solid #e6e6e6; }
   .project-file:hover {
     background: #EFEFEF; }
-  .project-file .info-icons {
-    margin: 0 5px 0 0;
-    font-size: 0.8em; }
-    .project-file .info-icons .attached {
-      display: inline-block;
-      color: #D2D2D2;
-      padding: 4px 0 0 0; }
-      .project-file .info-icons .attached.is-attached {
-        color: #3498DB; }
+  .project-file .pf-status-circle {
+    margin: 3px 5px 0 0;
+    float: left; }
   .project-file .file-name {
-    display: inline-block; }
+    display: inline-block;
+    max-width: calc(100% - 17px); }
   .project-file .info-badges .badge {
-    margin: 5px 0 0 0;
+    margin: 0 0 2px;
     font-weight: normal;
     padding: 0;
     min-width: 15px;
@@ -9828,6 +9838,8 @@ h3 .editable-text-field .placeholder {
       margin: 0 3px 0 0; }
     .project-file .info-badges .badge .smart-date {
       display: inline-block; }
+      .project-file .info-badges .badge .smart-date span {
+        color: #999999; }
 
 .gu-mirror {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175); }
