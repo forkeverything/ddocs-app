@@ -209,8 +209,7 @@
                 $(this.$refs.modal).modal('hide');
             },
             goToChecklist() {
-                $(this.$refs.modal).modal('hide');
-                router.push('/c/' + this.file.file_request.checklist_hash);
+                window.open('/c/' + this.file.file_request.checklist_hash, '_blank');
             },
             fetchProjectFile(fileId){
                 this.$http.get(`/api/projects/${ this.projectId }/files/${ fileId }`, {

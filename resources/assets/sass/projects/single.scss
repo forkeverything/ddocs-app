@@ -48,11 +48,12 @@
       top: 0;
       left: 0;
       white-space: nowrap;
+      max-height: 100%;
+      display: flex;
 
       .folder-wrap {
         width: 300px;
         margin: 0 5px;
-        height: 100%;
         display: inline-block;
         vertical-align: top;
 
@@ -90,9 +91,14 @@
 .project-folder-body {
   cursor: pointer;
   background: $extra-light-grey;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
 
   .folder-header {
     display: flex;
+    flex: 1;
+    min-height: 42px;
 
     .folder-name {
       flex: 1;
@@ -153,7 +159,15 @@
     }
   }
 
+  .files-list {
+    flex: 1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
   .add-project-file {
+    flex: 1;
+    min-height: 35px;
 
     .placeholder {
       cursor: pointer;
