@@ -118,7 +118,8 @@ class FileRequestsController extends Controller
     {
         $fileRequest = FileRequest::findByHash($fileRequestHash);
         $this->authorize('update', $fileRequest);
-        return $fileRequest->fullDelete();
+        $fileRequest->fullDelete();
+        return response("Deleted file request");
     }
 
     /**

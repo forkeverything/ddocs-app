@@ -3,14 +3,14 @@
         <div class="modal" tabindex="-1" role="dialog" ref="modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-body" v-if="file">
+                    <div class="modal-body">
                         <rectangle-loader :loading="loading"></rectangle-loader>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                         <div class="main">
                             <div class="content">
                                 <h3 class="file-name">
-                                    <pf-status-circle :project-file="file"></pf-status-circle>
+                                    <pf-status-circle v-if="file" :project-file="file"></pf-status-circle>
                                     <span class="name-wrap">
                                     <editable-text-field v-model="file.name"
                                                          @on-change="updateFileName"></editable-text-field>

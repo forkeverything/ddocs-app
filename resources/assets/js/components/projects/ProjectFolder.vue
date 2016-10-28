@@ -7,13 +7,21 @@
             <div class="folder-menu">
                 <button type="button" class="btn" data-toggle="dropdown"><i class="fa fa-caret-down"></i></button>
                 <div class="dropdown-menu dropdown-menu-right">
+                    <div class="folder-info">
+                        <div class="num_files">
+                            Files {{numReceivedFiles}} / {{ this.folder.files.length }}
+                        </div>
+                        <div class="folder-progress">
+                            Progress <span v-if="weightingTotal">{{ weightingReceived }}% / {{ weightingTotal }}%</span><span v-if="! weightingTotal">--</span>
+                        </div>
+                    </div>
                     <ul class="list-unstyled list-folder-actions">
                         <li><a @click.prevent="deleteFolder"><i class="fa fa-trash-o"></i> Delete Permanently</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="files-list" :class="{ empty: noFiles }" :data-id="folder.id">
+        <div class="files-list" :class="{ empty: emptyFolder }" :data-id="folder.id">
             <project-file v-for="(file, fileIndex) in folder.files"
                           :key="file.id"
                           :project-id="folder.project_id"
@@ -37,8 +45,39 @@
             project() {
                 return this.$store.state.project.data;
             },
-            noFiles() {
+            emptyFolder() {
                 return this.folder.files.length === 0;
+            },
+            numReceivedFiles() {
+                let numReceivedFiles = 0;
+                for(let i = 0; i < this.folder.files.length; i ++ ) {
+                    let file = this.folder.files[i];
+                    if(file.file_request) {
+                        if(file.file_request.status === 'received') numReceivedFiles ++;
+                    } else {
+                        if(file.meta.num_uploads) numReceivedFiles ++;
+                    }
+                }
+                return numReceivedFiles;
+            },
+            weightingTotal() {
+                let weightingTotal = 0;
+                for(let i = 0; i < this.folder.files.length; i ++ ) {
+                     weightingTotal += this.folder.files[i].weighting;
+                }
+                return weightingTotal;
+            },
+            weightingReceived() {
+               let weightingReceived = 0;
+                for(let i = 0; i < this.folder.files.length; i ++ ) {
+                    let file = this.folder.files[i];
+                    if(file.file_request) {
+                        if(file.file_request.status === 'received')  weightingReceived += file.weighting;
+                    } else {
+                        if(file.meta.num_uploads)  weightingReceived += file.weighting;
+                    }
+                }
+                return weightingReceived;
             }
         },
         props: ['folder', 'index'],

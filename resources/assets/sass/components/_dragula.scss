@@ -2,6 +2,7 @@
   border: 1px dashed $black !important;
   opacity: 1;
   background: #fff !important;
+  height: auto!important;
 
   * {
     opacity: 0;
@@ -12,5 +13,5 @@
 .gu-mirror {
   opacity: 1;
   transform: rotate(4deg);
-  background: #fff;
+  background: #D1D1D1;
 }

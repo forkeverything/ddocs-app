@@ -48,14 +48,14 @@
       top: 0;
       left: 0;
       white-space: nowrap;
-      max-height: 100%;
-      display: flex;
+      height: 100%;
 
       .folder-wrap {
         width: 300px;
         margin: 0 5px;
         display: inline-block;
         vertical-align: top;
+        height: 100%;
 
         &:first-child {
           margin-left: 15px;
@@ -115,6 +115,18 @@
       align-items: center;
       margin-right: 10px;
       margin-bottom: 5px;
+
+      .folder-info {
+        padding: 5px 10px;
+        border-bottom: 1px solid $laravel-border-color;
+        cursor: default;
+        color: $text-muted;
+        font-size: 0.9em;
+
+        .property {
+
+        }
+      }
 
       .btn {
         height: 16px;
@@ -223,7 +235,7 @@
 
   .file-name {
     display: inline-block;
-    max-width: calc(100% - 17px);
+    max-width: calc(100% - 20px);
   }
 
   .info-badges {
@@ -260,6 +272,7 @@
     border: 0;
   }
 }
+
 
 #project-board.dragging {
   .files-list {

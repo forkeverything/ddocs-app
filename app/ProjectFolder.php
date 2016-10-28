@@ -63,6 +63,7 @@ class ProjectFolder extends Model
         foreach ($this->files as $file) {
             $file->fullDelete();
         }
-        return $this->delete();
+        $this->delete();
+        return response("Deleted project folder");
     }
 }

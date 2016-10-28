@@ -8748,7 +8748,8 @@ label {
 .gu-transit {
   border: 1px dashed #353535 !important;
   opacity: 1;
-  background: #fff !important; }
+  background: #fff !important;
+  height: auto !important; }
   .gu-transit * {
     opacity: 0;
     visibility: hidden; }
@@ -8757,14 +8758,15 @@ label {
   opacity: 1;
   -webkit-transform: rotate(4deg);
   transform: rotate(4deg);
-  background: #fff; }
+  background: #D1D1D1; }
 
 .editable-text-field .placeholder {
   display: inline-block;
   border: 1px solid transparent;
   padding: 1px 0;
   max-width: 100%;
-  height: 26px; }
+  height: 26px;
+  width: 100%; }
   .editable-text-field .placeholder:hover {
     border: 1px dashed #cccccc;
     padding: 1px;
@@ -9713,14 +9715,13 @@ h3 .editable-text-field .placeholder {
       top: 0;
       left: 0;
       white-space: nowrap;
-      max-height: 100%;
-      display: -webkit-box;
-      display: flex; }
+      height: 100%; }
       #project-single .board-wrap #project-board .folder-wrap {
         width: 300px;
         margin: 0 5px;
         display: inline-block;
-        vertical-align: top; }
+        vertical-align: top;
+        height: 100%; }
         #project-single .board-wrap #project-board .folder-wrap:first-child {
           margin-left: 15px; }
         #project-single .board-wrap #project-board .folder-wrap:last-child {
@@ -9768,6 +9769,12 @@ h3 .editable-text-field .placeholder {
       align-items: center;
       margin-right: 10px;
       margin-bottom: 5px; }
+      .project-folder-body .folder-header .folder-menu .folder-info {
+        padding: 5px 10px;
+        border-bottom: 1px solid #e6e6e6;
+        cursor: default;
+        color: #9CA1A8;
+        font-size: 0.9em; }
       .project-folder-body .folder-header .folder-menu .btn {
         height: 16px;
         width: 16px;
@@ -9844,7 +9851,7 @@ h3 .editable-text-field .placeholder {
     float: left; }
   .project-file .file-name {
     display: inline-block;
-    max-width: calc(100% - 17px); }
+    max-width: calc(100% - 20px); }
   .project-file .info-badges .badge {
     margin: 0 0 2px;
     font-weight: normal;
