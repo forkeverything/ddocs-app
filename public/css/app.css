@@ -9887,8 +9887,18 @@ h3 .editable-text-field .placeholder {
     min-height: 75px;
     overflow-x: hidden;
     overflow-y: auto; }
-    .comments-thread .list-comments .single-comment:first-child {
-      margin-top: 0; }
+    .comments-thread .list-comments .single-comment {
+      margin: 10px 0; }
+      .comments-thread .list-comments .single-comment .top {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between; }
+        .comments-thread .list-comments .single-comment .top .sender {
+          font-weight: bold; }
+        .comments-thread .list-comments .single-comment .top .sent {
+          font-size: 0.9em;
+          color: #9CA1A8; }
   .comments-thread .new-comment-field {
     position: relative;
     margin: 0 0 12.5px; }

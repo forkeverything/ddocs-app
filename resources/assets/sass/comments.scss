@@ -13,8 +13,17 @@
     overflow-y: auto;
 
     .single-comment {
-      &:first-child {
-        margin-top: 0;
+      margin: 10px 0;
+      .top {
+        display: flex;
+        justify-content: space-between;
+        .sender {
+          font-weight: bold;
+        }
+        .sent {
+          font-size: 0.9em;
+          color: $text-muted;
+        }
       }
     }
   }

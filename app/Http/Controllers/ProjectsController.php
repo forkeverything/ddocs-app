@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Factories\UploadFactory;
 use App\FileRequest;
 use App\Http\Requests\AddProjectFileRequest;
@@ -221,7 +222,12 @@ class ProjectsController extends Controller
     public function postUploadFile(Project $project, ProjectFile $projectFile, Request $request)
     {
         $this->authorize('updateFile', [$project, $projectFile]);
-        UploadFactory::store($projectFile, $request->file('file'));
+        $upload = UploadFactory::store($projectFile, $request->file('file'));
+        $commentBody = 'Uploaded a <a href="'. awsURL() . $upload->path . '">new file</a>';
+        Comment::addComment($projectFile->id, 'App\\ProjectFile', $commentBody, Auth::id());
+
+        // TODO ::: Use pusher so the new comment automatically shows up in thread.
+
         return $projectFile->loadAllRelations();
     }
 
