@@ -19,8 +19,8 @@
                                @updated="updateRecipients"
             ></recipients-editor>
 
-            <ul v-if="checklistBelongsToUser" id="checklist-actions" class="list-unstyled">
-               <li v-show="! editingRecipients"><button type="button" class="btn btn-default btn-sm" @click="toggleEditRecipients">Edit <i class="fa fa-users"></i></button></li>
+            <ul v-if="checklistBelongsToUser" id="checklist-owner-actions" class="list-unstyled">
+               <li v-show="! editingRecipients"><button type="button" class="btn btn-default btn-sm" @click="toggleEditRecipients"><i class="fa fa-users"></i> Edit</button></li>
             </ul>
 
             <div id="pane-nav">
