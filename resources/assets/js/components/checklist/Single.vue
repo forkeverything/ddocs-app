@@ -8,7 +8,20 @@
                 {{ checklist.name }}
             </h3>
 
-            <checklist-recipients :recipients="checklist.recipients"></checklist-recipients>
+            <checklist-recipients v-if="! editingRecipients"
+                                  :recipients="checklist.recipients"
+            ></checklist-recipients>
+
+            <recipients-editor v-if="checklistBelongsToUser && editingRecipients"
+                               :checklist-hash="checklist.hash"
+                               :recipients="checklist.recipients"
+                                @cancel="toggleEditRecipients"
+                               @updated="updateRecipients"
+            ></recipients-editor>
+
+            <ul v-if="checklistBelongsToUser" id="checklist-actions" class="list-unstyled">
+               <li v-show="! editingRecipients"><button type="button" class="btn btn-default btn-sm" @click="toggleEditRecipients">Edit <i class="fa fa-users"></i></button></li>
+            </ul>
 
             <div id="pane-nav">
                 <a @click.prevent="toggleRightPanel"
@@ -208,12 +221,13 @@
                     }
                 ],
                 selectedFileRequestIndex: '',
-                showRightPanel: false
+                showRightPanel: false,
+                editingRecipients: false
             }
         },
         computed: {
             initializing() {
-                return ! this.response;
+                return !this.response;
             },
             authenticatedUser(){
                 return this.$store.state.authenticatedUser;
@@ -229,7 +243,7 @@
                 return this.fileRequests[this.selectedFileRequestIndex];
             },
             showingSummary() {
-                return this.showRightPanel && ! this.selectedFileRequest;
+                return this.showRightPanel && !this.selectedFileRequest;
             },
             checklistBelongsToUser() {
                 if (!this.authenticatedUser) return false;
@@ -326,7 +340,13 @@
             setFilesHeaderScrollbarPadding() {
                 let header = document.getElementById('files-header');
                 let list = document.getElementById('files-list');
-                if(header && list) header.style.paddingRight = list.offsetWidth - list.clientWidth + 'px';
+                if (header && list) header.style.paddingRight = list.offsetWidth - list.clientWidth + 'px';
+            },
+            updateRecipients(newRecipients) {
+                this.checklist.recipients = newRecipients;
+            },
+            toggleEditRecipients() {
+                this.editingRecipients = !this.editingRecipients;
             }
         },
         created() {

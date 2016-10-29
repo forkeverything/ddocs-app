@@ -19,31 +19,6 @@ class ChecklistsController extends Controller
 {
 
     /**
-     * ChecklistsController constructor.
-     *
-     */
-    public function __construct()
-    {
-        $this->middleware('auth', [
-            'only' => [
-                'getListsView',
-                'getMakeForm',
-                'getAllRequestsForUser'
-            ]
-        ]);
-    }
-
-    /**
-     * Show the view for viewing all Checklist(s) made by User.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getListsView()
-    {
-        return view('checklist.all');
-    }
-
-    /**
      * Return the Authenticated User's checklists as JSON from
      * the repository.
      *
@@ -61,16 +36,6 @@ class ChecklistsController extends Controller
                                     ->searchFor($search)
                                     ->sortOn($sort, $order)
                                     ->paginate($perPage);
-    }
-
-    /**
-     * Return the view to make a new Checklist.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getMakeForm()
-    {
-        return view('checklist.make');
     }
 
     /**
@@ -144,24 +109,10 @@ class ChecklistsController extends Controller
                                      ->paginate($perPage);
     }
 
-    /**
-     * Find FileRequest(s) that belongs to any Checklist that was created by the
-     * authenticated User.
-     *
-     * @param User $user
-     * @param Request $request
-     */
-    public function getFileRequestsForUser(User $user, Request $request)
+    public function putUpdateRecipients(Request $request, $checklistHash)
     {
-        if (!Auth::id() === $user->id) abort(403, "Trying to get file requests for user that is not authenticated");
-        $searchTerm = $request->search;
-        FileRequestsRepository::forUser($user)
-                              ->searchChecklistNames($searchTerm)
-                              ->searchRecipientEmails($searchTerm)
-                              ->searchFor($searchTerm)// Searches get performed in reverse of method call - so our original WHERE has to come first
-                              ->with('checklist.recipients')// Include checklist as well as list of recipients.
-                              ->getWithoutQueryProperties();
+        $checklist = Checklist::findByHash($checklistHash);
+        $this->authorize('update', $checklist);
+        return ChecklistFactory::updateRecipients($checklist, $request->recipients);
     }
-
-
 }

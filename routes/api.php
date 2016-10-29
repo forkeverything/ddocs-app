@@ -25,6 +25,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     // Checklist
     Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser');
     Route::post('/checklists', 'ChecklistsController@postNewChecklist');
+    Route::put('/c/{checklist_hash}/recipients', 'ChecklistsController@putUpdateRecipients');
 
     // File Requests
     Route::get('/file_requests/user', 'FileRequestsController@getForUser');

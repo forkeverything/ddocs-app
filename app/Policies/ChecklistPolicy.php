@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Checklist;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Tymon\JWTAuth\Http\Middleware\Check;
 
 class ChecklistPolicy
 {
@@ -31,5 +32,10 @@ class ChecklistPolicy
     {
         if($user->id === $checklist->user_id) return true;
         return strcasecmp($user->email, $checklist->recipient) === 0;
+    }
+
+    public function update(User $user, Checklist $checklist)
+    {
+        return $checklist->madeBy($user);
     }
 }

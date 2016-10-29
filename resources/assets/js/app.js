@@ -35,6 +35,7 @@ Vue.component('date-picker', require('./components/utilities/DatePicker.vue'));
 Vue.component('checklist-collection', require('./components/checklist/Collection.vue'));
 Vue.component('checklist-single', require('./components/checklist/Single.vue'));
 Vue.component('checklist-recipients', require('./components/checklist/single/Recipients.vue'));
+Vue.component('recipients-editor', require('./components/checklist/single/RecipientsEditor.vue'));
 Vue.component('mobile-file-menu', require('./components/checklist/single/MobileFileMenu.vue'));
 Vue.component('summary-view', require('./components/checklist/single/SummaryView.vue'));
 Vue.component('file-view', require('./components/checklist/single/FileView.vue'));

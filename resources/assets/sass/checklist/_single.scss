@@ -15,9 +15,27 @@
     display: flex;
     flex-direction: column;
 
-
     h5 {
       margin: 0;
+    }
+
+    .recipients-editor {
+      z-index: $z-recipients-editor;
+      margin: 0 0 15px;
+
+      .tagger {
+        margin: 0 0 10px;
+      }
+
+      .buttons {
+        .btn {
+          &:first-child {
+            margin: 0 5px 0 0;
+          }
+
+          width: 80px;
+        }
+      }
     }
 
     .menu-item {
@@ -362,7 +380,6 @@
   .col-upload {
     width: 50px;
   }
-
 
   // Header Specific
   .table-header {

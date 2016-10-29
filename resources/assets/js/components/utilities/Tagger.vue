@@ -77,9 +77,7 @@
             },
             addTag: function () {
 
-                if (this.validateFunction && !this.validateFunction(this, this.newTag)) {
-                    return;
-                }
+                if (this.validateFunction && ! this.validateFunction(this, this.newTag)) return;
 
                 // No empty tag with spaces
                 if (!this.newTag.trim()) return;
@@ -131,10 +129,17 @@
                 } else {
                     this.focusTag(index + 1);
                 }
+            },
+            displayError(error) {
+                this.validateError = error;
+                this.showError = true;
+                setTimeout(() => this.showError = false, 2500);
+                return false;
             }
         },
         mounted(){
             this.tags = this.value;
+            this.inputPosition = this.tags.length;
         }
     }
 </script>

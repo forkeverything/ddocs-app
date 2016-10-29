@@ -12,8 +12,7 @@
                     <label class="text-muted">To: </label>
                     <tagger v-model="checklistRecipients"
                             :validate-function="validateRecipient"
-                            :placeholder="'Emails'"
-                            @updated-tags="setRecipients"
+                            placeholder="Emails"
                     >
                     </tagger>
                 </div>
@@ -88,18 +87,8 @@
             }
         },
         methods: {
-            setRecipients(recipients) {
-                this.checklistRecipients = recipients;
-            },
             validateRecipient: function (tagger, recipient) {
-                if (!validateEmail(recipient)) {
-                    tagger.validateError = 'Please enter a valid email.';
-                    tagger.showError = true;
-                    setTimeout(function () {
-                        tagger.showError = false;
-                    }, 1500);
-                    return false;
-                }
+                if (!validateEmail(recipient)) return tagger.displayError('Please enter a valid email.');
                 return true;
 
             },

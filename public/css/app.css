@@ -8902,8 +8902,8 @@ h3 .editable-text-field .placeholder {
   #form-checklist-make #input-checklist-name {
     font-size: 34px;
     height: 37px;
-    margin-top: 25px;
-    margin-bottom: 12.5px;
+    margin-top: 22px;
+    margin-bottom: 11px;
     font-family: "Proxima Nova", Helvetica, Arial, Helvetica, sans-serif;
     color: #1B2432;
     border: 0;
@@ -9099,6 +9099,15 @@ h3 .editable-text-field .placeholder {
     flex-direction: column; }
     #checklist-single #checklist-body h5 {
       margin: 0; }
+    #checklist-single #checklist-body .recipients-editor {
+      z-index: 3;
+      margin: 0 0 15px; }
+      #checklist-single #checklist-body .recipients-editor .tagger {
+        margin: 0 0 10px; }
+      #checklist-single #checklist-body .recipients-editor .buttons .btn {
+        width: 80px; }
+        #checklist-single #checklist-body .recipients-editor .buttons .btn:first-child {
+          margin: 0 5px 0 0; }
     #checklist-single #checklist-body .menu-item a:hover .icon {
       opacity: 1; }
     #checklist-single #checklist-body .menu-item a .icon {

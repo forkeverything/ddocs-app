@@ -9,9 +9,11 @@ use App\Events\ChecklistCreated;
 
 use App\File;
 use App\Http\Requests\NewChecklistRequest;
+use App\Mail\NewChecklist;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
+use Mail;
 
 class ChecklistFactory
 {
@@ -63,11 +65,10 @@ class ChecklistFactory
                 ->createChecklist()
                 ->createRecipients()
                 ->createFiles()
-                ->fireEvent();
+                ->fireChecklistCreatedEvent();
 
         return $factory->checklist;
     }
-
 
     /**
      * Receives request from email webhook to create a checklist via cc. Parse
@@ -118,6 +119,32 @@ class ChecklistFactory
         ]);
 
         return self::make($newChecklistRequest, $user);
+    }
+
+    /**
+     * Update the recipients list for a Checklist.
+     *
+     * @param Checklist $checklist
+     * @param $newRecipients
+     * @return \App\Recipient[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public static function updateRecipients(Checklist $checklist, $newRecipients)
+    {
+        $oldRecipients = $checklist->recipients;
+        // Delete recipients that have been removed...
+        foreach ($oldRecipients as $recipient) {
+            if(! in_array($recipient->email, $newRecipients)) $recipient->delete();
+        }
+        // Add new recipients
+        foreach($newRecipients as $recipientEmail) {
+            if(! in_array($recipientEmail, $oldRecipients->pluck('email')->toArray())) {
+                $recipient = $checklist->recipients()->create([
+                    'email' => $recipientEmail,
+                ]);
+                Mail::to($recipientEmail)->send(new NewChecklist($recipient, $checklist));
+            }
+        }
+        return $checklist->fresh('recipients')->recipients;
     }
 
     /**
@@ -199,7 +226,7 @@ class ChecklistFactory
      *
      * @return $this
      */
-    protected function fireEvent()
+    protected function fireChecklistCreatedEvent()
     {
         Event::fire(new ChecklistCreated($this->checklist));
         return $this;
