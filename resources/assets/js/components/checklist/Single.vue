@@ -146,7 +146,7 @@
                                 </div>
                             </li>
                             <li class="fr-loading" v-if="hasNextPage">
-                                <rectangle-loader :loading="true"></rectangle-loader>
+                                <rectangle-loader :loading="true" size="small"></rectangle-loader>
                             </li>
                         </ul>
                     </div>

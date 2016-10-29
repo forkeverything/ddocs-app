@@ -3,8 +3,7 @@
 
 namespace App\Utilities\Traits;
 
-
-use Storage;
+use App\Jobs\DeleteStorageFiles;
 
 trait HasUploads
 {
@@ -28,9 +27,7 @@ trait HasUploads
     public function fullDelete()
     {
         $uploadPaths = $this->uploads->pluck('path')->toArray();
-        foreach ($this->uploads as $upload) {
-            if(Storage::delete($upload->path)) $upload->delete();
-        }
+        dispatch(new DeleteStorageFiles($uploadPaths));
         return $this->delete();
     }
 }
