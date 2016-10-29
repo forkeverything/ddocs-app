@@ -69,6 +69,7 @@ class ProjectFile extends Model
      * @var array
      */
     protected $appends = [
+        'latest_upload',
         'meta'
     ];
 

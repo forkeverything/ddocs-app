@@ -8,6 +8,17 @@ use Storage;
 
 trait HasUploads
 {
+
+    /**
+     * The last uploaded file.
+     *
+     * @return mixed
+     */
+    public function getLatestUploadAttribute()
+    {
+        return $this->uploads()->orderBy('created_at', 'desc')->get()->first();
+    }
+
     /**
      * Deletes physical files, upload models and finally the parent model.
      *

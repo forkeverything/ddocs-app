@@ -96,16 +96,6 @@ class FileRequest extends Model
     }
 
     /**
-     * The last uploaded file.
-     *
-     * @return mixed
-     */
-    public function getLatestUploadAttribute()
-    {
-        return $this->uploads()->orderBy('created_at', 'desc')->get()->first();
-    }
-
-    /**
      * The hash'd checklist id.
      *
      * @return mixed

@@ -58,6 +58,7 @@
                 });
             },
             updateWeighting(weighting) {
+                weighting = weighting || null;
                 vueGlobalEventBus.$emit('update-project-file', {
                     id: this.file.id,
                     weighting: weighting

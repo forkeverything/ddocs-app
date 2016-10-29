@@ -2,7 +2,14 @@
     <div class="project-file" :data-id="file.id" @click="viewFile">
         <pf-status-circle :project-file="file"></pf-status-circle>
         <div class="file-name truncate">
-            {{ file.name }}
+            <a v-if="latestUploadPath"
+               :href=" awsURL + latestUploadPath"
+               :alt="file.name + 'download link'"
+               @click.stop=""
+            >
+                {{ file.name }}
+            </a>
+            <span v-if="! latestUploadPath">{{ file.name }}</span>
         </div>
         <div class="info-badges">
             <span class="attached badge" v-if="file.file_request">
@@ -25,7 +32,15 @@
     export default {
         data: function () {
             return {
+                awsURL: awsURL,
                 request: ''
+            }
+        },
+        computed: {
+            latestUploadPath() {
+                if(this.file.file_request && this.file.file_request.status === 'received') return this.file.file_request.latest_upload.path;
+                if(this.file.latest_upload) return this.file.latest_upload.path;
+                return false;
             }
         },
         watch: {
