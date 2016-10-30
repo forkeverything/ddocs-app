@@ -93,7 +93,7 @@ class DevSeeder extends Seeder
     protected function seedFiles()
     {
         foreach ($this->user->checklists as $checklist) {
-            $files = factory(\App\File::class, mt_rand(0, 30))->create([
+            $files = factory(\App\File::class, mt_rand(1, 30))->create([
                 'user_id' => $this->user->id
             ]);
             foreach ($files as $file) {

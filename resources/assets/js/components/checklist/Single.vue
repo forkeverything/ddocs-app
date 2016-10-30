@@ -1,6 +1,6 @@
 <template>
     <div id="checklist-single">
-        <rectangle-loader :loading="initializing" size="large"></rectangle-loader>
+        <rectangle-loader :loading="initializingRepo" size="large"></rectangle-loader>
         <div id="checklist-body">
 
             <div class="header">
@@ -259,9 +259,6 @@
             }
         },
         computed: {
-            initializing() {
-                return !this.response;
-            },
             authenticatedUser(){
                 return this.$store.state.authenticatedUser;
             },

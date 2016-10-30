@@ -33,6 +33,7 @@ Vue.component('date-picker', require('./components/utilities/DatePicker.vue'));
 
 // Checklist
 Vue.component('checklist-collection', require('./components/checklist/Collection.vue'));
+Vue.component('stats-recipients-dropdown', require('./components/checklist/collection/RecipientsDropdown.vue'));
 Vue.component('checklist-single', require('./components/checklist/Single.vue'));
 Vue.component('checklist-recipients', require('./components/checklist/single/Recipients.vue'));
 Vue.component('recipients-editor', require('./components/checklist/single/RecipientsEditor.vue'));

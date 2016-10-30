@@ -12,107 +12,116 @@
     h3 {
       margin: 0;
     }
-
-    .btn {
-      background: $light-blue;
-      border: 0;
-      border-bottom: 2px solid darken($light-blue, 20%);
-      outline: 0;
-
-      &:hover {
-        background: darken($light-blue, 20%);
-      }
-    }
   }
 
   .progress {
     margin: 0;
   }
 
-  #checklist-sort {
-    margin: 0;
-    padding: 6px 9px;
-    border: 1px solid $laravel-border-color;
 
-    label {
-      font-size: 1em;
-      margin: 0;
-    }
-
-    select {
-      display: inline-block;
-      width: 95px;
-      border: 0;
-      appearance: none;
-      padding: 0;
-      height: 24px;
-      text-decoration: underline;
-    }
-  }
 
   #checklist-collection {
     display: flex;
     flex-direction: column;
     height: 100%;
+    position: relative;
+
+    .loading-overlay {
+      z-index: $z-loader-initial;
+    }
+
+    #checklist-sort {
+      margin: 0;
+      padding: 6px 9px;
+      border: 1px solid $laravel-border-color;
+
+      label {
+        font-size: 1em;
+        margin: 0;
+      }
+
+      select {
+        display: inline-block;
+        width: 95px;
+        border: 0;
+        appearance: none;
+        padding: 0;
+        height: 24px;
+        text-decoration: underline;
+      }
+    }
 
     #list-checklists {
       display: flex;
       flex-direction: column;
       height: 100%;
       margin-bottom: 0;
-      overflow-y: scroll;
-      padding: 15px 10px 0 10px;
+      overflow-y: auto;
       border: 1px solid $laravel-border-color;
       border-top: 0;
 
       .single-checklist {
+        transition: all 0.15s ease-out;
+        display: block;
+        padding: 10px 15px;
+        position: relative;
+        border-top: 1px solid $laravel-border-color;
+        border-bottom: 1px solid $laravel-border-color;
+        margin-top: -1px;
 
-        margin: 0 0 15px;
+        &:hover {
+          background: lighten($grey, 15%);
+        }
 
-        .checklist-link {
-          transition: all 0.15s ease-out;
-          border: 1px solid $laravel-border-color;
-          display: block;
-          padding: 10px 15px;
-          color: $text-color;
-          position: relative;
-          @include border-radius($border-radius-base);
-          outline: none;
-          text-decoration: none;
+        .main {
+          display: flex;
+          justify-content: space-between;
 
-          &:hover {
-            background: lighten($purple, 47%);
-            border-color: $purple;
+          .name {
+            margin: 0 10px 5px 0;
+            word-wrap: break-word;
+            min-width: 0;
           }
 
-          p {
-            margin: 0 0 5px;
+          .date-made {
+            min-width: 80px;
+            text-align: right;
+            color: $text-muted;
+            font-size: 0.9em;
+          }
+        }
+
+        .stats {
+          color: $text-muted;
+          font-size: 0.9em;
+          i {
+            margin: 0 5px 0 0;
           }
 
-          .header {
-            display: flex;
-            justify-content: space-between;
+          .recipients {
+            position: relative;
 
-            h4 {
-              margin: 0 5px 5px 0;
-              word-wrap: break-word;
-              min-width: 0;
-            }
-
-            .date-made {
-              min-width: 80px;
-              text-align: right;
-              color: $text-muted;
-              font-size: 0.8em;
-            }
-          }
-
-          .stats {
-            i {
-              margin: 0 3px 0 0;
+            .list-recipients {
+              position: absolute;
+              color: $text-color;
+              top: 100%;
+              margin-top: 5px;
+              left: 0;
+              font-size: 1.11em;
+              background: #fff;
+              z-index: 3;
+              border: 1px solid $laravel-border-color;
+              padding: 10px;
+              border-radius: $border-radius-base;
+              box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
             }
           }
         }
+      }
+
+      #checklist-loading {
+          position: relative;
+          padding: 50px;
       }
     }
   }

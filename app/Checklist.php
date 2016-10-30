@@ -72,7 +72,7 @@ class Checklist extends Model
 
         // Recipients
         $recipients = $this->fetchRecipients();
-        $meta['num_receipients'] = $recipients->count();
+        $meta['num_recipients'] = $recipients->count();
         $meta['recipients'] = $recipients->pluck('email');
 
         // File Requests

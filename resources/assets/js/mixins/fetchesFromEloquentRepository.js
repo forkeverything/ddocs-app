@@ -18,6 +18,9 @@ module.exports = {
         },
         hasNextPage() {
             return this.response && this.response.last_page > this.response.current_page;
+        },
+        initializingRepo() {
+            return ! this.response;
         }
     },
     methods: {
@@ -144,8 +147,10 @@ module.exports = {
         this.checkSetup();
     },
     mounted() {
+        this.repoSearch = getParameterByName('search');
         this.fetchResults();
         if(this.urlHistory) onPopCallFunction(this.fetchResults);
         if(this.infScroll) this.$nextTick(this.scrollList);
+
     }
 };

@@ -6,6 +6,7 @@ namespace App\Repositories;
 
 use App\Checklist;
 use App\User;
+use DB;
 
 class ChecklistsRespository extends EloquentRepository
 {
@@ -48,6 +49,24 @@ class ChecklistsRespository extends EloquentRepository
     public static function forUser(User $user)
     {
         return new static($user);
+    }
+
+    /**
+     * Perform search by Recipient emails too.
+     *
+     * @param $searchTerm
+     * @return $this
+     */
+    public function searchRecipientEmails($searchTerm)
+    {
+        $this->query->orWhereExists(function ($q) use ($searchTerm) {
+            $q->select(DB::raw(1))
+              ->from('recipients')
+              ->whereRaw('recipients.checklist_id = checklists.id')
+              ->where('recipients.email', 'LIKE', "%{$searchTerm}%");
+        });
+
+        return $this;
     }
 
 

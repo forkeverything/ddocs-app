@@ -7,12 +7,14 @@
             </h3>
             <div>
                 <router-link to="/checklists/make">
-                    <button type="button" class="btn btn-info">New Checklist</button>
+                    <button type="button" class="btn btn-info"><i class="fa fa-plus"></i> Checklist</button>
                 </router-link>
             </div>
         </div>
         <br>
         <div id="checklist-collection">
+
+            <rectangle-loader :loading="initializingRepo"></rectangle-loader>
 
             <form v-if="params" id="form-all-checklists-search" @submit.prevent="searchTerm">
                 <div class="form-group">
@@ -34,32 +36,34 @@
                         @change="changeSort(sortField)">
                     <option value="" disabled>Pick one</option>
                     <option value="name">Name</option>
-                    <option value="recipient">Recipient</option>
-                    <option value="created_at">Made</option>
+                    <option value="created_at">Date Created</option>
                 </select>
             </div>
-
-
-            <ul id="list-checklists" v-show="checklists" class="list-unstyled" @scroll="scrollList">
-                <li class="single-checklist" v-for="checklist in checklists">
-
-                    <router-link :to="'/c/' + checklist.hash" class="checklist-link">
-                        <div class="header">
-                            <h4>{{ checklist.name }}</h4>
-                            <span class="date-made">{{ checklist.created_at | easyDate }}</span>
-                        </div>
-                        <p class="recipient">{{ checklist.recipient }}</p>
-                        <div class="stats">
-                        <span class="file_count small">
-                            <i class="fa fa-file-o"></i> {{ checklist.meta.num_received }} / {{ checklist.meta.num_total }}
-                        </span>
-                        </div>
-                    </router-link>
+            <ul id="list-checklists" class="list-unstyled" @scroll="scrollList">
+                <li v-for="checklist in checklists"
+                    class="single-checklist clickable"
+                    @click="goToChecklist(checklist)"
+                >
+                    <div class="main">
+                        <p class="name">{{ checklist.name }}</p>
+                        <span class="date-made">{{ checklist.created_at | easyDate }}</span>
+                    </div>
+                    <ul class="stats list-unstyled list-inline">
+                        <li class="file_count">
+                            <i class="fa fa-file"></i>{{ checklist.meta.num_received }} / {{ checklist.meta.num_total }}
+                        </li>
+                        <stats-recipients-dropdown :checklist="checklist"></stats-recipients-dropdown>
+                    </ul>
                 </li>
                 <li v-if="checklists && checklists.length < 1" class="text-muted text-center">
                     <br>
-                    Sorry we couldn't find any lists for you. <router-link to="/checklists/make">Make</router-link> a new one or
+                    Sorry we couldn't find any lists for you.
+                    <router-link to="/checklists/make">Make</router-link>
+                    a new one or
                     <a href="#" @click.prevent="clearSearch">clear</a> your search to see more.
+                </li>
+                <li id="checklist-loading" v-if="hasNextPage">
+                    <rectangle-loader :loading="true" size="small"></rectangle-loader>
                 </li>
             </ul>
         </div>
@@ -85,7 +89,9 @@
             }
         },
         methods: {
-
+            goToChecklist(checklist) {
+                router.push('/c/' + checklist.hash);
+            }
         },
         mixins: [fetchesFromEloquentRepository],
         mounted() {

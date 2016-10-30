@@ -34,6 +34,7 @@ class ChecklistsController extends Controller
 
         return ChecklistsRespository::forUser(Auth::user())
                                     ->searchFor($search)
+                                    ->searchRecipientEmails($search)
                                     ->sortOn($sort, $order)
                                     ->paginate($perPage);
     }
