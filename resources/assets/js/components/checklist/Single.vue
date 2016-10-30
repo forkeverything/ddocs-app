@@ -150,8 +150,11 @@
                                     <span v-if="! fileRequest.latest_upload" class="name">{{ fileRequest.name }}</span>
                                 </div>
                                 <div class="column col-due content-column">
-                                    <smart-date v-if="fileRequest.due" :date="fileRequest.due"></smart-date>
-                                    <span v-if="! fileRequest.due">--</span>
+                                    <fr-due-date :checklist-belongs-to-user="checklistBelongsToUser"
+                                                 :file-request="fileRequest"
+                                                 :index="index"
+                                                 @update-file-request="updateFileRequest"
+                                    ></fr-due-date>
                                 </div>
                                 <div class="column col-upload content-column">
                                     <fr-uploader :index="index" :file-request="fileRequest"
@@ -347,7 +350,7 @@
             },
             toggleEditRecipients() {
                 this.editingRecipients = !this.editingRecipients;
-            }
+            },
         },
         created() {
             window.addEventListener('resize', this.setFilesHeaderScrollbarPadding)

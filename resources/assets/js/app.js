@@ -39,7 +39,6 @@ Vue.component('recipients-editor', require('./components/checklist/single/Recipi
 Vue.component('mobile-file-menu', require('./components/checklist/single/MobileFileMenu.vue'));
 Vue.component('summary-view', require('./components/checklist/single/SummaryView.vue'));
 Vue.component('file-view', require('./components/checklist/single/FileView.vue'));
-Vue.component('selected-file-date', require('./components/checklist/single/DateSelectedFile.vue'));
 Vue.component('file-request-notes', require('./components/checklist/single/FileRequestNotes.vue'));
 Vue.component('single-note', require('./components/checklist/single/SingleNote.vue'));
 Vue.component('checklist-maker', require('./components/checklist/Maker.vue'));
@@ -53,7 +52,7 @@ Vue.component('fr-delete-modal', require('./components/file-requests/DeleteModal
 Vue.component('fr-filters', require('./components/file-requests/Filters.vue'));
 Vue.component('fr-active-filters', require('./components/file-requests/ActiveFilters.vue'));
 Vue.component('fr-uploader', require('./components/file-requests/Uploader.vue'));
-Vue.component('file-date-input', require('./components/file-requests/DateInput.vue'));
+Vue.component('fr-due-date', require('./components/file-requests/DueDate.vue'));
 
 // Projects
 Vue.component('project-folder', require('./components/projects/ProjectFolder.vue'));

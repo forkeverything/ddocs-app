@@ -29,7 +29,7 @@
                 date: ''
             }
         },
-        props: ['value', 'formatted', 'placeholder', 'button-only', 'keep-button', 'on-change', 'carbon', 'filter-format'],
+        props: ['value', 'formatted', 'placeholder', 'button-only', 'keep-button', 'carbon', 'filter-format'],
         computed: {
             formattedDate() {
                 if(! this.date) return null;
@@ -46,7 +46,7 @@
                 if(this.buttonOnly) {
                     event.preventDefault();
                     this.date = '';
-                    if(this.onChange) this.onChange(this.formattedDate);
+                    this.$emit('on-change', this.formattedDate);
                     $(this.$refs.input).datepicker('hide');
                 }
             }
@@ -65,9 +65,9 @@
             $(this.$refs.input).datepicker({
                 onSelect: (date) => {
                     this.date = date;
-                    if(this.onChange) this.onChange(this.formattedDate);
+            this.$emit('on-change', this.formattedDate);
                 },
-                dateFormat: "dd/mm/yy",
+                dateFormat: "dd/mm/yy"
             });
         }
     }

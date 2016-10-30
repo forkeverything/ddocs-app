@@ -13,7 +13,7 @@
                              :button-only="true"
                              :keep-button="true"
                              :placeholder="'Due date'"
-                             :on-change="updateDate"
+                             @on-change="updateDate"
                 ></date-picker>
             </div>
             <div class="weighting info">

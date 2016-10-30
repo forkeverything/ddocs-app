@@ -9338,6 +9338,9 @@ h3 .editable-text-field .placeholder {
   #checklist-single .col-due {
     -webkit-box-flex: 0;
     flex: 0 0 120px; }
+    #checklist-single .col-due button {
+      font-size: 1em;
+      padding: 0; }
   #checklist-single .col-upload {
     width: 50px; }
   #checklist-single .table-header {
@@ -9816,7 +9819,7 @@ h3 .editable-text-field .placeholder {
   .project-folder-body .files-list {
     -webkit-box-flex: 1;
     flex: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden; }
   .project-folder-body .add-project-file {
     -webkit-box-flex: 1;

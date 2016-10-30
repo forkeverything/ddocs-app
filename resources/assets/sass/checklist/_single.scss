@@ -375,6 +375,11 @@
 
   .col-due {
     flex: 0 0 120px;
+
+    button {
+      font-size: 1em;
+      padding: 0;
+    }
   }
 
   .col-upload {
