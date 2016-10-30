@@ -45,7 +45,7 @@ class ChecklistFactory
      * @param NewChecklistRequest $request
      * @param User $user
      */
-    public function __construct(NewChecklistRequest $request, User $user)
+    public function __construct(Request $request, User $user)
     {
         $this->request = $request;
         $this->user = $user;
@@ -107,7 +107,7 @@ class ChecklistFactory
         // add each CC: that is NOT inbound email
         foreach ($request["CcFull"] as $cc) {
             $email = $cc["Email"];
-            if($email !== 'list@in.filescollector.com') array_push($recipients, $email);
+            if ($email !== 'list@in.filescollector.com') array_push($recipients, $email);
         }
 
         // Build our form request manually
@@ -133,11 +133,11 @@ class ChecklistFactory
         $oldRecipients = $checklist->recipients;
         // Delete recipients that have been removed...
         foreach ($oldRecipients as $recipient) {
-            if(! in_array($recipient->email, $newRecipients)) $recipient->delete();
+            if (!in_array($recipient->email, $newRecipients)) $recipient->delete();
         }
         // Add new recipients
-        foreach($newRecipients as $recipientEmail) {
-            if(! in_array($recipientEmail, $oldRecipients->pluck('email')->toArray())) {
+        foreach ($newRecipients as $recipientEmail) {
+            if (!in_array($recipientEmail, $oldRecipients->pluck('email')->toArray())) {
                 $recipient = $checklist->recipients()->create([
                     'email' => $recipientEmail,
                 ]);
@@ -146,6 +146,30 @@ class ChecklistFactory
         }
         return $checklist->fresh('recipients')->recipients;
     }
+
+    /**
+     * Adds a new file request to a given Checklist.
+     *
+     * @param Checklist $checklist
+     * @param Request $request
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public static function addFileToExistingChecklist(Checklist $checklist, Request $request)
+    {
+        $factory = new static($request, $checklist->user);
+
+        // Track down or create new File
+        if (! $fileModel = $factory->findFileModel($request->name, $factory->user->id)) {
+            $fileModel = $factory->createFileModel($request->name, $request->description, $factory->user->id);
+        };
+
+        // Create file request
+        return $checklist->requestedFiles()->create([
+            'due' => $request->due,
+            'file_id' => $fileModel->id
+        ]);
+    }
+
 
     /**
      * Process the payment required to create a checklist.
@@ -195,6 +219,35 @@ class ChecklistFactory
     }
 
     /**
+     * Create File model that file requests reference to.
+     *
+     * @param $name
+     * @param $description
+     * @param $userId
+     * @return File
+     */
+    protected function createFileModel($name, $description, $userId)
+    {
+        return File::create([
+            'name' => $name,
+            'description' => $description,
+            'user_id' => $userId
+        ]);
+    }
+
+    /**
+     * Try to track down a File model by name and user.
+     *
+     * @param $name
+     * @param $userId
+     * @return File
+     */
+    protected function findFileModel($name, $userId)
+    {
+        return File::where('name', $name)->where('user_id', $userId)->first();
+    }
+
+    /**
      * Create each individual File model from the request.
      */
     protected function createFiles()
@@ -203,12 +256,8 @@ class ChecklistFactory
         foreach ($this->request->requested_files as $file) {
 
             // Track down or create new File
-            if( ! $fileModel = File::where('name', $file['name'])->where('user_id', $this->user->id)->first()) {
-                $fileModel = File::create([
-                    'name' => $file['name'],
-                    'description' => $file['description'],
-                    'user_id' => $this->user->id
-                ]);
+            if (!$fileModel = $this->findFileModel($file['name'], $this->user->id)) {
+                $fileModel = $this->createFileModel($file['name'], $file['description'], $this->user->id);
             };
 
             // Create a request for the file

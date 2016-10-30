@@ -109,10 +109,31 @@ class ChecklistsController extends Controller
                                      ->paginate($perPage);
     }
 
+    /**
+     * Edit recipients for an existing Checklist.
+     *
+     * @param Request $request
+     * @param $checklistHash
+     * @return \App\Recipient[]|\Illuminate\Database\Eloquent\Collection
+     */
     public function putUpdateRecipients(Request $request, $checklistHash)
     {
         $checklist = Checklist::findByHash($checklistHash);
         $this->authorize('update', $checklist);
         return ChecklistFactory::updateRecipients($checklist, $request->recipients);
+    }
+
+    /**
+     * Add a new FileRequest to an existing Checklist.
+     *
+     * @param Request $request
+     * @param $checklistHash
+     * @return Model
+     */
+    public function postAddFile(Request $request, $checklistHash)
+    {
+        $checklist = Checklist::findByHash($checklistHash);
+        $this->authorize('update', $checklist);
+        return ChecklistFactory::addFileToExistingChecklist($checklist, $request);
     }
 }

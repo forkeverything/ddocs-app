@@ -8004,7 +8004,8 @@ button.close {
 
 body {
   padding-top: 42px;
-  height: 100vh; }
+  height: 100vh;
+  overflow-x: hidden; }
   body #app {
     height: 100%; }
 
@@ -9108,6 +9109,33 @@ h3 .editable-text-field .placeholder {
         width: 80px; }
         #checklist-single #checklist-body .recipients-editor .buttons .btn:first-child {
           margin: 0 5px 0 0; }
+    #checklist-single #checklist-body #add-file-request {
+      border: 1px solid #e6e6e6;
+      padding: 15px;
+      margin: 0 0 15px; }
+      #checklist-single #checklist-body #add-file-request h4 {
+        margin-top: 0; }
+      #checklist-single #checklist-body #add-file-request form .fields {
+        display: -webkit-box;
+        display: flex; }
+        #checklist-single #checklist-body #add-file-request form .fields label {
+          display: block; }
+        #checklist-single #checklist-body #add-file-request form .fields .field-name {
+          -webkit-box-flex: 1;
+          flex: 1;
+          margin: 0 15px 0 0; }
+          #checklist-single #checklist-body #add-file-request form .fields .field-name input {
+            width: 100%; }
+        #checklist-single #checklist-body #add-file-request form .fields .field-due {
+          -webkit-box-flex: 0;
+          flex: 0 0 120px; }
+          #checklist-single #checklist-body #add-file-request form .fields .field-due .datepicker {
+            display: inline-block; }
+            #checklist-single #checklist-body #add-file-request form .fields .field-due .datepicker button {
+              padding: 6px 0;
+              font-size: 1em; }
+              #checklist-single #checklist-body #add-file-request form .fields .field-due .datepicker button i {
+                font-size: 1.2em; }
     #checklist-single #checklist-body .menu-item a:hover .icon {
       opacity: 1; }
     #checklist-single #checklist-body .menu-item a .icon {

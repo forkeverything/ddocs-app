@@ -41,6 +41,7 @@ Vue.component('summary-view', require('./components/checklist/single/SummaryView
 Vue.component('file-view', require('./components/checklist/single/FileView.vue'));
 Vue.component('file-request-notes', require('./components/checklist/single/FileRequestNotes.vue'));
 Vue.component('single-note', require('./components/checklist/single/SingleNote.vue'));
+Vue.component('add-file-request', require('./components/checklist/single/AddFileRequest.vue'));
 Vue.component('checklist-maker', require('./components/checklist/Maker.vue'));
 Vue.component('files-selecter', require('./components/checklist/maker/FilesSelecter.vue'));
 Vue.component('checklist-offer-join', require('./components/checklist/single/Offer.vue'));

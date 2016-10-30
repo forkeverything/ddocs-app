@@ -38,6 +38,52 @@
       }
     }
 
+    #add-file-request {
+      border: 1px solid $laravel-border-color;
+      padding: 15px;
+      margin: 0 0 15px;
+
+      h4 {
+        margin-top: 0;
+      }
+
+      form {
+
+        .fields {
+          display: flex;
+
+          label {
+            display: block;
+          }
+
+          .field-name {
+            flex: 1;
+            margin: 0 15px 0 0;
+
+            input {
+              width: 100%;
+            }
+          }
+
+          .field-due {
+            flex: 0 0 120px;
+
+            .datepicker {
+              display: inline-block;
+              button {
+                padding: 6px 0;
+                font-size: 1em;
+
+                i {
+                  font-size: 1.2em;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     .menu-item {
 
       a {

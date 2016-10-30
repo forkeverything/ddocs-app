@@ -85,6 +85,12 @@ class FileRequest extends Model
         'checklist_hash'
     ];
 
+    public function setDueAttribute($value)
+    {
+        $value = $value ?: null;
+        $this->attributes['due'] = $value;
+    }
+
     /**
      * Get the name from the File.
      *

@@ -1,6 +1,7 @@
 body {
   padding-top: $navbar-height;
   height: 100vh;
+  overflow-x: hidden;
 
   #app {
     height: 100%;

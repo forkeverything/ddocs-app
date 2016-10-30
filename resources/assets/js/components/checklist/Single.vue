@@ -19,8 +19,15 @@
                                @updated="updateRecipients"
             ></recipients-editor>
 
-            <ul v-if="checklistBelongsToUser" id="checklist-owner-actions" class="list-unstyled">
-               <li v-show="! editingRecipients"><button type="button" class="btn btn-default btn-sm" @click="toggleEditRecipients"><i class="fa fa-users"></i> Edit</button></li>
+            <add-file-request :visible="addingFileRequest"
+                              :checklist-hash="checklist.hash"
+                              @hide="toggleAddingFileRequest"
+                              @added="insertFileRequest"
+            ></add-file-request>
+
+            <ul v-if="checklistBelongsToUser" id="checklist-owner-actions" class="list-unstyled list-inline">
+               <li><button type="button" class="btn btn-default btn-sm" @click="toggleEditRecipients"><i class="fa fa-users"></i> Edit</button></li>
+                <li><button type="button" class="btn btn-info btn-sm" @click="toggleAddingFileRequest"><i class="fa fa-plus"></i> File</button></li>
             </ul>
 
             <div id="pane-nav">
@@ -129,6 +136,7 @@
                         <ul id="files-list" class="list-unstyled" @scroll="scrollList">
                             <li class="single-file-request"
                                 v-for="(fileRequest, index) in fileRequests"
+                                :key="fileRequest.hash"
                                 @focus="selectFileRequest(index)"
                                 tabindex="1"
                                 :class="{ 'is-selected': fileRequest === selectedFileRequest }"
@@ -225,7 +233,8 @@
                 ],
                 selectedFileRequestIndex: '',
                 showRightPanel: false,
-                editingRecipients: false
+                editingRecipients: false,
+                addingFileRequest: false
             }
         },
         computed: {
@@ -236,7 +245,9 @@
                 return this.$store.state.authenticatedUser;
             },
             fileRequests() {
-                return this.response.data;
+                // Avoid duplicates that might occur from adding a new File that
+                // would be fetched from a later page.
+                return _.uniqBy(this.response.data, 'hash');
             },
             numReceived(){
                 return this.response.query_parameters.num_received_files;
@@ -271,6 +282,10 @@
         },
         mixins: [fetchesFromEloquentRepository],
         methods: {
+            insertFileRequest(fileRequest){
+                this.response.data.unshift(fileRequest);
+                this.$nextTick(() => this.selectedFileRequestIndex = 0);
+            },
             updateFileRequest(newFileRequestObject, index) {
                 Vue.set(this.fileRequests, index, newFileRequestObject);
             },
@@ -351,6 +366,9 @@
             toggleEditRecipients() {
                 this.editingRecipients = !this.editingRecipients;
             },
+            toggleAddingFileRequest() {
+                this.addingFileRequest = ! this.addingFileRequest;
+            }
         },
         created() {
             window.addEventListener('resize', this.setFilesHeaderScrollbarPadding)

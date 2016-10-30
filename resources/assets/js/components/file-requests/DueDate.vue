@@ -23,6 +23,11 @@ export default {
         }
     },
     props:['checklist-belongs-to-user', 'file-request', 'index'],
+    watch: {
+      fileRequest() {
+          this.date = this.fileRequest.due;
+      }
+    },
     methods: {
         save(newDate) {
             this.$http.put('/api/file_requests/' + this.fileRequest.hash, {
