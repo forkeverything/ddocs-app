@@ -2,11 +2,35 @@
     <div id="checklist-single">
         <rectangle-loader :loading="initializing" size="large"></rectangle-loader>
         <div id="checklist-body">
-            <h3 class="text-capitalize">
-                <span class="small text-muted">Checklist</span>
-                <br>
-                {{ checklist.name }}
-            </h3>
+
+            <div class="header">
+                <h3 class="text-capitalize">
+                    <span class="small text-muted">Checklist</span>
+                    <br>
+                    {{ checklist.name }}
+                </h3>
+                <div id="checklist-owner-menu" v-if="checklistBelongsToUser" class="dropdown">
+                    <a class="btn-dropdown clickable"
+                       data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false"
+                    >
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul id="checklist-owner-actions" class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a href="#" @click.prevent="toggleEditRecipients">
+                                Edit Recipients
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" @click.prevent="toggleAddingFileRequest">
+                                Add File
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
             <checklist-recipients v-if="! editingRecipients"
                                   :recipients="checklist.recipients"
@@ -15,20 +39,17 @@
             <recipients-editor v-if="checklistBelongsToUser && editingRecipients"
                                :checklist-hash="checklist.hash"
                                :recipients="checklist.recipients"
-                                @cancel="toggleEditRecipients"
+                               @cancel="toggleEditRecipients"
                                @updated="updateRecipients"
             ></recipients-editor>
 
-            <add-file-request :visible="addingFileRequest"
+            <add-file-request v-if="checklistBelongsToUser"
+                              :visible="addingFileRequest"
                               :checklist-hash="checklist.hash"
                               @hide="toggleAddingFileRequest"
                               @added="insertFileRequest"
             ></add-file-request>
 
-            <ul v-if="checklistBelongsToUser" id="checklist-owner-actions" class="list-unstyled list-inline">
-               <li><button type="button" class="btn btn-default btn-sm" @click="toggleEditRecipients"><i class="fa fa-users"></i> Edit</button></li>
-                <li><button type="button" class="btn btn-info btn-sm" @click="toggleAddingFileRequest"><i class="fa fa-plus"></i> File</button></li>
-            </ul>
 
             <div id="pane-nav">
                 <a @click.prevent="toggleRightPanel"
@@ -367,7 +388,7 @@
                 this.editingRecipients = !this.editingRecipients;
             },
             toggleAddingFileRequest() {
-                this.addingFileRequest = ! this.addingFileRequest;
+                this.addingFileRequest = !this.addingFileRequest;
             }
         },
         created() {

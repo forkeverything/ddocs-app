@@ -8060,7 +8060,8 @@ body {
     color: #1B2432; }
     .dropdown-menu li a i {
       width: 20px;
-      margin-right: 3px; }
+      margin-right: 3px;
+      text-align: center; }
     .dropdown-menu li a.active {
       color: #3498DB; }
     .dropdown-menu li a:hover, .dropdown-menu li a:focus {
@@ -9100,12 +9101,41 @@ h3 .editable-text-field .placeholder {
     flex-direction: column; }
     #checklist-single #checklist-body h5 {
       margin: 0; }
+    #checklist-single #checklist-body .header {
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center; }
+      #checklist-single #checklist-body .header h3 {
+        -webkit-box-flex: 1;
+        flex: 1; }
+      #checklist-single #checklist-body .header #checklist-owner-menu .btn-dropdown {
+        border: 1px solid #999999;
+        border-radius: 50%;
+        color: #999999;
+        text-decoration: none;
+        display: inline-block;
+        height: 32px;
+        width: 32px;
+        text-align: center;
+        font-size: 1.4em;
+        line-height: 1;
+        padding: 3px;
+        outline: 0;
+        box-shadow: none; }
+        #checklist-single #checklist-body .header #checklist-owner-menu .btn-dropdown:hover, #checklist-single #checklist-body .header #checklist-owner-menu .btn-dropdown:focus, #checklist-single #checklist-body .header #checklist-owner-menu .btn-dropdown:focus:active {
+          color: #3498DB;
+          border-color: #3498DB; }
+        #checklist-single #checklist-body .header #checklist-owner-menu .btn-dropdown i {
+          vertical-align: top;
+          margin-top: 2px; }
     #checklist-single #checklist-body .recipients-editor {
       z-index: 3;
       margin: 0 0 15px; }
       #checklist-single #checklist-body .recipients-editor .tagger {
         margin: 0 0 10px; }
       #checklist-single #checklist-body .recipients-editor .buttons .btn {
+        outline: 0;
         width: 80px; }
         #checklist-single #checklist-body .recipients-editor .buttons .btn:first-child {
           margin: 0 5px 0 0; }
@@ -9136,6 +9166,11 @@ h3 .editable-text-field .placeholder {
               font-size: 1em; }
               #checklist-single #checklist-body #add-file-request form .fields .field-due .datepicker button i {
                 font-size: 1.2em; }
+      #checklist-single #checklist-body #add-file-request form .form-buttons button {
+        outline: 0;
+        width: 80px; }
+        #checklist-single #checklist-body #add-file-request form .form-buttons button:first-child {
+          margin: 0 5px 0 0; }
     #checklist-single #checklist-body .menu-item a:hover .icon {
       opacity: 1; }
     #checklist-single #checklist-body .menu-item a .icon {

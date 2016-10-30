@@ -25,6 +25,7 @@
       i {
         width: 20px;
         margin-right: 3px;
+        text-align: center;
       }
 
       color: $text-color;
@@ -34,19 +35,19 @@
       }
 
       &:hover, &:focus {
-        color: #fff!important;
-        background: $blue!important;
+        color: #fff !important;
+        background: $blue !important;
         display: block;
-        text-decoration: none!important;
+        text-decoration: none !important;
         i {
-          color: #fff!important;
+          color: #fff !important;
         }
 
         &[disabled=disabled], &.disabled {
-          color: $grey!important;
-          background: #fff!important;
+          color: $grey !important;
+          background: #fff !important;
           i {
-            color: $grey!important;
+            color: $grey !important;
           }
         }
       }

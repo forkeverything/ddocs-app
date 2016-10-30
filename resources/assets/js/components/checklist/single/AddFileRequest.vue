@@ -17,8 +17,10 @@
                     </date-picker>
                 </div>
             </div>
-            <button class="btn btn-default" type="button" @click="reset">Cancel</button>
-            <button class="btn btn-info" type="submit" :disabled="! canSave">Save</button>
+            <div class="form-buttons">
+                <button class="btn btn-sm btn-default" type="button" @click="reset">Cancel</button>
+                <button class="btn btn-sm btn-info" type="submit" :disabled="! canSave">Save</button>
+            </div>
         </form>
     </div>
 </template>

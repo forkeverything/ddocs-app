@@ -8041,7 +8041,8 @@ button.close {
     color: #1B2432; }
     .dropdown-menu li a i {
       width: 20px;
-      margin-right: 3px; }
+      margin-right: 3px;
+      text-align: center; }
     .dropdown-menu li a.active {
       color: #3498DB; }
     .dropdown-menu li a:hover, .dropdown-menu li a:focus {
