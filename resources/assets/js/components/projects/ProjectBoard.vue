@@ -4,12 +4,13 @@
             <h3>
                 <small>Project Files</small>
                 <br>
-                {{ project.name }}
+                <editable-text-field v-model="project.name" @on-change="updateName"></editable-text-field>
             </h3>
-            <p class="small text-muted" v-if="project.description">
-                {{ project.description }}
-            </p>
-            <br>
+            <div id="project-description">
+                <editable-text-area v-model="project.description" @on-change="updateDescription" allow-null="true" placeholder="Write project description...">
+                    {{ project.description }}
+                </editable-text-area>
+            </div>
         </div>
         <div class="board-wrap">
             <div id="project-board" :class="{ dragging: dragging }">
@@ -49,6 +50,22 @@
             }
         },
         methods: {
+            updateDescription(newDescription) {
+                this.save({
+                    description: newDescription
+                });
+            },
+            updateName(newName) {
+                this.save({
+                    name: newName
+                });
+            },
+            save(updatedProperties) {
+                this.$store.commit('project/SAVE_CHANGES', {
+                    type: 'project',
+                    model: updatedProperties
+                });
+            },
             initDrag() {
                 this.initFolderDrag();
                 this.initFileDrag();

@@ -9544,6 +9544,9 @@ h3 .editable-text-field .placeholder {
   width: 300px;
   padding: 10px; }
 
+#projects-all #projects-wrap {
+  position: relative; }
+
 #project-file-modal .modal-body {
   min-height: 650px;
   display: -webkit-box;
@@ -9786,7 +9789,10 @@ h3 .editable-text-field .placeholder {
   -webkit-box-direction: normal;
   flex-direction: column; }
   #project-single #project-info {
-    width: 100%; }
+    width: 100%;
+    margin: 0 0 30px; }
+    #project-single #project-info #project-description .placeholder {
+      min-height: initial; }
   #project-single .board-wrap {
     height: 100%;
     width: 100%;

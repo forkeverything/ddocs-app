@@ -1,5 +1,5 @@
 <template>
-    <div id="projects-all" class="container">
+    <div id="projects-all" class="container-fluid">
         <h3>Projects</h3>
         <div class="row">
             <div class="col-sm-8">
@@ -9,7 +9,7 @@
         </div>
         <br>
         <div id="create-project" class="dropdown">
-            <button type="button" class="btn btn-info" data-toggle="dropdown">New Project</button>
+            <button type="button" class="btn btn-info" data-toggle="dropdown"><i class="fa fa-plus"></i> Project</button>
             <form id="form-create-project" @submit.prevent="startNewProject" class="dropdown-menu">
                 <form-errors @got-error="gotError" stealth="true"></form-errors>
                 <div class="form-group"
@@ -33,14 +33,17 @@
             </form>
         </div>
         <br>
-        <ul id="projects-list" class="list-unstyled" v-if="projects">
-            <li v-for="project in projects">
-                <router-link :to="'/projects/' + project.id">{{ project.name}}</router-link>
-            </li>
-        </ul>
-        <p class="text-muted" v-if="! projects">
-            You haven't created any projects.
-        </p>
+        <div id="projects-wrap">
+            <rectangle-loader :loading="initializing"></rectangle-loader>
+            <ul id="projects-list" class="list-unstyled" v-if="projects">
+                <li v-for="project in projects">
+                    <router-link :to="'/projects/' + project.id">{{ project.name}}</router-link>
+                </li>
+            </ul>
+            <p class="text-muted" v-if="! projects">
+                You haven't created any projects.
+            </p>
+        </div>
     </div>
 </template>
 <script>
@@ -48,6 +51,7 @@ export default {
     name: 'ProjectsList',
     data: function(){
         return {
+            initializing: true,
             ajaxReady: true,
             projects: '',
             name: '',
@@ -84,8 +88,10 @@ export default {
             }).then((response) => {
                 // success
                 this.projects = response.json();
+                this.initializing = false;
             }, (response) => {
                 // error
+                this.initializing = false;
                 console.log('Error fetching from: /api/projects');
             });
         }
