@@ -12,48 +12,46 @@ class ProjectPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
 
     /**
-     * Determine whether a User can view a given Project.
+     * User is a Project member.
      *
      * @param User $user
      * @param Project $project
      * @return bool
      */
-    public function view(User $user, Project $project)
+    public function member(User $user, Project $project)
     {
-        // TODO ::: when we make it you can share projects with team members
-        // we need to change this to make sure they're shared.
-
-        return $project->user_id === $user->id;
+        return $project->members->contains($user);
     }
 
     /**
-     * User can update if the project belongs to them.
+     * User is a Project manager.
+     *
+     * @param User $user
+     * @param Project $project
+     * @return mixed
+     */
+    public function manager(User $user, Project $project)
+    {
+        return $project->managers->contains($user);
+    }
+
+    /**
+     * User is Project admin.
      *
      * @param User $user
      * @param Project $project
      * @return bool
      */
-    public function update(User $user, Project $project)
+    public function admin(User $user, Project $project)
     {
-        // TODO ::: Make updateable by team.
-
-        return $project->user_id === $user->id;
+        return $project->admin->first()->id === $user->id;
     }
 
     /**
      * Only allowed to modify ProjectFolder's that belong to
-     * the actual Project that User is allowed to update.
+     * the actual Project and User is a member.
      *
      * @param User $user
      * @param Project $project
@@ -62,12 +60,12 @@ class ProjectPolicy
      */
     public function updateFolder(User $user, Project $project, ProjectFolder $projectFolder)
     {
-        return $this->update($user, $project) &&  $projectFolder->project_id === $project->id;
+        return $this->member($user, $project) &&  $projectFolder->project_id === $project->id;
     }
 
     /**
      * ProjectFile's have to be inside a folder that belongs to the Project that
-     * the User is allowed to update.
+     * the User is a member of.
      *
      * @param User $user
      * @param Project $project
@@ -76,7 +74,7 @@ class ProjectPolicy
      */
     public function updateFile(User $user, Project $project, ProjectFile $projectFile)
     {
-        return $this->update($user, $project) && $this->projectFileBelongsToProject($projectFile, $project);
+        return $this->member($user, $project) && $this->projectFileBelongsToProject($projectFile, $project);
     }
 
     /**
@@ -103,7 +101,7 @@ class ProjectPolicy
      */
     public function viewFile(User $user, Project $project, ProjectFile $projectFile)
     {
-        return $this->view($user, $project) && $this->projectFileBelongsToProject($projectFile, $project);
+        return $this->member($user, $project) && $this->projectFileBelongsToProject($projectFile, $project);
     }
 
     /**

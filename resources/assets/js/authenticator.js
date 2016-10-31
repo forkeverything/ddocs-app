@@ -214,6 +214,11 @@ module.exports = {
         return !!this._getAuthToken();
     },
 
+    // Set the path to be redirecte to after subsequent login.
+    setRedirectPath(path){
+        this._redirectPath = path;
+    },
+
     // Login the user client-side. The response is what we get back
     // from either '/login' or '/register'.
     login(response){

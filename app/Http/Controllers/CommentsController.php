@@ -24,7 +24,7 @@ class CommentsController extends Controller
      */
     public function getProjectFile(ProjectFile $projectFile)
     {
-        $this->authorize('view', $projectFile->folder->project);
+        $this->authorize('member', $projectFile->folder->project);
         return $projectFile->comments;
     }
 

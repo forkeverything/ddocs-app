@@ -1,3 +1,5 @@
+import * as Authenticator from "./authenticator";
+import * as RequestsMonitor from "./requests-monitor";
 module.exports = (function () {
 
     const VueRouter = require('vue-router');
@@ -15,6 +17,7 @@ module.exports = (function () {
         // requiresAuth
         if (to.matched.some(record => record.meta.requiresAuth)) {
             if (! Authenticator.check()) {
+                Authenticator.setRedirectPath(to.path);
                 next({
                     path: '/login'
                 })

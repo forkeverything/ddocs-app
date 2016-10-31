@@ -11,6 +11,7 @@ use App\Http\Requests\SaveProjectRequest;
 use App\Project;
 use App\ProjectFile;
 use App\ProjectFolder;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -39,9 +40,12 @@ class ProjectsController extends Controller
      */
     public function postSaveNew(SaveProjectRequest $request)
     {
-        $attributes = $request->all();
-        $attributes['user_id'] = Auth::id();
-        return Project::create($attributes);
+        $project = Project::create($request->all());
+        Auth::user()->projects()->save($project, [
+            'accepted' => 1,
+            'admin' => 1
+        ]);
+        return $project;
     }
 
     /**
@@ -52,7 +56,7 @@ class ProjectsController extends Controller
      */
     public function getSingleProject(Project $project)
     {
-        $this->authorize('view', $project);
+        $this->authorize('member', $project);
 
         return $project->load([
             'folders' => function ($query) {
@@ -65,23 +69,32 @@ class ProjectsController extends Controller
     }
 
     /**
-     * Show the view for a single Project.
+     * Request to accept an invitation to join Project.
      *
      * @param Project $project
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function getProject(Project $project)
+    public function postJoin(Project $project)
     {
-        $project->load([
-            'folders' => function ($query) {
-                $query->orderBy('position', 'asc');
-            },
-            'folders.files' => function ($query) {
-                $query->orderBy('position', 'asc');
-            }
-        ]);
+        if($project->members->contains(Auth::user())) return response("Already a member.");
+        if( ! $project->pendingMembers()->contains(Auth::user())) abort(403, "Oops! We couldn't find your invitation to the requested project. Please ask the admin to re-send your invitation.");
+        $project->acceptInvitation(Auth::user());
+        return response("Joined project.");
+    }
 
-        return view('projects.single', compact('project'));
+    /**
+     * Handle request to make a User manager or demote from manager.
+     *
+     * @param Project $project
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function postDefineManager(Project $project, Request $request)
+    {
+        $this->authorize('admin', $project);
+        $user = User::findOrFail($request->user_id);
+        $project->defineManager($user, $request->manager);
+        return response('Defined project manager.');
     }
 
     /**
@@ -95,7 +108,7 @@ class ProjectsController extends Controller
      */
     public function putUpdateItems(Project $project, Request $request)
     {
-        $this->authorize('update', $project);
+        $this->authorize('member', $project);
         $updatedModels = $request->all();
 
         if ($updatedProject = $updatedModels['project']) {
@@ -129,7 +142,7 @@ class ProjectsController extends Controller
      */
     public function delete(Project $project)
     {
-        $this->authorize('update', $project);
+        $this->authorize('admin', $project);
         $project->fullDelete();
         return response('Deleted project');
     }
@@ -143,7 +156,7 @@ class ProjectsController extends Controller
      */
     public function postCreateFolder(Project $project, CreateProjectFolderRequest $request)
     {
-        $this->authorize('update', $project);
+        $this->authorize('member', $project);
         return $project->folders()->create($request->all())->load('files');
     }
 

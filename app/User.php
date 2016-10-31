@@ -104,8 +104,29 @@ class User extends AuthenticatableUser
      */
     public function projects()
     {
-        return $this->hasMany(Project::class);
+        return $this->belongsToMany(Project::class)->withTimestamps();
     }
+
+    /**
+     * Project(s) that were created by User.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ownProjects()
+    {
+        return $this->belongsToMany(Project::class)->withTimestamps()->wherePivot('admin', 1);
+    }
+
+    /**
+     * Project(s) that are being managed by User.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function managingProjects()
+    {
+        return $this->belongsToMany(Project::class)->withTimestamps()->wherePivot('manager', 1);
+    }
+
 
     /**
      * Minus a User's credit

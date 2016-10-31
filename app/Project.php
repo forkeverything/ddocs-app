@@ -27,9 +27,51 @@ class Project extends Model
 
     protected $fillable = [
         'name',
-        'description',
-        'user_id'
+        'description'
     ];
+
+    /**
+     * Members that have been invited but haven't accepted yet.
+     *
+     * @return mixed
+     */
+    public function pendingMembers()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps()->where('accepted', 0);
+    }
+
+    /**
+     * Members are User(s) that are a part of the Project.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function members()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps()->where('accepted', 1);
+    }
+
+    /**
+     * User that created the Project. Only admins can delete
+     * projects and project storage is counted towards
+     * admin's quota.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function admin()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps()->wherePivot('admin', 1);
+    }
+
+    /**
+     * User(s) that have been designated as managers. Managers
+     * can add/remove normal members.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function managers()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps()->wherePivot('manager', 1);
+    }
 
     /**
      * Project can have many different folders.
@@ -39,6 +81,29 @@ class Project extends Model
     public function folders()
     {
         return $this->hasMany(ProjectFolder::class, 'project_id');
+    }
+
+    /**
+     * Mark User as accepted and make the user a member.
+     *
+     * @param User $user
+     * @return mixed
+     */
+    public function acceptInvitation(User $user)
+    {
+        return $user->projects()->updateExistingPivot($this->id, ['accepted' => 1]);
+    }
+
+    /**
+     * Promote or demote a User from Project manager.
+     *
+     * @param User $user
+     * @param $managerStatus
+     * @return mixed
+     */
+    public function defineManager(User $user, $managerStatus)
+    {
+        return $user->projects()->updateExistingPivot($this->id, ['manager' => $managerStatus]);
     }
 
     /**

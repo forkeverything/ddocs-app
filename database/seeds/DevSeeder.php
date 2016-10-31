@@ -26,8 +26,8 @@ class DevSeeder extends Seeder
         $this->truncateTables()
              ->seedMikeAccount()
              ->seedChecklists()
-             ->seedFiles()
-        ->createProject();
+             ->seedFiles();
+//        ->createProject();
     }
 
     /**

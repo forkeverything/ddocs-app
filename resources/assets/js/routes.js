@@ -49,6 +49,11 @@ module.exports = [
         meta: { requiresAuth: true }
     },
     {
+        path: '/projects/:project_id/join',
+        component: require('./components/projects/JoinProject.vue'),
+        meta: { requiresAuth: true }
+    },
+    {
         path: '/account',
         component: { template: '<h1>Account Overview</h1>' },
         meta: { requiresAuth: true }
