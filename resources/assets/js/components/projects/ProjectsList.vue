@@ -3,8 +3,10 @@
         <h3>Projects</h3>
         <div class="row">
             <div class="col-sm-8">
-                <p class="small text-muted">Projects are used to keep track of your internal team's files. See what
-                    members of your team are working on, view progress and file statuses at a glance.</p>
+                <p>
+                    Projects are used to keep track of your internal team's files. See what
+                    members of your team are working on, view progress and file statuses at a glance.
+                </p>
             </div>
         </div>
         <br>

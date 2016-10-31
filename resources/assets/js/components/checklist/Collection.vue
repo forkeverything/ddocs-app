@@ -3,7 +3,7 @@
     <div id="checklist-all" class="container-fluid">
         <div class="header">
             <h3>
-                Your Checklists
+                Checklists
             </h3>
             <div>
                 <router-link to="/checklists/make">
