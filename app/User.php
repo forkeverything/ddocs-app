@@ -64,7 +64,8 @@ class User extends AuthenticatableUser
         'password',
         'credits',
         'refresh_token',
-        'refresh_token_expiry'
+        'refresh_token_expiry',
+        'team_id'
     ];
 
     /**
@@ -105,6 +106,17 @@ class User extends AuthenticatableUser
     public function projects()
     {
         return $this->hasMany(Project::class);
+    }
+
+    /**
+     * Can either belong to a team or is owner of a team.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo|\Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function team()
+    {
+        if($this->team_id) return $this->belongsTo(Team::class);
+        return $this->hasOne(Team::class);
     }
 
 

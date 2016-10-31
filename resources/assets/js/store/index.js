@@ -17,7 +17,7 @@ export default new Vuex.Store({
     },
     actions: {
         fetchAuthenticatedUser(context) {
-            Vue.http.get('/api/user').then((res) => {
+            Vue.http.get('/api/auth_user').then((res) => {
                 // Got user, token was good.
                 context.commit('setUser', res.json());
             }, (res) => {

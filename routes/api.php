@@ -14,13 +14,11 @@ use Illuminate\Support\Facades\Log;
 |
 */
 
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('jwt.auth');
-
 // Authenticated Routes
 Route::group(['middleware' => 'jwt.auth'], function () {
+
+    // Authentication
+    Route::get('/auth_user', 'Auth\LoginController@getAuthenticatedUser');
 
     // Checklist
     Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser');

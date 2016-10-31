@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Auth\HandleRefreshToken;
 use App\Http\Controllers\Controller;
 use App\User;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
@@ -42,7 +43,8 @@ class LoginController extends Controller
         $this->middleware('guest', [
             'except' => [
                 'refreshToken',
-                'logout'
+                'logout',
+                'getAuthenticatedUser'
             ]
         ]);
     }
@@ -164,6 +166,16 @@ class LoginController extends Controller
         return response()->json([
             'token' => JWTAuth::fromUser($user)
         ]);
+    }
+
+    /**
+     * Currently authenticated User.
+     *
+     * @return User
+     */
+    public function getAuthenticatedUser()
+    {
+        return Auth::user()->load('team');
     }
 }
 
