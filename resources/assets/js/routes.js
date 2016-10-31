@@ -49,11 +49,6 @@ module.exports = [
         meta: { requiresAuth: true }
     },
     {
-        path: '/team',
-        component: require('./components/team/TeamRoster.vue'),
-        meta: { requiresAuth: true }
-    },
-    {
         path: '/account',
         component: { template: '<h1>Account Overview</h1>' },
         meta: { requiresAuth: true }

@@ -175,7 +175,7 @@ class LoginController extends Controller
      */
     public function getAuthenticatedUser()
     {
-        return Auth::user()->load('team');
+        return Auth::user();
     }
 }
 

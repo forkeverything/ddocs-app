@@ -24,10 +24,6 @@ class CreateUsersTable extends Migration
             $table->string('refresh_token', 100)->nullable();
             $table->integer('refresh_token_expiry')->nullable();
 
-            // Team
-            $table->integer('team_id')->unsigned()->nullable();
-            $table->foreign('team_id')->references('id')->on('teams')->onDelete('set null');
-
             // Subscription
             $table->integer('credits')->default('5')->unsigned();
             $table->string('stripe_id')->nullable();

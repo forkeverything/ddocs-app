@@ -58,6 +58,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('/comments/project_file/{projectFile}', 'CommentsController@getProjectFile');
     Route::post('/comments/project_file/{projectFile}', 'CommentsController@postNewProjectFile');
     Route::post('/comments/file_request/{file_request_hash}', 'CommentsController@postNewFileRequest');
+
 });
 
 // Public Routes
