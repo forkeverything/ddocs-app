@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,6 +22,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Project whereDescription($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Project whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $pendingMembers
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $members
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $admin
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $managers
  */
 class Project extends Model
 {
@@ -31,17 +36,6 @@ class Project extends Model
     ];
 
     /**
-     * Members that have been invited but haven't accepted yet.
-     *
-     * @return mixed
-     */
-    public function pendingMembers()
-    {
-        return $this->belongsToMany(User::class)->withTimestamps()
-            ->where('accepted', 0);
-    }
-
-    /**
      * Members are User(s) that are a part of the Project.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -49,8 +43,7 @@ class Project extends Model
     public function members()
     {
         return $this->belongsToMany(User::class)->withTimestamps()
-            ->withPivot('admin', 'manager')
-            ->where('accepted', 1);
+            ->withPivot('admin', 'manager');
     }
 
     /**
@@ -89,14 +82,80 @@ class Project extends Model
     }
 
     /**
-     * Mark User as accepted and make the user a member.
+     * Add email to project invitations list.
+     *
+     * @param $email
+     * @return bool
+     */
+    public function createInvitation($email)
+    {
+        return DB::table('project_invitiation')
+          ->insert([
+              'email' => $email,
+              'project_id' => $this->id
+          ]);
+    }
+
+    /**
+     * Track down invitation by email.
+     *
+     * @param $email
+     * @return bool
+     */
+    public function findInvitation($email)
+    {
+        return !! DB::table('project_invitations')
+          ->select(DB::raw(1))
+          ->where('project_id', $this->id)
+          ->where('email', $email)
+          ->first();
+    }
+
+    /**
+     * Whether User's email is on list of project member invitaitons.
      *
      * @param User $user
-     * @return mixed
+     * @return bool
      */
-    public function acceptInvitation(User $user)
+    public function hasInvited(User $user)
     {
-        return $user->projects()->updateExistingPivot($this->id, ['accepted' => 1]);
+        return $this->findInvitation($user->email);
+    }
+
+    /**
+     * Delete invitation by email.
+     *
+     * @param $email
+     * @return int
+     */
+    public function deleteInvite($email)
+    {
+        return DB::table('project_invitations')
+                 ->where('project_id', $this->id)
+                 ->where('email', $email)
+                 ->delete();
+    }
+
+    /**
+     * Save a User as a Project member.
+     *
+     * @param User $user
+     * @return Model
+     */
+    public function addMember(User $user)
+    {
+        return $this->members()->save($user);
+    }
+
+    /**
+     * Remove User from Project.
+     *
+     * @param User $user
+     * @return int
+     */
+    public function removeMember(User $user)
+    {
+        return $this->members()->detach($user->id);
     }
 
     /**

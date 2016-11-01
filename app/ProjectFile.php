@@ -33,6 +33,11 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read mixed $meta
  * @property-read mixed $attached
+ * @property \Carbon\Carbon $due
+ * @property float $weighting
+ * @property-read mixed $latest_upload
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereDue($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereWeighting($value)
  */
 class ProjectFile extends Model
 {

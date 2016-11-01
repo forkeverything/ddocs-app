@@ -12,6 +12,7 @@
                 </editable-text-area>
             </div>
         </div>
+        <project-members :members="project.members"></project-members>
         <div class="board-wrap">
             <div id="project-board" :class="{ dragging: dragging }">
                 <template v-for="(folder, index) in project.folders">

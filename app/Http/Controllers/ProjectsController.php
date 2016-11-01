@@ -8,6 +8,7 @@ use App\FileRequest;
 use App\Http\Requests\AddProjectFileRequest;
 use App\Http\Requests\CreateProjectFolderRequest;
 use App\Http\Requests\SaveProjectRequest;
+use App\Mail\ProjectMemberInvitation;
 use App\Project;
 use App\ProjectFile;
 use App\ProjectFolder;
@@ -17,6 +18,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 
 
 class ProjectsController extends Controller
@@ -41,10 +43,7 @@ class ProjectsController extends Controller
     public function postSaveNew(SaveProjectRequest $request)
     {
         $project = Project::create($request->all());
-        Auth::user()->projects()->save($project, [
-            'accepted' => 1,
-            'admin' => 1
-        ]);
+        Auth::user()->startProject($project);
         return $project;
     }
 
@@ -58,6 +57,11 @@ class ProjectsController extends Controller
     {
         $this->authorize('member', $project);
         return $project->load([
+            'members' => function ($query) {
+                $query->orderBy('project_user.admin', 'desc')
+                      ->orderBy('project_user.manager', 'desc')
+                      ->orderBy('project_user.created_at', 'asc');
+            },
             'folders' => function ($query) {
                 $query->orderBy('position', 'asc');
             },
@@ -68,6 +72,27 @@ class ProjectsController extends Controller
     }
 
     /**
+     * Send invite to join Project.
+     *
+     * @param Project $project
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function postSendInvitation(Project $project, Request $request)
+    {
+        $this->authorize('manager', $project);
+        $this->validate($request, [
+            'email' => 'required|email',
+        ]);
+        $email = $request->email;
+        $this->authorize('manager', $project);
+        if ($project->findInvitation($email)) abort(400, "Already invited that email address");
+        $project->createInvitation($email);
+        Mail::to($email)->send(new ProjectMemberInvitation(Auth::user(), $project));
+        return response("Invitation sent.");
+    }
+
+    /**
      * Request to accept an invitation to join Project.
      *
      * @param Project $project
@@ -75,9 +100,11 @@ class ProjectsController extends Controller
      */
     public function postJoin(Project $project)
     {
-        if($project->members->contains(Auth::user())) return response("Already a member.");
-        if( ! $project->pendingMembers()->contains(Auth::user())) abort(403, "Oops! We couldn't find your invitation to the requested project. Please ask the admin to re-send your invitation.");
-        $project->acceptInvitation(Auth::user());
+        $user = Auth::user();
+        if ($project->members->contains($user)) return response("Already a member.");
+        if (!$project->hasInvited($user)) abort(403, "Couldn't find invitation");
+        $project->addMember($user);
+        $project->deleteInvite($user->email);
         return response("Joined project.");
     }
 
@@ -206,7 +233,7 @@ class ProjectsController extends Controller
     {
         $this->authorize('updateFile', [$project, $projectFile]);
 
-        if($fileRequestHash = $request->file_request_hash) {
+        if ($fileRequestHash = $request->file_request_hash) {
             // Attaching to a FileRequest
             $fileRequest = FileRequest::findByHash($request->file_request_hash);
             $this->authorize('update', $fileRequest);
@@ -235,7 +262,7 @@ class ProjectsController extends Controller
     {
         $this->authorize('updateFile', [$project, $projectFile]);
         $upload = UploadFactory::store($projectFile, $request->file('file'));
-        $commentBody = 'Uploaded a <a href="'. awsURL() . $upload->path . '">new file</a>';
+        $commentBody = 'Uploaded a <a href="' . awsURL() . $upload->path . '">new file</a>';
         Comment::addComment($projectFile->id, 'App\\ProjectFile', $commentBody, Auth::id());
 
         // TODO ::: Use pusher so the new comment automatically shows up in thread.

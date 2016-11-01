@@ -1,5 +1,6 @@
 <?php
 
+use App\Project;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,21 @@ class DevSeeder extends Seeder
     ];
 
     /**
+     * Main User: Mike
+     *
+     * @var User
+     */
+    protected $user;
+
+    /**
+     * Created Project
+     *
+     * @var Project
+     */
+    protected $project;
+
+
+    /**
      * Run the database seeds.
      *
      * @return void
@@ -26,8 +42,9 @@ class DevSeeder extends Seeder
         $this->truncateTables()
              ->seedMikeAccount()
              ->seedChecklists()
-             ->seedFiles();
-//        ->createProject();
+             ->seedFiles()
+             ->createProject()
+             ->addProjectMembers();
     }
 
     /**
@@ -76,7 +93,7 @@ class DevSeeder extends Seeder
 
         // and 5 by mike - but to random emails
         $randomRecipientLists = factory(\App\Checklist::class, 5)->create(['user_id' => $this->user->id]);
-        foreach($randomRecipientLists as $checklist) {
+        foreach ($randomRecipientLists as $checklist) {
             factory(\App\Recipient::class, mt_rand(1, 5))->create([
                 'checklist_id' => $checklist->id
             ]);
@@ -114,11 +131,20 @@ class DevSeeder extends Seeder
      */
     protected function createProject()
     {
-        $this->user->projects()->create([
+        $this->project = Project::create([
             'name' => 'Palu',
             'description' => 'First IPP outside of Java.'
         ]);
-
+        $this->user->startProject($this->project);
         return $this;
+    }
+
+    protected function addProjectMembers()
+    {
+        $users = factory(User::class, mt_rand(1, 10))->create();
+        foreach ($users as $user) {
+            $this->project->addMember($user);
+            $this->project->defineManager($user, mt_rand(0, 1));
+        }
     }
 }

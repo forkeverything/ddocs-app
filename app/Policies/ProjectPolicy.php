@@ -30,8 +30,7 @@ class ProjectPolicy
      */
     public function member(User $user, Project $project)
     {
-        return !! $this->pivotQuery($user, $project)
-                      ->where('accepted', 1)
+        return !!$this->pivotQuery($user, $project)
                       ->first();
     }
 
@@ -44,8 +43,9 @@ class ProjectPolicy
      */
     public function manager(User $user, Project $project)
     {
-        return !! $this->pivotQuery($user, $project)
+        return !!$this->pivotQuery($user, $project)
                       ->where('manager', 1)
+                      ->orWhere('admin', 1)
                       ->first();
     }
 
@@ -58,9 +58,9 @@ class ProjectPolicy
      */
     public function admin(User $user, Project $project)
     {
-        return !! $this->pivotQuery($user, $project)
-                       ->where('admin', 1)
-                       ->first();
+        return !!$this->pivotQuery($user, $project)
+                      ->where('admin', 1)
+                      ->first();
     }
 
     /**

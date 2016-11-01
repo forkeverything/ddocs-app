@@ -20,7 +20,6 @@ class CreateProjectUserTable extends Migration
 
             $table->primary(['project_id', 'user_id']);
 
-            $table->boolean('accepted')->default(0);
             $table->boolean('admin')->default(0);
             $table->boolean('manager')->default(0);
         });

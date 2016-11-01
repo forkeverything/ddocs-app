@@ -48,6 +48,8 @@ use Laravel\Cashier\Billable;
  * @method static \Illuminate\Database\Query\Builder|\App\User whereCardLastFour($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereTrialEndsAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Project[] $ownProjects
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Project[] $managingProjects
  */
 class User extends AuthenticatableUser
 {
@@ -198,6 +200,19 @@ class User extends AuthenticatableUser
         Event::fire(new CreatedUserFromEmailWebhook($user, $randomPassword));
 
         return $user;
+    }
+
+    /**
+     * Add User to Project members and set as admin.
+     *
+     * @param Project $project
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function startProject(Project $project)
+    {
+        return $this->projects()->save($project, [
+            'admin' => 1
+        ]);
     }
 }
 

@@ -57,6 +57,7 @@ Vue.component('fr-uploader', require('./components/file-requests/Uploader.vue'))
 Vue.component('fr-due-date', require('./components/file-requests/DueDate.vue'));
 
 // Projects
+Vue.component('project-members', require('./components/projects/ProjectMembers.vue'));
 Vue.component('project-folder', require('./components/projects/ProjectFolder.vue'));
 Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
     // Folders
