@@ -37,7 +37,8 @@ class Project extends Model
      */
     public function pendingMembers()
     {
-        return $this->belongsToMany(User::class)->withTimestamps()->where('accepted', 0);
+        return $this->belongsToMany(User::class)->withTimestamps()
+            ->where('accepted', 0);
     }
 
     /**
@@ -47,7 +48,9 @@ class Project extends Model
      */
     public function members()
     {
-        return $this->belongsToMany(User::class)->withTimestamps()->where('accepted', 1);
+        return $this->belongsToMany(User::class)->withTimestamps()
+            ->withPivot('admin', 'manager')
+            ->where('accepted', 1);
     }
 
     /**
@@ -59,7 +62,8 @@ class Project extends Model
      */
     public function admin()
     {
-        return $this->belongsToMany(User::class)->withTimestamps()->wherePivot('admin', 1);
+        return $this->belongsToMany(User::class)->withTimestamps()
+            ->wherePivot('admin', 1);
     }
 
     /**
@@ -70,7 +74,8 @@ class Project extends Model
      */
     public function managers()
     {
-        return $this->belongsToMany(User::class)->withTimestamps()->wherePivot('manager', 1);
+        return $this->belongsToMany(User::class)->withTimestamps()
+            ->wherePivot('manager', 1);
     }
 
     /**
