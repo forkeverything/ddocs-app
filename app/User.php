@@ -214,5 +214,16 @@ class User extends AuthenticatableUser
             'admin' => 1
         ]);
     }
+
+    /**
+     * Find User by email address.
+     *
+     * @param $email
+     * @return \Illuminate\Database\Eloquent\Model|null|static
+     */
+    public static function findByEmail($email)
+    {
+        return static::where('email', $email)->first();
+    }
 }
 

@@ -1,0 +1,115 @@
+.list-members {
+  margin: 0 0 -10px;
+  display: flex;
+  flex-wrap: wrap;
+
+  > li {
+    margin: 0 0 10px;
+  }
+
+  .single-member {
+
+    .member-avatar {
+      position: relative;
+      cursor: default;
+      background: $midnight-mid;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: #fff;
+
+      .initials {
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+
+      .contact-card {
+        width: 250px;
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        margin-top: -5px;
+        top: 100%;
+        z-index: $z-member-contact;
+
+        &.visible {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .content {
+          margin-top: 10px;
+          color: $text-color;
+
+          > div {
+            word-break: break-all;
+          }
+
+          .position {
+            color: $text-muted;
+            font-size: 0.8em;
+          }
+
+          .name {
+            font-weight: bold;
+          }
+        }
+      }
+
+    }
+
+    &.admin {
+      .member-avatar {
+        background: $light-blue;
+        .contact-card {
+          .position {
+            color: $light-blue;
+          }
+        }
+      }
+    }
+
+    &.manager {
+      .member-avatar {
+        background: $light-green;
+        .contact-card {
+          .position {
+            color: $light-green;
+          }
+        }
+      }
+    }
+  }
+
+  .add-member {
+    position: relative;
+
+    > button {
+      box-shadow: none;
+      outline: 0;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid $midnight-mid;
+      color: $midnight-mid;
+
+      &:hover {
+        background: $extra-light-grey;
+      }
+    }
+
+    #form-invite-member {
+      z-index: 2;
+      width: 275px;
+      padding: 10px;
+    }
+
+  }
+}

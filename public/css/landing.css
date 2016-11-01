@@ -8823,6 +8823,13 @@ h3 .editable-text-field .placeholder {
   line-height: 0.4;
   outline: 0; }
 
+.popup {
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  border: 1px solid #e6e6e6; }
+
 #form-checklist-make {
   margin: 0 0 15px;
   border: 1px solid #e6e6e6;

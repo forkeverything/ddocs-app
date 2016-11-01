@@ -43,10 +43,11 @@ class ProjectPolicy
      */
     public function manager(User $user, Project $project)
     {
-        return !!$this->pivotQuery($user, $project)
-                      ->where('manager', 1)
-                      ->orWhere('admin', 1)
-                      ->first();
+        return !! $this->pivotQuery($user, $project)
+                      ->where(function ($query) {
+                          $query->where('manager', 1)
+                                ->orWhere('admin', 1);
+                      })->first();
     }
 
     /**

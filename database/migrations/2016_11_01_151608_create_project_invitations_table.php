@@ -15,10 +15,7 @@ class CreateProjectInvitationsTable extends Migration
     {
         Schema::create('project_invitations', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-
             $table->string('email');
-
             $table->integer('project_id')->unsigned();
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });

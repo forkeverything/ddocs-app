@@ -60,6 +60,8 @@ Vue.component('fr-due-date', require('./components/file-requests/DueDate.vue'));
 Vue.component('project-members', require('./components/projects/ProjectMembers.vue'));
 Vue.component('project-folder', require('./components/projects/ProjectFolder.vue'));
 Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
+    // Members
+    Vue.component('member-avatar', require('./components/projects/members/Avatar.vue'));
     // Folders
     Vue.component('form-add-project-folder', require('./components/projects/folders/Add.vue'));
     // Files

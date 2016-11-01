@@ -11,6 +11,9 @@ $navbar-default-border: $laravel-border-color;
 $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
+// Box Shadows
+$box-shadow-dropdown: 0 6px 12px rgba(0, 0, 0, 0.175);
+
 // Brands
 $brand-primary: $black;
 $brand-info: $blue;
@@ -90,6 +93,7 @@ $modal-md: 738px;
   $z-file-list-hover: 2;
   $z-file-list-selected: 3;
   // Checklist
+  $z-checklist-recipients-list: 3;
   $z-loader-initial: 2;
   $z-file-name-search-results: 2;
   $z-checklist-loading: 3;
@@ -99,6 +103,8 @@ $modal-md: 738px;
   $z-table-bulk-actions-menu: 2;
   $z-table-row-hover: 2;
   // Project
+  $z-main-load: 3;
+  $z-member-contact: 2;
   $z-updating-position-overlay: 5;
   $z-modal-loading: 2;
   $z-project-file: 2;

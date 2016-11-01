@@ -8842,6 +8842,13 @@ h3 .editable-text-field .placeholder {
   line-height: 0.4;
   outline: 0; }
 
+.popup {
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  border: 1px solid #e6e6e6; }
+
 .checklist-recipients {
   margin: 0 0 10px; }
   .checklist-recipients.expandable {
@@ -9763,6 +9770,83 @@ h3 .editable-text-field .placeholder {
         text-align: center;
         margin-right: 0 !important; }
 
+.list-members {
+  margin: 0 0 -10px;
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap; }
+  .list-members > li {
+    margin: 0 0 10px; }
+  .list-members .single-member .member-avatar {
+    position: relative;
+    cursor: default;
+    background: #7F94A1;
+    width: 45px;
+    height: 45px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff; }
+    .list-members .single-member .member-avatar .initials {
+      font-weight: bold;
+      letter-spacing: 2px; }
+    .list-members .single-member .member-avatar .contact-card {
+      width: 250px;
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      margin-top: -5px;
+      top: 100%;
+      z-index: 2; }
+      .list-members .single-member .member-avatar .contact-card.visible {
+        opacity: 1;
+        visibility: visible; }
+      .list-members .single-member .member-avatar .contact-card .content {
+        margin-top: 10px;
+        color: #1B2432; }
+        .list-members .single-member .member-avatar .contact-card .content > div {
+          word-break: break-all; }
+        .list-members .single-member .member-avatar .contact-card .content .position {
+          color: #9CA1A8;
+          font-size: 0.8em; }
+        .list-members .single-member .member-avatar .contact-card .content .name {
+          font-weight: bold; }
+  .list-members .single-member.admin .member-avatar {
+    background: #66ccf5; }
+    .list-members .single-member.admin .member-avatar .contact-card .position {
+      color: #66ccf5; }
+  .list-members .single-member.manager .member-avatar {
+    background: #49D699; }
+    .list-members .single-member.manager .member-avatar .contact-card .position {
+      color: #49D699; }
+  .list-members .add-member {
+    position: relative; }
+    .list-members .add-member > button {
+      box-shadow: none;
+      outline: 0;
+      width: 45px;
+      height: 45px;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid #7F94A1;
+      color: #7F94A1; }
+      .list-members .add-member > button:hover {
+        background: #F7F7F7; }
+    .list-members .add-member #form-invite-member {
+      z-index: 2;
+      width: 275px;
+      padding: 10px; }
+
 .pf-status-circle {
   display: inline-block;
   margin: 0 3px 0 0; }
@@ -9787,12 +9871,17 @@ h3 .editable-text-field .placeholder {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  flex-direction: column; }
+  flex-direction: column;
+  position: relative; }
+  #project-single .loading-overlay {
+    z-index: 3; }
   #project-single #project-info {
     width: 100%;
     margin: 0 0 30px; }
-    #project-single #project-info #project-description .placeholder {
-      min-height: initial; }
+    #project-single #project-info #project-description {
+      margin: 0 0 15px; }
+      #project-single #project-info #project-description .placeholder {
+        min-height: initial; }
   #project-single .board-wrap {
     height: 100%;
     width: 100%;

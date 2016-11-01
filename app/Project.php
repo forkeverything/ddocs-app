@@ -89,7 +89,7 @@ class Project extends Model
      */
     public function createInvitation($email)
     {
-        return DB::table('project_invitiation')
+        return DB::table('project_invitations')
           ->insert([
               'email' => $email,
               'project_id' => $this->id

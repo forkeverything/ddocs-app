@@ -1,5 +1,6 @@
 <template>
     <div id="project-single">
+        <rectangle-loader :loading="initializing" size="large"></rectangle-loader>
         <div id="project-info" class="container-fluid">
             <h3>
                 <small>Project Files</small>
@@ -11,8 +12,8 @@
                     {{ project.description }}
                 </editable-text-area>
             </div>
+            <project-members :project-id="project.id" :members="project.members"></project-members>
         </div>
-        <project-members :members="project.members"></project-members>
         <div class="board-wrap">
             <div id="project-board" :class="{ dragging: dragging }">
                 <template v-for="(folder, index) in project.folders">
@@ -38,6 +39,7 @@
         name: 'ProjectBoard',
         data: function () {
             return {
+                initializing: true,
                 dragging: false,
                 folderDrake: '',
                 autoScroll: '',
@@ -79,10 +81,16 @@
                 }).then((response) => {
                     // success
                     this.$store.commit('project/SET', response.json());
-                    this.$nextTick(this.initDrag);
+
+                    this.$nextTick(() => {
+                        this.initDrag();
+                        this.initializing = false;
+                    });
+
                 }, (response) => {
                     // error
-                    console.log('Error fetching from: /projects/');
+                    if(response.status === 403) this.$router.push('/projects');
+                    console.log('error fetching project');
                 });
             },
             updateFolderIndexes(el, target, source, sibling){

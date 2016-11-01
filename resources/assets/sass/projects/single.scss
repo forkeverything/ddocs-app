@@ -1,4 +1,5 @@
 @import "single/file-modal";
+@import "single/members";
 
 .pf-status-circle {
   display: inline-block;
@@ -31,12 +32,17 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
+  .loading-overlay {
+    z-index: $z-main-load;
+  }
 
   #project-info {
     width: 100%;
     margin: 0 0 30px;
 
     #project-description {
+      margin: 0 0 15px;
 
       .placeholder {
         min-height: initial;

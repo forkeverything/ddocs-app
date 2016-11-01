@@ -60,7 +60,7 @@ class ProjectsController extends Controller
             'members' => function ($query) {
                 $query->orderBy('project_user.admin', 'desc')
                       ->orderBy('project_user.manager', 'desc')
-                      ->orderBy('project_user.created_at', 'asc');
+                      ->orderBy('name', 'asc');
             },
             'folders' => function ($query) {
                 $query->orderBy('position', 'asc');
@@ -85,8 +85,23 @@ class ProjectsController extends Controller
             'email' => 'required|email',
         ]);
         $email = $request->email;
-        $this->authorize('manager', $project);
-        if ($project->findInvitation($email)) abort(400, "Already invited that email address");
+        if ($project->findInvitation($email)) {
+            return response([
+                'error' => [
+                    'Already sent invitation to that email.'
+                ]
+            ], 422);
+        };
+
+        $user = User::findByEmail($email);
+        if ($user && $project->members->contains($user)) {
+            return response([
+                'error' => [
+                    'Already a member!'
+                ]
+            ], 422);
+        };
+
         $project->createInvitation($email);
         Mail::to($email)->send(new ProjectMemberInvitation(Auth::user(), $project));
         return response("Invitation sent.");
