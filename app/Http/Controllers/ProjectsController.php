@@ -57,7 +57,6 @@ class ProjectsController extends Controller
     public function getSingleProject(Project $project)
     {
         $this->authorize('member', $project);
-
         return $project->load([
             'folders' => function ($query) {
                 $query->orderBy('position', 'asc');

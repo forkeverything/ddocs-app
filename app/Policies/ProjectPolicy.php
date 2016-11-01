@@ -6,12 +6,20 @@ use App\Project;
 use App\ProjectFile;
 use App\ProjectFolder;
 use App\User;
+use DB;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProjectPolicy
 {
     use HandlesAuthorization;
 
+    protected function pivotQuery(User $user, Project $project)
+    {
+        return DB::table('project_user')
+                 ->select(DB::raw(1))
+                 ->where('project_id', $project->id)
+                 ->where('user_id', $user->id);
+    }
 
     /**
      * User is a Project member.
@@ -22,7 +30,9 @@ class ProjectPolicy
      */
     public function member(User $user, Project $project)
     {
-        return $project->members->contains($user);
+        return !! $this->pivotQuery($user, $project)
+                      ->where('accepted', 1)
+                      ->first();
     }
 
     /**
@@ -34,7 +44,9 @@ class ProjectPolicy
      */
     public function manager(User $user, Project $project)
     {
-        return $project->managers->contains($user);
+        return !! $this->pivotQuery($user, $project)
+                      ->where('manager', 1)
+                      ->first();
     }
 
     /**
@@ -46,7 +58,9 @@ class ProjectPolicy
      */
     public function admin(User $user, Project $project)
     {
-        return $project->admin->first()->id === $user->id;
+        return !! $this->pivotQuery($user, $project)
+                       ->where('admin', 1)
+                       ->first();
     }
 
     /**
@@ -60,7 +74,7 @@ class ProjectPolicy
      */
     public function updateFolder(User $user, Project $project, ProjectFolder $projectFolder)
     {
-        return $this->member($user, $project) &&  $projectFolder->project_id === $project->id;
+        return $this->member($user, $project) && $projectFolder->project_id === $project->id;
     }
 
     /**
