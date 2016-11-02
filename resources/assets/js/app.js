@@ -62,6 +62,7 @@ Vue.component('project-folder', require('./components/projects/ProjectFolder.vue
 Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
     // Members
     Vue.component('member-avatar', require('./components/projects/members/Avatar.vue'));
+    Vue.component('member-actions', require('./components/projects/members/Actions.vue'));
     // Folders
     Vue.component('form-add-project-folder', require('./components/projects/folders/Add.vue'));
     // Files

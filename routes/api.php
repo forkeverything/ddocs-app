@@ -45,6 +45,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
         Route::post('/projects/{project}/invite', 'ProjectsController@postSendInvitation');
         Route::post('/projects/{project}/join', 'ProjectsController@postJoin');
         Route::post('/projects/{project}/manager', 'ProjectsController@postDefineManager');
+        Route::delete('/projects/{project}/members/{user}', 'ProjectsController@deleteRemoveMember');
         Route::put('/projects/{project}', 'ProjectsController@putUpdateItems');
         Route::delete('/projects/{project}', 'ProjectsController@delete');
             // Folders

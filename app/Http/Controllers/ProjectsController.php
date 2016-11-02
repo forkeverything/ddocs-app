@@ -139,6 +139,21 @@ class ProjectsController extends Controller
     }
 
     /**
+     * Removing a member from Project.
+     *
+     * @param Project $project
+     * @param User $user
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteRemoveMember(Project $project, User $user)
+    {
+        $this->authorize('manager', $project);
+        if ($project->hasAdmin($user)) abort(403, "Can't remove admin.");
+        $project->removeMember($user);
+        return response("Removed member");
+    }
+
+    /**
      * Single update request to update a Project, ProjectFolder(s) and ProjectFile(s).
      * We batch put updates to increase efficiency and reduce redundant updates as
      * User is most likely performing multiple requests per second.

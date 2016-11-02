@@ -21,7 +21,9 @@ const types = {
     RESET_REQUEST: 'project/RESET_REQUEST',
     SET_TIMEOUT: 'project/SET_TIMEOUT',
     CLEAR_TIMEOUT: 'project/CLEAR_TIMEOUT',
-    SEND_REQUEST: 'project/SEND_REQUEST'
+    SEND_REQUEST: 'project/SEND_REQUEST',
+    DEFINE_MEMBER_MANAGER: 'project/DEFINE_MEMBER_MANAGER',
+    REMOVE_MEMBER: 'project/REMOVE_MEMBER'
 };
 
 /**
@@ -109,6 +111,16 @@ const mutations = {
     },
     [types.CLEAR_TIMEOUT](state) {
         clearTimeout(state.timeout);
+    },
+    [types.DEFINE_MEMBER_MANAGER](state, payload) {
+        let targetMember = _.find(state.data.members, (member) => {
+            return member.id === payload.id;
+        });
+        targetMember.pivot.manager = payload.manager;
+    },
+    [types.REMOVE_MEMBER](state,payload){
+        let index = _.indexOf(state.data.members, _.find(state.data.members, (member) => member.id === payload.id));
+        state.data.members.splice(index, 1);
     }
 };
 

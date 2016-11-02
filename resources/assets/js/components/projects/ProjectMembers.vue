@@ -8,7 +8,7 @@
                 'manager': member.pivot.manager
             }"
             >
-                <member-avatar :member="member"></member-avatar>
+                <member-avatar :member="member" :admin-privileges="adminPrivileges" :manager-privileges="managerPrivileges"></member-avatar>
             </li>
             <li v-if="managerPrivileges"
                 class="add-member dropdown"
@@ -47,8 +47,13 @@
                 email: ''
             }
         },
-        props: ['project-id', 'members'],
         computed: {
+            project() {
+                return this.$store.state.project.data;
+            },
+            members(){
+                return this.project.members;
+            },
             authenticatedUser(){
                 return this.$store.state.authenticatedUser;
             },
@@ -70,7 +75,7 @@
                 if (!this.ajaxReady) return;
                 this.ajaxReady = false;
 
-                this.$http.post(`/api/projects/${ this.projectId }/invite`, {
+                this.$http.post(`/api/projects/${ this.project.id }/invite`, {
                     email: this.email
                 }, {
                     before(xhr) {

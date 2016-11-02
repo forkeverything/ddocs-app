@@ -24,6 +24,11 @@
             <div class="email">
                 {{ member.email }}
             </div>
+            <member-actions v-if="adminPrivileges || managerPrivileges"
+                            :admin-privileges="adminPrivileges"
+                            :manager-privileges="managerPrivileges"
+                            :member="member"
+            ></member-actions>
         </div>
     </div>
 </div>
@@ -36,6 +41,7 @@ export default {
             cardLeftPosition: '0'
         };
     },
+    props: ['member', 'admin-privileges', 'manager-privileges'],
     computed: {
         position() {
             if(this.member.pivot.admin) return 'Admin';
@@ -50,7 +56,6 @@ export default {
             return initials.toUpperCase();
         }
     },
-    props: ['member'],
     methods: {
         revealContact() {
             let $card = $(this.$refs.card);

@@ -159,6 +159,28 @@ class Project extends Model
     }
 
     /**
+     * Check if given User is admin of Project.
+     *
+     * @param User $user
+     * @return bool
+     */
+    public function hasAdmin(User $user)
+    {
+        return $this->admin->first()->id === $user->id;
+    }
+
+    /**
+     * Check if given User is a manager of Project.
+     *
+     * @param User $user
+     * @return bool
+     */
+    public function hasManager(User $user)
+    {
+        return $this->managers->contains($user);
+    }
+
+    /**
      * Promote or demote a User from Project manager.
      *
      * @param User $user

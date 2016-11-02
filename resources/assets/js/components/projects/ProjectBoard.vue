@@ -12,7 +12,7 @@
                     {{ project.description }}
                 </editable-text-area>
             </div>
-            <project-members :project-id="project.id" :members="project.members"></project-members>
+            <project-members></project-members>
         </div>
         <div class="board-wrap">
             <div id="project-board" :class="{ dragging: dragging }">

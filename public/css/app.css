@@ -9815,6 +9815,8 @@ h3 .editable-text-field .placeholder {
           font-size: 0.8em; }
         .list-members .single-member .member-avatar .contact-card .content .name {
           font-weight: bold; }
+        .list-members .single-member .member-avatar .contact-card .content .member-actions {
+          margin: 10px 0 0 0; }
   .list-members .single-member.admin .member-avatar {
     background: #66ccf5; }
     .list-members .single-member.admin .member-avatar .contact-card .position {
