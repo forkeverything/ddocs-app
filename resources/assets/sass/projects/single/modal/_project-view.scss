@@ -40,4 +40,76 @@
       }
     }
   }
+
+  #pf-members {
+    margin: 0 0 10px;
+
+    .list-members {
+      .single-member .member-avatar, .add-member > button {
+        width: 35px;
+        height: 35px;
+        font-size: 0.7em;
+      }
+    }
+
+    #dropdown-assign-member {
+      min-width: 300px;
+      max-height: 350px;
+      overflow: auto;
+      ul {
+        li {
+          display: flex;
+          &:not(last-child) {
+            border-bottom: 1px solid $laravel-border-color;
+          }
+
+          > * {
+            padding: 10px;
+          }
+
+          .main {
+            flex: 1;
+            border-right: 1px solid $laravel-border-color;
+            display: flex;
+
+            .avatar {
+              margin: 0 10px 0 0;
+            }
+            .name {
+              font-weight: bold;
+            }
+          }
+
+          .btn-assign {
+            flex: 0 0 60px;
+            min-width: 60px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+              display: none;
+              color: $grey;
+              font-size: 1.2em;
+            }
+
+            &:hover {
+              i {
+                display: block;
+              }
+            }
+
+            &.active {
+              i {
+                display: block;
+                color: $brand-success;
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
 }

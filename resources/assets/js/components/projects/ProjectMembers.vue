@@ -1,14 +1,8 @@
 <template>
     <div id="project-members">
         <ul class="list-members list-inline list-unstyled">
-            <li v-for="member in members"
-                class="single-member"
-                :class="{
-                'admin': member.pivot.admin,
-                'manager': member.pivot.manager
-            }"
-            >
-                <member-avatar :member="member" :admin-privileges="adminPrivileges" :manager-privileges="managerPrivileges"></member-avatar>
+            <li v-for="member in members">
+                <project-single-member :member="member" :admin-privileges="adminPrivileges" :manager-privileges="managerPrivileges"></project-single-member>
             </li>
             <li v-if="managerPrivileges"
                 class="add-member dropdown"

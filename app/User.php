@@ -117,6 +117,16 @@ class User extends AuthenticatableUser
     }
 
     /**
+     * ProjectFile(s) that the User has been assigned to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function projectFiles()
+    {
+        return $this->belongsToMany(ProjectFile::class, 'project_file_user', 'project_file_id', 'user_id');
+    }
+
+    /**
      * Project(s) that were created by User.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

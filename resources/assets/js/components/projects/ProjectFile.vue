@@ -25,6 +25,11 @@
                 <span class="icon">%</span>{{ file.weighting }}
             </span>
         </div>
+        <ul v-if="hasMembers" class="list-members list-unstyled list-inline">
+            <li v-for="member in file.members">
+                <pf-single-member :member="member"></pf-single-member>
+            </li>
+        </ul>
     </div>
 </template>
 <script>
@@ -40,6 +45,10 @@
             latestUploadPath() {
                 if(this.file.file_request && this.file.file_request.status === 'received') return this.file.file_request.latest_upload.path;
                 if(this.file.latest_upload) return this.file.latest_upload.path;
+                return false;
+            },
+            hasMembers() {
+                if(this.file.members) return this.file.members.length > 0;
                 return false;
             }
         },
@@ -94,6 +103,22 @@
                     folderIndex: this.folderIndex,
                     fileIndex: this.index
                 });
+            });
+            vueGlobalEventBus.$on('update-file-member', (fileId, member, assign) => {
+                if(this.file.id !== fileId) return;
+            if(assign) {
+                this.$store.commit('project/ADD_FILE_MEMBER', {
+                    folderIndex: this.folderIndex,
+                    fileIndex: this.index,
+                    member: member
+                });
+            } else {
+                this.$store.commit('project/REMOVE_FILE_MEMBER', {
+                    folderIndex: this.folderIndex,
+                    fileIndex: this.index,
+                    member: member
+                });
+            }
             });
         },
         mounted() {

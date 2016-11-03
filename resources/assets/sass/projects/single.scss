@@ -48,6 +48,46 @@
         min-height: initial;
       }
     }
+
+    #project-members {
+
+      .single-member {
+        position: relative;
+
+        .avatar-popover {
+          width: 250px;
+          opacity: 0;
+          visibility: hidden;
+          position: absolute;
+          margin-top: -5px;
+          top: 100%;
+          z-index: $z-member-contact;
+
+          &.visible {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          .content {
+            margin-top: 10px;
+            color: $text-color;
+
+            > div {
+              word-break: break-all;
+            }
+            .member-actions {
+              margin: 10px 0 0 0;
+            }
+          }
+        }
+      }
+
+      #form-invite-member {
+        z-index: 2;
+        width: 275px;
+        padding: 10px;
+      }
+    }
   }
 
   .board-wrap {
@@ -272,6 +312,21 @@
           color: $dark-grey;
         }
       }
+    }
+  }
+
+  .list-members {
+    margin: 8px 0 0 -5px;
+
+    > li {
+      margin: 0 0 5px;
+      padding: 0 2px;
+    }
+
+    .single-member .member-avatar, .add-member > button {
+      width: 30px;
+      height: 30px;
+      font-size: 0.6em;
     }
   }
 

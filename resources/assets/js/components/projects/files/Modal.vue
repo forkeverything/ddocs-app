@@ -97,7 +97,8 @@
                                         </attach-fr-dropdown>
                                     </li>
                                     <li>
-                                        <a class="btn btn-default btn-modal-action btn-sm" :disabled="! attached" @click="goToChecklist"><i
+                                        <a class="btn btn-default btn-modal-action btn-sm" :disabled="! attached"
+                                           @click="goToChecklist"><i
                                                 class="fa fa-list"></i>Checklist</a>
                                     </li>
                                     <li><h5>Project</h5></li>
@@ -166,7 +167,7 @@
             },
             updateUploads(projectFile) {
                 // If we're viewing a new
-                if(projectFile.id !== this.file.id) return;
+                if (projectFile.id !== this.file.id) return;
                 // Uploaded a new file directly, update the
                 // uploads relation
                 this.file.uploads = projectFile.uploads;
@@ -236,7 +237,7 @@
                 });
             }
         },
-        mounted() {
+        created() {
             vueGlobalEventBus.$on('view-project-file', (file) => {
                 this.loading = true;
                 this.file = '';
@@ -245,7 +246,23 @@
                 this.$nextTick(() => {
                     $(this.$refs.modal).modal('show');
                 });
-            })
+            });
+            vueGlobalEventBus.$on('update-file-member', (fileId, member, assign) => {
+                if(this.file.id !== fileId) return;
+                if(assign) {
+                    this.file.members.push(member);
+
+                } else {
+                    let index = _.indexOf(this.file.members, _.find(this.file.members, (fileMember) => fileMember.id === member.id));
+                    this.file.members.splice(index, 1);
+                }
+            });
+        },
+        mounted() {
+
+        },
+        beforeDestroy(){
+            vueGlobalEventBus.$off('view-project-file');
         }
     }
 </script>

@@ -11,6 +11,9 @@ module.exports = (function () {
     // Global guards to check for meta properties on our routes
     router.beforeEach((to, from, next) => {
 
+        // Clear phantom modal backdrops
+        $('.modal-backdrop').remove();
+
         // Clear all pending fetch requests
         RequestsMonitor.flushQueue('fetch');
 

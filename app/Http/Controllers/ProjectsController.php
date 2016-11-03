@@ -66,7 +66,12 @@ class ProjectsController extends Controller
                 $query->orderBy('position', 'asc');
             },
             'folders.files' => function ($query) {
-                $query->with('fileRequest')->orderBy('position', 'asc');
+                $query->with([
+                    'fileRequest',
+                    'members' => function($query) {
+                        $query->orderBy('name', 'asc');
+                    }
+                ])->orderBy('position', 'asc');
             }
         ]);
     }
@@ -298,6 +303,23 @@ class ProjectsController extends Controller
         // TODO ::: Use pusher so the new comment automatically shows up in thread.
 
         return $projectFile->loadAllRelations();
+    }
+
+    /**
+     * Assign/Unassign a member to a ProjectFile.
+     *
+     * @param Project $project
+     * @param ProjectFile $projectFile
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function postSetProjectFileMemberAssignment(Project $project, ProjectFile $projectFile, Request $request)
+    {
+        $this->authorize('updateFile', [$project, $projectFile]);
+        $user = User::find($request->user_id);
+        if(! $project->hasMember($user)) abort(400, "Not a member of the project.");
+        $request->assign ? $projectFile->assignMember($user) : $projectFile->unassignMember($user);
+        return response("Set member assignment for project file.");
     }
 
     /**

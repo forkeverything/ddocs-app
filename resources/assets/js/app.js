@@ -62,6 +62,7 @@ Vue.component('project-folder', require('./components/projects/ProjectFolder.vue
 Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
     // Members
     Vue.component('member-avatar', require('./components/projects/members/Avatar.vue'));
+    Vue.component('project-single-member', require('./components/projects/members/SingleProjectMember.vue'));
     Vue.component('member-actions', require('./components/projects/members/Actions.vue'));
     // Folders
     Vue.component('form-add-project-folder', require('./components/projects/folders/Add.vue'));
@@ -73,6 +74,8 @@ Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
         Vue.component('pfm-project-view', require('./components/projects/files/modal/ProjectView.vue'));
         Vue.component('pfm-request-view', require('./components/projects/files/modal/RequestView.vue'));
         Vue.component('attach-fr-dropdown', require('./components/projects/files/modal/AttachFileRequestDropdown.vue'));
+        Vue.component('pf-members', require('./components/projects/files/modal/FileMembers.vue'));
+        Vue.component('pf-single-member', require('./components/projects/members/SingleFileMember.vue'));
         Vue.component('pf-uploader', require('./components/projects/files/modal/Uploader.vue'));
         Vue.component('pf-downloader', require('./components/projects/files/modal/Downloader.vue'));
 

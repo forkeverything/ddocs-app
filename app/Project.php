@@ -181,6 +181,17 @@ class Project extends Model
     }
 
     /**
+     * Check if given User is a member of Project.
+     *
+     * @param User $user
+     * @return mixed
+     */
+    public function hasMember(User $user)
+    {
+        return $this->members->contains($user);
+    }
+
+    /**
      * Promote or demote a User from Project manager.
      *
      * @param User $user

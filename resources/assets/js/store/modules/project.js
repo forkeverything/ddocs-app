@@ -23,7 +23,9 @@ const types = {
     CLEAR_TIMEOUT: 'project/CLEAR_TIMEOUT',
     SEND_REQUEST: 'project/SEND_REQUEST',
     DEFINE_MEMBER_MANAGER: 'project/DEFINE_MEMBER_MANAGER',
-    REMOVE_MEMBER: 'project/REMOVE_MEMBER'
+    REMOVE_MEMBER: 'project/REMOVE_MEMBER',
+    ADD_FILE_MEMBER: 'project/ADD_FILE_MEMBER',
+    REMOVE_FILE_MEMBER: 'project/REMOVE_FILE_MEMBER'
 };
 
 /**
@@ -121,6 +123,14 @@ const mutations = {
     [types.REMOVE_MEMBER](state,payload){
         let index = _.indexOf(state.data.members, _.find(state.data.members, (member) => member.id === payload.id));
         state.data.members.splice(index, 1);
+    },
+    [types.ADD_FILE_MEMBER](state,payload){
+        state.data.folders[payload.folderIndex].files[payload.fileIndex].members.push(payload.member);
+    },
+    [types.REMOVE_FILE_MEMBER](state,payload){
+        let members = state.data.folders[payload.folderIndex].files[payload.fileIndex].members;
+        let index = _.indexOf(members, _.find(members, (fileMember) => fileMember.id === payload.member.id));
+        members.splice(index, 1);
     }
 };
 

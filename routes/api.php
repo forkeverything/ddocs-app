@@ -55,8 +55,9 @@ Route::group(['middleware' => 'jwt.auth'], function () {
             Route::post('/projects/{project}/folders/{projectFolder}/files', 'ProjectsController@postAddFile');
             Route::get('/projects/{project}/files/{projectFile}', 'ProjectsController@getProjectFile');
             Route::post('/projects/{project}/files/{projectFile}/attach_fr', 'ProjectsController@postAttachFileRequest');
-            Route::delete('/projects/{project}/files/{projectFile}', 'ProjectsController@deleteProjectFile');
             Route::post('/projects/{project}/files/{projectFile}/upload', 'ProjectsController@postUploadFile');
+            Route::post('/projects/{project}/files/{projectFile}/assign', 'ProjectsController@postSetProjectFileMemberAssignment');
+            Route::delete('/projects/{project}/files/{projectFile}', 'ProjectsController@deleteProjectFile');
 
     // Comments
     Route::get('/comments/project_file/{projectFile}', 'CommentsController@getProjectFile');

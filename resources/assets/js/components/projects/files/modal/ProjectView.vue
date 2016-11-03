@@ -20,6 +20,8 @@
                 <span class="icon">%</span><editable-number-field v-model="file.weighting" :allow-null="true" :placeholder="'Weighting'" :step="0.01" @on-change="updateWeighting"></editable-number-field>
             </div>
         </div>
+        <h5>Members</h5>
+        <pf-members :project-file="file"></pf-members>
         <div class="description">
             <h5>Description</h5>
             <editable-text-area v-model="file.description"

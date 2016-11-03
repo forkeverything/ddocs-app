@@ -9669,6 +9669,53 @@ h3 .editable-text-field .placeholder {
         #project-file-modal .modal-body .main .content .project-view .summary .weighting .editable-number-field {
           width: 80px;
           display: inline-block; }
+      #project-file-modal .modal-body .main .content .project-view #pf-members {
+        margin: 0 0 10px; }
+        #project-file-modal .modal-body .main .content .project-view #pf-members .list-members .single-member .member-avatar, #project-file-modal .modal-body .main .content .project-view #pf-members .list-members .add-member > button {
+          width: 35px;
+          height: 35px;
+          font-size: 0.7em; }
+        #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member {
+          min-width: 300px;
+          max-height: 350px;
+          overflow: auto; }
+          #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li {
+            display: -webkit-box;
+            display: flex; }
+            #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li:not(last-child) {
+              border-bottom: 1px solid #e6e6e6; }
+            #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li > * {
+              padding: 10px; }
+            #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .main {
+              -webkit-box-flex: 1;
+              flex: 1;
+              border-right: 1px solid #e6e6e6;
+              display: -webkit-box;
+              display: flex; }
+              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .main .avatar {
+                margin: 0 10px 0 0; }
+              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .main .name {
+                font-weight: bold; }
+            #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign {
+              -webkit-box-flex: 0;
+              flex: 0 0 60px;
+              min-width: 60px;
+              text-align: center;
+              display: -webkit-box;
+              display: flex;
+              -webkit-box-pack: center;
+              justify-content: center;
+              -webkit-box-align: center;
+              align-items: center; }
+              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign i {
+                display: none;
+                color: #D2D2D2;
+                font-size: 1.2em; }
+              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign:hover i {
+                display: block; }
+              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign.active i {
+                display: block;
+                color: #41B883; }
       #project-file-modal .modal-body .main .content .request-view .fr-file-name {
         margin: 0 0 10px; }
         #project-file-modal .modal-body .main .content .request-view .fr-file-name h4 {
@@ -9771,63 +9818,16 @@ h3 .editable-text-field .placeholder {
         margin-right: 0 !important; }
 
 .list-members {
-  margin: 0 0 -10px;
+  margin: 0 0 -10px -5px;
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap; }
   .list-members > li {
     margin: 0 0 10px; }
-  .list-members .single-member .member-avatar {
-    position: relative;
-    cursor: default;
-    background: #7F94A1;
-    width: 45px;
-    height: 45px;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: #fff; }
-    .list-members .single-member .member-avatar .initials {
-      font-weight: bold;
-      letter-spacing: 2px; }
-    .list-members .single-member .member-avatar .contact-card {
-      width: 250px;
-      opacity: 0;
-      visibility: hidden;
-      position: absolute;
-      margin-top: -5px;
-      top: 100%;
-      z-index: 2; }
-      .list-members .single-member .member-avatar .contact-card.visible {
-        opacity: 1;
-        visibility: visible; }
-      .list-members .single-member .member-avatar .contact-card .content {
-        margin-top: 10px;
-        color: #1B2432; }
-        .list-members .single-member .member-avatar .contact-card .content > div {
-          word-break: break-all; }
-        .list-members .single-member .member-avatar .contact-card .content .position {
-          color: #9CA1A8;
-          font-size: 0.8em; }
-        .list-members .single-member .member-avatar .contact-card .content .name {
-          font-weight: bold; }
-        .list-members .single-member .member-avatar .contact-card .content .member-actions {
-          margin: 10px 0 0 0; }
-  .list-members .single-member.admin .member-avatar {
-    background: #66ccf5; }
-    .list-members .single-member.admin .member-avatar .contact-card .position {
-      color: #66ccf5; }
-  .list-members .single-member.manager .member-avatar {
-    background: #49D699; }
-    .list-members .single-member.manager .member-avatar .contact-card .position {
-      color: #49D699; }
   .list-members .add-member {
     position: relative; }
     .list-members .add-member > button {
+      padding-top: 4px;
       box-shadow: none;
       outline: 0;
       width: 45px;
@@ -9844,10 +9844,36 @@ h3 .editable-text-field .placeholder {
       color: #7F94A1; }
       .list-members .add-member > button:hover {
         background: #F7F7F7; }
-    .list-members .add-member #form-invite-member {
-      z-index: 2;
-      width: 275px;
-      padding: 10px; }
+
+.member-avatar {
+  cursor: default;
+  background: #7F94A1;
+  width: 45px;
+  height: 45px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff; }
+  .member-avatar .initials {
+    font-weight: bold; }
+  .member-avatar.admin {
+    background: #66ccf5; }
+  .member-avatar.manager {
+    background: #49D699; }
+
+.avatar-popover > div {
+  word-break: break-all; }
+
+.avatar-popover .position {
+  color: #9CA1A8;
+  font-size: 0.8em; }
+
+.avatar-popover .name {
+  font-weight: bold; }
 
 .pf-status-circle {
   display: inline-block;
@@ -9884,6 +9910,30 @@ h3 .editable-text-field .placeholder {
       margin: 0 0 15px; }
       #project-single #project-info #project-description .placeholder {
         min-height: initial; }
+    #project-single #project-info #project-members .single-member {
+      position: relative; }
+      #project-single #project-info #project-members .single-member .avatar-popover {
+        width: 250px;
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        margin-top: -5px;
+        top: 100%;
+        z-index: 3; }
+        #project-single #project-info #project-members .single-member .avatar-popover.visible {
+          opacity: 1;
+          visibility: visible; }
+        #project-single #project-info #project-members .single-member .avatar-popover .content {
+          margin-top: 10px;
+          color: #1B2432; }
+          #project-single #project-info #project-members .single-member .avatar-popover .content > div {
+            word-break: break-all; }
+          #project-single #project-info #project-members .single-member .avatar-popover .content .member-actions {
+            margin: 10px 0 0 0; }
+    #project-single #project-info #project-members #form-invite-member {
+      z-index: 2;
+      width: 275px;
+      padding: 10px; }
   #project-single .board-wrap {
     height: 100%;
     width: 100%;
@@ -10048,6 +10098,15 @@ h3 .editable-text-field .placeholder {
       display: inline-block; }
       .project-file .info-badges .badge .smart-date span {
         color: #999999; }
+  .project-file .list-members {
+    margin: 8px 0 0 -5px; }
+    .project-file .list-members > li {
+      margin: 0 0 5px;
+      padding: 0 2px; }
+    .project-file .list-members .single-member .member-avatar, .project-file .list-members .add-member > button {
+      width: 30px;
+      height: 30px;
+      font-size: 0.6em; }
 
 .gu-mirror {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175); }

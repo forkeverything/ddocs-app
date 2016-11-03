@@ -108,9 +108,9 @@ class ProjectFile extends Model
     protected function fetchUploads()
     {
         return $uploads = DB::table('uploads')
-                     ->where('target_type', 'App\ProjectFile')
-                     ->where('target_id', $this->id)
-                     ->get();
+                            ->where('target_type', 'App\ProjectFile')
+                            ->where('target_id', $this->id)
+                            ->get();
     }
 
     /**
@@ -119,11 +119,13 @@ class ProjectFile extends Model
      */
     public function loadAllRelations()
     {
-        return $this->load(
+        return $this->load([
             'uploads',
             'fileRequest',
-            'fileRequest.checklist.recipients'
-        );
+            'fileRequest.checklist.recipients',
+            'members' => function ($query) {
+                $query->orderBy('name', 'asc');
+            }]);
     }
 
 
@@ -166,4 +168,37 @@ class ProjectFile extends Model
     {
         return $this->morphMany(Upload::class, 'target')->orderBy('created_at', 'desc');
     }
+
+    /**
+     * User(s) that have been assigned to a ProjectFile.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function members()
+    {
+        return $this->belongsToMany(User::class, 'project_file_user', 'user_id', 'project_file_id');
+    }
+
+    /**
+     * Assign member to ProjectFile.
+     *
+     * @param User $user
+     * @return Model
+     */
+    public function assignMember(User $user)
+    {
+        return $this->members()->save($user);
+    }
+
+    /**
+     * Unassign member from ProjectFile.
+     *
+     * @param User $user
+     * @return int
+     */
+    public function unassignMember(User $user)
+    {
+        return $this->members()->detach($user->id);
+    }
+
 }
