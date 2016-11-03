@@ -9845,6 +9845,32 @@ h3 .editable-text-field .placeholder {
       .list-members .add-member > button:hover {
         background: #F7F7F7; }
 
+#modal-project-members .list-members-modal > li {
+  flex-wrap: wrap;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  padding: 10px 0; }
+  #modal-project-members .list-members-modal > li:not(last-child) {
+    border-bottom: 1px solid #e6e6e6; }
+  #modal-project-members .list-members-modal > li .main {
+    -webkit-box-flex: 1;
+    flex: 1;
+    min-width: 350px;
+    display: -webkit-box;
+    display: flex; }
+    #modal-project-members .list-members-modal > li .main .avatar {
+      margin: 0 10px 0 0; }
+  #modal-project-members .list-members-modal > li .member-actions {
+    padding: 10px 0;
+    -webkit-box-flex: 0;
+    flex: 0 0 210px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center; }
+
 .member-avatar {
   cursor: default;
   background: #7F94A1;
@@ -9910,6 +9936,14 @@ h3 .editable-text-field .placeholder {
       margin: 0 0 15px; }
       #project-single #project-info #project-description .placeholder {
         min-height: initial; }
+    @media screen and (min-width: 768px) {
+      #project-single #project-info #project-members #btn-project-member-modal {
+        display: none; } }
+    #project-single #project-info #project-members .list-members {
+      display: none; }
+      @media screen and (min-width: 768px) {
+        #project-single #project-info #project-members .list-members {
+          display: block; } }
     #project-single #project-info #project-members .single-member {
       position: relative; }
       #project-single #project-info #project-members .single-member .avatar-popover {

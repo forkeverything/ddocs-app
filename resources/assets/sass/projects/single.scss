@@ -51,6 +51,19 @@
 
     #project-members {
 
+      #btn-project-member-modal {
+        @media screen and (min-width: $screen-sm-min)  {
+          display: none;
+        }
+      }
+
+      .list-members {
+        display: none;
+        @media screen and (min-width: $screen-sm-min)  {
+          display: block;
+        }
+      }
+
       .single-member {
         position: relative;
 

@@ -141,7 +141,7 @@ class DevSeeder extends Seeder
 
     protected function addProjectMembers()
     {
-        $users = factory(User::class, mt_rand(1, 10))->create();
+        $users = factory(User::class, mt_rand(1, 20))->create();
         foreach ($users as $user) {
             $this->project->addMember($user);
             $this->project->defineManager($user, mt_rand(0, 1));

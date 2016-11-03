@@ -31,6 +31,37 @@
   }
 }
 
+#modal-project-members {
+  .list-members-modal {
+    > li {
+      flex-wrap: wrap;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+
+      &:not(last-child) {
+        border-bottom: 1px solid $laravel-border-color;
+      }
+
+      .main {
+        flex: 1;
+        min-width: 350px;
+        display: flex;
+        .avatar {
+          margin: 0 10px 0 0;
+        }
+      }
+
+      .member-actions {
+        padding: 10px 0;
+        flex: 0 0 210px;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+
 .member-avatar {
   cursor: default;
   background: $midnight-mid;
@@ -56,14 +87,14 @@
 }
 
 .avatar-popover {
-    > div {
-      word-break: break-all;
-    }
-    .position {
-      color: $text-muted;
-      font-size: 0.8em;
-    }
-    .name {
-      font-weight: bold;
-    }
+  > div {
+    word-break: break-all;
+  }
+  .position {
+    color: $text-muted;
+    font-size: 0.8em;
+  }
+  .name {
+    font-weight: bold;
+  }
 }

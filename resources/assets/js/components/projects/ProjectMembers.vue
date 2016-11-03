@@ -31,6 +31,64 @@
                 </div>
             </li>
         </ul>
+
+        <!-- Button trigger modal -->
+        <button type="button" id="btn-project-member-modal" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-project-members">
+            View Members
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal-project-members" tabindex="-1" role="dialog" aria-labelledby="project-members-modal-title">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4>Invite Member</h4>
+                        <form v-if="managerPrivileges"
+                              id="modal-invite-member"
+                              @submit.prevent="sendInvite"
+                        >
+                            <form-errors></form-errors>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Email" v-model="email">
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-info" :disabled="! ajaxReady">Send</button>
+                            </div>
+                        </form>
+                        <h4>Members List</h4>
+                        <ul class="list-members-modal list-unstyled">
+                            <li v-for="member in members">
+                                <div class="main">
+                                    <div class="avatar">
+                                        <member-avatar :member="member"
+                                                       :class="{
+                                                            'admin': member.pivot.admin,
+                                                            'manager': member.pivot.manager
+                                                       }"
+                                        ></member-avatar>
+                                    </div>
+                                    <div class="details">
+                                        <div class="name">
+                                            {{ member.name }}
+                                        </div>
+                                        <div class="email">
+                                            {{ member.email }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <member-actions v-if="adminPrivileges || managerPrivileges"
+                                                :admin-privileges="adminPrivileges"
+                                                :manager-privileges="managerPrivileges"
+                                                :member="member"
+                                ></member-actions>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 <script>
