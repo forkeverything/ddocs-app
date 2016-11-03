@@ -16,6 +16,16 @@
                                                          @on-change="updateFileName"></editable-text-field>
                                 </span>
                                 </h3>
+                                <div id="pfm-mobile-actions">
+                                    <pf-modal-actions :file="file"
+                                                      :attached="attached"
+                                                      @go-to-checklist="goToChecklist"
+                                                      @set-file="setFile"
+                                                      @update-file-request="updateFileRequest"
+                                                      @switch-view="switchView"
+                                                      @hide="hide"
+                                    ></pf-modal-actions>
+                                </div>
                                 <ul class="nav nav-tabs">
                                     <li role="presentation"
                                         :class="{
@@ -43,31 +53,6 @@
                                         </a>
                                     </li>
                                 </ul>
-                                <div class="dropdown mobile-actions">
-                                    <a class="btn-dropdown clickable" data-toggle="dropdown" aria-haspopup="true"
-                                       aria-expanded="false">•••</a>
-                                    <ul class="dropdown-menu list-unstyled dropdown-menu-right">
-                                        <li class="heading"><h5>Request</h5></li>
-                                        <li>
-                                            <a class="clickable"
-                                               data-toggle="tooltip"
-                                               data-placement="left"
-                                               title="link file request"
-                                            >
-                                                <i class="fa fa-link"></i>Attach
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="clickable" :disabled="! attached" @click="goToChecklist">
-                                                <i class="fa fa-list"></i>Checklist</a>
-                                        </li>
-                                        <li class="heading"><h5>Project</h5></li>
-                                        <li>
-                                            <a class="clickable" :disabled="! canUpload"><i class="fa fa-upload"></i>Upload</a>
-                                        </li>
-                                        <li><a class="clickable"><i class="fa fa-trash"></i>Delete</a></li>
-                                    </ul>
-                                </div>
                                 <component :is="currentView"
                                            :file="file"
                                            @go-to-checklist="goToChecklist"
@@ -76,51 +61,15 @@
 
                                 </component>
                             </div>
-                            <div class="actions">
-                                <ul id="list-pf-modal-actions" class="list-unstyled">
-                                    <li><h5>Request</h5></li>
-
-                                    <li class="attach-wrapper">
-                                        <button type="button"
-                                                class="btn btn-default btn-modal-action btn-sm"
-                                                @click.stop="toggleAttachFRMenu"
-                                                :disabled="attached"
-                                        >
-                                            <i class="fa fa-link"></i>Attach
-                                        </button>
-                                        <attach-fr-dropdown v-if="attachFileRequestMenu"
-                                                            :project-id="projectId"
-                                                            :file="file"
-                                                            @attached-request="attachedRequest"
-                                                            @toggle-attach-fr-menu="toggleAttachFRMenu"
-                                        >
-                                        </attach-fr-dropdown>
-                                    </li>
-                                    <li>
-                                        <a class="btn btn-default btn-modal-action btn-sm" :disabled="! attached"
-                                           @click="goToChecklist"><i
-                                                class="fa fa-list"></i>Checklist</a>
-                                    </li>
-                                    <li><h5>Project</h5></li>
-                                    <li>
-                                        <pf-uploader :project-id="projectId"
-                                                     :project-file="file"
-                                                     :can-upload="canUpload"
-                                                     @uploaded-file="updateUploads"
-                                        ></pf-uploader>
-                                    </li>
-                                    <li>
-                                        <pf-downloader :uploads="file.uploads"></pf-downloader>
-                                    </li>
-                                    <li>
-                                        <button type="button"
-                                                class="btn btn-default btn-modal-action btn-sm"
-                                                @click="deleteFile"
-                                        >
-                                            <i class="fa fa-trash"></i>Delete
-                                        </button>
-                                    </li>
-                                </ul>
+                            <div id="pfm-main-actions">
+                                <pf-modal-actions :file="file"
+                                                  :attached="attached"
+                                                  @go-to-checklist="goToChecklist"
+                                                  @set-file="setFile"
+                                                  @update-file-request="updateFileRequest"
+                                                  @switch-view="switchView"
+                                                  @hide="hide"
+                                ></pf-modal-actions>
                             </div>
                         </div>
                     </div>
@@ -136,22 +85,21 @@
                 loading: true,
                 ajaxReady: true,
                 currentView: 'pfm-project-view',
-                file: '',
-                attachFileRequestMenu: false
+                file: ''
             }
         },
-        props: ['project-id'],
+        props: [],
         computed: {
+            project() {
+                return this.$store.state.project.data;
+            },
             attached(){
                 return this.file.file_request
-            },
-            canUpload() {
-                return !this.attached;
             }
         },
         methods: {
-            toggleAttachFRMenu() {
-                this.attachFileRequestMenu = !this.attachFileRequestMenu
+            setFile(file) {
+                this.file = file;
             },
             updateFileName() {
                 vueGlobalEventBus.$emit('update-project-file', {
@@ -165,24 +113,8 @@
                     file_request: fileRequest
                 });
             },
-            updateUploads(projectFile) {
-                // If we're viewing a new
-                if (projectFile.id !== this.file.id) return;
-                // Uploaded a new file directly, update the
-                // uploads relation
-                this.file.uploads = projectFile.uploads;
-            },
-            attachedRequest(projectFile) {
-                // update our project file to include the file request
-                this.file = projectFile;
-                this.attachFileRequestMenu = false;
-                this.updateFileRequest(projectFile.file_request);
-                this.$nextTick(() => {
-                    this.switchView('pfm-request-view');
-                });
-            },
             detachRequest() {
-                this.$http.post(`/api/projects/${ this.projectId }/files/${ this.file.id }/attach_fr`, {
+                this.$http.post(`/api/projects/${ this.project.id }/files/${ this.file.id }/attach_fr`, {
                     'file_request_hash': null
                 }, {
                     before(xhr) {
@@ -210,10 +142,11 @@
                 $(this.$refs.modal).modal('hide');
             },
             goToChecklist() {
+                if(! this.file.file_request) return;
                 window.open('/c/' + this.file.file_request.checklist_hash, '_blank');
             },
             fetchProjectFile(fileId){
-                this.$http.get(`/api/projects/${ this.projectId }/files/${ fileId }`, {
+                this.$http.get(`/api/projects/${ this.project.id }/files/${ fileId }`, {
                     before(xhr) {
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
@@ -226,14 +159,6 @@
                 }, (response) => {
                     // error
                     console.log('Error fetching from: `/api/projects`');
-                });
-            },
-            deleteFile(){
-                this.$http.delete(`/api/projects/${ this.projectId }/files/${ this.file.id }`).then((res) => {
-                    vueGlobalEventBus.$emit('delete-project-file', this.file.id);
-                    this.$nextTick(this.hide);
-                }, (res) => {
-                    console.log(' error deleting file.')
                 });
             }
         },

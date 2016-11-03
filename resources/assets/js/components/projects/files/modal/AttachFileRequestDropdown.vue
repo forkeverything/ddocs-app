@@ -1,5 +1,5 @@
 <template>
-     <div id="attach-fr-menu" class="dropdown-menu dropdown-menu-right">
+     <div id="attach-fr-menu" class="dropdown-menu">
             <h4>Attach File Request</h4>
             <p>Link an existing file request from a checklist to share with team members.</p>
             <input id="input-search-attach-fr"
@@ -61,6 +61,9 @@
             }
         },
         computed: {
+            project() {
+                return this.$store.state.project.data;
+            },
             attached(){
                 return this.file.file_request;
             },
@@ -70,7 +73,7 @@
                 return data;
             }
         },
-        props: ['project-id', 'file'],
+        props: ['file'],
         watch: {
             file(newFile) {
                 // Find FileRequest(s) with the same name...
@@ -85,7 +88,7 @@
                 if(!this.ajaxReady) return;
                 this.ajaxReady = false;
 
-                this.$http.post(`/api/projects/${ this.projectId }/files/${this.file.id}/attach_fr`, {
+                this.$http.post(`/api/projects/${ this.project.id }/files/${this.file.id}/attach_fr`, {
                     'file_request_hash': fileRequestHash
                 }, {
                     before(xhr) {

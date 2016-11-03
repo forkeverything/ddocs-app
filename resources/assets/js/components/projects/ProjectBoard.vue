@@ -25,13 +25,12 @@
                     </div>
                 </template>
                 <div class="add-folder folder-wrap">
-                    <form-add-project-folder :project-id="project.id"
-                                             :folders="project.folders"
+                    <form-add-project-folder :folders="project.folders"
                     ></form-add-project-folder>
                 </div>
             </div>
         </div>
-        <project-file-modal :project-id="project.id"></project-file-modal>
+        <project-file-modal></project-file-modal>
     </div>
 </template>
 <script>

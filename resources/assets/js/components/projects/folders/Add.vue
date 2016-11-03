@@ -22,7 +22,12 @@
                 name: ''
             }
         },
-        props: ['project-id', 'folders'],
+        computed: {
+            project() {
+                return this.$store.state.project.data;
+            }
+        },
+        props: ['folders'],
         methods: {
             adjustScroll() {
                 let $container = $('.board-wrap');
@@ -34,7 +39,7 @@
                 if (!this.ajaxReady) return;
                 this.ajaxReady = false;
 
-                this.$http.post(`/api/projects/${ this.projectId }/folders`, {
+                this.$http.post(`/api/projects/${ this.project.id }/folders`, {
                     name: this.name,
                     position: this.folders.length
                 }, {

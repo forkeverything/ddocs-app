@@ -1,5 +1,50 @@
 #project-file-modal {
 
+  .list-pf-modal-actions {
+    > li {
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
+
+      .btn-modal-action {
+        outline: 0;
+        border: 0;
+        text-align: left;
+        width: 100%;
+        font-weight: bold;
+
+        i {
+          width: 20px;
+          margin-right: 3px;
+        }
+
+        .caret {
+          color: $text-color;
+        }
+
+        &:hover:not([disabled]) {
+          background: $brand-primary;
+          color: #fff;
+
+          .caret {
+            color: #fff;
+          }
+        }
+      }
+
+      .btn-group {
+        display: flex;
+
+        .btn {
+          width: initial;
+
+          &:first-child {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
 
   .modal-body {
     min-height: 650px;
@@ -79,32 +124,31 @@
           }
         }
 
-        .mobile-actions {
-          position: absolute;
-          top: 13px;
-          right: 40px;
-          line-height: 0;
-
+        #pfm-mobile-actions {
           @media screen and (min-width: $screen-sm-min) {
             display: none;
           }
 
-          .btn-dropdown {
-            font-size: 1.6em;
-            line-height: 0;
-            position: absolute;
-            top: 10px;
-            right: 5px;
-            color: $grey;
-            text-decoration: none;
+          .list-pf-modal-actions {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -5px 15px -5px;
 
-            &:hover {
-              color: $dark-grey;
+            .heading {
+              flex: 100%;
             }
-          }
 
-          .dropdown-menu {
-            margin-top: 20px;
+            > li {
+              margin: 0 5px;
+
+              .btn-modal-action {
+                border: 1px solid #999999;
+
+                i {
+                  margin: 0;
+                }
+              }
+            }
           }
         }
 
@@ -132,7 +176,7 @@
 
       }
 
-      .actions {
+      #pfm-main-actions {
         padding: 15px 10px 15px 10px;
         flex: 0 0 180px;
         background: $light-grey;
@@ -140,53 +184,6 @@
 
         @media screen and (min-width: $screen-sm-min) {
           display: block;
-        }
-
-        #list-pf-modal-actions {
-          > li {
-            &:not(:last-child) {
-              margin-bottom: 5px;
-            }
-
-            .btn-modal-action {
-              outline: 0;
-              border: 0;
-              text-align: left;
-              width: 100%;
-              font-weight: bold;
-
-              i {
-                width: 20px;
-                margin-right: 3px;
-              }
-
-              .caret {
-                color: $text-color;
-              }
-
-              &:hover:not([disabled]) {
-                background: $brand-primary;
-                color: #fff;
-
-                .caret {
-                  color: #fff;
-                }
-              }
-            }
-
-
-            .btn-group {
-              display: flex;
-
-              .btn {
-                width: initial;
-
-                &:first-child {
-                  flex: 1;
-                }
-              }
-            }
-          }
         }
       }
 
@@ -201,7 +198,10 @@
 
           @media screen and (min-width: $screen-sm-min) {
             width: 450px;
+            left: auto;
+            right: 0;
           }
+
           #input-search-attach-fr {
             margin: 0 0 10px;
           }

@@ -72,7 +72,7 @@
                 this.save({weighting: weighting});
             }
         },
-        props: ['index', 'file', 'projectId', 'folder-index'],
+        props: ['index', 'file', 'folder-index'],
         methods: {
             updateModel(file){
                 this.$store.commit('project/UPDATE_FILE', {

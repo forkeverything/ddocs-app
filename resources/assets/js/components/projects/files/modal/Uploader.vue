@@ -23,7 +23,12 @@ export default {
             uploading: false
         }
     },
-    props: ['project-id', 'project-file', 'can-upload'],
+    props: ['project-file', 'can-upload'],
+    computed: {
+        project() {
+            return this.$store.state.project.data;
+        }
+    },
     watch: {
         projectFile() {
             // whenever we get a new file, set uploading to false
@@ -42,7 +47,7 @@ export default {
 
             this.uploading = true;
 
-            this.$http.post(`/api/projects/${this.projectId}/files/${ this.projectFile.id }/upload`, fd, {
+            this.$http.post(`/api/projects/${this.project.id}/files/${ this.projectFile.id }/upload`, fd, {
                 before(xhr) {
                     RequestsMonitor.pushOntoQueue(xhr);
                 },

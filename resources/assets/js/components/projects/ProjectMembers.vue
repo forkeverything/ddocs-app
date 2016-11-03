@@ -43,19 +43,22 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4>Invite Member</h4>
-                        <form v-if="managerPrivileges"
-                              id="modal-invite-member"
-                              @submit.prevent="sendInvite"
-                        >
-                            <form-errors></form-errors>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email" v-model="email">
-                            </div>
-                            <div class="text-right">
-                                <button type="submit" class="btn btn-info" :disabled="! ajaxReady">Send</button>
-                            </div>
-                        </form>
+                        <div v-if="managerPrivileges"
+                             class="add-member">
+                            <h4>Invite Member</h4>
+                            <form v-if="managerPrivileges"
+                                  id="modal-invite-member"
+                                  @submit.prevent="sendInvite"
+                            >
+                                <form-errors></form-errors>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Email" v-model="email">
+                                </div>
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-info" :disabled="! ajaxReady">Send</button>
+                                </div>
+                            </form>
+                        </div>
                         <h4>Members List</h4>
                         <ul class="list-members-modal list-unstyled">
                             <li v-for="member in members">

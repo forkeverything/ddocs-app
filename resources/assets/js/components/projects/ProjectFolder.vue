@@ -24,7 +24,6 @@
         <div class="files-list" :class="{ empty: emptyFolder }" :data-id="folder.id">
             <project-file v-for="(file, fileIndex) in folder.files"
                           :key="file.id"
-                          :project-id="folder.project_id"
                           :index="fileIndex"
                           :file="file"
                           :folder-index="index"
