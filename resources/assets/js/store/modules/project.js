@@ -125,12 +125,14 @@ const mutations = {
         state.data.members.splice(index, 1);
     },
     [types.ADD_FILE_MEMBER](state,payload){
+        let members = state.data.folders[payload.folderIndex].files[payload.fileIndex].members;
+        if(! members) state.data.folders[payload.folderIndex].files[payload.fileIndex].members = [];
         state.data.folders[payload.folderIndex].files[payload.fileIndex].members.push(payload.member);
     },
     [types.REMOVE_FILE_MEMBER](state,payload){
         let members = state.data.folders[payload.folderIndex].files[payload.fileIndex].members;
-        let index = _.indexOf(members, _.find(members, (fileMember) => fileMember.id === payload.member.id));
-        members.splice(index, 1);
+        let targetMember = _.find(members, (fileMember) => fileMember.id === payload.member.id);
+        if(targetMember) members.splice(_.indexOf(members, targetMember), 1);
     }
 };
 

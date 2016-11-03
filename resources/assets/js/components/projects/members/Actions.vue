@@ -87,6 +87,7 @@
                     this.$store.commit('project/REMOVE_MEMBER', {
                         id: this.member.id
                     });
+                    vueGlobalEventBus.$emit('removed-project-member', this.member);
                     this.ajaxReady = true;
                 }, (res) => {
                     console.log('error removing member.');

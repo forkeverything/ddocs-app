@@ -154,6 +154,15 @@ class ProjectsController extends Controller
     {
         $this->authorize('manager', $project);
         if ($project->hasAdmin($user)) abort(403, "Can't remove admin.");
+
+        // Unassign user from each ProjectFile that belongs to the Project.
+        $projectFolderIds = $project->folders->pluck('id');
+        $assignedFilesWithinProject = $user->projectFiles()->whereIn('project_folder_id', $projectFolderIds)->get();
+        foreach ($assignedFilesWithinProject as $projectFile) {
+            $projectFile->unassignMember($user);
+        }
+
+        // Remove User as member.
         $project->removeMember($user);
         return response("Removed member");
     }

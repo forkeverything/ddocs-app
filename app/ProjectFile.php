@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read mixed $latest_upload
  * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereDue($value)
  * @method static \Illuminate\Database\Query\Builder|\App\ProjectFile whereWeighting($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $members
  */
 class ProjectFile extends Model
 {
@@ -176,7 +177,7 @@ class ProjectFile extends Model
      */
     public function members()
     {
-        return $this->belongsToMany(User::class, 'project_file_user', 'user_id', 'project_file_id');
+        return $this->belongsToMany(User::class, 'project_file_user', 'project_file_id', 'user_id');
     }
 
     /**

@@ -43,18 +43,18 @@
         },
         computed: {
             latestUploadPath() {
-                if(this.file.file_request && this.file.file_request.status === 'received') return this.file.file_request.latest_upload.path;
-                if(this.file.latest_upload) return this.file.latest_upload.path;
+                if (this.file.file_request && this.file.file_request.status === 'received') return this.file.file_request.latest_upload.path;
+                if (this.file.latest_upload) return this.file.latest_upload.path;
                 return false;
             },
             hasMembers() {
-                if(this.file.members) return this.file.members.length > 0;
+                if (this.file.members) return this.file.members.length > 0;
                 return false;
             }
         },
         watch: {
             index() {
-                this.updateModel({ position: this.index });
+                this.updateModel({position: this.index});
             },
             'file.position'(newPosition) {
                 this.save({position: newPosition});
@@ -94,35 +94,42 @@
         },
         created(){
             vueGlobalEventBus.$on('update-project-file', (file) => {
-                if(file.id !== this.file.id) return;
+                if (file.id !== this.file.id) return;
                 this.updateModel(file);
             });
             vueGlobalEventBus.$on('delete-project-file', (id) => {
-                if(id !== this.file.id) return;
+                if (id !== this.file.id) return;
                 this.$store.commit('project/REMOVE_FILE', {
                     folderIndex: this.folderIndex,
                     fileIndex: this.index
                 });
             });
             vueGlobalEventBus.$on('update-file-member', (fileId, member, assign) => {
-                if(this.file.id !== fileId) return;
-            if(assign) {
-                this.$store.commit('project/ADD_FILE_MEMBER', {
-                    folderIndex: this.folderIndex,
-                    fileIndex: this.index,
-                    member: member
-                });
-            } else {
+                if (this.file.id !== fileId) return;
+                if (assign) {
+                    this.$store.commit('project/ADD_FILE_MEMBER', {
+                        folderIndex: this.folderIndex,
+                        fileIndex: this.index,
+                        member: member
+                    });
+                } else {
+                    this.$store.commit('project/REMOVE_FILE_MEMBER', {
+                        folderIndex: this.folderIndex,
+                        fileIndex: this.index,
+                        member: member
+                    });
+                }
+            });
+            vueGlobalEventBus.$on('removed-project-member', (member) => {
                 this.$store.commit('project/REMOVE_FILE_MEMBER', {
                     folderIndex: this.folderIndex,
                     fileIndex: this.index,
                     member: member
                 });
-            }
             });
         },
         mounted() {
-            if(this.file.position !== this.index) this.updateModel({ position: this.index });
+            if (this.file.position !== this.index) this.updateModel({position: this.index});
         },
         beforeDestroy(){
             vueGlobalEventBus.$off('update-project-file');

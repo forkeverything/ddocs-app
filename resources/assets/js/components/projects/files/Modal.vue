@@ -249,13 +249,20 @@
             });
             vueGlobalEventBus.$on('update-file-member', (fileId, member, assign) => {
                 if(this.file.id !== fileId) return;
+                if(! this.file.members) Vue.set(this.file, 'members', []);
                 if(assign) {
                     this.file.members.push(member);
-
                 } else {
                     let index = _.indexOf(this.file.members, _.find(this.file.members, (fileMember) => fileMember.id === member.id));
                     this.file.members.splice(index, 1);
                 }
+            });
+            vueGlobalEventBus.$on('removed-project-member', (member) => {
+                if(! this.file.members) return;
+                let targetMember = _.find(this.file.members, (fileMember) => {
+                    return fileMember.id === member.id;
+                });
+                if(targetMember) this.file.members.splice(_.indexOf(this.file.members, targetMember), 1);
             });
         },
         mounted() {

@@ -50,6 +50,7 @@ use Laravel\Cashier\Billable;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Project[] $ownProjects
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Project[] $managingProjects
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\ProjectFile[] $projectFiles
  */
 class User extends AuthenticatableUser
 {
@@ -123,7 +124,7 @@ class User extends AuthenticatableUser
      */
     public function projectFiles()
     {
-        return $this->belongsToMany(ProjectFile::class, 'project_file_user', 'project_file_id', 'user_id');
+        return $this->belongsToMany(ProjectFile::class, 'project_file_user', 'user_id', 'project_file_id');
     }
 
     /**
