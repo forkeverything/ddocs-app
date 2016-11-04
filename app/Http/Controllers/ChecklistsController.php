@@ -137,4 +137,16 @@ class ChecklistsController extends Controller
         $this->authorize('update', $checklist);
         return ChecklistFactory::addFileToExistingChecklist($checklist, $request);
     }
+
+    /**
+     * @param $checklistHash
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response|void
+     */
+    public function delete($checklistHash)
+    {
+        $checklist = Checklist::findByHash($checklistHash);
+        $this->authorize('update', $checklist);
+        if($checklist->fullDelete()) return response("Deleted checklist");
+        return abort(500, "Error deleting checklist.");
+    }
 }

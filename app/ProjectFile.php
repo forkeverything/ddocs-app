@@ -89,48 +89,6 @@ class ProjectFile extends Model
     ];
 
     /**
-     * Dynamic meta properties.
-     *
-     * @return array
-     */
-    public function getMetaAttribute()
-    {
-        $meta = [];
-        $uploads = $this->fetchUploads();
-        $meta['num_uploads'] = $uploads->count();
-        return $meta;
-    }
-
-    /**
-     * Manual DB query to return file uploads.
-     *
-     * @return \Illuminate\Support\Collection
-     */
-    protected function fetchUploads()
-    {
-        return $uploads = DB::table('uploads')
-                            ->where('target_type', 'App\ProjectFile')
-                            ->where('target_id', $this->id)
-                            ->get();
-    }
-
-    /**
-     * Eager-loads all the relevant relationships for a ProjectFile
-     * @return $this
-     */
-    public function loadAllRelations()
-    {
-        return $this->load([
-            'uploads',
-            'fileRequest',
-            'fileRequest.checklist.recipients',
-            'members' => function ($query) {
-                $query->orderBy('name', 'asc');
-            }]);
-    }
-
-
-    /**
      * The folder that the file is in.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -181,6 +139,47 @@ class ProjectFile extends Model
     }
 
     /**
+     * Dynamic meta properties.
+     *
+     * @return array
+     */
+    public function getMetaAttribute()
+    {
+        $meta = [];
+        $uploads = $this->fetchUploads();
+        $meta['num_uploads'] = $uploads->count();
+        return $meta;
+    }
+
+    /**
+     * Manual DB query to return file uploads.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    protected function fetchUploads()
+    {
+        return $uploads = DB::table('uploads')
+                            ->where('target_type', 'App\ProjectFile')
+                            ->where('target_id', $this->id)
+                            ->get();
+    }
+
+    /**
+     * Eager-loads all the relevant relationships for a ProjectFile
+     * @return $this
+     */
+    public function loadAllRelations()
+    {
+        return $this->load([
+            'uploads',
+            'fileRequest',
+            'fileRequest.checklist.recipients',
+            'members' => function ($query) {
+                $query->orderBy('name', 'asc');
+            }]);
+    }
+
+    /**
      * Assign member to ProjectFile.
      *
      * @param User $user
@@ -200,6 +199,23 @@ class ProjectFile extends Model
     public function unassignMember(User $user)
     {
         return $this->members()->detach($user->id);
+    }
+
+    /**
+     * Complete delete and clean-up.
+     *
+     * @return bool|null
+     */
+    public function fullDelete()
+    {
+        $this->deleteUploads();
+        foreach ($this->comments as $comment) {
+            $comment->delete();
+        }
+        foreach ($this->members as $member) {
+            $this->unassignMember($member);
+        }
+        return $this->delete();
     }
 
 }

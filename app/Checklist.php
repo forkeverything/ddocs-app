@@ -190,4 +190,17 @@ class Checklist extends Model
         return $this;
     }
 
+    /**
+     * Delete Checklist including file requests.
+     *
+     * @return bool|null
+     */
+    public function fullDelete()
+    {
+        foreach ($this->requestedFiles as $file) {
+            $file->fullDelete();
+        }
+        return $this->delete();
+    }
+
 }

@@ -19,15 +19,15 @@ trait HasUploads
     }
 
     /**
-     * Deletes physical files, upload models and finally the parent model.
-     *
-     * @return bool|null
-     * @throws \Exception
+     * Delete physical files as well as the Upload models.
      */
-    public function fullDelete()
+    public function deleteUploads()
     {
-        $uploadPaths = $this->uploads->pluck('path')->toArray();
+        $uploads = $this->uploads;
+        $uploadPaths = $uploads->pluck('path')->toArray();
         dispatch(new DeleteStorageFiles($uploadPaths));
-        return $this->delete();
+        foreach ($uploads as $upload) {
+            $upload->delete();
+        }
     }
 }

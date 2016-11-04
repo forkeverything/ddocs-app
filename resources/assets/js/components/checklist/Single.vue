@@ -28,6 +28,11 @@
                                 Add File
                             </a>
                         </li>
+                        <li>
+                            <a href="#" @click.prevent="deleteChecklist">
+                                Permanently Delete
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -386,6 +391,20 @@
             },
             toggleAddingFileRequest() {
                 this.addingFileRequest = !this.addingFileRequest;
+            },
+            deleteChecklist() {
+                if(!this.ajaxReady) return;
+                this.ajaxReady = false;
+                this.$http.delete(`/api/c/${ this.checklist.hash }`, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
+                }).then((res) => {
+                    router.push('/checklists');
+                }, (res) => {
+                    console.log('error deleting checklist.');
+                    this.ajaxReady = true;
+                });
             }
         },
         created() {

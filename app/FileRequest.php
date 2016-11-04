@@ -85,6 +85,61 @@ class FileRequest extends Model
         'checklist_hash'
     ];
 
+    /**
+     * All File(s) belong to a single Checklist that has required them.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function checklist()
+    {
+        return $this->belongsTo(Checklist::class);
+    }
+
+    /**
+     * FileRequest belongs to a File.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function file()
+    {
+        return $this->belongsTo(File::class);
+    }
+
+    /**
+     * A File Request could potentially have many uploads.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function uploads()
+    {
+        return $this->morphMany(Upload::class, 'target')->orderBy('created_at', 'asc');
+    }
+
+    /**
+     * FileRequest could potentially ahve many Note(s) attached
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    /**
+     * A File Request could have lots of comments.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'subject');
+    }
+
+    /**
+     * Due dates can be null.
+     *
+     * @param $value
+     */
     public function setDueAttribute($value)
     {
         $value = $value ?: null;
@@ -109,47 +164,6 @@ class FileRequest extends Model
     public function getChecklistHashAttribute()
     {
         return hashId('checklist', $this->checklist_id);
-    }
-
-
-    /**
-     * All File(s) belong to a single Checklist that has required them.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function checklist()
-    {
-        return $this->belongsTo(Checklist::class);
-    }
-
-    /**
-     * A File Request could potentially have many uploads.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function uploads()
-    {
-        return $this->morphMany(Upload::class, 'target')->orderBy('created_at', 'asc');
-    }
-
-    /**
-     * FileRequest belongs to a File.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function file()
-    {
-        return $this->belongsTo(File::class);
-    }
-
-    /**
-     * FileRequest could potentially ahve many Note(s) attached
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function notes()
-    {
-        return $this->hasMany(Note::class);
     }
 
     /**
@@ -192,12 +206,18 @@ class FileRequest extends Model
     }
 
     /**
-     * A File Request could have lots of comments.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * Complete delete including relations and uploads
+     * @return bool|null
      */
-    public function comments()
+    public function fullDelete()
     {
-        return $this->morphMany(Comment::class, 'subject');
+        $this->deleteUploads();
+        foreach ($this->notes as $note) {
+            $note->delete();
+        }
+        foreach ($this->comments as $comment) {
+            $comment->delete();
+        }
+        return $this->delete();
     }
 }
