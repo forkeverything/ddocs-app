@@ -64,13 +64,13 @@
             }
         },
         created() {
-            vueGlobalEventBus.$on('upload-selected-file-' + this.fileRequest.id, this.selectFile);
+
         },
         mounted() {
 
         },
         beforeDestroy(){
-            vueGlobalEventBus.$off('upload-selected-file-' + this.fileRequest.id, this.selectFile);
+
         }
     }
 </script>

@@ -119,7 +119,6 @@
                                           @history="showHistoryModal"
                                           @reject="showRejectModal"
                                           @delete="showDeleteModal"
-                                          @upload="uploadSelected"
                         ></mobile-file-menu>
 
 
@@ -154,9 +153,6 @@
                             >
                                 Due
                             </li>
-                            <li class="column col-upload header-column">
-                                <!-- empty spacer column-->
-                            </li>
                         </ul>
 
                         <ul id="files-list" class="list-unstyled" @scroll="scrollList">
@@ -170,7 +166,7 @@
                                 @keydown.down="selectFileRequest(index + 1)"
                             >
                                 <div class="column col-file content-column file-status" :class="fileRequest.status">
-                                    <i class="fa fa-file-o"></i>
+                                    <i class="fa fa-file"></i>
                                 </div>
                                 <div class="column col-name content-column">
                                     <!-- Download -->
@@ -189,8 +185,6 @@
                                                  :index="index"
                                                  @update-file-request="updateFileRequest"
                                     ></fr-due-date>
-                                </div>
-                                <div class="column col-upload content-column">
                                     <fr-uploader :index="index" :file-request="fileRequest"
                                                  @update-file-request="updateFileRequest"></fr-uploader>
                                 </div>
@@ -341,9 +335,6 @@
             },
             showDeleteModal() {
                 vueGlobalEventBus.$emit('show-delete-modal', this.selectedFileRequest);
-            },
-            uploadSelected() {
-                vueGlobalEventBus.$emit('upload-selected-file-' + this.selectedFileRequest.id);
             },
             toggleRightPanel() {
                 this.showRightPanel = !this.showRightPanel;

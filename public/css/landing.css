@@ -1301,7 +1301,7 @@ mark,
   text-transform: capitalize; }
 
 .text-muted {
-  color: #9CA1A8; }
+  color: #9E9EA6; }
 
 .text-primary {
   color: #353535; }
@@ -2069,7 +2069,7 @@ table {
 caption {
   padding-top: 8px;
   padding-bottom: 8px;
-  color: #9CA1A8;
+  color: #9E9EA6;
   text-align: left; }
 
 th {
@@ -8150,7 +8150,7 @@ button.close {
       #ui-datepicker-div .ui-datepicker-header .ui-corner-all:focus, #ui-datepicker-div .ui-datepicker-header .ui-corner-all:active, #ui-datepicker-div .ui-datepicker-header .ui-corner-all:hover {
         outline: 0; }
   #ui-datepicker-div .ui-datepicker-calendar .ui-datepicker-unselectable, #ui-datepicker-div .ui-datepicker-calendar .ui-state-disabled {
-    color: #9CA1A8; }
+    color: #9E9EA6; }
   #ui-datepicker-div .ui-datepicker-calendar a {
     color: #000; }
     #ui-datepicker-div .ui-datepicker-calendar a:hover {
@@ -8328,7 +8328,7 @@ table {
   color: #27AE60; }
 
 .text-muted {
-  color: #9CA1A8; }
+  color: #9E9EA6; }
 
 .text-warning {
   color: #F0A830; }
@@ -8340,7 +8340,7 @@ table {
   color: #3498DB; }
 
 .file-status.waiting {
-  color: #9CA1A8; }
+  color: #9E9EA6; }
 
 .file-status.received {
   color: #27AE60; }
@@ -8391,7 +8391,7 @@ a.secondary {
     float: none;
     display: block; }
   .filters-menu label {
-    color: #9CA1A8;
+    color: #9E9EA6;
     font-size: 0.8em;
     font-weight: normal;
     display: block; }
@@ -8431,7 +8431,7 @@ a.secondary {
           outline: 0; }
     .filters-menu .integer-range-field .dash, .filters-menu .date-range-field .dash {
       font-size: 1.5em;
-      color: #9CA1A8;
+      color: #9E9EA6;
       margin: 0 5px; }
   .filters-menu .date-range-field .dash {
     margin: 20px 5px 0 5px; }
@@ -8511,7 +8511,7 @@ textarea {
 
 label {
   font-weight: normal;
-  color: #9CA1A8;
+  color: #9E9EA6;
   font-size: 0.9em; }
 
 .btn {
@@ -8556,7 +8556,7 @@ label {
       position: absolute;
       top: 0;
       left: 6px;
-      color: #9CA1A8;
+      color: #9E9EA6;
       padding: 9px 3px; }
     .tagger .tagger-container .tag-input-container {
       display: inline-block;

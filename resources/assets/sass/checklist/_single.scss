@@ -203,7 +203,7 @@
 
         i {
           min-width: 15px;
-          font-size: 0.9em;
+          font-size: 0.875em;
         }
 
         &:hover {
@@ -291,7 +291,7 @@
         }
 
         #single-file-request-menu {
-          font-size: 0.9em;
+          font-size: 0.875em;
           margin-bottom: 20px;
         }
 
@@ -326,7 +326,8 @@
     border: 1px dashed $blue;
     padding: 5px;
     margin: 0 0 5px;
-    font-size: 0.9em;
+    font-size: 0.875em;
+    text-align: right;
 
     @media screen and (min-width: $screen-sm-min) {
       display: none;
@@ -350,7 +351,7 @@
       min-width: 120px;
 
       .menu-item {
-        font-size: 0.9em;
+        font-size: 0.875em;
 
         a {
           padding: 2px 10px;
@@ -382,16 +383,6 @@
     display: flex;
     border: 0;
     align-items: center;
-
-    &.col-upload {
-      display: none;
-    }
-
-    @media screen and (min-width: $screen-sm-min) {
-      &.col-upload {
-        display: inline-block;
-      }
-    }
   }
 
   // Header Columns
@@ -427,13 +418,13 @@
     padding: 15px 10px;
 
     &.col-due {
-      font-size: 0.9em;
+      font-size: 0.875em;
     }
   }
 
   // Individual Columns
   .file-status {
-    color: $grey;
+    color: $dark-grey;
 
     &.received {
       color: $green;
@@ -445,11 +436,7 @@
   }
 
   .col-file {
-    flex: 0 0 37px;
-
-    @media screen and (min-width: $screen-sm-min) {
-      flex: 0 0 41px;
-    }
+    flex: 0;
 
     &:after {
       margin-left: 20px !important;
@@ -473,21 +460,41 @@
   .col-due {
     flex: 0 0 120px;
 
-    button {
-      font-size: 1em;
-      padding: 0;
+    .fr-due-date {
+      button {
+        font-size: 1em;
+        padding: 0;
+      }
     }
-  }
 
-  .col-upload {
-    width: 50px;
+    .fr-uploader {
+      display: none;
+
+      .btn {
+        transition: all 0.2s ease-out;
+        font-size: 1em;
+        padding: 1px 6px;
+        width: 30px;
+        height: 30px;
+        border: 2px solid $green;
+        background: transparent;
+        color: $green;
+        outline: 0;
+
+        &:hover:not(:disabled), &:focus {
+          border-color: transparent;
+          background: $green;
+          color: #fff;
+        }
+      }
+    }
   }
 
   // Header Specific
   .table-header {
     margin-left: 0;
     border-bottom: 1px solid $laravel-border-color;
-    font-size: 0.9em;
+    font-size: 0.875em;
     margin-bottom: -1px;
   }
 
@@ -498,57 +505,45 @@
     margin-bottom: 0;
 
     .single-file-request {
-      border-top: 1px solid $laravel-border-color;
-      border-bottom: 1px solid $laravel-border-color;
-      margin-bottom: -1px;
+      border: 1px solid transparent;
       flex-wrap: wrap;
+      min-height: 62px;
+
+      &:not(:first-child) {
+        border-top: 1px solid $laravel-border-color;
+      }
 
       &:last-child {
         margin-bottom: 0;
       }
 
-      &:hover {
-        border-color: $grey;
-        background: lighten($grey, 15%);
-        z-index: $z-file-list-hover;
+      &:hover, &:focus, &.focus, &.is-selected {
+        background: $extra-light-blue;
+        border: 1px solid $light-blue!important;
+        border-radius: $border-radius-large;
         position: relative;
+        outline: 0;
+
+        +.single-file-request {
+          border-color: transparent;
+        }
+
+        .col-due {
+          .fr-due-date {
+            display: none;
+          }
+          .fr-uploader {
+            display: block;
+          }
+        }
       }
 
       &:focus, &.focus, &.is-selected {
-        background: lighten($grey, 12%);
-        border-color: darken($grey, 10%);
-        z-index: $z-file-list-selected;
-        position: relative;
-        outline: 0;
+        background: darken($extra-light-blue, 2%);
       }
 
       .col-file {
-        i {
-          font-size: 1.2em;
-          @media screen and (min-width: $screen-sm-min) {
-            font-size: 1.5em;
-          }
-        }
-      }
-
-      .col-upload {
-        .btn {
-          transition: all 0.2s ease-out;
-          border-radius: 30px;
-          font-size: 1em;
-          padding: 1px 7px;
-          width: 30px;
-          height: 30px;
-          border: 1px solid $green;
-          background: transparent;
-          color: $green;
-          outline: 0;
-
-          &:hover:not(:disabled), &:focus {
-            border-color: transparent;
-            box-shadow: 0 0 0 3px $green;
-          }
-        }
+        font-size: 0.875em;
       }
     }
 

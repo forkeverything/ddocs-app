@@ -1,5 +1,5 @@
 <template>
-    <div class="date-wrap">
+    <div class="fr-due-date">
         <div v-if="checklistBelongsToUser">
             <date-picker v-model="date"
                          :formatted="true"

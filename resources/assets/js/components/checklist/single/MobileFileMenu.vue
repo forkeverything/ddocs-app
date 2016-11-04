@@ -9,14 +9,6 @@
                         <i class="icon fa fa-info-circle"></i>Details
                     </a>
                 </li>
-                <li class="menu-item visible-xs-inline">
-                    <a href="#"
-                       :class="{'disabled': selectedFileRequest.status === 'received'}"
-                       @click.prevent="$emit('upload')"
-                    >
-                        <i class="icon upload fa fa-upload"></i>Upload
-                    </a>
-                </li>
                 <li class="dropdown visible-xs-inline">
                     <a id="select-menu-more" @click.prevent="toggleDropdownMenu"
                        data-toggle="dropdown"
