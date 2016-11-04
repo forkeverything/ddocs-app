@@ -2841,7 +2841,7 @@ select[multiple].input-lg,
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .btn:focus, .btn.focus {
-    color: #5A5A5A;
+    color: #555459;
     text-decoration: none; }
   .btn:active, .btn.active {
     outline: 0;
@@ -2859,27 +2859,27 @@ fieldset[disabled] a.btn {
   pointer-events: none; }
 
 .btn-default {
-  color: #5A5A5A;
+  color: #555459;
   background-color: #fff;
   border-color: #999999; }
   .btn-default:focus, .btn-default.focus {
-    color: #5A5A5A;
+    color: #555459;
     background-color: #e6e6e6;
     border-color: #595959; }
   .btn-default:hover {
-    color: #5A5A5A;
+    color: #555459;
     background-color: #e6e6e6;
     border-color: #7a7a7a; }
   .btn-default:active, .btn-default.active,
   .open > .btn-default.dropdown-toggle {
-    color: #5A5A5A;
+    color: #555459;
     background-color: #e6e6e6;
     border-color: #7a7a7a; }
     .btn-default:active:hover, .btn-default:active:focus, .btn-default:active.focus, .btn-default.active:hover, .btn-default.active:focus, .btn-default.active.focus,
     .open > .btn-default.dropdown-toggle:hover,
     .open > .btn-default.dropdown-toggle:focus,
     .open > .btn-default.dropdown-toggle.focus {
-      color: #5A5A5A;
+      color: #555459;
       background-color: #d4d4d4;
       border-color: #595959; }
   .btn-default:active, .btn-default.active,
@@ -2893,7 +2893,7 @@ fieldset[disabled] a.btn {
     border-color: #999999; }
   .btn-default .badge {
     color: #fff;
-    background-color: #5A5A5A; }
+    background-color: #555459; }
 
 .btn-primary {
   color: #fff;
@@ -9291,7 +9291,16 @@ h3 .editable-text-field .placeholder {
             #checklist-single #checklist-body #split-view #right-pane.collapsed {
               margin-left: 15px; } }
       #checklist-single #checklist-body #split-view #file-view h3 {
-        margin: 0 0 10px; }
+        margin: 0 0 5px; }
+      #checklist-single #checklist-body #split-view #file-view > .due-date {
+        margin: 0 0 5px; }
+        #checklist-single #checklist-body #split-view #file-view > .due-date > i {
+          color: #9E9EA6; }
+        #checklist-single #checklist-body #split-view #file-view > .due-date .fr-due-date {
+          display: inline-block; }
+          #checklist-single #checklist-body #split-view #file-view > .due-date .fr-due-date button {
+            padding: 6px;
+            font-size: 1em; }
       #checklist-single #checklist-body #split-view #file-view #single-file-request-menu {
         font-size: 0.875em;
         margin-bottom: 20px; }
@@ -9382,7 +9391,8 @@ h3 .editable-text-field .placeholder {
     #checklist-single .content-column.col-due {
       font-size: 0.875em; }
   #checklist-single .file-status {
-    color: #999999; }
+    color: #999999;
+    opacity: 0.6; }
     #checklist-single .file-status.received {
       color: #41B883; }
     #checklist-single .file-status.rejected {

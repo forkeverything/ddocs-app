@@ -208,10 +208,12 @@
                                    @history="showHistoryModal"
                                    @reject="showRejectModal"
                                    @delete="showDeleteModal"
+                                   @update-file-request="updateFileRequest"
                                    :is-owner="checklistBelongsToUser"
                                    :selected-file-request-index="selectedFileRequestIndex"
                                    :selected-file-request="selectedFileRequest"
                                    :can-reject-file="canRejectFile"
+                                   :checklist-belongs-to-user="checklistBelongsToUser"
                         ></file-view>
                         <summary-view v-if="! selectedFileRequest" :checklist="checklist"></summary-view>
                     </div>

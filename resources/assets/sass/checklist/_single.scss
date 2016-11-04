@@ -287,7 +287,23 @@
       #file-view {
 
         h3 {
-          margin: 0 0 10px;
+          margin: 0 0 5px;
+        }
+
+        > .due-date {
+          margin: 0 0 5px;
+
+          > i {
+            color: $text-muted;
+          }
+          .fr-due-date {
+            display: inline-block;
+
+            button {
+              padding: 6px;
+              font-size: 1em;
+            }
+          }
         }
 
         #single-file-request-menu {
@@ -425,6 +441,7 @@
   // Individual Columns
   .file-status {
     color: $dark-grey;
+    opacity: 0.6;
 
     &.received {
       color: $green;
