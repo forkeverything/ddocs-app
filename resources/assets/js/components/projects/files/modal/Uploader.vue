@@ -65,7 +65,8 @@ export default {
                 // Update ProjectFile on the board
                 vueGlobalEventBus.$emit('update-project-file', {
                     id: projectFile.id,
-                    meta: projectFile.meta
+                    meta: projectFile.meta,
+                    latest_upload: projectFile.latest_upload
                 });
                 this.uploading = false;
             }, (response) => {
