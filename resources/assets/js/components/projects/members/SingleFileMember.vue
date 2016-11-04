@@ -8,12 +8,12 @@
                 data-placement="bottom"
                 ref="avatar"
         >
-            <member-avatar :member="member"
+            <user-avatar :user="member"
                            :class="{
                                 'admin': position === 'Admin',
                                 'manager': position === 'Manager',
                             }"
-            ></member-avatar>
+            ></user-avatar>
         </span>
     </div>
 </template>

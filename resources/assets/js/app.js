@@ -61,7 +61,6 @@ Vue.component('project-members', require('./components/projects/ProjectMembers.v
 Vue.component('project-folder', require('./components/projects/ProjectFolder.vue'));
 Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
     // Members
-    Vue.component('member-avatar', require('./components/projects/members/Avatar.vue'));
     Vue.component('project-single-member', require('./components/projects/members/SingleProjectMember.vue'));
     Vue.component('member-actions', require('./components/projects/members/Actions.vue'));
     // Folders
@@ -79,6 +78,9 @@ Vue.component('project-file', require('./components/projects/ProjectFile.vue'));
         Vue.component('pf-single-member', require('./components/projects/members/SingleFileMember.vue'));
         Vue.component('pf-uploader', require('./components/projects/files/modal/Uploader.vue'));
         Vue.component('pf-downloader', require('./components/projects/files/modal/Downloader.vue'));
+
+// Users
+Vue.component('user-avatar', require('./components/users/Avatar.vue'));
 
 // Comments
 Vue.component('comments-thread', require('./components/comments/CommentsThread.vue'));

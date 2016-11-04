@@ -17,12 +17,12 @@
                         <li v-for="member in projectMembers">
                             <div class="main">
                                 <div class="avatar">
-                                    <member-avatar :member="member"
+                                    <user-avatar :user="member"
                                                    :class="{
                                                         'admin': getPosition(member) === 'Admin',
                                                         'manager': getPosition(member) === 'Manager',
                                                    }"
-                                    ></member-avatar>
+                                    ></user-avatar>
                                 </div>
                                 <div class="details">
                                     <div class="name">
@@ -98,7 +98,6 @@
                 }).then((response) => {
                     // success
                     vueGlobalEventBus.$emit('update-file-member', this.projectFile.id, projectMember, assign);
-
                     this.ajaxReady = true;
                 },(response) => {
                     // error

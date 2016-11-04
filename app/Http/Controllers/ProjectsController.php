@@ -256,7 +256,8 @@ class ProjectsController extends Controller
     public function postAddFile(Project $project, ProjectFolder $projectFolder, AddProjectFileRequest $request)
     {
         $this->authorize('addFile', [$project, $projectFolder]);
-        return $projectFolder->files()->create($request->all());
+        $projectFile = $projectFolder->files()->create($request->all());
+        return $projectFile->load('fileRequest', 'members');
     }
 
     public function getProjectFile(Project $project, ProjectFile $projectFile)

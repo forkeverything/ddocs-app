@@ -62,30 +62,6 @@
   }
 }
 
-.member-avatar {
-  cursor: default;
-  background: $midnight-mid;
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  color: #fff;
-
-  .initials {
-    font-weight: bold;
-  }
-
-  &.admin {
-    background: $light-blue;
-  }
-
-  &.manager {
-    background: $light-green;
-  }
-}
-
 .avatar-popover {
   > div {
     word-break: break-all;

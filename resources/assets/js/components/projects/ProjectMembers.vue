@@ -64,12 +64,12 @@
                             <li v-for="member in members">
                                 <div class="main">
                                     <div class="avatar">
-                                        <member-avatar :member="member"
+                                        <user-avatar :user="member"
                                                        :class="{
                                                             'admin': member.pivot.admin,
                                                             'manager': member.pivot.manager
                                                        }"
-                                        ></member-avatar>
+                                        ></user-avatar>
                                     </div>
                                     <div class="details">
                                         <div class="name">

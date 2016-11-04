@@ -4,12 +4,12 @@
          @mouseleave="showContact = false"
          ref="container"
     >
-        <member-avatar :member="member"
-                       :class="{
+        <user-avatar :user="member"
+                     :class="{
                             'admin': member.pivot.admin,
                             'manager': member.pivot.manager
                        }"
-        ></member-avatar>
+        ></user-avatar>
 
         <div class="avatar-popover"
              ref="card"
@@ -41,7 +41,7 @@
 </template>
 <script>
     export default {
-        data: function(){
+        data: function () {
             return {
                 showContact: false,
                 cardLeftPosition: '0'
@@ -50,8 +50,8 @@
         props: ['member', 'admin-privileges', 'manager-privileges'],
         computed: {
             position() {
-                if(this.member.pivot.admin) return 'Admin';
-                if(this.member.pivot.manager) return 'Manager';
+                if (this.member.pivot.admin) return 'Admin';
+                if (this.member.pivot.manager) return 'Manager';
                 return 'Member';
             }
         },

@@ -9697,7 +9697,7 @@ h3 .editable-text-field .placeholder {
           display: inline-block; }
       #project-file-modal .modal-body .main .content .project-view #pf-members {
         margin: 0 0 10px; }
-        #project-file-modal .modal-body .main .content .project-view #pf-members .list-members .single-member .member-avatar, #project-file-modal .modal-body .main .content .project-view #pf-members .list-members .add-member > button {
+        #project-file-modal .modal-body .main .content .project-view #pf-members .list-members .single-member .user-avatar, #project-file-modal .modal-body .main .content .project-view #pf-members .list-members .add-member > button {
           width: 35px;
           height: 35px;
           font-size: 0.7em; }
@@ -9872,26 +9872,6 @@ h3 .editable-text-field .placeholder {
     display: flex;
     -webkit-box-align: center;
     align-items: center; }
-
-.member-avatar {
-  cursor: default;
-  background: #7F94A1;
-  width: 45px;
-  height: 45px;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  border-radius: 50%;
-  color: #fff; }
-  .member-avatar .initials {
-    font-weight: bold; }
-  .member-avatar.admin {
-    background: #66ccf5; }
-  .member-avatar.manager {
-    background: #49D699; }
 
 .avatar-popover > div {
   word-break: break-all; }
@@ -10139,7 +10119,7 @@ h3 .editable-text-field .placeholder {
     .project-file .list-members > li {
       margin: 0 0 5px;
       padding: 0 2px; }
-    .project-file .list-members .single-member .member-avatar, .project-file .list-members .add-member > button {
+    .project-file .list-members .single-member .user-avatar, .project-file .list-members .add-member > button {
       width: 30px;
       height: 30px;
       font-size: 0.6em; }
@@ -10151,6 +10131,26 @@ h3 .editable-text-field .placeholder {
 
 #project-board.dragging .files-list {
   min-height: 30px; }
+
+.user-avatar {
+  cursor: default;
+  background: #7F94A1;
+  width: 45px;
+  height: 45px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff; }
+  .user-avatar .initials {
+    font-weight: bold; }
+  .user-avatar.admin {
+    background: #66ccf5; }
+  .user-avatar.manager {
+    background: #49D699; }
 
 .comments-thread {
   padding: 0 10px;
