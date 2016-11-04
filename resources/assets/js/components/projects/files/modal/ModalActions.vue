@@ -86,7 +86,7 @@ export default {
         deleteFile(){
             this.$http.delete(`/api/projects/${ this.project.id }/files/${ this.file.id }`).then((res) => {
                 vueGlobalEventBus.$emit('delete-project-file', this.file.id);
-                this.$nextTick(this.$emit('hide'));
+                this.$nextTick(() => this.$emit('hide'));
             }, (res) => {
                 console.log(' error deleting file.')
             });
