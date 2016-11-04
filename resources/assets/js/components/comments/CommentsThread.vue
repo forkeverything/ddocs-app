@@ -3,10 +3,13 @@
         <rectangle-loader :loading="loading" size="small"></rectangle-loader>
         <ul class="list-comments list-unstyled" ref="list">
             <li class="single-comment" v-for="comment in comments">
-                <div class="top">
-                    <span class="sender">{{ comment.sender.name }}</span> <span class="sent">{{ comment.created_at | diffHuman }}</span>
+                <user-avatar :user="comment.sender"></user-avatar>
+                <div class="comment-content">
+                    <div class="top">
+                        <span class="sender">{{ comment.sender.name }}</span><span class="sent">{{ comment.created_at | diffHuman }}</span>
+                    </div>
+                    <p class="body" v-html="comment.body"></p>
                 </div>
-                <p class="body" v-html="comment.body"></p>
             </li>
         </ul>
         <new-comment-field @add-comment="addComment" :saving="saving"></new-comment-field>

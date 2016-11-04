@@ -11,18 +11,35 @@
     min-height: 75px;
     overflow-x: hidden;
     overflow-y: auto;
+    padding: 15px 0 0 0;
 
     .single-comment {
-      margin: 10px 0;
-      .top {
-        display: flex;
-        justify-content: space-between;
-        .sender {
-          font-weight: bold;
+      display: flex;
+
+      &:not(:last-child) {
+        margin: 0 0 15px;
+      }
+
+      .user-avatar {
+        margin: 0 10px 0 0;
+        background: #fff;
+        border: 3px solid $midnight-mid;
+        color: $midnight-mid;
+      }
+
+      .comment-content {
+        .top {
+          .sender {
+            font-weight: bold;
+            margin: 0 10px 0 0;
+          }
+          .sent {
+            font-size: 0.8em;
+            color: $text-muted;
+          }
         }
-        .sent {
-          font-size: 0.9em;
-          color: $text-muted;
+        .body {
+          margin: 0;
         }
       }
     }

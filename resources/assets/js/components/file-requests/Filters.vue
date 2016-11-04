@@ -11,7 +11,6 @@
                 </option>
             </select>
 
-
             <!-- Filter: Version -->
             <span class="text-muted" v-show="name === 'version'">is between</span>
             <div class="filter-fields version" v-show="name === 'version'">

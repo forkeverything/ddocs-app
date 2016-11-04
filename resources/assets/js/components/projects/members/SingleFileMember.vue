@@ -2,8 +2,7 @@
     <div class="single-member"
 
     >
-        <span
-                data-container="body"
+        <span data-container="body"
                 data-toggle="popover"
                 data-placement="bottom"
                 ref="avatar"
@@ -60,7 +59,7 @@
                     html: true,
                     trigger: 'hover',
                     content: this.popoverContent
-                })
+                });
             });
         }
     }
