@@ -1,15 +1,10 @@
 <template>
 
     <div id="checklist-all" class="container-fluid">
-        <div class="header">
-            <h3>
-                Checklists
-            </h3>
-            <div>
-                <router-link to="/checklists/make">
-                    <button type="button" class="btn btn-info"><i class="fa fa-plus"></i> Checklist</button>
-                </router-link>
-            </div>
+        <div class="text-right">
+            <router-link to="/checklists/make">
+                <button type="button" class="btn btn-info"><i class="fa fa-plus"></i> Checklist</button>
+            </router-link>
         </div>
         <br>
         <div id="checklist-collection">
@@ -95,7 +90,7 @@
         },
         mixins: [fetchesFromEloquentRepository],
         mounted() {
-
+            this.$store.commit('setTitle', 'Checklists');
         }
     };
 </script>

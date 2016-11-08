@@ -1,0 +1,49 @@
+#navbar {
+  background: $navbar-default-bg;
+  height: $navbar-height;
+  border: 0;
+  font-size: 0.9em;
+  border-bottom: 1px solid $laravel-border-color;
+  padding: 0 10px;
+
+  .btn-toggle-sidebar {
+    float: left;
+    border: 0;
+    box-shadow: none;
+    outline: 0;
+    opacity: 0.5;
+    padding: 0;
+    background: #fff;
+    margin: 14px 10px 14px 0;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    .icon-bar {
+      background: $dark-grey;
+      display: block;
+      width: 30px;
+      margin: 5px 0;
+      height: 4px;
+      border-radius: 2px;
+    }
+  }
+
+  .navbar-title {
+    font-weight: bold;
+    display: inline-block;
+    font-size: 1.6em;
+    margin: 14px 0;
+    float: left;
+
+    i {
+      margin-left: 10px;
+      color: $text-muted;
+    }
+  }
+
+  a:hover {
+    text-decoration: underline!important;
+  }
+}

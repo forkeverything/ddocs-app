@@ -37,11 +37,6 @@
         computed: {
             recipients() {
                 return this.$store.state.checklist.data.recipients;
-            },
-            overflowing() {
-                let containerWidth = $('#checklist-recipients').width();
-                let contentWidth = $('.recipients-sizer').outerWidth() + 10;
-                return contentWidth > containerWidth;
             }
         },
         methods: {

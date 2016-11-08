@@ -1,0 +1,102 @@
+#summary-view  {
+  h4 {
+    margin: 0 0 10px;
+  }
+
+  .summary-section {
+    border-bottom: 1px solid $laravel-border-color;
+    padding: 10px 0;
+
+    &:first-of-type {
+      border-top: 1px solid $laravel-border-color;
+    }
+
+    .section-header {
+      user-select: none;
+      font-size: 1.1em;
+      color: $extra-dark-grey;
+      display: flex;
+      align-items: center;
+      height: 35px;
+
+      &.expandable {
+        cursor: pointer;
+      }
+
+      .icon {
+        margin: 0 10px 0 0;
+        font-size: 1.2em;
+      }
+
+      .title {
+        flex: 1;
+      }
+
+      .triangle {
+        font-size: 1.2em;
+        float: right;
+        color: $grey;
+        .fa-caret-down {
+          display: none;
+        }
+      }
+    }
+
+    .section-content {
+      display: none;
+      padding: 15px 0 10px 0;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    &.expanded {
+      .section-header {
+        .triangle {
+          .fa-caret-right {
+            display: none;
+          }
+          .fa-caret-down {
+            display: block;
+          }
+        }
+      }
+      .section-content {
+        display: block;
+      }
+    }
+  }
+
+  #summary-recipients {
+    .section-header {
+      .icon {
+        color: $dark-yellow;
+      }
+    }
+    .list-recipients {
+
+    }
+  }
+
+  #summary-description {
+    .section-header {
+      .icon {
+        color: $dark-blue;
+      }
+    }
+  }
+
+  #summary-file-count {
+    .section-header {
+      .icon {
+        color: $dark-green;
+      }
+    }
+  }
+
+  #btn-delete-checklist {
+    margin: 45px auto 0 auto;
+    display: block;
+  }
+}

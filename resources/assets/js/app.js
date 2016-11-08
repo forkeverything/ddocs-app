@@ -15,6 +15,7 @@ require('./bootstrap');
 
 // System (App-wide)
 Vue.component('navbar', require('./components/system/Navbar.vue'));
+Vue.component('sidebar', require('./components/system/Sidebar.vue'));
 
 // Auth
 Vue.component('login', require('./components/auth/Login.vue'));

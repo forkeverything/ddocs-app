@@ -10,7 +10,6 @@
 
   #checklist-body {
     flex: 1;
-    padding: 0 15px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -79,12 +78,15 @@
     }
 
     #add-file-request {
-      border: 1px solid $laravel-border-color;
-      padding: 15px;
       margin: 0 0 15px;
 
-      h4 {
-        margin-top: 0;
+      .form-wrap {
+        border: 1px solid $laravel-border-color;
+        padding: 15px;
+
+        h4 {
+          margin: 0 0 5px 0;
+        }
       }
 
       form {
@@ -189,7 +191,8 @@
     #pane-nav {
       width: 100%;
       display: block;
-      margin: 0 0 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid $laravel-border-color;
 
       @media screen and (min-width: $screen-sm-min) {
         display: none;
@@ -230,7 +233,6 @@
       overflow: hidden;
 
       .pane {
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         background: #fff;
       }
 
@@ -249,13 +251,12 @@
         flex: 5500 1 605px;
         z-index: 2;
         position: relative;
-        border: 1px solid $laravel-border-color;
         max-width: 100%;
         display: flex;
         flex-direction: column;
 
         &.collapsed {
-          margin-left: calc(-100% - 15px);
+          margin-left: calc(-100% - 5px);
           @media screen and (min-width: $screen-sm-min) {
             margin-left: 0;
           }
@@ -266,10 +267,9 @@
       #right-pane {
         flex: 4500 1 359px;
         @include transition(margin-left 0.2s);
-        margin-left: 15px;
         position: relative;
         z-index: 0;
-        border: 1px solid $laravel-border-color;
+        border-left: 5px solid $laravel-border-color;
         overflow-y: auto;
         padding-bottom: 15px;
         @media screen and (min-width: $screen-sm-min) {
@@ -315,6 +315,8 @@
           margin: 0 0 15px;
         }
       }
+
+      @import "single/summary-view";
     }
   }
 
@@ -350,6 +352,7 @@
     }
 
     .file-name {
+      text-align: left;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;

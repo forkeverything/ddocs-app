@@ -9,11 +9,19 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
+        showSidebar: true,
+        navTitle: '',
         authenticatedUser: ''
     },
     mutations: {
         setUser(state, payload) {
             state.authenticatedUser = payload;
+        },
+        setTitle(state, payload) {
+            state.navTitle = payload;
+        },
+        toggleSidebar(state, payload) {
+            state.showSidebar = ! state.showSidebar;
         }
     },
     actions: {

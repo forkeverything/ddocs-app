@@ -1,55 +1,7 @@
 <template>
-    <div id="checklist-single">
+    <div id="checklist-single" class="main-content">
         <rectangle-loader :loading="initializingRepo" size="large"></rectangle-loader>
         <div id="checklist-body">
-
-            <div class="header">
-                <h3 class="text-capitalize">
-                    <span class="small text-muted">Checklist</span>
-                    <br>
-                    {{ checklist.name }}
-                </h3>
-                <div id="checklist-owner-menu" v-if="checklistBelongsToUser" class="dropdown">
-                    <a class="btn-dropdown clickable"
-                       data-toggle="dropdown"
-                       aria-haspopup="true"
-                       aria-expanded="false"
-                    >
-                        <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul id="checklist-owner-actions" class="dropdown-menu dropdown-menu-right">
-                        <li>
-                            <a href="#" @click.prevent="toggleEditRecipients">
-                                Edit Recipients
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" @click.prevent="toggleAddingFileRequest">
-                                Add File
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" @click.prevent="deleteChecklist">
-                                Permanently Delete
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <checklist-recipients v-if="! editingRecipients"></checklist-recipients>
-
-            <recipients-editor v-if="checklistBelongsToUser && editingRecipients"
-                               @hide="toggleEditRecipients"
-            ></recipients-editor>
-
-            <add-file-request v-if="checklistBelongsToUser"
-                              :visible="addingFileRequest"
-                              @hide="toggleAddingFileRequest"
-                              @added="insertFileRequest"
-            ></add-file-request>
-
-
             <div id="pane-nav">
                 <a @click.prevent="toggleRightPanel"
                    :class="{
@@ -78,6 +30,10 @@
                      class="pane"
                 >
                     <div class="pane-container">
+
+                        <add-file-request v-if="checklistBelongsToUser"
+                                          @added="insertFileRequest"
+                        ></add-file-request>
 
                         <form id="form-checklist-search" @submit.prevent="searchTerm" v-if="params">
                             <div class="input-group">
@@ -207,7 +163,7 @@
                                    :can-reject-file="canRejectFile"
                                    :checklist-belongs-to-user="checklistBelongsToUser"
                         ></file-view>
-                        <summary-view v-if="! selectedFileRequest"></summary-view>
+                        <summary-view v-if="! selectedFileRequest" @delete-checklist="deleteChecklist" :checklist-belongs-to-user="checklistBelongsToUser"></summary-view>
                     </div>
                 </div>
             </div>
@@ -232,7 +188,6 @@
             return {
                 ajaxReady: true,
                 awsUrl: awsURL,
-                checklist: '',
                 hasFilters: true,
                 container: 'files-list',
                 filterOptions: [
@@ -250,12 +205,13 @@
                     }
                 ],
                 selectedFileRequestIndex: '',
-                showRightPanel: false,
-                editingRecipients: false,
-                addingFileRequest: false
+                showRightPanel: false
             }
         },
         computed: {
+            checklist() {
+                return this.$store.state.checklist.data;
+            },
             authenticatedUser(){
                 return this.$store.state.authenticatedUser;
             },
@@ -295,7 +251,6 @@
                 this.$nextTick(this.setFilesHeaderScrollbarPadding);
             }
         },
-        mixins: [fetchesFromEloquentRepository],
         methods: {
             insertFileRequest(fileRequest){
                 this.response.data.unshift(fileRequest);
@@ -360,9 +315,11 @@
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((res) => {
-                    this.checklist = res.json();
                     this.$store.commit('checklist/SET', res.json());
-                    this.addChecklistNameToUrl();
+                    this.$nextTick(() => {
+                        this.addChecklistNameToUrl();
+                        this.$store.commit('setTitle', `${ this.checklist.name }<i class="fa fa-list"></i>`);
+                    });
                 }, (res) => {
                     console.log("error fetching checklist");
                 });
@@ -371,12 +328,6 @@
                 let header = document.getElementById('files-header');
                 let list = document.getElementById('files-list');
                 if (header && list) header.style.paddingRight = list.offsetWidth - list.clientWidth + 'px';
-            },
-            toggleEditRecipients() {
-                this.editingRecipients = !this.editingRecipients;
-            },
-            toggleAddingFileRequest() {
-                this.addingFileRequest = !this.addingFileRequest;
             },
             deleteChecklist() {
                 if(!this.ajaxReady) return;
@@ -393,6 +344,7 @@
                 });
             }
         },
+        mixins: [fetchesFromEloquentRepository],
         created() {
             window.addEventListener('resize', this.setFilesHeaderScrollbarPadding)
         },
@@ -401,7 +353,7 @@
             this.$nextTick(this.setFilesHeaderScrollbarPadding);
         },
         beforeDestroy() {
-            window.removeEventListener('resize', this.setFilesHeaderScrollbarPadding)
+            window.removeEventListener('resize', this.setFilesHeaderScrollbarPadding);
             this.$store.commit('checklist/SET', '');
         }
     };

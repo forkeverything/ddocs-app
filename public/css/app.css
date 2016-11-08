@@ -3680,7 +3680,7 @@ tbody.collapse.in {
 
 .navbar {
   position: relative;
-  min-height: 42px;
+  min-height: 60px;
   margin-bottom: 22px;
   border: 1px solid transparent; }
   .navbar:before, .navbar:after {
@@ -3786,10 +3786,10 @@ tbody.collapse.in {
 
 .navbar-brand {
   float: left;
-  padding: 10px 15px;
+  padding: 19px 15px;
   font-size: 20px;
   line-height: 22px;
-  height: 42px; }
+  height: 60px; }
   .navbar-brand:hover, .navbar-brand:focus {
     text-decoration: none; }
   .navbar-brand > img {
@@ -3804,8 +3804,8 @@ tbody.collapse.in {
   float: right;
   margin-right: 15px;
   padding: 9px 10px;
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin-top: 13px;
+  margin-bottom: 13px;
   background-color: transparent;
   background-image: none;
   border: 1px solid transparent;
@@ -3824,7 +3824,7 @@ tbody.collapse.in {
       display: none; } }
 
 .navbar-nav {
-  margin: 5px -15px; }
+  margin: 9.5px -15px; }
   .navbar-nav > li > a {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -3852,8 +3852,8 @@ tbody.collapse.in {
       .navbar-nav > li {
         float: left; }
         .navbar-nav > li > a {
-          padding-top: 10px;
-          padding-bottom: 10px; } }
+          padding-top: 19px;
+          padding-bottom: 19px; } }
 
 .navbar-form {
   margin-left: -15px;
@@ -3862,8 +3862,8 @@ tbody.collapse.in {
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-  margin-top: 3px;
-  margin-bottom: 3px; }
+  margin-top: 12px;
+  margin-bottom: 12px; }
   @media (min-width: 768px) {
     .navbar-form .form-group {
       display: inline-block;
@@ -3930,18 +3930,18 @@ tbody.collapse.in {
   border-bottom-left-radius: 0; }
 
 .navbar-btn {
-  margin-top: 3px;
-  margin-bottom: 3px; }
+  margin-top: 12px;
+  margin-bottom: 12px; }
   .navbar-btn.btn-sm, .btn-group-sm > .navbar-btn.btn {
-    margin-top: 4.5px;
-    margin-bottom: 4.5px; }
+    margin-top: 13.5px;
+    margin-bottom: 13.5px; }
   .navbar-btn.btn-xs, .btn-group-xs > .navbar-btn.btn {
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin-top: 19px;
+    margin-bottom: 19px; }
 
 .navbar-text {
-  margin-top: 10px;
-  margin-bottom: 10px; }
+  margin-top: 19px;
+  margin-bottom: 19px; }
   @media (min-width: 768px) {
     .navbar-text {
       float: left;
@@ -8003,15 +8003,33 @@ button.close {
   clip: auto; }
 
 body {
-  padding-top: 42px;
   height: 100vh;
   overflow-x: hidden; }
   body #app {
-    height: 100%; }
+    height: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    display: flex; }
+    body #app #sidebar {
+      -webkit-box-flex: 0;
+      flex: 0 0 220px;
+      display: inline-block;
+      height: 100%;
+      float: left; }
+    body #app #center-pane {
+      min-width: 400px;
+      -webkit-box-flex: 1;
+      flex: 1;
+      height: 100%;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column; }
 
 #page-fixed-top {
   position: fixed;
-  top: 42px;
+  top: 60px;
   background: #FFFFFF;
   z-index: 4;
   opacity: 0; }
@@ -8021,26 +8039,62 @@ body {
   opacity: 0;
   padding-bottom: 30px; }
 
-.navbar {
+#navbar {
   background: #fff;
+  height: 60px;
   border: 0;
-  margin: 0;
   font-size: 0.9em;
-  border-bottom: 1px solid #e6e6e6; }
-  .navbar .navbar-header .navbar-brand {
-    padding: 5px; }
-    .navbar .navbar-header .navbar-brand .img-logo {
-      height: 100%; }
-  .navbar .navbar-nav > .open > a, .navbar .navbar-nav > .open > a:hover, .navbar .navbar-nav > .open > a:focus {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 0 10px; }
+  #navbar .btn-toggle-sidebar {
+    float: left;
+    border: 0;
+    box-shadow: none;
+    outline: 0;
+    opacity: 0.5;
+    padding: 0;
     background: #fff;
-    text-decoration: underline; }
-  .navbar .navbar-nav li > .dropdown-menu {
-    margin-top: -5px;
-    right: 15px; }
-    .navbar .navbar-nav li > .dropdown-menu li a:hover, .navbar .navbar-nav li > .dropdown-menu li a:focus {
-      background: #fff; }
-  .navbar a:hover {
+    margin: 14px 10px 14px 0; }
+    #navbar .btn-toggle-sidebar:hover {
+      opacity: 0.8; }
+    #navbar .btn-toggle-sidebar .icon-bar {
+      background: #999999;
+      display: block;
+      width: 30px;
+      margin: 5px 0;
+      height: 4px;
+      border-radius: 2px; }
+  #navbar .navbar-title {
+    font-weight: bold;
+    display: inline-block;
+    font-size: 1.6em;
+    margin: 14px 0;
+    float: left; }
+    #navbar .navbar-title i {
+      margin-left: 10px;
+      color: #9E9EA6; }
+  #navbar a:hover {
     text-decoration: underline !important; }
+
+#sidebar {
+  background: #555459;
+  position: relative; }
+  #sidebar .btn-close-sidebar {
+    color: #fff;
+    font-size: 1.8em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0.5; }
+    #sidebar .btn-close-sidebar:hover {
+      opacity: 0.8; }
+  #sidebar .sidebar-logo a {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    padding: 20px 0; }
+    #sidebar .sidebar-logo a img {
+      width: 80px; }
 
 .caret {
   color: #999999; }
@@ -9108,7 +9162,6 @@ h3 .editable-text-field .placeholder {
   #checklist-single #checklist-body {
     -webkit-box-flex: 1;
     flex: 1;
-    padding: 0 15px;
     margin: 0 auto;
     display: -webkit-box;
     display: flex;
@@ -9155,11 +9208,12 @@ h3 .editable-text-field .placeholder {
         #checklist-single #checklist-body .recipients-editor .buttons .btn:first-child {
           margin: 0 5px 0 0; }
     #checklist-single #checklist-body #add-file-request {
-      border: 1px solid #e6e6e6;
-      padding: 15px;
       margin: 0 0 15px; }
-      #checklist-single #checklist-body #add-file-request h4 {
-        margin-top: 0; }
+      #checklist-single #checklist-body #add-file-request .form-wrap {
+        border: 1px solid #e6e6e6;
+        padding: 15px; }
+        #checklist-single #checklist-body #add-file-request .form-wrap h4 {
+          margin: 0 0 5px 0; }
       #checklist-single #checklist-body #add-file-request form .fields {
         display: -webkit-box;
         display: flex; }
@@ -9212,7 +9266,8 @@ h3 .editable-text-field .placeholder {
     #checklist-single #checklist-body #pane-nav {
       width: 100%;
       display: block;
-      margin: 0 0 10px; }
+      padding: 10px 0;
+      border-bottom: 1px solid #e6e6e6; }
       @media screen and (min-width: 768px) {
         #checklist-single #checklist-body #pane-nav {
           display: none; } }
@@ -9240,7 +9295,6 @@ h3 .editable-text-field .placeholder {
       display: flex;
       overflow: hidden; }
       #checklist-single #checklist-body #split-view .pane {
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         background: #fff; }
       #checklist-single #checklist-body #split-view .pane-container {
         padding: 20px 10px 0 10px;
@@ -9259,7 +9313,6 @@ h3 .editable-text-field .placeholder {
         flex: 5500 1 605px;
         z-index: 2;
         position: relative;
-        border: 1px solid #e6e6e6;
         max-width: 100%;
         display: -webkit-box;
         display: flex;
@@ -9267,7 +9320,7 @@ h3 .editable-text-field .placeholder {
         -webkit-box-direction: normal;
         flex-direction: column; }
         #checklist-single #checklist-body #split-view #main-pane.collapsed {
-          margin-left: calc(-100% - 15px); }
+          margin-left: calc(-100% - 5px); }
           @media screen and (min-width: 768px) {
             #checklist-single #checklist-body #split-view #main-pane.collapsed {
               margin-left: 0; } }
@@ -9276,10 +9329,9 @@ h3 .editable-text-field .placeholder {
         flex: 4500 1 359px;
         -webkit-transition: margin-left 0.2s;
         transition: margin-left 0.2s;
-        margin-left: 15px;
         position: relative;
         z-index: 0;
-        border: 1px solid #e6e6e6;
+        border-left: 5px solid #e6e6e6;
         overflow-y: auto;
         padding-bottom: 15px; }
         @media screen and (min-width: 768px) {
@@ -9306,6 +9358,59 @@ h3 .editable-text-field .placeholder {
         margin-bottom: 20px; }
       #checklist-single #checklist-body #split-view #file-view .notes {
         margin: 0 0 15px; }
+      #checklist-single #checklist-body #split-view #summary-view h4 {
+        margin: 0 0 10px; }
+      #checklist-single #checklist-body #split-view #summary-view .summary-section {
+        border-bottom: 1px solid #e6e6e6;
+        padding: 10px 0; }
+        #checklist-single #checklist-body #split-view #summary-view .summary-section:first-of-type {
+          border-top: 1px solid #e6e6e6; }
+        #checklist-single #checklist-body #split-view #summary-view .summary-section .section-header {
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          font-size: 1.1em;
+          color: #555459;
+          display: -webkit-box;
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          height: 35px; }
+          #checklist-single #checklist-body #split-view #summary-view .summary-section .section-header.expandable {
+            cursor: pointer; }
+          #checklist-single #checklist-body #split-view #summary-view .summary-section .section-header .icon {
+            margin: 0 10px 0 0;
+            font-size: 1.2em; }
+          #checklist-single #checklist-body #split-view #summary-view .summary-section .section-header .title {
+            -webkit-box-flex: 1;
+            flex: 1; }
+          #checklist-single #checklist-body #split-view #summary-view .summary-section .section-header .triangle {
+            font-size: 1.2em;
+            float: right;
+            color: #D2D2D2; }
+            #checklist-single #checklist-body #split-view #summary-view .summary-section .section-header .triangle .fa-caret-down {
+              display: none; }
+        #checklist-single #checklist-body #split-view #summary-view .summary-section .section-content {
+          display: none;
+          padding: 15px 0 10px 0; }
+          #checklist-single #checklist-body #split-view #summary-view .summary-section .section-content p {
+            margin: 0; }
+        #checklist-single #checklist-body #split-view #summary-view .summary-section.expanded .section-header .triangle .fa-caret-right {
+          display: none; }
+        #checklist-single #checklist-body #split-view #summary-view .summary-section.expanded .section-header .triangle .fa-caret-down {
+          display: block; }
+        #checklist-single #checklist-body #split-view #summary-view .summary-section.expanded .section-content {
+          display: block; }
+      #checklist-single #checklist-body #split-view #summary-view #summary-recipients .section-header .icon {
+        color: #F0A830; }
+      #checklist-single #checklist-body #split-view #summary-view #summary-description .section-header .icon {
+        color: #2980B9; }
+      #checklist-single #checklist-body #split-view #summary-view #summary-file-count .section-header .icon {
+        color: #27AE60; }
+      #checklist-single #checklist-body #split-view #summary-view #btn-delete-checklist {
+        margin: 45px auto 0 auto;
+        display: block; }
   #checklist-single #form-checklist-search {
     margin: 0 0 10px; }
     #checklist-single #form-checklist-search .dropdown-toggle {
@@ -9333,6 +9438,7 @@ h3 .editable-text-field .placeholder {
       #checklist-single #mobile-file-menu {
         display: none; } }
     #checklist-single #mobile-file-menu .file-name {
+      text-align: left;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -10157,7 +10263,7 @@ h3 .editable-text-field .placeholder {
   .user-avatar .initials {
     font-weight: bold; }
   .user-avatar.admin {
-    background: #d3ecfa; }
+    background: #3498DB; }
   .user-avatar.manager {
     background: #49D699; }
 

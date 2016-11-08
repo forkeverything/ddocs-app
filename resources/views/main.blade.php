@@ -12,8 +12,11 @@
 <body>
 
 <div id="app" v-cloak>
-    <navbar></navbar>
-    <router-view></router-view>
+    <sidebar></sidebar>
+    <div id="center-pane">
+        <navbar></navbar>
+        <router-view></router-view>
+    </div>
 </div>
 
 <!-- Scripts -->

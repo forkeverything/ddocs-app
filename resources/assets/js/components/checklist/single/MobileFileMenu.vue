@@ -6,7 +6,7 @@
                     <a href="#"
                        @click.prevent="$emit('file-view')"
                     >
-                        <i class="icon fa fa-info-circle"></i>Details
+                        <i class="icon fa fa fa-arrow-circle-right"></i>Details
                     </a>
                 </li>
                 <li class="dropdown visible-xs-inline">
