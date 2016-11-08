@@ -37,20 +37,14 @@
                 </div>
             </div>
 
-            <checklist-recipients v-if="! editingRecipients"
-                                  :recipients="checklist.recipients"
-            ></checklist-recipients>
+            <checklist-recipients v-if="! editingRecipients"></checklist-recipients>
 
             <recipients-editor v-if="checklistBelongsToUser && editingRecipients"
-                               :checklist-hash="checklist.hash"
-                               :recipients="checklist.recipients"
-                               @cancel="toggleEditRecipients"
-                               @updated="updateRecipients"
+                               @hide="toggleEditRecipients"
             ></recipients-editor>
 
             <add-file-request v-if="checklistBelongsToUser"
                               :visible="addingFileRequest"
-                              :checklist-hash="checklist.hash"
                               @hide="toggleAddingFileRequest"
                               @added="insertFileRequest"
             ></add-file-request>
@@ -180,13 +174,13 @@
                                     <span v-if="! fileRequest.latest_upload" class="name">{{ fileRequest.name }}</span>
                                 </div>
                                 <div class="column col-due content-column">
+                                    <fr-uploader :file-request="fileRequest"
+                                                 @update-file-request="updateFileRequest"
+                                    ></fr-uploader>
                                     <fr-due-date :checklist-belongs-to-user="checklistBelongsToUser"
                                                  :file-request="fileRequest"
-                                                 :index="index"
                                                  @update-file-request="updateFileRequest"
                                     ></fr-due-date>
-                                    <fr-uploader :index="index" :file-request="fileRequest"
-                                                 @update-file-request="updateFileRequest"></fr-uploader>
                                 </div>
                             </li>
                             <li class="fr-loading" v-if="hasNextPage">
@@ -209,22 +203,24 @@
                                    @reject="showRejectModal"
                                    @delete="showDeleteModal"
                                    @update-file-request="updateFileRequest"
-                                   :is-owner="checklistBelongsToUser"
-                                   :selected-file-request-index="selectedFileRequestIndex"
                                    :selected-file-request="selectedFileRequest"
                                    :can-reject-file="canRejectFile"
                                    :checklist-belongs-to-user="checklistBelongsToUser"
                         ></file-view>
-                        <summary-view v-if="! selectedFileRequest" :checklist="checklist"></summary-view>
+                        <summary-view v-if="! selectedFileRequest"></summary-view>
                     </div>
                 </div>
             </div>
         </div>
-        <fr-history-modal :selected-file-request="selectedFileRequest"></fr-history-modal>
-        <fr-reject-modal :index="selectedFileRequestIndex" :selected-file-request="selectedFileRequest"
-                         @update-file-request="updateFileRequest"></fr-reject-modal>
-        <fr-delete-modal :selected-file-request="selectedFileRequest" :index="selectedFileRequestIndex"
-                         @remove-file-request="removeFileRequest"></fr-delete-modal>
+        <fr-history-modal :selected-file-request="selectedFileRequest"
+        ></fr-history-modal>
+        <fr-reject-modal :selected-file-request="selectedFileRequest"
+                         @update-file-request="updateFileRequest"
+        ></fr-reject-modal>
+        <fr-delete-modal :selected-file-request="selectedFileRequest"
+                         :index="selectedFileRequestIndex"
+                         @remove-file-request="removeFileRequest"
+        ></fr-delete-modal>
     </div>
 </template>
 <script>
@@ -305,8 +301,12 @@
                 this.response.data.unshift(fileRequest);
                 this.$nextTick(() => this.selectedFileRequestIndex = 0);
             },
-            updateFileRequest(newFileRequestObject, index) {
-                Vue.set(this.fileRequests, index, newFileRequestObject);
+            updateFileRequest(newFileRequestObject) {
+                // Modify response object directly otherwise updates don't occur immediately.
+                let index = _.indexOf(this.response.data, _.find(this.response.data, (fr) => {
+                    return fr.hash === newFileRequestObject.hash;
+                }));
+                Vue.set(this.response.data, index, newFileRequestObject);
             },
             removeFileRequest(index){
                 this.fileRequests.splice(index, 1);
@@ -322,12 +322,7 @@
             selectFileRequest(index) {
                 if (!this.fileRequests[index]) return;  // fr doesn't exist
                 this.selectedFileRequestIndex = index;
-                this.$nextTick(() => {
-                    this.focusOnFileRequest(this.selectedFileRequestIndex);
-                });
-            },
-            focusOnFileRequest(index) {
-                $('.single-file-request')[index].focus();
+                this.$nextTick(() => $('.single-file-request')[index].focus());
             },
             showHistoryModal() {
                 if (this.selectedFileRequest.latest_upload) vueGlobalEventBus.$emit('show-history-modal');
@@ -366,6 +361,7 @@
                     }
                 }).then((res) => {
                     this.checklist = res.json();
+                    this.$store.commit('checklist/SET', res.json());
                     this.addChecklistNameToUrl();
                 }, (res) => {
                     console.log("error fetching checklist");
@@ -375,9 +371,6 @@
                 let header = document.getElementById('files-header');
                 let list = document.getElementById('files-list');
                 if (header && list) header.style.paddingRight = list.offsetWidth - list.clientWidth + 'px';
-            },
-            updateRecipients(newRecipients) {
-                this.checklist.recipients = newRecipients;
             },
             toggleEditRecipients() {
                 this.editingRecipients = !this.editingRecipients;
@@ -409,6 +402,7 @@
         },
         beforeDestroy() {
             window.removeEventListener('resize', this.setFilesHeaderScrollbarPadding)
+            this.$store.commit('checklist/SET', '');
         }
     };
 </script>

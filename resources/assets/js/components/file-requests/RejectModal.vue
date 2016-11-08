@@ -40,7 +40,7 @@
                 reason: ''
             }
         },
-        props: ['index', 'selected-file-request'],
+        props: ['selected-file-request'],
         computed: {
             submitText: function () {
                 if (!this.ajaxReady) return 'Saving...';
@@ -65,7 +65,7 @@
                 }).then((response) => {
                     // success
                     this.reason = '';
-                    this.$emit('update-file-request', response.json(), this.index);
+                    this.$emit('update-file-request', response.json());
                     $(this.$refs.modal).modal('hide');
                     this.ajaxReady = true;
                 }, (response) => {

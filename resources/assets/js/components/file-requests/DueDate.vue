@@ -22,7 +22,7 @@ export default {
             request: ''
         }
     },
-    props:['checklist-belongs-to-user', 'file-request', 'index'],
+    props:['checklist-belongs-to-user', 'file-request'],
     watch: {
       fileRequest() {
           this.date = this.fileRequest.due;
@@ -40,7 +40,7 @@ export default {
                 }
             }).then((response) => {
                 // success
-                this.$emit('update-file-request', response.json(), this.index);
+                this.$emit('update-file-request', response.json());
             }, (response) => {
                 // error
                 console.log('error updating due date');

@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 // Modules
 import project from './modules/project';
+import checklist from './modules/checklist';
 
 Vue.use(Vuex);
 
@@ -28,6 +29,7 @@ export default new Vuex.Store({
         }
     },
     modules: {
-        project
+        project,
+        checklist
     }
 });

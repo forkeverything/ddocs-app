@@ -487,6 +487,13 @@
     .fr-uploader {
       display: none;
 
+      &.uploading {
+        display: block;
+        & + div {
+          display: none;
+        }
+      }
+
       .btn {
         transition: all 0.2s ease-out;
         font-size: 1em;
@@ -503,6 +510,10 @@
           background: $green;
           color: #fff;
         }
+      }
+
+      .loader {
+        color: $text-muted;
       }
     }
   }

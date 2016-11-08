@@ -7,7 +7,6 @@
         <div class="due-date">
             <i class="fa fa-calendar"></i><fr-due-date :checklist-belongs-to-user="checklistBelongsToUser"
                                                       :file-request="selectedFileRequest"
-                                                      :index="selectedFileRequestIndex"
                                                       @update-file-request="updateFileRequest"
         ></fr-due-date>
         </div>
@@ -55,7 +54,7 @@
         data: function () {
             return {}
         },
-        props: ['is-owner', 'selected-file-request-index', 'selected-file-request', 'can-reject-file', 'show-delete-modal', 'checklist-belongs-to-user'],
+        props: ['selected-file-request', 'can-reject-file', 'show-delete-modal', 'checklist-belongs-to-user'],
         computed: {
             commentsUrl() {
                 return `/api/comments/file_request/${ this.selectedFileRequest.hash }`;
@@ -71,8 +70,8 @@
             this.fetchComments();
         },
         methods: {
-            updateFileRequest(fileRequest, index) {
-                this.$emit('update-file-request', fileRequest, index);
+            updateFileRequest(fileRequest) {
+                this.$emit('update-file-request', fileRequest);
             }
         }
     }

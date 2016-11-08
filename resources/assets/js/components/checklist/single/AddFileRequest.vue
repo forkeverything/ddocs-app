@@ -34,8 +34,11 @@
                 due: ''
             }
         },
-        props: ['visible', 'checklist-hash'],
+        props: ['visible'],
         computed: {
+            checklist() {
+              return this.$store.state.checklist.data;
+            },
             canSave() {
                 return this.name;
             }
@@ -60,7 +63,7 @@
             save(){
                 if(!this.ajaxReady) return;
                 this.ajaxReady = false;
-                this.$http.post(`/api/c/${ this.checklistHash }/files`, {
+                this.$http.post(`/api/c/${ this.checklist.hash }/files`, {
                     name: this.name,
                     due: this.due
                 }, {

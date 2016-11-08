@@ -15,7 +15,12 @@
         data: function () {
             return {}
         },
-        props: ['checklist'],
+        props: [],
+        computed: {
+            checklist() {
+                return this.$store.state.checklist.data;
+            }
+        },
         methods: {},
         created() {
         },

@@ -1,5 +1,9 @@
 <template>
-    <div class="fr-uploader">
+    <div class="fr-uploader"
+         :class="{
+            'uploading': uploading
+        }"
+    >
         <button type="button"
                 v-show="! uploading"
                 class="btn btn-primary"
@@ -32,7 +36,7 @@
                 return this.fileRequest.status === 'received';
             }
         },
-        props: ['file-request', 'index'],
+        props: ['file-request'],
         methods: {
             selectFile: function () {
                 $(this.$refs.input).click();
@@ -54,7 +58,7 @@
                     }
                 }).then((response) => {
                     let updatedFileRequest = response.json();
-                    this.$emit('update-file-request', updatedFileRequest, this.index);
+                    this.$emit('update-file-request', updatedFileRequest);
                     this.uploading = false;
                 }, (response) => {
                     console.log('Upload file error.');

@@ -7,7 +7,7 @@
         >
         </tagger>
         <div class="text-right buttons">
-            <button type="button" class="btn btn-default btn-sm" @click="$emit('cancel')">Cancel</button>
+            <button type="button" class="btn btn-default btn-sm" @click="$emit('hide')">Cancel</button>
             <button type="button" class="btn btn-info btn-sm" :disabled="! canSave || ! ajaxReady" @click="save">Save
             </button>
         </div>
@@ -21,8 +21,11 @@
                 recipientEmails: ''
             }
         },
-        props: ['checklist-hash', 'recipients'],
+        props: ['recipients'],
         computed: {
+            checklist() {
+                return this.$store.state.checklist.data;
+            },
             canSave() {
                 return this.recipientEmails.length > 0;
             }
@@ -36,7 +39,7 @@
             save() {
                 if (!this.ajaxReady) return;
                 this.ajaxReady = false;
-                this.$http.put(`/api/c/${ this.checklistHash }/recipients`, {
+                this.$http.put(`/api/c/${ this.checklist.hash }/recipients`, {
                     recipients: this.recipientEmails
                 }, {
                     before(xhr) {
@@ -45,8 +48,8 @@
                 }).then((response) => {
                     // success
                     let newRecipients = response.json();
-                    this.$emit('updated', newRecipients);
-                    this.$emit('cancel');
+                    this.$store.commit('checklist/UPDATE_RECIPIENTS', newRecipients);
+                    this.$emit('hide');
                     this.$nextTick(() => this.ajaxReady = true);
                 }, (response) => {
                     // error
@@ -56,7 +59,7 @@
             }
         },
         mounted() {
-            this.recipientEmails = _.map(this.recipients, (recipient) => {
+            this.recipientEmails = _.map(this.checklist.recipients, (recipient) => {
                 return recipient.email;
             });
         }

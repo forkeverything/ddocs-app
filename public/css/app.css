@@ -9423,6 +9423,10 @@ h3 .editable-text-field .placeholder {
       padding: 0; }
     #checklist-single .col-due .fr-uploader {
       display: none; }
+      #checklist-single .col-due .fr-uploader.uploading {
+        display: block; }
+        #checklist-single .col-due .fr-uploader.uploading + div {
+          display: none; }
       #checklist-single .col-due .fr-uploader .btn {
         -webkit-transition: all 0.2s ease-out;
         transition: all 0.2s ease-out;
@@ -9438,6 +9442,8 @@ h3 .editable-text-field .placeholder {
           border-color: transparent;
           background: #41B883;
           color: #fff; }
+      #checklist-single .col-due .fr-uploader .loader {
+        color: #9E9EA6; }
   #checklist-single .table-header {
     margin-left: 0;
     border-bottom: 1px solid #e6e6e6;
