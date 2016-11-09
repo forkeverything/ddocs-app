@@ -33,16 +33,39 @@
   display: flex;
   flex-direction: column;
   position: relative;
+
   .loading-overlay {
     z-index: $z-main-load;
   }
 
+  #project-main-actions {
+    padding-right: 15px;
+    font-size: 2.4em;
+    line-height: 1em;
+    display: block;
+    text-align: right;
+
+    .dropdown-toggle {
+      color: $dark-grey;
+      letter-spacing: 2px;
+      opacity: 0.6;
+
+      &:hover, &:focus, &.focus {
+        opacity: 1;
+      }
+    }
+
+    .dropdown-menu {
+      line-height: 1.6;
+    }
+  }
+
   #project-info {
     width: 100%;
-    margin: 0 0 30px;
+    margin: 0 0 20px;
 
     #project-description {
-      margin: 0 0 15px;
+      margin: 0 0 10px;
 
       .placeholder {
         min-height: initial;
@@ -52,14 +75,14 @@
     #project-members {
 
       #btn-project-member-modal {
-        @media screen and (min-width: $screen-sm-min)  {
+        @media screen and (min-width: $screen-sm-min) {
           display: none;
         }
       }
 
       .list-members {
         display: none;
-        @media screen and (min-width: $screen-sm-min)  {
+        @media screen and (min-width: $screen-sm-min) {
           display: block;
         }
       }
@@ -352,7 +375,6 @@
     border: 0;
   }
 }
-
 
 #project-board.dragging {
   .files-list {

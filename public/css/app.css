@@ -10054,11 +10054,25 @@ h3 .editable-text-field .placeholder {
   position: relative; }
   #project-single .loading-overlay {
     z-index: 3; }
+  #project-single #project-main-actions {
+    padding-right: 15px;
+    font-size: 2.4em;
+    line-height: 1em;
+    display: block;
+    text-align: right; }
+    #project-single #project-main-actions .dropdown-toggle {
+      color: #999999;
+      letter-spacing: 2px;
+      opacity: 0.6; }
+      #project-single #project-main-actions .dropdown-toggle:hover, #project-single #project-main-actions .dropdown-toggle:focus, #project-single #project-main-actions .dropdown-toggle.focus {
+        opacity: 1; }
+    #project-single #project-main-actions .dropdown-menu {
+      line-height: 1.6; }
   #project-single #project-info {
     width: 100%;
-    margin: 0 0 30px; }
+    margin: 0 0 20px; }
     #project-single #project-info #project-description {
-      margin: 0 0 15px; }
+      margin: 0 0 10px; }
       #project-single #project-info #project-description .placeholder {
         min-height: initial; }
     @media screen and (min-width: 768px) {

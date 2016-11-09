@@ -1,21 +1,28 @@
 <template>
     <div id="project-single">
         <rectangle-loader :loading="initializing" size="large"></rectangle-loader>
+        <div id="project-main-actions" class="dropdown">
+            <button type="button" class="dropdown-toggle btn btn-text" data-toggle="dropdown">•••</button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="#" @click.prevent="toggleEditName">Edit Name</a>
+                </li>
+                <li>
+                    <a href="#" @click.prevent="deleteProject">Delete Permanently</a>
+                </li>
+            </ul>
+        </div>
         <div id="project-info" class="container-fluid">
-            <div class="dropdown project-actions">
-                <button type="button" class="dropdown-toggle btn btn-text" data-toggle="dropdown">•••</button>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="#">Edit Name</a>
-                    </li>
-                    <li>
-                        <a href="#">Delete</a>
-                    </li>
-                </ul>
-            </div>
-            <h3>
-                <editable-text-field v-model="project.name" @on-change="updateName"></editable-text-field>
-            </h3>
+            <form id="form-project-name" @submit.prevent="updateName" v-show="editingName">
+                <label for="">Name</label>
+                <div class="form-group">
+                    <input type="text" v-model="newName" class="form-control" ref="nameInput">
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-info btn-sm btn-space">Save</button>
+                    <button type="button" class="btn btn-sm btn-default" @click="toggleEditName">Cancel</button>
+                </div>
+            </form>
             <div id="project-description">
                 <editable-text-area v-model="project.description" @on-change="updateDescription" allow-null="true"
                                     placeholder="Write project description...">
@@ -48,11 +55,14 @@
         name: 'ProjectBoard',
         data: function () {
             return {
+                ajaxReady: true,
                 initializing: true,
                 dragging: false,
                 folderDrake: '',
                 autoScroll: '',
-                fileDrake: ''
+                fileDrake: '',
+                editingName: false,
+                newName: ''
             }
         },
         props: [],
@@ -61,16 +71,28 @@
                 return this.$store.state.project.data;
             }
         },
+        watch: {
+            editingName(editing) {
+                this.newName = this.project.name;
+                if(editing) this.$nextTick(() => $(this.$refs.nameInput).focus());
+            }
+        },
         methods: {
+            toggleEditName() {
+                this.editingName = !this.editingName;
+            },
             updateDescription(newDescription) {
                 this.save({
                     description: newDescription
                 });
             },
-            updateName(newName) {
+            updateName() {
                 this.save({
-                    name: newName
+                    name: this.newName
                 });
+                this.project.name = this.newName;
+                this.$store.commit('setTitle', `${ this.newName }<i class="fa fa-industry"></i>`);
+                this.editingName = false;
             },
             save(updatedProperties) {
                 this.$store.commit('project/SAVE_CHANGES', {
@@ -197,6 +219,20 @@
                     this.dragging = false;
                 });
 
+            },
+            deleteProject() {
+                if (!this.ajaxReady) return;
+                this.ajaxReady = false;
+                this.$http.delete(`/api/projects/${ this.project.id }`, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
+                }).then((res) => {
+                    router.push('/');
+                }, (res) => {
+                    console.log('error deleting project.');
+                    this.ajaxReady = true;
+                });
             }
         },
         created() {

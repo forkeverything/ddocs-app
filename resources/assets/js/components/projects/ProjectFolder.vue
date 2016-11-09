@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <ul class="list-unstyled list-folder-actions">
-                        <li><a @click.prevent="deleteFolder"><i class="fa fa-trash-o"></i> Delete Permanently</a></li>
+                        <li><a @click.prevent="deleteFolder"><i class="fa fa-trash-o"></i> Delete</a></li>
                     </ul>
                 </div>
             </div>
