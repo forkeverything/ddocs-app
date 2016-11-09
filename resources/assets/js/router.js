@@ -11,6 +11,9 @@ module.exports = (function () {
     // Global guards to check for meta properties on our routes
     router.beforeEach((to, from, next) => {
 
+        // Clear navbar title
+        store.commit('setTitle', '');
+
         // Clear phantom modal backdrops
         $('.modal-backdrop').remove();
 

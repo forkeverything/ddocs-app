@@ -9,7 +9,7 @@ body {
 
     #sidebar {
       flex: 0 0 $sidebar-width;
-      display: inline-block;
+      display: flex;
       height: 100%;
       float: left;
     }

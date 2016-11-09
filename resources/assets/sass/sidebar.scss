@@ -1,6 +1,9 @@
 #sidebar {
   background: $sidebar-bg;
   position: relative;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   .btn-close-sidebar {
     color: #fff;
@@ -16,6 +19,8 @@
   }
 
   .sidebar-logo {
+    margin: 10px 0;
+
     a {
       width: 100%;
       text-align: center;
@@ -31,12 +36,16 @@
   .links-section {
     position: relative;
 
+    &:not(:last-of-type) {
+      margin: 0 0 30px;
+    }
+
     .header {
       color: $grey;
       font-weight: normal;
       text-transform: uppercase;
       padding: 0 36px 0 8px;
-      margin: 0 0 4px;
+      margin: 0 0 8px;
     }
 
     .link-add {
@@ -76,8 +85,91 @@
           &:hover {
             background: $black;
           }
+
+          i {
+            font-size: 0.8em;
+            float: left;
+          }
+
+          &.meta {
+            font-weight: bold;
+            border-bottom: 1px dotted $laravel-border-color;
+            border-radius: 0;
+            width: auto;
+            padding: 4px 4px 2px 4px;
+            margin: 0 0 0 8px;
+
+            &:hover {
+              background: $sidebar-bg;
+              border-bottom: 1px solid $laravel-border-color;
+            }
+          }
         }
       }
     }
+  }
+
+  #side-checklists {
+    .list-links {
+      li {
+        a {
+          i {
+            margin: 6px 6px 0 0;
+          }
+        }
+      }
+    }
+  }
+
+  #side-projects {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .projects-wrap {
+      flex: 1;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      min-height: 100px;
+
+      #list-side-projects {
+
+        li {
+          a {
+            i {
+              margin: 5px 6px 0 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #form-add-project {
+    margin: 0 0 8px;
+    padding: 0 8px;
+
+    input {
+      background: $black;
+      border: 0;
+      color: #fff;
+
+      &::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+        color: #fff !important;
+      }
+    }
+
+    .help-block {
+      color: #fff;
+      margin: 8px 0 0 0;
+    }
+  }
+
+  #input-side-project-search {
+    background: $black;
+    color: #fff;
+    margin: 0 8px 8px 8px;
+    border: 0;
+    width: calc(100% - 16px);
   }
 }

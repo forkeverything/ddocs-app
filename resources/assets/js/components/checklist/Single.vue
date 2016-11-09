@@ -247,6 +247,15 @@
             }
         },
         watch: {
+            '$route.params.checklist_hash'() {
+                this.response = '';
+                this.fetchChecklist();
+                this.repoSearch = getParameterByName('search');
+                this.fetchResults();
+                if(this.urlHistory) onPopCallFunction(this.fetchResults);
+                if(this.infScroll) this.$nextTick(this.scrollList);
+                this.$nextTick(this.setFilesHeaderScrollbarPadding);
+            },
             response() {
                 this.$nextTick(this.setFilesHeaderScrollbarPadding);
             }

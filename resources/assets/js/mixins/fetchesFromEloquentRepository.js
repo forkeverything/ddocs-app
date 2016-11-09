@@ -151,6 +151,5 @@ module.exports = {
         this.fetchResults();
         if(this.urlHistory) onPopCallFunction(this.fetchResults);
         if(this.infScroll) this.$nextTick(this.scrollList);
-
     }
 };

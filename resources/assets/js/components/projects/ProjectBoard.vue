@@ -72,6 +72,10 @@
             }
         },
         watch: {
+            '$route.params.project_id'() {
+                this.initializing = true;
+                this.fetchProject();
+            },
             editingName(editing) {
                 this.newName = this.project.name;
                 if(editing) this.$nextTick(() => $(this.$refs.nameInput).focus());
@@ -228,6 +232,7 @@
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((res) => {
+                    vueGlobalEventBus.$emit('remove-project', this.project);
                     router.push('/');
                 }, (res) => {
                     console.log('error deleting project.');

@@ -31,7 +31,7 @@ class ProjectsController extends Controller
      */
     public function getUserProjects()
     {
-        return Auth::user()->projects;
+        return Auth::user()->projects()->orderBy('name', 'asc')->get();
     }
 
     /**
