@@ -10304,6 +10304,8 @@ h3 .editable-text-field .placeholder {
       align-items: center;
       margin-right: 10px;
       margin-bottom: 5px; }
+      .project-folder-body .folder-header .folder-menu .dropdown-menu {
+        min-width: 220px; }
       .project-folder-body .folder-header .folder-menu .folder-info {
         padding: 10px 15px;
         border-bottom: 1px solid #e6e6e6;

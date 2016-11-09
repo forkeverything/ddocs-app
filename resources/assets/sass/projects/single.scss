@@ -221,6 +221,10 @@
       margin-right: 10px;
       margin-bottom: 5px;
 
+      .dropdown-menu {
+        min-width: 220px;
+      }
+
       .folder-info {
         padding: 10px 15px;
         border-bottom: 1px solid $laravel-border-color;
