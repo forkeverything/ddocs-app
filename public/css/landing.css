@@ -8005,36 +8005,44 @@ button.close {
 .caret {
   color: #999999; }
 
-.dropdown-menu {
-  margin-top: 5px;
-  padding: 0; }
-  .dropdown-menu ul {
-    margin: 0; }
-  .dropdown-menu li.heading {
-    padding: 0 10px; }
-    .dropdown-menu li.heading h5 {
-      margin: 5px 0 0 0; }
-  .dropdown-menu li a {
-    display: inline-block;
-    width: 100%;
-    color: #1B2432; }
-    .dropdown-menu li a i {
-      width: 20px;
-      margin-right: 3px;
-      text-align: center; }
-    .dropdown-menu li a.active {
-      color: #3498DB; }
-    .dropdown-menu li a:hover, .dropdown-menu li a:focus {
+ul.dropdown-menu {
+  margin-top: 5px; }
+
+.dropdown-menu > ul {
+  margin: 0; }
+
+ul.dropdown-menu, .dropdown-menu > ul {
+  padding: 15px 0; }
+  ul.dropdown-menu li, .dropdown-menu > ul li {
+    padding: 0 15px; }
+    ul.dropdown-menu li.heading, .dropdown-menu > ul li.heading {
+      padding: 0 10px; }
+      ul.dropdown-menu li.heading h5, .dropdown-menu > ul li.heading h5 {
+        margin: 5px 0 0 0; }
+    ul.dropdown-menu li a, .dropdown-menu > ul li a {
+      display: inline-block;
+      width: 100%;
+      padding: 0 16px 0 8px;
+      border-radius: 4px;
+      line-height: 1.6;
+      color: #1B2432; }
+      ul.dropdown-menu li a i, .dropdown-menu > ul li a i {
+        width: 20px;
+        margin-right: 3px;
+        text-align: center; }
+      ul.dropdown-menu li a.active, .dropdown-menu > ul li a.active {
+        color: #3498DB; }
+    ul.dropdown-menu li:hover a, .dropdown-menu > ul li:hover a {
       color: #fff !important;
       background: #3498DB !important;
       display: block;
       text-decoration: none !important; }
-      .dropdown-menu li a:hover i, .dropdown-menu li a:focus i {
+      ul.dropdown-menu li:hover a i, .dropdown-menu > ul li:hover a i {
         color: #fff !important; }
-      .dropdown-menu li a:hover[disabled=disabled], .dropdown-menu li a:hover.disabled, .dropdown-menu li a:focus[disabled=disabled], .dropdown-menu li a:focus.disabled {
+      ul.dropdown-menu li:hover a[disabled=disabled], ul.dropdown-menu li:hover a.disabled, .dropdown-menu > ul li:hover a[disabled=disabled], .dropdown-menu > ul li:hover a.disabled {
         color: #D2D2D2 !important;
         background: #fff !important; }
-        .dropdown-menu li a:hover[disabled=disabled] i, .dropdown-menu li a:hover.disabled i, .dropdown-menu li a:focus[disabled=disabled] i, .dropdown-menu li a:focus.disabled i {
+        ul.dropdown-menu li:hover a[disabled=disabled] i, ul.dropdown-menu li:hover a.disabled i, .dropdown-menu > ul li:hover a[disabled=disabled] i, .dropdown-menu > ul li:hover a.disabled i {
           color: #D2D2D2 !important; }
 
 .datepicker {

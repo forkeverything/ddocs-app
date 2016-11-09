@@ -123,7 +123,7 @@ class UploadFactory
         if($this->targetType('request')) {
             $this->directory = env('APP_ENV', 'local') . '/user/' . $this->target->checklist->user_id . '/checklists/' . hashId('checklist', $this->target->checklist);
         } elseif ($this->targetType('project')) {
-            $this->directory = env('APP_ENV', 'local') . '/user/' . $this->target->folder->project->user_id . '/projects/' . $this->target->folder->project_id;
+            $this->directory = env('APP_ENV', 'local') . '/user/' . $this->target->folder->project->admin->first()->id . '/projects/' . $this->target->folder->project_id;
         }
 
         return $this;

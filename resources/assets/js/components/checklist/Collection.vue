@@ -88,7 +88,7 @@
         },
         mixins: [fetchesFromEloquentRepository],
         mounted() {
-            this.$store.commit('setTitle', 'Checklists');
+            this.$store.commit('setTitle', 'Checklists<i class="fa fa-clone"></i>');
         }
     };
 </script>

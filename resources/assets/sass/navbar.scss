@@ -61,7 +61,9 @@
 
       &:hover {
         .user-avatar {
-          background: $extra-light-grey;
+          background: $extra-dark-grey;
+          color: #fff;
+          border-color: transparent;
         }
       }
     }

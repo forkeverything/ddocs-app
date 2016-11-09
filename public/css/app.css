@@ -8093,7 +8093,9 @@ body {
       background: transparent;
       color: #555459; }
     #navbar .user-account .link-settings:hover .user-avatar {
-      background: #F7F7F7; }
+      background: #555459;
+      color: #fff;
+      border-color: transparent; }
 
 #sidebar {
   background: #555459;
@@ -8118,36 +8120,44 @@ body {
 .caret {
   color: #999999; }
 
-.dropdown-menu {
-  margin-top: 5px;
-  padding: 0; }
-  .dropdown-menu ul {
-    margin: 0; }
-  .dropdown-menu li.heading {
-    padding: 0 10px; }
-    .dropdown-menu li.heading h5 {
-      margin: 5px 0 0 0; }
-  .dropdown-menu li a {
-    display: inline-block;
-    width: 100%;
-    color: #1B2432; }
-    .dropdown-menu li a i {
-      width: 20px;
-      margin-right: 3px;
-      text-align: center; }
-    .dropdown-menu li a.active {
-      color: #3498DB; }
-    .dropdown-menu li a:hover, .dropdown-menu li a:focus {
+ul.dropdown-menu {
+  margin-top: 5px; }
+
+.dropdown-menu > ul {
+  margin: 0; }
+
+ul.dropdown-menu, .dropdown-menu > ul {
+  padding: 15px 0; }
+  ul.dropdown-menu li, .dropdown-menu > ul li {
+    padding: 0 15px; }
+    ul.dropdown-menu li.heading, .dropdown-menu > ul li.heading {
+      padding: 0 10px; }
+      ul.dropdown-menu li.heading h5, .dropdown-menu > ul li.heading h5 {
+        margin: 5px 0 0 0; }
+    ul.dropdown-menu li a, .dropdown-menu > ul li a {
+      display: inline-block;
+      width: 100%;
+      padding: 0 16px 0 8px;
+      border-radius: 4px;
+      line-height: 1.6;
+      color: #1B2432; }
+      ul.dropdown-menu li a i, .dropdown-menu > ul li a i {
+        width: 20px;
+        margin-right: 3px;
+        text-align: center; }
+      ul.dropdown-menu li a.active, .dropdown-menu > ul li a.active {
+        color: #3498DB; }
+    ul.dropdown-menu li:hover a, .dropdown-menu > ul li:hover a {
       color: #fff !important;
       background: #3498DB !important;
       display: block;
       text-decoration: none !important; }
-      .dropdown-menu li a:hover i, .dropdown-menu li a:focus i {
+      ul.dropdown-menu li:hover a i, .dropdown-menu > ul li:hover a i {
         color: #fff !important; }
-      .dropdown-menu li a:hover[disabled=disabled], .dropdown-menu li a:hover.disabled, .dropdown-menu li a:focus[disabled=disabled], .dropdown-menu li a:focus.disabled {
+      ul.dropdown-menu li:hover a[disabled=disabled], ul.dropdown-menu li:hover a.disabled, .dropdown-menu > ul li:hover a[disabled=disabled], .dropdown-menu > ul li:hover a.disabled {
         color: #D2D2D2 !important;
         background: #fff !important; }
-        .dropdown-menu li a:hover[disabled=disabled] i, .dropdown-menu li a:hover.disabled i, .dropdown-menu li a:focus[disabled=disabled] i, .dropdown-menu li a:focus.disabled i {
+        ul.dropdown-menu li:hover a[disabled=disabled] i, ul.dropdown-menu li:hover a.disabled i, .dropdown-menu > ul li:hover a[disabled=disabled] i, .dropdown-menu > ul li:hover a.disabled i {
           color: #D2D2D2 !important; }
 
 .datepicker {
@@ -9466,7 +9476,7 @@ h3 .editable-text-field .placeholder {
       flex: 1 0 210px;
       margin: 0 -5px 0 0; }
     #checklist-single #mobile-file-menu .dropdown-menu {
-      min-width: 120px; }
+      min-width: 150px; }
       #checklist-single #mobile-file-menu .dropdown-menu .menu-item {
         font-size: 0.875em; }
         #checklist-single #mobile-file-menu .dropdown-menu .menu-item a {
@@ -9834,44 +9844,47 @@ h3 .editable-text-field .placeholder {
         #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member {
           min-width: 300px;
           max-height: 350px;
-          overflow: auto; }
-          #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li {
-            display: -webkit-box;
-            display: flex; }
-            #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li:not(:last-child) {
-              border-bottom: 1px solid #e6e6e6; }
-            #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li > * {
-              padding: 10px; }
-            #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .main {
-              -webkit-box-flex: 1;
-              flex: 1;
-              border-right: 1px solid #e6e6e6;
+          overflow: auto;
+          padding: 0; }
+          #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul {
+            padding: 0; }
+            #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li {
               display: -webkit-box;
               display: flex; }
-              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .main .avatar {
-                margin: 0 10px 0 0; }
-              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .main .name {
-                font-weight: bold; }
-            #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign {
-              -webkit-box-flex: 0;
-              flex: 0 0 60px;
-              min-width: 60px;
-              text-align: center;
-              display: -webkit-box;
-              display: flex;
-              -webkit-box-pack: center;
-              justify-content: center;
-              -webkit-box-align: center;
-              align-items: center; }
-              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign i {
-                display: none;
-                color: #D2D2D2;
-                font-size: 1.2em; }
-              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign:hover i {
-                display: block; }
-              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign.active i {
-                display: block;
-                color: #41B883; }
+              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li:not(:last-child) {
+                border-bottom: 1px solid #e6e6e6; }
+              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li > * {
+                padding: 10px; }
+              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .main {
+                -webkit-box-flex: 1;
+                flex: 1;
+                border-right: 1px solid #e6e6e6;
+                display: -webkit-box;
+                display: flex; }
+                #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .main .avatar {
+                  margin: 0 10px 0 0; }
+                #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .main .name {
+                  font-weight: bold; }
+              #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign {
+                -webkit-box-flex: 0;
+                flex: 0 0 60px;
+                min-width: 60px;
+                text-align: center;
+                display: -webkit-box;
+                display: flex;
+                -webkit-box-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                align-items: center; }
+                #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign i {
+                  display: none;
+                  color: #D2D2D2;
+                  font-size: 1.2em; }
+                #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign:hover i {
+                  display: block; }
+                #project-file-modal .modal-body .main .content .project-view #pf-members #dropdown-assign-member ul li .btn-assign.active i {
+                  display: block;
+                  color: #41B883; }
       #project-file-modal .modal-body .main .content .request-view .fr-file-name {
         margin: 0 0 10px; }
         #project-file-modal .modal-body .main .content .request-view .fr-file-name h4 {
@@ -10147,7 +10160,7 @@ h3 .editable-text-field .placeholder {
       margin-right: 10px;
       margin-bottom: 5px; }
       .project-folder-body .folder-header .folder-menu .folder-info {
-        padding: 5px 10px;
+        padding: 10px 15px;
         border-bottom: 1px solid #e6e6e6;
         cursor: default;
         color: #9E9EA6;
@@ -10220,7 +10233,8 @@ h3 .editable-text-field .placeholder {
   z-index: 2;
   padding: 10px 12px 6px 12px;
   margin: 5px 5px;
-  border: 1px solid #e6e6e6; }
+  border: 1px solid #e6e6e6;
+  border-radius: 4px; }
   .project-file:hover {
     background: #EFEFEF; }
   .project-file .pf-status-circle {

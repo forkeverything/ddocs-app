@@ -2,13 +2,23 @@
     <div id="project-single">
         <rectangle-loader :loading="initializing" size="large"></rectangle-loader>
         <div id="project-info" class="container-fluid">
+            <div class="dropdown project-actions">
+                <button type="button" class="dropdown-toggle btn btn-text" data-toggle="dropdown">•••</button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#">Edit Name</a>
+                    </li>
+                    <li>
+                        <a href="#">Delete</a>
+                    </li>
+                </ul>
+            </div>
             <h3>
-                <small>Project Files</small>
-                <br>
                 <editable-text-field v-model="project.name" @on-change="updateName"></editable-text-field>
             </h3>
             <div id="project-description">
-                <editable-text-area v-model="project.description" @on-change="updateDescription" allow-null="true" placeholder="Write project description...">
+                <editable-text-area v-model="project.description" @on-change="updateDescription" allow-null="true"
+                                    placeholder="Write project description...">
                     {{ project.description }}
                 </editable-text-area>
             </div>
@@ -80,15 +90,15 @@
                 }).then((response) => {
                     // success
                     this.$store.commit('project/SET', response.json());
-
                     this.$nextTick(() => {
+                        this.$store.commit('setTitle', `${ this.project.name }<i class="fa fa-industry"></i>`);
                         this.initDrag();
                         this.initializing = false;
                     });
 
                 }, (response) => {
                     // error
-                    if(response.status === 403) this.$router.push('/projects');
+                    if (response.status === 403) this.$router.push('/projects');
                     console.log('error fetching project');
                 });
             },

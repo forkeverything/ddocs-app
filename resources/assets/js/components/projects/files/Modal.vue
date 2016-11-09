@@ -189,6 +189,14 @@
                 });
                 if(targetMember) this.file.members.splice(_.indexOf(this.file.members, targetMember), 1);
             });
+            vueGlobalEventBus.$on('update-project-file', (file) => {
+                if (file.id !== this.file.id) return;
+            for (let prop in file) {
+                if (file.hasOwnProperty(prop)) {
+                    this.file[prop] = file[prop];
+                }
+            }
+        });
         },
         mounted() {
 
