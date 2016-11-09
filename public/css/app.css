@@ -9161,11 +9161,6 @@ h3 .editable-text-field .placeholder {
           background: #64c89b;
           color: #fff; }
 
-#btn-create-list {
-  background: #49D699;
-  border: 0;
-  border-bottom: 2px solid #229764; }
-
 #checklist-make {
   background: #F7F7F7;
   height: 100%;
@@ -9269,7 +9264,7 @@ h3 .editable-text-field .placeholder {
             color: #9E9EA6;
             font-size: 0.9em; }
         #checklist-all #checklist-collection #list-checklists .single-checklist .stats {
-          color: #9E9EA6;
+          color: #b3b3b3;
           font-size: 0.9em; }
           #checklist-all #checklist-collection #list-checklists .single-checklist .stats i {
             margin: 0 5px 0 0; }

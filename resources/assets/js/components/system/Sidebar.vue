@@ -32,7 +32,7 @@
             </a>
             <form id="form-add-project" @submit.prevent="startNewProject" v-show="addProjectForm">
                 <form-errors @got-error="gotError" stealth="true"></form-errors>
-                <input type="text" class="form-control" v-model="newProject" placeholder="New Project Name" ref="projectInput">
+                <input type="text" class="form-control" v-model="newProject" placeholder="New Project Name" ref="projectInput" @blur="startNewProject">
                 <span class="help-block" v-if="formErrors.name">
                             {{ formErrors.name[0] }}
                         </span>
@@ -125,6 +125,10 @@
                 });
             },
             startNewProject(){
+                if(! this.newProject) {
+                    this.addProjectForm = false;
+                    return;
+                }
                 vueClearValidationErrors();
                 this.formErrors = '';
                 if (!this.ajaxReady) return;

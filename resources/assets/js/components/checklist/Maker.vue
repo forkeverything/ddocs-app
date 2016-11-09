@@ -30,7 +30,7 @@
             <files-selecter v-model="files"></files-selecter>
         </form>
         <div class="btn-submit-wrap text-right">
-            <button type="button" id="btn-create-list" class="btn btn-primary" @click="sendChecklist" :disabled="
+            <button type="button" id="btn-create-list" class="btn btn-success" @click="sendChecklist" :disabled="
                     ! canSendChecklist">{{ submitButtonText }}
             </button>
         </div>

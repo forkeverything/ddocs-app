@@ -86,7 +86,7 @@
         }
 
         .stats {
-          color: $text-muted;
+          color: lighten($dark-grey, 10%);
           font-size: 0.9em;
           i {
             margin: 0 5px 0 0;
