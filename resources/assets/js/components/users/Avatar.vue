@@ -13,6 +13,7 @@
         props: ['user'],
         computed: {
             initials() {
+                if(! this.user) return;
                 let initials = '';
                 let arr = this.user.name.split(' ');
                 initials += arr[0].charAt(0);

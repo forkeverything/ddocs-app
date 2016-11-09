@@ -1,12 +1,10 @@
 <template>
-
-    <div id="checklist-all" class="container-fluid">
-        <div class="text-right">
+    <div id="checklist-all" class="main-content">
+        <div class="text-right header">
             <router-link to="/checklists/make">
                 <button type="button" class="btn btn-info"><i class="fa fa-plus"></i> Checklist</button>
             </router-link>
         </div>
-        <br>
         <div id="checklist-collection">
 
             <rectangle-loader :loading="initializingRepo"></rectangle-loader>

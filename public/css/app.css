@@ -8026,6 +8026,11 @@ body {
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
       flex-direction: column; }
+      body #app #center-pane .main-content {
+        padding: 0 10px; }
+        @media screen and (min-width: 768px) {
+          body #app #center-pane .main-content {
+            padding: 0 20px; } }
 
 #page-fixed-top {
   position: fixed;
@@ -8041,20 +8046,23 @@ body {
 
 #navbar {
   background: #fff;
-  height: 60px;
+  min-height: 60px;
   border: 0;
   font-size: 0.9em;
   border-bottom: 1px solid #e6e6e6;
-  padding: 0 10px; }
+  padding: 0 10px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center; }
   #navbar .btn-toggle-sidebar {
-    float: left;
     border: 0;
     box-shadow: none;
     outline: 0;
     opacity: 0.5;
     padding: 0;
     background: #fff;
-    margin: 14px 10px 14px 0; }
+    margin: 0 10px 0 0; }
     #navbar .btn-toggle-sidebar:hover {
       opacity: 0.8; }
     #navbar .btn-toggle-sidebar .icon-bar {
@@ -8065,16 +8073,27 @@ body {
       height: 4px;
       border-radius: 2px; }
   #navbar .navbar-title {
+    -webkit-box-flex: 1;
+    flex: 1;
     font-weight: bold;
     display: inline-block;
     font-size: 1.6em;
-    margin: 14px 0;
-    float: left; }
+    margin: 14px 5px 14px 0; }
     #navbar .navbar-title i {
       margin-left: 10px;
       color: #9E9EA6; }
-  #navbar a:hover {
-    text-decoration: underline !important; }
+  #navbar .user-account .link-settings {
+    display: inline-block;
+    text-decoration: none; }
+    #navbar .user-account .link-settings .user-avatar {
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border: 3px solid #555459;
+      background: transparent;
+      color: #555459; }
+    #navbar .user-account .link-settings:hover .user-avatar {
+      background: #F7F7F7; }
 
 #sidebar {
   background: #555459;
@@ -9049,17 +9068,10 @@ h3 .editable-text-field .placeholder {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  flex-direction: column; }
+  flex-direction: column;
+  padding: 10px 0 0 0; }
   #checklist-all .header {
-    margin: 25px 0 12.5px 0;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    align-items: center; }
-    #checklist-all .header h3 {
-      margin: 0; }
+    margin: 20px 0 10px; }
   #checklist-all .progress {
     margin: 0; }
   #checklist-all #checklist-collection {
@@ -9297,7 +9309,6 @@ h3 .editable-text-field .placeholder {
       #checklist-single #checklist-body #split-view .pane {
         background: #fff; }
       #checklist-single #checklist-body #split-view .pane-container {
-        padding: 20px 10px 0 10px;
         display: -webkit-box;
         display: flex;
         -webkit-box-orient: vertical;
@@ -9324,6 +9335,8 @@ h3 .editable-text-field .placeholder {
           @media screen and (min-width: 768px) {
             #checklist-single #checklist-body #split-view #main-pane.collapsed {
               margin-left: 0; } }
+        #checklist-single #checklist-body #split-view #main-pane .pane-container {
+          padding: 15px 0 0 0; }
       #checklist-single #checklist-body #split-view #right-pane {
         -webkit-box-flex: 4500;
         flex: 4500 1 359px;
@@ -9341,7 +9354,9 @@ h3 .editable-text-field .placeholder {
           margin-left: -475px; }
           @media screen and (min-width: 768px) {
             #checklist-single #checklist-body #split-view #right-pane.collapsed {
-              margin-left: 15px; } }
+              margin-left: 20px; } }
+        #checklist-single #checklist-body #split-view #right-pane .pane-container {
+          padding: 15px 0 15px 20px; }
       #checklist-single #checklist-body #split-view #file-view h3 {
         margin: 0 0 5px; }
       #checklist-single #checklist-body #split-view #file-view > .due-date {
