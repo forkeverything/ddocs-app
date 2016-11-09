@@ -10175,59 +10175,69 @@ h3 .editable-text-field .placeholder {
   position: relative; }
   #project-single .loading-overlay {
     z-index: 3; }
-  #project-single #project-main-actions {
-    padding-right: 15px;
-    font-size: 2.4em;
-    line-height: 1em;
-    display: block;
-    text-align: right; }
-    #project-single #project-main-actions .dropdown-toggle {
-      color: #999999;
-      letter-spacing: 2px;
-      opacity: 0.6; }
-      #project-single #project-main-actions .dropdown-toggle:hover, #project-single #project-main-actions .dropdown-toggle:focus, #project-single #project-main-actions .dropdown-toggle.focus {
-        opacity: 1; }
-    #project-single #project-main-actions .dropdown-menu {
-      line-height: 1.6; }
-  #project-single #project-info {
-    width: 100%;
-    margin: 0 0 20px; }
-    #project-single #project-info #project-description {
-      margin: 0 0 10px; }
-      #project-single #project-info #project-description .placeholder {
-        min-height: initial; }
-    @media screen and (min-width: 768px) {
-      #project-single #project-info #project-members #btn-project-member-modal {
-        display: none; } }
-    #project-single #project-info #project-members .list-members {
-      display: none; }
+  #project-single .header {
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin: 10px 0 20px 0; }
+    #project-single .header #project-info {
+      width: calc(100% - 60px);
+      display: inline-block; }
       @media screen and (min-width: 768px) {
-        #project-single #project-info #project-members .list-members {
-          display: block; } }
-    #project-single #project-info #project-members .single-member {
-      position: relative; }
-      #project-single #project-info #project-members .single-member .avatar-popover {
-        width: 250px;
-        opacity: 0;
-        visibility: hidden;
-        position: absolute;
-        margin-top: -5px;
-        top: 100%;
-        z-index: 3; }
-        #project-single #project-info #project-members .single-member .avatar-popover.visible {
-          opacity: 1;
-          visibility: visible; }
-        #project-single #project-info #project-members .single-member .avatar-popover .content {
-          margin-top: 10px;
-          color: #1B2432; }
-          #project-single #project-info #project-members .single-member .avatar-popover .content > div {
-            word-break: break-all; }
-          #project-single #project-info #project-members .single-member .avatar-popover .content .member-actions {
-            margin: 10px 0 0 0; }
-    #project-single #project-info #project-members #form-invite-member {
-      z-index: 2;
-      width: 275px;
-      padding: 10px; }
+        #project-single .header #project-info {
+          width: calc(100% - 80px); } }
+      #project-single .header #project-info #form-project-name {
+        margin: 0 0 10px; }
+      #project-single .header #project-info #project-description {
+        margin: 0 0 10px; }
+        #project-single .header #project-info #project-description .placeholder {
+          min-height: initial; }
+      @media screen and (min-width: 768px) {
+        #project-single .header #project-info #project-members #btn-project-member-modal {
+          display: none; } }
+      #project-single .header #project-info #project-members .list-members {
+        display: none; }
+        @media screen and (min-width: 768px) {
+          #project-single .header #project-info #project-members .list-members {
+            display: block; } }
+      #project-single .header #project-info #project-members .single-member {
+        position: relative; }
+        #project-single .header #project-info #project-members .single-member .avatar-popover {
+          width: 250px;
+          opacity: 0;
+          visibility: hidden;
+          position: absolute;
+          margin-top: -5px;
+          top: 100%;
+          z-index: 3; }
+          #project-single .header #project-info #project-members .single-member .avatar-popover.visible {
+            opacity: 1;
+            visibility: visible; }
+          #project-single .header #project-info #project-members .single-member .avatar-popover .content {
+            margin-top: 10px;
+            color: #1B2432; }
+            #project-single .header #project-info #project-members .single-member .avatar-popover .content > div {
+              word-break: break-all; }
+            #project-single .header #project-info #project-members .single-member .avatar-popover .content .member-actions {
+              margin: 10px 0 0 0; }
+      #project-single .header #project-info #project-members #form-invite-member {
+        z-index: 2;
+        width: 275px;
+        padding: 10px; }
+    #project-single .header #project-main-actions {
+      width: 60px;
+      float: right;
+      display: inline-block;
+      padding-right: 15px;
+      font-size: 1.8em;
+      line-height: 1em; }
+      #project-single .header #project-main-actions .dropdown-toggle {
+        color: #999999;
+        letter-spacing: 2px;
+        opacity: 0.6; }
+        #project-single .header #project-main-actions .dropdown-toggle:hover, #project-single .header #project-main-actions .dropdown-toggle:focus, #project-single .header #project-main-actions .dropdown-toggle.focus {
+          opacity: 1; }
+      #project-single .header #project-main-actions .dropdown-menu {
+        line-height: 1.6; }
   #project-single .board-wrap {
     height: 100%;
     width: 100%;

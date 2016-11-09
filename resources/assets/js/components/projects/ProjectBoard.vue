@@ -1,36 +1,41 @@
 <template>
     <div id="project-single">
         <rectangle-loader :loading="initializing" size="large"></rectangle-loader>
-        <div id="project-main-actions" class="dropdown">
-            <button type="button" class="dropdown-toggle btn btn-text" data-toggle="dropdown">•••</button>
-            <ul class="dropdown-menu dropdown-menu-right">
-                <li>
-                    <a href="#" @click.prevent="toggleEditName">Edit Name</a>
-                </li>
-                <li>
-                    <a href="#" @click.prevent="deleteProject">Delete Permanently</a>
-                </li>
-            </ul>
-        </div>
-        <div id="project-info" class="container-fluid">
-            <form id="form-project-name" @submit.prevent="updateName" v-show="editingName">
-                <label for="">Name</label>
-                <div class="form-group">
-                    <input type="text" v-model="newName" class="form-control" ref="nameInput">
+        <div class="header">
+            <div id="project-info" class="container-fluid">
+                <form id="form-project-name" @submit.prevent="updateName" v-show="editingName">
+                    <label for="">Name</label>
+                    <div class="form-group">
+                        <input type="text" v-model="newName" class="form-control" ref="nameInput">
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-info btn-sm btn-space">Save</button>
+                        <button type="button" class="btn btn-sm btn-default" @click="toggleEditName">Cancel</button>
+                    </div>
+                </form>
+                <div id="project-description">
+                    <editable-text-area v-model="project.description" @on-change="updateDescription" allow-null="true"
+                                        placeholder="Write project description...">
+                        {{ project.description }}
+                    </editable-text-area>
                 </div>
-                <div class="text-right">
-                    <button type="submit" class="btn btn-info btn-sm btn-space">Save</button>
-                    <button type="button" class="btn btn-sm btn-default" @click="toggleEditName">Cancel</button>
-                </div>
-            </form>
-            <div id="project-description">
-                <editable-text-area v-model="project.description" @on-change="updateDescription" allow-null="true"
-                                    placeholder="Write project description...">
-                    {{ project.description }}
-                </editable-text-area>
+                <project-members></project-members>
             </div>
-            <project-members></project-members>
+            <div id="project-main-actions">
+                <div class="dropdown">
+                    <button type="button" class="dropdown-toggle btn btn-text" data-toggle="dropdown">•••</button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a href="#" @click.prevent="toggleEditName">Edit Name</a>
+                        </li>
+                        <li>
+                            <a href="#" @click.prevent="deleteProject">Delete Permanently</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
         <div class="board-wrap">
             <div id="project-board" :class="{ dragging: dragging }">
                 <template v-for="(folder, index) in project.folders">
@@ -78,7 +83,7 @@
             },
             editingName(editing) {
                 this.newName = this.project.name;
-                if(editing) this.$nextTick(() => $(this.$refs.nameInput).focus());
+                if (editing) this.$nextTick(() => $(this.$refs.nameInput).focus());
             }
         },
         methods: {

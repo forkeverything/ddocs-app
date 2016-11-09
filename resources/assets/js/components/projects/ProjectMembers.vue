@@ -33,8 +33,8 @@
         </ul>
 
         <!-- Button trigger modal -->
-        <button type="button" id="btn-project-member-modal" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-project-members">
-            View Members
+        <button type="button" id="btn-project-member-modal" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modal-project-members">
+            <i class="fa fa-users"></i> Members
         </button>
 
         <!-- Modal -->
