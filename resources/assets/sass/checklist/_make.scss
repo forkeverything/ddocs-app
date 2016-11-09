@@ -1,4 +1,25 @@
 #checklist-make {
+  background: $extra-light-grey;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
+  #form-checklist-make {
+    flex: 1;
+    margin: 15px 0;
+    background: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 
+    #maker-files {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  }
+
+  .btn-submit-wrap {
+    margin: 0 0 15px;
+  }
 }

@@ -1,46 +1,38 @@
 <template>
-    <div id="checklist-make" class="container">
-        <div class="maker">
-
-            <h3>New Checklist</h3>
-
-            <form-errors></form-errors>
-
-
-            <form id="form-checklist-make" action="/c/make" method="POST">
-                <div class="inline-label">
-                    <label class="text-muted">To: </label>
-                    <tagger v-model="checklistRecipients"
-                            :validate-function="validateRecipient"
-                            placeholder="Emails"
-                    >
-                    </tagger>
-                </div>
-                <h2 id="title-checklist-name"
-                    v-show="! editingName"
-                    @click="toggleEditingName"
-                    @focus="toggleEditingName"
-                    :class="{
+    <div id="checklist-make" class="main-content">
+        <form-errors></form-errors>
+        <form id="form-checklist-make" action="/c/make" method="POST">
+            <div class="inline-label">
+                <label class="text-muted">To: </label>
+                <tagger v-model="checklistRecipients"
+                        :validate-function="validateRecipient"
+                        placeholder="Emails"
+                >
+                </tagger>
+            </div>
+            <h2 id="title-checklist-name"
+                v-show="! editingName"
+                @click="toggleEditingName"
+                @focus="toggleEditingName"
+                :class="{
                                     'filled': checklistName
                                 }"
-                    tabindex="0"
-                >{{ checklistNameText }}</h2>
-                <input id="input-checklist-name" type="text" class="form-control" v-show="editingName"
-                       @blur="toggleEditingName" v-model="checklistName" name="name">
-                <textarea id="textarea-new-checklist-description" rows="2" class="autosize form-control borderless"
-                          placeholder="description" v-model="checklistDescription" name="description"></textarea>
-                <hr>
-                <h4 class="title-files">Files</h4>
-                <ul class="files-summary text-muted list-unstyled list-inline">
-                    <li class="num_files">Count {{ fileCount }}</li>
-                </ul>
-                <files-selecter v-model="files"></files-selecter>
-            </form>
-            <div class="text-right">
-                <button type="button" id="btn-create-list" class="btn btn-primary" @click="sendChecklist" :disabled="
+                tabindex="0"
+            >{{ checklistNameText }}</h2>
+            <input id="input-checklist-name" type="text" class="form-control" v-show="editingName"
+                   @blur="toggleEditingName" v-model="checklistName" name="name">
+            <textarea id="textarea-new-checklist-description" rows="2" class="autosize form-control borderless"
+                      placeholder="description" v-model="checklistDescription" name="description"></textarea>
+            <h4 class="title-files">Files</h4>
+            <ul class="files-summary text-muted list-unstyled list-inline">
+                <li class="num_files">Count {{ fileCount }}</li>
+            </ul>
+            <files-selecter v-model="files"></files-selecter>
+        </form>
+        <div class="btn-submit-wrap text-right">
+            <button type="button" id="btn-create-list" class="btn btn-primary" @click="sendChecklist" :disabled="
                     ! canSendChecklist">{{ submitButtonText }}
-                </button>
-            </div>
+            </button>
         </div>
     </div>
 </template>
@@ -125,6 +117,9 @@
                     this.ajaxReady = true;
                 });
             }
+        },
+        mounted() {
+            this.$store.commit('setTitle', 'Checklist: Make');
         }
     };
 </script>

@@ -40,6 +40,22 @@ class ChecklistsController extends Controller
     }
 
     /**
+     * Return the Authenticated User's checklists as JSON from
+     * the repository.
+     *
+     * @param Request $request
+     * @return ChecklistsRespository
+     */
+    public function getRecent(Request $request)
+    {
+        return ChecklistsRespository::forUser(Auth::user())
+                                    ->take(5)
+                                    ->sortOn('created_at', 'desc')
+                                    ->getWithoutQueryProperties();
+
+    }
+
+    /**
      * Handle POST request to make a new Checklist.
      *
      * @param NewChecklistRequest $request

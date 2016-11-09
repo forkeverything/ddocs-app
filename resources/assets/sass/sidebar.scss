@@ -27,4 +27,57 @@
       }
     }
   }
+
+  .links-section {
+    position: relative;
+
+    .header {
+      color: $grey;
+      font-weight: normal;
+      text-transform: uppercase;
+      padding: 0 36px 0 8px;
+      margin: 0 0 4px;
+    }
+
+    .link-add {
+      border-radius: 50%;
+      line-height: 0.5em;
+      text-align: center;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      font-weight: bold;
+      top: 2px;
+      right: 8px;
+      border: 2px solid $grey;
+      opacity: 0.6;
+
+      .btn {
+        color: $grey!important;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .list-links {
+      li {
+        padding: 0 8px;
+
+        a {
+          color: $grey!important;
+          width: 100%;
+          text-decoration: none;
+          display: inline-block;
+          padding: 4px 8px;
+          border-radius: $border-radius-base;
+
+          &:hover {
+            background: $black;
+          }
+        }
+      }
+    }
+  }
 }

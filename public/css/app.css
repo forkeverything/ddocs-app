@@ -8116,6 +8116,41 @@ body {
     padding: 20px 0; }
     #sidebar .sidebar-logo a img {
       width: 80px; }
+  #sidebar .links-section {
+    position: relative; }
+    #sidebar .links-section .header {
+      color: #D2D2D2;
+      font-weight: normal;
+      text-transform: uppercase;
+      padding: 0 36px 0 8px;
+      margin: 0 0 4px; }
+    #sidebar .links-section .link-add {
+      border-radius: 50%;
+      line-height: 0.5em;
+      text-align: center;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      font-weight: bold;
+      top: 2px;
+      right: 8px;
+      border: 2px solid #D2D2D2;
+      opacity: 0.6; }
+      #sidebar .links-section .link-add .btn {
+        color: #D2D2D2 !important; }
+      #sidebar .links-section .link-add:hover {
+        opacity: 1; }
+    #sidebar .links-section .list-links li {
+      padding: 0 8px; }
+      #sidebar .links-section .list-links li a {
+        color: #D2D2D2 !important;
+        width: 100%;
+        text-decoration: none;
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px; }
+        #sidebar .links-section .list-links li a:hover {
+          background: #353535; }
 
 .caret {
   color: #999999; }
@@ -9071,6 +9106,33 @@ h3 .editable-text-field .placeholder {
   background: #49D699;
   border: 0;
   border-bottom: 2px solid #229764; }
+
+#checklist-make {
+  background: #F7F7F7;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column; }
+  #checklist-make #form-checklist-make {
+    -webkit-box-flex: 1;
+    flex: 1;
+    margin: 15px 0;
+    background: #fff;
+    padding: 20px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column; }
+    #checklist-make #form-checklist-make #maker-files {
+      -webkit-box-flex: 1;
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden; }
+  #checklist-make .btn-submit-wrap {
+    margin: 0 0 15px; }
 
 #checklist-all {
   height: 100%;
