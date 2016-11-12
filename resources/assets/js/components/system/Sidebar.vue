@@ -17,7 +17,7 @@
             </router-link>
             <ul id="list-side-checklist" class="list-unstyled list-links" v-if="recentChecklists">
                 <li v-for="checklist in recentChecklists">
-                    <router-link :to="'/c/' + checklist.hash"><i class="fa fa-list"></i>{{ checklist.name }}
+                    <router-link :to="'/c/' + checklist.hash" class="truncate"><i class="fa fa-list"></i>{{ checklist.name }}
                     </router-link>
                 </li>
                 <li>
@@ -47,7 +47,7 @@
             <div class="projects-wrap">
                 <ul id="list-side-projects" class="list-unstyled list-links" v-if="projects">
                     <li v-for="project in filteredProjects">
-                        <router-link :to="'/projects/' + project.id"><i class="fa fa-industry"></i>{{ project.name }}
+                        <router-link :to="'/projects/' + project.id" class="truncate"><i class="fa fa-industry"></i>{{ project.name }}
                         </router-link>
                     </li>
                 </ul>
