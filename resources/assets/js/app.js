@@ -88,6 +88,7 @@ Vue.component('comments-thread', require('./components/comments/CommentsThread.v
 Vue.component('new-comment-field', require('./components/comments/NewCommentField.vue'));
 
 // Account
+Vue.component('password-change', require('./components/account/overview/PasswordChange.vue'));
 Vue.component('add-credit-card', require('./components/account/AddCreditCard.vue'));
 
 // Pagination
