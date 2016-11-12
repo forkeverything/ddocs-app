@@ -10482,18 +10482,34 @@ h3 .editable-text-field .placeholder {
   #file-view .comments-thread .list-comments {
     max-height: 300px; }
 
-#account-overview #page-fixed-top {
-  border-bottom: 1px solid #e6e6e6; }
+#account-overview #profile {
+  margin: 15px 0; }
+  #account-overview #profile > div {
+    display: inline-block; }
+  #account-overview #profile .avatar-wrap {
+    vertical-align: top;
+    width: 90px;
+    height: 90px;
+    margin: 0 15px 0 0; }
+    #account-overview #profile .avatar-wrap .user-avatar {
+      width: 100%;
+      height: 100%;
+      font-size: 2em;
+      border: 6px solid #555459;
+      background: transparent;
+      color: #555459; }
+  #account-overview #profile .details {
+    margin-top: 20px; }
+    #account-overview #profile .details .name {
+      margin: 0; }
 
-#account-overview #page-scroll-content {
-  padding-top: 15px; }
-
-#account-overview #form-credit-card .expiry-fields {
-  display: -webkit-box;
-  display: flex; }
-  #account-overview #form-credit-card .expiry-fields .separator {
-    margin: 0 10px;
-    font-size: 1.75em;
-    color: #9E9EA6; }
+#account-overview #password #form-change-password {
+  margin: 10px 0 0 0;
+  padding: 10px 20px;
+  border: 1px solid #e6e6e6;
+  background: #F7F7F7;
+  border-radius: 4px; }
+  #account-overview #password #form-change-password .btn {
+    width: 100px; }
 
 /*# sourceMappingURL=app.css.map */

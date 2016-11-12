@@ -376,10 +376,7 @@
                                                     <p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
                                                         The link above is private and made special for you. Please don't
                                                         share it without telling {{ $maker->name }} as anybody with the url can access
-                                                        the files.</p><br><br><h5 class="text-center"
-                                                                                  style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:20px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:center;word-wrap:normal">
-                                                        <strong>Please ignore this email if you don't know {{ $maker->name }} or what
-                                                            the files requested are about.</strong></h5><br></th>
+                                                        the files.</p><br></th>
                                                 <th class="expander"
                                                     style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
                                             </tr>

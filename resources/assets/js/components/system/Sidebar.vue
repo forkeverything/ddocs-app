@@ -69,8 +69,11 @@
             }
         },
         computed: {
+            authenticatedUser() {
+                return this.$store.state.authenticatedUser;
+            },
             showSidebar () {
-                return this.$store.state.showSidebar;
+                return this.$store.state.showSidebar && this.authenticatedUser;
             },
             filteredProjects() {
                 if(! this.projectSearch) return this.projects;
@@ -80,6 +83,11 @@
                     return name.indexOf(searchTerm) !== -1;
                 });
             }
+        },
+        watch: {
+          authenticatedUser(user){
+              if(user) this.initialize();
+          }
         },
         methods: {
             toggleAddProjectForm() {
@@ -152,6 +160,11 @@
                     this.ajaxReady = true;
                     vueValidation(response);
                 });
+            },
+            initialize() {
+                this.fetchRecentChecklists();
+                this.fetchProjects();
+                this.$nextTick(this.checkShowSidebar);
             }
         },
         mixins: [CatchFormErrors],
@@ -163,12 +176,10 @@
             });
         },
         mounted() {
-            this.fetchRecentChecklists();
-            this.fetchProjects();
-            this.$nextTick(this.checkShowSidebar);
+            if(this.authenticatedUser) this.initialize();
         },
         beforeDestroy() {
-            window.removeEventListener('resize', this.checkShowSidebar)
+            window.removeEventListener('resize', this.checkShowSidebar);
             vueGlobalEventBus.$off('remove-project');
         }
     }

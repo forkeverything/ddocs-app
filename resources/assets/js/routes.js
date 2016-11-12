@@ -55,7 +55,7 @@ module.exports = [
     },
     {
         path: '/account',
-        component: { template: '<h1>Account Overview</h1>' },
+        component:  require('./components/account/Overview.vue'),
         meta: { requiresAuth: true }
     },
     {

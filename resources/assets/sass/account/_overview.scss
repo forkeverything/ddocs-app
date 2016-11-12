@@ -1,21 +1,47 @@
 #account-overview {
 
-  #page-fixed-top {
-    border-bottom: 1px solid $laravel-border-color;
+  #profile {
+    margin: 15px 0;
+
+    > div {
+      display: inline-block;
+    }
+
+    .avatar-wrap {
+      vertical-align: top;
+      width: 90px;
+      height: 90px;
+      margin: 0 15px 0 0;
+
+      .user-avatar {
+        width: 100%;
+        height: 100%;
+        font-size: 2em;
+        border: 6px solid $extra-dark-grey;
+        background: transparent;
+        color: $extra-dark-grey;
+      }
+    }
+
+    .details {
+      margin-top: 20px;
+
+      .name {
+        margin: 0;
+      }
+    }
   }
 
-  #page-scroll-content {
-    padding-top: 15px;
-  }
+  #password {
+    #form-change-password {
+      margin: 10px 0 0 0;
+      padding: 10px 20px;
+      border: 1px solid $laravel-border-color;
+      background: $extra-light-grey;
+      border-radius: $border-radius-base;
 
-  #form-credit-card {
-
-    .expiry-fields {
-      display: flex;
-      .separator {
-        margin: 0 10px;
-        font-size: 1.75em;
-        color: $text-muted;
+      .btn {
+        width: 100px;
       }
     }
   }

@@ -1,5 +1,5 @@
 <template>
-    <nav id="navbar">
+    <nav id="navbar" v-show="authenticatedUser">
 
         <button type="button" class="btn-toggle-sidebar"
                 v-show="! showSidebar"
