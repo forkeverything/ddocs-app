@@ -14,25 +14,30 @@
         <div class="navbar-title truncate" v-html="navTitle"></div>
 
         <div class="user-account dropdown">
-            <a href="#"
-               class="dropdown-toggle link-settings"
-               data-toggle="dropdown"
-               role="button"
-               aria-haspopup="true"
-               aria-expanded="false"
-            >
-                <user-avatar :user="authenticatedUser"></user-avatar>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-right ">
-                <li>
-                    <router-link to="/account">Account</router-link>
-                </li>
-                <li>
-                    <a class="clickable" @click.prevent="logout">
-                        Logout
-                    </a>
-                </li>
-            </ul>
+            <div class="nav-credits badge" data-toggle="tooltip" data-placement="bottom" title="Credits Remaining">
+                {{ authenticatedUser.credits }}
+            </div>
+            <div class="dropdown">
+                <a href="#"
+                   class="dropdown-toggle link-settings"
+                   data-toggle="dropdown"
+                   role="button"
+                   aria-haspopup="true"
+                   aria-expanded="false"
+                >
+                    <user-avatar :user="authenticatedUser"></user-avatar>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right ">
+                    <li>
+                        <router-link to="/account">Account</router-link>
+                    </li>
+                    <li>
+                        <a class="clickable" @click.prevent="logout">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 </template>

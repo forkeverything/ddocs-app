@@ -45,9 +45,17 @@
   }
 
   .user-account {
+    display: flex;
+    align-items: center;
+
+    .nav-credits {
+      background: $extra-dark-grey;
+      font-weight: bold;
+      padding: 4px 12px;
+      margin: 0 8px 0 0;
+    }
 
     .link-settings {
-      display: inline-block;
       text-decoration: none;
 
       .user-avatar {
