@@ -22,9 +22,9 @@ $brand-warning: #cbb956;
 $brand-danger:  #bf5329;
 
 // Typography
-$headings-font-family: "Proxima Nova", Helvetica, Arial, Helvetica, sans-serif;
-$font-family-sans-serif: "Helvetica Neue", Helvetica, sans-serif;
-$font-family-serif: "adelle", Arial, serif;
+$font-family-sans-serif: "open-sans", Arial, Helvetica, sans-serif;
+$headings-font-family: $font-family-sans-serif;
+//$headings-font-family: "Proxima Nova", Helvetica, Arial, Helvetica, sans-serif;
 $font-size-base: 16px;
 //$line-height-base: 1.6;
 //$padding-base-vertical: 4px;

@@ -1,8 +1,8 @@
 <template>
-    <nav id="navbar" v-show="authenticatedUser">
+    <nav id="navbar">
 
         <button type="button" class="btn-toggle-sidebar"
-                v-show="! showSidebar"
+                v-show="! showSidebar && authenticatedUser"
                 @click="toggleSidebar"
         >
             <span class="sr-only">Toggle navigation</span>
@@ -13,7 +13,7 @@
 
         <div class="navbar-title truncate" v-html="navTitle"></div>
 
-        <div class="user-account dropdown">
+        <div class="user-account dropdown" v-show="authenticatedUser">
             <div class="nav-credits badge" data-toggle="tooltip" data-placement="bottom" title="Credits Remaining">
                 {{ authenticatedUser.credits }}
             </div>

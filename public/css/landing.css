@@ -1101,7 +1101,7 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "open-sans", Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.428571429;
   color: #1B2432;
@@ -1183,7 +1183,7 @@ hr {
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "Proxima Nova", Helvetica, Arial, Helvetica, sans-serif;
+  font-family: "open-sans", Arial, Helvetica, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit; }
@@ -5191,7 +5191,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "open-sans", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5304,7 +5304,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "open-sans", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -8831,7 +8831,7 @@ h3 .editable-text-field .placeholder {
     height: 37px;
     margin-top: 22px;
     margin-bottom: 11px;
-    font-family: "Proxima Nova", Helvetica, Arial, Helvetica, sans-serif;
+    font-family: "open-sans", Arial, Helvetica, sans-serif;
     color: #1B2432;
     border: 0;
     box-shadow: none;
@@ -8934,7 +8934,7 @@ h3 .editable-text-field .placeholder {
         font-size: 4em; } }
   #landing-start #elevator h3 {
     margin-top: 0;
-    font-family: "adelle", Arial, serif;
+    font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 1em;
     line-height: 2em; }
     @media screen and (min-width: 992px) {
@@ -8985,7 +8985,7 @@ h3 .editable-text-field .placeholder {
       color: #fff; }
   #landing-start #main-course .feature p {
     color: #C8FFC6;
-    font-family: "adelle", Arial, serif; }
+    font-family: Georgia, "Times New Roman", Times, serif; }
 
 #landing-start #using {
   padding: 3em 1em; }
