@@ -8733,20 +8733,17 @@ label {
 .editable-text-field .placeholder {
   display: inline-block;
   border: 1px solid transparent;
-  padding: 1px 0;
+  padding: 1px;
   max-width: 100%;
   height: 26px;
   width: 100%; }
   .editable-text-field .placeholder:hover {
-    border: 1px dashed #cccccc;
-    padding: 1px;
-    margin: 0 -1px; }
+    border: 1px dashed #cccccc; }
 
 .editable-text-field input {
   outline: 0;
   border: 1px dashed #757575;
-  width: 100%;
-  margin: 0 -1px; }
+  width: 100%; }
 
 .editable-text-field.clipped {
   margin-bottom: -7px; }

@@ -19,6 +19,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 
     // Authentication
     Route::get('/auth_user', 'Auth\LoginController@getAuthenticatedUser');
+    Route::put('/auth_user', 'Auth\RegisterController@putUpdateUser');
 
     // Checklist
     Route::get('/checklists', 'ChecklistsController@getForAuthenticatedUser');

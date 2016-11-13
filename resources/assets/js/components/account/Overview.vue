@@ -5,7 +5,9 @@
                 <user-avatar :user="authenticatedUser"></user-avatar>
             </div>
             <div class="details">
-                <h3 class="name">{{ authenticatedUser.name }}</h3>
+                <h3 class="name">
+                    <editable-text-field :value="authenticatedUser.name" @on-change="updateName"></editable-text-field>
+                </h3>
                 <p class="email">{{ authenticatedUser.email }}</p>
             </div>
         </div>
@@ -27,7 +29,13 @@
             }
         },
         methods: {
-
+            updateName(newName) {
+                let updatedUserProperties = {
+                    name: newName
+                };
+                this.$store.commit('updateUser', updatedUserProperties);
+                this.$store.dispatch('saveUserChanges', updatedUserProperties);
+            }
         },
         created() {
             this.$store.commit('setTitle', 'Account');

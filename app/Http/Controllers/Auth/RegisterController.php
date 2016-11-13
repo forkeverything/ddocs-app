@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Auth\HandleRefreshToken;
 use App\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
@@ -38,7 +39,11 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest', [
+            'except' => [
+                'putUpdateUser'
+            ]
+        ]);
     }
 
     /**
@@ -86,5 +91,17 @@ class RegisterController extends Controller
 
         return $this->makeTokenResponse($token, $user);
 
+    }
+
+    /**
+     * Save changes to authenticated user.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function putUpdateUser(Request $request)
+    {
+        if(Auth::user()->update($request->all())) return response('updated user.');
+        return response('failed updating user', 500);
     }
 }

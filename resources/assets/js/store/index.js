@@ -22,6 +22,11 @@ export default new Vuex.Store({
         },
         toggleSidebar(state, payload) {
             state.showSidebar = ! state.showSidebar;
+        },
+        updateUser(state, payload) {
+            for (let prop in payload) {
+                if (payload.hasOwnProperty(prop)) state.authenticatedUser[prop] = payload[prop];
+            }
         }
     },
     actions: {
@@ -33,6 +38,17 @@ export default new Vuex.Store({
                 // Before we get here our interceptor will catch a bad token and
                 // redirect to login
                 console.log("Couldn't get authenticated user");
+            });
+        },
+        saveUserChanges(context, payload) {
+            Vue.http.put('/api/auth_user', payload, {
+                before(xhr) {
+                    RequestsMonitor.pushOntoQueue(xhr);
+                }
+            }).then((res) => {
+                console.log('updated user');
+            }, (res) => {
+                console.log('failed updating user');
             });
         }
     },
