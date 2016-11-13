@@ -9004,21 +9004,15 @@ h3 .editable-text-field .placeholder {
   width: 100%;
   white-space: normal;
   word-break: break-all;
-  padding: 2px 0; }
+  padding: 2px; }
   .editable-text-area .placeholder:hover {
-    border: 1px dashed #D2D2D2;
-    padding: 2px;
-    margin: 0 -2px; }
+    border: 1px dashed #D2D2D2; }
 
-.editable-text-area form {
-  line-height: 0; }
-  .editable-text-area form textarea {
-    line-height: 1.6;
-    min-height: 80px;
-    width: 100%;
-    outline: 0;
-    border: 1px dashed #353535;
-    margin: 0 -2px; }
+.editable-text-area form textarea {
+  min-height: 80px;
+  width: 100%;
+  outline: 0;
+  border: 1px dashed #353535; }
 
 .editable-number-field .placeholder {
   display: inline-block;

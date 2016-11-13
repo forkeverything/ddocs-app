@@ -11,6 +11,11 @@
 <script>
     const editableField = require("../../mixins/EditableField");
     export default {
-        mixins: [editableField]
+        mixins: [editableField],
+        mounted() {
+            this.$nextTick(() => {
+                autosize($(this.$refs.input));
+            });
+        }
     };
 </script>

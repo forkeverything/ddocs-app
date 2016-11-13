@@ -127,6 +127,21 @@ class ChecklistsController extends Controller
     }
 
     /**
+     * Request to update checklist.
+     *
+     * @param Request $request
+     * @param $checklistHash
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function putUpdate(Request $request, $checklistHash)
+    {
+        $checklist = Checklist::findByHash($checklistHash);
+        $this->authorize('update', $checklist);
+        if($checklist->update($request->all())) return response('Updated checklist.');
+        return response("Couldn't update checklist", 500);
+    }
+
+    /**
      * Edit recipients for an existing Checklist.
      *
      * @param Request $request

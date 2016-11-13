@@ -49,7 +49,7 @@ Authenticator.setup();
 
 
 // Initialize autosize() for textareas.
-let autosize = require('autosize');
+window.autosize = require('autosize');
 $(document).ready(() => autosize($('textarea')));
 
 // Define moment.js

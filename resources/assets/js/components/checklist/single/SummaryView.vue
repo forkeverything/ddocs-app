@@ -21,7 +21,7 @@
                 ></recipients-editor>
             </div>
         </div>
-        <div id="summary-description" class="summary-section" v-if="checklist.description">
+        <div id="summary-description" class="summary-section" v-if="checklistBelongsToUser || checklist.description">
             <div class="section-header expandable">
                 <i class="fa fa-info-circle icon"></i><span class="title">Description</span>
                 <div class="triangle">
@@ -30,9 +30,10 @@
                 </div>
             </div>
             <div class="section-content">
-                <p>
+                <p v-if="! checklistBelongsToUser">
                     {{ checklist.description }}
                 </p>
+                <editable-text-area v-if="checklistBelongsToUser" :value="checklist.description" :allow-null="true" placeholder="What these files are about..." @on-change="updateDescription"></editable-text-area>
             </div>
         </div>
         <div id="summary-file-count" class="summary-section" v-if="checklist">
@@ -66,6 +67,12 @@
         methods: {
             toggleEditRecipients() {
                 this.editingRecipients = !this.editingRecipients;
+            },
+            updateDescription(newDescription){
+                this.$store.commit('checklist/UPDATE_DESCRIPTION', newDescription);
+                this.$store.dispatch('checklist/SAVE_CHANGES', {
+                    description: newDescription
+                });
             }
         },
         created() {
