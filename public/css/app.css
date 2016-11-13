@@ -8073,16 +8073,31 @@ body {
       margin: 5px 0;
       height: 4px;
       border-radius: 2px; }
-  #navbar .navbar-title {
+  #navbar .nav-left {
     -webkit-box-flex: 1;
     flex: 1;
-    font-weight: bold;
-    display: inline-block;
-    font-size: 1.6em;
-    margin: 14px 5px 14px 0; }
-    #navbar .navbar-title i {
-      margin-left: 10px;
-      color: #9E9EA6; }
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    overflow: hidden;
+    -webkit-box-align: center;
+    align-items: center; }
+    #navbar .nav-left .logo {
+      width: 45px;
+      margin: 0 10px 0 0; }
+      #navbar .nav-left .logo img {
+        width: 100%; }
+    #navbar .nav-left .navbar-title {
+      -webkit-box-flex: 1;
+      flex: 1;
+      font-weight: bold;
+      display: inline-block;
+      font-size: 1.6em;
+      margin: 14px 5px 14px 0; }
+      #navbar .nav-left .navbar-title i {
+        margin-left: 10px;
+        color: #9E9EA6; }
   #navbar .user-account {
     display: -webkit-box;
     display: flex;
@@ -8106,6 +8121,8 @@ body {
         background: #555459;
         color: #fff;
         border-color: transparent; }
+  #navbar #nav-guest-links {
+    margin: 0; }
 
 #sidebar {
   background: #555459;

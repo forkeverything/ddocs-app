@@ -31,16 +31,33 @@
     }
   }
 
-  .navbar-title {
+  .nav-left {
     flex: 1;
-    font-weight: bold;
-    display: inline-block;
-    font-size: 1.6em;
-    margin: 14px 5px 14px 0;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
 
-    i {
-      margin-left: 10px;
-      color: $text-muted;
+    .logo {
+      width: 45px;
+      margin: 0 10px 0 0;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .navbar-title {
+      flex: 1;
+      font-weight: bold;
+      display: inline-block;
+      font-size: 1.6em;
+      margin: 14px 5px 14px 0;
+
+      i {
+        margin-left: 10px;
+        color: $text-muted;
+      }
     }
   }
 
@@ -75,5 +92,9 @@
         }
       }
     }
+  }
+
+  #nav-guest-links {
+    margin: 0;
   }
 }

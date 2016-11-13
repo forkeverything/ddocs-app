@@ -11,7 +11,12 @@
             <span class="icon-bar"></span>
         </button>
 
-        <div class="navbar-title truncate" v-html="navTitle"></div>
+        <div class="nav-left">
+            <div class="logo" v-if="! authenticatedUser">
+                <img src="/images/logo/logo.svg" alt="ddocs logo">
+            </div>
+            <div class="navbar-title truncate" v-html="navTitle"></div>
+        </div>
 
         <div class="user-account dropdown" v-show="authenticatedUser">
             <div class="nav-credits badge" data-toggle="tooltip" data-placement="bottom" title="Credits Remaining">
@@ -39,6 +44,14 @@
                 </ul>
             </div>
         </div>
+        <ul id="nav-guest-links" class="list-inline list-unstyled" v-show="! authenticatedUser">
+            <li>
+                <router-link to="/login">Login</router-link>
+            </li>
+            <li>
+                <router-link to="/register">Sign Up</router-link>
+            </li>
+        </ul>
     </nav>
 </template>
 <script>

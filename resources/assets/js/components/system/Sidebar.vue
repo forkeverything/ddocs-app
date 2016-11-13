@@ -99,7 +99,6 @@
             },
             toggleSidebar() {
                 this.$store.commit('toggleSidebar');
-                this.showOnResize = false;
             },
             checkShowSidebar: _.debounce(function () {
                 let windowWidth = $(window).width();
