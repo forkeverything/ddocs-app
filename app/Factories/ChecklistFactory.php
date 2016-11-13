@@ -181,8 +181,9 @@ class ChecklistFactory
         // If user is subscribed, we'll just skip credit deduction
         if ($this->user->subscribed('main')) return $this;
 
-        // THE ONLY PLACE WHERE CREDIT DEDUCTION OCCURS
-        $this->user->minusOneCredit();
+        // CREDIT DEDUCTION - THE ONLY PLACE WHERE THIS OCCURS
+//        $this->user->minusOneCredit();
+        // TODO ::: Reactivate credit deduction when out of beta.
 
         return $this;
     }

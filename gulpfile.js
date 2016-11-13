@@ -33,5 +33,5 @@ elixir(mix => {
 
     mix.copy('node_modules/font-awesome/fonts', 'public/fonts');
 
-    mix.browserSync({proxy: 'filescollector.app'});
+    mix.browserSync({proxy: 'app.ddocs.dev'});
 });
