@@ -13,7 +13,7 @@
 
         <div class="nav-left">
             <div class="logo" v-if="! authenticatedUser">
-                <img src="/images/logo/logo.svg" alt="ddocs logo">
+                <a href="http://ddocs.com" alt="ddocs home page"><img src="/images/logo/logo.svg" alt="ddocs logo"></a>
             </div>
             <div class="navbar-title truncate" v-html="navTitle"></div>
         </div>
