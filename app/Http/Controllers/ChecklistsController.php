@@ -33,8 +33,7 @@ class ChecklistsController extends Controller
         $perPage = $request->per_page ?: 20;
 
         return ChecklistsRespository::forUser(Auth::user())
-                                    ->searchFor($search)
-                                    ->searchRecipientEmails($search)
+                                    ->searchWithRecipients($search)
                                     ->sortOn($sort, $order)
                                     ->paginate($perPage);
     }

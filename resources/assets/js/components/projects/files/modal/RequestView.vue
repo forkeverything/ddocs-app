@@ -33,7 +33,11 @@
 
         <div class="recipients" v-if="fileRequest">
             <h5>Recipients</h5>
-            <checklist-recipients :recipients="fileRequest.checklist.recipients"></checklist-recipients>
+            <ul class="list-recipients list-unstyled">
+                <li v-for="recipient in fileRequest.checklist.recipients">
+                    {{ recipient.email }}
+                </li>
+            </ul>
         </div>
         <div class="notes">
             <h5>Notes</h5>

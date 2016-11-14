@@ -15,15 +15,15 @@
             <router-link to="/checklists/make" class="link-add">
                 <button type="button" class="btn btn-text">+</button>
             </router-link>
-            <ul id="list-side-checklist" class="list-unstyled list-links" v-if="recentChecklists">
-                <li v-if="recentChecklists" v-for="checklist in recentChecklists">
+            <ul id="list-side-checklist" class="list-unstyled list-links">
+                <li v-if="recentChecklists.length > 0" v-for="checklist in recentChecklists">
                     <router-link :to="'/c/' + checklist.hash" class="truncate"><i class="fa fa-list"></i>{{ checklist.name }}
                     </router-link>
                 </li>
-                <li v-if="recentChecklists">
+                <li v-if="recentChecklists.length > 0">
                     <router-link to="/checklists" class="meta">View All</router-link>
                 </li>
-                <li v-if="! recentChecklists"><em class="text-muted small">Haven't made any...</em></li>
+                <li v-if="! recentChecklists.length > 0"><span class="text-muted small">Checklists are group of files you need from recipients.</span></li>
             </ul>
         </div>
         <div id="side-projects" class="links-section">
@@ -50,6 +50,9 @@
                     <li v-for="project in filteredProjects">
                         <router-link :to="'/projects/' + project.id" class="truncate"><i class="fa fa-industry"></i>{{ project.name }}
                         </router-link>
+                    </li>
+                    <li v-if="! filteredProjects.length > 0">
+                        <span class="text-muted small">Start a project to keep track of your team's internal files.</span>
                     </li>
                 </ul>
             </div>

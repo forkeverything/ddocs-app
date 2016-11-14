@@ -57,13 +57,16 @@ class ChecklistsRespository extends EloquentRepository
      * @param $searchTerm
      * @return $this
      */
-    public function searchRecipientEmails($searchTerm)
+    public function searchWithRecipients($searchTerm)
     {
-        $this->query->orWhereExists(function ($q) use ($searchTerm) {
-            $q->select(DB::raw(1))
-              ->from('recipients')
-              ->whereRaw('recipients.checklist_id = checklists.id')
-              ->where('recipients.email', 'LIKE', "%{$searchTerm}%");
+        $this->query->where(function ($q) use ($searchTerm) {
+            $q->where('name', 'LIKE', "%{$searchTerm}%")
+              ->orWhereExists(function ($subQuery) use ($searchTerm){
+                  $subQuery->select(DB::raw(1))
+                    ->from('recipients')
+                    ->whereRaw('recipients.checklist_id = checklists.id')
+                    ->where('recipients.email', 'LIKE', "%{$searchTerm}%");
+              });
         });
 
         return $this;

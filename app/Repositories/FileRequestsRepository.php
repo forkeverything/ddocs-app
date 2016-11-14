@@ -124,18 +124,23 @@ class FileRequestsRepository extends EloquentRepository
      * @param $searchTerm
      * @return $this
      */
-    public function searchChecklistNamesAndRecipientEmails($searchTerm)
+    public function searchWithChecklistAndRecipient($searchTerm)
     {
-        $this->query->orWhereExists(function ($q) use ($searchTerm) {
-            $q->select(DB::raw(1))
-              ->from('checklists')
-              ->join('recipients', 'recipients.checklist_id', '=', 'checklists.id')
-              ->whereRaw('file_requests.checklist_id = checklists.id')// Only interested in checklists that our current set of FileRequests belong to
-              ->where(function ($sq) use ($searchTerm) {
-                    $sq->where('checklists.name', 'LIKE', "%{$searchTerm}%")
-                       ->orWhere('recipients.email', 'LIKE', "%{$searchTerm}%");
-                });
+
+        $this->query->where(function ($q) use ($searchTerm) {
+            $q->where('name', 'LIKE', "%{$searchTerm}%")
+              ->orWhereExists(function ($subQuery) use ($searchTerm){
+                  $subQuery->select(DB::raw(1))
+                    ->from('checklists')
+                    ->join('recipients', 'recipients.checklist_id', '=', 'checklists.id')
+                    ->whereRaw('file_requests.checklist_id = checklists.id')// Only interested in checklists that our current set of FileRequests belong to
+                    ->where(function ($sq) use ($searchTerm) {
+                          $sq->where('checklists.name', 'LIKE', "%{$searchTerm}%")
+                             ->orWhere('recipients.email', 'LIKE', "%{$searchTerm}%");
+                      });
+              });
         });
+
 
         return $this;
     }

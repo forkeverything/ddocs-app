@@ -133,8 +133,7 @@ class FileRequestsController extends Controller
     {
         $search = $request->search;
         return FileRequestsRepository::forUser(Auth::user())
-                                     ->searchFor($search)
-                                     ->searchChecklistNamesAndRecipientEmails($search)
+                                     ->searchWithChecklistAndRecipient($search)
                                      ->with('checklist')
                                      ->paginate(6);
     }
