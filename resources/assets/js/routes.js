@@ -15,7 +15,7 @@ module.exports = [
     },
     {
         path: '/password/reset',
-        component: { template: '<h1>Show Link Request form</h1>' },
+        component: require('./components/auth/SendResetLink.vue'),
         meta: { guestOnly: true }
     },
     {

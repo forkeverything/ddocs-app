@@ -17,6 +17,7 @@ Route::post('/login', 'Auth\LoginController@login');
 Route::post('/refresh_token', 'Auth\Logincontroller@refreshToken');
 Route::post('/logout', 'Auth\LoginController@logout');
 Route::post('/register', 'Auth\RegisterController@register');
+Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 
 // Every other route gets handled by Vue
 Route::get('{slug}', function () {

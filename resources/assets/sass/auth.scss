@@ -1,0 +1,18 @@
+#email-reset-pw {
+  padding: 60px 0;
+
+  form {
+    margin: 15px;
+
+    #input-email {
+      margin: 15px 0 10px;
+    }
+
+    #btn-send {
+      width: 100%;
+      i {
+        margin: 0 0 0 5px;
+      }
+    }
+  }
+}
