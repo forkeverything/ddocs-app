@@ -16,13 +16,14 @@
                 <button type="button" class="btn btn-text">+</button>
             </router-link>
             <ul id="list-side-checklist" class="list-unstyled list-links" v-if="recentChecklists">
-                <li v-for="checklist in recentChecklists">
+                <li v-if="recentChecklists" v-for="checklist in recentChecklists">
                     <router-link :to="'/c/' + checklist.hash" class="truncate"><i class="fa fa-list"></i>{{ checklist.name }}
                     </router-link>
                 </li>
-                <li>
+                <li v-if="recentChecklists">
                     <router-link to="/checklists" class="meta">View All</router-link>
                 </li>
+                <li v-if="! recentChecklists"><em class="text-muted small">Haven't made any...</em></li>
             </ul>
         </div>
         <div id="side-projects" class="links-section">
