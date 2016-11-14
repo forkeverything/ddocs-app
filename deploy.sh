@@ -5,5 +5,5 @@ git add .;
 git commit -m "DEPLOY LIVE AT: $now";
 git push origin master;
 echo "pushed";
-curl https://forge.laravel.com/servers/95640/sites/218391/deploy/http?token=xjsheQDswocGPSN4YDnczazkcOJNhPGMSkvHpXiB
+curl https://forge.laravel.com/servers/106072/sites/248444/deploy/http?token=snqtSTzbivoxsjHxUentFgD3F4sE6UyNE1bg1FjI
 

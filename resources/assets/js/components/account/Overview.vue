@@ -12,8 +12,22 @@
             </div>
         </div>
         <div id="password">
-            <h5>Password</h5>
+            <h4>Password</h4>
             <password-change></password-change>
+        </div>
+        <div id="account-credits">
+            <h4>Credits</h4>
+            <p class="remaining">
+                {{ authenticatedUser.credits }}
+            </p>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="text-muted">
+                        Each checklist costs 1 credit to make. You automatically score extra credits when your recipients create an account with us.
+                        Also, every month your account gets replenished up to 5 credits.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </template>
