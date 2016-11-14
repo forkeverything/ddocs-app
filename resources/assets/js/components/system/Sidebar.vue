@@ -23,7 +23,7 @@
                 <li v-if="recentChecklists.length > 0">
                     <router-link to="/checklists" class="meta">View All</router-link>
                 </li>
-                <li v-if="! recentChecklists.length > 0"><span class="text-muted small">Checklists are group of files you need from recipients.</span></li>
+                <li v-if="! recentChecklists.length > 0"><span class="text-muted small">Use checklists to request, organize and track files from your recipients.</span></li>
             </ul>
         </div>
         <div id="side-projects" class="links-section">
