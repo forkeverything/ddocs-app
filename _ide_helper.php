@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.18 on 2016-11-14.
+ * Generated for Laravel 5.3.18 on 2016-11-15.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1397,13 +1397,25 @@ namespace {
         }
         
         /**
+         * Login User - by returning a token.
+         *
+         * @param \App\Auth\JWTSubject $user
+         * @return string 
+         * @static 
+         */
+        public static function login($user){
+            return \App\Auth\CustomJWTGuard::login($user);
+        }
+        
+        /**
          * Get the currently authenticated user.
          *
          * @return \App\User|null 
          * @static 
          */
         public static function user(){
-            return \Tymon\JWTAuth\JWTGuard::user();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::user();
         }
         
         /**
@@ -1414,7 +1426,8 @@ namespace {
          * @static 
          */
         public static function userOrFail(){
-            return \Tymon\JWTAuth\JWTGuard::userOrFail();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::userOrFail();
         }
         
         /**
@@ -1425,7 +1438,8 @@ namespace {
          * @static 
          */
         public static function validate($credentials = array()){
-            return \Tymon\JWTAuth\JWTGuard::validate($credentials);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::validate($credentials);
         }
         
         /**
@@ -1437,18 +1451,8 @@ namespace {
          * @static 
          */
         public static function attempt($credentials = array(), $login = true){
-            return \Tymon\JWTAuth\JWTGuard::attempt($credentials, $login);
-        }
-        
-        /**
-         * Create a token for a user.
-         *
-         * @param \Tymon\JWTAuth\Contracts\JWTSubject $user
-         * @return string 
-         * @static 
-         */
-        public static function login($user){
-            return \Tymon\JWTAuth\JWTGuard::login($user);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::attempt($credentials, $login);
         }
         
         /**
@@ -1459,7 +1463,8 @@ namespace {
          * @static 
          */
         public static function logout($forceForever = false){
-            \Tymon\JWTAuth\JWTGuard::logout($forceForever);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            \App\Auth\CustomJWTGuard::logout($forceForever);
         }
         
         /**
@@ -1469,7 +1474,8 @@ namespace {
          * @static 
          */
         public static function refresh(){
-            return \Tymon\JWTAuth\JWTGuard::refresh();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::refresh();
         }
         
         /**
@@ -1480,7 +1486,8 @@ namespace {
          * @static 
          */
         public static function invalidate($forceForever = false){
-            return \Tymon\JWTAuth\JWTGuard::invalidate($forceForever);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::invalidate($forceForever);
         }
         
         /**
@@ -1491,7 +1498,8 @@ namespace {
          * @static 
          */
         public static function tokenById($id){
-            return \Tymon\JWTAuth\JWTGuard::tokenById($id);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::tokenById($id);
         }
         
         /**
@@ -1502,7 +1510,8 @@ namespace {
          * @static 
          */
         public static function once($credentials = array()){
-            return \Tymon\JWTAuth\JWTGuard::once($credentials);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::once($credentials);
         }
         
         /**
@@ -1513,7 +1522,8 @@ namespace {
          * @static 
          */
         public static function onceUsingId($id){
-            return \Tymon\JWTAuth\JWTGuard::onceUsingId($id);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::onceUsingId($id);
         }
         
         /**
@@ -1524,7 +1534,8 @@ namespace {
          * @static 
          */
         public static function byId($id){
-            return \Tymon\JWTAuth\JWTGuard::byId($id);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::byId($id);
         }
         
         /**
@@ -1534,7 +1545,8 @@ namespace {
          * @static 
          */
         public static function getPayload(){
-            return \Tymon\JWTAuth\JWTGuard::getPayload();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::getPayload();
         }
         
         /**
@@ -1544,7 +1556,8 @@ namespace {
          * @static 
          */
         public static function payload(){
-            return \Tymon\JWTAuth\JWTGuard::payload();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::payload();
         }
         
         /**
@@ -1555,7 +1568,8 @@ namespace {
          * @static 
          */
         public static function setToken($token){
-            return \Tymon\JWTAuth\JWTGuard::setToken($token);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::setToken($token);
         }
         
         /**
@@ -1565,7 +1579,8 @@ namespace {
          * @static 
          */
         public static function getProvider(){
-            return \Tymon\JWTAuth\JWTGuard::getProvider();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::getProvider();
         }
         
         /**
@@ -1576,7 +1591,8 @@ namespace {
          * @static 
          */
         public static function setProvider($provider){
-            return \Tymon\JWTAuth\JWTGuard::setProvider($provider);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::setProvider($provider);
         }
         
         /**
@@ -1586,7 +1602,8 @@ namespace {
          * @static 
          */
         public static function getUser(){
-            return \Tymon\JWTAuth\JWTGuard::getUser();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::getUser();
         }
         
         /**
@@ -1596,7 +1613,8 @@ namespace {
          * @static 
          */
         public static function getRequest(){
-            return \Tymon\JWTAuth\JWTGuard::getRequest();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::getRequest();
         }
         
         /**
@@ -1607,7 +1625,8 @@ namespace {
          * @static 
          */
         public static function setRequest($request){
-            return \Tymon\JWTAuth\JWTGuard::setRequest($request);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::setRequest($request);
         }
         
         /**
@@ -1617,7 +1636,8 @@ namespace {
          * @static 
          */
         public static function getLastAttempted(){
-            return \Tymon\JWTAuth\JWTGuard::getLastAttempted();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::getLastAttempted();
         }
         
         /**
@@ -1627,7 +1647,8 @@ namespace {
          * @static 
          */
         public static function check(){
-            return \Tymon\JWTAuth\JWTGuard::check();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::check();
         }
         
         /**
@@ -1637,7 +1658,8 @@ namespace {
          * @static 
          */
         public static function guest(){
-            return \Tymon\JWTAuth\JWTGuard::guest();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::guest();
         }
         
         /**
@@ -1647,7 +1669,8 @@ namespace {
          * @static 
          */
         public static function id(){
-            return \Tymon\JWTAuth\JWTGuard::id();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::id();
         }
         
         /**
@@ -1658,7 +1681,8 @@ namespace {
          * @static 
          */
         public static function setUser($user){
-            return \Tymon\JWTAuth\JWTGuard::setUser($user);
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::setUser($user);
         }
         
         /**
@@ -1669,7 +1693,8 @@ namespace {
          * @static 
          */
         public static function authenticate(){
-            return \Tymon\JWTAuth\JWTGuard::authenticate();
+            //Method inherited from \Tymon\JWTAuth\JWTGuard            
+            return \App\Auth\CustomJWTGuard::authenticate();
         }
         
     }

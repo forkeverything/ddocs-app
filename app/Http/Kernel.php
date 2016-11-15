@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\JWTAuthenticate;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -53,7 +54,7 @@ class Kernel extends HttpKernel
 //        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'guest' => \App\Http\Middleware\GuestsOnly::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+        'api.auth' => JWTAuthenticate::class,
         'jwt.auth-renew' => \Tymon\JWTAuth\Http\Middleware\AuthenticateAndRenew::class,
         'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
     ];

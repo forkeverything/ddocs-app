@@ -99,11 +99,12 @@ class LoginController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  mixed $user
+     * @param $token
      * @return mixed
      */
     protected function authenticated(Request $request, $user, $token)
     {
-        return $this->makeTokenResponse($token, $user);
+        return $this->refreshTokenResponse($token, $user);
     }
 
     /**
@@ -162,10 +163,13 @@ class LoginController extends Controller
     public function refreshToken(Request $request)
     {
         $user = $this->validateRefreshToken($request->refresh_token);
+
+        $token = $this->guard()->login($user);
+
         // Generate a new token from user
         return response()->json([
-            'token' => JWTAuth::fromUser($user)
-        ]);
+            'token' => $token
+        ])->cookie($this->makeCSRFCookie($token));
     }
 
     /**

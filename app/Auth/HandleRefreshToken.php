@@ -7,6 +7,8 @@ use App\Exceptions\RefreshTokenInvalid;
 use App\Exceptions\RefreshTokenRevoked;
 use App\User;
 use Illuminate\Support\Str;
+use JWTAuth;
+use Tymon\JWTAuth\Token;
 
 trait HandleRefreshToken
 {
@@ -101,17 +103,36 @@ trait HandleRefreshToken
      * Make a response that has both auth token and the refresh
      * token for given User. This is the response that is
      * sent after successful login / registration.
-     * 
+     *
      * @param $token
      * @param User $user
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function makeTokenResponse($token, User $user)
+    protected function refreshTokenResponse($token, User $user)
     {
         return response()->json([
             'token' => $token,
             'refresh_token' => $this->setRefreshToken($user)
-        ]);
+        ])->cookie($this->makeCSRFCookie($token));
+    }
+
+    /**
+     * Create CSRF cookie from auth token
+     *
+     * @param $token
+     * @return \Symfony\Component\HttpFoundation\Cookie
+     */
+    protected function makeCSRFCookie($token)
+    {
+        return cookie(
+            'ddocs_csrf',                                                   // name
+            JWTAuth::decode(new Token($token))->get('csrf'),                // value - parse out our csrf claim from the token
+            20160,                                                          // exp (mins)
+            '/',                                                            // path
+            env('DOMAIN', 'ddocs.com'),                                     // domain
+            false,                                                          // secure               TODO ::: Set to true after purchasing and activating SSL
+            true
+        );
     }
 
 }

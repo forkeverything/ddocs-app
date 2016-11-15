@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Log;
 */
 
 // Authenticated Routes
-Route::group(['middleware' => 'jwt.auth'], function () {
+Route::group(['middleware' => 'api.auth'], function () {
 
     // Authentication
     Route::get('/auth_user', 'Auth\LoginController@getAuthenticatedUser');

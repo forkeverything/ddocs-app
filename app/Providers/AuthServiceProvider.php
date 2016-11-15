@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Auth\CustomJWTGuard;
 use App\Checklist;
 use App\File;
 use App\FileRequest;
@@ -39,6 +40,17 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Extend Custom JWT Auth Guard
+        $this->app['auth']->extend('custom-jwt', function ($app, $name, array $config) {
+            $guard = new CustomJWTGuard(
+                $app['tymon.jwt'],
+                $app['auth']->createUserProvider($config['provider']),
+                $app['request']
+            );
+
+            $app->refresh('request', $guard, 'setRequest');
+
+            return $guard;
+        });
     }
 }

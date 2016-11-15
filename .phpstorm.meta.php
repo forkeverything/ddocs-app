@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-11-14.
+    * Generated on 2016-11-15.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -20,7 +20,7 @@ namespace PHPSTORM_META {
             'Illuminate\Contracts\Console\Kernel' instanceof \App\Console\Kernel,
             'Illuminate\Contracts\Debug\ExceptionHandler' instanceof \App\Exceptions\Handler,
             'auth' instanceof \Illuminate\Auth\AuthManager,
-            'auth.driver' instanceof \Tymon\JWTAuth\JWTGuard,
+            'auth.driver' instanceof \App\Auth\CustomJWTGuard,
             'Illuminate\Contracts\Auth\Access\Gate' instanceof \Illuminate\Auth\Access\Gate,
             'cookie' instanceof \Illuminate\Cookie\CookieJar,
             'Illuminate\Contracts\Queue\EntityResolver' instanceof \Illuminate\Database\Eloquent\QueueEntityResolver,
@@ -150,7 +150,7 @@ namespace PHPSTORM_META {
             'Illuminate\Contracts\Console\Kernel' instanceof \App\Console\Kernel,
             'Illuminate\Contracts\Debug\ExceptionHandler' instanceof \App\Exceptions\Handler,
             'auth' instanceof \Illuminate\Auth\AuthManager,
-            'auth.driver' instanceof \Tymon\JWTAuth\JWTGuard,
+            'auth.driver' instanceof \App\Auth\CustomJWTGuard,
             'Illuminate\Contracts\Auth\Access\Gate' instanceof \Illuminate\Auth\Access\Gate,
             'cookie' instanceof \Illuminate\Cookie\CookieJar,
             'Illuminate\Contracts\Queue\EntityResolver' instanceof \Illuminate\Database\Eloquent\QueueEntityResolver,
@@ -280,7 +280,7 @@ namespace PHPSTORM_META {
             'Illuminate\Contracts\Console\Kernel' instanceof \App\Console\Kernel,
             'Illuminate\Contracts\Debug\ExceptionHandler' instanceof \App\Exceptions\Handler,
             'auth' instanceof \Illuminate\Auth\AuthManager,
-            'auth.driver' instanceof \Tymon\JWTAuth\JWTGuard,
+            'auth.driver' instanceof \App\Auth\CustomJWTGuard,
             'Illuminate\Contracts\Auth\Access\Gate' instanceof \Illuminate\Auth\Access\Gate,
             'cookie' instanceof \Illuminate\Cookie\CookieJar,
             'Illuminate\Contracts\Queue\EntityResolver' instanceof \Illuminate\Database\Eloquent\QueueEntityResolver,
@@ -410,7 +410,7 @@ namespace PHPSTORM_META {
             'Illuminate\Contracts\Console\Kernel' instanceof \App\Console\Kernel,
             'Illuminate\Contracts\Debug\ExceptionHandler' instanceof \App\Exceptions\Handler,
             'auth' instanceof \Illuminate\Auth\AuthManager,
-            'auth.driver' instanceof \Tymon\JWTAuth\JWTGuard,
+            'auth.driver' instanceof \App\Auth\CustomJWTGuard,
             'Illuminate\Contracts\Auth\Access\Gate' instanceof \Illuminate\Auth\Access\Gate,
             'cookie' instanceof \Illuminate\Cookie\CookieJar,
             'Illuminate\Contracts\Queue\EntityResolver' instanceof \Illuminate\Database\Eloquent\QueueEntityResolver,

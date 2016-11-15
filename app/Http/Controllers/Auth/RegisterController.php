@@ -89,7 +89,7 @@ class RegisterController extends Controller
 
         $token = $this->guard()->login($user = $this->create($request->all()));
 
-        return $this->makeTokenResponse($token, $user);
+        return $this->refreshTokenResponse($token, $user);
 
     }
 

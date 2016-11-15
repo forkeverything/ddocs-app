@@ -35,4 +35,5 @@ trait JWTHandler
             'error' => 'token_revoked'
         ], 401);
     }
+
 }
