@@ -8,9 +8,6 @@
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ asset('/images/icons/favicon.png') }}">
 
-<!-- CSRF Token -->
-<meta name="csrf-token" content="{{ csrf_token() }}">
-
 <!-- Scripts -->
 <script>
     window.awsURL = "{{awsURL()}}";

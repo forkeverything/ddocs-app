@@ -108,38 +108,77 @@ module.exports = {
         router.push('/login');
     },
 
-    // Get our refresh token from local storage
+    // Get our refresh token
     _getRefreshToken(){
-        let refreshToken = localStorage.getItem('ddocs_refresh_token');
+        let refreshToken = Cookies.get('ddocs_refresh_token');
         return refreshToken !== 'undefined' ? refreshToken : null;
+    },
+
+    /**
+     * Return root domain
+     *
+     * @returns {string}
+     * @private
+     */
+    _getRootDomain() {
+        let parts = location.hostname.split('.');
+        parts.shift();
+        return parts.join('.');
+    },
+
+    /**
+     * Sets a cookie to be read by client.
+     *
+     * @param name
+     * @param value
+     * @private
+     */
+    _setCookie(name, value) {
+        Cookies.set(name, value, {
+            expires: 14,
+            path: '/',
+            domain: this._getRootDomain()
+        });
+    },
+
+    /**
+     * Delete client cookie
+     *
+     * @param name
+     * @private
+     */
+    _removeCookie(name) {
+        Cookies.remove(name, {
+            domain: this._getRootDomain()
+        });
     },
 
     // Store our long-life refresh token. Refresh tokens are
     // used to renew auth tokens.
     _storeRefreshToken(token) {
-        localStorage.setItem('ddocs_refresh_token', token);
+        this._setCookie('ddocs_refresh_token', token);
     },
 
     // Remove refresh token.
     _removeRefreshToken(){
-        localStorage.removeItem('ddocs_refresh_token');
+        Cookies.remove('ddocs_refresh_token');
     },
 
     // Get auth token
     _getAuthToken() {
-        let authToken = localStorage.getItem('ddocs_auth_token');
+        let authToken = Cookies.get('ddocs_auth_token');
         return authToken !== 'undefined' ? authToken : null;
     },
 
-    // Store auth token in local storage
+    // Store auth token
     _storeAuthToken(token){
         // store a auth token so it'll be read on refresh
-        localStorage.setItem('ddocs_auth_token', token);
+        this._setCookie('ddocs_auth_token', token);
     },
 
     // Remove our auth token
     _removeAuthToken(){
-        localStorage.removeItem('ddocs_auth_token');
+        Cookies.remove('ddocs_auth_token');
     },
 
     // Set token in request headers for authentication
