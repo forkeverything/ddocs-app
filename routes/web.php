@@ -14,7 +14,7 @@
 
 // Authentication
 Route::post('/login', 'Auth\LoginController@login');
-Route::post('/refresh_token', 'Auth\Logincontroller@refreshToken');
+Route::post('/refresh_token', 'Auth\LoginController@refreshToken');
 Route::post('/logout', 'Auth\LoginController@logout');
 Route::post('/register', 'Auth\RegisterController@register');
 Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
