@@ -5,6 +5,7 @@ namespace App;
 use App\Auth\AuthenticatableUser;
 use App\Events\CreatedUserFromEmailWebhook;
 use App\Exceptions\NotEnoughCredits;
+use App\Notifications\ResetPasswordNotification;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Event;
@@ -235,6 +236,16 @@ class User extends AuthenticatableUser
     public static function findByEmail($email)
     {
         return static::where('email', $email)->first();
+    }
+
+    /**
+     * Override to use our own custom Notification.
+     *
+     * @param string $token
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
 }
 

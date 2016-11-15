@@ -20,13 +20,13 @@
 $style = [
     /* Layout ------------------------------ */
 
-    'body' => 'margin: 0; padding: 0; width: 100%; background-color: #F2F4F6;',
-    'email-wrapper' => 'width: 100%; margin: 0; padding: 0; background-color: #F2F4F6;',
+    'body' => 'margin: 0; padding: 0; width: 100%; background-color: #F7F7F7;',
+    'email-wrapper' => 'width: 100%; margin: 0; padding: 0; background-color: #F7F7F7;',
 
     /* Masthead ----------------------- */
 
     'email-masthead' => 'padding: 25px 0; text-align: center;',
-    'email-masthead_name' => 'font-size: 16px; font-weight: bold; color: #2F3133; text-decoration: none; text-shadow: 0 1px 0 white;',
+    'email-masthead_logo' => 'width: 125px; display: inline-block;',
 
     'email-body' => 'width: 100%; margin: 0; padding: 0; border-top: 1px solid #EDEFF2; border-bottom: 1px solid #EDEFF2; background-color: #FFF;',
     'email-body_inner' => 'width: auto; max-width: 570px; margin: 0 auto; padding: 0;',
@@ -70,8 +70,10 @@ $style = [
                     <!-- Logo -->
                     <tr>
                         <td style="{{ $style['email-masthead'] }}">
-                            <a style="{{ $fontFamily }} {{ $style['email-masthead_name'] }}" href="{{ url('/') }}" target="_blank">
-                                {{ config('app.name') }}
+                            <a style="{{ $fontFamily }} {{ $style['email-masthead_logo'] }}" href="{{ url('/') }}" target="_blank">
+                                <img src="{{ env('APP_URL') }}/images/logo/logo.svg"
+                                     alt="Image Logo" class="header-logo"
+                                     style="-ms-interpolation-mode:bicubic;clear:both;display:block;max-width:100%;outline:0;text-decoration:none;width:100%">
                             </a>
                         </td>
                     </tr>
@@ -136,7 +138,9 @@ $style = [
 
                                         <!-- Salutation -->
                                         <p style="{{ $style['paragraph'] }}">
-                                            Regards,<br>{{ config('app.name') }}
+                                            Best,
+                                            <br>
+                                            ddocs team
                                         </p>
 
                                         <!-- Sub Copy -->
@@ -170,6 +174,9 @@ $style = [
                             <table style="{{ $style['email-footer'] }}" align="center" width="570" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td style="{{ $fontFamily }} {{ $style['email-footer_cell'] }}">
+                                        <p>
+                                            If you have any questions, you can reply to this email and it'll come straight to us!
+                                        </p>
                                         <p style="{{ $style['paragraph-sub'] }}">
                                             &copy; {{ date('Y') }}
                                             <a style="{{ $style['anchor'] }}" href="{{ url('/') }}" target="_blank">{{ config('app.name') }}</a>.

@@ -20,7 +20,7 @@ module.exports = [
     },
     {
         path: '/password/reset/:token',
-        component: { template: '<h1>show reset form</h1>' },
+        component: require('./components/auth/ResetForm.vue'),
         meta: { guestOnly: true }
     },
     {
