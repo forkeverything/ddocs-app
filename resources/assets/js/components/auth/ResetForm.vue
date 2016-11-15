@@ -31,7 +31,7 @@
                                         'has-error': formErrors.password
                                      }"
                     >
-                        <label for="field-password" class="control-label">Password</label>
+                        <label for="field-password" class="control-label">New Password</label>
 
                         <input id="field-password"
                                type="password"
@@ -49,7 +49,7 @@
                                      }"
                     >
                         <label for="field-password-confirm" class="control-label">
-                            Confirm Password
+                            Confirm New Password
                         </label>
                         <input id="field-password-confirm"
                                type="password"
