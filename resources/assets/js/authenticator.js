@@ -161,7 +161,7 @@ module.exports = {
 
     // Remove refresh token.
     _removeRefreshToken(){
-        Cookies.remove('ddocs_refresh_token');
+        this._removeCookie('ddocs_refresh_token');
     },
 
     // Get auth token
@@ -178,7 +178,7 @@ module.exports = {
 
     // Remove our auth token
     _removeAuthToken(){
-        Cookies.remove('ddocs_auth_token');
+        this._removeCookie('ddocs_auth_token');
     },
 
     // Set token in request headers for authentication
