@@ -11,12 +11,19 @@ use App\Http\Requests;
 class InboundMailController extends Controller
 {
 
-    public function handle(Request $request)
+    /**
+     * Handle all inbound emails POST requests.
+     *
+     * @param Request $request
+     * @return string
+     */
+    public function postHandle(Request $request)
     {
         switch ($request["OriginalRecipient"]) {
             case env('MAIL_CREATE_CHECKLIST_ADDRESS'):
                 return $this->newChecklistFromEmailWebhook($request);
             default:
+                return 'Received Email';
                 break;
         }
     }
