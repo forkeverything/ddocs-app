@@ -302,10 +302,10 @@
                                             <tr style="padding:0;text-align:left;vertical-align:top">
                                                 <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
                                                     <center data-parsed="" style="min-width:242px;width:100%"><img
-                                                                src="https://filescollector.com/images/logo/fc_logo_v1.svg"
+                                                                src="{{ env('APP_URL') }}/images/logo/logo.svg"
                                                                 alt="Image Logo" class="header-logo float-center"
                                                                 align="center"
-                                                                style="-ms-interpolation-mode:bicubic;Margin:0 auto;clear:both;display:block;float:none;margin:0 auto;max-width:100%;outline:0;text-align:center;text-decoration:none;width:auto">
+                                                                style="-ms-interpolation-mode:bicubic;Margin:0 auto;clear:both;display:block;float:none;margin:0 auto;max-width:100%;outline:0;text-align:center;text-decoration:none;width:125px">
                                                     </center>
                                                 </th>
                                             </tr>

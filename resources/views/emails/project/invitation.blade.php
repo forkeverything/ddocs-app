@@ -300,11 +300,7 @@
                                         style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left:16px;padding-right:8px;text-align:left;width:274px">
                                         <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
                                             <tr style="padding:0;text-align:left;vertical-align:top">
-                                                <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
-                                                    <img src="https://filescollector.com/images/logo/fc_logo_v1.svg"
-                                                         alt="Image Logo" class="header-logo"
-                                                         style="-ms-interpolation-mode:bicubic;clear:both;display:block;max-width:100%;outline:0;text-decoration:none;width:auto">
-                                                </th>
+                                                <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center">                                                     <img src="{{ env('APP_URL') }}/images/logo/logo.svg"                                                          alt="Image Logo" class="header-logo"                                                          style="-ms-interpolation-mode:bicubic;clear:both;display:inline-block;max-width:100%;outline:0;text-decoration:none;width:125px">                                                 </th>
                                             </tr>
                                         </table>
                                     </th>

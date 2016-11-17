@@ -296,14 +296,17 @@
                                    style="border-bottom:1px solid #D2D2D2;border-collapse:collapse;border-spacing:0;display:table;padding:0;position:relative;text-align:left;vertical-align:top;width:100%">
                                 <tbody>
                                 <tr style="padding:0;text-align:left;vertical-align:top">
-                                    <th class="small-7 large-6 columns first"
-                                        style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left:16px;padding-right:8px;text-align:left;width:274px">
+                                    <th class="large-offset-3 small-offset-3 small-6 large-6 columns first"
+                                        style="Margin:0 auto;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0 auto;padding:0;padding-bottom:16px;padding-left:161px;padding-right:8px;text-align:left;width:274px">
                                         <table style="border-collapse:collapse;border-spacing:0;padding:0;text-align:left;vertical-align:top;width:100%">
                                             <tr style="padding:0;text-align:left;vertical-align:top">
                                                 <th style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left">
-                                                    <img src="https://filescollector.com/images/logo/fc_logo_v1.svg"
-                                                         alt="Image Logo" class="header-logo"
-                                                         style="-ms-interpolation-mode:bicubic;clear:both;display:block;max-width:100%;outline:0;text-decoration:none;width:auto">
+                                                    <center data-parsed="" style="min-width:242px;width:100%"><img
+                                                                src="{{ env('APP_URL') }}/images/logo/logo.svg"
+                                                                alt="Image Logo" class="header-logo float-center"
+                                                                align="center"
+                                                                style="-ms-interpolation-mode:bicubic;Margin:0 auto;clear:both;display:block;float:none;margin:0 auto;max-width:100%;outline:0;text-align:center;text-decoration:none;width:125px">
+                                                    </center>
                                                 </th>
                                             </tr>
                                         </table>
@@ -344,13 +347,16 @@
                                                     <h2 style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:30px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
                                                         {{ $checklist->name }}</h2><br>
                                                     <p style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left">
-                                                        {{ $checklist->user->name }} is still expecting some files from you for the checklist
+                                                        {{ $checklist->user->name }} is still expecting some files from
+                                                        you for the checklist
                                                         above.</p><br><h6
                                                             style="Margin:0;Margin-bottom:10px;color:inherit;font-family:Helvetica,Arial,sans-serif;font-size:18px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:left;word-wrap:normal">
                                                         <strong>Required Files</strong></h6>
                                                     <ul>
                                                         @foreach($lateFiles as $files)
-                                                            <li>{{ $files->name }} [{{ $files->due->format('d M Y') }}]</li>
+                                                            <li>{{ $files->name }} [{{ $files->due->format('d M Y') }}
+                                                                ]
+                                                            </li>
                                                         @endforeach
                                                     </ul>
                                                     <br>

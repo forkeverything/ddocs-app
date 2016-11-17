@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Checklist;
+use App\File;
 use App\Jobs\DeleteEmailTestUser;
 use App\Mail\ChecklistComplete;
 use App\Mail\FileChangesRequired;
@@ -160,22 +161,29 @@ class SendTestEmails extends Command
     protected function sendFileRequestEmails()
     {
 
+        $file = factory(File::class)->create();
+
         $fileRequest =  $this->checklist->requestedFiles()->create([
             'name' => 'Super important file',
             'description' => 'not much to say here',
-            'due' => '01/06/2017',
+            'due' => '2017-06-01 00:00:00',
             'required' => 1,
-            'checklist_id' => $this->checklist->id
+            'checklist_id' => $this->checklist->id,
+            'file_id' => $file->id
         ]);
 
         $fileRequest->uploads()->create([
             'path' => 'foo/bar.jpg',
+            'file_name' => $file->name,
+            'size' => 44444,
             'rejected' => 1,
             'rejected_reason' => 'Not good enough'
         ]);
 
 
         Mail::to($this->recipient->email)->send(new FileChangesRequired($this->recipient, $fileRequest));
+
+        $fileRequest->fullDelete();
 
         $this->sentEmails ++;
         $this->info('Finished File Request Emails');
