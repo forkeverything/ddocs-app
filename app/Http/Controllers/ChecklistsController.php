@@ -67,30 +67,6 @@ class ChecklistsController extends Controller
     }
 
     /**
-     * POST Email Webhook (via Postmark) to create a Checklist
-     * only using Email cc: address.
-     *
-     * @param Request $request
-     * @return string
-     */
-    public function postNewChecklistFromEmailWebhook(Request $request)
-    {
-        // Is it going to the right cc address: list@in.filescollector.com
-        if ($request["OriginalRecipient"] !== 'list@in.filescollector.com') return "Wrong Email Address To Create Checklist";
-
-        // If the user doesn't have an account yet
-        if (!$user = User::where('email', $request["From"])->first()) {
-            // we'll make one for him
-            $user = User::makeNewUserFromEmailWebhook($request);
-        }
-
-        ChecklistFactory::makeFromEmail($request, $user);
-
-        return "Received Create Checklist via Email Request";
-    }
-
-
-    /**
      * Checklist at given Hash
      *
      * @param $checklistHash

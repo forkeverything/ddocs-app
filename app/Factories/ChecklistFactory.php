@@ -107,7 +107,7 @@ class ChecklistFactory
         // add each CC: that is NOT inbound email
         foreach ($request["CcFull"] as $cc) {
             $email = $cc["Email"];
-            if ($email !== 'list@in.filescollector.com') array_push($recipients, $email);
+            if ($email !== env('MAIL_CREATE_CHECKLIST_ADDRESS')) array_push($recipients, $email);
         }
 
         // Build our form request manually

@@ -96,6 +96,8 @@ Route::group(['middleware' => 'api.auth'], function () {
 
 Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
 
+Route::post('inbound_mail', 'InboundMailController@postHandle');
+
 
 // Recipients
 //Route::get('/recipients/{recipient_hash}/turn_off_notifications', 'RecipientsController@getTurnOffNotifications');
