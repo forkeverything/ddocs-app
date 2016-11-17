@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Model;
  * App\FileRequest
  *
  * @property integer $id
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @property \Carbon\Carbon $due
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * @property Carbon $due
  * @property string $version
  * @property string $status
  * @property integer $checklist_id
@@ -143,7 +143,7 @@ class FileRequest extends Model
     public function setDueAttribute($value)
     {
         $value = $value ?: null;
-        $this->attributes['due'] = $value;
+        $this->attributes['due'] = Carbon::parse($value);
     }
 
     /**

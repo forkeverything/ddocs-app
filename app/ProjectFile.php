@@ -152,6 +152,18 @@ class ProjectFile extends Model
     }
 
     /**
+     * Due dates can be null.
+     *
+     * @param $value
+     */
+    public function setDueAttribute($value)
+    {
+        $value = $value ?: null;
+        $this->attributes['due'] = Carbon::parse($value);
+    }
+
+
+    /**
      * Manual DB query to return file uploads.
      *
      * @return \Illuminate\Support\Collection

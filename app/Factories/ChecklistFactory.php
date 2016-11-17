@@ -91,6 +91,7 @@ class ChecklistFactory
         $requestedFiles = [];
 
         foreach ($matches[1] as $key => $fileName) {
+
             $file = [
                 "name" => $fileName,
                 "description" => null,
@@ -159,7 +160,7 @@ class ChecklistFactory
         $factory = new static($request, $checklist->user);
 
         // Track down or create new File
-        if (! $fileModel = $factory->findFileModel($request->name, $factory->user->id)) {
+        if (!$fileModel = $factory->findFileModel($request->name, $factory->user->id)) {
             $fileModel = $factory->createFileModel($request->name, $request->description, $factory->user->id);
         };
 
