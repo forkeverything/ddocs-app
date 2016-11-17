@@ -8,6 +8,7 @@
                 class="btn"
                 :class="{'filled': date}"
                 @click="pickDate"
+                @keydown.delete="removeDate($event)"
         >
             <i class="fa fa-calendar" v-show="! buttonOnly || keepButton || ! date"></i>
             <smart-date v-show="buttonOnly && date" :date="date"></smart-date>

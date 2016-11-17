@@ -39,6 +39,7 @@
     button {
       background: transparent;
       color: $input-color-placeholder;
+      position: absolute;
 
       &.filled {
         color: $input-color;
@@ -46,9 +47,8 @@
     }
     input {
       opacity: 0;
-      position: absolute;
-      top: 5px;
-      left: 0;
+      visibility: hidden;
+      position: relative;
       z-index: -1;
     }
   }
