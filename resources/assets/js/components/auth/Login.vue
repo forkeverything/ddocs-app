@@ -2,7 +2,7 @@
     <div id="login" class="container">
         <div class="row">
             <div id="login-body" class="col-sm-6 col-sm-offset-3">
-                <h2 class="text-center">Login</h2>
+                <h2 class="text-center">Log in</h2>
 
                 <form-errors @got-error="gotError" stealth="true"></form-errors>
 
