@@ -1,6 +1,7 @@
 <template>
     <div class="project-folder-body">
         <div class="folder-header">
+            <i class="fa fa-bars drag-handle"></i>
             <div class="folder-name">
                 <editable-text-field :value="folder.name" @on-change="updateName" :clipped="true"></editable-text-field>
             </div>
@@ -21,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="files-list" :class="{ empty: emptyFolder }" :data-id="folder.id">
+        <div class="files-list fancy-scrollbar" :class="{ empty: emptyFolder }" :data-id="folder.id">
             <project-file v-for="(file, fileIndex) in folder.files"
                           :key="file.id"
                           :index="fileIndex"

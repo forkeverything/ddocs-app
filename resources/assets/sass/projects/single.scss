@@ -146,6 +146,21 @@
     position: relative;
     overflow-x: scroll;
     overflow-y: hidden;
+    margin: 0 0 10px;
+
+    &.fancy-scrollbar {
+
+      &::-webkit-scrollbar {
+        width: 13px;
+        height: 13px;
+      }
+
+      &::-webkit-scrollbar-button {
+        display: block;
+        height: 5px;
+        width: 5px;
+      }
+    }
 
     #project-board {
       position: absolute;
@@ -153,7 +168,7 @@
       left: 0;
       white-space: nowrap;
       height: 100%;
-      padding-bottom: 15px;
+      padding-bottom: 10px;
 
       .folder-wrap {
         width: 300px;
@@ -202,8 +217,15 @@
 
   .folder-header {
     display: flex;
-    flex: 1;
+    flex: 0 0 auto;
     min-height: 42px;
+    align-items: center;
+
+    .drag-handle {
+      font-size: 1.25em;
+      padding: 2px 3px 0 13px;
+      color: $dark-grey;
+    }
 
     .folder-name {
       flex: 1;
@@ -277,13 +299,13 @@
   }
 
   .files-list {
-    flex: 1;
+    flex: 1 1 auto;
     overflow-y: auto;
     overflow-x: hidden;
   }
 
   .add-project-file {
-    flex: 1;
+    flex: 0 0 auto;
     min-height: 35px;
 
     .placeholder {

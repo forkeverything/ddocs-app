@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <div class="board-wrap">
+        <div class="board-wrap fancy-scrollbar">
             <div id="project-board" :class="{ dragging: dragging }">
                 <template v-for="(folder, index) in project.folders">
                     <div class="project-folder folder-wrap" :data-id="folder.id" :key="folder.id">
@@ -151,6 +151,8 @@
                 this.folderDrake = dragula([document.querySelector('#project-board')], {
                     moves: (el, source, handle, sibling) => {
 
+                        return handle.classList.contains('files-list') || handle.classList.contains('folder-header') || handle.classList.contains('drag-handle');
+
                         let draggingProjectFile = false;
 
                         if (handle.classList.contains('project-file')) draggingProjectFile = true;
@@ -162,7 +164,7 @@
                             }
                         }
 
-                        return !el.classList.contains('add-folder') && !draggingProjectFile;
+                        return ! el.classList.contains('add-folder') && ! draggingProjectFile;
                     },
                     accepts: (el, target, source, sibling) => {
                         return sibling;

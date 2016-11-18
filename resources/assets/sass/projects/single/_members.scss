@@ -16,9 +16,8 @@
       outline: 0;
       width: 45px;
       height: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
+      display: inline-block;
       border-radius: 50%;
       background: #fff;
       border: 3px solid $midnight-mid;
