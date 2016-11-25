@@ -77,7 +77,7 @@ class ChecklistFactory
      *
      * @param Request $request
      * @param User $user
-     * @return Checklist
+     * @return Checklist|void
      */
     public static function makeFromEmail(Request $request, User $user)
     {
@@ -110,6 +110,11 @@ class ChecklistFactory
             $email = $cc["Email"];
             if ($email !== env('MAIL_CREATE_CHECKLIST_ADDRESS')) array_push($recipients, $email);
         }
+
+        // Remove inbound email address to avoid loop
+        $index = array_search(env('MAIL_CREATE_CHECKLIST_ADDRESS'),$recipients);
+        if($index !== false) unset($recipients[$index]);
+        if(! count($recipients) > 0) return;
 
         // Build our form request manually
         $newChecklistRequest = new NewChecklistRequest([
