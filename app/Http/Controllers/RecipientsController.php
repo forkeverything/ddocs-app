@@ -15,9 +15,12 @@ class RecipientsController extends Controller
      * @param $recipientHash
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getTurnOffNotifications($recipientHash)
+    public function postTurnOffNotifications($recipientHash)
     {
-        if($recipient = Recipient::findByHash($recipientHash)) $recipient->turnOffNotifications();
-        return view('recipients.turned-off-notifications', compact('recipient'));
+        if($recipient = Recipient::findByHash($recipientHash))  {
+            $recipient->turnOffNotifications();
+            return response("Turned off notifications");
+        }
+        return response("Couldn't find recipient", 400);
     }
 }

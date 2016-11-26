@@ -6,32 +6,32 @@ module.exports = [
     {
         path: '/login',
         component: require('./components/auth/Login.vue'),
-        meta: { guestOnly: true }
+        meta: {guestOnly: true}
     },
     {
         path: '/register',
         component: require('./components/auth/Register.vue'),
-        meta: { guestOnly: true }
+        meta: {guestOnly: true}
     },
     {
         path: '/password/reset',
         component: require('./components/auth/SendResetLink.vue'),
-        meta: { guestOnly: true }
+        meta: {guestOnly: true}
     },
     {
         path: '/password/reset/:token',
         component: require('./components/auth/ResetForm.vue'),
-        meta: { guestOnly: true }
+        meta: {guestOnly: true}
     },
     {
         path: '/checklists',
         component: require('./components/checklist/Collection.vue'),
-        meta: { requiresAuth: true }
+        meta: {requiresAuth: true}
     },
     {
         path: '/checklists/make',
         component: require('./components/checklist/Maker.vue'),
-        meta: { requiresAuth: true }
+        meta: {requiresAuth: true}
     },
     {
         name: 'checklistSingle',
@@ -41,22 +41,26 @@ module.exports = [
     {
         path: '/projects',
         component: require('./components/projects/ProjectsList.vue'),
-        meta: { requiresAuth: true }
+        meta: {requiresAuth: true}
     },
     {
         path: '/projects/:project_id',
         component: require('./components/projects/ProjectBoard.vue'),
-        meta: { requiresAuth: true }
+        meta: {requiresAuth: true}
     },
     {
         path: '/projects/:project_id/join',
         component: require('./components/projects/JoinProject.vue'),
-        meta: { requiresAuth: true }
+        meta: {requiresAuth: true}
     },
     {
         path: '/account',
-        component:  require('./components/account/Overview.vue'),
-        meta: { requiresAuth: true }
+        component: require('./components/account/Overview.vue'),
+        meta: {requiresAuth: true}
+    },
+    {
+        path: '/recipients/:recipient_hash/turn_off_notifications',
+        component: require('./components/recipients/TurnOffNotifications.vue'),
     },
     {
         path: '*',
