@@ -13,7 +13,7 @@ use App\Events\UserHasRunOutOfCredits;
 use App\Listeners\SendChecklistCompleteNotification;
 use App\Listeners\EmailChecklistOwnerFreeCreditsFromRecipient;
 use App\Listeners\SendFileChangesRequiredNotification;
-use App\Listeners\EmailNotEnoughCreditsToMakeListNotification;
+use App\Listeners\SendNotEnoughCreditsNotification;
 use App\Listeners\SendNewChecklistNotification;
 use App\Listeners\EmailWelcomeMessage;
 use App\Listeners\EmailWelcomeMessageAndPassword;
@@ -44,7 +44,7 @@ class EventServiceProvider extends ServiceProvider
             SendFileChangesRequiredNotification::class
         ],
         UserHasRunOutOfCredits::class => [
-            EmailNotEnoughCreditsToMakeListNotification::class
+            SendNotEnoughCreditsNotification::class
         ],
         RecipientClaimedInvitation::class => [
             EmailChecklistOwnerFreeCreditsFromRecipient::class
