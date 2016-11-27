@@ -8,7 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 
-class EmailChecklistCompleteNotification
+class SendChecklistCompleteNotification
 {
     /**
      * Create the event listener.
@@ -28,6 +28,6 @@ class EmailChecklistCompleteNotification
      */
     public function handle(ChecklistCompleted $event)
     {
-        Mail::to($event->checklist->user)->send(new ChecklistComplete($event->checklist));
+        $event->checklist->user->sendChecklistCompleteNotification($event->checklist);
     }
 }

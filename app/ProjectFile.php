@@ -159,7 +159,8 @@ class ProjectFile extends Model
     public function setDueAttribute($value)
     {
         $value = $value ?: null;
-        $this->attributes['due'] = Carbon::parse($value);
+        if(is_string($value)) $value = Carbon::parse($value);
+        $this->attributes['due'] = $value;
     }
 
 

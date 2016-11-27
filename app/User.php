@@ -5,6 +5,7 @@ namespace App;
 use App\Auth\AuthenticatableUser;
 use App\Events\CreatedUserFromEmailWebhook;
 use App\Exceptions\NotEnoughCredits;
+use App\Notifications\ChecklistCompleteNotification;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
@@ -246,6 +247,16 @@ class User extends AuthenticatableUser
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    /**
+     * Checklist Complete Notification
+     *
+     * @param Checklist $checklist
+     */
+    public function sendChecklistCompleteNotification(Checklist $checklist)
+    {
+        $this->notify(new ChecklistCompleteNotification($checklist));
     }
 }
 

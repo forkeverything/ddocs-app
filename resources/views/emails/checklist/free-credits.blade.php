@@ -346,9 +346,8 @@
                                                         You got 10 free credits!</h2><br>
                                                     <p class="text-center"
                                                        style="Margin:0;Margin-bottom:10px;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;margin-bottom:10px;padding:0;text-align:center">{{ $recipient->name }}
-                                                        ({{ $recipient->email }}) has signed up and earned you both
-                                                        bonus credits. It's our way of saying thanks for spreading the
-                                                        word.</p></th>
+                                                        ({{ $recipient->email }}) has signed up and scored you both
+                                                        bonus credits. It's our way of saying thanks for sharing the love.</p></th>
                                                 <th class="expander"
                                                     style="Margin:0;color:#0a0a0a;font-family:Helvetica,Arial,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;padding:0!important;text-align:left;visibility:hidden;width:0"></th>
                                             </tr>
