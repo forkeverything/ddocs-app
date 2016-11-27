@@ -49,6 +49,6 @@ class ResetPasswordNotification extends Notification
             ->subject('Reset Password')
             ->line("We've received a request to reset your account password.")
             ->action('Reset Password', url('password/reset', $this->token))
-            ->line("If you didn't request a reset, you don't have to do anything for now but feel free to let us know if you want us to check up on your account.");
+            ->line("If you didn't request a reset, you don't have to do anything for now but let us know if you want us to check up on your account.");
     }
 }
