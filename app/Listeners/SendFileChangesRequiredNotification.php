@@ -3,13 +3,16 @@
 namespace App\Listeners;
 
 use App\Events\FileWasRejected;
-use App\Mail\FileChangesRequired;
+use App\Notifications\FileChangesRequiredNotification;
+use App\Utilities\Traits\SendsRecipientNotifications;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 
-class EmailFileRejectedNotification
+class SendFileChangesRequiredNotification
 {
+    use SendsRecipientNotifications;
+
     /**
      * Create the event listener.
      *
@@ -29,7 +32,10 @@ class EmailFileRejectedNotification
     public function handle(FileWasRejected $event)
     {
         foreach ($event->fileRequest->checklist->recipients as $recipient) {
-            Mail::to($recipient->email)->send(new FileChangesRequired($recipient, $event->fileRequest));
+            $target = $recipient;
+            $this->attemptLinkRecipientToUser($recipient);
+            if($registeredUser = $recipient->user) $target = $registeredUser;
+            $target->notify(new FileChangesRequiredNotification($recipient, $event->fileRequest));
         }
     }
 }

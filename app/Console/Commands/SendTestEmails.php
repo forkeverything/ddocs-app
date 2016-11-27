@@ -5,8 +5,6 @@ namespace App\Console\Commands;
 use App\Checklist;
 use App\File;
 use App\Jobs\DeleteEmailTestUser;
-use App\Mail\ChecklistComplete;
-use App\Mail\FileChangesRequired;
 use App\Mail\FreeCreditsReceived;
 use App\Mail\LateFilesReminder;
 use App\Mail\NewChecklist;
