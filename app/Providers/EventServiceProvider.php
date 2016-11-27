@@ -14,7 +14,7 @@ use App\Listeners\SendChecklistCompleteNotification;
 use App\Listeners\EmailChecklistOwnerFreeCreditsFromRecipient;
 use App\Listeners\EmailFileRejectedNotification;
 use App\Listeners\EmailNotEnoughCreditsToMakeListNotification;
-use App\Listeners\EmailRecipientOfNewChecklist;
+use App\Listeners\SendNewChecklistNotification;
 use App\Listeners\EmailWelcomeMessage;
 use App\Listeners\EmailWelcomeMessageAndPassword;
 use Illuminate\Support\Facades\Event;
@@ -32,7 +32,7 @@ class EventServiceProvider extends ServiceProvider
             EmailWelcomeMessage::class
         ],
         ChecklistCreated::class => [
-            EmailRecipientOfNewChecklist::class
+            SendNewChecklistNotification::class
         ],
         FileWasUploaded::class => [
             // Do something

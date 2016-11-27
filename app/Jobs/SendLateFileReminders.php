@@ -36,7 +36,7 @@ class SendLateFileReminders implements ShouldQueue
         $checklists = $this->fetchChecklistsWithLateFiles();
         foreach ($checklists as $checklist) {
             foreach($checklist->recipients as $recipient) {
-                if($recipient->receive_notifications) Mail::to($recipient->email)->send(new LateFilesReminder($recipient, $checklist));
+                if($recipient->receive_notification_emails) Mail::to($recipient->email)->send(new LateFilesReminder($recipient, $checklist));
             }
         }
     }

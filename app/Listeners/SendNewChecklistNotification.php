@@ -4,12 +4,16 @@ namespace App\Listeners;
 
 use App\Events\ChecklistCreated;
 use App\Mail\NewChecklist;
+use App\Notifications\NewChecklistNotification;
+use App\Utilities\Traits\SendsRecipientNotifications;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 
-class EmailRecipientOfNewChecklist
+class SendNewChecklistNotification
 {
+    use SendsRecipientNotifications;
+
     /**
      * Create the event listener.
      *
@@ -29,7 +33,10 @@ class EmailRecipientOfNewChecklist
     public function handle(ChecklistCreated $event)
     {
         foreach ($event->checklist->recipients as $recipient) {
-            Mail::to($recipient->email)->send(new NewChecklist($recipient, $event->checklist));
+            $target = $recipient;
+            $this->attemptLinkRecipientToUser($recipient);
+            if($registeredUser = $recipient->user) $target = $registeredUser;
+            $target->notify(new NewChecklistNotification($event->checklist, $recipient));
         }
     }
 }

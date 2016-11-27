@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\ChecklistCompleted;
 use App\Mail\ChecklistComplete;
+use App\Notifications\ChecklistCompleteNotification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
@@ -28,6 +29,6 @@ class SendChecklistCompleteNotification
      */
     public function handle(ChecklistCompleted $event)
     {
-        $event->checklist->user->sendChecklistCompleteNotification($event->checklist);
+        $event->checklist->user->notify(new ChecklistCompleteNotification($event->checklist));
     }
 }

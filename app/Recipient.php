@@ -4,6 +4,7 @@ namespace App;
 
 use App\Utilities\Traits\Hashable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use phpDocumentor\Reflection\Types\Boolean;
 
 /**
@@ -13,7 +14,7 @@ use phpDocumentor\Reflection\Types\Boolean;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property string $email
- * @property boolean $receive_notifications
+ * @property boolean $receive_notification_emails
  * @property boolean $invitation_claimed
  * @property integer $checklist_id
  * @property-read \App\Checklist $checklist
@@ -29,13 +30,14 @@ use phpDocumentor\Reflection\Types\Boolean;
  */
 class Recipient extends Model
 {
-    use Hashable;
+    use Hashable, Notifiable;
 
     protected $fillable = [
         'email',
-        'receive_notifications',
+        'receive_notification_emails',
         'invitation_claimed',
-        'checklist_id'
+        'checklist_id',
+        'user_id'
     ];
 
     /**
@@ -56,7 +58,17 @@ class Recipient extends Model
     public function turnOffNotifications()
     {
         return $this->update([
-            'receive_notifications' => 0
+            'receive_notification_emails' => 0
         ]);
+    }
+
+    /**
+     * Recipient could be linked to a registered User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
