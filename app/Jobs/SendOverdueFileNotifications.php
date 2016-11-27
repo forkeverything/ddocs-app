@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use App\Checklist;
-use App\Mail\LateFilesReminder;
 use App\Notifications\OverdueFilesNotification;
 use App\Utilities\Traits\SendsRecipientNotifications;
 use Carbon\Carbon;
@@ -14,7 +13,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
-class SendLateFileReminders implements ShouldQueue
+class SendOverdueFileNotifications implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels, SendsRecipientNotifications;
 

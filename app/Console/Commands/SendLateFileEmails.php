@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Jobs\SendLateFileReminders;
+use App\Jobs\SendOverdueFileNotifications;
 use Illuminate\Console\Command;
 
 class SendLateFileEmails extends Command
@@ -38,6 +38,6 @@ class SendLateFileEmails extends Command
      */
     public function handle()
     {
-        dispatch(new SendLateFileReminders);
+        dispatch(new SendOverdueFileNotifications);
     }
 }
