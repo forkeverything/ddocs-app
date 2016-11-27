@@ -9,6 +9,7 @@ use App\Http\Requests\AddProjectFileRequest;
 use App\Http\Requests\CreateProjectFolderRequest;
 use App\Http\Requests\SaveProjectRequest;
 use App\Mail\ProjectMemberInvitation;
+use App\Notifications\ProjectInviteNotification;
 use App\Project;
 use App\ProjectFile;
 use App\ProjectFolder;
@@ -108,7 +109,8 @@ class ProjectsController extends Controller
         };
 
         $project->createInvitation($email);
-        Mail::to($email)->send(new ProjectMemberInvitation(Auth::user(), $project));
+
+        $user->notify(new ProjectInviteNotification($project, Auth::user()));
         return response("Invitation sent.");
     }
 
