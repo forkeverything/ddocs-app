@@ -11,7 +11,7 @@ use App\Events\NewUserSignedUp;
 use App\Events\RecipientClaimedInvitation;
 use App\Events\UserHasRunOutOfCredits;
 use App\Listeners\SendChecklistCompleteNotification;
-use App\Listeners\EmailChecklistOwnerFreeCreditsFromRecipient;
+use App\Listeners\SendReceivedFreeCreditsNotification;
 use App\Listeners\SendFileChangesRequiredNotification;
 use App\Listeners\SendNotEnoughCreditsNotification;
 use App\Listeners\SendNewChecklistNotification;
@@ -47,7 +47,7 @@ class EventServiceProvider extends ServiceProvider
             SendNotEnoughCreditsNotification::class
         ],
         RecipientClaimedInvitation::class => [
-            EmailChecklistOwnerFreeCreditsFromRecipient::class
+            SendReceivedFreeCreditsNotification::class
         ],
         CreatedUserFromEmailWebhook::class => [
             EmailWelcomeMessageAndPassword::class
