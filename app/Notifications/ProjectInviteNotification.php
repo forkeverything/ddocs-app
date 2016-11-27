@@ -52,11 +52,13 @@ class ProjectInviteNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        $acceptLink = env('APP_URL') . '/projects/' . $this->project->id . '/join';
+
         return (new MailMessage)
             ->level('success')
             ->subject("Project Invitation - {$this->project->name}")
             ->line("{$this->inviter->name}({$this->inviter->email}) has invited you to upload files to a project.")
-            ->action('Accept Invitation', 'https://laravel.com')
+            ->action('Accept Invitation', $acceptLink)
             ->line('Joining a project requires you to create an account but don\'t worry, like other good things - it\'s free!');
     }
 
