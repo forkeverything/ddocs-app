@@ -13,7 +13,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
-class SendOverdueFileNotifications implements ShouldQueue
+class SendOverdueFilesNotifications implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels, SendsRecipientNotifications;
 

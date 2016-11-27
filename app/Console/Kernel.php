@@ -5,7 +5,7 @@ namespace App\Console;
 use App\Console\Commands\SendLateFileEmails;
 use App\Console\Commands\SendTestEmails;
 use App\Jobs\ReplenishUserCredits;
-use App\Jobs\SendOverdueFileNotifications;
+use App\Jobs\SendOverdueFilesNotifications;
 use App\Jobs\SendUpcomingDueFilesReminders;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
         // Let recipients know on Monday night that they have late files. Because generally
         // people are more productive on Tues mornings.
         $schedule->call(function () {
-            dispatch(new SendOverdueFileNotifications);
+            dispatch(new SendOverdueFilesNotifications);
         })->weekly()->mondays()->at('21:00');
 
         // Every morning, send upcoming file reminders at 06:00
