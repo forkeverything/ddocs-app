@@ -4,6 +4,8 @@ namespace App\Jobs;
 
 use App\Checklist;
 use App\Mail\LateFilesReminder;
+use App\Notifications\OverdueFilesNotification;
+use App\Utilities\Traits\SendsRecipientNotifications;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\Mail;
 
 class SendLateFileReminders implements ShouldQueue
 {
-    use InteractsWithQueue, Queueable, SerializesModels;
+    use InteractsWithQueue, Queueable, SerializesModels, SendsRecipientNotifications;
 
     /**
      * Create a new job instance.
@@ -36,7 +38,10 @@ class SendLateFileReminders implements ShouldQueue
         $checklists = $this->fetchChecklistsWithLateFiles();
         foreach ($checklists as $checklist) {
             foreach($checklist->recipients as $recipient) {
-                if($recipient->receive_notification_emails) Mail::to($recipient->email)->send(new LateFilesReminder($recipient, $checklist));
+                $target = $recipient;
+                $this->attemptLinkRecipientToUser($recipient);
+                if($registeredUser = $recipient->user) $target = $registeredUser;
+                $target->notify(new OverdueFilesNotification($recipient, $checklist));
             }
         }
     }
