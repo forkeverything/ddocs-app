@@ -6,7 +6,7 @@ use App\Console\Commands\SendLateFileEmails;
 use App\Console\Commands\SendTestEmails;
 use App\Jobs\ReplenishUserCredits;
 use App\Jobs\SendOverdueFilesNotifications;
-use App\Jobs\SendUpcomingDueFilesReminders;
+use App\Jobs\SendUpcomingDueFilesNotifications;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -41,7 +41,7 @@ class Kernel extends ConsoleKernel
 
         // Every morning, send upcoming file reminders at 06:00
         $schedule->call(function () {
-            dispatch(new SendUpcomingDueFilesReminders);
+            dispatch(new SendUpcomingDueFilesNotifications);
         })->dailyAt('06:00');
 
         // Replenish user credits to 5 / month

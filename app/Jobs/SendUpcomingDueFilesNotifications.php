@@ -4,6 +4,8 @@ namespace App\Jobs;
 
 use App\Checklist;
 use App\Mail\UpcomingFilesReminder;
+use App\Notifications\UpcomingFilesNotification;
+use App\Utilities\Traits\SendsRecipientNotifications;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -12,9 +14,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
-class SendUpcomingDueFilesReminders implements ShouldQueue
+class SendUpcomingDueFilesNotifications implements ShouldQueue
 {
-    use InteractsWithQueue, Queueable, SerializesModels;
+    use InteractsWithQueue, Queueable, SerializesModels, SendsRecipientNotifications;
 
     /**
      * Create a new job instance.
@@ -36,7 +38,10 @@ class SendUpcomingDueFilesReminders implements ShouldQueue
         $checklists = $this->fetchChecklistsWithFilesDueIn3Days();
         foreach ($checklists as $checklist) {
             foreach($checklist->recipients as $recipient) {
-                if($recipient->receive_notification_emails) Mail::to($recipient->email)->send(new UpcomingFilesReminder($recipient, $checklist));
+                $target = $recipient;
+                $this->attemptLinkRecipientToUser($recipient);
+                if($registeredUser = $recipient->user) $target = $registeredUser;
+                $target->notify(new UpcomingFilesNotification($recipient, $checklist));
             }
         }
     }
@@ -53,7 +58,7 @@ class SendUpcomingDueFilesReminders implements ShouldQueue
             $query->select(DB::raw(1))
                   ->from('file_requests')
                   ->where('status', '!=', 'received')
-                  ->whereDate('due', '=', Carbon::now()->addDays(4)->format('Y-m-d'))
+                  ->whereDate('due', '=', Carbon::now()->addDays(3)->format('Y-m-d'))
                   ->whereRaw('checklist_id = checklists.id');
         })->get()->unique();
     }
