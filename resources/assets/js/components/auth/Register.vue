@@ -95,7 +95,6 @@
         name: 'Register',
         data: function () {
             return {
-                inviteKey: '',
                 name: '',
                 email: '',
                 password: '',
@@ -110,7 +109,7 @@
         methods: {
             register() {
                 this.$http.post('/register', {
-                    invite_key: this.inviteKey,
+                    invite_key: this.$route.query.invite_key,
                     name: this.name,
                     email: this.email,
                     password: this.password,

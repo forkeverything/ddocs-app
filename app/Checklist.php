@@ -175,19 +175,20 @@ class Checklist extends Model
      * Recipient (User) claim invite for this Checklist to get
      * free credits for recipient and user that made checklist.
      *
-     * @param User $recipient
+     * @param User $recipientUser
      * @return $this
      */
-    public function claimInvite(User $recipient)
+    public function claimInvite(User $recipientUser)
     {
-        $this->update(['invitation_claimed' => 1]);
-        $this->user->addCredits(10);
-        // Give recipient 10 including default of 5.
-        $recipient->addCredits(10);
-
-        Event::fire(new RecipientClaimedInvitation($this, $recipient));
-
-        return $this;
+        $recipient = Recipient::where('email', $recipientUser->email)
+                              ->where('checklist_id', $this->id)
+                              ->first();
+        if ($recipient && ! $recipient->invitation_claimed) {
+            $recipient->update(['invitation_claimed' => 1]);
+            $recipientUser->addCredits(10);
+            $this->user->addCredits(10);
+            Event::fire(new RecipientClaimedInvitation($this, $recipientUser));
+        }
     }
 
     /**

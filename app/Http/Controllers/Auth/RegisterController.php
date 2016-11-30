@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Auth\HandleRefreshToken;
+use App\Checklist;
+use App\Events\RecipientClaimedInvitation;
+use App\Recipient;
 use App\User;
 use Auth;
+use Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
@@ -49,7 +53,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -64,7 +68,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     protected function create(array $data)
@@ -80,7 +84,7 @@ class RegisterController extends Controller
     /**
      * Return a token instead of redirect.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return User|\Illuminate\Http\Response
      */
     public function register(Request $request)
@@ -88,6 +92,10 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         $token = $this->guard()->login($user = $this->create($request->all()));
+
+        $checklist = null;
+
+        $this->claimFreeCredits($user, $request->invite_key);
 
         return $this->refreshTokenResponse($token, $user);
 
@@ -101,7 +109,18 @@ class RegisterController extends Controller
      */
     public function putUpdateUser(Request $request)
     {
-        if(Auth::user()->update($request->all())) return response('updated user.');
+        if (Auth::user()->update($request->all())) return response('updated user.');
         return response('failed updating user', 500);
+    }
+
+    /**
+     * Claim free credits when registered from sign-up offer on checklist page.
+     *
+     * @param User $recipientUser
+     * @param $inviteKey
+     */
+    protected function claimFreeCredits(User $recipientUser, $inviteKey)
+    {
+        if ($inviteKey && $checklist = Checklist::findByHash($inviteKey)) $checklist->claimInvite($recipientUser);;
     }
 }

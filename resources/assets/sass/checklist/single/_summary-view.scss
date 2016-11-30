@@ -1,4 +1,4 @@
-#summary-view  {
+#summary-view {
   h4 {
     margin: 0 0 10px;
   }
@@ -92,6 +92,35 @@
       .icon {
         color: $dark-green;
       }
+    }
+  }
+
+  #sign-up-offer {
+
+    h3 {
+      margin-top: 45px;
+      text-align: center;
+      color: #A0A3B0;
+      font-weight: bold;
+    }
+
+    .dino-joe {
+      padding: 0 10px;
+      text-align: center;
+
+      img {
+        width: 80%;
+        max-width: 400px;
+
+        @media screen and (min-width: $screen-sm-min) {
+          width: 100%;
+        }
+      }
+    }
+
+    p {
+      text-align: center;
+      color: $text-muted;
     }
   }
 

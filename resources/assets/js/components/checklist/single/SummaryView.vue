@@ -41,6 +41,15 @@
                 <i class="fa fa-file-o icon"></i><span class="title">Files {{ checklist.meta.num_received }} / {{ checklist.meta.num_total }}</span>
             </div>
         </div>
+        <div id="sign-up-offer" v-if="checklist && ! authenticatedUser">
+            <h3>Help {{ checklist.user.name }} out!</h3>
+            <div class="dino-joe">
+                <img src="/images/dino_joe-01@0,5x.png" alt="Dinosaur pic">
+            </div>
+            <p>
+                <a :href="'/register?invite_key=' + checklist.hash">Sign up</a> for an account and score free credits for both of you.
+            </p>
+        </div>
         <button v-if="checklistBelongsToUser"
                 id="btn-delete-checklist"
                 type="button"
@@ -60,6 +69,9 @@
         },
         props: ['checklist-belongs-to-user'],
         computed: {
+            authenticatedUser(){
+                return this.$store.state.authenticatedUser;
+            },
             checklist() {
                 return this.$store.state.checklist.data;
             }

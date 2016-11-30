@@ -201,8 +201,9 @@
       a {
         margin: 0 10px;
         cursor: pointer;
-        color: $dark-grey;
+        color: $text-color;
         text-decoration: none;
+        font-weight: bold;
 
         i {
           min-width: 15px;
@@ -210,16 +211,16 @@
         }
 
         &:hover {
-          color: $text-color;
+          color: $blue;
         }
 
         &.active {
-          color: $text-color;
-          text-decoration: underline;
+          color: $blue !important;
         }
 
         &.unclickable {
-          cursor: default;
+          cursor: not-allowed;
+          color: $dark-grey;
           &:hover {
             color: $dark-grey;
           }
@@ -286,7 +287,11 @@
         }
 
         .pane-container {
-          padding: 15px 0 15px 20px;
+          padding: 15px 0;
+
+          @media screen and (min-width: $screen-sm-min) {
+            padding: 15px 0 15px 20px;
+          }
         }
       }
 
@@ -304,6 +309,7 @@
           }
           .fr-due-date {
             display: inline-block;
+            margin-left: 8px;
 
             button {
               padding: 6px;
@@ -556,12 +562,12 @@
 
       &:hover, &:focus, &.focus, &.is-selected {
         background: $extra-light-blue;
-        border: 1px solid $light-blue!important;
+        border: 1px solid $light-blue !important;
         border-radius: $border-radius-large;
         position: relative;
         outline: 0;
 
-        +.single-file-request {
+        + .single-file-request {
           border-color: transparent;
         }
 
