@@ -330,6 +330,7 @@
                         this.$store.commit('setTitle', `${ this.checklist.name }<i class="fa fa-list"></i>`);
                     });
                 }, (res) => {
+                    router.push('/error/404/checklist');
                     console.log("error fetching checklist");
                 });
             },

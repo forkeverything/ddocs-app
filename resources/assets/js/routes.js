@@ -19,14 +19,14 @@ module.exports = [
         meta: {guestOnly: true}
     },
     {
-        path: '/password/reset/:token',
-        component: require('./components/auth/ResetForm.vue'),
-        meta: {guestOnly: true}
-    },
-    {
         path: '/checklists',
         component: require('./components/checklist/Collection.vue'),
         meta: {requiresAuth: true}
+    },
+    {
+        path: '/password/reset/:token',
+        component: require('./components/auth/ResetForm.vue'),
+        meta: {guestOnly: true}
     },
     {
         path: '/checklists/make',
@@ -61,6 +61,10 @@ module.exports = [
     {
         path: '/recipients/:recipient_hash/turn_off_notifications',
         component: require('./components/recipients/TurnOffNotifications.vue'),
+    },
+    {
+        path: '/error/404/:type?',
+        component: require('./components/errors/404.vue'),
     },
     {
         path: '*',

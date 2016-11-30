@@ -10582,4 +10582,17 @@ h3 .editable-text-field .placeholder {
   #account-overview #password #form-change-password .btn {
     width: 100px; }
 
+#error {
+  padding: 3em 0; }
+  #error .code {
+    text-align: center;
+    font-size: 6em;
+    margin: 0 0 15px;
+    color: #9E9EA6; }
+    @media screen and (min-width: 768px) {
+      #error .code {
+        font-size: 8em; } }
+  #error .explanation {
+    text-align: center; }
+
 /*# sourceMappingURL=app.css.map */
