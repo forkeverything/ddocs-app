@@ -38,31 +38,37 @@ return [
     'connections' => [
 
         'main' => [
-            'salt' => 'file collecting made easy',
+            'salt' => env('SALT_MAIN'),
             'length' => '12',
             'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         ],
 
         'recipient' => [
-            'salt' => 'keeping our recipients private',
+            'salt' => env('SALT_RECIPIENT'),
             'length' => '12',
             'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         ],
 
         'checklist' => [
-            'salt' => 'super secret checklists are the best',
+            'salt' => env('SALT_CHECKLIST'),
             'length' => '8',
             'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         ],
 
         'file_request' => [
-            'salt' => 'hope nobody finds this file',
+            'salt' => env('SALT_FILE_REQUEST'),
             'length' => '12',
             'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         ],
 
         'note' => [
-            'salt' => 'notes keep everybody on the same page',
+            'salt' => env('SALT_NOTE'),
+            'length' => '12',
+            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        ],
+
+        'comment' => [
+            'salt' => env('SALT_COMMENT'),
             'length' => '12',
             'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         ]
