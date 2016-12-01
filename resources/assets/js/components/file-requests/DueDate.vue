@@ -6,6 +6,8 @@
                          :button-only="true"
                          :carbon="true"
                          @on-change="save"
+                         placeholder="Due Date"
+                         :hide-icon="true"
             ></date-picker>
         </div>
         <div v-if="! checklistBelongsToUser">

@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Events\CommentAdded;
 use App\Utilities\Traits\Hashable;
+use Event;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -25,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\App\Comment whereSubjectType($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Comment whereUserId($value)
  * @mixin \Eloquent
+ * @property-read mixed $hash
  */
 class Comment extends Model
 {
@@ -58,6 +61,9 @@ class Comment extends Model
             'body' => $body,
             'user_id' => $userId
         ]);
+
+        Event::fire(new CommentAdded($comment));
+
         return $comment;
     }
 

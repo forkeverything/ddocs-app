@@ -9557,7 +9557,7 @@ h3 .editable-text-field .placeholder {
           display: inline-block;
           margin-left: 8px; }
           #checklist-single #checklist-body #split-view #file-view > .due-date .fr-due-date button {
-            padding: 6px;
+            padding: 6px 6px 6px 0;
             font-size: 1em; }
       #checklist-single #checklist-body #split-view #file-view #single-file-request-menu {
         font-size: 0.875em;

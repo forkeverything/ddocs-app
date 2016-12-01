@@ -27,6 +27,12 @@ use phpDocumentor\Reflection\Types\Boolean;
  * @method static \Illuminate\Database\Query\Builder|\App\Recipient whereChecklistId($value)
  * @mixin \Eloquent
  * @property-read mixed $hash
+ * @property integer $user_id
+ * @property-read \App\User $user
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $unreadNotifications
+ * @method static \Illuminate\Database\Query\Builder|\App\Recipient whereReceiveNotificationEmails($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Recipient whereUserId($value)
  */
 class Recipient extends Model
 {

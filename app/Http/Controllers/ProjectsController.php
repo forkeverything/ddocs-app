@@ -8,8 +8,7 @@ use App\FileRequest;
 use App\Http\Requests\AddProjectFileRequest;
 use App\Http\Requests\CreateProjectFolderRequest;
 use App\Http\Requests\SaveProjectRequest;
-use App\Mail\ProjectMemberInvitation;
-use App\Notifications\ProjectInviteNotification;
+use App\Jobs\SendProjectInvite;
 use App\Project;
 use App\ProjectFile;
 use App\ProjectFolder;
@@ -91,13 +90,6 @@ class ProjectsController extends Controller
             'email' => 'required|email',
         ]);
         $email = $request->email;
-        if ($project->findInvitation($email)) {
-            return response([
-                'error' => [
-                    'Already sent invitation to that email.'
-                ]
-            ], 422);
-        };
 
         $user = User::findByEmail($email);
         if ($user && $project->members->contains($user)) {
@@ -108,9 +100,8 @@ class ProjectsController extends Controller
             ], 422);
         };
 
-        $project->createInvitation($email);
-
-        $user->notify(new ProjectInviteNotification($project, Auth::user()));
+        if(!$project->findInvitation($email)) $project->createInvitation($email);
+        dispatch(new SendProjectInvite($project, $email, Auth::user()));
         return response("Invitation sent.");
     }
 

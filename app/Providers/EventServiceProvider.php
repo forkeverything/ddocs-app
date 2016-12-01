@@ -4,13 +4,17 @@ namespace App\Providers;
 
 use App\Events\ChecklistCompleted;
 use App\Events\ChecklistCreated;
+use App\Events\CommentAdded;
 use App\Events\CreatedUserFromEmailWebhook;
 use App\Events\FileWasRejected;
 use App\Events\FileWasUploaded;
 use App\Events\NewUserSignedUp;
 use App\Events\RecipientClaimedInvitation;
 use App\Events\UserHasRunOutOfCredits;
+use App\Listeners\NewCommentNotification;
 use App\Listeners\SendChecklistCompleteNotification;
+use App\Listeners\SendCommentEmail;
+use App\Listeners\SendNewCommentNotification;
 use App\Listeners\SendReceivedFreeCreditsNotification;
 use App\Listeners\SendFileChangesRequiredNotification;
 use App\Listeners\SendNotEnoughCreditsNotification;
@@ -51,6 +55,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         CreatedUserFromEmailWebhook::class => [
             EmailWelcomeMessageAndPassword::class
+        ],
+        CommentAdded::class => [
+            SendNewCommentNotification::class
         ]
     ];
 

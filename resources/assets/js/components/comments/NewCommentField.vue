@@ -1,8 +1,9 @@
 <template>
 <div class="new-comment-field">
-    <form @submit.prevent="addComment">
+    <form @submit.prevent="addComment" v-if="authenticatedUser">
     <textarea class="form-control" v-model="body" rows="1" @keydown.enter="hitEnter($event)" placeholder="Write a comment..." :disabled="saving"></textarea>
     </form>
+    <input v-if="! authenticatedUser" type="text" class="form-control" disabled placeholder="Must be signed in to comment.">
 </div>
 </template>
 <script>
@@ -10,6 +11,11 @@ export default {
     data: function(){
         return {
             body: ''
+        }
+    },
+    computed: {
+        authenticatedUser(){
+            return this.$store.state.authenticatedUser;
         }
     },
     props: ['saving'],

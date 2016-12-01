@@ -10,7 +10,7 @@
                 @click="pickDate"
                 @keydown.delete="removeDate($event)"
         >
-            <i class="fa fa-calendar" v-show="! buttonOnly || keepButton || ! date"></i>
+            <i class="fa fa-calendar" v-show="! hideIcon && (! buttonOnly || keepButton || ! date)"></i>
             <smart-date v-show="buttonOnly && date" :date="date"></smart-date>
             <span class="placeholder" v-show="buttonOnly && placeholder && ! date">{{ placeholder }}</span>
         </button>
@@ -30,7 +30,7 @@
                 date: ''
             }
         },
-        props: ['value', 'formatted', 'placeholder', 'button-only', 'keep-button', 'carbon', 'filter-format'],
+        props: ['value', 'formatted', 'placeholder', 'button-only', 'keep-button', 'carbon', 'filter-format', 'hide-icon'],
         computed: {
             formattedDate() {
                 if(! this.date) return null;
