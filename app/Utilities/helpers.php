@@ -132,14 +132,3 @@ function getProjectItemsWithNested($type, $id)
     }
     return $items;
 }
-
-/**
- * Removes namespace from Class Name.
- *
- * @param $string
- * @return string
- */
-function remove_class_namespace($string)
-{
-    return substr(strrchr($string, "\\"), 1);
-}

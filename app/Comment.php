@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Utilities\Traits\Hashable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -27,6 +28,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
+    use Hashable;
+
     protected $fillable = [
         'body',
         'subject_id',
@@ -49,12 +52,13 @@ class Comment extends Model
      */
     public static function addComment($subjectId, $subjectType, $body, $userId)
     {
-        return static::create([
+        $comment = static::create([
             'subject_id' => $subjectId,
             'subject_type' => $subjectType,
             'body' => $body,
             'user_id' => $userId
         ]);
+        return $comment;
     }
 
     /**
