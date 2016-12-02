@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Log;
 
 class NewCommentNotification extends Notification
 {
@@ -49,6 +50,8 @@ class NewCommentNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        Log::info('Break 1');
+
         $signUpLink = env('APP_URL') . "/register";
         $sender = $this->comment->sender;
         $subject = $this->comment->subject;
@@ -61,6 +64,8 @@ class NewCommentNotification extends Notification
         }
         if ($subjectClass === "ProjectFile") $commentLink = env('APP_URL') . "/projects/" . $subject->folder->project_id;
 
+        Log::info('Break 2');
+
         $mailMessage = new MailMessage;
 
         $mailMessage
@@ -69,10 +74,11 @@ class NewCommentNotification extends Notification
                     ->line("<strong>{$sender->name}</strong>({$sender->email}) commented on {$subject->name}:")
                     ->line('"' . $this->comment->body . '"')
                     ->action('View Comment', $commentLink)
-                    ->line("<em>If you have an account with us at this email address, you can reply directly to this email and it'll be posted as a reply comment. Another awesome reason to <a href='" . $signUpLink . "'>sign up</a> for an account.</em>");
+                    ->line("<em>If you have an account with us at this email address, you can reply directly to this email and it'll be posted as a reply comment. Another awesome reason to <a href='{$signUpLink}'>sign up</a> for an account.</em>");
 
         if ($subjectClass === "FileRequest") $mailMessage->line("<a href='{$turnOffNotificationsLink}'>Click here to turn off notifications for this checklist</a>");
 
+        Log::info('Break 3');
         return $mailMessage;
 
     }
