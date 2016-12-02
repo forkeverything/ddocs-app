@@ -301,7 +301,7 @@ class ProjectsController extends Controller
         $this->authorize('updateFile', [$project, $projectFile]);
         $upload = UploadFactory::store($projectFile, $request->file('file'));
         $commentBody = 'Uploaded a <a href="' . awsURL() . $upload->path . '">new file</a>';
-        Comment::addComment($projectFile->id, 'App\\ProjectFile', $commentBody, Auth::id());
+        Comment::add($projectFile->id, 'App\\ProjectFile', $commentBody, Auth::id());
 
         // TODO ::: Use pusher so the new comment automatically shows up in thread.
 

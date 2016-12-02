@@ -50,7 +50,7 @@ class CommentsController extends Controller
     public function postNewProjectFile(ProjectFile $projectFile, AddCommentRequest $request)
     {
         $this->authorize('updateFile', [$projectFile->folder->project, $projectFile]);
-        return Comment::addComment($projectFile->id, 'App\\ProjectFile', $request->body, Auth::id())
+        return Comment::add($projectFile->id, 'App\\ProjectFile', $request->body, Auth::id())
                            ->load('sender');
     }
 
@@ -68,7 +68,7 @@ class CommentsController extends Controller
 
         $fileRequest = FileRequest::findByHash($fileRequestHash);
 
-        return Comment::addComment($fileRequest->id, 'App\\FileRequest', $request->body, Auth::id())
+        return Comment::add($fileRequest->id, 'App\\FileRequest', $request->body, Auth::id())
                            ->load('sender');
     }
 

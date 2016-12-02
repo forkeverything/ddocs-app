@@ -53,7 +53,7 @@ class Comment extends Model
      * @param $userId
      * @return static
      */
-    public static function addComment($subjectId, $subjectType, $body, $userId)
+    public static function add($subjectId, $subjectType, $body, $userId)
     {
         $comment = static::create([
             'subject_id' => $subjectId,
