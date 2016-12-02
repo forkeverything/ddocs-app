@@ -71,10 +71,12 @@ class Comment extends Model
 
     public static function reply($originalCommentHash, $senderEmail, $commentBody)
     {
+        $pattern = "/(.*)===== Reply above this line =====/s";
+        preg_match($pattern, $commentBody, $matches);
         LOG::info([
             "reply_to" => $originalCommentHash,
             "sender" => $senderEmail,
-            "body" => $commentBody
+            "body" => $matches
         ]);
     }
 

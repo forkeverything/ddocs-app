@@ -6,6 +6,7 @@ use App\Events\CommentAdded;
 use App\Notifications\NewCommentNotification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Log;
 
 class SendNewCommentNotification
 {

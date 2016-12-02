@@ -18,6 +18,11 @@
 <?php
 
 $style = [
+
+    /* Reply Line ------------------------------ */
+    'email-reply_line' => 'width: 100%; margin: 0; padding: 0; text-align: center; background: #FFF;',
+    'email-reply_line_cell' => 'color: #FFF; padding: 0; text-align: center; font-size: 10px;',
+
     /* Layout ------------------------------ */
 
     'body' => 'margin: 0; padding: 0; width: 100%; background-color: #F7F7F7;',
@@ -64,9 +69,25 @@ $style = [
 
 <body style="{{ $style['body'] }}">
 <table width="100%" cellpadding="0" cellspacing="0">
+    <!-- Body -->
     <tr>
         <td style="{{ $style['email-wrapper'] }}" align="center">
             <table width="100%" cellpadding="0" cellspacing="0">
+
+                <!--- Reply Line --->
+                <tr>
+                    <td>
+                        <table style="{{ $style['email-reply_line'] }}" align="center" width="570" cellpadding="0"
+                               cellspacing="0">
+                            <tr>
+                                <td style="{{ $fontFamily }} {{ $style['email-reply_line_cell'] }}" align="center">
+                                    <p>===== Reply above this line =====</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
                 <!-- Logo -->
                 <tr>
                     <td style="{{ $style['email-masthead'] }}">
