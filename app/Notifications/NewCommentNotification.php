@@ -39,7 +39,6 @@ class NewCommentNotification extends Notification
         $channels = [];
         if (class_basename($notifiable) === "User" || $notifiable->receive_notification_emails) $channels[] = 'mail';
 //        if (class_basename($notifiable) === 'User') $channels[] = 'database';
-        Log::info($channels);
         return $channels;
     }
 
@@ -51,8 +50,6 @@ class NewCommentNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        Log::info('Break 1');
-
         $signUpLink = env('APP_URL') . "/register";
         $sender = $this->comment->sender;
         $subject = $this->comment->subject;
@@ -64,8 +61,6 @@ class NewCommentNotification extends Notification
             $turnOffNotificationsLink = env('APP_URL') . "/recipients/" . $notifiable->hash . "/turn_off_notifications";
         }
         if ($subjectClass === "ProjectFile") $commentLink = env('APP_URL') . "/projects/" . $subject->folder->project_id;
-
-        Log::info('Break 2');
 
         $mailMessage = new MailMessage;
 
@@ -79,7 +74,6 @@ class NewCommentNotification extends Notification
 
         if ($subjectClass === "FileRequest") $mailMessage->line("<a href='{$turnOffNotificationsLink}'>Click here to turn off notifications for this checklist</a>");
 
-        Log::info('Break 3');
         return $mailMessage;
 
     }
