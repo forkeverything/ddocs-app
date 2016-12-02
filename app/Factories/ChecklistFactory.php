@@ -11,14 +11,12 @@ use App\File;
 use App\Http\Requests\NewChecklistRequest;
 use App\Notifications\NewChecklistNotification;
 use App\User;
-use App\Utilities\Traits\SendsRecipientNotifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 use Mail;
 
 class ChecklistFactory
 {
-    use SendsRecipientNotifications;
 
     /**
      * The Checklist model
@@ -146,12 +144,13 @@ class ChecklistFactory
         // Add new recipients
         foreach ($newRecipients as $recipientEmail) {
             if (!in_array($recipientEmail, $oldRecipients->pluck('email')->toArray())) {
-                $recipient = $checklist->recipients()->create([
-                    'email' => $recipientEmail,
-                ]);
-                $target = $recipient;
-                static::attemptLinkRecipientToUser($recipient);
-                if ($registeredUser = $recipient->user) $target = $registeredUser;
+                $attr = [
+                    'email' => $recipientEmail
+                ];
+                // If recipient has an account we'll link it here
+                if($existingUser = User::findByEmail($recipientEmail)) $attr["user_id"] = $existingUser->id;
+                $recipient = $checklist->recipients()->create($attr);
+                $target = $recipient->user_id ? $existingUser : $recipient;
                 $target->notify(new NewChecklistNotification($checklist, $recipient));
             }
         }

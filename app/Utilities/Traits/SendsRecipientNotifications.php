@@ -17,7 +17,7 @@ trait SendsRecipientNotifications
     public function attemptLinkRecipientToUser(Recipient $recipient)
     {
         if($recipient->user_id) return;
-        if($user = User::where('email', $recipient->email)->first()) {
+        if($user = User::findByEmail($recipient->email)) {
             $recipient->user_id = $user->id;
             $recipient->save();
         }
