@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use App\Checklist;
-use App\Mail\UpcomingFilesReminder;
 use App\Notifications\UpcomingFilesNotification;
 use App\Utilities\Traits\SendsRecipientNotifications;
 use Carbon\Carbon;

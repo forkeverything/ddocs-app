@@ -9,14 +9,16 @@ use App\Events\ChecklistCreated;
 
 use App\File;
 use App\Http\Requests\NewChecklistRequest;
-use App\Mail\NewChecklist;
+use App\Notifications\NewChecklistNotification;
 use App\User;
+use App\Utilities\Traits\SendsRecipientNotifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 use Mail;
 
 class ChecklistFactory
 {
+    use SendsRecipientNotifications;
 
     /**
      * The Checklist model
@@ -112,9 +114,9 @@ class ChecklistFactory
         }
 
         // Remove inbound email address to avoid loop
-        $index = array_search(env('MAIL_CREATE_CHECKLIST_ADDRESS'),$recipients);
-        if($index !== false) unset($recipients[$index]);
-        if(! count($recipients) > 0) return;
+        $index = array_search(env('MAIL_CREATE_CHECKLIST_ADDRESS'), $recipients);
+        if ($index !== false) unset($recipients[$index]);
+        if (!count($recipients) > 0) return;
 
         // Build our form request manually
         $newChecklistRequest = new NewChecklistRequest([
@@ -147,7 +149,10 @@ class ChecklistFactory
                 $recipient = $checklist->recipients()->create([
                     'email' => $recipientEmail,
                 ]);
-                Mail::to($recipientEmail)->send(new NewChecklist($recipient, $checklist));
+                $target = $recipient;
+                static::attemptLinkRecipientToUser($recipient);
+                if ($registeredUser = $recipient->user) $target = $registeredUser;
+                $target->notify(new NewChecklistNotification($checklist, $recipient));
             }
         }
         return $checklist->fresh('recipients')->recipients;

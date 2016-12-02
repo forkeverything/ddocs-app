@@ -40,6 +40,8 @@ class SendNewCommentNotification
             return $value->email === $comment->sender->email;
         });
 
+        Log::find($notifyTargets);
+
         foreach ($notifyTargets as $target) {
             $target->notify(new NewCommentNotification($comment));
         }

@@ -3,7 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\ChecklistCreated;
-use App\Mail\NewChecklist;
 use App\Notifications\NewChecklistNotification;
 use App\Utilities\Traits\SendsRecipientNotifications;
 use Illuminate\Queue\InteractsWithQueue;

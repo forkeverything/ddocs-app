@@ -3,7 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\ChecklistCompleted;
-use App\Mail\ChecklistComplete;
 use App\Notifications\ChecklistCompleteNotification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;

@@ -3,7 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\RecipientClaimedInvitation;
-use App\Mail\FreeCreditsReceived;
 use App\Notifications\ReceivedFreeCreditsNotification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;

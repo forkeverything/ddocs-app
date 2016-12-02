@@ -12,7 +12,7 @@ trait SendsRecipientNotifications
     /**
      * Tries to link Recipient to User via email.
      *
-     * @param Recipient $recipient
+     * @param Recipient $recipient;
      */
     public function attemptLinkRecipientToUser(Recipient $recipient)
     {
