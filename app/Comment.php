@@ -6,6 +6,7 @@ use App\Events\CommentAdded;
 use App\Utilities\Traits\Hashable;
 use Event;
 use Illuminate\Database\Eloquent\Model;
+use Log;
 
 /**
  * App\Comment
@@ -70,7 +71,7 @@ class Comment extends Model
 
     public static function reply($originalCommentHash, $senderEmail, $commentBody)
     {
-        \LOG::info([
+        LOG::info([
             "reply_to" => $originalCommentHash,
             "sender" => $senderEmail,
             "body" => $commentBody
