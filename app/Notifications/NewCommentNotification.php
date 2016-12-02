@@ -49,6 +49,7 @@ class NewCommentNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        $signUpLink = env('APP_URL') . "/register";
         $sender = $this->comment->sender;
         $subject = $this->comment->subject;
         $subjectClass = class_basename($subject);
@@ -68,7 +69,7 @@ class NewCommentNotification extends Notification
                     ->line("<strong>{$sender->name}</strong>({$sender->email}) commented on {$subject->name}:")
                     ->line('"' . $this->comment->body . '"')
                     ->action('View Comment', $commentLink)
-                    ->line("<em>You can reply straight to this email to reply to the comment.</em>");
+                    ->line("<em>If you have an account with us at this email address, you can reply directly to this email and it'll be posted as a reply comment. Another awesome reason to <a href='" . $signUpLink . "'>sign up</a> for an account.</em>");
 
         if ($subjectClass === "FileRequest") $mailMessage->line("<a href='{$turnOffNotificationsLink}'>Click here to turn off notifications for this checklist</a>");
 

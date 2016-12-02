@@ -60,7 +60,6 @@ class Comment extends Model
             'subject_id' => $subjectId,
             'subject_type' => $subjectType,
             'body' => $body,
-
             'user_id' => $userId
         ]);
 
@@ -69,15 +68,35 @@ class Comment extends Model
         return $comment;
     }
 
-    public static function reply($originalCommentHash, $senderEmail, $commentBody)
+    /**
+     * Reply via Email
+     *
+     * @param $originalCommentHash
+     * @param $senderEmail
+     * @param $commentBody
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public static function replyByEmail($originalCommentHash, $senderEmail, $commentBody)
     {
-        $pattern = "/(.*)===== Reply above this line =====/s";
+        // Sender needs an account
+        if(! $senderUser = User::findByEmail($senderEmail)) return response("Didn't post comment. Sender email doesn't have an associated account.");
+        // Does original comment exist
+        if(! $originalComment = Comment::findByHash($originalCommentHash)) return response("Couldn't find original comment");
+        // Parse out comment body from email
+        $pattern = "/.*?(?=(?:\s*On.*wrote:|\s*===== Reply above this line =====|$))/s";
+
+        /*
+         * Regex Pattern
+         * - Match everything until our defualt On...wrote:
+         * - Failing to find that, we'll match everything until our reply line
+         * - Finally, if both aren't found we'll match everything because we're using
+         *   a look-ahead that will match end of line.
+         */
+
         preg_match($pattern, $commentBody, $matches);
-        LOG::info([
-            "reply_to" => $originalCommentHash,
-            "sender" => $senderEmail,
-            "body" => $matches
-        ]);
+
+        static::add($originalComment->subject_id, $originalComment->subject_type, $matches[0], $senderUser->id);
+        return response("replied to comment");
     }
 
     /**
