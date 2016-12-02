@@ -26,7 +26,10 @@ class InboundMailController extends Controller
         // split email into parts
         $inboundArray = explode("_", $inboundEmailAddress);
         // Replying to comment
-        if($inboundArray[0] === "comment") return Comment::replyByEmail($inboundArray[1], $request["From"], $request["TextBody"]);
+        if($inboundArray[0] === "comment") {
+            preg_match("/.*(?=@)/", $inboundArray[1], $matches);
+            return Comment::replyByEmail($matches[0], $request["From"], $request["TextBody"]);
+        }
 
         return response("Received Email", 200);
     }
