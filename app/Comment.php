@@ -59,12 +59,22 @@ class Comment extends Model
             'subject_id' => $subjectId,
             'subject_type' => $subjectType,
             'body' => $body,
+
             'user_id' => $userId
         ]);
 
         Event::fire(new CommentAdded($comment));
 
         return $comment;
+    }
+
+    public static function reply($originalCommentHash, $senderEmail, $commentBody)
+    {
+        \LOG::info([
+            "reply_to" => $originalCommentHash,
+            "sender" => $senderEmail,
+            "body" => $commentBody
+        ]);
     }
 
     /**

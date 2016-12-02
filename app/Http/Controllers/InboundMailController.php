@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Factories\ChecklistFactory;
 use App\User;
 use Illuminate\Http\Request;
@@ -19,13 +20,15 @@ class InboundMailController extends Controller
      */
     public function postHandle(Request $request)
     {
-        switch ($request["OriginalRecipient"]) {
-            case env('MAIL_CREATE_CHECKLIST_ADDRESS'):
-                return $this->newChecklistFromEmailWebhook($request);
-            default:
-                return 'Received Email';
-                break;
-        }
+        $inboundEmailAddress = $request["OriginalRecipient"];
+        // Creating checklist
+        if($inboundEmailAddress === env('MAIL_CREATE_CHECKLIST_ADDRESS')) return $this->newChecklistFromEmailWebhook($request);
+        // split email into parts
+        $inboundArray = explode("_", $inboundEmailAddress);
+        // Replying to comment
+        if($inboundArray[0] === "comment") return Comment::reply($inboundArray[1], $request["From"], $request["TextBody"]);
+
+        return response("Received Email", 200);
     }
 
     /**
