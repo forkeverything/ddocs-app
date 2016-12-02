@@ -95,8 +95,6 @@ class Comment extends Model
 
         preg_match($pattern, $commentBody, $matches);
 
-        LOG::info($commentBody);
-
         static::add($originalComment->subject_id, $originalComment->subject_type, $matches[0], $senderUser->id);
         return response("replied to comment");
     }
