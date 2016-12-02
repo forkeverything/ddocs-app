@@ -70,7 +70,7 @@ return [
         'comment' => [
             'salt' => env('SALT_COMMENT'),
             'length' => '12',
-            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            'alphabet' => '0123456789abcdefghijklmnopqrstuvwxyz',
         ]
 
     ],

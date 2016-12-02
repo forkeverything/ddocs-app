@@ -79,12 +79,6 @@ class Comment extends Model
     public static function replyByEmail($originalCommentHash, $senderEmail, $commentBody)
     {
 
-        LOG::info([
-            "hash" => $originalCommentHash,
-            "sender" => $senderEmail,
-            "body" => $commentBody
-        ]);
-
         // Sender needs an account
         if(! $senderUser = User::findByEmail($senderEmail)) return response("Didn't post comment. Sender email doesn't have an associated account.");
         // Does original comment exist
@@ -101,6 +95,12 @@ class Comment extends Model
          */
 
         preg_match($pattern, $commentBody, $matches);
+
+        LOG::info([
+            "original_body" => $originalComment->body,
+            "sender_name" => $senderUser->name,
+            "body" => $matches[0]
+        ]);
 
         static::add($originalComment->subject_id, $originalComment->subject_type, $matches[0], $senderUser->id);
         return response("replied to comment");
