@@ -39,6 +39,7 @@ class NewCommentNotification extends Notification
         $channels = [];
         if (class_basename($notifiable) === "User" || $notifiable->receive_notification_emails) $channels[] = 'mail';
 //        if (class_basename($notifiable) === 'User') $channels[] = 'database';
+        Log::info($channels);
         return $channels;
     }
 
