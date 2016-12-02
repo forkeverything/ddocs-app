@@ -35,6 +35,10 @@ class SendNewCommentNotification
         if ($subjectClass === "FileRequest") $notifyTargets = $subject->checklist->recipients;
         if ($subjectClass === "ProjectFile") $notifyTargets = $subject->members;
 
+        $notifyTargets->reject(function ($value, $key) use ($comment) {
+            return $value->email === $comment->sender->email;
+        });
+
         foreach ($notifyTargets as $target) {
             $target->notify(new NewCommentNotification($comment));
         }
