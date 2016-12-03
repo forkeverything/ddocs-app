@@ -68,7 +68,7 @@
             save(){
                 if (!this.ajaxReady) return;
                 this.ajaxReady = false;
-                this.$http.post(`/api/c/${ this.checklist.hash }/files`, {
+                this.$http.post(`/api/c/${ this.checklist.hash }/add_file`, {
                     name: this.name,
                     due: this.due
                 }, {

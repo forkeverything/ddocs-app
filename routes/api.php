@@ -27,7 +27,7 @@ Route::group(['middleware' => 'api.auth'], function () {
     Route::post('/checklists', 'ChecklistsController@postNewChecklist');
     Route::put('/c/{checklist_hash}', 'ChecklistsController@putUpdate');
     Route::put('/c/{checklist_hash}/recipients', 'ChecklistsController@putUpdateRecipients');
-    Route::post('/c/{checklist_hash}/files', 'ChecklistsController@postAddFile');
+    Route::post('/c/{checklist_hash}/add_file', 'ChecklistsController@postAddFile');
     Route::delete('/c/{checklist_hash}', 'ChecklistsController@delete');
 
     // File Requests
@@ -91,23 +91,14 @@ Route::group(['middleware' => 'api.auth'], function () {
     // Comments
     Route::get('/comments/file_request/{file_request_hash}', 'CommentsController@getFileRequest');
 
+    // Recipients
+    Route::post('/recipients/{recipient_hash}/turn_off_notifications', 'RecipientsController@postTurnOffNotifications');
 
-// NEW ROUTES THAT HAVEN'T BEEN RENAMED YET
+    // Account
+    Route::post('/account/subscription', 'AccountController@postSubscribe');
+    Route::delete('/account/subscription', 'AccountController@deleteCancelSubscription');
+    Route::post('/account/subscription/resume', 'AccountController@postResumeSubscription');
+    Route::post('/account/coupon', 'AccountController@postClaimCoupon');
 
-Route::post('/c/make/email', 'ChecklistsController@postNewChecklistFromEmailWebhook');
-
-Route::post('inbound_mail', 'InboundMailController@postHandle');
-
-
-// Recipients
-Route::post('/recipients/{recipient_hash}/turn_off_notifications', 'RecipientsController@postTurnOffNotifications');
-
-
-
-
-
-// Account
-Route::post('/account/subscription', 'AccountController@postSubscribe');
-Route::delete('/account/subscription', 'AccountController@deleteCancelSubscription');
-Route::post('/account/subscription/resume', 'AccountController@postResumeSubscription');
-Route::post('/account/coupon', 'AccountController@postClaimCoupon');
+    // Inbound Emails
+    Route::post('inbound_mail', 'InboundMailController@postHandle');
