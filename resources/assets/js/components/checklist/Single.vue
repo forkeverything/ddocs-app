@@ -1,6 +1,23 @@
 <template>
     <div id="checklist-single" class="main-content">
-        <rectangle-loader :loading="initializingRepo" size="large"></rectangle-loader>
+        <rectangle-loader :loading="initializing" size="large"></rectangle-loader>
+        <div id="checklist-auth" v-show="promptPassword">
+            <div class="mid">
+                <h2>
+                    <i class="fa fa-lock"></i>
+                    <br>
+                    Secure Checklist
+                </h2>
+                <form @submit.prevent="fetchChecklist">
+                    <input type="password" v-model="repoPassword" class="form-control" placeholder="Password">
+                    <button type="submit" class="btn btn-default" :disabled="! repoPassword">
+                        <i class="fa fa-arrow-right" v-show="! fetchingChecklist"></i>
+                        <i class="fa fa-spinner fa-pulse fa-fw" v-show="fetchingChecklist"></i>
+                    </button>
+                </form>
+                <p class="error text-danger" v-show="wrongPassword">Sorry, Password doesn't match our records.</p>
+            </div>
+        </div>
         <div id="checklist-body">
             <div id="pane-nav">
                 <a @click.prevent="toggleRightPanel"
@@ -206,10 +223,18 @@
                 ],
                 selectedFileRequestIndex: '',
                 showRightPanel: false,
-                password: ''
+                authenticatedRepo: true,
+                repoPassword: '',
+                wrongPassword: false,
+                authenticated: false,
+                promptPassword: false,
+                fetchingChecklist: false
             }
         },
         computed: {
+            initializing(){
+                return ! this.promptPassword && (! this.authenticated || this.initializingRepo);
+            },
             requestUrl() {
                 return '/api/c/' + this.$route.params.checklist_hash + '/files';
             },
@@ -320,21 +345,31 @@
                 window.history.replaceState({}, '', `/c/${ this.$route.params.checklist_hash }/${ checklistName }${ queryString }`);
             },
             fetchChecklist(){
+                this.fetchingChecklist = true;
+                this.wrongPassword = false;
                 this.$http.post(`/api/c/${ this.$route.params.checklist_hash }`, {
-                    password: this.password
+                    password: this.repoPassword
                 },{
                     before(xhr) {
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
                 }).then((res) => {
+                    this.fetchingChecklist = false;
+                    this.promptPassword = false;
+                    this.authenticated = true;
+                    this.fetchResults();
                     this.$store.commit('checklist/SET', res.json());
                     this.$nextTick(() => {
                         this.addChecklistNameToUrl();
                         this.$store.commit('setTitle', `${ this.checklist.name }<i class="fa fa-list"></i>`);
                     });
                 }, (res) => {
+                    console.log(res);
                     console.log("error fetching checklist");
+                    this.fetchingChecklist = false;
                     if(res.status === 404) router.push('/error/404/checklist');
+                    if(res.status === 403) this.promptPassword = true;
+                    if(res.status === 422) this.wrongPassword = true;
                 });
             },
             setFilesHeaderScrollbarPadding() {

@@ -41,6 +41,44 @@
                 <i class="fa fa-file-o icon"></i><span class="title">Files {{ checklist.meta.num_received }} / {{ checklist.meta.num_total }}</span>
             </div>
         </div>
+        <div id="summary-password" class="summary-section" v-if="checklistBelongsToUser">
+            <div class="section-header expandable">
+                <i class="fa fa-lock icon"
+                   :class="{
+                        'active': checklist.secure
+                   }"
+                ></i><span class="title">Password</span>
+                <div class="triangle">
+                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-caret-right"></i>
+                </div>
+            </div>
+            <div class="section-content">
+                <p class="text-muted">Recipients with an account won't need to enter this password.</p>
+                <p v-show="checklist.secure && ! passwordForm">********</p>
+                <ul class="list-unstyled" v-show="! passwordForm">
+                    <li>
+                        <a href="#" @click.prevent="togglePasswordForm">
+                            <span v-if="checklist.secure">Change</span><span v-if="! checklist.secure">Set</span> Password
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Remove
+                        </a>
+                    </li>
+                </ul>
+                <form v-show="passwordForm">
+                    <div class="form-group">
+                        <input type="password" v-model="newPassword" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-sm btn-default btn-space" @click="togglePasswordForm">cancel</button>
+                        <button type="submit" class="btn btn-sm btn-success">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div id="sign-up-offer" v-if="checklist && ! authenticatedUser">
             <h3>Help {{ checklist.user.name }} out!</h3>
             <div class="dino-joe">
@@ -64,7 +102,9 @@
     export default {
         data: function () {
             return {
-                editingRecipients: false
+                editingRecipients: false,
+                passwordForm: false,
+                newPassword: ''
             }
         },
         props: ['checklist-belongs-to-user'],
@@ -85,6 +125,9 @@
                 this.$store.dispatch('checklist/SAVE_CHANGES', {
                     description: newDescription
                 });
+            },
+            togglePasswordForm(){
+                this.passwordForm = ! this.passwordForm;
             }
         },
         created() {

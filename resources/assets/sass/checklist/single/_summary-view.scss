@@ -45,10 +45,6 @@
     .section-content {
       display: none;
       padding: 15px 0 10px 0;
-
-      p {
-        margin: 0;
-      }
     }
 
     &.expanded {
@@ -91,6 +87,18 @@
     .section-header {
       .icon {
         color: $dark-green;
+      }
+    }
+  }
+
+  #summary-password {
+    .section-header {
+      .icon {
+        color: $grey;
+
+        &.active {
+          color: $red;
+        }
       }
     }
   }

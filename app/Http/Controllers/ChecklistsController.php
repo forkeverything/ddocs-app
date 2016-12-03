@@ -8,6 +8,8 @@ use App\Http\Requests\NewChecklistRequest;
 use App\Repositories\ChecklistsRespository;
 use App\Repositories\FileRequestsRepository;
 use App\User;
+use DB;
+use Hash;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -67,31 +69,47 @@ class ChecklistsController extends Controller
     }
 
     /**
+     * Attempt to view Checklist
+     *
+     * @param Checklist $checklist
+     * @param $password
+     * @return bool
+     * @internal param $checklistHash
+     */
+    protected function attempt(Checklist $checklist , $password)
+    {
+        if (! $checklist->password) return true;
+        if ($user = Auth::user()) {
+            $isRecipient = !! $checklist->recipients()->where('email', $user->email)->select(DB::Raw(1))->first();
+            if ($checklist->user_id === Auth::id() || $isRecipient) return true;
+        }
+        if(Hash::check($password, $checklist->password)) return true;
+        return false;
+    }
+
+    /**
      * Checklist at given Hash
      *
      * @param $checklistHash
+     * @param Request $request
      * @return Model
      */
     public function getSingle($checklistHash, Request $request)
     {
-        $password = $request->password;
         $checklist = Checklist::findByHash($checklistHash)->load('user', 'recipients');
-        if (Auth::user()) {
-
-        } else {
-
-        }
+        if($this->attempt($checklist, $request->password)) return $checklist;
+        if($request->password) return response()->json("Wrong password", 422);
         return response("Not authorized to view checklist.", 403);
     }
 
     /**
-     * Retrieve the files for checklist.
+     * Retrieve the files for Open Checklist.
      *
      * @param Request $request
      * @param $checklistHash
      * @return FileRequestsRepository
      */
-    public function getFilesForChecklist(Request $request, $checklistHash)
+    public function getFilesOpenChecklist(Request $request, $checklistHash)
     {
         $checklist = Checklist::findByHash($checklistHash);
         $sort = $request->sort;
@@ -109,6 +127,20 @@ class ChecklistsController extends Controller
     }
 
     /**
+     * Retrieve the files for Secure Checklist.
+     *
+     * @param Request $request
+     * @param $checklistHash
+     * @return FileRequestsRepository
+     */
+    public function getFilesSecureChecklist(Request $request, $checklistHash)
+    {
+        $checklist = Checklist::findByHash($checklistHash);
+        if($this->attempt($checklist, $request->password)) return $this->getFilesOpenChecklist($request, $checklistHash);
+        return response("Not authorized to view files for that checklist", 403);
+    }
+
+    /**
      * Request to update checklist.
      *
      * @param Request $request
@@ -119,7 +151,7 @@ class ChecklistsController extends Controller
     {
         $checklist = Checklist::findByHash($checklistHash);
         $this->authorize('update', $checklist);
-        if($checklist->update($request->all())) return response('Updated checklist.');
+        if ($checklist->update($request->all())) return response('Updated checklist.');
         return response("Couldn't update checklist", 500);
     }
 
@@ -159,7 +191,7 @@ class ChecklistsController extends Controller
     {
         $checklist = Checklist::findByHash($checklistHash);
         $this->authorize('update', $checklist);
-        if($checklist->fullDelete()) return response("Deleted checklist");
+        if ($checklist->fullDelete()) return response("Deleted checklist");
         return abort(500, "Error deleting checklist.");
     }
 }

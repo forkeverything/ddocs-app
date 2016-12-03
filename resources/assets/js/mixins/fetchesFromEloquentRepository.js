@@ -9,7 +9,9 @@ module.exports = {
             showFiltersDropdown: false,
             urlHistory: true,
             infScroll: true,
-            loadingRepoResults: true
+            loadingRepoResults: true,
+            authenticatedRepo: false,
+            repoPassword: ''
         };
     },
     computed: {
@@ -38,31 +40,54 @@ module.exports = {
 
             // Attach query to URL
             if (query) url = url + '?' + query;
-
-            // this.finishLoading = false;
-
+            if(this.authenticatedRepo) {
+                this.authenticatedRequest(query, url);
+            } else {
+                this.openRequest(query, url);
+            }
+        },
+        setRequest(xhr){
+            if(this.request) RequestsMonitor.abortRequest(this.request);
+            this.request = xhr;
+            RequestsMonitor.pushOntoQueue(xhr);
+        },
+        openRequest(query, url){
             this.$http.get(url, {
-                before: function (xhr) {
-                    if(this.request) RequestsMonitor.abortRequest(this.request);
-                    this.request = xhr;
-                    RequestsMonitor.pushOntoQueue(xhr);
+                before(xhr){
+                    this.setRequest(xhr);
                 }
             }).then((response) => {
-                this.loadingRepoResults = false;
-                // update data
-                this.response = response.json();
-                // push state (if query is different from url)
-                if(this.urlHistory) pushStateIfDiffQuery(query);
-                // scroll top
-                if (this.container) {
-                    document.getElementById(this.container).scrollTop = 0;
-                } else {
-                    document.getElementsByTagName('body')[0].scrollTop = 0;
-                }
-                // ready again
+                this.successfulResponse(query, response);
             }, (response) => {
                 console.log("Error fetching results: " + url);
             });
+        },
+        authenticatedRequest(query, url){
+            this.$http.post(url, {
+                password: this.repoPassword
+            }, {
+                before(xhr){
+                    this.setRequest(xhr);
+                }
+            }).then((response) => {
+                this.successfulResponse(query, response);
+            }, (response) => {
+                console.log("Error fetching results: " + url);
+                if(response.status === 403) console.log("Incorrect password for repository.")
+            });
+        },
+        successfulResponse(query, response){
+            this.loadingRepoResults = false;
+            // update data
+            this.response = response.json();
+            // push state (if query is different from url)
+            if(this.urlHistory) pushStateIfDiffQuery(query);
+            // scroll top
+            if (this.container) {
+                document.getElementById(this.container).scrollTop = 0;
+            } else {
+                document.getElementsByTagName('body')[0].scrollTop = 0;
+            }
         },
         changeSort: function (sort) {
             if (this.params.sort === sort) {

@@ -11,6 +11,7 @@ use App\File;
 use App\Http\Requests\NewChecklistRequest;
 use App\Notifications\NewChecklistNotification;
 use App\User;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 use Mail;
@@ -205,7 +206,7 @@ class ChecklistFactory
      */
     protected function createChecklist()
     {
-        $password = $this->request->password ? bcrypt($this->request->password) : null;
+        $password = $this->request->password ? Hash::make($this->request->password) : null;
         $this->checklist = Checklist::create([
             'name' => $this->request->name,
             'description' => $this->request->description,

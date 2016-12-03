@@ -59,7 +59,8 @@ class Checklist extends Model
      */
     protected $appends = [
         'meta',
-        'hash'
+        'hash',
+        'secure'
     ];
 
     /**
@@ -88,6 +89,16 @@ class Checklist extends Model
         // queries void messy joins and keeps our payload slim.
 
         return $meta;
+    }
+
+    /**
+     * Whether Checklist has a password set.
+     *
+     * @return bool
+     */
+    public function getSecureAttribute()
+    {
+        return !! $this->password;
     }
 
     /**

@@ -9374,7 +9374,35 @@ h3 .editable-text-field .placeholder {
   height: 100%;
   position: relative; }
   #checklist-single > .loading-overlay {
-    z-index: 3; }
+    z-index: 6; }
+  #checklist-single #checklist-auth {
+    z-index: 4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    overflow: auto; }
+    #checklist-single #checklist-auth .mid {
+      width: 100%;
+      max-width: 450px;
+      margin: 8em auto 2em;
+      padding: 0 2em; }
+      #checklist-single #checklist-auth .mid h2 {
+        margin: 0 0 15px;
+        color: #999999;
+        text-align: center; }
+        #checklist-single #checklist-auth .mid h2 i {
+          font-size: 4em; }
+      #checklist-single #checklist-auth .mid form {
+        display: -webkit-box;
+        display: flex;
+        margin: 0 0 10px; }
+        #checklist-single #checklist-auth .mid form input {
+          margin: 0 10px 0 0; }
+        #checklist-single #checklist-auth .mid form button {
+          min-width: 48px; }
   #checklist-single #checklist-body {
     -webkit-box-flex: 1;
     flex: 1;
@@ -9618,8 +9646,6 @@ h3 .editable-text-field .placeholder {
         #checklist-single #checklist-body #split-view #summary-view .summary-section .section-content {
           display: none;
           padding: 15px 0 10px 0; }
-          #checklist-single #checklist-body #split-view #summary-view .summary-section .section-content p {
-            margin: 0; }
         #checklist-single #checklist-body #split-view #summary-view .summary-section.expanded .section-header .triangle .fa-caret-right {
           display: none; }
         #checklist-single #checklist-body #split-view #summary-view .summary-section.expanded .section-header .triangle .fa-caret-down {
@@ -9632,6 +9658,10 @@ h3 .editable-text-field .placeholder {
         color: #2980B9; }
       #checklist-single #checklist-body #split-view #summary-view #summary-file-count .section-header .icon {
         color: #27AE60; }
+      #checklist-single #checklist-body #split-view #summary-view #summary-password .section-header .icon {
+        color: #D2D2D2; }
+        #checklist-single #checklist-body #split-view #summary-view #summary-password .section-header .icon.active {
+          color: #ff6a6a; }
       #checklist-single #checklist-body #split-view #summary-view #sign-up-offer h3 {
         margin-top: 45px;
         text-align: center;
