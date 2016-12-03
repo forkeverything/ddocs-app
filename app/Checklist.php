@@ -48,7 +48,8 @@ class Checklist extends Model
     ];
 
     protected $hidden = [
-        'id'
+        'id',
+        'password'
     ];
 
     /**

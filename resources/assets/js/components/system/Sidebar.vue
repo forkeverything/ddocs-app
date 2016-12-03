@@ -110,11 +110,7 @@
                 if (windowWidth >= 768 && !this.showSidebar) this.toggleSidebar();
             }, 150),
             fetchRecentChecklists() {
-                this.$http.get('/api/checklists/recent', {
-                    before(xhr) {
-                        RequestsMonitor.pushOntoQueue(xhr);
-                    }
-                }).then((response) => {
+                this.$http.get('/api/checklists/recent').then((response) => {
                     // success
                     this.recentChecklists = response.json();
                 }, (response) => {
@@ -123,11 +119,7 @@
                 });
             },
             fetchProjects(){
-                this.$http.get('/api/projects', {
-                    before(xhr) {
-                        RequestsMonitor.pushOntoQueue(xhr);
-                    }
-                }).then((response) => {
+                this.$http.get('/api/projects').then((response) => {
                     // success
                     this.projects = response.json();
                 }, (response) => {

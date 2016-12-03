@@ -72,9 +72,16 @@ class ChecklistsController extends Controller
      * @param $checklistHash
      * @return Model
      */
-    public function getSingle($checklistHash)
+    public function getSingle($checklistHash, Request $request)
     {
-        return Checklist::findByHash($checklistHash)->load('user', 'recipients');
+        $password = $request->password;
+        $checklist = Checklist::findByHash($checklistHash)->load('user', 'recipients');
+        if (Auth::user()) {
+
+        } else {
+
+        }
+        return response("Not authorized to view checklist.", 403);
     }
 
     /**

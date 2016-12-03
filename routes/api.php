@@ -76,7 +76,7 @@ Route::group(['middleware' => 'api.auth'], function () {
 // Public Routes
 
     // Checklist
-    Route::get('/c/{checklist_hash}', 'ChecklistsController@getSingle');
+    Route::post('/c/{checklist_hash}', 'ChecklistsController@getSingle');
     Route::get('/c/{checklist_hash}/files', 'ChecklistsController@getFilesForChecklist');
 
     // FileRequests

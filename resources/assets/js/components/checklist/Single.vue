@@ -205,7 +205,8 @@
                     }
                 ],
                 selectedFileRequestIndex: '',
-                showRightPanel: false
+                showRightPanel: false,
+                password: ''
             }
         },
         computed: {
@@ -319,7 +320,9 @@
                 window.history.replaceState({}, '', `/c/${ this.$route.params.checklist_hash }/${ checklistName }${ queryString }`);
             },
             fetchChecklist(){
-                this.$http.get(`/api/c/${ this.$route.params.checklist_hash }`, {
+                this.$http.post(`/api/c/${ this.$route.params.checklist_hash }`, {
+                    password: this.password
+                },{
                     before(xhr) {
                         RequestsMonitor.pushOntoQueue(xhr);
                     }
@@ -330,8 +333,8 @@
                         this.$store.commit('setTitle', `${ this.checklist.name }<i class="fa fa-list"></i>`);
                     });
                 }, (res) => {
-                    router.push('/error/404/checklist');
                     console.log("error fetching checklist");
+                    if(res.status === 404) router.push('/error/404/checklist');
                 });
             },
             setFilesHeaderScrollbarPadding() {
