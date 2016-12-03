@@ -34,13 +34,15 @@
     @include box-shadow(none);
     width: calc(100% + 24px);
     margin-left: -12px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 
     &:hover {
-      border-color: $laravel-border-color;
+      border-color: $input-border;
     }
 
     &:focus {
-      border-color: $green;
+      border-color: $brand-primary;
     }
   }
 

@@ -1,5 +1,23 @@
 <template>
     <div id="checklist-make" class="main-content">
+        <div class="row">
+            <div class="password">
+                <i class="fa fa-lock"
+                   :class="{
+                        'active': password
+                   }"
+                   data-toggle="tooltip"
+                   data-placement="bottom"
+                   title="Password required for guests to view checklist."
+                ></i>
+                <input id="field-password"
+                       type="text"
+                       class="form-control"
+                       v-model="password"
+                       placeholder="Password"
+                >
+            </div>
+        </div>
         <form-errors></form-errors>
         <form id="form-checklist-make" action="/c/make" method="POST">
             <div class="inline-label">
@@ -51,7 +69,8 @@
                         description: '',
                         due: ''
                     }
-                ]
+                ],
+                password: ''
             }
         },
         computed: {
@@ -103,7 +122,8 @@
                     recipients: this.checklistRecipients,
                     name: this.checklistName,
                     description: this.checklistDescription,
-                    requested_files: this.validFiles
+                    requested_files: this.validFiles,
+                    password: this.password
                 }, {
                     before(xhr) {
                         RequestsMonitor.pushOntoQueue(xhr);
@@ -116,6 +136,9 @@
                     vueValidation(response);
                     this.ajaxReady = true;
                 });
+            },
+            togglePasswordField(){
+                this.passwordField = !this.passwordField;
             }
         },
         mounted() {

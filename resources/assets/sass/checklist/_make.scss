@@ -4,6 +4,27 @@
   display: flex;
   flex-direction: column;
 
+  .password {
+    margin: 15px 15px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    i {
+      color: $grey;
+      font-size: 1.6em;
+      margin: 0 10px 0 0;
+
+      &.active {
+        color: $blue;
+      }
+    }
+
+    input {
+      width: 200px;
+    }
+  }
+
   #form-checklist-make {
     flex: 1;
     margin: 15px 0;

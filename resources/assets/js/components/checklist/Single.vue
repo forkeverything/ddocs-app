@@ -209,6 +209,9 @@
             }
         },
         computed: {
+            requestUrl() {
+                return '/api/c/' + this.$route.params.checklist_hash + '/files';
+            },
             checklist() {
                 return this.$store.state.checklist.data;
             },
@@ -233,9 +236,6 @@
             checklistBelongsToUser() {
                 if (!this.authenticatedUser) return false;
                 return this.authenticatedUser.id === this.checklist.user_id;
-            },
-            requestUrl() {
-                return '/api/c/' + this.$route.params.checklist_hash + '/files';
             },
             canRejectFile() {
                 if (!this.selectedFileRequest) return false;

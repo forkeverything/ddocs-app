@@ -205,10 +205,12 @@ class ChecklistFactory
      */
     protected function createChecklist()
     {
+        $password = $this->request->password ? bcrypt($this->request->password) : null;
         $this->checklist = Checklist::create([
             'name' => $this->request->name,
             'description' => $this->request->description,
-            'user_id' => $this->user->id
+            'user_id' => $this->user->id,
+            'password' => $password
         ]);
 
         return $this;
