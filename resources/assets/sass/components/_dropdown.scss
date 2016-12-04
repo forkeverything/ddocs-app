@@ -44,13 +44,9 @@ ul.dropdown-menu, .dropdown-menu > ul {
 
     &:hover {
       a {
-        color: #fff !important;
-        background: $blue !important;
+        background: $light-grey !important;
         display: block;
         text-decoration: none !important;
-        i {
-          color: #fff !important;
-        }
 
         &[disabled=disabled], &.disabled {
           color: $grey !important;
