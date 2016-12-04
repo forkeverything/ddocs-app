@@ -4,7 +4,7 @@
             <a v-show="! showForm" href="#" @click.prevent="toggleShow">Add File</a>
         </div>
         <div class="form-wrap" v-show="showForm">
-            <h5>Add File</h5>
+            <h4>Add File</h4>
             <form @submit.prevent="save">
                 <div class="fields form-group">
                     <div class="field-name">

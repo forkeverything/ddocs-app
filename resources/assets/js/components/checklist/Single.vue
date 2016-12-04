@@ -150,10 +150,10 @@
                                     <fr-uploader :file-request="fileRequest"
                                                  @update-file-request="updateFileRequest"
                                     ></fr-uploader>
-                                    <fr-due-date :checklist-belongs-to-user="checklistBelongsToUser"
-                                                 :file-request="fileRequest"
-                                                 @update-file-request="updateFileRequest"
-                                    ></fr-due-date>
+                                    <div class="fr-due-date">
+                                        <smart-date v-if="fileRequest.due" :date="fileRequest.due"></smart-date>
+                                        <span v-if="! fileRequest.due">--</span>
+                                    </div>
                                 </div>
                             </li>
                             <li class="fr-loading" v-if="hasNextPage">
