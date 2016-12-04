@@ -15,7 +15,7 @@
                         {{ recipient.email }}
                     </li>
                 </ul>
-                <button type="button" v-if="checklistBelongsToUser && ! editingRecipients" class="btn btn-small btn-info" @click="toggleEditRecipients"><i class="fa fa-pencil"></i> Edit</button>
+                <a v-if="checklistBelongsToUser && ! editingRecipients" href="#" @click.prevent="toggleEditRecipients">Edit</a>
                 <recipients-editor v-if="checklistBelongsToUser && editingRecipients"
                 @hide="toggleEditRecipients"
                 ></recipients-editor>
@@ -56,25 +56,31 @@
             <div class="section-content">
                 <p class="text-muted">Recipients with an account won't need to enter this password.</p>
                 <p v-show="checklist.secure && ! passwordForm">********</p>
-                <ul class="list-unstyled" v-show="! passwordForm">
+                <ul class="list-unstyled list-inline" v-show="! passwordForm">
                     <li>
                         <a href="#" @click.prevent="togglePasswordForm">
-                            <span v-if="checklist.secure">Change</span><span v-if="! checklist.secure">Set</span> Password
+                            <span v-show="checklist.secure">Change</span><span v-show="! checklist.secure">Set</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
+                    <li v-show="checklist.secure">
+                        <a href="#" @click.prevent="setNewPassword(null)">
                             Remove
                         </a>
                     </li>
                 </ul>
-                <form v-show="passwordForm">
+                <form v-show="passwordForm" @submit.prevent="setNewPassword">
                     <div class="form-group">
                         <input type="password" v-model="newPassword" class="form-control" placeholder="Password">
                     </div>
                     <div class="text-right">
-                        <button type="button" class="btn btn-sm btn-default btn-space" @click="togglePasswordForm">cancel</button>
-                        <button type="submit" class="btn btn-sm btn-success">Save</button>
+                        <ul class="list-unstyled list-inline">
+                            <li>
+                                <a href="#" @click.prevent="togglePasswordForm">Cancel</a>
+                            </li>
+                            <li class="pr-0">
+                                <a href="#" :disabled="! newPassword" @click.prevent="setNewPassword">Save</a>
+                            </li>
+                        </ul>
                     </div>
                 </form>
             </div>
@@ -102,6 +108,7 @@
     export default {
         data: function () {
             return {
+                ajaxReady: true,
                 editingRecipients: false,
                 passwordForm: false,
                 newPassword: ''
@@ -128,6 +135,29 @@
             },
             togglePasswordForm(){
                 this.passwordForm = ! this.passwordForm;
+            },
+            setNewPassword(newPassword){
+                if(newPassword === null) this.newPassword = '';
+                if(!this.ajaxReady) return;
+                this.ajaxReady = false;
+
+                this.$http.post(`/api/c/${ this.checklist.hash }/password`, {
+                  "new_password": this.newPassword
+                }, {
+                    before(xhr) {
+                        RequestsMonitor.pushOntoQueue(xhr);
+                    }
+                }).then((response) => {
+                    // success
+                    this.$store.commit('checklist/UPDATE_SECURE', !! this.newPassword);
+                    this.passwordForm = false;
+                    this.newPassword = '';
+                    this.ajaxReady = true;
+                },(response) => {
+                    // error
+                    console.log("error updating checklist password.");
+                    this.ajaxReady = true;
+                });
             }
         },
         created() {

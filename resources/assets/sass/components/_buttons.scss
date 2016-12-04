@@ -32,7 +32,6 @@
 
   border-radius: $border-radius-small;
 
-
   .caret {
     color: #fff;
   }
@@ -53,5 +52,9 @@
    &.disabled, &[disabled=disabled] {
      color: inherit!important;
    }
+  }
+
+  .btn-space {
+    margin-right: 5px;
   }
 }

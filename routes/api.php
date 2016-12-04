@@ -28,6 +28,7 @@ Route::group(['middleware' => 'api.auth'], function () {
     Route::put('/c/{checklist_hash}', 'ChecklistsController@putUpdate');
     Route::put('/c/{checklist_hash}/recipients', 'ChecklistsController@putUpdateRecipients');
     Route::post('/c/{checklist_hash}/add_file', 'ChecklistsController@postAddFile');
+    Route::post('/c/{checklist_hash}/password', 'ChecklistsController@postNewPassword');
     Route::delete('/c/{checklist_hash}', 'ChecklistsController@delete');
 
     // File Requests

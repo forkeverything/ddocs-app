@@ -33,6 +33,7 @@ module.exports = {
             this._storeAuthToken(newToken);
             this._setHeaders(newToken);
             this._refreshing = false;
+            vueGlobalEventBus.$emit('refreshed_auth_user');
             this._performRemakeQueue(newToken);
         }, (refreshTokenResponse) => {
             // Failed to refresh token... log out of client.

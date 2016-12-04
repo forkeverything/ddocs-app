@@ -6,6 +6,7 @@ const types = {
     SET: 'checklist/SET',
     UPDATE_DESCRIPTION: 'checklist/UPDATE_DESCRIPTION',
     UPDATE_RECIPIENTS: 'checklist/UPDATE_RECIPIENTS',
+    UPDATE_SECURE: 'checklist/UPDATE_SECURE',
     SAVE_CHANGES: 'checklist/SAVE_CHANGES'
 };
 
@@ -32,6 +33,9 @@ const mutations = {
     },
     [types.UPDATE_RECIPIENTS](state, payload) {
         state.data.recipients = payload;
+    },
+    [types.UPDATE_SECURE](state, payload) {
+        state.data.secure = payload;
     }
 };
 

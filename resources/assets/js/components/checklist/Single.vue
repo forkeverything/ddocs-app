@@ -394,7 +394,10 @@
         },
         mixins: [fetchesFromEloquentRepository],
         created() {
-            window.addEventListener('resize', this.setFilesHeaderScrollbarPadding)
+            window.addEventListener('resize', this.setFilesHeaderScrollbarPadding);
+            vueGlobalEventBus.$on('refreshed_auth_user', () => {
+                if(! this.authenticated) this.fetchChecklist()
+            });
         },
         mounted() {
             this.fetchChecklist();

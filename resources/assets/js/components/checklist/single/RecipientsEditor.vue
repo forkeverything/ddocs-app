@@ -6,11 +6,15 @@
                 placeholder="Recipient Emails"
         >
         </tagger>
-        <div class="text-right buttons">
-            <button type="button" class="btn btn-default btn-sm" @click="$emit('hide')">Cancel</button>
-            <button type="button" class="btn btn-info btn-sm" :disabled="! canSave || ! ajaxReady" @click="save">Save
-            </button>
-        </div>
+
+        <ul class="list-unstyled list-inline text-right">
+            <li>
+                <a href="#" @click.prevent="$emit('hide')">Cancel</a>
+            </li>
+            <li class="pr-0">
+                <a href="#" @click.prevent="save" :disabled="! canSave || ! ajaxReady">Save</a>
+            </li>
+        </ul>
     </div>
 </template>
 <script>

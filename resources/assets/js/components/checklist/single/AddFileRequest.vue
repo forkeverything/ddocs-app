@@ -1,18 +1,16 @@
 <template>
     <div id="add-file-request">
         <div class="text-right">
-            <button type="button" class="btn btn-sm btn-info" v-show="! showForm" @click="toggleShow"><i class="fa fa-plus"></i> File</button>
+            <a v-show="! showForm" href="#" @click.prevent="toggleShow">Add File</a>
         </div>
         <div class="form-wrap" v-show="showForm">
-            <h4>Add File</h4>
+            <h5>Add File</h5>
             <form @submit.prevent="save">
-                <div class="fields">
-                    <div class="form-group field-name">
-                        <label for="">File Name</label>
-                        <input type="text" ref="input" v-model="name" class="form-control">
+                <div class="fields form-group">
+                    <div class="field-name">
+                        <input type="text" ref="input" v-model="name" class="form-control" placeholder="File Name">
                     </div>
-                    <div class="form-group field-due">
-                        <label for="">Due</label>
+                    <div class="field-due">
                         <date-picker v-model="due"
                                      :carbon="true"
                                      :formatted="true"
@@ -21,10 +19,14 @@
                         </date-picker>
                     </div>
                 </div>
-                <div class="form-buttons">
-                    <button class="btn btn-sm btn-default" type="button" @click="reset">Cancel</button>
-                    <button class="btn btn-sm btn-info" type="submit" :disabled="! canSave">Save</button>
-                </div>
+                <ul class="list-unstyled list-inline">
+                    <li>
+                        <a href="#" @click.prevent="reset">Cancel</a>
+                    </li>
+                    <li class="pr-0">
+                        <a href="#" @click.prevent="save" :disabled="! canSave">Add</a>
+                    </li>
+                </ul>
             </form>
         </div>
     </div>

@@ -184,6 +184,25 @@ class ChecklistsController extends Controller
     }
 
     /**
+     * Set a new password for Checklist.
+     *
+     * @param Request $request
+     * @param $checklistHash
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function postNewPassword(Request $request, $checklistHash)
+    {
+        $checklist = Checklist::findByHash($checklistHash);
+        $this->authorize('update', $checklist);
+        $newPassword = $request->new_password ? Hash::make($request->new_password) : null;
+        $updated = $checklist->update([
+            'password' => $newPassword
+        ]);
+        if($updated) return response("Updated checklist password");
+        return response("Error changing checklist password", 500);
+    }
+
+    /**
      * @param $checklistHash
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response|void
      */
