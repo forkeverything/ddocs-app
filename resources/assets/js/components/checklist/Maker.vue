@@ -130,7 +130,6 @@
                     }
                 }).then((response) => {
                     router.push('/c/' + response.data);
-                    location.href = "/c/" + response.data;
                 }, (response) => {
                     console.log(response);
                     vueValidation(response);
