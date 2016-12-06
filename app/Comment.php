@@ -90,7 +90,7 @@ class Comment extends Model
         // Does original comment exist
         if(! $originalComment = Comment::findByHash($originalCommentHash)) return response("Couldn't find original comment");
         // Parse out comment body from email
-        $pattern = "/.*?(?=(?:\s*On.*wrote:|\s*===== Reply above this line =====|$))/s";
+        $pattern = "/.*?(?=(?:\s*>?\s?On.*wrote:|\s*>?\s?===== Reply above this line =====|$))/s";
 
         /*
          * Regex Pattern
